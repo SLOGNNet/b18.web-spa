@@ -14,11 +14,11 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { DriversComponent } from './drivers';
+import { MessagesComponent } from './drivers/messages'
 import { NoContentComponent } from './no-content';
-import { XLarge } from './home/x-large';
 
+import { MessageService } from './drivers/services/message-service'
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -37,21 +37,21 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    AboutComponent,
-    HomeComponent,
-    NoContentComponent,
-    XLarge
+     AppComponent,
+     DriversComponent,
+     NoContentComponent,
+     MessagesComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    //RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    MessageService
   ]
 })
 export class AppModule {
@@ -93,4 +93,3 @@ export class AppModule {
   }
 
 }
-
