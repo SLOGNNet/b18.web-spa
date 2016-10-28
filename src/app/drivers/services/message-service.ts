@@ -7,6 +7,10 @@ export {IDriverMessage} from './interfaces';
 @Injectable()
 export class MessageService {
   constructor() {}
+
+  insertMessage(message : Message) {
+
+  }
   getMessages(driverId: string): Promise<Array<IDriverMessage>> {
       const messages = new Array<IDriverMessage>();
       for(let i = 0; i < 10; i++) {
@@ -15,4 +19,6 @@ export class MessageService {
 
       return new Promise((resolve) => resolve(messages));
   }
+
+
 }

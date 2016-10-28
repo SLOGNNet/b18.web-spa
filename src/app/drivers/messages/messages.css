@@ -1,0 +1,13 @@
+.btn-chat {
+  background-color: greenyellow;
+}
+
+input[type=text] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid darkgray;
+  background-color: white;
+  color: black;
+}

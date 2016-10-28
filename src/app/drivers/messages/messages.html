@@ -1,5 +1,17 @@
+<div>Driver</div>
+<div>
 <ul class="messages-list">
     <li *ngFor="let message of messages">
       {{ message.message }}
     </li>
 </ul>
+
+
+  <input type="text"
+         (keydown.enter)="onEnter($event)"
+         placeholder="Write your message here..."/>
+  <span class="input-group-btn">
+      <button class="btn-chat"
+          (click)="onEnter($event)">Send</button>
+     </span>
+</div>
