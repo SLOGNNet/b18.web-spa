@@ -12,7 +12,7 @@ import { HybridAppFactory } from '../app/app.hybrid.module.factory';
 
 const HybridMessagesModule = HybridAppFactory({
     bootstrapComponents: [MessagesComponent],
-    declarations: [HomeComponent, MessagesComponent],
+    declarations: [MessagesComponent],
     providers: [MessageService]
 })
 export function main(): Promise<any> {
