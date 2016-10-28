@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
+import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages'
 import { NoContentComponent } from './no-content';
 
@@ -38,6 +39,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
      AppComponent,
+     HomeComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent
@@ -46,7 +48,7 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    //RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
