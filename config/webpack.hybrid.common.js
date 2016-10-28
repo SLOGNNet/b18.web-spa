@@ -217,6 +217,7 @@ module.exports = function (options) {
         chunks: ['messages', 'polyfills', 'vendor'],
         template: 'src/hybrid/index.html',
         title: METADATA.title,
+        component: '<messages>Loading</messages>',
         chunksSortMode: 'dependency',
         metadata: METADATA,
         filename: 'messages.html'
