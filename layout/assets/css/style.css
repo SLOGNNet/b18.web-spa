@@ -1,0 +1,132 @@
+body{ 
+	height:100%;
+	font-size:14px;
+	font-family: "Times New Roman", Georgia, sans-erif;
+}
+
+/* sidebar menu */
+
+.sidebar-menu{
+	background:#000;
+	color:#fff;
+	position:fixed;
+	height:100%;
+	width:120px;
+}
+
+/* logo */
+.logo-container{
+	font-family: Orbitron;
+	width:100%;
+	margin-top:20px;
+	text-align:center;
+}
+
+.logo-container span{
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.logo-container .logo-letter{
+	color:#a4c2f4;
+}
+.logo-container .logo-number{
+	color:#ff9900;
+	margin-left: -3px;
+
+}
+
+/* main menu */
+.menu-container{
+	margin-top:20px;
+}
+
+.menu-container ul{
+ 	list-style:none;
+ 	padding:0 15px;
+}
+
+.menu-container ul li{
+	border-top: 15px solid #fff;
+    border-left: 15px solid #fff;
+    border-bottom: 7px solid #000;
+    border-right: 26px solid #000;
+    height: 40px;
+    width: 90%;
+    margin-bottom: 40px;
+    position: relative;
+}
+.menu-container ul li.active{
+	border-top-color: #a4c2f4;
+    border-left-color: #a4c2f4;
+}
+.menu-container ul li.active > a{
+	color: #a4c2f4;
+}
+
+.menu-container ul li:hover{
+	cursor:pointer;
+}
+
+.menu-container ul li a{
+	color: #fff;
+    position: absolute;
+    bottom: -30px;
+    left: -15px;
+    width: 80px;
+}
+
+/* menu-master */
+
+.menu-master-container{
+	padding-top:20px;
+    text-align: center;
+}
+
+.menu-master-container button span:before{
+    content: '\25CF';
+    font-size: 10px;
+}
+
+.menu-master-container button{
+	background:none;
+	border:0;
+}
+
+/* pane switch  */
+
+.pane-switch-container{
+	text-align:center;
+	padding:32px;
+}
+
+.pane-switch-container .pane-switch-group button{
+	float:left;
+}
+
+.pane-switch-group{
+	margin:0 auto;
+}
+
+.pane-switch-group button {
+    border: 1px solid #fff;
+    margin-left: -1px;
+}
+
+
+.pane-switch-group button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.pane-switch-group button:last-child {
+    border-radius: 0 5px 6px 0;
+}
+
+.pane-switch-container div button{
+	height:20px;
+}
+
+.pane-switch-container button{
+	background:none;
+	border-color:#fff;
+}
