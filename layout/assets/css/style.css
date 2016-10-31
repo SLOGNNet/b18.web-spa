@@ -173,7 +173,9 @@ body{
 	width:80%;
 }
 
+
 /*  header buttons container  */
+
 .buttons-container{
 	width:20%;
 	display:flex;
@@ -181,8 +183,80 @@ body{
 	align-items:center;
 	justify-content:flex-end;
 }
+
 .buttons-container a{
 	color:#6c6c6c;
 	font-size:1.5em;
 	margin:0 10px;
+	position:relative;
+}
+
+.buttons-container button{
+	border:0;
+	background:none;
+}
+/* tooltips */
+
+.notif-tooltip{
+	position: absolute;
+	display:none;
+    width: 300px;
+    height: auto;
+    right: 5px;
+    top: 40px;
+    color: #000;
+    background: #fff;
+    box-shadow: 0 0 2px #6c6c6c;
+}
+
+.notif-tooltip a{
+	margin:0;
+
+}
+
+.notif-tooltip h4{
+	margin:0;
+	padding-top:5px;
+	color:#1c4587;
+}
+
+.notif-item{
+	padding: 0 10px;
+	text-align: left;
+	margin-bottom:10px;
+}
+
+.notif-item p{
+	margin-bottom:0;
+}
+
+.notif-item a{
+	margin-top:5px;
+	font-size:18px;
+	color:#0097a7;
+}
+
+
+.notif-tooltip:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 23px;
+    margin-left: -12px;
+    width: 0;
+    height: 0;
+    border-bottom: 11px solid #6c6c6c;
+    border-right: 11px solid transparent;
+    border-left: 11px solid transparent;
+}
+.notif-tooltip:after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 24px;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #ffffff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
 }
