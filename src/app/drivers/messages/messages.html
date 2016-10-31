@@ -1,17 +1,27 @@
-<div>Driver</div>
-<div>
-<ul class="messages-list">
-    <li *ngFor="let message of messages">
-      {{ message.message }}
-    </li>
-</ul>
-
-
-  <input type="text"
-         (keydown.enter)="onEnter($event)"
-         placeholder="Write your message here..."/>
-  <span class="input-group-btn">
-      <button class="btn-chat"
-          (click)="onEnter($event)">Send</button>
-     </span>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 driver-name">Driver: George Clooney</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 chat">
+      <!-- messages -->
+      <li *ngFor="let message of messages">
+        {{ message.message }}
+      </li>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <form action="#" class="message-form" name="sendMessageForm">
+          <textarea name="message" placeholder="Type your message here"></textarea>
+          <div class="send-block">
+            <div class="status"></div>
+            <p>Text</p>
+            <p>App</p>
+            <p>Email</p>
+            <button class="send-message">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
