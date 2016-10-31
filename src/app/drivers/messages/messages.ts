@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MessageService, IDriverMessage} from '../services/message-service';
+import { MessageService } from '../services/message.service';
 
 @Component({
     selector: 'messages',
@@ -7,12 +7,12 @@ import {MessageService, IDriverMessage} from '../services/message-service';
     templateUrl: './messages.html'
 })
 export class MessagesComponent implements OnInit {
-  private messages: Array<IDriverMessage>;
+  private messages: Array<any> = new Array<any>();;
   constructor(public messageService: MessageService) {
   }
   ngOnInit() {
-    this.messageService
-      .getMessages('anyid')
-      .then(messages => this.messages = messages);
+    this.messageService.getMessages().subscribe(messages => {
+        this.messages = messages;
+    });
   }
 }

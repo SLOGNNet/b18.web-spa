@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { SharedModule } from "./shared/shared.module";
 
 export function HybridAppFactory(options) {
     @NgModule({
@@ -12,7 +12,8 @@ export function HybridAppFactory(options) {
         imports: [
             BrowserModule,
             FormsModule,
-            HttpModule
+            HttpModule,
+            SharedModule
         ],
         providers: [
             options.providers
