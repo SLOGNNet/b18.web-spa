@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MessageService, IDriverMessage} from '../services/message-service';
+import { MessageService } from '../services/message.service';
 
 @Component({
     selector: 'messages',
@@ -8,13 +8,14 @@ import {MessageService, IDriverMessage} from '../services/message-service';
     inputs: ['message']
 })
 export class MessagesComponent implements OnInit {
-  private messages: Promise<Array<IDriverMessage>>;
+  private messages: Array<any> = new Array<any>();
+
   constructor(public messageService: MessageService) {
   }
   ngOnInit() {
-    this.messageService
-      .getMessages('anyid')
-      .then(messages => this.messages = messages);
+    this.messageService.getMessages().subscribe(messages => {
+        this.messages = messages;
+    });
   }
 
   onEnter(event: any): void {
@@ -23,10 +24,7 @@ export class MessagesComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.insertMessage({
-      username : this.username,
-      message : this.message
-    });
+    this.messageService.create(this.message);
     this.message = '';
   }
 }

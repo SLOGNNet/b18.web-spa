@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
+import { SharedModule } from "./shared/shared.module";
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -19,7 +19,7 @@ import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages'
 import { NoContentComponent } from './no-content';
 
-import { MessageService } from './drivers/services/message-service'
+import { MessageService } from './drivers/services/message.service'
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -48,6 +48,7 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
