@@ -13,9 +13,11 @@ export class MessagesComponent implements OnInit {
   constructor(public messageService: MessageService) {
   }
   ngOnInit() {
+
     this.messageService.getMessages().subscribe(messages => {
-        this.messages = messages;
+      this.messages = messages;
     });
+
   }
 
   onEnter(event: any): void {
@@ -24,7 +26,7 @@ export class MessagesComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.create(this.message);
+    this.messageService.create('fg');
     this.message = '';
   }
 }
