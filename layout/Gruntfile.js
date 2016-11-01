@@ -17,16 +17,31 @@ module.exports = function (grunt) {
 			       'assets/css/dist/build.css':'assets/sass/main.scss'
 			    }
 		   }
-	},
+		},
         watch: {
             css: {
                 files: ['assets/sass/*.scss'],
                 tasks: ['sass']
             }
-        }
+        },
+        copy: {
+		  main: {
+		    files: [
+		      {
+		      	expand: true, 
+		      	flatten: true, 
+		      	src: ['node_modules/bootstrap/'], 
+		      	dest: 'assets/css/libs/', 
+		      	filter: 'isFile'
+		      },
+		    ],
+		  },
+}
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch'); 
     grunt.loadNpmTasks('grunt-contrib-sass'); 
+    grunt.loadNpmTasks('grunt-contrib-copy'); 
     grunt.registerTask('default', ['sass']);
+    grunt.registerTask('copy', ['copy']);
 };
