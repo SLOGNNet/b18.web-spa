@@ -4,6 +4,9 @@ body{
 	font-family: "Times New Roman", Georgia, sans-erif;
 	background:#eee;
 }
+input:focus{
+	outline:0;
+}
 
 /* sidebar menu */
 
@@ -202,7 +205,7 @@ body{
 	display:none;
     width: 300px;
     height: auto;
-    right: 5px;
+    right: -20px;
     top: 40px;
     color: #000;
     background: #fff;
@@ -224,14 +227,17 @@ body{
 	padding: 0 10px;
 	text-align: left;
 	margin-bottom:10px;
+	font-size:1em;
 }
 
 .notif-item p{
 	margin-bottom:0;
+	font-size:16px;
 }
 
-.notif-item a{
-	margin-top:5px;
+.notif-item button{
+	margin-top:0;
+	padding:0;
 	font-size:18px;
 	color:#0097a7;
 }
