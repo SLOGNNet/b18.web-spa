@@ -4,3 +4,4 @@
 *.idea
 layout/node_modules
 .sass-cache
+layout/assets/css/dist
