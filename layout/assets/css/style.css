@@ -101,38 +101,38 @@ input:focus{
 
 .pane-switch-container{
 	text-align:center;
-	padding:32px;
+	margin-top:30px;
 }
 
-.pane-switch-container .pane-switch-group button{
-	float:left;
-}
-
-.pane-switch-group{
+.pane-switch-container ul{
+	list-style: none;
 	margin:0 auto;
 }
 
-.pane-switch-group button {
+
+.pane-switch-container li {
     border: 1px solid #fff;
     margin-left: -1px;
+    min-width:15px;
+    display:inline;
+    height:20px;
+	background:none;
+	border-color:#fff;
+	float:left;
 }
 
 
-.pane-switch-group button:first-child {
+.pane-switch-container ul li:first-child {
     border-radius: 5px 0 0 5px;
 }
 
-.pane-switch-group button:last-child {
+.pane-switch-container ul li:last-child {
     border-radius: 0 5px 6px 0;
 }
+	
 
-.pane-switch-container div button{
-	height:20px;
-}
-
-.pane-switch-container button{
-	background:none;
-	border-color:#fff;
+.pane-switch-container ul li.active{
+	background:#ccc;
 }
 
 
@@ -210,6 +210,7 @@ input:focus{
     color: #000;
     background: #fff;
     box-shadow: 0 0 2px #6c6c6c;
+    z-index:10;
 }
 
 .notif-tooltip a{
@@ -265,4 +266,23 @@ input:focus{
     border-bottom: 10px solid #ffffff;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
+}
+
+/* panes */
+
+.main-area{
+	margin:0;
+}
+
+.pane{
+	display:flex;
+	align-items: center;
+    justify-content: center;
+	min-height:calc(100vh - 47px);
+	height:100%;
+	border:1px solid #6c6c6c;
+	padding:0;
+}
+.pane div{
+	color:#6c6c6c;
 }
