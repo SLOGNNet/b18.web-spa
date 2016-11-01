@@ -2,3 +2,5 @@
 *.iml
 *.iws
 *.idea
+layout/node_modules
+.sass-cache

@@ -1,0 +1,230 @@
+body {
+  font-size: 14px;
+  font-family: "Times New Roman", Georgia, sans-erif;
+  background: #ccc;
+  height: 100%; }
+
+input:focus {
+  outline: 0; }
+
+/* logo */
+.logo-container {
+  font-family: Orbitron;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center; }
+
+.logo-container span {
+  text-transform: uppercase;
+  font-weight: 600; }
+
+.logo-container .logo-letter {
+  color: #a4c2f4; }
+
+.logo-container .logo-number {
+  color: #ff9900;
+  margin-left: -3px; }
+
+.main-header {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #6c6c6c; }
+
+.search-container {
+  width: 80%; }
+
+.search-form {
+  border: 0;
+  height: 45px;
+  line-height: 45px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.search-form span {
+  color: #6c6c6c;
+  padding: 0 15px; }
+
+.search-form input {
+  border: none;
+  background: none;
+  color: #000;
+  width: 80%; }
+
+/*  header buttons container  */
+.buttons-container {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end; }
+
+.buttons-container a {
+  color: #6c6c6c;
+  font-size: 1.5em;
+  margin: 0 10px;
+  position: relative; }
+
+.buttons-container button {
+  border: 0;
+  background: none; }
+
+.sidebar-menu {
+  background: #000;
+  color: #fff;
+  position: fixed;
+  height: 100%;
+  width: 120px; }
+
+.menu-container {
+  margin-top: 20px; }
+
+.menu-container ul {
+  list-style: none;
+  padding: 0 15px; }
+
+.menu-container ul li {
+  border-top: 15px solid #fff;
+  border-left: 15px solid #fff;
+  border-bottom: 7px solid #000;
+  border-right: 26px solid #000;
+  height: 40px;
+  width: 90%;
+  margin-bottom: 40px;
+  position: relative; }
+
+.menu-container ul li.active {
+  border-top-color: #a4c2f4;
+  border-left-color: #a4c2f4; }
+
+.menu-container ul li.active > a {
+  color: #a4c2f4; }
+
+.menu-container ul li:hover {
+  cursor: pointer; }
+
+.menu-container ul li a {
+  color: #fff;
+  position: absolute;
+  bottom: -30px;
+  left: -15px;
+  width: 80px; }
+
+.menu-master-container {
+  padding-top: 20px;
+  text-align: center; }
+
+.menu-master-container button span:before {
+  content: '\25CF';
+  font-size: 10px; }
+
+.menu-master-container button {
+  background: none;
+  border: 0; }
+
+/* tooltips */
+.notif-tooltip {
+  position: absolute;
+  display: none;
+  width: 300px;
+  height: auto;
+  right: -20px;
+  top: 40px;
+  color: #000;
+  background: #fff;
+  box-shadow: 0 0 2px #6c6c6c;
+  z-index: 10; }
+
+.notif-tooltip a {
+  margin: 0; }
+
+.notif-tooltip h4 {
+  margin: 0;
+  padding-top: 5px;
+  color: #1c4587; }
+
+.notif-item {
+  padding: 0 10px;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1em; }
+
+.notif-item p {
+  margin-bottom: 0;
+  font-size: 16px; }
+
+.notif-item button {
+  margin-top: 0;
+  padding: 0;
+  font-size: 18px;
+  color: #0097a7; }
+
+.notif-tooltip:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 23px;
+  margin-left: -12px;
+  width: 0;
+  height: 0;
+  border-bottom: 11px solid #6c6c6c;
+  border-right: 11px solid transparent;
+  border-left: 11px solid transparent; }
+
+.notif-tooltip:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 24px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #ffffff;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent; }
+
+.pane-switch-container {
+  text-align: center;
+  margin-top: 30px; }
+
+.pane-switch-container ul {
+  list-style: none;
+  margin: 0 auto; }
+
+.pane-switch-container li {
+  border: 1px solid #fff;
+  margin-left: -1px;
+  min-width: 15px;
+  display: inline;
+  height: 20px;
+  background: none;
+  border-color: #fff;
+  float: left; }
+
+.pane-switch-container ul li:first-child {
+  border-radius: 5px 0 0 5px; }
+
+.pane-switch-container ul li:last-child {
+  border-radius: 0 5px 6px 0; }
+
+.pane-switch-container ul li.active {
+  background: #ccc; }
+
+.main-content {
+  margin-left: 120px; }
+
+.main-area {
+  margin: 0; }
+
+.pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 47px);
+  height: 100%;
+  border: 2px solid #6c6c6c;
+  padding: 0; }
+
+.pane div {
+  color: #6c6c6c; }
+
+/*# sourceMappingURL=build.css.map */
