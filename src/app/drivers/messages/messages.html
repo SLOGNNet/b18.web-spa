@@ -6,7 +6,7 @@
     <div class="col-sm-12 chat">
       <!-- messages -->
       <li *ngFor="let message of messages">
-        {{ message.message }}
+        {{ message }}
       </li>
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
             <p>Text</p>
             <p>App</p>
             <p>Email</p>
-            <button class="send-message">Send</button>
+            <button class="send-message" (click)="onEnter($event)">Send</button>
           </div>
         </form>
       </div>
