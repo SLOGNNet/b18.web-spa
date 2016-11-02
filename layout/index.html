@@ -55,10 +55,10 @@
 			<!-- end container for Pane View Switch  -->
 			<div class="pane-switch-container">
 				<ul id="pane-switch-group">
-  					<li class="" id="first-pane"></li>
-  					<li class="" id="second-pane"></li>
-  					<li class="" id="third-pane"></li>
-  					<li class="" id="fourth-pane"></li>
+  					<li class="" id="toggle-first"></li>
+  					<li class="active" id="toggle-second"></li>
+  					<li class="active" id="toggle-third"></li>
+  					<li class="active" id="toggle-fourth"></li>
 				</ul>
 			</div>
 			<!-- end container for Pane View Switch -->
@@ -131,7 +131,8 @@
 			<!-- end of main header -->
 
 
-			<!-- work area -->
+			<!-- work area 
+
 			<div class="main-area row">
 				<div class="col-lg-3 col-md-3 col-sm-3 pane pane-1">
 					<div class="content">Pane 1 - ususally List View</div>
@@ -140,6 +141,19 @@
 					<div class="content">Pane 2 - depends on the context</div>
 				</div>
 				<div class="col-lg-5 col-md-5 col-sm-5 pane pane-3">
+					<div class="content">Pane 3 - ususally Details View</div>
+				</div>
+			</div>   
+		-->
+
+			<div class="main-area" style="display:flex;">
+				<div class="pane pane-1" style="width:30%;" id="pane-1">
+					<div class="content">Pane 1 - ususally List View</div>
+				</div>
+				<div class="pane pane-2" style="width:40%;" id="pane-2">
+					<div class="content">Pane 2 - depends on the context</div>
+				</div>
+				<div class="pane pane-3" style="width:30%;" id="pane-3">
 					<div class="content">Pane 3 - ususally Details View</div>
 				</div>
 			</div>

@@ -32,10 +32,13 @@ function showMainMenu(){
 
 /* click on switch pane */
 
-var pane1 = document.getElementById("first-pane"),
-	pane2 = document.getElementById("second-pane"),
-	pane3 = document.getElementById("third-pane"),
-	pane4 = document.getElementById("fourth-pane");
+var pane1 = document.getElementById("toggle-first"),
+	pane2 = document.getElementById("toggle-second"),
+	pane3 = document.getElementById("toggle-third"),
+	pane4 = document.getElementById("toggle-fourth"),
+	block1 = document.getElementById("pane-1"),
+	block2 = document.getElementById("pane-2"),
+	block3 = document.getElementById("pane-3");
 
 
 pane1.onclick = function(e){
@@ -62,3 +65,40 @@ function handleMouseMove(event) {
 	}
 }
 
+
+
+
+function removeElement(element){
+	element.style.display = "none";
+};
+
+function addFlexElement(element){
+	element.style.display = "flex";
+};
+
+// click on pane switch 2
+pane2.addEventListener("click", function(e){
+	if(e.target.className == "active"){
+		removeElement(block1);
+	} else{
+		addFlexElement(block1);
+	}
+});
+
+// click on pane switch 3
+pane3.addEventListener("click", function(e){
+	if(e.target.className == "active"){
+		removeElement(block2);
+	} else{
+		addFlexElement(block2);
+	}
+});
+
+// click on pane switch 4
+pane4.addEventListener("click", function(e){
+	if(e.target.className == "active"){
+		removeElement(block3);
+	} else{
+		addFlexElement(block3);
+	}
+});

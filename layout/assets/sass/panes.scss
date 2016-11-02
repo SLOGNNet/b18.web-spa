@@ -36,10 +36,12 @@
 }
 
 .main-area{
+	display:flex;
 	margin:0;
 }
 .pane{
 	display:flex;
+	flex-grow:1;
 	align-items: center;
     justify-content: center;
 	min-height:calc(100vh - 47px);
