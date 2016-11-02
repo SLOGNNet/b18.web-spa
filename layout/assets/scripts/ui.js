@@ -102,3 +102,26 @@ pane4.addEventListener("click", function(e){
 		addFlexElement(block3);
 	}
 });
+
+/* mobile version */
+
+document.getElementById("mobile-switch").onclick = function(e){
+	if(block1.style.display != "none"){
+		block1.style.display = "none";
+		block2.style.display = "flex";
+	} else{
+		block2.style.display = "none";
+		block1.style.display = "flex";
+	}
+}
+
+document.getElementById("mobile-menu-btn").onclick = function(e){
+	if(e.target.className == "glyphicon glyphicon-align-justify"){
+		document.getElementById("sidebar-menu").style.marginLeft = "0";
+		e.target.className = "glyphicon glyphicon-chevron-left";
+} else{
+		document.getElementById("sidebar-menu").style.marginLeft = "-100vw";
+		e.target.className = "glyphicon glyphicon-align-justify";
+}
+
+}

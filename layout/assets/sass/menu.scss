@@ -8,14 +8,10 @@
 
 .menu-container{
 	margin-top:20px;
-}
-
-.menu-container ul{
- 	list-style:none;
  	padding:0 15px;
 }
 
-.menu-container ul li{
+.menu-container div{
 	border-top: 15px solid #fff;
     border-left: 15px solid #fff;
     border-bottom: 7px solid #000;
@@ -25,19 +21,19 @@
     margin-bottom: 40px;
     position: relative;
 }
-.menu-container ul li.active{
+.menu-container div.active{
 	border-top-color: $menuActiveColor;
     border-left-color: $menuActiveColor;
 }
-.menu-container ul li.active > a{
+.menu-container div.active > a{
 	color: $menuActiveColor;
 }
 
-.menu-container ul li:hover{
+.menu-container div:hover{
 	cursor:pointer;
 }
 
-.menu-container ul li a{
+.menu-container div a{
 	color: #fff;
     position: absolute;
     bottom: -30px;
