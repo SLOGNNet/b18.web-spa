@@ -8,12 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Orbitron" />
 	<link rel="stylesheet" href="assets/css/dist/build.css">
 
-
 </head>
 <body>
 	<div class="page-container">
 		<!-- left sidebar  -->
-		<div class="sidebar-menu">
+		<div class="sidebar-menu time-animation" id="sidebar-menu">
 			<!--  container for logo -->
 			<div class="logo-container">
 				<span class="logo-letter">b</span>
@@ -56,10 +55,10 @@
 			<!-- end container for Pane View Switch  -->
 			<div class="pane-switch-container">
 				<ul id="pane-switch-group">
-  					<li class=""></li>
-  					<li class=""></li>
-  					<li class="active"></li>
-  					<li class=""></li>
+  					<li class="" id="first-pane"></li>
+  					<li class="" id="second-pane"></li>
+  					<li class="" id="third-pane"></li>
+  					<li class="" id="fourth-pane"></li>
 				</ul>
 			</div>
 			<!-- end container for Pane View Switch -->
@@ -67,7 +66,7 @@
 		<!-- END OF left sidebar  -->
 
 		<!--  main content  -->
-		<div class="main-content">
+		<div class="main-content time-animation" id="main-content">
 			<div class="main-header">
 
 				<!--  search container  -->
