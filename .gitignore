@@ -65,3 +65,8 @@ layout/node_modules
 .sass-cache
 layout/assets/css/dist
 
+# IDEA files
+*.iml
+*.ipr
+*.iws
+.idea
