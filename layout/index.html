@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FSPA</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Orbitron" />
+	<link rel="stylesheet" href="assets/css/dist/build.css">
+
+</head>
+<body>
+
+	<div class="page-container">
+		<!-- left sidebar  -->
+		<div class="sidebar-menu time-animation" id="sidebar-menu">
+			<!--  container for logo -->
+			<div class="logo-container">
+				<span class="logo-letter">b</span>
+				<span class="logo-number">18</span>
+			</div>
+			<!-- end of container for logo -->
+			<!--  container for Menu items -->
+			<div class="menu-container">
+
+					<div class="active">
+						<a href="#">Menu item</a>
+					</div>
+					<div class="">
+						<a href="#">Menu item</a>
+					</div>
+					<div class="">
+						<a href="#">Menu item</a>
+					</div>
+					<div class="">
+						<a href="#">Menu item</a>
+					</div>
+					<div class="">
+						<a href="#">Menu item</a>
+					</div>
+
+			</div>
+			<!--  end of container for Menu items -->
+
+			<!--  container for Menu Master Button -->
+			<div class="menu-master-container">
+				<button>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+			<!-- end container for Menu Master Button -->
+
+			<!-- end container for Pane View Switch  -->
+			<div class="pane-switch-container">
+				<ul id="pane-switch-group">
+  					<li class="" id="toggle-first"></li>
+  					<li class="active" id="toggle-second"></li>
+  					<li class="active" id="toggle-third"></li>
+  					<li class="active" id="toggle-fourth"></li>
+				</ul>
+			</div>
+			<!-- end container for Pane View Switch -->
+		</div>
+		<!-- END OF left sidebar  -->
+
+		<!--  main content  -->
+		<div class="main-content time-animation" id="main-content">
+
+			<!-- mobile menu button -->
+			<div class="mobile-menu-container">
+				<button class="mobile-menu" id="mobile-menu-btn">
+					<span class="glyphicon glyphicon-align-justify"></span>
+				</button>
+				<!-- mobile state string -->
+					<div class="mobile-state-string">
+						<span>Active menu item</span>
+						<button class="mobile-switch" id="mobile-switch"></button>
+					</div>
+				<!-- end of mobile state string -->
+			</div>
+			<!-- end of mobile menu button -->
+
+			<div class="main-header">
+
+				<!--  search container  -->
+				<div class="search-container">
+					<div class="search-form">
+					    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					    <input type="text" placeholder="Search for anything by number, name, date or amount">
+					</div>
+				</div>
+				<!-- end of search container  -->
+
+				<!--  header buttons container  -->
+				<div class="buttons-container">
+					<a href="#" class="header-btn notifications" type="button" id="main-notify">
+						 <i class="glyphicon glyphicon-bell"></i>
+
+						 <div class="notif-tooltip">
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+						</div>
+					</a>
+
+					<a href="#" class="header-btn user" id="main-user">
+						 <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+
+						 <div class="notif-tooltip">
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+							<div class="notif-item">
+								<h4>Notification title</h4>
+								<p>Text of notification goes here explaining more.</p>
+								<button>Action link</button>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!-- end of  header buttons container  -->
+			</div>
+			<!-- end of main header -->
+
+
+			<!-- work area -->
+			<div class="main-area" style="display:flex;">
+				<div class="pane pane-1" style="width:30%;" id="pane-1">
+					<div class="content">Pane 1 - ususally List View</div>
+				</div>
+				<div class="pane pane-2" style="width:40%;" id="pane-2">
+					<div class="content">Pane 2 - depends on the context</div>
+				</div>
+				<div class="pane pane-3" style="width:30%;" id="pane-3">
+					<div class="content">Pane 3 - ususally Details View</div>
+				</div>
+			</div>
+			<!-- end of work area-->
+
+		</div>
+		<!--  end of main content  -->
+
+	</div>
+	
+	<script src="assets/scripts/ui.js"></script>
+	
+</body>
+</html>

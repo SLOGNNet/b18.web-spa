@@ -1,0 +1,54 @@
+
+.main-header{
+	display: flex;
+	flex-wrap:wrap;
+	border-bottom:$defaultBorder;
+}
+
+.search-container{
+	width:80%;
+}
+
+.search-form{
+	border:0;
+	height:45px;
+	line-height: 45px;
+	display:flex;
+	align-items:center;
+	flex-wrap:wrap;
+}
+
+.search-form span{
+	color:$defaultGreyColor;
+	padding:0 15px;
+}
+
+.search-form input {
+	border: none;
+	background: none;
+	color:#000;
+	width:80%;
+}
+
+
+/*  header buttons container  */
+
+.buttons-container{
+	width:20%;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:flex-end;
+}
+
+.buttons-container a{
+	color:$defaultGreyColor;
+	font-size:1.5em;
+	margin:0 10px;
+	position:relative;
+}
+
+.buttons-container button{
+	border:0;
+	background:none;
+}
