@@ -1,0 +1,21 @@
+/* logo */
+.logo-container{
+	font-family: $logoFontFamily;
+	width:100%;
+	margin-top:20px;
+	text-align:center;
+}
+
+.logo-container span{
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.logo-container .logo-letter{
+	color:$logoLetterColor;
+}
+.logo-container .logo-number{
+	color:$logoNumberColor;
+	margin-left: -3px;
+
+}

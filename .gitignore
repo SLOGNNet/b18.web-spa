@@ -59,3 +59,9 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+
+layout/node_modules
+.sass-cache
+layout/assets/css/dist
+
