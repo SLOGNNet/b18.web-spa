@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import {
-  TableOptions,
-  TableColumn,
-  ColumnMode
-} from 'angular2-data-table';
 
 @Component({
     selector: 'home',
@@ -42,16 +37,9 @@ export class HomeComponent {
       "age": 14
   }];
 
-options = new TableOptions({
-  columnMode: ColumnMode.force,
-  headerHeight: 50,
-  footerHeight: 50,
-  rowHeight: 'auto',
-  columns: [
-    new TableColumn({ prop: 'name' }),
-    new TableColumn({ prop: 'age' }),
-    new TableColumn({ name: 'Gender' }),
-    new TableColumn({ name: 'Company' })
-  ]
-});
+  columns = [
+     { prop: 'name' },
+     { name: 'Company' },
+     { name: 'Gender' }
+   ];
 }

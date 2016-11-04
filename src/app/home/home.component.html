@@ -2,5 +2,11 @@ Home page
 <datatable
     class='material striped'
     [rows]='rows'
-    [options]='options'>
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10"
+>
 </datatable>
