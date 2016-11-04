@@ -53,7 +53,8 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "preinstall": "npm install ./libs/angular2-data-table"
   },
   "dependencies": {
     "@angular/common": "2.1.1",
