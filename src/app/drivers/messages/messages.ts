@@ -1,11 +1,15 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MessageService } from '../services/message.service';
+import { MessageComponent } from './message/message'
 
 @Component({
     selector: 'messages',
-    styleUrls: ['./messages.css'],
+    styleUrls: ['messages.scss'],
     templateUrl: './messages.html',
-    inputs: ['message']
+    inputs: ['message'],
+  /*
+    directives: [MessageComponent]
+  */
 })
 export class MessagesComponent implements OnInit {
   private messages: Array<any> = new Array<any>();
@@ -14,10 +18,12 @@ export class MessagesComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.messageService.getMessages().subscribe(messages => {
+   /* this.messageService.getMessages().subscribe(messages => {
       this.messages = messages;
     });
-
+   */
+    this.messages.push({ message: "test message", username: "username"},
+      { message: "load #123233", username: "username"}, { message: "ok received", username: "username"})
   }
 
   onEnter(event: any): void {
@@ -26,7 +32,7 @@ export class MessagesComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.create('fg');
+    this.messageService.create(this.message);
     this.message = '';
   }
 }

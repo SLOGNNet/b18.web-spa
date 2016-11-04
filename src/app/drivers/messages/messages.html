@@ -1,14 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 driver-name">Driver: George Clooney</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 chat">
+    <div class="col-sm-3 driver-name">Driver: George Clooney</div>
+    <div class="col-sm-9 chat">
       <!-- messages -->
-      <li *ngFor="let message of messages">
-        {{ message }}
-      </li>
+      <!--<li *ngFor="let message of messages">
+        {{ message.message }}
+      </li>-->
+       <message
+        *ngFor="let message of messages"
+        [message]="message">
+      </message>
     </div>
+</div>
     <div class="row">
       <div class="col-sm-12">
         <form action="#" class="message-form" name="sendMessageForm">
@@ -23,5 +26,4 @@
         </form>
       </div>
     </div>
-  </div>
 </div>

@@ -17,6 +17,7 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages'
+import { MessageComponent } from './drivers/messages/message'
 import { NoContentComponent } from './no-content';
 
 import { MessageService } from './drivers/services/message.service'
@@ -42,7 +43,8 @@ type StoreType = {
      HomeComponent,
      DriversComponent,
      NoContentComponent,
-     MessagesComponent
+     MessagesComponent,
+     MessageComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
