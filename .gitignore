@@ -61,7 +61,7 @@ npm-debug.log
 *.swp
 
 
-layout/node_modules
+# Layout prototype #
 .sass-cache
-layout/assets/css/dist
-
+/layout/dist/
+/layout/dist/**

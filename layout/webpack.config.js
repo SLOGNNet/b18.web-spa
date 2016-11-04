@@ -9,18 +9,20 @@ module.exports = {
     module: {
         loaders: [
             {
-              test: /\.scss$/,
-              loader: 'style!css!sass?sourceMap',
-              include: 'layout/assets'
+                test: /(\.scss|\.css)$/,
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: ['css', 'sass']
+                })
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('app.css'),
         new HtmlWebpackPlugin({
           template: './layout/index.html',
           inject: 'head'
-      })
+      }),
+      new ExtractTextPlugin('style.css')
     ],
     node: {
       global: true,
