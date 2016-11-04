@@ -20,7 +20,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
           template: './layout/index.html',
-          inject: 'head'
+          inject: true
       }),
       new ExtractTextPlugin('style.css')
     ],
