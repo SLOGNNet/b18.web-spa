@@ -54,7 +54,8 @@
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-    "preinstall": "npm install ./libs/angular2-data-table"
+    "build:datatable": "cd libs/angular2-data-table && npm i && npm run build",
+    "build:libs": "npm run build:datatable && npm install ./libs/angular2-data-table --force"
   },
   "dependencies": {
     "@angular/common": "2.1.1",
