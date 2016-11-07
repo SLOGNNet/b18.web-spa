@@ -1,0 +1,3 @@
+[submodule "libs/angular2-data-table"]
+	path = libs/angular2-data-table
+	url = https://volodymyrderecha@bitbucket.org/bridge18/web-spa-datatable.git
