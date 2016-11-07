@@ -37,6 +37,7 @@
     "rimraf": "rimraf",
     "server:dev:hmr": "npm run server:dev -- --inline --hot",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
+    "server:demo:layout": "webpack-dev-server --config layout/webpack.config.js  --progress --profile --watch  --content-base layout/",
     "server:prod": "http-server dist --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
