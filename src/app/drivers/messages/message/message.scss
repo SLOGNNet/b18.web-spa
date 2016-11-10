@@ -12,20 +12,6 @@
 }
 
 .left-triangle {
-  background: grey;
-&:before {
-   content: "";
-   width: 0;
-   height: 0;
-   border-top: 0px solid transparent;
-   border-bottom: 20px solid transparent;
-   border-left: 20px solid grey;
-   position: absolute;
-   right: -20px;
- }
-}
-
-.right-triangle {
   background: DodgerBlue;
 &:before {
    content: "";
@@ -33,8 +19,36 @@
    height: 0;
    border-top: 0px solid transparent;
    border-bottom: 20px solid transparent;
-   border-right: 20px solid DodgerBlue;
+   border-left: 20px solid DodgerBlue;
+   position: absolute;
+   right: -20px;
+ }
+}
+
+.right-triangle-system {
+  background: darkgrey;
+&:before {
+   content: "";
+   width: 0;
+   height: 0;
+   border-top: 0px solid transparent;
+   border-bottom: 20px solid transparent;
+   border-right: 20px solid darkgrey;
    position: absolute;
    left: -20px;
  }
+}
+
+.left-triangle-user {
+  background: lightgreen;
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid lightgreen;
+    position: absolute;
+    right: -20px;
+  }
 }

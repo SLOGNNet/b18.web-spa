@@ -1,1 +1,3 @@
-<div class="message right-triangle">{{message.message}}</div>
+<div *ngIf="message.type === 'system'" class="message right-triangle-system">{{message.message}}</div>
+<div *ngIf="message.type === 'user'" class="message left-triangle-user">{{message.message}}</div>
+<div *ngIf="message.type === 'carrier'" class="message left-triangle">{{message.message}}</div>
