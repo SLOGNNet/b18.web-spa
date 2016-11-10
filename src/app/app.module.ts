@@ -51,7 +51,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     SharedModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
