@@ -155,7 +155,7 @@
 					<div class="content">
             <div class="container layout-container">
               <div class="row">
-                <div class="main-form-wrapper" style="max-width:inherit">
+                <div class="main-form-wrapper">
                   <div class="panel panel-default">
                     <div class="panel-body new-load-wrapper">
                       <div class="new-load-sign">New Load</div>
@@ -205,10 +205,8 @@
                           <span class="glyphicon glyphicon-triangle-bottom"></span>
                           <span class="glyphicon glyphicon-triangle-top"></span>
                           <select class="form-control assignee-select" id="assignee-select-id">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option class="assignee-option">1</option>
+                            <option class="assignee-option">2</option>
                           </select>
                         </div>
                       </li>
@@ -233,14 +231,14 @@
                           </div>
                         </form>
                       </li>
-                      <li class="list-group-item">
+                      <!--<li class="list-group-item">
                         <form class="smart-form">
                           <div class="form-group">
                             <input name="smart-input" type="text" class="form-control smart-input" id="location-input-id" required>
                             <label class="input-label" for="location-input-id">Location</label>
                           </div>
                         </form>
-                      </li>
+                      </li>-->
                       <li class="list-group-item">
                         <form class="smart-form">
                           <div class="form-group">
@@ -249,19 +247,19 @@
                           </div>
                         </form>
                       </li>
-                      <li class="list-group-item">
+                      <!--<li class="list-group-item">
                         <div class="panel panel-default shipper-panel-wrapper">
                           <div class="panel-body shipper-panel">
                             <div class="shipper-sign">Shipper #</div>
                           </div>
                           <span class="glyphicon glyphicon-minus-sign glyphicon-plus-minus"></span>
                         </div>
-                      </li>
+                      </li>-->
                       <li class="list-group-item">
                         <table class="table table-bordered shipper-table">
                           <thead class="shipper-table-header">
                           <tr>
-                            <th class="table-header-item">pickup</th>
+                            <th class="table-header-item">pickup #</th>
                             <th class="table-header-item">p.o.</th>
                             <th class="table-header-item">commo-dity</th>
                             <th class="table-header-item">unit type</th>
@@ -272,13 +270,13 @@
                           </thead>
                           <tbody class="shipper-table-body">
                           <tr class="table-row">
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
-                            <td class="table-data"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
                           </tr>
                           </tbody>
                         </table>
@@ -330,10 +328,8 @@
                           <span class="glyphicon glyphicon-triangle-bottom"></span>
                           <span class="glyphicon glyphicon-triangle-top"></span>
                           <select class="form-control requirement-select" id="power-unit-select-id">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option class="power-unit-option">1</option>
+                            <option class="power-unit-option">2</option>
                           </select>
                         </div>
                       </li>
@@ -344,10 +340,8 @@
                           <span class="glyphicon glyphicon-triangle-bottom"></span>
                           <span class="glyphicon glyphicon-triangle-top"></span>
                           <select class="form-control requirement-select" id="trailer-select-id">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option class="trailer-option">1</option>
+                            <option class="trailer-option">2</option>
                           </select>
                         </div>
                       </li>
@@ -373,21 +367,17 @@
                         </form>
                       </li>
                       <li class="list-group-item">
-                        <form class="smart-form">
-                          <div class="form-group">
-                            <input name="smart-input" type="text" class="form-control smart-input" id="distance-input-id" required>
-                            <label class="input-label" for="distance-input-id">Estimated Distance Calculate</label>
-                            <span class="unit">miles</span>
-                          </div>
-                        </form>
+                        <div class="left-static-sign">Estimated Distance <a href="#" class="calculate-link">Calculate</a></div>
+                        <div class="calculated-distance-value"></div>
+                        <span class="unit">miles</span>
                       </li>
-                      <li class="list-group-item">
+                      <li class="list-group-item flex-item">
                         <div class="left-static-sign">Loading/ Unloading</div>
                         <a href="#" class="btn switch-button">Company</a>
                         <a href="#" class="btn switch-button">Customer</a>
                         <a href="#" class="btn switch-button">None</a>
                       </li>
-                      <li class="list-group-item">
+                      <li class="list-group-item flex-item">
                         <div class="left-static-sign">Pallet Exchange</div>
                         <a href="#" class="btn switch-button">Company</a>
                         <a href="#" class="btn switch-button">Customer</a>
@@ -402,9 +392,11 @@
                         </form>
                         <div class="rate-select-box">
                           <select class="form-control rate-select" id="load-rate-select-id">
-                            <option>Flat</option>
-                            <option>Per Mile</option>
+                            <option class="load-rate-option">Flat</option>
+                            <option class="load-rate-option">Per Mile</option>
                           </select>
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
                         </div>
                       </li>
                       <li class="list-group-item">
@@ -416,9 +408,11 @@
                         </form>
                         <div class="rate-select-box">
                           <select class="form-control rate-select" id="fuel-rate-select-id">
-                            <option>Flat</option>
-                            <option>Per Mile</option>
+                            <option class="fuel-rate-option">Flat</option>
+                            <option class="fuel-rate-option">Per Mile</option>
                           </select>
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
                         </div>
                       </li>
                       <li class="list-group-item non-active-row">
@@ -434,9 +428,11 @@
                       </li>
                     </ul>
                   </div>
-                  <button class="btn btn-default form-button">Cancel</button>
-                  <button class="btn btn-info form-button">Save Load</button>
-                  <button class="btn btn-info form-button">Save and Shedule!</button>
+                  <div class="bottom-button-wrapper">
+                    <button class="btn btn-cancel bottom-button">Cancel</button>
+                    <button class="btn btn-save bottom-button">Save Load</button>
+                    <button class="btn btn-save bottom-button">Save and Shedule!</button>
+                  </div>
                 </div>
               </div>
             </div>
