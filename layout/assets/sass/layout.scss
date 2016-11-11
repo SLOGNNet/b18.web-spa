@@ -1,0 +1,611 @@
+/**********VARIABLES**********/
+
+$shark: #23282d;
+$white: #FFFFFF;
+$seagul: #75B3E2;
+$nobel: #B3B2B2;
+$foam: #F5FEFE;
+$gallery: #F0F0F0;
+$iron: #D7D8DB;
+
+/**********FONTS**********/
+
+@font-face {
+  font-family: 'SFUIText-Bold';  src: local('SFUIText-Bold'), url('http://nomail.com.ua/files/woff/8ce3beca87df9f72c93ffc5982450177.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SFUIText-Medium';  src: local('SFUIText-Medium'), url('http://nomail.com.ua/files/woff/d576bebf44b0989ad4b30390763158cd.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SFUIText-Regular';  src: local('SFUIText-Regular'), url('http://nomail.com.ua/files/woff/888e0f3f1d925d57beaf9cc4a7b80dbc.woff') format('woff');
+}
+
+/**********LAYOUT STYLES**********/
+
+.layout-container {
+  width: 100%;
+  background-color: $gallery;
+}
+
+.main-form-wrapper {
+  font-family: 'SFUIText-Regular', sans-serif;
+  background-color: $gallery;
+}
+
+.list-group {
+  border-bottom: 1px solid $iron;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  .list-group-item {
+    min-height: 50px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid $iron;
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.block-title-sign {
+  margin: 15px 0 15px 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: 'SFUIText-Bold', sans-serif;
+}
+
+.panel-default {
+  border: none;
+}
+
+.new-load-wrapper {
+  padding: 15px 5px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid $iron;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  .new-load-sign {
+    font-family: 'SFUIText-Bold', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 0 15px 10px;
+  }
+  .load-navigation-list {
+    display: flex;
+    flex-grow: 1;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 5px;
+    margin-bottom: 0;
+    .load-navigation-item {
+      display: inline-block;
+      font-size: 13px;
+      padding: 0 5px;
+      text-align: center;
+      .load-navigation-item-link {
+        display: block;
+        color: $shark;
+        &:hover, &:visited, &:link {
+          text-decoration: none;
+        }
+        &:active {
+          text-decoration: none;
+          font-weight: bold;
+          transform: scale(1.1, 1);
+        }
+      }
+    }
+  }
+}
+
+.customer-wrapper {
+  .smart-form {
+    margin-bottom: 15px;
+    .smart-input {
+      border: none;
+      border-bottom: 1px solid $iron;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      &:focus {
+        border-color: $seagul;
+      }
+    }
+  }
+}
+
+.smart-form {
+  width: 100%;
+  .form-group {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    background-color: $white;
+    .smart-input {
+      box-shadow: none;
+      height: 50px;
+      width: 100%;
+      background: none;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      padding: 8px 12px;
+      outline: 0;
+      &:valid {
+        // Hides the label
+        background: $white;
+      }
+      &:focus {
+        padding-left: 25%;
+      }
+      &:focus + .input-label {
+        color: $seagul;
+        margin-top: 7px;
+        z-index: 2;
+        text-transform: uppercase;
+        font-family: 'SFUIText-Medium', sans-serif;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+    .smart-input:focus + .input-label {
+      left: 0;
+      margin-right: 0;
+      width: 27%;
+      padding-top: 5px;
+      text-align: right;
+    }
+    .input-label {
+      transition-duration: 0.1s;
+      position: absolute;
+      color: $nobel;
+      padding: 12px 15px;
+      top: 2px;
+      right: 100%;
+      width: 100%;
+      margin-right: -100%;
+      margin-bottom: 0;
+      bottom: 2px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+}
+
+.load-wrapper {
+  .list-group {
+    .flex-item {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      vertical-align: middle;
+      color: $nobel;
+      .form-group {
+        margin-bottom: 0;
+        .smart-input {
+          border: none;
+        }
+      }
+      .left-static-sign {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-family: 'SFUIText-Medium', sans-serif;
+        width: 27%;
+        display: inline-block;
+        text-align: right;
+        padding: 0 15px;
+      }
+      .switch-button {
+        width: 36.5%;
+        //height: 50%;
+        color: $shark;
+        padding: 15px;
+        font-size: 16px;
+        &:active {
+          background: $seagul;
+          color: $white;
+        }
+      }
+      .assignee-select-wrapper {
+        width: 73%;
+        position: relative;
+        /*.assignee-select-label {
+          position: absolute;
+          bottom: 0;
+          left: 10px;
+        }*/
+        .glyphicon {
+          position: absolute;
+          z-index: 1;
+          font-size: 10px;
+        }
+        .glyphicon-triangle-bottom {
+          right: 15px;
+          top: 50%;
+        }
+        .glyphicon-triangle-top {
+          right: 15px;
+          top: 35%;
+        }
+        .assignee-select {
+          height: 50px;
+          /*z-index: 2;*/
+          border: none;
+          box-shadow: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          /*appearance: none;*/
+          .assignee-option {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pickups-wrapper {
+  .list-group-item {
+    padding: 0;
+    .shipper-panel-wrapper {
+      height: 50px;
+      margin-bottom: 0;
+      padding: 0 15px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .shipper-panel {
+        padding: 15px 0;
+        text-transform: uppercase;
+        .shipper-sign {
+          display: inline-block;
+          font-size: 12px;
+          font-family: 'SFUIText-Medium', sans-serif;
+        }
+        .glyphicon-plus-minus {
+          display: inline-block;
+          color: $shark;
+          font-size: 15px;
+        }
+      }
+    }
+    .smart-form {
+      .smart-input {
+        border: none;
+      }
+    }
+    .shipper-table {
+      width: 100%;
+      border: none;
+      margin-bottom: 0;
+      font-size: 10px;
+      .shipper-table-header {
+        text-transform: uppercase;
+        .table-header-item {
+          text-align: center;
+          height: 50px;
+          width: 14%;
+          vertical-align: middle;
+          padding: 5px 0;
+          border-bottom: 1px;
+          font-family: 'SFUIText-Medium', sans-serif;
+          font-weight: normal;
+          color: $nobel;
+          &:first-child {
+            border-left: none;
+          }
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+      .shipper-table-body {
+        .table-row {
+          height: 50px;
+          .table-data {
+            vertical-align: middle;
+            padding: 0;
+            &:first-child {
+              border-left: none;
+            }
+            &:last-child {
+              border-right: none;
+            }
+            .table-input {
+              height: 50px;
+              box-shadow: none;
+              padding: 0;
+              font-size: 10px;
+              font-family: 'SFUIText-Regular', sans-serif;
+              border: none;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .textarea-wrapper {
+      margin-bottom: 0;
+      .notes-textarea {
+        padding: 15px;
+        max-width: 100%;
+        height: 100px;
+        border: none;
+        box-shadow: none;
+        font-size: 16px;
+      }
+    }
+    .pickup-panel-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border: none;
+      margin-bottom: 0;
+      height: 50px;
+      .pickup-panel {
+        padding: 0 15px;
+        font-size: 12px;
+        font-family: 'SFUIText-Medium', sans-serif;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.delivery-wrapper {
+  .shipper-panel-wrapper {
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid $iron;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    .shipper-panel {
+      font-size: 12px;
+      font-family: 'SFUIText-Medium', sans-serif;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.requirements-wrapper {
+  .list-group {
+    .list-group-item {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      vertical-align: middle;
+      color: $nobel;
+      .form-group {
+        margin-bottom: 0;
+        .smart-input {
+          border: none;
+        }
+      }
+      .left-static-sign {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-family: 'SFUIText-Medium', sans-serif;
+        width: 27%;
+        display: inline-block;
+        text-align: right;
+        padding: 0 15px;
+      }
+      .switch-button {
+        width: 36.5%;
+        color: $shark;
+        padding: 15px;
+        font-size: 16px;
+        &:active {
+          background: $seagul;
+          color: $white;
+        }
+      }
+      .select-wrapper {
+        width: 73%;
+        position: relative;
+        box-shadow: none;
+        /*.assignee-select-label {
+          position: absolute;
+          bottom: 0;
+          left: 10px;
+        }*/
+        .glyphicon {
+          position: absolute;
+          z-index: 1;
+          font-size: 10px;
+        }
+        .glyphicon-triangle-bottom {
+          right: 15px;
+          top: 50%;
+        }
+        .glyphicon-triangle-top {
+          right: 15px;
+          top: 35%;
+        }
+        .requirement-select {
+          height: 50px;
+          border: none;
+          box-shadow: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          /*appearance: none;*/
+          .power-unit-option, .trailer-option {
+            font-size: 16px;
+          }
+        }
+      }
+      .textarea-wrapper {
+        margin-bottom: 0;
+        width: 100%;
+        .notes-textarea {
+          padding: 15px;
+          max-width: 100%;
+          height: 100px;
+          border: none;
+          box-shadow: none;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.rate-wrapper {
+  .list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    .form-group {
+      position: relative;
+      .smart-input {
+        border: none;
+      }
+    }
+    .left-static-sign {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-family: 'SFUIText-Medium', sans-serif;
+      width: 27%;
+      display: inline-block;
+      text-align: right;
+      vertical-align: middle;
+      padding: 0 15px;
+      color: $nobel;
+      .calculate-link {
+        color: $seagul;
+        &:hover, &:active, &:visited, &:link {
+          text-decoration: none;
+        }
+      }
+    }
+    .unit {
+      z-index: 10;
+      position: absolute;
+      right: 15px;
+      top: 25%;
+      display: inline-block;
+      color: $nobel;
+      font-size: 16px;
+    }
+    .switch-button {
+      width: 24%;
+      height: 50px;
+      color: $shark;
+      padding: 12px 5px;
+      font-size: 16px;
+      text-align: center;
+      border: none;
+      &:active {
+        background: $seagul;
+        color: $white;
+      }
+    }
+    .dollar-sign {
+      display: inline-block;
+      width: 10%;
+      text-align: center;
+      font-size: 16px;
+    }
+    .simple-form {
+      display: inline-block;
+      width: 30%;
+      .simple-input {
+        height: 50px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+    .rate-select-box {
+      display: inline-block;
+      width: 30%;
+      border-left: 1px solid $nobel;
+      position: relative;
+      .rate-select {
+        height: 50px;
+        display: inline-block;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        font-size: 16px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /*appearance: none;*/
+        .load-rate-option, .fuel-rate-option {
+          font-size: 16px;
+        }
+      }
+      .glyphicon {
+        position: absolute;
+        z-index: 1;
+        font-size: 10px;
+        color: $nobel;
+      }
+      .glyphicon-triangle-bottom {
+        right: 15px;
+        top: 50%;
+      }
+      .glyphicon-triangle-top {
+        right: 15px;
+        top: 35%;
+      }
+    }
+  }
+  .non-active-row {
+    background-color: $foam;
+    color: $nobel;
+    display: flex;
+    align-items: center;
+    position: relative;
+    .total-sum-box {
+      display: inline-block;
+    }
+    .per-mile-sum-box {
+      display: inline-block;
+    }
+    .per-mile-sign {
+      padding-right: 15px;
+      display: inline-block;
+      position: absolute;
+      right: 2%;
+      font-size: 16px;
+    }
+  }
+}
+
+.bottom-button-wrapper {
+  margin-top: 30px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  .bottom-button {
+    height: inherit;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid $iron;
+  }
+  .btn-cancel {
+    background-color: $gallery;
+
+  }
+  .btn-save {
+    background-color: $seagul;
+    color: $white;
+  }
+}
+

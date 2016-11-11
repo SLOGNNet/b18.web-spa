@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>FSPA</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Orbitron" />
 	<link rel="stylesheet" href="style.css">
@@ -145,14 +145,298 @@
 
 			<!-- work area -->
 			<div class="main-area" style="display:flex;">
-				<div class="pane pane-1" style="width:30%;" id="pane-1">
-					<div class="content">Pane 1 - ususally List View</div>
+				<div class="pane pane-1" style="width:32%;" id="pane-1">
+					<div class="content">Pane 1 - usually List View</div>
 				</div>
-				<div class="pane pane-2" style="width:40%;" id="pane-2">
+				<div class="pane pane-2" style="width:32%;" id="pane-2">
 					<div class="content">Pane 2 - depends on the context</div>
 				</div>
-				<div class="pane pane-3" style="width:30%;" id="pane-3">
-					<div class="content">Pane 3 - ususally Details View</div>
+				<div class="pane pane-3" style="width:32%;" id="pane-3">
+					<div class="content">
+            <div class="container layout-container">
+              <div class="row">
+                <div class="main-form-wrapper">
+                  <div class="panel panel-default">
+                    <div class="panel-body new-load-wrapper">
+                      <div class="new-load-sign">New Load</div>
+                      <ul class="load-navigation-list">
+                        <li class="load-navigation-item"><a href="#" class="load-navigation-item-link">Customer</a></li>
+                        <li class="load-navigation-item"><a href="#" class="load-navigation-item-link">Load</a></li>
+                        <li class="load-navigation-item"><a href="#" class="load-navigation-item-link">Pickups</a></li>
+                        <li class="load-navigation-item"><a href="#" class="load-navigation-item-link">Deliveries</a></li>
+                        <li class="load-navigation-item"><a href="#" class="load-navigation-item-link">Requirement</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="block-title-sign">customer</div>
+                  <div class="customer-wrapper">
+                    <form class="smart-form">
+                      <div class="form-group">
+                        <input name="smart-input" type="text" class="form-control smart-input" id="customer-input-id" required>
+                        <label class="input-label" for="customer-input-id">Name or MC#</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="block-title-sign">load</div>
+                  <div class="load-wrapper">
+                    <ul class="list-group">
+                      <li class="list-group-item flex-item">
+                        <form class="smart-form">
+                          <div class="form-group">
+                            <input name="smart-input" type="text" class="form-control smart-input" id="smart-input" required>
+                            <label class="input-label" for="smart-input">Load Number</label>
+                          </div>
+                        </form>
+                      </li>
+                      <li class="list-group-item flex-item">
+                        <div class="left-static-sign">Load Type</div>
+                        <a href="#" class="btn switch-button">FTL</a>
+                        <a href="#" class="btn switch-button">LTL</a>
+                      </li>
+                      <li class="list-group-item flex-item">
+                        <div class="left-static-sign">Freight</div>
+                        <a href="#" class="btn switch-button">Dry</a>
+                        <a href="#" class="btn switch-button">Reefer</a>
+                      </li>
+                      <li class="list-group-item flex-item">
+                        <div class="left-static-sign">Data Assignee</div>
+                        <div class="form-group assignee-select-wrapper">
+                          <!--<label class="assignee-select-label" for="assignee-select-id">Select Assignee</label>-->
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
+                          <select class="form-control assignee-select" id="assignee-select-id">
+                            <option class="assignee-option">1</option>
+                            <option class="assignee-option">2</option>
+                          </select>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="block-title-sign">pickups</div>
+                  <div class="pickups-wrapper">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <div class="panel panel-default shipper-panel-wrapper">
+                          <div class="panel-body shipper-panel">
+                            <div class="shipper-sign">Shipper #</div>
+                          </div>
+                          <span class="glyphicon glyphicon-minus-sign glyphicon-plus-minus"></span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <form class="smart-form">
+                          <div class="form-group">
+                            <input name="smart-input" type="text" class="form-control smart-input" id="shipper-input-id" required>
+                            <label class="input-label" for="shipper-input-id">Shipper</label>
+                          </div>
+                        </form>
+                      </li>
+                      <!--<li class="list-group-item">
+                        <form class="smart-form">
+                          <div class="form-group">
+                            <input name="smart-input" type="text" class="form-control smart-input" id="location-input-id" required>
+                            <label class="input-label" for="location-input-id">Location</label>
+                          </div>
+                        </form>
+                      </li>-->
+                      <li class="list-group-item">
+                        <form class="smart-form">
+                          <div class="form-group">
+                            <input name="smart-input" type="text" class="form-control smart-input" id="date-input-id" required>
+                            <label class="input-label" for="date-input-id">Date</label>
+                          </div>
+                        </form>
+                      </li>
+                      <!--<li class="list-group-item">
+                        <div class="panel panel-default shipper-panel-wrapper">
+                          <div class="panel-body shipper-panel">
+                            <div class="shipper-sign">Shipper #</div>
+                          </div>
+                          <span class="glyphicon glyphicon-minus-sign glyphicon-plus-minus"></span>
+                        </div>
+                      </li>-->
+                      <li class="list-group-item">
+                        <table class="table table-bordered shipper-table">
+                          <thead class="shipper-table-header">
+                          <tr>
+                            <th class="table-header-item">pickup #</th>
+                            <th class="table-header-item">p.o.</th>
+                            <th class="table-header-item">commo-dity</th>
+                            <th class="table-header-item">unit type</th>
+                            <th class="table-header-item">unit count</th>
+                            <th class="table-header-item">pallet count</th>
+                            <th class="table-header-item">weight (ibs)</th>
+                          </tr>
+                          </thead>
+                          <tbody class="shipper-table-body">
+                          <tr class="table-row">
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                            <td class="table-data"><input type="text" class="form-control table-input"></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="panel panel-default shipper-panel-wrapper">
+                          <div class="panel-body shipper-panel">
+                            <div class="shipper-sign"></div>
+                          </div>
+                          <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-group textarea-wrapper">
+                          <textarea class="form-control notes-textarea" rows="5" placeholder="Notes" id="notes-id"></textarea>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="panel panel-default pickup-panel-wrapper">
+                          <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
+                          <div class="panel-body pickup-panel">
+                            <div class="pickup-sign">pickup</div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="block-title-sign">deliveries</div>
+                  <div class="delivery-wrapper">
+                    <div class="panel panel-default shipper-panel-wrapper">
+                      <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
+                      <div class="panel-body shipper-panel">
+                        <div class="shipper-sign">delivery</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="block-title-sign">requirements</div>
+                  <div class="requirements-wrapper">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Driver</div>
+                        <a href="#" class="btn switch-button">Solo</a>
+                        <a href="#" class="btn switch-button">Team</a>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Power Unit</div>
+                        <div class="form-group select-wrapper">
+                          <!--<label class="power-unit-select-label" for="power-unit-select-id">Select Power Unit</label>-->
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
+                          <select class="form-control requirement-select" id="power-unit-select-id">
+                            <option class="power-unit-option">1</option>
+                            <option class="power-unit-option">2</option>
+                          </select>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Trailer</div>
+                        <div class="form-group select-wrapper">
+                          <!--<label class="trailer-select-label" for="trailer-select-id">Select Trailer</label>-->
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
+                          <select class="form-control requirement-select" id="trailer-select-id">
+                            <option class="trailer-option">1</option>
+                            <option class="trailer-option">2</option>
+                          </select>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-group textarea-wrapper">
+                      <textarea class="form-control notes-textarea" rows="5" placeholder="Special Requirements"
+                                id="requirements-notes-id">
+                      </textarea>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="block-title-sign">rate</div>
+                  <div class="rate-wrapper">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <form class="smart-form">
+                          <div class="form-group">
+                            <input name="smart-input" type="text" class="form-control smart-input" id="weight-input-id" required>
+                            <label class="input-label" for="weight-input-id">Estimated Weight</label>
+                            <span class="unit">lbs</span>
+                          </div>
+                        </form>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Estimated Distance <a href="#" class="calculate-link">Calculate</a></div>
+                        <div class="calculated-distance-value"></div>
+                        <span class="unit">miles</span>
+                      </li>
+                      <li class="list-group-item flex-item">
+                        <div class="left-static-sign">Loading/ Unloading</div>
+                        <a href="#" class="btn switch-button">Company</a>
+                        <a href="#" class="btn switch-button">Customer</a>
+                        <a href="#" class="btn switch-button">None</a>
+                      </li>
+                      <li class="list-group-item flex-item">
+                        <div class="left-static-sign">Pallet Exchange</div>
+                        <a href="#" class="btn switch-button">Company</a>
+                        <a href="#" class="btn switch-button">Customer</a>
+                        <a href="#" class="btn switch-button">None</a>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Load Rate</div>
+                        <div class="dollar-sign">$</div>
+                        <form class="simple-form">
+                          <input name="simple-input" type="text" class="form-control simple-input"
+                                 id="load-rate-input-id" required>
+                        </form>
+                        <div class="rate-select-box">
+                          <select class="form-control rate-select" id="load-rate-select-id">
+                            <option class="load-rate-option">Flat</option>
+                            <option class="load-rate-option">Per Mile</option>
+                          </select>
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="left-static-sign">Fuel Surcharge</div>
+                        <div class="dollar-sign">$</div>
+                        <form class="simple-form">
+                          <input name="simple-input" type="text" class="form-control simple-input"
+                                 id="fuel-rate-input-id" required>
+                        </form>
+                        <div class="rate-select-box">
+                          <select class="form-control rate-select" id="fuel-rate-select-id">
+                            <option class="fuel-rate-option">Flat</option>
+                            <option class="fuel-rate-option">Per Mile</option>
+                          </select>
+                          <span class="glyphicon glyphicon-triangle-bottom"></span>
+                          <span class="glyphicon glyphicon-triangle-top"></span>
+                        </div>
+                      </li>
+                      <li class="list-group-item non-active-row">
+                        <div class="left-static-sign">Total Rate</div>
+                        <div class="dollar-sign">$</div>
+                        <div class="total-sum-box"></div>
+                      </li>
+                      <li class="list-group-item non-active-row">
+                        <div class="left-static-sign">Estimate Rate</div>
+                        <div class="dollar-sign">$</div>
+                        <div class="per-mile-sum-box"></div>
+                        <div class="per-mile-sign">per miles</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="bottom-button-wrapper">
+                    <button class="btn btn-cancel bottom-button">Cancel</button>
+                    <button class="btn btn-save bottom-button">Save Load</button>
+                    <button class="btn btn-save bottom-button">Save and Shedule!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 				</div>
 			</div>
 			<!-- end of work area-->
@@ -162,6 +446,7 @@
 
 	</div>
 
-
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
