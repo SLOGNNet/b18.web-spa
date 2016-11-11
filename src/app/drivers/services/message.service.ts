@@ -4,33 +4,37 @@ import 'rxjs/add/operator/map';
 import { ReplaySubject } from "rxjs";
 import { List } from "immutable";
 
-import { NotificationService } from "../../shared";
+import { SocketService } from "../../shared";
 @Injectable()
 export class MessageService {
-    private $messages: ReplaySubject<any> = new ReplaySubject(1);
-    private list: List<any> = List();
-
     create(message: string): void {
-        this.notificationService.send({
+        this.socketService.send({
             username: 'test',
             message
         });
     }
 
-    constructor(private notificationService: NotificationService) {
-        this.notificationService
-            .get()
+    constructor(private socketService: SocketService) {
+        console.log('MessageService created');
+    }
+
+    createMessagesObservable(driverId: string) {
+        const $messages: ReplaySubject<any> = new ReplaySubject(1);
+        let list: List<any> = List();
+        this.socketService
+            .getSocketObservable('/notifications', driverId)
             .subscribe(
                 (notification: any) => {
                     let message = notification.item;
-                    this.list = this.list.push(message);
-                    this.$messages.next(this.list);
+                    list = list.push(message);
+                    $messages.next(list);
                 },
                 error => console.log(error)
             );
+        return $messages;
     }
 
-    getMessages() {
-        return this.$messages;
+     getMessages(driverId: string){
+        return this.createMessagesObservable(driverId);
     }
 }

@@ -9,6 +9,6 @@ import { DataResolver } from './app.resolver';
 export const ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home',  component: HomeComponent },
-  { path: 'drivers', component: DriversComponent },
+  { path: 'drivers/:id', component: DriversComponent },
   { path: '**',    component: NoContentComponent },
 ];

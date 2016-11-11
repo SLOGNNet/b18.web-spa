@@ -14,7 +14,7 @@ class Server {
     private io: any;
     private root: string;
     private port: number;
-    public static bootstrap(): Server {
+     public static bootstrap(): Server {
         return new Server();
     }
 
@@ -29,8 +29,6 @@ class Server {
 
         this.sockets();
 
-        this.demoNotificationEmitter();
-
         this.listen();
     }
 
@@ -44,20 +42,11 @@ class Server {
         let router: express.Router;
         router = express.Router();
 
-        router.get('/', (request: express.Request, result: express.Response) => {
-            result.sendFile(path.join(this.root, '/index.html'));
+        router.get('/demo', (request: express.Request, result: express.Response) => {
+            result.sendFile(path.join(this.root, '/demo.html'));
         });
 
-        this.app.use('*', router);
-    }
-
-    private demoNotificationEmitter(): void {
-        const io = require('socket.io-emitter')({ host: 'localhost', port: 6379 });
-        const socket = io.of('/notifications');
-        setInterval(() => {
-            console.log('start notification');
-            socket.emit('notification', { message: 'time: ' + Date.now(), username: 'test' });
-        }, 5000);
+        this.app.use('/', router);
     }
 
     private sockets(): void {
@@ -68,7 +57,7 @@ class Server {
         this.io = socketIo(this.server, {
             adapter: adapter
         });
-        let notificationSocket = new NotificationSocket(this.io);
+        let notificationSocket = new NotificationSocket(this.io, '/notifications');
     }
 
     private listen(): void {

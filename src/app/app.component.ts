@@ -23,7 +23,7 @@ import { AppState } from './app.service';
       </span>
       |
       <span>
-        <a [routerLink]=" ['./drivers'] ">
+        <a [routerLink]=" ['./drivers/1'] ">
           Drivers
         </a>
       </span>

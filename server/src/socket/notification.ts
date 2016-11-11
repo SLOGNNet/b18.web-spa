@@ -4,26 +4,24 @@ export class NotificationSocket {
     data: any;
     socket: any;
 
-    constructor(io: any) {
-        this.nsp = io.of("/notifications" );
+    constructor(io: any, namespace: string) {
+        this.nsp = io.of(namespace);
         this.nsp.on("connection", (socket: any) => {
-            console.log("Client connected to notifications");
+            var room = socket.handshake['query']['roomId'] || 0;
+            console.log(`Client connected to ${namespace} to room ${room}`);
             this.socket = socket;
-            this.listen();
+            this.socket.join(room);
+            this.nsp.to(room).emit('message', { message: `You have connected to ${namespace}` });
+            this.listen(room, namespace);
         });
     }
 
-    private listen(): void {
-        this.socket.on("disconnect", () => this.disconnect());
-        this.socket.on("notification", (message: any) => this.onNotification(message));
+    private listen(room: string, namepsace: string): void {
+        this.socket.on("disconnect", () => this.disconnect(room, namepsace));
     }
 
-    private disconnect(): void {
-        console.log("Client disconnected from notifications:");
-    }
-
-    private onNotification(message: any): void {
-        console.log('send notification ' + message);
-        this.nsp.emit("notification", message);
+    private disconnect(room: string, namepsace: string): void {
+        this.socket.leave(room);
+        console.log(`Client disconnected from ${namepsace} room ${room}`);
     }
 }
