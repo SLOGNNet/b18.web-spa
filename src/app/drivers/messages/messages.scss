@@ -24,17 +24,15 @@ body {
 }
 
 .chat {
-  width: 100%;
   height: -webkit-calc(100vh - 230px);
   height: calc(100vh - 230px);
 }
 
 .message-form {
-  float: right;
-  width: 460px;
+  width: 400px;
   height: 120px;
   min-width: 100px;
-  margin: 20px 0;
+  margin: 0 auto;
   textarea {
     float: left;
     display: block;

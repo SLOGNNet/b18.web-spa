@@ -27,8 +27,12 @@ export class MessagesComponent implements OnInit {
       });
     });
 
-    // this.messages.push({ message: "test message", username: "username"},
-    //   { message: "load #123233", username: "username"}, { message: "ok received", username: "username"})
+    // this.messages.push({ message: "test message", username: "username", type: "carrier"},
+    //   { message: "load #123233", username: "username", type: "user"},
+    //   { message: "have a safe trip", username: "username", type: "system"},
+    //   { message: "ok received", username: "username", type: "user"},
+    //   { message: "hey there!", username: "username", type: "system"}
+    // )
   }
 
   onEnter(event: any): void {
