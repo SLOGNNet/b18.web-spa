@@ -3,7 +3,7 @@ import * as http from "http";
 import * as serveStatic from "serve-static";
 import * as path from "path";
 import * as socketIo from "socket.io";
-
+import { logger, setup as loggerSetup} from './logger';
 import { NotificationSocket } from "./socket";
 
 declare var process, __dirname;
@@ -23,12 +23,11 @@ class Server {
 
         this.config();
 
+        this.configureLogging();
+        
         this.routes();
-
         this.server = http.createServer(this.app);
-
         this.sockets();
-
         this.listen();
     }
 
@@ -36,6 +35,10 @@ class Server {
         this.port = process.env.PORT || 5000;
 
         this.root = path.join(path.resolve(__dirname, '../dist'));
+    }
+
+    private configureLogging() {
+        loggerSetup();
     }
 
     private routes(): void {
@@ -57,20 +60,21 @@ class Server {
         this.io = socketIo(this.server, {
             adapter: adapter
         });
-        let notificationSocket = new NotificationSocket(this.io, '/notifications');
+        new NotificationSocket(this.io, '/notifications');
+        new NotificationSocket(this.io, '/drivers');
     }
 
     private listen(): void {
         this.server.listen(this.port);
 
         this.server.on("error", error => {
-            console.log("ERROR", error);
+            logger().info("ERROR", error);
         });
 
         this.server.on("listening", () => {
-            console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+            console.log(logger())
+            logger().info(`==> Listening on port ${this.port}. Open up http://localhost:${this.port}/ in your browser.`);
         });
-
     }
 }
 
