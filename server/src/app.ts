@@ -24,7 +24,7 @@ class Server {
         this.config();
 
         this.configureLogging();
-        
+
         this.routes();
         this.server = http.createServer(this.app);
         this.sockets();
