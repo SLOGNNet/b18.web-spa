@@ -20,11 +20,8 @@ class Server {
 
     constructor() {
         this.app = express();
-
         this.config();
-
         this.configureLogging();
-
         this.routes();
         this.server = http.createServer(this.app);
         this.sockets();
@@ -78,5 +75,5 @@ class Server {
     }
 }
 
-let server = Server.bootstrap();
+const server = Server.bootstrap();
 export = server.app;
