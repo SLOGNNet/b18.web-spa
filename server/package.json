@@ -1,7 +1,7 @@
 {
-  "name": "bridge18 socket.io server",
+  "name": "bridge18.websocket.server",
   "version": "0.0.1",
-  "description": "bridge18 socket.io server",
+  "description": "bridge18 websocket server",
   "engines": {
     "node": ">=6",
     "npm": ">=3"

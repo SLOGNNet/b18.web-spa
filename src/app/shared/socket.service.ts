@@ -12,12 +12,6 @@ export class SocketService {
     constructor() {
         console.log('socket service created');
     }
-    private getRoomId(): string {
-        const params = new URLSearchParams(window.location.search);
-        const clientIdParam = params.paramsMap.get("?userId")
-        const clientId = clientIdParam ? clientIdParam[0] : '1';
-        return clientId;
-    }
 
     private createSocket(namespace:string, room: string) {
         const socketUrl = this.host + namespace;
