@@ -3,8 +3,8 @@ import * as http from "http";
 import * as serveStatic from "serve-static";
 import * as path from "path";
 import * as socketIo from "socket.io";
-
-import { NotificationSocket } from "./socket";
+import { logger, setup as loggerSetup} from './logger';
+import { MessagesSocket } from "./socket";
 
 declare var process, __dirname;
 
@@ -14,23 +14,17 @@ class Server {
     private io: any;
     private root: string;
     private port: number;
-    public static bootstrap(): Server {
+     public static bootstrap(): Server {
         return new Server();
     }
 
     constructor() {
         this.app = express();
-
         this.config();
-
+        this.configureLogging();
         this.routes();
-
         this.server = http.createServer(this.app);
-
         this.sockets();
-
-        this.demoNotificationEmitter();
-
         this.listen();
     }
 
@@ -40,24 +34,19 @@ class Server {
         this.root = path.join(path.resolve(__dirname, '../dist'));
     }
 
+    private configureLogging() {
+        loggerSetup();
+    }
+
     private routes(): void {
         let router: express.Router;
         router = express.Router();
 
-        router.get('/', (request: express.Request, result: express.Response) => {
-            result.sendFile(path.join(this.root, '/index.html'));
+        router.get('/demo', (request: express.Request, result: express.Response) => {
+            result.sendFile(path.join(this.root, '/demo.html'));
         });
 
-        this.app.use('*', router);
-    }
-
-    private demoNotificationEmitter(): void {
-        const io = require('socket.io-emitter')({ host: 'localhost', port: 6379 });
-        const socket = io.of('/notifications');
-        setInterval(() => {
-            console.log('start notification');
-            socket.emit('notification', { message: 'time: ' + Date.now(), username: 'test' });
-        }, 5000);
+        this.app.use('/', router);
     }
 
     private sockets(): void {
@@ -68,22 +57,22 @@ class Server {
         this.io = socketIo(this.server, {
             adapter: adapter
         });
-        let notificationSocket = new NotificationSocket(this.io);
+        new MessagesSocket(this.io, '/notifications');
+        new MessagesSocket(this.io, '/drivers');
     }
 
     private listen(): void {
         this.server.listen(this.port);
 
         this.server.on("error", error => {
-            console.log("ERROR", error);
+            logger().info("ERROR", error);
         });
 
         this.server.on("listening", () => {
-            console.log('==> Listening on port %s. Open up http://localhost:%s/ in your browser.', this.port, this.port);
+            logger().info(`==> Listening on port ${this.port}. Open up http://localhost:${this.port}/ in your browser.`);
         });
-
     }
 }
 
-let server = Server.bootstrap();
+const server = Server.bootstrap();
 export = server.app;

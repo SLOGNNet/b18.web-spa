@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     target: 'node',
@@ -9,14 +10,15 @@ module.exports = {
     },
 
     entry: {
-        'server.js': './src/app'
+        'server.js': './src/app',
+        'demo-emitter.js': './src/demo/demo-emitter'
     },
 
 
     output: {
         filename: '[name]',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        publicPath: '/dist/'
     },
 
     module: {
@@ -29,6 +31,13 @@ module.exports = {
         ]
     },
 
+    plugins: [
+        new HtmlWebpackPlugin({
+           chunks: [],
+           template: 'src/demo/index.html',
+           filename: 'demo.html'
+        })
+    ],
     stats: {
         cached: true,
         cachedAssets: true,

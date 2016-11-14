@@ -1,36 +1,32 @@
 import {Injectable} from '@angular/core';
 export { IDriverMessage } from './interfaces';
 import 'rxjs/add/operator/map';
-import { ReplaySubject } from "rxjs";
 import { List } from "immutable";
 
-import { NotificationService } from "../../shared";
+import { SocketService } from "../../shared";
 @Injectable()
 export class MessageService {
-    private $messages: ReplaySubject<any> = new ReplaySubject(1);
-    private list: List<any> = List();
-
     create(message: string): void {
-        this.notificationService.send({
+        this.socketService.send({
             username: 'test',
             message
         });
     }
 
-    constructor(private notificationService: NotificationService) {
-        this.notificationService
-            .get()
-            .subscribe(
-                (notification: any) => {
-                    let message = notification.item;
-                    this.list = this.list.push(message);
-                    this.$messages.next(this.list);
-                },
-                error => console.log(error)
-            );
+    constructor(private socketService: SocketService) {
+        console.log('MessageService created');
+
     }
 
-    getMessages() {
-        return this.$messages;
+    getMessagesObservable(driverId: string) {
+        let list: List<any> = List();
+        const messagesObserver = this.socketService
+            .getSocketObservable('/drivers', driverId)
+            .map((message: any) => list = list.push(message.item));
+        return messagesObserver;
+    }
+
+     getMessages(driverId: string){
+        return this.getMessagesObservable(driverId);
     }
 }
