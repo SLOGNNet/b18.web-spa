@@ -22,11 +22,11 @@ export class MessagesComponent implements OnInit {
       this.messages = messages;
     });
    */
-    this.messages.push({ message: "test message", username: "username", type: "carrier"},
-      { message: "load #123233", username: "username", type: "user"},
-      { message: "have a safe trip", username: "username", type: "system"},
-      { message: "ok received", username: "username", type: "user"},
-      { message: "hey there!", username: "username", type: "system"}
+    this.messages.push({ message: "test message", username: "username", type: "carrier", date: "18:07 21-12-2016" },
+      { message: "load #123233", username: "username", type: "user", date: "18:15 21-12-2016"},
+      { message: "have a safe trip", username: "username", type: "system", date: "18:25 21-12-2016"},
+      { message: "ok received", username: "username", type: "user", date: "18:26 21-12-2016"},
+      { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"}
     )
   }
 

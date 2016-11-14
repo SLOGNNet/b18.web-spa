@@ -24,12 +24,12 @@ body {
 }
 
 .chat {
-  height: -webkit-calc(100vh - 230px);
-  height: calc(100vh - 230px);
+  height: -webkit-calc(100vh - 250px);
+  height: calc(100vh - 250px);
 }
 
 .message-form {
-  width: 400px;
+  width: 40%;
   height: 120px;
   min-width: 100px;
   margin: 0 auto;
