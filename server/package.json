@@ -1,7 +1,7 @@
 {
-  "name": "chat-server",
+  "name": "bridge18 socket.io server",
   "version": "0.0.1",
-  "description": "bridge18 chat server",
+  "description": "bridge18 socket.io server",
   "engines": {
     "node": ">=6",
     "npm": ">=3"
