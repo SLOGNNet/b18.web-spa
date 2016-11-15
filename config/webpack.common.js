@@ -20,22 +20,12 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 /*
- * Webpack Constants
- */
-const HMR = helpers.hasProcessFlag('hot');
-const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
-};
-
-/*
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function (options) {
-  isProd = options.env === 'production';
+module.exports = function (config) {
+  isProd = config.env === 'production';
   return {
 
     /*
@@ -60,14 +50,13 @@ module.exports = function (options) {
       'main': './src/main.browser.ts'
 
     },
-
+    
     /*
      * Options affecting the resolving of modules.
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve
      */
     resolve: {
-
       /*
        * An array of extensions that should be used to resolve modules.
        *
@@ -126,6 +115,11 @@ module.exports = function (options) {
           loaders: ['to-string-loader', 'css-loader']
         },
 
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loaders: ['raw-loader', 'sass-loader']
+        },
         /* Raw loader support for *.html
          * Returns file content as string
          *
@@ -218,9 +212,9 @@ module.exports = function (options) {
        */
       new HtmlWebpackPlugin({
         template: 'src/index.html',
-        title: METADATA.title,
+        title: config.title,
         chunksSortMode: 'dependency',
-        metadata: METADATA,
+        metadata: config,
         inject: 'head'
       }),
 
