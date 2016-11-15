@@ -10,29 +10,14 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
-/**
- * Webpack Constants
- */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3001;
-const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: HMR,
-  baseUrl: 'http://bridge18.localhost:8010/spa',
-  title: 'uraaa',
-});
 
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function (options) {
-  return webpackMerge(commonConfig({env: ENV}), {
+module.exports = function (config) {
+  return webpackMerge(commonConfig(config), {
 
     /**
      * Developer tool to enhance debugging
@@ -96,12 +81,13 @@ module.exports = function (options) {
          */
         // NOTE: when adding more properties, make sure you include them in custom-typings.d.ts
         new DefinePlugin({
-          'ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'ENV': JSON.stringify(config.env),
+          'HMR': config.hmr,
+          'APP_CONFIG': JSON.stringify(config),
           'process.env': {
-            'ENV': JSON.stringify(METADATA.ENV),
-            'NODE_ENV': JSON.stringify(METADATA.ENV),
-            'HMR': METADATA.HMR,
+            'ENV': JSON.stringify(config.env),
+            'NODE_ENV': JSON.stringify(config.env),
+            'HMR': config.hmr,
           }
         }),
 
@@ -148,8 +134,8 @@ module.exports = function (options) {
      * See: https://webpack.github.io/docs/webpack-dev-server.html
      */
     devServer: {
-      port: METADATA.port,
-      host: METADATA.host,
+      port: config.port,
+      host: config.host,
       historyApiFallback: true,
       watchOptions: {
         aggregateTimeout: 300,

@@ -75,4 +75,4 @@ class Server {
 }
 
 const server = Server.bootstrap();
-export = server.app;
+export default server.app;

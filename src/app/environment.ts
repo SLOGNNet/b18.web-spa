@@ -5,6 +5,7 @@ import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode, ApplicationRef } from '@angular/core';
 // Environment Providers
 let PROVIDERS: any[] = [
+    { provide: 'AppConfig', useValue: APP_CONFIG }
   // common env directives
 ];
 

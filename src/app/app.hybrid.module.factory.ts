@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from "./shared/shared.module";
+import { ENV_PROVIDERS } from './environment';
 
 export function HybridAppFactory(options) {
     @NgModule({
@@ -13,10 +14,11 @@ export function HybridAppFactory(options) {
             BrowserModule,
             FormsModule,
             HttpModule,
-            SharedModule
+            ...options.imports
         ],
         providers: [
-            options.providers
+            ENV_PROVIDERS,
+            ...options.providers
         ]
     })
     class AppModule {

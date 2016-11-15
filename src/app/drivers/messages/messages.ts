@@ -48,7 +48,7 @@ export class MessagesComponent implements OnInit {
     }
     */
   sendMessage() {
-    this.messageService.create(this.message);
-    this.message = '';
+    //this.messageService.create(this.message);
+    //this.message = '';
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Observable } from "rxjs";
 import * as io from "socket.io-client";
 import { URLSearchParams } from '@angular/http'
@@ -6,15 +6,14 @@ import { IMessage, ISocketItem } from "../../models";
 
 @Injectable()
 export class SocketService {
-    private host: string = 'http://localhost:5000';
     private socket: any;
 
-    constructor() {
+    constructor(@Inject('AppConfig') private config) {
         console.log('socket service created');
     }
 
     private createSocket(namespace:string, room: string) {
-        const socketUrl = this.host + namespace;
+        const socketUrl = this.config.socketIoHost + namespace;
         this.socket = io.connect(socketUrl,  {
           'query': `roomId=${room}`,
           'reconnection': true,

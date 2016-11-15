@@ -18,21 +18,9 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 
-/**
- * Webpack Constants
- */
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
-  host: HOST,
-  port: PORT,
-  ENV: ENV,
-  HMR: false
-});
 
-module.exports = function (env) {
-  return webpackMerge(commonConfig({env: ENV}), {
+module.exports = function (config) {
+  return webpackMerge(commonConfig(config), {
 
     /**
      * Developer tool to enhance debugging
@@ -118,12 +106,13 @@ module.exports = function (env) {
        */
       // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
       new DefinePlugin({
-        'ENV': JSON.stringify(METADATA.ENV),
-        'HMR': METADATA.HMR,
+        'ENV': JSON.stringify(config.env),
+        'HMR': config.hmr,
+        'APP_CONFIG': JSON.stringify(config),
         'process.env': {
-          'ENV': JSON.stringify(METADATA.ENV),
-          'NODE_ENV': JSON.stringify(METADATA.ENV),
-          'HMR': METADATA.HMR,
+          'ENV': JSON.stringify(config.env),
+          'NODE_ENV': JSON.stringify(config.env),
+          'HMR': config.hmr,
         }
       }),
 
