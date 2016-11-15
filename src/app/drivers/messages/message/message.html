@@ -1,3 +1,4 @@
-<div *ngIf="message.type === 'system'" class="message right-triangle-system">{{message.message}}</div>
-<div *ngIf="message.type === 'user'" class="message left-triangle-user">{{message.message}}</div>
-<div *ngIf="message.type === 'carrier'" class="message left-triangle">{{message.message}}</div>
+<div class="message-container {{this.currentClassContainer}}">
+  <div class="date">{{message.date}}</div>
+  <div class="message {{this.currentClass}}">{{message.message}}</div>
+</div>
