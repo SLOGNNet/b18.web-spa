@@ -19,21 +19,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
-/*
- * Webpack Constants
- */
- const METADATA = {
-   title: '',
-   baseUrl: '/',
-   isDevServer: helpers.isWebpackDevServer()
- };
-/*
- * Webpack configuration
- *
- * See: http://webpack.github.io/docs/configuration.html#cli
- */
-module.exports = function (options) {
-  isProd = options.env === 'production';
+
+module.exports = function (config) {
+  isProd = config.env === 'production';
   return {
 
     /*
@@ -63,17 +51,18 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#resolve
      */
     resolve: {
+        alias: {
+            config: (function() { return config }()),
+        },
+        /*
+        * An array of extensions that should be used to resolve modules.
+        *
+        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+        */
+        extensions: ['.ts', '.js', '.json'],
 
-      /*
-       * An array of extensions that should be used to resolve modules.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-       */
-      extensions: ['.ts', '.js', '.json'],
-
-      // An array of directory names to be resolved to the current directory
-      modules: [helpers.root('src'), 'node_modules'],
-
+        // An array of directory names to be resolved to the current directory
+        modules: [helpers.root('src'), 'node_modules'],
     },
 
     /*
@@ -222,10 +211,10 @@ module.exports = function (options) {
         inject: 'head',
         chunks: ['messages', 'polyfills', 'vendor'],
         template: 'src/hybrid/index.html',
-        title: METADATA.title,
+        title: config.title,
         component: '<messages>Loading</messages>',
         chunksSortMode: 'dependency',
-        metadata: METADATA,
+        metadata: config,
         filename: 'messages.html'
       }),
       /*
