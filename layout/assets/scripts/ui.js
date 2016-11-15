@@ -1,9 +1,9 @@
 // click on notification icon
 document.getElementById("main-notify").onclick = function(){
 	if(this.children[1].style.display == "block")
-		this.children[1].style.display = "none"; 
+		this.children[1].style.display = "none";
 	else
-		this.children[1].style.display = "block"; 
+		this.children[1].style.display = "block";
 };
 
 
@@ -17,8 +17,8 @@ ul.addEventListener('click', function(e) {
       	e.target.className = "active";
       } else {
       	e.target.className = "";
-      }     
-  } 
+      }
+  }
 });
 
 function hideMainMenu(){
@@ -113,7 +113,7 @@ document.getElementById("mobile-switch").onclick = function(e){
 		block2.style.display = "none";
 		block1.style.display = "flex";
 	}
-}
+};
 
 document.getElementById("mobile-menu-btn").onclick = function(e){
 	if(e.target.className == "glyphicon glyphicon-align-justify"){
@@ -124,4 +124,77 @@ document.getElementById("mobile-menu-btn").onclick = function(e){
 		e.target.className = "glyphicon glyphicon-align-justify";
 }
 
-}
+};
+
+
+$(document).ready(function () {
+
+  /*****button events*****/
+
+  $("#left-load-button").click(function () {
+    $(this).addClass("active-button");
+    $("#right-load-button").removeClass("active-button");
+  });
+
+  $("#right-load-button").click(function () {
+    $(this).addClass("active-button");
+    $("#left-load-button").removeClass("active-button");
+  });
+
+  $("#left-freight-button").click(function () {
+    $(this).addClass("active-button");
+    $("#right-freight-button").removeClass("active-button");
+  });
+
+  $("#right-freight-button").click(function () {
+    $(this).addClass("active-button");
+    $("#left-freight-button").removeClass("active-button");
+  });
+
+  $("#left-driver-button").click(function () {
+    $(this).addClass("active-button");
+    $("#right-driver-button").removeClass("active-button");
+  });
+
+  $("#right-driver-button").click(function () {
+    $(this).addClass("active-button");
+    $("#left-driver-button").removeClass("active-button");
+  });
+
+  $("#company-loading-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#customer-loading-button-id").removeClass("active-button");
+    $("#none-loading-button-id").removeClass("active-button");
+  });
+
+  $("#customer-loading-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#company-loading-button-id").removeClass("active-button");
+    $("#none-loading-button-id").removeClass("active-button");
+  });
+
+  $("#none-loading-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#company-loading-button-id").removeClass("active-button");
+    $("#customer-loading-button-id").removeClass("active-button");
+  });
+
+  $("#company-palletExch-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#customer-palletExch-button-id").removeClass("active-button");
+    $("#none-palletExch-button-id").removeClass("active-button");
+  });
+
+  $("#customer-palletExch-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#company-palletExch-button-id").removeClass("active-button");
+    $("#none-palletExch-button-id").removeClass("active-button");
+  });
+
+  $("#none-palletExch-button-id").click(function () {
+    $(this).addClass("active-button");
+    $("#company-palletExch-button-id").removeClass("active-button");
+    $("#customer-palletExch-button-id").removeClass("active-button");
+  });
+
+});
