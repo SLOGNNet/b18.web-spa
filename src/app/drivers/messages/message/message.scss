@@ -1,3 +1,7 @@
+$color-system: darkgrey;
+$color-user: lightgreen;
+$color-carrier: DodgerBlue;
+
 .message-container {
   display: flex;
   justify-content: space-between;
@@ -24,10 +28,6 @@
       border-bottom: 20px solid transparent;
       position: absolute;
     }
-
-    $color-system: darkgrey;
-    $color-user: lightgreen;
-    $color-carrier: DodgerBlue;
 
     .message-carrier {
       background: $color-carrier;
