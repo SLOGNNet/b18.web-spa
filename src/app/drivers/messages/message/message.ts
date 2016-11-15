@@ -7,7 +7,7 @@ import { Component, Input, HostBinding } from '@angular/core'
 })
 
  export class MessageComponent {
-  @Input () message: string;
+  @Input () message: Object;
   private currentClass:string = "message-";
   private currentClassContainer:string = "container-left";
 
