@@ -1,7 +1,6 @@
 .message-container {
   display: flex;
   justify-content: space-between;
-  //flex-direction: row-reverse;
 }
 
   .message {
@@ -26,26 +25,30 @@
       position: absolute;
     }
 
+    $color-system: darkgrey;
+    $color-user: lightgreen;
+    $color-carrier: DodgerBlue;
+
     .message-carrier {
-      background: DodgerBlue;
+      background: $color-carrier;
       &:before {
-        border-left: 20px solid DodgerBlue;
+        border-left: 20px solid $color-carrier;
         right: -20px;
       }
     }
 
     .message-system {
-      background: darkgrey;
+      background: $color-system;
       &:before {
-        border-right: 20px solid darkgrey;
+        border-right: 20px solid $color-system;
         left: -20px;
       }
     }
 
     .message-user {
-      background: lightgreen;
+      background: $color-user;
       &:before {
-        border-left: 20px solid lightgreen;
+        border-left: 20px solid $color-user;
         right: -20px;
       }
     }
@@ -56,7 +59,6 @@
     align-content: center;
     padding: 28px;
     word-wrap: break-word;
-    width: 100px;
     margin: 0 0 0 20px;
   }
 
