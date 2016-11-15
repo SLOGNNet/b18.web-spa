@@ -14,6 +14,7 @@ import { Observable, Subscription } from "rxjs";
 export class MessagesComponent implements OnInit {
     private messages: Array<any> = new Array<any>();
     private messagesSubscribtion: Subscription;
+    private message : string;
 
     constructor(public messageService: MessageService, private route: ActivatedRoute) {
 
@@ -32,7 +33,7 @@ export class MessagesComponent implements OnInit {
     { message: "load #123233", username: "username", type: "user", date: "18:15 21-12-2016"},
     { message: "have a safe trip", username: "username", type: "system", date: "18:25 21-12-2016"},
     { message: "ok received", username: "username", type: "user", date: "18:26 21-12-2016"},
-    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"}
+    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
   )
 }
 
@@ -41,11 +42,11 @@ export class MessagesComponent implements OnInit {
          console.log('component destory');
     }
 
-    onEnter(event: any): void {
+    /*onEnter(event: any): void {
         this.sendMessage();
         event.preventDefault();
     }
-
+    */
   sendMessage() {
     this.messageService.create(this.message);
     this.message = '';
