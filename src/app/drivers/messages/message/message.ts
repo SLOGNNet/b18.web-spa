@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding } from '@angular/core'
-
+import { IDriverMessage } from '../../services/message.service';
 @Component({
   selector: 'message',
   styleUrls: ['message.scss'],
@@ -7,7 +7,7 @@ import { Component, Input, HostBinding } from '@angular/core'
 })
 
  export class MessageComponent {
-  @Input () message: Object;
+  @Input () message: IDriverMessage;
   private currentClass:string = "message-";
   private currentClassContainer:string = "container-left";
 
