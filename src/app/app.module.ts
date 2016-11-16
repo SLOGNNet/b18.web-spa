@@ -17,10 +17,9 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages'
+import { MessageComponent } from './drivers/messages/message'
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
-
-import { MessageService } from './drivers/services/message.service'
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -43,7 +42,8 @@ type StoreType = {
      HomeComponent,
      DriversComponent,
      NoContentComponent,
-     MessagesComponent
+     MessagesComponent,
+     MessageComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -51,12 +51,11 @@ type StoreType = {
     HttpModule,
     SharedModule,
     Angular2DataTableModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS,
-    MessageService
+    APP_PROVIDERS
   ]
 })
 export class AppModule {

@@ -1,16 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 driver-name">Driver: George Clooney</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 chat">
+    <div class="col-xs-3 driver-name">Driver: George Clooney</div>
+    <div class="col-xs-9 chat">
       <!-- messages -->
-      <li *ngFor="let message of messages">
-        {{ message }}
-      </li>
+      <!--<li *ngFor="let message of messages">
+        {{ message.message }}
+      </li>-->
+       <message
+        *ngFor="let message of messages"
+        [message]="message">
+      </message>
     </div>
+</div>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-xs-12">
         <form action="#" class="message-form" name="sendMessageForm">
           <textarea name="message" placeholder="Type your message here"></textarea>
           <div class="send-block">
@@ -18,10 +21,9 @@
             <p>Text</p>
             <p>App</p>
             <p>Email</p>
-            <button class="send-message" (click)="onEnter($event)">Send</button>
+            <button class="send-message" (click)="sendMessage()">Send</button>
           </div>
         </form>
       </div>
     </div>
-  </div>
 </div>

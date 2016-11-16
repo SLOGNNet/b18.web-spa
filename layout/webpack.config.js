@@ -1,9 +1,10 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const helpers = require('../config/helpers');
 module.exports = {
     entry: './layout/index.js',
     output: {
-        path: './layout/dist',
+        path: helpers.root('layout/dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -20,10 +21,20 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
           template: './layout/index.html',
-          inject: 'head'
+          inject: true
       }),
       new ExtractTextPlugin('style.css')
     ],
+    devServer: {
+      port: 3005,
+      host: 'localhost',
+      historyApiFallback: true,
+      watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+      },
+      outputPath: helpers.root('layout/dist')
+    },
     node: {
       global: true,
       crypto: 'empty',

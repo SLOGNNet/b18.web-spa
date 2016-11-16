@@ -9,11 +9,11 @@
 }
 
 .pane-switch-container li {
-    border: $whiteBorder;
-    margin-left: -1px;
-    min-width:15px;
-    display:inline;
-    height:20px;
+  border: $whiteBorder;
+  margin-left: -1px;
+  min-width:15px;
+  display:inline;
+  height:20px;
 	background:none;
 	border-color:#fff;
 	float:left;
@@ -26,7 +26,7 @@
 .pane-switch-container ul li:last-child {
     border-radius: 0 5px 6px 0;
 }
-	
+
 .pane-switch-container ul li.active{
 	background:#ccc;
 }
@@ -38,12 +38,18 @@
 .main-area{
 	display:flex;
 	margin:0;
+  flex-grow: 1;
 }
+
+.main-area-container {
+  width: 100%;
+}
+
 .pane{
 	display:flex;
 	flex-grow:1;
 	align-items: center;
-    justify-content: center;
+  justify-content: center;
 	min-height:calc(100vh - 47px);
 	height:100%;
 	border:$defaultBorder;
