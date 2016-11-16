@@ -18,10 +18,10 @@ config = {
     testing: {
     },
     sandbox: {
-      baseUrl: 'https://dev.bridge18.com/spa/'
+      baseUrl: '/spa/'
    },
     production: {
-      baseUrl: 'https://dev.bridge18.com/spa/'
+      baseUrl: '/spa/'
     }
 };
 

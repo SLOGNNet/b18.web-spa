@@ -7,6 +7,8 @@ $logoNumberColor: #ff9900;
 
 $menuActiveColor: #a4c2f4;
 
+$black-squeeze: #F5F9FC;
+
 //borders
 $defaultBorder: 2px solid $defaultGreyColor;
 $whiteBorder: 1px solid #fff;
@@ -18,10 +20,10 @@ $logoFontFamily: Orbitron;
 $defaultFontSize:14px;
 
 
-body{ 
+body{
 	font-size:$defaultFontSize;
 	font-family: $defaultFontFamily;
-	background:$backgroundColor;
+	background:$black-squeeze;
 	height:100%;
 }
 

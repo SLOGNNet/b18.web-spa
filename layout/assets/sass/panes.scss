@@ -38,7 +38,13 @@
 .main-area{
 	display:flex;
 	margin:0;
+  flex-grow: 1;
 }
+
+.main-area-container {
+  width: 100%;
+}
+
 .pane{
 	display:flex;
 	flex-grow:1;
