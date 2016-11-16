@@ -13,7 +13,7 @@ import { IDriverMessage } from '../../services/message.service';
 
  ngOnInit(){
        this.currentClass += this.message.type;
-       this.currentClassContainer = this.message.type == "system" ? "container-right" : "container-left"
+       this.currentClassContainer = this.message.type == "system" ? "container-right" : "container-left";
  }
 
 }

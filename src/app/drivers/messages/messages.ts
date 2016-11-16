@@ -34,6 +34,13 @@ export class MessagesComponent implements OnInit {
     { message: "have a safe trip", username: "username", type: "system", date: "18:25 21-12-2016"},
     { message: "ok received", username: "username", type: "user", date: "18:26 21-12-2016"},
     { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey 222!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey 67676!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey t33333e!", username: "username", type: "system", date: "18:39 21-12-2016"},
+    { message: "hey 123!", username: "username", type: "system", date: "18:39 21-12-2016"},
   )
 }
 
@@ -42,6 +49,9 @@ export class MessagesComponent implements OnInit {
          console.log('component destory');
     }
 
+    onScrollUp()  {
+        console.log('scrolled')
+     }
     /*onEnter(event: any): void {
         this.sendMessage();
         event.preventDefault();

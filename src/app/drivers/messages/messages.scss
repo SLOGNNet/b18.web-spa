@@ -24,12 +24,15 @@ body {
 }
 
 .chat {
-  height: -webkit-calc(100vh - 250px);
-  height: calc(100vh - 250px);
+  //height: -webkit-calc(100% - 50px);
+  //height: calc(100% - 50px);
+  height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .message-form {
-  width: 40%;
+  width: 50%;
   height: 120px;
   min-width: 100px;
   margin: 0 auto;
@@ -43,7 +46,7 @@ body {
     min-width: -webkit-calc(100% - 70px);
     min-width: calc(100% - 70px);
     height: 120px;
-    margin: 10px 0 0;
+    margin: 10px 0 10px 0;
     outline: 0;
     border: 1px solid #DCDCDC;
     -webkit-border-radius: 6px;
