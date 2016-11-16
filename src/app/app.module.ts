@@ -13,6 +13,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
@@ -46,6 +47,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    InfiniteScrollModule,
     FormsModule,
     HttpModule,
     SharedModule,
