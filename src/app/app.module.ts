@@ -19,6 +19,7 @@ import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages'
 import { MessageComponent } from './drivers/messages/message'
 import { NoContentComponent } from './no-content';
+import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -49,6 +50,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     SharedModule,
+    Angular2DataTableModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
