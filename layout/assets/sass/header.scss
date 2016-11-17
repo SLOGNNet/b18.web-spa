@@ -1,48 +1,50 @@
-
-.main-header{
+.main-header {
 	display: flex;
-	flex-wrap:wrap;
-	border-bottom:$defaultBorder;
+	flex-wrap: wrap;
+	border-bottom: $defaultBorder;
 }
 
-.search-container{
-	width:80%;
-	.search-form{
-		border:0;
-		height:45px;
+.search-container {
+	width: 80%;
+
+	.search-form {
+		border: 0;
+		height: 45px;
 		line-height: 45px;
-		display:flex;
-		align-items:center;
-		flex-wrap:wrap;
-			span{
-				color:$defaultGreyColor;
-				padding:0 15px;
-			}
-			input {
-				border: none;
-				background: none;
-				color:#000;
-				width:80%;
-			}
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+
+		span {
+			color: $defaultGreyColor;
+			padding: 0 15px;
+		}
+
+		input {
+			border: none;
+			background: none;
+			color: #000;
+			width: 80%;
+		}
 	}
 }
-
 /*  header buttons container  */
+.buttons-container {
+	width: 20%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
 
-.buttons-container{
-	width:20%;
-	display:flex;
-	flex-wrap:wrap;
-	align-items:center;
-	justify-content:flex-end;
-		a{
-			color:$defaultGreyColor;
-			font-size:1.5em;
-			margin:0 10px;
-			position:relative;
-		}
-		button{
-			border:0;
-			background:none;
-		}
+	a {
+		color: $defaultGreyColor;
+		font-size: 1.5em;
+		margin: 0 10px;
+		position: relative;
+	}
+
+	button {
+		border: 0;
+		background: none;
+	}
 }

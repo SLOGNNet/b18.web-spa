@@ -1,18 +1,21 @@
 /* logo */
-.logo-container{
+.logo-container {
 	font-family: $logoFontFamily;
-	width:100%;
-	margin-top:20px;
-	text-align:center;
-		span{
-			text-transform: uppercase;
-			font-weight: 600;
-		}
-		.logo-letter{
-			color:$logoLetterColor;
-		}
-		.logo-number{
-			color:$logoNumberColor;
-			margin-left: -3px;
-		}
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+
+	span {
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.logo-letter {
+		color: $logoLetterColor;
+	}
+
+	.logo-number {
+		color: $logoNumberColor;
+		margin-left: -3px;
+	}
 }
