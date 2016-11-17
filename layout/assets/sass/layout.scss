@@ -9,19 +9,6 @@ $gallery: #F0F0F0;
 $iron: #D7D8DB;
 $black-squeeze: #F5F9FC;
 
-/**********FONTS**********/
-
-@font-face {
-  font-family: 'SFUIText-Bold';  src: local('SFUIText-Bold'), url('http://nomail.com.ua/files/woff/8ce3beca87df9f72c93ffc5982450177.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Medium';  src: local('SFUIText-Medium'), url('http://nomail.com.ua/files/woff/d576bebf44b0989ad4b30390763158cd.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Regular';  src: local('SFUIText-Regular'), url('http://nomail.com.ua/files/woff/888e0f3f1d925d57beaf9cc4a7b80dbc.woff') format('woff');
-}
 
 /**********LAYOUT STYLES**********/
 
@@ -594,4 +581,3 @@ $black-squeeze: #F5F9FC;
     color: $white;
   }
 }
-

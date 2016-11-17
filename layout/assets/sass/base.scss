@@ -14,15 +14,28 @@ $defaultBorder: 2px solid $defaultGreyColor;
 $whiteBorder: 1px solid #fff;
 
 
-//fonts
-$defaultFontFamily:"Times New Roman", Georgia, sans-erif;
+// fonts
+
+@font-face {
+  font-family: 'SFUIText-Bold';  src: ('../fonts/sf-bold.woff');
+}
+
+@font-face {
+  font-family: 'SFUIText-Medium';  src: ('../fonts/sf-medium.woff');
+}
+
+@font-face {
+  font-family: 'SFUIText-Regular';  src: ('../fonts/sf-regular.woff');
+}
+
+$defaultFontFamily: "Times New Roman", Georgia, sans-erif;
 $logoFontFamily: Orbitron;
 $defaultFontSize:14px;
 
 
 body{
 	font-size:$defaultFontSize;
-	font-family: $defaultFontFamily;
+	font-family: 'SFUIText-Medium';
 	background:$black-squeeze;
 	height:100%;
 }
