@@ -1,8 +1,5 @@
 .mobile-menu-container{
   display:none;
-}
-
-.mobile-menu-container{
   width:100vw;
   height:45px;
   color:#fff;
@@ -21,7 +18,7 @@
         display:flex;
     }
 
-    .logo-container, 
+    .logo-container,
     .pane-switch-container,
     .menu-master-container,
     .main-header{
@@ -61,11 +58,10 @@
 
     .menu-container{
       margin-top:60px;
-    }
-
-    .menu-container div{
-      max-width:90px;
-      display: inline-block;
-   	  margin: 20px;
+        div{
+          max-width:90px;
+          display: inline-block;
+       	  margin: 20px;
+        }
     }
  }

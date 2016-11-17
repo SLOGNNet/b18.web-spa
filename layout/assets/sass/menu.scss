@@ -9,49 +9,44 @@
 .menu-container{
 	margin-top:20px;
  	padding:0 15px;
-}
-
-.menu-container div{
-	border-top: 15px solid #fff;
-    border-left: 15px solid #fff;
-    border-bottom: 7px solid #000;
-    border-right: 26px solid #000;
-    height: 40px;
-    width: 90%;
-    margin-bottom: 40px;
-    position: relative;
-}
-.menu-container div.active{
-	border-top-color: $menuActiveColor;
-    border-left-color: $menuActiveColor;
-}
-.menu-container div.active > a{
-	color: $menuActiveColor;
-}
-
-.menu-container div:hover{
-	cursor:pointer;
-}
-
-.menu-container div a{
-	color: #fff;
-    position: absolute;
-    bottom: -30px;
-    left: -15px;
-    width: 80px;
+    div{
+      border-top: 15px solid #fff;
+      border-left: 15px solid #fff;
+      border-bottom: 7px solid #000;
+      border-right: 26px solid #000;
+      height: 40px;
+      width: 90%;
+      margin-bottom: 40px;
+      position: relative;
+        &:hover{
+        	cursor:pointer;
+        }
+        &.active{
+        	border-top-color: $menuActiveColor;
+          border-left-color: $menuActiveColor;
+            a{
+              color: $menuActiveColor;
+            }
+        }
+          a{
+            color: #fff;
+            position: absolute;
+            bottom: -30px;
+            left: -15px;
+            width: 80px;
+          }
+    }
 }
 
 .menu-master-container{
 	padding-top:20px;
-    text-align: center;
-}
-
-.menu-master-container button span:before{
-    content: '\25CF';
-    font-size: 10px;
-}
-
-.menu-master-container button{
-	background:none;
-	border:0;
+  text-align: center;
+    button{
+    	background:none;
+    	border:0;
+        span:before{
+            content: '\25CF';
+            font-size: 10px;
+        }
+    }
 }

@@ -3,66 +3,59 @@
 .notif-tooltip{
 	position: absolute;
 	display:none;
-    width: 300px;
-    height: auto;
-    right: -20px;
-    top: 40px;
-    color: #000;
-    background: #fff;
-    box-shadow: 0 0 2px #6c6c6c;
-    z-index:10;
-}
-
-.notif-tooltip a{
-	margin:0;
-}
-
-.notif-tooltip h4{
-	margin:0;
-	padding-top:5px;
-	color:#1c4587;
-}
-
-.notif-item{
-	padding: 0 10px;
-	text-align: left;
-	margin-bottom:10px;
-	font-size:1em;
-}
-
-.notif-item p{
-	margin-bottom:0;
-	font-size:16px;
-}
-
-.notif-item button{
-	margin-top:0;
-	padding:0;
-	font-size:18px;
-	color:#0097a7;
-}
-
-
-.notif-tooltip:before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    right: 23px;
-    margin-left: -12px;
-    width: 0;
-    height: 0;
-    border-bottom: 11px solid #6c6c6c;
-    border-right: 11px solid transparent;
-    border-left: 11px solid transparent;
-}
-.notif-tooltip:after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    right: 24px;
-    width: 0;
-    height: 0;
-    border-bottom: 10px solid #ffffff;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
+  width: 300px;
+  height: auto;
+  right: -20px;
+  top: 40px;
+  color: #000;
+  background: #fff;
+  box-shadow: 0 0 2px #6c6c6c;
+  z-index:10;
+		a{
+			margin:0;
+		}
+		h4{
+			margin:0;
+			padding-top:5px;
+			color:#1c4587;
+		}
+		&:before {
+		    content: '';
+		    position: absolute;
+		    bottom: 100%;
+		    right: 23px;
+		    margin-left: -12px;
+			  width: 0;
+			  height: 0;
+			  border-bottom: 11px solid #6c6c6c;
+			  border-right: 11px solid transparent;
+			  border-left: 11px solid transparent;
+		}
+		&:after {
+			  content: '';
+		    position: absolute;
+		    bottom: 100%;
+		    right: 24px;
+		    width: 0;
+		    height: 0;
+		    border-bottom: 10px solid #ffffff;
+		    border-right: 10px solid transparent;
+		    border-left: 10px solid transparent;
+		}
+		.notif-item{
+			padding: 0 10px;
+			text-align: left;
+			margin-bottom:10px;
+			font-size:1em;
+				p{
+					margin-bottom:0;
+					font-size:16px;
+				}
+				button{
+					margin-top:0;
+					padding:0;
+					font-size:18px;
+					color:#0097a7;
+				}
+		}
 }
