@@ -52,7 +52,7 @@ rules:
     - 1
     - style: lowercase
   id-name-format:
-    - 1
+    - 2
     - convention: hyphenatedlowercase
   indentation:
     - 2
@@ -61,7 +61,7 @@ rules:
     - 1
     - include: false
   mixin-name-format:
-    - 1
+    - 2
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
   mixins-before-declarations: 1
@@ -72,15 +72,15 @@ rules:
   no-color-literals: 1
   no-css-comments: 0
   no-debug: 2
-  no-duplicate-properties: 1
+  no-duplicate-properties: 2
   no-empty-rulesets: 1
   no-extends: 0
   no-ids: 2
-  no-important: 1
-  no-invalid-hex: 1
-  no-mergeable-selectors: 1
+  no-important: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 2
   no-misspelled-properties:
-    - 1
+    - 2
     - extra-properties: []
   no-qualifying-elements:
     - 1
@@ -96,10 +96,10 @@ rules:
       excluded-identifiers: []
   placeholder-in-extend: 1
   placeholder-name-format:
-    - 1
+    - 2
     - convention: hyphenatedlowercase
   property-sort-order:
-    - 1
+    - 2
     -
       order:
         - position
@@ -123,7 +123,7 @@ rules:
         - cursor
       ignore-custom-properties: false
   property-units:
-    - 1
+    - 2
     - global:
         - ch
         - em
@@ -162,25 +162,25 @@ rules:
         - 1
         - 2
         - 3
-  single-line-per-selector: 1
+  single-line-per-selector: 2
   space-after-bang:
-    - 1
+    - 2
     - include: false
   space-after-colon:
-    - 1
+    - 2
     - include: true
   space-after-comma:
-    - 1
+    - 2
     - include: true
   space-before-bang:
-    - 1
+    - 2
     - include: true
   space-before-brace:
-    - 1
+    - 2
     - include: true
-  space-before-colon: 1
+  space-before-colon: 2
   space-between-parens:
-    - 1
+    - 2
     - include: false
   trailing-semicolon: 1
   url-quotes: 1
@@ -188,7 +188,7 @@ rules:
     - 0
     - properties: []
   variable-name-format:
-    - 1
+    - 2
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
   zero-unit: 1
