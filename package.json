@@ -25,7 +25,7 @@
     "e2e:live": "npm run e2e -- --elementExplorer",
     "e2e": "npm run protractor",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "lint:style": "npm run sass-lint 'layout/**/*.scss, src/**/*.scss'",
+    "lint:style": "sass-lint --verbose -q",
     "postversion": "git push && git push --tags",
     "prebuild:dev": "npm run clean:dist",
     "prebuild:prod": "npm run clean:dist",
@@ -57,7 +57,6 @@
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-    "sass-lint": "sass-lint",
     "build:datatable": "cd libs/angular2-data-table && npm i && npm run release",
     "build:libs": "npm run build:datatable && npm install ./libs/angular2-data-table --force"
   },
