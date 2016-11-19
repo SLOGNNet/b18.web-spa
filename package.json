@@ -88,7 +88,7 @@
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.38",
-    "@types/protractor": "^1.5.20",
+    "@types/protractor": "^4.0.0",
     "@types/selenium-webdriver": "2.44.29",
     "@types/socket.io-client": "^1.4.28",
     "@types/source-map": "^0.1.27",
