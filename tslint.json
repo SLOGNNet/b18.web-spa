@@ -105,7 +105,7 @@
     "no-consecutive-blank-lines": false,
     "no-constructor-vars": false,
     "one-line": [
-      true,
+      false,
       "check-open-brace",
       "check-catch",
       "check-else",
