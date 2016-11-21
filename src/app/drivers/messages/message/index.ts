@@ -1,1 +1,1 @@
-export * from './message.ts';
+export {MessageComponent } from './message.ts';
