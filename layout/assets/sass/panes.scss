@@ -31,34 +31,50 @@
 	}
 }
 
-.main-content {
-	margin-left: 120px;
+.main-content{
+	margin-left: 140px;
+  box-sizing: border-box;
+}
+
+.main-area{
+	display:flex;
+	margin:0;
+  flex-grow: 1;
+  box-sizing: border-box;
+	height: calc(100vh - 84px);
 }
 
 .main-area-container {
-	width: 100%;
+  width: inherit;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.main-area {
-	display: flex;
-	margin: 0;
-	flex-grow: 1;
-
-	.pane {
-		display: flex;
-		flex-grow: 1;
-		align-items: center;
-		justify-content: center;
-		height: calc(100vh - 44px);
-		overflow: scroll;
-		padding: 0;
-
-		div {
-			color: #666;
+.pane{
+	display:flex;
+	flex-grow:1;
+	align-items: center;
+  justify-content: center;
+	min-height:calc(100vh - 47px);
+	overflow:scroll;
+	height:100%;
+	padding:0;
+  box-sizing: border-box;
+	margin: 20px 10px 20px;
+		div{
+			color:#666;
+			box-sizing: border-box;
 		}
-	}
 
-	.pane-3 {
-		align-items: flex-start;
-	}
+		&:first-of-type{
+			margin: 20px 10px 20px 20px;
+		}
+
+		&:last-of-type{
+			margin: 20px 20px 20px 10px;
+		}
+
+}
+.pane-3 {
+	align-items: flex-start;
 }
