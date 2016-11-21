@@ -32,17 +32,21 @@
 }
 
 .main-content{
-	margin-left:120px;
+	margin-left: 140px;
+  box-sizing: border-box;
 }
 
 .main-area{
 	display:flex;
 	margin:0;
   flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .main-area-container {
-  width: 100%;
+  width: inherit;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .pane{
@@ -54,7 +58,9 @@
 	height:100%;
 	border:$defaultBorder;
 	padding:0;
+  box-sizing: border-box;
 }
 .pane div{
 	color:#666;
+  box-sizing: border-box;
 }

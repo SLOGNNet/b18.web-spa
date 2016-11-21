@@ -2,8 +2,8 @@
 .logo-container{
 	font-family: $logoFontFamily;
 	width:100%;
-	margin-top:20px;
-	text-align:center;
+	margin-top: 20px;
+	text-align: center;
 }
 
 .logo-container span{
@@ -12,10 +12,11 @@
 }
 
 .logo-container .logo-letter{
-	color:$logoLetterColor;
+	color: $white;
+  font-size: 24px;
 }
 .logo-container .logo-number{
-	color:$logoNumberColor;
+	color: $tango;
 	margin-left: -3px;
-
+  font-size: 24px;
 }
