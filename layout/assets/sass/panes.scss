@@ -41,6 +41,7 @@
 	margin:0;
   flex-grow: 1;
   box-sizing: border-box;
+	height: calc(100vh - 84px);
 }
 
 .main-area-container {
@@ -55,12 +56,22 @@
 	align-items: center;
   justify-content: center;
 	min-height:calc(100vh - 47px);
+	overflow:scroll;
 	height:100%;
 	padding:0;
   box-sizing: border-box;
+	margin: 20px 10px 20px;
 		div{
 			color:#666;
 			box-sizing: border-box;
+		}
+
+		&:first-of-type{
+			margin: 20px 10px 20px 20px;
+		}
+
+		&:last-of-type{
+			margin: 20px 20px 20px 10px;
 		}
 
 }
