@@ -17,7 +17,7 @@ const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplaceme
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-
+const autoprefixer = require('autoprefixer');
 
 module.exports = function (config) {
   return webpackMerge(commonConfig(config), {
