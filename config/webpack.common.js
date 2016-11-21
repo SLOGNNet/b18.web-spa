@@ -24,7 +24,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = function (config) {
+module.exports = function(config) {
   isProd = config.env === 'production';
   return {
 
@@ -50,7 +50,7 @@ module.exports = function (config) {
       'main': './src/main.browser.ts'
 
     },
-    
+
     /*
      * Options affecting the resolving of modules.
      *
@@ -112,13 +112,13 @@ module.exports = function (config) {
          */
         {
           test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader']
+          loaders: ['to-string-loader', 'css-loader', 'postcss-loader']
         },
 
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          loaders: ['raw-loader', 'sass-loader']
+          loaders: ['raw-loader', 'postcss-loader', 'sass-loader']
         },
         /* Raw loader support for *.html
          * Returns file content as string
@@ -141,7 +141,6 @@ module.exports = function (config) {
       ],
 
     },
-
     /*
      * Add additional plugins to the compiler.
      *
@@ -261,7 +260,6 @@ module.exports = function (config) {
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
       new LoaderOptionsPlugin({}),
-
     ],
 
     /*
@@ -278,6 +276,5 @@ module.exports = function (config) {
       clearImmediate: false,
       setImmediate: false
     }
-
   };
 }

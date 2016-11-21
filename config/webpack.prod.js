@@ -224,7 +224,13 @@ module.exports = function (config) {
             ],
             customAttrAssign: [/\)?\]?=/]
           },
-
+          postcss: [
+            autoprefixer({
+              browsers: [
+                'last 2 versions'
+              ]
+            })
+          ]
         }
       }),
 

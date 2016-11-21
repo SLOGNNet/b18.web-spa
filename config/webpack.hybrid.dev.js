@@ -119,7 +119,13 @@ module.exports = function (config) {
               failOnHint: false,
               resourcePath: 'src'
             },
-
+            postcss: [
+              autoprefixer({
+                browsers: [
+                  'last 2 versions'
+                ]
+              })
+            ]
           }
         })
 
