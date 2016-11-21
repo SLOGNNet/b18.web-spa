@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-import { SharedModule } from "./shared/shared.module";
+import { SharedModule } from './shared/shared.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -17,8 +17,8 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
-import { MessagesComponent } from './drivers/messages'
-import { MessageComponent } from './drivers/messages/message'
+import { MessagesComponent } from './drivers/messages';
+import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
