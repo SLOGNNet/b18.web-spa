@@ -45,6 +45,8 @@ npm-debug.log
 
 # Dist #
 /dist
+/dist-hybrid
+/dist-hybrid/**
 /public/__build__/
 /src/*/__build__/
 /__build__/**

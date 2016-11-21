@@ -1,5 +1,4 @@
 /**********VARIABLES**********/
-
 $shark: #23282d;
 $white: #FFFFFF;
 $seagul: #75B3E2;
@@ -8,23 +7,7 @@ $foam: #F5FEFE;
 $gallery: #F0F0F0;
 $iron: #D7D8DB;
 $black-squeeze: #F5F9FC;
-
-/**********FONTS**********/
-
-@font-face {
-  font-family: 'SFUIText-Bold';  src: local('SFUIText-Bold'), url('http://nomail.com.ua/files/woff/8ce3beca87df9f72c93ffc5982450177.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Medium';  src: local('SFUIText-Medium'), url('http://nomail.com.ua/files/woff/d576bebf44b0989ad4b30390763158cd.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Regular';  src: local('SFUIText-Regular'), url('http://nomail.com.ua/files/woff/888e0f3f1d925d57beaf9cc4a7b80dbc.woff') format('woff');
-}
-
 /**********LAYOUT STYLES**********/
-
 .layout-container {
   width: 100%;
   background-color: $gallery;
@@ -40,7 +23,34 @@ $black-squeeze: #F5F9FC;
   background-color: $black-squeeze;
 }
 
+
 /*styles for title of section*/
+.form-group {
+  border-radius: 3px;
+}
+
+.list-group {
+  border-bottom: 1px solid $iron;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  .list-group-item {
+    min-height: 50px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid $iron;
+    padding: 0;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
 .block-title-sign {
   margin: 30px 0 20px 15px;
   text-transform: uppercase;
@@ -101,12 +111,14 @@ $black-squeeze: #F5F9FC;
 /*smart input styles / with label effect*/
 .smart-form {
   width: 100%;
+
   .form-group {
     position: relative;
     overflow: hidden;
     margin-bottom: 0;
     background-color: $white;
     border-radius: 4px;
+
     .smart-input {
       box-shadow: none;
       border: none;
@@ -120,14 +132,17 @@ $black-squeeze: #F5F9FC;
       z-index: 1;
       padding: 8px 12px;
       outline: 0;
+
       &:valid {
         // Hides the label
         background: $white;
       }
+
       &:focus {
         padding-left: 25%;
         border-color: $seagul;
       }
+
       &:focus + .input-label {
         color: $seagul;
         margin-top: 7px;
@@ -140,6 +155,7 @@ $black-squeeze: #F5F9FC;
         justify-content: flex-end;
       }
     }
+
     .smart-input:focus + .input-label {
       left: 0;
       margin-right: 0;
@@ -147,6 +163,7 @@ $black-squeeze: #F5F9FC;
       padding-top: 5px;
       text-align: right;
     }
+
     .input-label {
       transition-duration: 0.2s;
       position: absolute;
@@ -182,6 +199,7 @@ $black-squeeze: #F5F9FC;
     text-align: right;
     padding: 0 15px;
   }
+
   .switch-button {
     margin: 1px 0;
     width: 36.5%;
@@ -191,6 +209,7 @@ $black-squeeze: #F5F9FC;
     background-color: $white;
     outline: none;
   }
+
   .active-button {
     background: $seagul;
     color: $white;
@@ -217,23 +236,28 @@ $black-squeeze: #F5F9FC;
     text-align: right;
     padding: 0 15px;
   }
+
   .select-wrapper {
     width: 73%;
     position: relative;
     margin-bottom: 0;
+
     .glyphicon {
       position: absolute;
       z-index: 1;
       font-size: 10px;
     }
+
     .glyphicon-triangle-bottom {
       right: 15px;
       top: 45%;
     }
+
     .glyphicon-triangle-top {
       right: 15px;
       top: 30%;
     }
+
     .select-box {
       height: 49px;
       font-size: 16px;
@@ -260,14 +284,17 @@ $black-squeeze: #F5F9FC;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .left-sign-panel {
       padding: 15px 0;
       text-transform: uppercase;
+
       .left-sign {
         display: inline-block;
         font-size: 12px;
         font-family: 'SFUIText-Medium', sans-serif;
       }
+
       .glyphicon-plus-minus {
         display: inline-block;
         color: $shark;
@@ -285,8 +312,10 @@ $black-squeeze: #F5F9FC;
     border: none;
     margin-bottom: 0;
     font-size: 10px;
+
     .pickups-table-header {
       text-transform: uppercase;
+
       .table-header-item {
         text-align: center;
         height: 50px;
@@ -297,26 +326,33 @@ $black-squeeze: #F5F9FC;
         font-family: 'SFUIText-Medium', sans-serif;
         font-weight: normal;
         color: $nobel;
+
         &:first-child {
           border-left: none;
         }
+
         &:last-child {
           border-right: none;
         }
       }
     }
+
     .pickups-table-body {
       .table-row {
         height: 50px;
+
         .table-data {
           vertical-align: middle;
           padding: 0;
+
           &:first-child {
             border-left: none;
           }
+
           &:last-child {
             border-right: none;
           }
+
           .table-input {
             height: 50px;
             box-shadow: none;
@@ -337,6 +373,7 @@ $black-squeeze: #F5F9FC;
   border-bottom: 1px solid $iron;
   .textarea-wrapper {
     margin-bottom: 0;
+
     .notes-textarea {
       padding: 15px;
       max-width: 100%;
@@ -357,11 +394,24 @@ $black-squeeze: #F5F9FC;
     border: none;
     margin-bottom: 0;
     height: 50px;
+
     .sign-panel {
       padding: 0 15px;
       font-size: 12px;
       font-family: 'SFUIText-Medium', sans-serif;
       text-transform: uppercase;
+    }
+  }
+}
+/*****pickups styles need to be changed*****/
+.pickups-wrapper {
+  .list-group-item {
+    border-bottom: none;
+
+    .smart-form {
+      .smart-input {
+        border: none;
+      }
     }
   }
 }
@@ -374,9 +424,11 @@ $black-squeeze: #F5F9FC;
   border-bottom: 1px solid $iron;
   .relative-form {
     position: relative;
+
     .smart-input {
       border: none;
     }
+
     .unit {
       z-index: 10;
       position: absolute;
@@ -398,6 +450,7 @@ $black-squeeze: #F5F9FC;
   align-items: center;
   padding: 0;
   border-bottom: 1px solid $iron;
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -407,13 +460,19 @@ $black-squeeze: #F5F9FC;
     text-align: right;
     padding: 0 15px;
     color: $nobel;
+
     .calculate-link {
       color: $seagul;
-      &:hover, &:active, &:visited, &:link {
+
+      &:active,
+      &:hover,
+      &:link,
+      &:visited {
         text-decoration: none;
       }
     }
   }
+
   .unit {
     z-index: 10;
     position: absolute;
@@ -432,6 +491,8 @@ $black-squeeze: #F5F9FC;
   padding: 1px 0;
   background-color: $white;
   border-bottom: 1px solid $iron;
+
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -443,6 +504,7 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .switch-button {
     margin: 1px 0;
     width: 25%;
@@ -455,6 +517,7 @@ $black-squeeze: #F5F9FC;
     background-color: $white;
     outline: none;
   }
+
   .active-button {
     background: $seagul;
     color: $white;
@@ -467,6 +530,7 @@ $black-squeeze: #F5F9FC;
   padding: 0;
   background-color: $white;
   border-bottom: 1px solid $iron;
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -478,15 +542,18 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .dollar-sign {
     display: inline-block;
     width: 10%;
     text-align: center;
     font-size: 16px;
   }
+
   .simple-form {
     display: inline-block;
     width: 30%;
+
     .simple-input {
       height: 50px;
       border: none;
@@ -495,11 +562,13 @@ $black-squeeze: #F5F9FC;
       margin: 0;
     }
   }
+
   .rate-select-box {
     display: inline-block;
     width: 30%;
     border-left: 1px solid $nobel;
     position: relative;
+
     .rate-select {
       height: 50px;
       display: inline-block;
@@ -515,16 +584,19 @@ $black-squeeze: #F5F9FC;
         font-size: 16px;
       }
     }
+
     .glyphicon {
       position: absolute;
       z-index: 1;
       font-size: 10px;
       color: $nobel;
     }
+
     .glyphicon-triangle-bottom {
       right: 15px;
       top: 50%;
     }
+
     .glyphicon-triangle-top {
       right: 15px;
       top: 35%;
@@ -541,6 +613,8 @@ $black-squeeze: #F5F9FC;
   color: $nobel;
   position: relative;
   border-bottom: 1px solid $iron;
+
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -552,18 +626,22 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .dollar-sign {
     display: inline-block;
     width: 10%;
     text-align: center;
     font-size: 16px;
   }
+
   .total-sum-box {
     display: inline-block;
   }
+
   .per-mile-sum-box {
     display: inline-block;
   }
+
   .per-mile-sign {
     padding-right: 15px;
     display: inline-block;
@@ -578,6 +656,7 @@ $black-squeeze: #F5F9FC;
   height: 50px;
   display: flex;
   justify-content: space-between;
+
   .bottom-button {
     height: inherit;
     padding: 14px;
@@ -585,10 +664,11 @@ $black-squeeze: #F5F9FC;
     border: none;
     border-bottom: 1px solid $iron;
   }
+
   .btn-cancel {
     background-color: $gallery;
-
   }
+
   .btn-save {
     background-color: $seagul;
     color: $white;

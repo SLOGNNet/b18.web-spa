@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
+import { SharedModule } from "./shared/shared.module";
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -14,11 +14,12 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { MessagesComponent } from './drivers/messages'
+import { MessageComponent } from './drivers/messages/message'
 import { NoContentComponent } from './no-content';
-import { XLarge } from './home/x-large';
-
+import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -37,17 +38,20 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    AboutComponent,
-    HomeComponent,
-    NoContentComponent,
-    XLarge
+     AppComponent,
+     HomeComponent,
+     DriversComponent,
+     NoContentComponent,
+     MessagesComponent,
+     MessageComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    SharedModule,
+    Angular2DataTableModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -93,4 +97,3 @@ export class AppModule {
   }
 
 }
-
