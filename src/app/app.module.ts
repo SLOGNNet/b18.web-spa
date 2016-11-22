@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-import { SharedModule } from "./shared/shared.module";
+import { SharedModule } from './shared/shared.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -13,6 +13,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
@@ -49,6 +50,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    InfiniteScrollModule,
     FormsModule,
     HttpModule,
     SharedModule,

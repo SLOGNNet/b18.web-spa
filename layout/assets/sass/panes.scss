@@ -1,48 +1,53 @@
-.pane-switch-container{
-	text-align:center;
-	margin-top:30px;
-}
+.pane-switch-container {
+	text-align: center;
+	margin-top: 30px;
 
-.pane-switch-container ul{
-	list-style: none;
-	margin:0 auto;
-}
+	ul {
+		list-style: none;
+		margin: 0 auto;
+	}
 
-.pane-switch-container li {
-  border: $whiteBorder;
-  margin-left: -1px;
-  min-width:15px;
-  display:inline;
-  height:20px;
-	background:none;
-	border-color:#fff;
-	float:left;
-}
+	li {
+		border: $whiteBorder;
+		margin-left: -1px;
+		min-width: 15px;
+		display: inline;
+		height: 20px;
+		background: none;
+		border-color: #fff;
+		float: left;
 
-.pane-switch-container ul li:first-child {
-    border-radius: 5px 0 0 5px;
-}
+		&:first-child {
+			border-radius: 5px 0 0 5px;
+		}
 
-.pane-switch-container ul li:last-child {
-    border-radius: 0 5px 6px 0;
-}
+		&:last-child {
+			border-radius: 0 5px 6px 0;
+		}
 
-.pane-switch-container ul li.active{
-	background:#ccc;
+		&.active {
+			background: #ccc;
+		}
+	}
 }
 
 .main-content{
-	margin-left:120px;
+	margin-left: 140px;
+  box-sizing: border-box;
 }
 
 .main-area{
 	display:flex;
 	margin:0;
   flex-grow: 1;
+  box-sizing: border-box;
+	height: calc(100vh - 84px);
 }
 
 .main-area-container {
-  width: 100%;
+  width: inherit;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .pane{
@@ -51,10 +56,25 @@
 	align-items: center;
   justify-content: center;
 	min-height:calc(100vh - 47px);
+	overflow:scroll;
 	height:100%;
-	border:$defaultBorder;
 	padding:0;
+  box-sizing: border-box;
+	margin: 20px 10px 20px;
+		div{
+			color:#666;
+			box-sizing: border-box;
+		}
+
+		&:first-of-type{
+			margin: 20px 10px 20px 20px;
+		}
+
+		&:last-of-type{
+			margin: 20px 20px 20px 10px;
+		}
+
 }
-.pane div{
-	color:#666;
+.pane-3 {
+	align-items: flex-start;
 }

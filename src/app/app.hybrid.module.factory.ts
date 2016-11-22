@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from "./shared/shared.module";
+import { SharedModule } from './shared/shared.module';
 import { ENV_PROVIDERS } from './environment';
 
 export function HybridAppFactory(options) {
@@ -24,5 +24,5 @@ export function HybridAppFactory(options) {
     class AppModule {
       constructor(public appRef: ApplicationRef) {}
     };
-    return AppModule
+    return AppModule;
 };

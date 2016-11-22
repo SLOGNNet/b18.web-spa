@@ -1,5 +1,4 @@
 /**********VARIABLES**********/
-
 $shark: #23282d;
 $white: #FFFFFF;
 $seagul: #75B3E2;
@@ -8,26 +7,15 @@ $foam: #F5FEFE;
 $gallery: #F0F0F0;
 $iron: #D7D8DB;
 $black-squeeze: #F5F9FC;
-
-/**********FONTS**********/
-
-@font-face {
-  font-family: 'SFUIText-Bold';  src: local('SFUIText-Bold'), url('http://nomail.com.ua/files/woff/8ce3beca87df9f72c93ffc5982450177.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Medium';  src: local('SFUIText-Medium'), url('http://nomail.com.ua/files/woff/d576bebf44b0989ad4b30390763158cd.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'SFUIText-Regular';  src: local('SFUIText-Regular'), url('http://nomail.com.ua/files/woff/888e0f3f1d925d57beaf9cc4a7b80dbc.woff') format('woff');
-}
-
 /**********LAYOUT STYLES**********/
-
 .layout-container {
   width: 100%;
   background-color: $gallery;
+}
+
+.active-button {
+  color: $white;
+  background-color: $seagul;
 }
 
 .main-form-wrapper {
@@ -35,6 +23,8 @@ $black-squeeze: #F5F9FC;
   background-color: $black-squeeze;
 }
 
+
+/*styles for title of section*/
 .form-group {
   border-radius: 3px;
 }
@@ -43,15 +33,18 @@ $black-squeeze: #F5F9FC;
   border-bottom: 1px solid $iron;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+
   .list-group-item {
     min-height: 50px;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid $iron;
     padding: 0;
+
     &:first-child {
       border-top: none;
     }
+
     &:last-child {
       border-bottom: none;
     }
@@ -59,49 +52,49 @@ $black-squeeze: #F5F9FC;
 }
 
 .block-title-sign {
-  margin: 15px 0 15px 15px;
+  margin: 30px 0 20px 15px;
   text-transform: uppercase;
   font-size: 14px;
   font-family: 'SFUIText-Bold', sans-serif;
 }
 
-.panel-default {
-  border: none;
-  margin: 0;
-}
-
+/*header of form styles / with menu navigation*/
 .new-load-wrapper {
   border-bottom: 1px solid $iron;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  .new-load-sign {
-    font-family: 'SFUIText-Bold', sans-serif;
-    font-size: 20px;
-    font-weight: 900;
-    margin: 0 0 15px 10px;
-  }
-  .load-navigation-list {
-    display: flex;
-    flex-grow: 1;
-    list-style-type: none;
-    padding-left: 0;
-    margin-left: 5px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  .new-load-panel {
     margin-bottom: 0;
-    .load-navigation-item {
-      display: inline-block;
-      font-size: 13px;
-      padding: 0 5px;
-      text-align: center;
-      .load-navigation-item-link {
-        display: block;
-        color: $shark;
-        &:hover, &:visited, &:link {
-          text-decoration: none;
-        }
-        &:active {
-          text-decoration: none;
-          font-weight: bold;
-          transform: scale(1.1, 1);
+    border: none;
+    .new-load-sign {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0 0 15px 10px;
+      font-family: 'SFUIText-Bold', sans-serif;
+    }
+    .load-navigation-list {
+      display: flex;
+      flex-grow: 1;
+      list-style-type: none;
+      padding-left: 0;
+      margin-left: 5px;
+      margin-bottom: 0;
+      .load-navigation-item {
+        display: inline-block;
+        font-size: 13px;
+        padding: 0 5px;
+        text-align: center;
+        .load-navigation-item-link {
+          display: block;
+          color: $shark;
+          &:hover, &:visited, &:link {
+            text-decoration: none;
+          }
+          &:active {
+            text-decoration: none;
+            font-weight: bold;
+            transform: scale(1.1, 1);
+          }
         }
       }
     }
@@ -110,15 +103,22 @@ $black-squeeze: #F5F9FC;
 
 .customer-wrapper {
   border-radius: 3px;
+  .hidden-advice-block {
+    display: none;
+  }
 }
 
+/*smart input styles / with label effect*/
 .smart-form {
   width: 100%;
+
   .form-group {
     position: relative;
     overflow: hidden;
     margin-bottom: 0;
     background-color: $white;
+    border-radius: 4px;
+
     .smart-input {
       box-shadow: none;
       border: none;
@@ -132,14 +132,17 @@ $black-squeeze: #F5F9FC;
       z-index: 1;
       padding: 8px 12px;
       outline: 0;
+
       &:valid {
         // Hides the label
         background: $white;
       }
+
       &:focus {
         padding-left: 25%;
         border-color: $seagul;
       }
+
       &:focus + .input-label {
         color: $seagul;
         margin-top: 7px;
@@ -152,6 +155,7 @@ $black-squeeze: #F5F9FC;
         justify-content: flex-end;
       }
     }
+
     .smart-input:focus + .input-label {
       left: 0;
       margin-right: 0;
@@ -159,8 +163,9 @@ $black-squeeze: #F5F9FC;
       padding-top: 5px;
       text-align: right;
     }
+
     .input-label {
-      transition-duration: 0.1s;
+      transition-duration: 0.2s;
       position: absolute;
       color: $nobel;
       padding: 12px 15px;
@@ -176,12 +181,15 @@ $black-squeeze: #F5F9FC;
   }
 }
 
+/*block with two buttons*/
 .switch-buttons-block {
   height: 50px;
   display: flex;
   align-items: center;
-  padding: 0;
   color: $nobel;
+  padding: 1px 0;
+  background-color: $white;
+  border-bottom: 1px solid $iron;
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -191,69 +199,83 @@ $black-squeeze: #F5F9FC;
     text-align: right;
     padding: 0 15px;
   }
+
   .switch-button {
+    margin: 1px 0;
     width: 36.5%;
-    height: inherit;
+    height: 96.5%;
     color: $shark;
-    padding: 15px;
     font-size: 16px;
     background-color: $white;
     outline: none;
   }
+
   .active-button {
     background: $seagul;
     color: $white;
   }
 }
 
+/*block with left static sign and select*/
 .select-option-block {
+  font-family: 'SFUIText-Medium', sans-serif;
   height: 50px;
   display: flex;
   align-items: center;
   padding: 0;
   color: $nobel;
+  background-color: $white;
+  border-bottom: 1px solid $iron;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
-    font-family: 'SFUIText-Medium', sans-serif;
     width: 27%;
     display: inline-block;
     text-align: right;
     padding: 0 15px;
   }
+
   .select-wrapper {
     width: 73%;
     position: relative;
     margin-bottom: 0;
+
     .glyphicon {
       position: absolute;
       z-index: 1;
       font-size: 10px;
     }
+
     .glyphicon-triangle-bottom {
       right: 15px;
-      top: 50%;
+      top: 45%;
     }
+
     .glyphicon-triangle-top {
       right: 15px;
-      top: 35%;
+      top: 30%;
     }
+
     .select-box {
-      height: 50px;
-      /*z-index: 2;*/
+      height: 49px;
+      font-size: 16px;
       border: none;
       box-shadow: none;
       -webkit-appearance: none;
       -moz-appearance: none;
-      /*appearance: none;*/
       .option-item {
         font-size: 16px;
+        outline: none;
       }
     }
   }
 }
 
+/*block with only left static sign*/
 .static-left-sign-block {
+  border-bottom: 1px solid $iron;
   .left-sign-panel {
     height: 50px;
     margin-bottom: 0;
@@ -262,14 +284,17 @@ $black-squeeze: #F5F9FC;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .left-sign-panel {
       padding: 15px 0;
       text-transform: uppercase;
+
       .left-sign {
         display: inline-block;
         font-size: 12px;
         font-family: 'SFUIText-Medium', sans-serif;
       }
+
       .glyphicon-plus-minus {
         display: inline-block;
         color: $shark;
@@ -279,14 +304,18 @@ $black-squeeze: #F5F9FC;
   }
 }
 
+/*table block styles*/
 .table-block {
+  background-color: $white;
   .pickups-table {
     width: 100%;
     border: none;
     margin-bottom: 0;
     font-size: 10px;
+
     .pickups-table-header {
       text-transform: uppercase;
+
       .table-header-item {
         text-align: center;
         height: 50px;
@@ -297,26 +326,33 @@ $black-squeeze: #F5F9FC;
         font-family: 'SFUIText-Medium', sans-serif;
         font-weight: normal;
         color: $nobel;
+
         &:first-child {
           border-left: none;
         }
+
         &:last-child {
           border-right: none;
         }
       }
     }
+
     .pickups-table-body {
       .table-row {
         height: 50px;
+
         .table-data {
           vertical-align: middle;
           padding: 0;
+
           &:first-child {
             border-left: none;
           }
+
           &:last-child {
             border-right: none;
           }
+
           .table-input {
             height: 50px;
             box-shadow: none;
@@ -332,9 +368,12 @@ $black-squeeze: #F5F9FC;
   }
 }
 
+/*block with textarea*/
 .textarea-block {
+  border-bottom: 1px solid $iron;
   .textarea-wrapper {
     margin-bottom: 0;
+
     .notes-textarea {
       padding: 15px;
       max-width: 100%;
@@ -346,6 +385,7 @@ $black-squeeze: #F5F9FC;
   }
 }
 
+/*block with only right static sign*/
 .static-right-sign-block {
   .right-sign-panel {
     display: flex;
@@ -354,6 +394,7 @@ $black-squeeze: #F5F9FC;
     border: none;
     margin-bottom: 0;
     height: 50px;
+
     .sign-panel {
       padding: 0 15px;
       font-size: 12px;
@@ -362,11 +403,11 @@ $black-squeeze: #F5F9FC;
     }
   }
 }
-
 /*****pickups styles need to be changed*****/
 .pickups-wrapper {
   .list-group-item {
     border-bottom: none;
+
     .smart-form {
       .smart-input {
         border: none;
@@ -380,12 +421,14 @@ $black-squeeze: #F5F9FC;
   display: flex;
   align-items: center;
   width: 100%;
-  /*position: relative;*/
+  border-bottom: 1px solid $iron;
   .relative-form {
     position: relative;
+
     .smart-input {
       border: none;
     }
+
     .unit {
       z-index: 10;
       position: absolute;
@@ -399,12 +442,15 @@ $black-squeeze: #F5F9FC;
 }
 
 .static-block-with-unit-sign {
+  background-color: $white;
   width: 100%;
   height: 50px;
   position: relative;
   display: flex;
   align-items: center;
   padding: 0;
+  border-bottom: 1px solid $iron;
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -414,13 +460,19 @@ $black-squeeze: #F5F9FC;
     text-align: right;
     padding: 0 15px;
     color: $nobel;
+
     .calculate-link {
       color: $seagul;
-      &:hover, &:active, &:visited, &:link {
+
+      &:active,
+      &:hover,
+      &:link,
+      &:visited {
         text-decoration: none;
       }
     }
   }
+
   .unit {
     z-index: 10;
     position: absolute;
@@ -433,9 +485,14 @@ $black-squeeze: #F5F9FC;
 }
 
 .three-buttons-block {
+  height: 50px;
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 1px 0;
+  background-color: $white;
+  border-bottom: 1px solid $iron;
+
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -447,9 +504,11 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .switch-button {
+    margin: 1px 0;
     width: 25%;
-    height: 50px;
+    height: 96.5%;
     color: $shark;
     padding: 12px 5px;
     font-size: 16px;
@@ -458,6 +517,7 @@ $black-squeeze: #F5F9FC;
     background-color: $white;
     outline: none;
   }
+
   .active-button {
     background: $seagul;
     color: $white;
@@ -468,6 +528,9 @@ $black-squeeze: #F5F9FC;
   display: flex;
   align-items: center;
   padding: 0;
+  background-color: $white;
+  border-bottom: 1px solid $iron;
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -479,15 +542,18 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .dollar-sign {
     display: inline-block;
     width: 10%;
     text-align: center;
     font-size: 16px;
   }
+
   .simple-form {
     display: inline-block;
     width: 30%;
+
     .simple-input {
       height: 50px;
       border: none;
@@ -496,11 +562,13 @@ $black-squeeze: #F5F9FC;
       margin: 0;
     }
   }
+
   .rate-select-box {
     display: inline-block;
     width: 30%;
     border-left: 1px solid $nobel;
     position: relative;
+
     .rate-select {
       height: 50px;
       display: inline-block;
@@ -516,16 +584,19 @@ $black-squeeze: #F5F9FC;
         font-size: 16px;
       }
     }
+
     .glyphicon {
       position: absolute;
       z-index: 1;
       font-size: 10px;
       color: $nobel;
     }
+
     .glyphicon-triangle-bottom {
       right: 15px;
       top: 50%;
     }
+
     .glyphicon-triangle-top {
       right: 15px;
       top: 35%;
@@ -541,6 +612,9 @@ $black-squeeze: #F5F9FC;
   background-color: $foam;
   color: $nobel;
   position: relative;
+  border-bottom: 1px solid $iron;
+
+
   .left-static-sign {
     text-transform: uppercase;
     font-size: 10px;
@@ -552,18 +626,22 @@ $black-squeeze: #F5F9FC;
     padding: 0 15px;
     color: $nobel;
   }
+
   .dollar-sign {
     display: inline-block;
     width: 10%;
     text-align: center;
     font-size: 16px;
   }
+
   .total-sum-box {
     display: inline-block;
   }
+
   .per-mile-sum-box {
     display: inline-block;
   }
+
   .per-mile-sign {
     padding-right: 15px;
     display: inline-block;
@@ -578,6 +656,7 @@ $black-squeeze: #F5F9FC;
   height: 50px;
   display: flex;
   justify-content: space-between;
+
   .bottom-button {
     height: inherit;
     padding: 14px;
@@ -585,13 +664,292 @@ $black-squeeze: #F5F9FC;
     border: none;
     border-bottom: 1px solid $iron;
   }
+
   .btn-cancel {
     background-color: $gallery;
-
   }
+
   .btn-save {
     background-color: $seagul;
     color: $white;
   }
 }
 
+
+/*
+classes to make block without or with border radius
+*/
+.non-radius {
+  border-radius: 0!important;
+}
+
+.non-top-radius {
+  border-top-left-radius: 0!important;
+  border-top-right-radius: 0!important;
+}
+
+.non-bottom-radius {
+  border-bottom-left-radius: 0!important;
+  border-bottom-right-radius: 0!important;
+}
+
+.border-radius {
+  border-radius: 4px!important;
+}
+
+.border-top-radius {
+  border-top-left-radius: 4px!important;
+  border-top-right-radius: 4px!important;
+}
+
+.border-bottom-radius {
+  border-bottom-left-radius: 4px!important;
+  border-bottom-right-radius: 4px!important;
+}
+
+
+
+/*
+styles for blocks that appear when typing customer name
+*/
+#companies-advice-block {
+  .company-data {
+    background-color: $white;
+    padding: 15px;
+    color: $nobel;
+    border-bottom: 1px solid $iron;
+    &:hover {
+      background-color: $foam;
+    }
+    .company-name {
+      color: $shark;
+      display: inline-block;
+      width: 50%;
+      text-align: left;
+      font-size: 16px;
+    }
+    .company-mc {
+      color: $shark;
+      display: inline-block;
+      width: 50%;
+      text-align: right;
+      font-size: 16px;
+    }
+    .company-address {
+      display: block;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+}
+
+#create-new-customer {
+  height: 50px;
+  background-color: $white;
+  color: $seagul;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 15px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom: 1px solid $iron;
+  &:hover {
+    background-color: $foam;
+  }
+}
+
+
+/*
+styles for section that appear when choose customer (customer address)
+*/
+.address-block {
+  background-color: $foam;
+  height: 100px;
+  border-bottom: 1px solid $iron;
+  display: flex;
+  .address-line-box {
+    display: inline-block;
+    width: 65%;
+    box-sizing: border-box;
+    .address-line {
+      height: 50px;
+      box-sizing: border-box;
+    }
+    .first-row {
+      border-bottom: 1px solid $iron;
+      box-sizing: border-box;
+    }
+  }
+  .map-box {
+    display: inline-block;
+    width: 35%;
+    height: 100px;
+    box-sizing: border-box;
+    border-left: 1px solid $iron;
+  }
+}
+
+.postindex-block {
+  background-color: $foam;
+  height: 50px;
+  display: flex;
+  border-bottom: 1px solid $iron;
+  .area {
+    width: 65%;
+    height: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .state {
+    width: 15%;
+    height: inherit;
+    display: inline-block;
+    border-left: 1px solid $iron;
+    border-right: 1px solid $iron;
+    box-sizing: border-box;
+  }
+  .postindex {
+    width: 20%;
+    height: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+}
+
+.phone-row {
+  display: flex;
+  .phone-box {
+    width: 38%;
+  }
+  .phone-code-box {
+    width: 35%;
+    border-left: 1px solid $iron;
+  }
+}
+
+.bottom-arrow-block {
+  height: 50px;
+  background-color: $foam;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $nobel;
+  border-bottom: 1px solid $iron;
+  .glyphicon-menu-down {
+    &::before {
+      font-size: 20px;
+    }
+  }
+}
+
+/*
+styles for section customer contacts section
+*/
+.contacts-select-block {
+  background-color: $white;
+  margin-top: 30px;
+  /*margin-bottom: 30px;    !*<-----margin bottom should disappear when it's clicked*!*/
+  .select-contact-sign {
+    font-size: 16px;
+  }
+  .glyphicon {
+    position: absolute;
+    z-index: 1;
+    font-size: 10px;
+    color: $nobel;
+  }
+  .glyphicon-triangle-bottom {
+    right: 15px;
+    top: 50%;
+  }
+  .glyphicon-triangle-top {
+    right: 15px;
+    top: 35%;
+  }
+}
+
+.static-select-contact-sign-block {
+  height: 50px;
+  background-color: $white;
+  padding: 15px;
+  font-size: 16px;
+  color: $nobel;
+  border-bottom: 1px solid $iron;
+}
+
+.static-contact-info-block {
+  height: 50px;
+  background-color: $foam;
+  padding: 15px;
+  font-size: 16px;
+  color: $shark;
+  border-bottom: 1px solid $iron;
+}
+
+#add-new-contact {
+  height: 50px;
+  background-color: $white;
+  color: $seagul;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 15px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom: 1px solid $iron;
+  &:hover {
+    background-color: $foam;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.add-customer-wrapper {
+  .address-block, .postindex-block, .phone-row {
+    background-color: $white;
+    border-bottom: 1px solid $iron;
+    .new-customer-input {
+      width: 100%;
+      height: 99%;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      font-size: 16px;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .state-input {
+      padding: 5px;
+    }
+  }
+  .phone-row {
+    background-color: $white;
+  }
+}
+
+.checkbox-row {
+  background-color: $white;
+  padding: 15px;
+  height: 50px;
+  color: $shark;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  .checkbox-input {
+    background-color: $white;
+    border: 1px solid $iron;
+    outline: none;
+    margin-right: 15px;
+  }
+}
+
+.add-customer-button {
+  width: 100%;
+  height: 50px;
+  color: $white;
+  background-color: $seagul;
+  margin-top: 30px;
+  outline: none;
+  font-size: 16px;
+}

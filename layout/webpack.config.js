@@ -10,11 +10,15 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /(\.scss|\.css)$/,
+                test: /(\.scss|\.css|\.woff)$/,
                 loader: ExtractTextPlugin.extract({
                     fallbackLoader: 'style-loader',
                     loader: ['css', 'sass']
                 })
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
             }
         ]
     },

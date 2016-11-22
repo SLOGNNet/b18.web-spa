@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MessageService } from '../services/message.service';
-import { MessageComponent } from './message/message'
+import { MessageComponent } from './message/message';
 import {  ActivatedRoute, Params } from '@angular/router';
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'messages',
@@ -14,7 +14,7 @@ import { Observable, Subscription } from "rxjs";
 export class MessagesComponent implements OnInit {
     private messages: Array<any> = new Array<any>();
     private messagesSubscribtion: Subscription;
-    private message : string;
+    private message: string;
 
     constructor(public messageService: MessageService, private route: ActivatedRoute) {
 
@@ -29,12 +29,20 @@ export class MessagesComponent implements OnInit {
              });
         });
 
-  this.messages.push({ message: "test message", username: "username", type: "carrier", date: "18:07 21-12-2016" },
-    { message: "load #123233", username: "username", type: "user", date: "18:15 21-12-2016"},
-    { message: "have a safe trip", username: "username", type: "system", date: "18:25 21-12-2016"},
-    { message: "ok received", username: "username", type: "user", date: "18:26 21-12-2016"},
-    { message: "hey there!", username: "username", type: "system", date: "18:39 21-12-2016"},
-  )
+  this.messages.push(
+    { message: 'test message', username: 'username', type: 'carrier', date: '18:07 21-12-2016' },
+    { message: 'load #123233', username: 'username', type: 'user', date: '18:15 21-12-2016', imgSrc: './'},
+    { message: 'have a safe trip', username: 'username', type: 'system', date: '18:25 21-12-2016' },
+    { message: 'ok received', username: 'username', type: 'user', date: '18:26 21-12-2016'},
+    { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey 222!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey 67676!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey t33333e!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey 123!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+  );
 }
 
     ngOnDestroy() {
@@ -42,13 +50,16 @@ export class MessagesComponent implements OnInit {
          console.log('component destory');
     }
 
+    onScrollUp()  {
+
+     }
     /*onEnter(event: any): void {
         this.sendMessage();
         event.preventDefault();
     }
     */
   sendMessage() {
-    //this.messageService.create(this.message);
-    //this.message = '';
+    // this.messageService.create(this.message);
+    // this.message = '';
   }
 }
