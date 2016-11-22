@@ -1,0 +1,30 @@
+     <div class="bd-input {{_isFilled}}">
+      <ng-content select="[md-prefix]"></ng-content>
+      <input 
+        name="bd-input-element" 
+        type="text" 
+        [(ngModel)]="value"
+        [disabled]="disabled" 
+        [attr.maxlength]="maxlength"
+        (focus)="_handleFocus($event)"
+        placeholder="placeholder"
+        (change)="_handleChange($event)"
+        (blur)="_handleBlur($event)"
+        [attr.name]="name"
+        [type]="type"
+        class="form-control bd-input-element" 
+        id="customer-input-id"
+        autocomplete="off"
+      >
+      <label 
+        class="bd-input-placeholder" 
+        for="smart-input"
+        [innerHTML]="labelText">
+      </label>
+      </div>
+
+      
+
+
+
+   

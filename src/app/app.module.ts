@@ -16,6 +16,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
+import { CommonInputComponent } from './common/bd-input'; 
 import { MessagesComponent } from './drivers/messages'
 import { MessageComponent } from './drivers/messages/message'
 import { NoContentComponent } from './no-content';
@@ -40,6 +41,7 @@ type StoreType = {
   declarations: [
      AppComponent,
      HomeComponent,
+     CommonInputComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
