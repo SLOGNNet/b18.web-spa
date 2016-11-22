@@ -36,7 +36,7 @@ export class MessagesComponent implements OnInit {
     { message: 'ok received', username: 'username', type: 'user', date: '18:26 21-12-2016'},
     { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
     { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
-    { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
+    { message: 'hey there!', username: 'username', type: 'carrier', date: '18:39 21-12-2016'},
     { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
     { message: 'hey 222!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
     { message: 'hey 67676!', username: 'username', type: 'system', date: '18:39 21-12-2016'},
