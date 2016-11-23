@@ -24,22 +24,25 @@ $error: #fb3a3a;
       z-index: 1;
       padding: 8px 12px;
       outline: 0;
+      &.invalid{
+        border-color:$error;
+      }
       &:focus {
         padding-left: 27%;
         border-color: $seagul;
-          &::-webkit-input-placeholder { 
+          &::-webkit-input-placeholder {
             color: $nobel;
             opacity:1;
           }
-          &:-moz-placeholder { 
+          &:-moz-placeholder {
             color: $nobel;
             opacity:  1;
           }
-          &::-moz-placeholder { 
+          &::-moz-placeholder {
             color:$nobel;
             opacity:  1;
           }
-          &:-ms-input-placeholder { 
+          &:-ms-input-placeholder {
             color: $nobel;
             opacity:  1;
           }
@@ -60,10 +63,6 @@ $error: #fb3a3a;
         padding-top: 5px;
         text-align: right;
       }
-      &:invalid {
-        color:$error;
-        border-color: $error
-      }
 
     }
 
@@ -80,20 +79,32 @@ $error: #fb3a3a;
       bottom: 2px;
       font-size: 16px;
       font-weight: normal;
+        &.invalid{
+          color:$error;
+          margin-top: -15px;
+        }
     }
-    ::-webkit-input-placeholder { 
+
+    .error-message{
+      padding: 5px 10px;
+      line-height:1;
+      color: $error;
+      background: #ffebeb;
+    }
+
+    ::-webkit-input-placeholder {
         color:#fff;
         opacity:0;
     }
-    :-moz-placeholder { 
+    :-moz-placeholder {
       color:    #fff;
       opacity:  0;
     }
-    ::-moz-placeholder { 
+    ::-moz-placeholder {
       color:    #fff;
       opacity:  0;
     }
-    :-ms-input-placeholder { 
+    :-ms-input-placeholder {
       color:    #fff;
     }
   }

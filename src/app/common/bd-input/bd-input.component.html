@@ -1,8 +1,10 @@
-     <div class="bd-input {{_isFilled}}">
+     <div
+       class="bd-input {{_isFilled}}"
+     >
       <ng-content select="[md-prefix]"></ng-content>
-      <input 
-        name="bd-input-element" 
-        type="text" 
+      <input
+        name="bd-input-element"
+        type="text"
         [(ngModel)]="value"
         [disabled]="disabled"
         [attr.maxlength]="maxlength"
@@ -12,21 +14,19 @@
         (blur)="_handleBlur($event)"
         [attr.name]="name"
         [type]="type"
-        class="form-control bd-input-element" 
+        class="form-control bd-input-element {{_invalidClass}}"
         id="customer-input-id"
         autocomplete="off"
       >
-      <label 
-        class="bd-input-placeholder {{_isAnimated}}" 
+      <div
+        *ngIf="_isInvalid && !_empty"
+        class="error-message"
+        [innerHTML]="errorText">
+      </div>
+      <label
+        class="bd-input-placeholder {{_invalidClass}} {{_isAnimated}}"
         for="smart-input"
         [innerHTML]="labelText">
       </label>
        <ng-content select="[md-suffix]"></ng-content>
       </div>
-
-
-      
-
-
-
-   

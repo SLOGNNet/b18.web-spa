@@ -11,14 +11,18 @@ Home page
 >
 </datatable>
 
-<bd-input 
+
+<bd-input
     [animated]="true"
-    [labelText]="'Estimated distance calculate'">
+    placeholder="placeholder"
+    [labelText]="'Estimated distance calculate'"
+    [errorText]="'test error'"
+    [invalid]="false"
+    >
 </bd-input>
-<bd-input 
-    [labelText]="'Estimated'"   
+<bd-input
+    [labelText]="'Estimated'"
     [attr.name]="'Andrew'">
     <span md-prefix>$&nbsp;</span>
     <span md-suffix>.00</span>
 </bd-input>
-
