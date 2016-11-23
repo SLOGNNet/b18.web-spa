@@ -13,12 +13,13 @@ export class CommonInputComponent {
     private _value: string = '';
     private _empty: boolean = true;
     private _isFilled: string = '';
+    private _isAnimated: string = '';
     private _focused: boolean = false;
     private _disabled: boolean = false;
     private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
     private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-    private  coerceBooleanProperty(value: any): boolean {
-  return value != null && `${value}` !== 'false';
+    private  coerceBooleanProperty( value: any): boolean {
+      return value != null && `${value}` !== 'false';
     }
     get focused() { return this._focused; }
     get empty() { return (this._value == null || this._value === '') && this.type !== 'date '; }
@@ -34,6 +35,7 @@ export class CommonInputComponent {
   }
 
     @Input() labelText: any;
+    @Input() animated: boolean;
     @Input() name: string = null;
     @Input() type: string = 'text';
     @Input()
@@ -41,6 +43,7 @@ export class CommonInputComponent {
     set disabled(value) { this._disabled = this.coerceBooleanProperty(value); }
 
       _handleFocus(event: FocusEvent) {
+         this.Animated(this.animated);
     this._focused = true;
     this._focusEmitter.emit(event);
     }
@@ -55,6 +58,10 @@ export class CommonInputComponent {
 
   changeComponentClass(val:boolean): void{
     val ? this._isFilled = '' : this._isFilled = 'filled-in';
+  }
+
+  Animated(animated:boolean): void{
+    animated ? this._isAnimated = 'addAnimation' : this._isAnimated = '';
   }
 
     

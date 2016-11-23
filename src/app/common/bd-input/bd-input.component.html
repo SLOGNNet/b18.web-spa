@@ -4,7 +4,7 @@
         name="bd-input-element" 
         type="text" 
         [(ngModel)]="value"
-        [disabled]="disabled" 
+        [disabled]="disabled"
         [attr.maxlength]="maxlength"
         (focus)="_handleFocus($event)"
         placeholder="placeholder"
@@ -17,11 +17,13 @@
         autocomplete="off"
       >
       <label 
-        class="bd-input-placeholder" 
+        class="bd-input-placeholder {{_isAnimated}}" 
         for="smart-input"
         [innerHTML]="labelText">
       </label>
+       <ng-content select="[md-suffix]"></ng-content>
       </div>
+
 
       
 
