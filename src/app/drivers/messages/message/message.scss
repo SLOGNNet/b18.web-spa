@@ -1,11 +1,11 @@
-$color-system: #a9a9a9;
+$color-system: #dcdcdc;
 $color-user: #90ee90;
 $color-carrier: #1e90ff;
 $color-message: #000;
 
 .message-container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .message {
@@ -35,7 +35,7 @@ $color-message: #000;
 	background: $color-system;
 
 	&:before {
-		right: -20px;
+		right: -15px;
 		border-left: 20px solid $color-system;
 	}
 }
@@ -44,7 +44,7 @@ $color-message: #000;
 	background: $color-carrier;
 
 	&:before {
-		left: -20px;
+		left: -15px;
 		border-right: 20px solid $color-carrier;
 	}
 }
@@ -53,7 +53,7 @@ $color-message: #000;
 	background: $color-user;
 
 	&:before {
-		right: -20px;
+		right: -15px;
 		border-left: 20px solid $color-user;
 	}
 }
