@@ -1,7 +1,7 @@
      <div
        class="bd-input {{_isFilled}}"
      >
-      <ng-content select="[md-prefix]"></ng-content>
+      <span class="prefix"><ng-content select="[md-prefix]"></ng-content></span>
       <input
         name="bd-input-element"
         type="text"
@@ -28,5 +28,4 @@
         for="smart-input"
         [innerHTML]="labelText">
       </label>
-       <ng-content select="[md-suffix]"></ng-content>
       </div>

@@ -11,6 +11,11 @@ $error: #fb3a3a;
     overflow: hidden;
     margin-bottom: 0;
     background-color: $white;
+     .prefix {
+      position: absolute;
+      top: 14px;
+      left: 112px
+    }
     .bd-input-element {
       box-shadow: none;
       border: none;
@@ -110,7 +115,7 @@ $error: #fb3a3a;
   }
 
   .filled-in{
-    .bd-input-placeholder {
+    .addAnimation {
         color: $nobel;
         margin-top: 7px;
         z-index: 2;
