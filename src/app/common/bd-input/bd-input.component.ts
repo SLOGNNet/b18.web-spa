@@ -1,13 +1,20 @@
-import { Component, Input, EventEmitter, HostBinding } from '@angular/core';
+import { Component, Input, EventEmitter, HostBinding, forwardRef } from '@angular/core';
 const noop = () => {};
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => CommonInputComponent),
+  multi: true
+};
 
 @Component({
     selector: 'bd-input',
     styleUrls: ['bd-input.component.scss'],
-    templateUrl: './bd-input.component.html'
+    templateUrl: './bd-input.component.html',
+    providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-
-export class CommonInputComponent {
+export class CommonInputComponent implements ControlValueAccessor{
     private _onTouchedCallback: () => void = noop;
     private _onChangeCallback: (_: any) => void = noop;
     private _value: string = '';
@@ -57,7 +64,7 @@ export class CommonInputComponent {
     val ? this._isFilled = '' : this._isFilled = 'filled-in';
   }
 
-    
+
   @Input() set value(v: any) {
     v = this._convertValueForInputType(v);
     if (v !== this._value) {
@@ -71,4 +78,27 @@ export class CommonInputComponent {
     this._onTouchedCallback();
   }
 
-} 
+  /**
+   * Implemented as part of ControlValueAccessor.
+   * TODO: internal
+   */
+  writeValue(value: any) {
+    this._value = value;
+  }
+
+  /**
+   * Implemented as part of ControlValueAccessor.
+   * TODO: internal
+   */
+  registerOnChange(fn: any) {
+    this._onChangeCallback = fn;
+  }
+
+  /**
+   * Implemented as part of ControlValueAccessor.
+   * TODO: internal
+   */
+  registerOnTouched(fn: any) {
+    this._onTouchedCallback = fn;
+  }
+}
