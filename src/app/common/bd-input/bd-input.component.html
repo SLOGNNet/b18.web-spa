@@ -1,35 +1,3 @@
-     <!--<div
-       class="bd-input {{_isFilled}}"
-     >
-      <span class="prefix"><ng-content select="[md-prefix]"></ng-content></span>
-      <input
-        name="bd-input-element"
-        type="text"
-        [(ngModel)]="value"
-        [disabled]="disabled"
-        [attr.maxlength]="maxlength"
-        (focus)="_handleFocus($event)"  
-        placeholder="placeholder"
-        (change)="_handleChange($event)"
-        (blur)="_handleBlur($event)"
-        [attr.name]="name"
-        [type]="type"
-        class="form-control bd-input-element {{_invalidClass}}"
-        id="customer-input-id"
-        autocomplete="off"
-      >
-      <div
-        *ngIf="_isInvalid && !_empty"
-        class="error-message"
-        [innerHTML]="errorText">
-      </div>
-      <label
-        class="bd-input-placeholder {{_invalidClass}} {{_isAnimated}}"  
-        for="smart-input"
-        [innerHTML]="labelText">
-      </label>
-      </div>-->
-
 <div class="bd-input-wrapper {{stateClasses}}">
         <div class="bd-label">
           <label
@@ -41,7 +9,7 @@
         <div class="bd-input">
 
           <div class="bd-input-prefix">
-            <span md-prefix="">$&nbsp;</span>
+            <ng-content select="[md-prefix]"></ng-content>
           </div>
 
           <div class="bd-input-infix">
@@ -63,11 +31,11 @@
             >
           </div>
           <div class="bd-input-suffix">
-            <span md-suffix="">.00</span>
+            <ng-content select="[md-sufix]"></ng-content>
           </div>
         </div>
       </div>
       <div class="error-message">
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-          Error text
+          {{errorText}}
       </div>
