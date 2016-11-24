@@ -74,12 +74,13 @@ export class  CommonInputComponent {
     return this._value;
   };
 
-    _handleFocus(event: FocusEvent) {
-      this.updateState(this.state);
+    _handleFocus(event: FocusEvent) {  
+      this.addClassIntoState('bd-focused');
       console.log(this._bdFocused);
       this.Animated(this.animated);
       this._focused = true;
       this._focusEmitter.emit(event);
+      this.updateState();
     }
 
     set disabled(value) {
@@ -96,16 +97,31 @@ export class  CommonInputComponent {
   }
 
   _handleBlur(event: FocusEvent) {
-    this.ConvertStateToString(this.state);
+    if(this._empty) this.removeClassFromState('bd-focused');
     this.value !== '' ? this._empty = false : this._empty = true;
     this.setInvalidState(this._isInvalid);
     this._focused = false;
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
+    this.updateState();
   }
 
-updateState(arr: any[]){
-    arr.push('bd-focused');
+removeClassFromState(cl:any): void {
+ this.state = this.state.filter(item => item !== cl);
+}
+
+addClassIntoState(cl:any): void {
+ if(!this.state.includes(cl)) this.state.push(cl);
+}
+
+
+updateState(): void {
+  console.log(this._isInvalid);
+ if(this._isInvalid) {this.addClassIntoState('bd-invalid');}
+ else {
+   this.removeClassFromState('bd-invalid');
+ }
+ this.ConvertStateToString(this.state);
 }
 
 ConvertStateToString(arr: any[]){

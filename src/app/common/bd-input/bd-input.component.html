@@ -30,47 +30,44 @@
       </label>
       </div>-->
 
+<div class="bd-input-wrapper {{stateClasses}}">
+        <div class="bd-label">
+          <label
+            class="bd-input-placeholder"
+            for="customer-input-id">
+            Estimated weight
+          </label>
+        </div>
+        <div class="bd-input">
 
+          <div class="bd-input-prefix">
+            <span md-prefix="">$&nbsp;</span>
+          </div>
 
-
-
-      <div class="bd-input-wrapper {{stateClasses}}">
-       <div class="bd-label">
-         <label
-           class="bd-input-placeholder" 
-           for="customer-input-id">
-           Estimated weight
-         </label>
-       </div>
-       <div class="bd-input">
-
-         <div class="bd-input-prefix">
-           <span md-prefix="">$&nbsp;</span>
-         </div>
-
-         <div class="bd-input-infix">
-           <input
-             name="bd-input-element"
-             type="text"
-             [(ngModel)]="value"
-             [disabled]="disabled"
-             [attr.maxlength]="maxlength"
-             (focus)="_handleFocus($event)"
-             placeholder="placeholder"
-             (change)="_handleChange($event)"
-             (blur)="_handleBlur($event)"
-             [attr.name]="name"
-             [type]="type"
-             class="bd-input-element {{_invalidClass}}"
-             id="customer-input-id"
-             autocomplete="off"
-           >
-         </div>
-         <div class="bd-input-suffix">
-           <span md-suffix="">.00</span>
-         </div>
-       </div>
-       <div class="error-message">
-
-       </div>
-     </div>
+          <div class="bd-input-infix">
+            <input
+              name="bd-input-element"
+              type="text"
+              [(ngModel)]="value"
+              [disabled]="disabled"
+              [attr.maxlength]="maxlength"
+              (focus)="_handleFocus($event)"
+              placeholder="placeholder"
+              (change)="_handleChange($event)"
+              (blur)="_handleBlur($event)"
+              [attr.name]="name"
+              [type]="type"
+              class="bd-input-element {{_invalidClass}}"
+              id="customer-input-id"
+              autocomplete="off"
+            >
+          </div>
+          <div class="bd-input-suffix">
+            <span md-suffix="">.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="error-message">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          Error text
+      </div>
