@@ -59,37 +59,14 @@ $error-background: rgba(251,58,58,0.2);
         box-shadow: none;
         outline: 0;
         &:focus {
-          &::-webkit-input-placeholder {
+          &::placeholder {
             color: $nobel;
             opacity:1;
           }
-          &:-moz-placeholder {
-            color: $nobel;
-            opacity:  1;
-          }
-          &::-moz-placeholder {
-            color:$nobel;
-            opacity:  1;
-          }
-          &:-ms-input-placeholder {
-            color: $nobel;
-            opacity:  1;
-          }
         }
-        &::-webkit-input-placeholder {
+        &::placeholder {
             color:#fff;
             opacity:0;
-        }
-        &:-moz-placeholder {
-          color:    #fff;
-          opacity:  0;
-        }
-        &::-moz-placeholder {
-          color:    #fff;
-          opacity:  0;
-        }
-        &:-ms-input-placeholder {
-          color:    #fff;
         }
       }
     }

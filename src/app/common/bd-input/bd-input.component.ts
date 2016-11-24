@@ -112,10 +112,10 @@ export class CommonInputComponent {
     if (this._isDefaultView === false) this.addClassIntoState('bd-static');
 
     // convert current state to classes string
-    this.ConvertStateToString(this.state);
+    this.convertStateToString(this.state);
   }
 
-  ConvertStateToString(arr: any[]) {
+  convertStateToString(arr: any[]) {
     this.stateClasses = arr.map(item => item).join(' ');
   }
 
