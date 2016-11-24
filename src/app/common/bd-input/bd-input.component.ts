@@ -72,7 +72,7 @@ export class CommonInputComponent {
   };
 
   _handleFocus(event: FocusEvent) {
-    if (!this.state.includes('bd-static')) this.addClassIntoState('bd-focused');
+    this.state.includes('bd-static') ? this.addClassIntoState('bd-static-focused') : this.addClassIntoState('bd-focused');
     this._focused = true;
     this._focusEmitter.emit(event);
     this.updateState();
@@ -88,8 +88,14 @@ export class CommonInputComponent {
     this._onTouchedCallback();
   }
 
+  _handleKeyPress(event: Event) {
+    this.value = (<HTMLInputElement>event.target).value;
+    this._onTouchedCallback();
+  }
+
   _handleBlur(event: FocusEvent) {
     this.removeClassFromState('bd-focused');
+    this.removeClassFromState('bd-static-focused');
     this.value !== '' ? this._empty = false : this._empty = true;
     this._empty ? this.removeClassFromState('bd-static') : this.addClassIntoState('bd-static');
     this._focused = false;
