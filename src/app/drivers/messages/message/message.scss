@@ -1,70 +1,84 @@
-$color-system: darkgrey;
-$color-user: lightgreen;
-$color-carrier: DodgerBlue;
+$color-system: #dcdcdc;
+$color-user: #90ee90;
+$color-carrier: #1e90ff;
+$color-message: #000;
 
 .message-container {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: center;
 }
 
-  .message {
-      position: relative;
-      word-wrap: break-word;
-      display: flex;
-      flex-direction: column;
-      color: #000;
-      width: 30%;
-      min-height: 40px;
-      height: 5%;
-      margin: 15px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .message:before{
-      content: "";
-      width: 0;
-      height: 0;
-      border-top: 0px solid transparent;
-      border-bottom: 20px solid transparent;
-      position: absolute;
-    }
+.message {
+	position: relative;
+	display: flex;
+	width: 30%;
+	height: 5%;
+	padding: 10px;
+	margin: 15px;
+	color: $color-message;
+	word-wrap: break-word;
+	flex-direction: column;
+	min-height: 40px;
+	border-radius: 5px;
 
-    .message-carrier {
-      background: $color-carrier;
-      &:before {
-        border-left: 20px solid $color-carrier;
-        right: -20px;
-      }
-    }
-
-    .message-system {
-      background: $color-system;
-      &:before {
-        border-right: 20px solid $color-system;
-        left: -20px;
-      }
-    }
-
-    .message-user {
-      background: $color-user;
-      &:before {
-        border-left: 20px solid $color-user;
-        right: -20px;
-      }
-    }
-
-  .date {
-    position: relative;
-    display: flex;
-    align-content: center;
-    padding: 28px;
-    word-wrap: break-word;
-    margin: 0 0 0 20px;
-  }
-
-.container-left{
-  flex-direction: row;
+	&:before {
+		position: absolute;
+		width: 0;
+		height: 0;
+		content: '';
+		border-top: 0 solid transparent;
+		border-bottom: 20px solid transparent;
+	}
 }
-.container-right{
-  flex-direction: row-reverse;
+
+.message-system {
+	background: $color-system;
+
+	&:before {
+		right: -15px;
+		border-left: 20px solid $color-system;
+	}
+}
+
+.message-carrier {
+	background: $color-carrier;
+
+	&:before {
+		left: -15px;
+		border-right: 20px solid $color-carrier;
+	}
+}
+
+.message-user {
+	background: $color-user;
+
+	&:before {
+		right: -15px;
+		border-left: 20px solid $color-user;
+	}
+}
+
+.date {
+	position: relative;
+	display: flex;
+	padding: 28px;
+	margin: 0 0 0 20px;
+	align-content: center;
+	word-wrap: break-word;
+}
+
+.container-right {
+	flex-direction: row;
+}
+
+.container-left {
+	flex-direction: row-reverse;
+}
+
+img {
+	width: 50px;
+	height: 50px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	border-radius: 50%;
 }

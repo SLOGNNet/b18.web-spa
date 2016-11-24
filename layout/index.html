@@ -153,6 +153,7 @@
             <div class="col-sm-4 pane pane-2" id="pane-2">
               <div class="content">Pane 2 - depends on the context</div>
             </div>
+            <!--******************* LOAD FORM BLOCK *******************-->
             <div class="col-sm-4 pane pane-3" id="pane-3">
               <div class="content">
                 <div class="container layout-container">
@@ -162,7 +163,7 @@
                       <!-- header section / navigation -->
                       <section class="header-section">
                         <div class="new-load-wrapper">
-                          <div class="panel panel-default">
+                          <div class="panel panel-default new-load-panel">
                             <div class="panel-body">
                               <div class="new-load-sign">New Load</div>
                               <ul class="load-navigation-list">
@@ -182,14 +183,299 @@
                         <div class="block-title-sign">customer</div>
                         <div class="customer-wrapper">
                           <!-- smart form block -->
-                          <form class="smart-form" action="" method="GET">
-                            <div class="form-group">
+                          <form class="smart-form">
+                            <div class="form-group" id="customer-form-id">
                               <input name="smart-input" type="text" class="form-control smart-input" id="customer-input-id" required
                                      autocomplete="off">
                               <label class="input-label" for="customer-input-id">Name or MC#</label>
                             </div>
                           </form>
-                          <div id="search-advice-wrapper"></div>
+                          <!-- hidden block -->
+                          <div class="hidden-advice-block" id="hidden-advice">
+                            <div id="companies-advice-block"></div>
+                            <div id="create-new-customer">Add New Customer</div>
+                          </div>
+
+                          <!-- ADD NEW CUSTOMER BLOCK -->
+                          <div class="add-customer-wrapper hidden" id="add-customer-wrapper">
+                            <!-- new customer basic info title -->
+                            <div class="block-title-sign">basic information</div>
+                            <!-- new customer name smart form block -->
+                            <form class="smart-form">
+                              <div class="form-group" id="new-customer-name-block">
+                                <input name="smart-input" type="text" class="form-control smart-input" id="new-customer-block" required
+                                       autocomplete="off">
+                                <label class="input-label" for="customer-input-id">Company Name</label>
+                              </div>
+                            </form>
+                            <!-- new customer select block -->
+                            <div class="select-option-block non-bottom-radius">
+                              <div class="left-static-sign">customer type</div>
+                              <div class="form-group select-wrapper">
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                <select class="form-control select-box" id="new-customer-type">
+                                  <option class="option-item">1</option>
+                                  <option class="option-item">2</option>
+                                </select>
+                              </div>
+                            </div>
+                            <!-- new customer block with three buttons -->
+                            <div class="three-buttons-block">
+                              <div class="left-static-sign">Status</div>
+                              <button class="btn switch-button active-button" id="active-new-customer-status-id">Active</button>
+                              <button class="btn switch-button" id="inactive-new-customer-status-id">Inactive</button>
+                              <button class="btn switch-button" id="unavailable-new-customer-status-id">Unavailable</button>
+                            </div>
+                            <!-- new customer MC# smart form block -->
+                            <form class="smart-form">
+                              <div class="form-group non-radius" id="new-customer-mc-id-block">
+                                <input name="smart-input" type="text" class="form-control smart-input non-radius" id="new-customer-mc-id" required
+                                       autocomplete="off">
+                                <label class="input-label" for="customer-input-id">MC#</label>
+                              </div>
+                            </form>
+                            <!-- new customer TAX-ID smart form block -->
+                            <form class="smart-form">
+                              <div class="form-group non-top-radius" id="new-customer-tax-id-block">
+                                <input name="smart-input" type="text" class="form-control smart-input non-top-radius" id="new-customer-tax-id" required
+                                       autocomplete="off">
+                                <label class="input-label" for="customer-input-id">TAX-ID (W9)</label>
+                              </div>
+                            </form>
+
+                            <!-- new customer address title -->
+                            <div class="block-title-sign">address</div>
+                            <!-- address block -->
+                            <div class="address-block border-top-radius">
+                              <div class="address-line-box">
+                                <div class="address-line first-row">
+                                  <input class="form-control new-customer-input" type="text" placeholder="Street Address 1">
+                                </div>
+                                <div class="address-line second-row">
+                                  <input class="form-control new-customer-input" type="text" placeholder="Street Address 2">
+                                </div>
+                              </div>
+                              <div class="map-box">place for map</div>
+                            </div>
+                            <div class="postindex-block">
+                              <div class="area">
+                                <input class="form-control new-customer-input" type="text" placeholder="City">
+                              </div>
+                              <div class="state">
+                                <input class="form-control new-customer-input state-input" type="text" placeholder="State">
+                              </div>
+                              <div class="postindex">
+                                <input class="form-control new-customer-input" type="text" placeholder="ZIP">
+                              </div>
+                            </div>
+                            <!-- phone row block -->
+                            <div class="non-active-row phone-row">
+                              <div class="left-static-sign">phone</div>
+                              <div class="phone-box">
+                                <input class="form-control new-customer-input" type="text">
+                              </div>
+                              <div class="phone-code-box">
+                                <input class="form-control new-customer-input" type="text" placeholder="Extension">
+                              </div>
+                            </div>
+                            <!-- fax row block -->
+                            <div class="non-active-row phone-row">
+                              <div class="left-static-sign">fax</div>
+                              <div class="phone-box">
+                                <input class="form-control new-customer-input" type="text">
+                              </div>
+                              <div class="phone-code-box">
+                                <input class="form-control new-customer-input" type="text" placeholder="Extension">
+                              </div>
+                            </div>
+                            <!-- new customer email -->
+                            <form class="smart-form">
+                              <div class="form-group non-top-radius" id="new-customer-email-block-id">
+                                <input name="smart-input" type="text" class="form-control smart-input non-top-radius" id="new-customer-email-id" required
+                                       autocomplete="off">
+                                <label class="input-label" for="customer-input-id">Email</label>
+                              </div>
+                            </form>
+
+                            <div class="block-title-sign">billing address</div>
+
+                            <!-- row with checkbox -->
+                            <div class="non-active-row checkbox-row">
+                              <input type="checkbox" class="checkbox-input">
+                              Same as Company Address
+                            </div>
+                            <!-- address block -->
+                            <div class="address-block border-top-radius">
+                              <div class="address-line-box">
+                                <div class="address-line first-row">
+                                  <input class="form-control new-customer-input" type="text" placeholder="Street Address 1">
+                                </div>
+                                <div class="address-line second-row">
+                                  <input class="form-control new-customer-input" type="text" placeholder="Street Address 2">
+                                </div>
+                              </div>
+                              <div class="map-box">place for map</div>
+                            </div>
+                            <div class="postindex-block">
+                              <div class="area">
+                                <input class="form-control new-customer-input" type="text" placeholder="City">
+                              </div>
+                              <div class="state">
+                                <input class="form-control new-customer-input state-input" type="text" placeholder="State">
+                              </div>
+                              <div class="postindex">
+                                <input class="form-control new-customer-input" type="text" placeholder="ZIP">
+                              </div>
+                            </div>
+                            <!-- phone row block -->
+                            <div class="non-active-row phone-row">
+                              <div class="left-static-sign">phone</div>
+                              <div class="phone-box">
+                                <input class="form-control new-customer-input" type="text">
+                              </div>
+                              <div class="phone-code-box">
+                                <input class="form-control new-customer-input" type="text" placeholder="Extension">
+                              </div>
+                            </div>
+                            <!-- fax row block -->
+                            <div class="non-active-row phone-row">
+                              <div class="left-static-sign">fax</div>
+                              <div class="phone-box">
+                                <input class="form-control new-customer-input" type="text">
+                              </div>
+                              <div class="phone-code-box">
+                                <input class="form-control new-customer-input" type="text" placeholder="Extension">
+                              </div>
+                            </div>
+                            <!-- new customer email -->
+                            <form class="smart-form">
+                              <div class="form-group non-top-radius" id="new-customer-email2-block-id">
+                                <input name="smart-input" type="text" class="form-control smart-input non-top-radius" id="new-customer2-email-id" required
+                                       autocomplete="off">
+                                <label class="input-label" for="customer-input-id">Email</label>
+                              </div>
+                            </form>
+                            <!-- textarea block -->
+                            <div class="textarea-block">
+                              <div class="form-group textarea-wrapper">
+                                <textarea class="form-control notes-textarea non-radius" rows="5" placeholder="Notes" id="notesarea-id"></textarea>
+                              </div>
+                            </div>
+
+                            <button class="btn btn-info add-customer-button" id="add-customer-button">Add Customer</button>
+
+                          </div>
+
+                          <!-- MAIN CUSTOMER BLOCK INFO opens when clicked on customer data row -->
+                          <div class="customer-data-section hidden" id="customer-data-section">
+
+                            <!-- CUSTOMER ADDRESS INFO block -->
+                            <div class="customer-address-wrapper">
+                              <!-- non active row block -->
+                              <div class="non-active-row">
+                                <div class="left-static-sign">Customer Type</div>
+                                <div class="total-sum-box"></div>
+                              </div>
+                              <!-- select block -->
+                              <div class="select-option-block non-bottom-radius">
+                                <div class="left-static-sign">Status</div>
+                                <div class="form-group select-wrapper">
+                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                  <span class="glyphicon glyphicon-triangle-top"></span>
+                                  <select class="form-control select-box" id="status-select-id">
+                                    <option class="option-item">Active</option>
+                                    <option class="option-item">Non active</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <!-- non active row block -->
+                              <div class="non-active-row">
+                                <div class="left-static-sign">mc#</div>
+                                <div class="total-sum-box"></div>
+                              </div>
+                              <!-- address block -->
+                              <div class="address-block">
+                                <div class="address-line-box">
+                                  <div class="address-line first-row"></div>
+                                  <div class="address-line second-row"></div>
+                                </div>
+                                <div class="map-box">place for map</div>
+                              </div>
+                              <div class="postindex-block">
+                                <div class="area"></div>
+                                <div class="state"></div>
+                                <div class="postindex"></div>
+                              </div>
+                              <!-- non active row block -->
+                              <div class="non-active-row phone-row">
+                                <div class="left-static-sign">phone</div>
+                                <div class="phone-box"></div>
+                                <div class="phone-code-box"></div>
+                              </div>
+                              <!-- block with bottom arrow -->
+                              <div class="bottom-arrow-block border-bottom-radius">
+                                <span class="	glyphicon glyphicon-menu-down"></span>
+                              </div>
+                            </div>
+
+                            <!-- CUSTOMER CONTACT INFO block -->
+                            <div class="customer-contacts-wrapper">
+                              <!-- contacts select block -->
+                              <div class="non-active-row contacts-select-block border-radius" id="contact-select-id">
+                                <div class="left-static-sign">contact</div>
+                                <div class="select-contact-sign">Select Contact</div>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                              </div>
+                              <!-- hidden block / opens when clicked on previous row-->
+                              <div class="hidden" id="hidden-contact-info">
+                                <!-- row with sign 'Select Contact' -->
+                                <div class="static-select-contact-sign-block">
+                                  <div class="select-contact-sign">Select Contact</div>
+                                </div>
+                                <!-- row for contact person name -->
+                                <div class="static-contact-info-block" id="contactPerson-info-block">
+                                  <div class="contact-info-sign" id="contactPerson-info-sign"></div>
+                                </div>
+                                <!-- row for adding contacts -->
+                                <div id="add-new-contact">Add Contact</div>
+                              </div>
+
+                              <!-- contactPerson address info block to be active when clicked on contact name-->
+                              <div class="hidden" id="contactPerson-address-wrapper">
+                                <!-- non active row block -->
+                                <div class="non-active-row">
+                                  <div class="left-static-sign">position</div>
+                                  <div class="total-sum-box"></div>
+                                </div>
+                                <!-- address block -->
+                                <div class="address-block">
+                                  <div class="address-line-box">
+                                    <div class="address-line first-row"></div>
+                                    <div class="address-line second-row"></div>
+                                  </div>
+                                  <div class="map-box">place for map</div>
+                                </div>
+                                <div class="postindex-block">
+                                  <div class="area"></div>
+                                  <div class="state"></div>
+                                  <div class="postindex"></div>
+                                </div>
+                                <!-- non active row block -->
+                                <div class="non-active-row phone-row">
+                                  <div class="left-static-sign">phone</div>
+                                  <div class="phone-box"></div>
+                                  <div class="phone-code-box"></div>
+                                </div>
+                                <!-- block with bottom arrow -->
+                                <div class="bottom-arrow-block border-bottom-radius">
+                                  <span class="	glyphicon glyphicon-menu-down"></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                       </section>
 
@@ -197,47 +483,37 @@
                       <section class="load-section"><a name="load-section"></a>
                         <div class="block-title-sign">load</div>
                         <div class="load-wrapper">
-                          <ul class="list-group">
-                            <li class="list-group-item">
-                              <!-- smart form block -->
-                              <div class="smart-form">
-                                <div class="form-group">
-                                  <input name="smart-input" type="text" class="form-control smart-input" id="smart-input" required>
-                                  <label class="input-label" for="smart-input">Load Number</label>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- block with two switch buttons -->
-                              <div class="switch-buttons-block">
-                                <div class="left-static-sign">Load Type</div>
-                                <button class="btn switch-button load-button active-button" id="left-load-button">FTL</button>
-                                <button class="btn switch-button load-button" id="right-load-button">LTL</button>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- block with two switch buttons -->
-                              <div class="switch-buttons-block">
-                                <div class="left-static-sign">Freight</div>
-                                <button class="btn switch-button active-button" id="left-freight-button">Dry</button>
-                                <button class="btn switch-button" id="right-freight-button">Reefer</button>
-                              </div>
-                            </li>
-                            <li class="list-group-item flex-item">
-                              <!-- select block -->
-                              <div class="select-option-block">
-                                <div class="left-static-sign">Data Assignee</div>
-                                <div class="form-group select-wrapper">
-                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                  <span class="glyphicon glyphicon-triangle-top"></span>
-                                  <select class="form-control select-box" id="assignee-select-id">
-                                    <option class="option-item">1</option>
-                                    <option class="option-item">2</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
+                          <!-- smart form block -->
+                          <div class="smart-form">
+                            <div class="form-group non-bottom-radius">
+                              <input name="smart-input" type="text" class="form-control smart-input" id="smart-input" required>
+                              <label class="input-label" for="smart-input">Load Number</label>
+                            </div>
+                          </div>
+                          <!-- block with two switch buttons -->
+                          <div class="switch-buttons-block">
+                            <div class="left-static-sign">Load Type</div>
+                            <button class="btn switch-button load-button active-button" id="left-load-button">FTL</button>
+                            <button class="btn switch-button load-button" id="right-load-button">LTL</button>
+                          </div>
+                          <!-- block with two switch buttons -->
+                          <div class="switch-buttons-block">
+                            <div class="left-static-sign">Freight</div>
+                            <button class="btn switch-button active-button" id="left-freight-button">Dry</button>
+                            <button class="btn switch-button" id="right-freight-button">Reefer</button>
+                          </div>
+                          <!-- select block -->
+                          <div class="select-option-block">
+                            <div class="left-static-sign">Data Assignee</div>
+                            <div class="form-group select-wrapper">
+                              <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              <span class="glyphicon glyphicon-triangle-top"></span>
+                              <select class="form-control select-box" id="assignee-select-id">
+                                <option class="option-item">1</option>
+                                <option class="option-item">2</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
                       </section>
 
@@ -245,96 +521,80 @@
                       <section class="pickups-section"><a name="pickups-section"></a>
                         <div class="block-title-sign">pickups</div>
                         <div class="pickups-wrapper">
-                          <ul class="list-group">
-                            <li class="list-group-item">
-                              <!-- static block with left sign and plus/minus icon -->
-                              <div class="static-left-sign-block">
-                                <div class="panel panel-default left-sign-panel">
-                                  <div class="panel-body left-sign-panel">
-                                    <div class="left-sign">Shipper #</div>
-                                  </div>
-                                  <span class="glyphicon glyphicon-minus-sign glyphicon-plus-minus"></span>
-                                </div>
+                          <!-- static block with left sign and plus/minus icon -->
+                          <div class="static-left-sign-block">
+                            <div class="panel panel-default left-sign-panel non-bottom-radius">
+                              <div class="panel-body left-sign-panel">
+                                <div class="left-sign">Shipper #</div>
                               </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- smart form block -->
-                              <div class="smart-form">
-                                <div class="form-group">
-                                  <input name="smart-input" type="text" class="form-control smart-input" id="shipper-input-id" required>
-                                  <label class="input-label" for="shipper-input-id">Shipper</label>
-                                </div>
+                              <span class="glyphicon glyphicon-minus-sign glyphicon-plus-minus"></span>
+                            </div>
+                          </div>
+                          <!-- smart form block -->
+                          <div class="smart-form">
+                            <div class="form-group non-radius">
+                              <input name="smart-input" type="text" class="form-control smart-input" id="shipper-input-id" required>
+                              <label class="input-label" for="shipper-input-id">Shipper</label>
+                            </div>
+                          </div>
+                          <!-- smart form block -->
+                          <div class="smart-form">
+                            <div class="form-group non-radius">
+                              <input name="smart-input" type="text" class="form-control smart-input" id="date-input-id" required>
+                              <label class="input-label" for="date-input-id">Date</label>
+                            </div>
+                          </div>
+                          <!-- table block -->
+                          <div class="table-block">
+                            <table class="table table-bordered pickups-table">
+                              <thead class="pickups-table-header">
+                              <tr>
+                                <th class="table-header-item">pickup #</th>
+                                <th class="table-header-item">p.o.</th>
+                                <th class="table-header-item">commo-dity</th>
+                                <th class="table-header-item">unit type</th>
+                                <th class="table-header-item">unit count</th>
+                                <th class="table-header-item">pallet count</th>
+                                <th class="table-header-item">weight (ibs)</th>
+                              </tr>
+                              </thead>
+                              <tbody class="pickups-table-body">
+                              <tr class="table-row">
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                                <td class="table-data"><input type="text" class="form-control table-input"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- static block with left sign and plus/minus icon -->
+                          <div class="static-left-sign-block">
+                            <div class="panel panel-default left-sign-panel non-radius">
+                              <div class="panel-body left-sign-panel">
+                                <div class="left-sign"></div>
                               </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- smart form block -->
-                              <div class="smart-form">
-                                <div class="form-group">
-                                  <input name="smart-input" type="text" class="form-control smart-input" id="date-input-id" required>
-                                  <label class="input-label" for="date-input-id">Date</label>
-                                </div>
+                              <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
+                            </div>
+                          </div>
+                          <!-- textarea block -->
+                          <div class="textarea-block">
+                            <div class="form-group textarea-wrapper">
+                              <textarea class="form-control notes-textarea non-radius" rows="5" placeholder="Notes" id="notes-id"></textarea>
+                            </div>
+                          </div>
+                          <!-- static block with right sign and plus/minus icon -->
+                          <div class="static-right-sign-block">
+                            <div class="panel panel-default right-sign-panel non-top-radius">
+                              <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
+                              <div class="panel-body sign-panel">
+                                <div class="right-sign">pickup</div>
                               </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- table block -->
-                              <div class="table-block">
-                                <table class="table table-bordered pickups-table">
-                                  <thead class="pickups-table-header">
-                                  <tr>
-                                    <th class="table-header-item">pickup #</th>
-                                    <th class="table-header-item">p.o.</th>
-                                    <th class="table-header-item">commo-dity</th>
-                                    <th class="table-header-item">unit type</th>
-                                    <th class="table-header-item">unit count</th>
-                                    <th class="table-header-item">pallet count</th>
-                                    <th class="table-header-item">weight (ibs)</th>
-                                  </tr>
-                                  </thead>
-                                  <tbody class="pickups-table-body">
-                                  <tr class="table-row">
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                    <td class="table-data"><input type="text" class="form-control table-input"></td>
-                                  </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- static block with left sign and plus/minus icon -->
-                              <div class="static-left-sign-block">
-                                <div class="panel panel-default left-sign-panel">
-                                  <div class="panel-body left-sign-panel">
-                                    <div class="left-sign"></div>
-                                  </div>
-                                  <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- textarea block -->
-                              <div class="textarea-block">
-                                <div class="form-group textarea-wrapper">
-                                  <textarea class="form-control notes-textarea" rows="5" placeholder="Notes" id="notes-id"></textarea>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- static block with right sign and plus/minus icon -->
-                              <div class="static-right-sign-block">
-                                <div class="panel panel-default right-sign-panel">
-                                  <span class="glyphicon glyphicon-plus-sign glyphicon-plus-minus"></span>
-                                  <div class="panel-body sign-panel">
-                                    <div class="right-sign">pickup</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
+                            </div>
+                          </div>
                         </div>
                       </section>
 
@@ -356,54 +616,44 @@
                       <section class="requirements-section"><a name="requirements-section"></a>
                         <div class="block-title-sign">requirements</div>
                         <div class="requirements-wrapper">
-                          <ul class="list-group">
-                            <li class="list-group-item">
-                              <!-- block with two switch buttons -->
-                              <div class="switch-buttons-block">
-                                <div class="left-static-sign">Driver</div>
-                                <button class="btn switch-button active-button" id="left-driver-button">Solo</button>
-                                <button class="btn switch-button" id="right-driver-button">Team</button>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- select block -->
-                              <div class="select-option-block">
-                                <div class="left-static-sign">Power Unit</div>
-                                <div class="form-group select-wrapper">
-                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                  <span class="glyphicon glyphicon-triangle-top"></span>
-                                  <select class="form-control select-box" id="power-unit-select-id">
-                                    <option class="option-item">1</option>
-                                    <option class="option-item">2</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- select block -->
-                              <div class="select-option-block">
-                                <div class="left-static-sign">Trailer</div>
-                                <div class="form-group select-wrapper">
-                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                  <span class="glyphicon glyphicon-triangle-top"></span>
-                                  <select class="form-control select-box" id="trailer-select-id">
-                                    <option class="option-item">1</option>
-                                    <option class="option-item">2</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- textarea block -->
-                              <div class="textarea-block">
-                                <div class="form-group textarea-wrapper">
-                        <textarea class="form-control notes-textarea" rows="5"
-                                  placeholder="Special Requirements" id="requirements-notes-id">
-                        </textarea>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
+                          <!-- block with two switch buttons -->
+                          <div class="switch-buttons-block border-top-radius">
+                            <div class="left-static-sign">Driver</div>
+                            <button class="btn switch-button active-button" id="left-driver-button">Solo</button>
+                            <button class="btn switch-button" id="right-driver-button">Team</button>
+                          </div>
+                          <!-- select block -->
+                          <div class="select-option-block non-bottom-radius">
+                            <div class="left-static-sign">Power Unit</div>
+                            <div class="form-group select-wrapper">
+                              <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              <span class="glyphicon glyphicon-triangle-top"></span>
+                              <select class="form-control select-box" id="power-unit-select-id">
+                                <option class="option-item">1</option>
+                                <option class="option-item">2</option>
+                              </select>
+                            </div>
+                          </div>
+                          <!-- select block -->
+                          <div class="select-option-block non-bottom-radius">
+                            <div class="left-static-sign">Trailer</div>
+                            <div class="form-group select-wrapper">
+                              <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              <span class="glyphicon glyphicon-triangle-top"></span>
+                              <select class="form-control select-box" id="trailer-select-id">
+                                <option class="option-item">1</option>
+                                <option class="option-item">2</option>
+                              </select>
+                            </div>
+                          </div>
+                          <!-- textarea block -->
+                          <div class="textarea-block border-bottom-radius">
+                            <div class="form-group textarea-wrapper">
+                      <textarea class="form-control notes-textarea non-top-radius" rows="5"
+                                placeholder="Special Requirements" id="requirements-notes-id">
+                      </textarea>
+                            </div>
+                          </div>
                         </div>
                       </section>
 
@@ -411,101 +661,81 @@
                       <section class="rate-section">
                         <div class="block-title-sign">rate</div>
                         <div class="rate-wrapper">
-                          <ul class="list-group">
-                            <li class="list-group-item">
-                              <!-- smart form block with right unit label at background -->
-                              <div class="smart-form-with-label">
-                                <div class="smart-form">
-                                  <div class="form-group relative-form">
-                                    <input name="smart-input" type="text" class="form-control smart-input" id="weight-input-id" required>
-                                    <label class="input-label" for="weight-input-id">Estimated Weight</label>
-                                    <span class="unit">lbs</span>
-                                  </div>
-                                </div>
+                          <!-- smart form block with right unit label at background -->
+                          <div class="smart-form-with-label">
+                            <div class="smart-form">
+                              <div class="form-group relative-form non-bottom-radius">
+                                <input name="smart-input" type="text" class="form-control smart-input" id="weight-input-id" required>
+                                <label class="input-label" for="weight-input-id">Estimated Weight</label>
+                                <span class="unit">lbs</span>
                               </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- static block with right unit label at background -->
-                              <div class="static-block-with-unit-sign">
-                                <div class="left-static-sign">Estimated Distance <a href="#" class="calculate-link">Calculate</a></div>
-                                <div class="calculated-distance-value"></div>
-                                <span class="unit">miles</span>
-                              </div>
-                            </li>
-                            <li class="list-group-item flex-item">
-                              <!-- block with three buttons -->
-                              <div class="three-buttons-block">
-                                <div class="left-static-sign">Loading/ Unloading</div>
-                                <button class="btn switch-button active-button" id="company-loading-button-id">Company</button>
-                                <button  class="btn switch-button" id="customer-loading-button-id">Customer</button>
-                                <button class="btn switch-button" id="none-loading-button-id">None</button>
-                              </div>
-                            </li>
-                            <li class="list-group-item flex-item">
-                              <!-- block with three buttons -->
-                              <div class="three-buttons-block">
-                                <div class="left-static-sign">Pallet Exchange</div>
-                                <button class="btn switch-button active-button" id="company-palletExch-button-id">Company</button>
-                                <button class="btn switch-button" id="customer-palletExch-button-id">Customer</button>
-                                <button class="btn switch-button" id="none-palletExch-button-id">None</button>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- rate block with dollar icon and right select-->
-                              <div class="rate-block-with-select">
-                                <div class="left-static-sign">Load Rate</div>
-                                <div class="dollar-sign">$</div>
-                                <div class="simple-form">
-                                  <input name="simple-input" type="text" class="form-control simple-input"
-                                         id="load-rate-input-id" required>
-                                </div>
-                                <div class="rate-select-box">
-                                  <select class="form-control rate-select" id="load-rate-select-id">
-                                    <option class="option-item">Flat</option>
-                                    <option class="option-item">Per Mile</option>
-                                  </select>
-                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                  <span class="glyphicon glyphicon-triangle-top"></span>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- rate block with dollar icon and right select-->
-                              <div class="rate-block-with-select">
-                                <div class="left-static-sign">Fuel Surcharge</div>
-                                <div class="dollar-sign">$</div>
-                                <div class="simple-form">
-                                  <input name="simple-input" type="text" class="form-control simple-input"
-                                         id="fuel-rate-input-id" required>
-                                </div>
-                                <div class="rate-select-box">
-                                  <select class="form-control rate-select" id="fuel-rate-select-id">
-                                    <option class="option-item">Flat</option>
-                                    <option class="option-item">Per Mile</option>
-                                  </select>
-                                  <span class="glyphicon glyphicon-triangle-bottom"></span>
-                                  <span class="glyphicon glyphicon-triangle-top"></span>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- non active row block-->
-                              <div class="non-active-row">
-                                <div class="left-static-sign">Total Rate</div>
-                                <div class="dollar-sign">$</div>
-                                <div class="total-sum-box"></div>
-                              </div>
-                            </li>
-                            <li class="list-group-item">
-                              <!-- non active row block with right unit sign-->
-                              <div class="non-active-row">
-                                <div class="left-static-sign">Estimate Rate</div>
-                                <div class="dollar-sign">$</div>
-                                <div class="per-mile-sum-box"></div>
-                                <div class="per-mile-sign">per miles</div>
-                              </div>
-                            </li>
-                          </ul>
+                            </div>
+                          </div>
+                          <!-- static block with right unit label at background -->
+                          <div class="static-block-with-unit-sign">
+                            <div class="left-static-sign">Estimated Distance <a href="#" class="calculate-link">Calculate</a></div>
+                            <div class="calculated-distance-value"></div>
+                            <span class="unit">miles</span>
+                          </div>
+                          <!-- block with three buttons -->
+                          <div class="three-buttons-block">
+                            <div class="left-static-sign">Loading/ Unloading</div>
+                            <button class="btn switch-button active-button" id="company-loading-button-id">Company</button>
+                            <button  class="btn switch-button" id="customer-loading-button-id">Customer</button>
+                            <button class="btn switch-button" id="none-loading-button-id">None</button>
+                          </div>
+                          <!-- block with three buttons -->
+                          <div class="three-buttons-block">
+                            <div class="left-static-sign">Pallet Exchange</div>
+                            <button class="btn switch-button active-button" id="company-palletExch-button-id">Company</button>
+                            <button class="btn switch-button" id="customer-palletExch-button-id">Customer</button>
+                            <button class="btn switch-button" id="none-palletExch-button-id">None</button>
+                          </div>
+                          <!-- rate block with dollar icon and right select-->
+                          <div class="rate-block-with-select">
+                            <div class="left-static-sign">Load Rate</div>
+                            <div class="dollar-sign">$</div>
+                            <div class="simple-form">
+                              <input name="simple-input" type="text" class="form-control simple-input" id="load-rate-input-id" required>
+                            </div>
+                            <div class="rate-select-box">
+                              <select class="form-control rate-select" id="load-rate-select-id">
+                                <option class="option-item">Flat</option>
+                                <option class="option-item">Per Mile</option>
+                              </select>
+                              <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              <span class="glyphicon glyphicon-triangle-top"></span>
+                            </div>
+                          </div>
+                          <!-- rate block with dollar icon and right select-->
+                          <div class="rate-block-with-select">
+                            <div class="left-static-sign">Fuel Surcharge</div>
+                            <div class="dollar-sign">$</div>
+                            <div class="simple-form">
+                              <input name="simple-input" type="text" class="form-control simple-input" id="fuel-rate-input-id" required>
+                            </div>
+                            <div class="rate-select-box">
+                              <select class="form-control rate-select" id="fuel-rate-select-id">
+                                <option class="option-item">Flat</option>
+                                <option class="option-item">Per Mile</option>
+                              </select>
+                              <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              <span class="glyphicon glyphicon-triangle-top"></span>
+                            </div>
+                          </div>
+                          <!-- non active row block-->
+                          <div class="non-active-row">
+                            <div class="left-static-sign">Total Rate</div>
+                            <div class="dollar-sign">$</div>
+                            <div class="total-sum-box"></div>
+                          </div>
+                          <!-- non active row block with right unit sign-->
+                          <div class="non-active-row border-bottom-radius">
+                            <div class="left-static-sign">Estimate Rate</div>
+                            <div class="dollar-sign">$</div>
+                            <div class="per-mile-sum-box"></div>
+                            <div class="per-mile-sign">per miles</div>
+                          </div>
                         </div>
                       </section>
 

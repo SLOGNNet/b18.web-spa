@@ -12,7 +12,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-
+const autoprefixer = require('autoprefixer');
 
 /**
  * Webpack configuration
@@ -122,7 +122,13 @@ module.exports = function (config) {
             failOnHint: false,
             resourcePath: 'src'
           },
-
+          postcss: [
+            autoprefixer({
+              browsers: [
+                'last 2 versions'
+              ]
+            })
+          ]
         }
       }),
 

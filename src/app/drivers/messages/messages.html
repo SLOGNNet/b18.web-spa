@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-xs-3 driver-name">Driver: George Clooney</div>
     <div class="col-xs-9 chat">
-      <!-- messages -->
-      <!--<li *ngFor="let message of messages">
-        {{ message.message }}
-      </li>-->
+      <div class="scroll"
+           infinite-scroll
+           (scrolledUp)="onScrollUp()">
        <message
         *ngFor="let message of messages"
         [message]="message">
       </message>
+      </div>
     </div>
 </div>
     <div class="row">

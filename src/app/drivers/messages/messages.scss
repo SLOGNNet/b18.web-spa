@@ -1,110 +1,108 @@
-::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-  color: #666;
-  opacity: 1;
+$color-messages: #666;
+$color-message-form: #dcdcdc;
+$color-send-block: #868686;
+$color-background: #f7f7f7;
+$color-button: #fff;
+$color-background-button: #04d239;
+
+.placeholder {
+	color: $color-messages;
+	opacity: 1;
 }
 
 body {
-  input {
-    &:focus:required:invalid, &:required:valid {
-      color: #666;
-    }
-  }
-  textarea {
-    &:focus:required:invalid, &:required:valid {
-      color: #666;
-    }
-  }
-  background: #F7F7F7;
-  padding: 10px;
+	input {
+		&:focus {
+			color: $color-messages;
+		}
+	}
+
+	textarea {
+		&:focus {
+			color: $color-messages;
+		}
+	}
+	padding: 10px;
+	background: $color-background;
 }
 
 .driver-name {
-  margin: 10px 0;
-  text-align: left;
+	margin: 10px 0;
+	text-align: left;
 }
 
 .chat {
-  height: -webkit-calc(100vh - 250px);
-  height: calc(100vh - 250px);
+	//height: -webkit-calc(100% - 50px);
+	//height: calc(100% - 50px);
+	height: 70vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .message-form {
-  width: 40%;
-  height: 120px;
-  min-width: 100px;
-  margin: 0 auto;
-  textarea {
-    float: left;
-    display: block;
-    width: -webkit-calc(100% - 100px);
-    width: calc(100% - 100px);
-    max-width: -webkit-calc(100% - 70px);
-    max-width: calc(100% - 70px);
-    min-width: -webkit-calc(100% - 70px);
-    min-width: calc(100% - 70px);
-    height: 120px;
-    margin: 10px 0 0;
-    outline: 0;
-    border: 1px solid #DCDCDC;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    padding: 8px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+	width: 50%;
+	height: 120px;
+	margin: 0 auto;
+	min-width: 100px;
 
-  .send-block {
-    position: relative;
-    float: left;
-    display: block;
-    width: 60px;
-    margin: 10px 0 0 10px;
-    .status {
-      position: absolute;
-      top: 2px;
-      left: 0;
-      width: 8px;
-      height: 8px;
-      -webkit-border-radius: 50%;
-      border-radius: 50%;
-      background: #04D239;
-    }
-    p {
-      margin: 0;
-      text-align: center;
-      color: #868686;
-      line-height: 18px;
-      &:first-child {
-        color: #000;
-      }
-    }
+	textarea {
+		display: block;
+		box-sizing: border-box;
+		width: calc(100% - 100px);
+		height: 120px;
+		padding: 8px;
+		border: 1px solid $color-message-form;
+		margin: 10px 0;
+		max-width: calc(100% - 70px);
+		min-width: calc(100% - 70px);
+		outline: 0;
+		border-radius: 6px;
+		float: left;
+	}
 
-    button {
-      width: 100%;
-      height: 30px;
-      margin-top: 10px;
-      outline: 0;
-      border: none;
-      -webkit-border-radius: 5px;
-      border-radius: 5px;
-      color: #FFF;
-      font-size: 14px;
-      background: #04D239;
-      -webkit-transition: all .2s;
-      transition: all 0.2s;
-      &:hover {
-        background: #04c335;
-      }
-    }
-  }
-}
+	.send-block {
+		position: relative;
+		display: block;
+		width: 60px;
+		margin: 10px 0 0 10px;
+		float: left;
 
-.animated {
-  -webkit-transition-property: none !important;
-  transition-property: none !important;
-  -ms-transform: none !important;
-  -webkit-transform: none !important;
-  transform: none !important;
-  -webkit-animation: none !important;
-  animation: none !important;
+		.status {
+			position: absolute;
+			top: 2px;
+			width: 8px;
+			height: 8px;
+			background: $color-background-button;
+			left: 0;
+			border-radius: 50%;
+		}
+
+		p {
+			margin: 0;
+			color: $color-send-block;
+			line-height: 18px;
+			text-align: center;
+
+			&:first-child {
+				color: $color-button;
+			}
+		}
+
+		button {
+			width: 100%;
+			height: 30px;
+			border: 0;
+			background: $color-background-button;
+			color: $color-button;
+			font-size: 14px;
+			margin-top: 10px;
+			outline: 0;
+			border-radius: 5px;
+			transition: all .2s;
+
+			&:hover {
+				background: $color-background-button;
+			}
+		}
+	}
 }

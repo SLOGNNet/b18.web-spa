@@ -19,8 +19,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
-
-module.exports = function (config) {
+module.exports = function(config) {
   isProd = config.env === 'production';
   return {
 
@@ -51,18 +50,15 @@ module.exports = function (config) {
      * See: http://webpack.github.io/docs/configuration.html#resolve
      */
     resolve: {
-        alias: {
-            config: (function() { return config }()),
-        },
-        /*
-        * An array of extensions that should be used to resolve modules.
-        *
-        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-        */
-        extensions: ['.ts', '.js', '.json'],
+      /*
+       * An array of extensions that should be used to resolve modules.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+       */
+      extensions: ['.ts', '.js', '.json'],
 
-        // An array of directory names to be resolved to the current directory
-        modules: [helpers.root('src'), 'node_modules'],
+      // An array of directory names to be resolved to the current directory
+      modules: [helpers.root('src'), 'node_modules'],
     },
 
     /*
@@ -108,13 +104,13 @@ module.exports = function (config) {
          */
         {
           test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader']
+          loaders: ['to-string-loader', 'css-loader', 'postcss-loader']
         },
 
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          loaders: ['raw-loader', 'sass-loader']
+          loaders: ['raw-loader', 'postcss-loader', 'sass-loader']
         },
 
         /* Raw loader support for *.html
@@ -125,7 +121,7 @@ module.exports = function (config) {
         {
           test: /\.html$/,
           loader: 'raw-loader',
-          exclude: [helpers.root('src/index.html'), helpers.root('src/hybrid/index.html') ]
+          exclude: [helpers.root('src/index.html'), helpers.root('src/hybrid/index.html')]
         },
 
         /* File loader for supporting images, for example, in CSS files.
@@ -233,31 +229,31 @@ module.exports = function (config) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-       /*
-        * Plugin: HtmlElementsPlugin
-        * Description: Generate html tags based on javascript maps.
-        *
-        * If a publicPath is set in the webpack output configuration, it will be automatically added to
-        * href attributes, you can disable that by adding a "=href": false property.
-        * You can also enable it to other attribute by settings "=attName": true.
-        *
-        * The configuration supplied is map between a location (key) and an element definition object (value)
-        * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
-        *
-        * Example:
-        *  Adding this plugin configuration
-        *  new HtmlElementsPlugin({
-        *    headTags: { ... }
-        *  })
-        *
-        *  Means we can use it in the template like this:
-        *  <%= webpackConfig.htmlElements.headTags %>
-        *
-        * Dependencies: HtmlWebpackPlugin
-        */
-       new HtmlElementsPlugin({
-         headTags: require('./head-config.common')
-       }),
+      /*
+       * Plugin: HtmlElementsPlugin
+       * Description: Generate html tags based on javascript maps.
+       *
+       * If a publicPath is set in the webpack output configuration, it will be automatically added to
+       * href attributes, you can disable that by adding a "=href": false property.
+       * You can also enable it to other attribute by settings "=attName": true.
+       *
+       * The configuration supplied is map between a location (key) and an element definition object (value)
+       * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
+       *
+       * Example:
+       *  Adding this plugin configuration
+       *  new HtmlElementsPlugin({
+       *    headTags: { ... }
+       *  })
+       *
+       *  Means we can use it in the template like this:
+       *  <%= webpackConfig.htmlElements.headTags %>
+       *
+       * Dependencies: HtmlWebpackPlugin
+       */
+      new HtmlElementsPlugin({
+        headTags: require('./head-config.common')
+      }),
       new LoaderOptionsPlugin({}),
 
     ],

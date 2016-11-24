@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 export { IDriverMessage } from './interfaces';
 import 'rxjs/add/operator/map';
-import { List } from "immutable";
+import { List } from 'immutable';
 
-import { SocketService } from "../../shared";
+import { SocketService } from '../../shared';
 @Injectable()
 export class MessageService {
     create(message: string): void {
@@ -26,7 +26,7 @@ export class MessageService {
         return messagesObserver;
     }
 
-     getMessages(driverId: string){
+     getMessages(driverId: string) {
         return this.getMessagesObservable(driverId);
     }
 }
