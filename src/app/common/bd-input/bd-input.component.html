@@ -1,4 +1,4 @@
-     <div
+     <!--<div
        class="bd-input {{_isFilled}}"
      >
       <span class="prefix"><ng-content select="[md-prefix]"></ng-content></span>
@@ -8,7 +8,7 @@
         [(ngModel)]="value"
         [disabled]="disabled"
         [attr.maxlength]="maxlength"
-        (focus)="_handleFocus($event)"
+        (focus)="_handleFocus($event)"  
         placeholder="placeholder"
         (change)="_handleChange($event)"
         (blur)="_handleBlur($event)"
@@ -24,8 +24,53 @@
         [innerHTML]="errorText">
       </div>
       <label
-        class="bd-input-placeholder {{_invalidClass}} {{_isAnimated}}"
+        class="bd-input-placeholder {{_invalidClass}} {{_isAnimated}}"  
         for="smart-input"
         [innerHTML]="labelText">
       </label>
-      </div>
+      </div>-->
+
+
+
+
+
+      <div class="bd-input-wrapper {{stateClasses}}">
+       <div class="bd-label">
+         <label
+           class="bd-input-placeholder" 
+           for="customer-input-id">
+           Estimated weight
+         </label>
+       </div>
+       <div class="bd-input">
+
+         <div class="bd-input-prefix">
+           <span md-prefix="">$&nbsp;</span>
+         </div>
+
+         <div class="bd-input-infix">
+           <input
+             name="bd-input-element"
+             type="text"
+             [(ngModel)]="value"
+             [disabled]="disabled"
+             [attr.maxlength]="maxlength"
+             (focus)="_handleFocus($event)"
+             placeholder="placeholder"
+             (change)="_handleChange($event)"
+             (blur)="_handleBlur($event)"
+             [attr.name]="name"
+             [type]="type"
+             class="bd-input-element {{_invalidClass}}"
+             id="customer-input-id"
+             autocomplete="off"
+           >
+         </div>
+         <div class="bd-input-suffix">
+           <span md-suffix="">.00</span>
+         </div>
+       </div>
+       <div class="error-message">
+
+       </div>
+     </div>

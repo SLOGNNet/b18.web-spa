@@ -18,11 +18,13 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 
 export class  CommonInputComponent {
+    private state:any[] = [];
+    private stateClasses:string = '';
     private _onTouchedCallback: () => void = noop;
     private _onChangeCallback: (_: any) => void = noop;
     private _value: string = '';
     private _empty: boolean = true;
-    private _isFilled: string = '';
+    private _bdFocused: string = '';
     private _isAnimated: string = '';
     private _isInvalid: boolean = false;
     private _invalidClass: string = '';
@@ -33,10 +35,6 @@ export class  CommonInputComponent {
     private  coerceBooleanProperty( value: any): boolean {
       return value != null && `${value}` !== 'false';
     }
-    private changeComponentClass(val: boolean): void {
-    val ? this._isFilled = '' : this._isFilled = 'filled-in';
-    }
-
     private setInvalidState(val: boolean): void {
       val ? this._invalidClass = 'invalid' : this._invalidClass = '';
     }
@@ -77,6 +75,8 @@ export class  CommonInputComponent {
   };
 
     _handleFocus(event: FocusEvent) {
+      this.updateState(this.state);
+      console.log(this._bdFocused);
       this.Animated(this.animated);
       this._focused = true;
       this._focusEmitter.emit(event);
@@ -96,13 +96,22 @@ export class  CommonInputComponent {
   }
 
   _handleBlur(event: FocusEvent) {
+    this.ConvertStateToString(this.state);
     this.value !== '' ? this._empty = false : this._empty = true;
-    this.changeComponentClass(this._empty);
     this.setInvalidState(this._isInvalid);
     this._focused = false;
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
   }
+
+updateState(arr: any[]){
+    arr.push('bd-focused');
+}
+
+ConvertStateToString(arr: any[]){
+    this.stateClasses = arr.map(item => item).join(' ');
+    console.log(this.stateClasses,'new Arr')
+}
 
   /**
    * Implemented as part of ControlValueAccessor.

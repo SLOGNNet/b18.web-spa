@@ -1,4 +1,4 @@
-$white: #FFFFFF;
+/*$white: #FFFFFF;
 $seagul: #75B3E2;
 $nobel: #B3B2B2;
 $iron: #D7D8DB;
@@ -14,7 +14,7 @@ $error: #fb3a3a;
      .prefix {
       position: absolute;
       top: 14px;
-      left: 112px
+      left: 112px;
     }
     .bd-input-element {
       box-shadow: none;
@@ -64,7 +64,7 @@ $error: #fb3a3a;
         justify-content: flex-end;
         left: 0;
         margin-right: 0;
-        width: 27%;
+        width: 23%;
         padding-top: 5px;
         text-align: right;
       }
@@ -72,7 +72,7 @@ $error: #fb3a3a;
     }
 
     .bd-input-placeholder {
-      transition-duration: 0.1s;
+      transition-duration: 4s;
       position: absolute;
       color: $nobel;
       padding: 12px 15px;
@@ -135,4 +135,168 @@ $error: #fb3a3a;
         padding-left: 27%;
         border-color: $nobel;
       }
+  }*/
+
+
+$white: #FFFFFF;
+$seagul: #75B3E2;
+$nobel: #B3B2B2;
+$iron: #D7D8DB;
+$error: #fb3a3a;
+$error-background: rgba(251,58,58,0.5);
+@keyframes labelFlight {
+  from   {
+    left: 200px;
   }
+  to {
+    left: 0;
+  }
+}
+.flex-element{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.bd-input-wrapper{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  @extend .flex-element;
+  flex-flow: row wrap;
+  overflow: hidden;
+  border-bottom: 1px solid $iron;
+  margin-bottom: 0;
+  padding:0 17px;
+  background-color: $white;
+  .bd-label{
+    flex-grow: 1;
+    text-align: left;
+    font-size: 16px;
+    color: $nobel;
+    label{
+      font-weight:normal;
+    }
+  }
+  .bd-input{
+    @extend .flex-element;
+    flex-grow: 1;
+    justify-content: space-between;
+    .bd-input-prefix{
+      display:none;
+    }
+    .bd-input-infix{
+      @extend .flex-element;
+      input{
+        box-shadow: none;
+        border: none;
+        background: none;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        padding: 8px 0;
+        outline: 0;
+        &:focus {
+          &::-webkit-input-placeholder {
+            color: $nobel;
+            opacity:1;
+          }
+          &:-moz-placeholder {
+            color: $nobel;
+            opacity:  1;
+          }
+          &::-moz-placeholder {
+            color:$nobel;
+            opacity:  1;
+          }
+          &:-ms-input-placeholder {
+            color: $nobel;
+            opacity:  1;
+          }
+        }
+        &::-webkit-input-placeholder {
+            color:#fff;
+            opacity:0;
+        }
+        &:-moz-placeholder {
+          color:    #fff;
+          opacity:  0;
+        }
+        &::-moz-placeholder {
+          color:    #fff;
+          opacity:  0;
+        }
+        &:-ms-input-placeholder {
+          color:    #fff;
+        }
+      }
+    }
+    .bd-input-suffix{
+      display:none;
+    }
+    .error-message{
+      display:none;
+    }
+  }
+  + .error-message{
+    display: none;
+  }
+  &.bd-focused{
+    border-bottom-color: $seagul;
+    .bd-label{
+      label{
+        position: absolute;
+        top: -15px;
+        left: 0;
+        animation: labelFlight 0.1s 1;
+      }
+      position: relative;
+      max-width: 80px;
+      margin-right: 32px;
+      text-align: right;
+      font-size: 10px;
+      color: $nobel;
+      text-transform: uppercase;
+    }
+    .bd-input{
+      .bd-input-prefix{
+        margin-right: 15px;
+        @extend .flex-element;
+        flex-grow: 0;
+      }
+      .bd-input-infix{
+        flex-grow: 1;
+      }
+      .bd-input-suffix{
+        @extend .flex-element;
+        flex-grow: 0;
+      }
+    }
+  }
+  &.bd-invalid{
+    border-bottom-color: $error;
+    .bd-label{
+      position: relative;
+      max-width: 80px;
+      margin-right: 32px;
+      text-align: right;
+      font-size: 10px;
+      color: $error;
+      text-transform: uppercase;
+      label{
+        position: absolute;
+        top: -15px;
+        left: 0;
+      }
+    }
+    + .error-message{
+          @extend .flex-element;
+          color: $error;
+          background: $error-background;
+          text-align: left;
+          i{
+            margin: 0 15px 0 17px;
+          }
+      }
+  }
+}
