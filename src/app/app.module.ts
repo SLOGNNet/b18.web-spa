@@ -17,9 +17,9 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
-import { CommonInputComponent } from './common/bd-input'; 
-import { MessagesComponent } from './drivers/messages'
-import { MessageComponent } from './drivers/messages/message'
+import { CommonInputComponent } from './common/bd-input';
+import { MessagesComponent } from './drivers/messages';
+import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
