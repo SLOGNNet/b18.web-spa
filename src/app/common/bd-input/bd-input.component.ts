@@ -17,8 +17,6 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 
 export class CommonInputComponent {
-  private state: any[] = [];
-  private stateClasses: string = '';
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
   private _value: string = '';
@@ -47,10 +45,10 @@ export class CommonInputComponent {
     return this._empty ? 0 : ('' + this._value).length;
   }
   @Input() errorText: string = '';
+  @Input() animated: boolean;
   @Input() labelText: any;
   @Input() set defaultView(v: any) {
     this._isDefaultView = v;
-    this.updateState();
   };
   @Input() name: string = null;
   @Input() type: string = 'text';
@@ -72,10 +70,8 @@ export class CommonInputComponent {
   };
 
   _handleFocus(event: FocusEvent) {
-    this.state.includes('bd-static') ? this.addClassIntoState('bd-static-focused') : this.addClassIntoState('bd-focused');
     this._focused = true;
     this._focusEmitter.emit(event);
-    this.updateState();
   }
 
   set disabled(value) {
@@ -94,35 +90,15 @@ export class CommonInputComponent {
   }
 
   _handleBlur(event: FocusEvent) {
-    this.removeClassFromState('bd-focused');
-    this.removeClassFromState('bd-static-focused');
     this.value !== '' ? this._empty = false : this._empty = true;
-    this._empty ? this.removeClassFromState('bd-static') : this.addClassIntoState('bd-static');
     this._focused = false;
+    if (!this._empty){
+      this._isDefaultView = true;
+    } else if (this._empty && this.animated === true) {
+      this._isDefaultView = false;
+    }
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
-    this.updateState();
-  }
-
-  removeClassFromState(cl: any): void {
-    this.state = this.state.filter(item => item !== cl);
-  }
-
-  addClassIntoState(cl: any): void {
-    if (!this.state.includes(cl)) this.state.push(cl);
-  }
-
-
-  updateState(): void {
-    this._isInvalid ? this.addClassIntoState('bd-invalid') : this.removeClassFromState('bd-invalid');
-    if (this._isDefaultView === false) this.addClassIntoState('bd-static');
-
-    // convert current state to classes string
-    this.convertStateToString(this.state);
-  }
-
-  convertStateToString(arr: any[]) {
-    this.stateClasses = arr.map(item => item).join(' ');
   }
 
   /**

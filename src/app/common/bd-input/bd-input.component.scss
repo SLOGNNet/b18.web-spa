@@ -81,7 +81,7 @@ $error-background: rgba(251,58,58,0.2);
     display: none;
   }
   &.bd-focused{
-    border-bottom-color: $seagul;
+    border-bottom-color: $seagul; 
     .bd-label{
       label{
         position: absolute;
@@ -138,6 +138,7 @@ $error-background: rgba(251,58,58,0.2);
           }
       }
   }
+
   &.bd-static{
     border-bottom-color: $nobel;
     .bd-label{
@@ -168,11 +169,37 @@ $error-background: rgba(251,58,58,0.2);
         flex-grow: 0;
       }
     }
-  }
-  &.bd-static-focused {
-    border-bottom-color: $seagul;
-    .bd-label {
+    &.bd-focused{
+       border-bottom-color: $seagul; 
+    .bd-label{
+      label{
+        position: absolute;
+        top: -15px;
+        left: 0;
+        animation: labelFlight 0s;
+      }
+      position: relative;
+      max-width: 80px;
+      margin-right: 32px;
       color: $seagul;
+      text-align: right;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    .bd-input{
+      .bd-input-prefix{
+        margin-right: 15px;
+        @extend .flex-element;
+        flex-grow: 0;
+      }
+      .bd-input-infix{
+        flex-grow: 1;
+      }
+      .bd-input-suffix{
+        @extend .flex-element;
+        flex-grow: 0;
+      }
+    }
     }
   }
 }

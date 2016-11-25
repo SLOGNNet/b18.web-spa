@@ -1,4 +1,9 @@
-<div class="bd-input-wrapper {{stateClasses}}">
+<div class="bd-input-wrapper"
+     [class.bd-focused]="_focused"
+     [class.bd-invalid]="_isInvalid"
+     [class.bd-static]="_isDefaultView"
+     
+>
         <div class="bd-label">
           <label
             class="bd-input-placeholder"
