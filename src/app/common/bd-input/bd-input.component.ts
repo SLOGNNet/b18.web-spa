@@ -20,7 +20,6 @@ export class CommonInputComponent {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
   private _value: string = '';
-  private _empty: boolean = true;
   private _isInvalid: boolean = false;
   private _isDefaultView: boolean = true;
   private _focused: boolean = false;
@@ -42,8 +41,9 @@ export class CommonInputComponent {
 
   get focused() { return this._focused; }
   get characterCount(): number {
-    return this._empty ? 0 : ('' + this._value).length;
+    return this.empty ? 0 : ('' + this._value).length;
   }
+  get empty() { return (this._value == null || this._value === '')}
   @Input() errorText: string = '';
   @Input() animated: boolean;
   @Input() labelText: any;
@@ -90,11 +90,10 @@ export class CommonInputComponent {
   }
 
   _handleBlur(event: FocusEvent) {
-    this.value !== '' ? this._empty = false : this._empty = true;
     this._focused = false;
-    if (!this._empty){
+    if (!this.empty){
       this._isDefaultView = true;
-    } else if (this._empty && this.animated === true) {
+    } else if (this.empty && this.animated === true) {
       this._isDefaultView = false;
     }
     this._onTouchedCallback();
