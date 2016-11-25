@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component'
+import { CommonDropdownComponent } from './common/bd-dropdown/bd-dropdown.component'
 
 @Component({
     selector: 'home',
