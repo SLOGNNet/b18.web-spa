@@ -1,11 +1,11 @@
-$color-system: #a9a9a9;
+$color-system: #dcdcdc;
 $color-user: #90ee90;
 $color-carrier: #1e90ff;
 $color-message: #000;
 
 .message-container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .message {
@@ -31,21 +31,21 @@ $color-message: #000;
 	}
 }
 
-.message-carrier {
-	background: $color-carrier;
-
-	&:before {
-		right: -20px;
-		border-left: 20px solid $color-carrier;
-	}
-}
-
 .message-system {
 	background: $color-system;
 
 	&:before {
-		left: -20px;
-		border-right: 20px solid $color-system;
+		right: -15px;
+		border-left: 20px solid $color-system;
+	}
+}
+
+.message-carrier {
+	background: $color-carrier;
+
+	&:before {
+		left: -15px;
+		border-right: 20px solid $color-carrier;
 	}
 }
 
@@ -53,7 +53,7 @@ $color-message: #000;
 	background: $color-user;
 
 	&:before {
-		right: -20px;
+		right: -15px;
 		border-left: 20px solid $color-user;
 	}
 }
@@ -67,18 +67,18 @@ $color-message: #000;
 	word-wrap: break-word;
 }
 
-.container-left {
+.container-right {
 	flex-direction: row;
 }
 
-.container-right {
+.container-left {
 	flex-direction: row-reverse;
 }
-/*.img {
+
+img {
+	width: 50px;
+	height: 50px;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
 }
-*/
