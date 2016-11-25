@@ -21,12 +21,10 @@ export class CommonInputComponent {
   private _onChangeCallback: (_: any) => void = noop;
   private _value: string = '';
   private _isInvalid: boolean = false;
-  private _isDefaultView: boolean = true;
   private _focused: boolean = false;
   private _disabled: boolean = false;
   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-
 
   private coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';
@@ -45,11 +43,8 @@ export class CommonInputComponent {
   }
   get empty() { return (this._value == null || this._value === '')}
   @Input() errorText: string = '';
-  @Input() animated: boolean;
+  @Input() collapsedInput: boolean;
   @Input() labelText: any;
-  @Input() set defaultView(v: any) {
-    this._isDefaultView = v;
-  };
   @Input() name: string = null;
   @Input() type: string = 'text';
   @Input() set invalid(v: any) {
@@ -91,11 +86,6 @@ export class CommonInputComponent {
 
   _handleBlur(event: FocusEvent) {
     this._focused = false;
-    if (!this.empty){
-      this._isDefaultView = true;
-    } else if (this.empty && this.animated === true) {
-      this._isDefaultView = false;
-    }
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
   }
