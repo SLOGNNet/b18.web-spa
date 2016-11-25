@@ -17,6 +17,10 @@ $error-background: rgba(251,58,58,0.2);
   align-items: center;
   flex-direction: row;
 }
+
+
+
+
 .bd-input-wrapper{
   position: relative;
   height: 50px;
@@ -28,12 +32,19 @@ $error-background: rgba(251,58,58,0.2);
   @extend .flex-element;
   flex-flow: row wrap;
   background-color: $white;
+  
   .bd-label{
-    flex-grow: 1;
+    position: relative;
+    width: 80px;
+    margin-right: 32px;
     color: $nobel;
-    text-align: left;
-    font-size: 16px;
+    text-align: right;
+    font-size: 10px;
+    text-transform: uppercase;
     label{
+      position: absolute;
+      top: -15px;
+      left: 0;
       font-weight:normal;
     }
   }
@@ -42,7 +53,9 @@ $error-background: rgba(251,58,58,0.2);
     flex-grow: 1;
     justify-content: space-between;
     .bd-input-prefix{
-      display:none;
+        margin-right: 15px;
+        @extend .flex-element;
+        flex-grow: 0;
     }
     .bd-input-infix{
       @extend .flex-element;
@@ -71,7 +84,8 @@ $error-background: rgba(251,58,58,0.2);
       }
     }
     .bd-input-suffix{
-      display:none;
+        @extend .flex-element;
+        flex-grow: 0;
     }
     .error-message{
       display:none;
@@ -80,53 +94,17 @@ $error-background: rgba(251,58,58,0.2);
   + .error-message{
     display: none;
   }
+  /* here is focused state on uncollapsed inout field */
   &.bd-focused{
     border-bottom-color: $seagul; 
     .bd-label{
-      label{
-        position: absolute;
-        top: -15px;
-        left: 0;
-        animation: labelFlight 0.1s 1;
-      }
-      position: relative;
-      max-width: 80px;
-      margin-right: 32px;
       color: $seagul;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-    .bd-input{
-      .bd-input-prefix{
-        margin-right: 15px;
-        @extend .flex-element;
-        flex-grow: 0;
-      }
-      .bd-input-infix{
-        flex-grow: 1;
-      }
-      .bd-input-suffix{
-        @extend .flex-element;
-        flex-grow: 0;
-      }
     }
   }
   &.bd-invalid{
     border-bottom-color: $error;
     .bd-label{
-      position: relative;
-      max-width: 80px;
-      margin-right: 32px;
       color: $error;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-      label{
-        position: absolute;
-        top: -15px;
-        left: 0;
-      }
     }
     + .error-message{
           @extend .flex-element;
@@ -138,68 +116,36 @@ $error-background: rgba(251,58,58,0.2);
           }
       }
   }
-
-  &.bd-static{
-    border-bottom-color: $nobel;
+  /* here is styles for collapsed input */
+  &.bd-collapsed-input{
     .bd-label{
-      label{
-        position: absolute;
-        top: -15px;
-        left: 0;
-      }
-      position: relative;
-      max-width: 80px;
-      margin-right: 32px;
+      flex-grow: 1;
       color: $nobel;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-    .bd-input{
-      .bd-input-prefix{
-        margin-right: 15px;
-        @extend .flex-element;
-        flex-grow: 0;
-      }
-      .bd-input-infix{
-        flex-grow: 1;
-      }
-      .bd-input-suffix{
-        @extend .flex-element;
-        flex-grow: 0;
-      }
+      text-align: left;
+      font-size: 16px;
+      label{
+        font-weight:normal;
+       }
     }
     &.bd-focused{
-       border-bottom-color: $seagul; 
-    .bd-label{
-      label{
-        position: absolute;
-        top: -15px;
-        left: 0;
-        animation: labelFlight 0s;
-      }
-      position: relative;
-      max-width: 80px;
-      margin-right: 32px;
-      color: $seagul;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-    .bd-input{
-      .bd-input-prefix{
-        margin-right: 15px;
-        @extend .flex-element;
-        flex-grow: 0;
-      }
-      .bd-input-infix{
-        flex-grow: 1;
-      }
-      .bd-input-suffix{
-        @extend .flex-element;
-        flex-grow: 0;
-      }
-    }
+        .bd-label{
+          position: relative;
+          flex-grow: 0;
+          width: 80px;
+          margin-right: 32px;
+          color: $seagul;
+          text-align: right;
+          font-size: 10px;
+          text-transform: uppercase;
+          label{
+            position: absolute;
+            top: -15px;
+            left: 0;
+            font-weight:normal;
+            animation: labelFlight 0.2s 1;
+          }
+        }
     }
   }
+
 }

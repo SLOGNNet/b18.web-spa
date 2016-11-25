@@ -1,20 +1,20 @@
 <div class="bd-input-wrapper"
      [class.bd-focused]="_focused"
      [class.bd-invalid]="_isInvalid"
-     [class.bd-static]="_isDefaultView"
+     [class.bd-collapsed-input]="collapsedInput"
      
 >
         <div class="bd-label">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
-            Estimated weight
+              Estimated weight
           </label>
         </div>
         <div class="bd-input">
 
           <div class="bd-input-prefix">
-            <ng-content select="[md-prefix]"></ng-content>
+            <ng-content select="[bd-prefix]"></ng-content>
           </div>
 
           <div class="bd-input-infix">
@@ -37,7 +37,7 @@
             >
           </div>
           <div class="bd-input-suffix">
-            <ng-content select="[md-sufix]"></ng-content>
+            <ng-content select="[bd-sufix]"></ng-content>
           </div>
         </div>
       </div>
