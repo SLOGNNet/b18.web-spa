@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { BdTypeaheadModule } from './common/typeahead/typeahead.module.ts';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -17,9 +18,10 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
-import { CommonInputComponent } from './common/bd-input'; 
-import { MessagesComponent } from './drivers/messages'
-import { MessageComponent } from './drivers/messages/message'
+import { CommonInputComponent } from './common/bd-input';
+import { MessagesComponent } from './drivers/messages';
+import { MessageComponent } from './drivers/messages/message';
+import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
@@ -46,7 +48,8 @@ type StoreType = {
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
-     MessageComponent
+     MessageComponent,
+     TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -55,6 +58,7 @@ type StoreType = {
     HttpModule,
     SharedModule,
     Angular2DataTableModule,
+    BdTypeaheadModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
