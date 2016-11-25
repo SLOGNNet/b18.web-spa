@@ -8,7 +8,7 @@
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
-              Estimated weight
+              {{labelText}}
           </label>
         </div>
         <div class="bd-input">
@@ -27,7 +27,6 @@
               (focus)="_handleFocus($event)"
               placeholder="placeholder"
               (change)="_handleChange($event)"
-              (keypress)="_handleKeyPress($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"
               [type]="type"

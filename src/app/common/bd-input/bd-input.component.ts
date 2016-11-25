@@ -83,11 +83,6 @@ export class CommonInputComponent {
     this._onTouchedCallback();
   }
 
-  _handleKeyPress(event: Event) {
-    this.value = (<HTMLInputElement>event.target).value;
-    this._onTouchedCallback();
-  }
-
   _handleBlur(event: FocusEvent) {
     this._focused = false;
     this._onTouchedCallback();
