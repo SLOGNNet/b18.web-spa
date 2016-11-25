@@ -16,6 +16,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
+import { NavigationBarComponent } from './navigation-bar';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
 import { MessagesComponent } from './drivers/messages';
@@ -41,6 +42,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
      AppComponent,
+     NavigationBarComponent,
      HomeComponent,
      CommonInputComponent,
      DriversComponent,
