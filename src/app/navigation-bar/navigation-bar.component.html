@@ -1,34 +1,22 @@
-<div class="row">
-    <div class="side-menu">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="navbar-header">
-                <div class="brand-wrapper">
-                    <!-- Hamburger -->
-                    <button type="button" class="navbar-toggle" [class.active]="!slidedIn" (click)="toggleMenu()">
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </button>
-                </div>
-            </div>
-
-            <!-- Main Menu -->
-            <div class="side-menu-container">
-                <ul class="nav navbar-nav" [class.slide-in]="!slidedIn">
-                    <div class="logo-container">
-                        <span class="logo-letter">b</span>
-                        <span class="logo-number">18</span>
-                    </div>
-
-                    <li [routerLinkActive]="['active']"><a [routerLink]=" ['./home']" (click)="toggleMenu()">Home</a></li>
-                    <li [routerLinkActive]="['active']"><a [routerLink]=" ['./drivers/1']" (click)="toggleMenu()">Drivers</a></li>
-                    <li [routerLinkActive]="['active']"><a [routerLink]=" ['./#']" (click)="toggleMenu()">Menu item</a></li>
-                    <li [routerLinkActive]="['active']"><a [routerLink]=" ['./#']" (click)="toggleMenu()">Menu item</a></li>
-                    <li [routerLinkActive]="['active']"><a [routerLink]=" ['./#']" (click)="toggleMenu()">Menu item</a></li>
-                </ul>
-            </div>
-        </nav>
+<div class="side-menu">
+    <div class="logo-container">
+        <span class="logo-letter">b</span>
+        <span class="logo-number">18</span>
     </div>
 
-    <div class="side-body" [class.body-slide-in]="!slidedIn">
-        <ng-content></ng-content>
+    <div class="menu-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['./home']">Home</a>
+    </div>
+    <div class="menu-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['./drivers/1']">Drivers</a>
+    </div>
+    <div class="menu-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['./#']">Menu item</a>
+    </div>
+    <div class="menu-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['./#']">Menu item</a>
+    </div>
+    <div class="menu-item" [routerLinkActive]="['active']">
+        <a [routerLink]="['./#']">Menu item</a>
     </div>
 </div>

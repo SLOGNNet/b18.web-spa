@@ -16,9 +16,10 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-      <navigation-bar>
-        <router-outlet></router-outlet>      
-      </navigation-bar>
+      <navigation-bar></navigation-bar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
     `
 })
 export class AppComponent {

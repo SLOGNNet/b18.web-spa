@@ -1,184 +1,65 @@
-$animationDuration: 0.5s;
-
-.row {
-    margin-right: 0;
-    margin-left: 0;
-}
-
 .side-menu {
     position: fixed;
     width: 140px;
     height: 100%;
     background-color: #23282D;
     z-index: 99999;
-}
-
-.side-menu .navbar {
-    border: none;
-    background-color: #23282D;
-    min-height: 45px;
-    height: 45px;
-    margin: 0;
-}
-
-.side-menu .navbar-header {
-    width: 100%;
-}
-
-.side-menu .navbar-nav {
     padding: 0 15px;
-}
 
-.side-menu .navbar-nav li {
-    display: block;
-    border-top: 15px solid #fff;
-    border-left: 15px solid #fff;
-    border-bottom: 7px solid #000;
-    border-right: 26px solid #000;
-    height: 40px;
-    width: 90%;
-    margin-bottom: 40px;
+    .menu-item {
+        display: block;
+        border-top: 15px solid #fff;
+        border-left: 15px solid #fff;
+        border-bottom: 7px solid #000;
+        border-right: 26px solid #000;
+        height: 40px;
+        width: 90%;
+        margin-bottom: 40px;
 
-    a {
-        color: #fff;
-        background-color: transparent;
-        position: absolute;
-        height: 60px;
-        bottom: -27px;
-        padding: 45px 15px 0 15px;
-        left: -30px;
-        width: 125px;
-    }
-}
-
-.side-menu .navbar-nav li.active {
-    border-top-color: #a4c2f4;
-    border-left-color: #a4c2f4;
-
-    a {
-        color: #a4c2f4;
-    }
-}
-
-.side-body {
-    margin-left: 140px;
-}
-
-/* small screen */
-@media (max-width: 768px) {
-    .side-menu {
-        position: fixed;
-        width: 100%;
-        height: 0;
-    }
-
-    .navbar-nav {
-        margin: -4.5px 0;
-    }
-
-  /* Slide in animation */
-    @keyframes slidein {
-        0% {
-            left: -140px;
+        a {
+            color: #fff;
+            background-color: transparent;
+            position: relative;
+            bottom: -27px;
+            padding: 45px 40px 0 0;
+            margin-left: 15px;
+            left: -30px;
+            white-space: nowrap;
+            text-decoration: none;
+            cursor: pointer;
         }
-        100% {
-            left: 0;
+
+        &.active {
+            border-top-color: #a4c2f4;
+            border-left-color: #a4c2f4;
+
+            a {
+                color: #a4c2f4;
+            }
         }
     }
 
-    @keyframes slideout {
-        0% {
-            left: 0;
+    .logo-container {
+        width:100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+
+        span {
+            font-family: Orbitron;
+            text-transform: uppercase;
+            font-weight: 600;
         }
-        100% {
-            left: -140px;
-        }
-    }
 
-    @keyframes bodyslidein {
-        0% {
-            left: 0;
-        }
-        100% {
-            left: 140px;
-        }
-    }
-
-    @keyframes bodyslideout {
-        0% {
-            left: 140px;
-        }
-        100% {
-            left: 0;
-        }
-    }
-
-    /* Slide side menu*/  
-    .side-menu-container > .navbar-nav.slide-in {
-        animation: slidein $animationDuration forwards;
-    }
-
-    .side-menu-container > .navbar-nav {
-        position: fixed;
-        left: -140px;
-        width: 140px;
-        height: 100%;
-        background-color: #23282D;
-        animation: slideout $animationDuration forwards;
-    }
-
-
-    /* Slide side body*/
-    .side-body {
-        margin-left: 0;
-        margin-top: 45px;
-        position: relative;
-        animation: bodyslideout $animationDuration forwards;
-    }
-
-    .body-slide-in {
-        animation: bodyslidein $animationDuration forwards;
-    }
-
-    /* Hamburger */
-    .navbar-toggle {
-        position: relative;
-        float: left;
-        margin-top: 3px;
-        border: 0;
-        background-color: #23282D !important;
-
-        span::before {
-            content: "\e055";
+        .logo-letter {
             color: white;
+            font-size: 24px;
         }
 
-        &.active span::before {
-            content: "\e079";
+        .logo-number {
+            color: #E67517;;
+            margin-left: -3px;
+            font-size: 24px;
         }
     }
-}
-
-.logo-container {
-	width:100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: center;
-
-	span {
-        font-family: Orbitron;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
-}
-
-.logo-container .logo-letter {
-	color: white;
-    font-size: 24px;
-}
-
-.logo-container .logo-number {
-	color: #E67517;;
-	margin-left: -3px;
-    font-size: 24px;
 }

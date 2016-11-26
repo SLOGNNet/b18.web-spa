@@ -22,3 +22,7 @@ body {
 	background: #F5F9FC;
 	overflow: hidden;
 }
+
+.content {
+	margin-left: 140px;
+}
