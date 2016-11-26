@@ -15,23 +15,12 @@ import { AppState } from './app.service';
   styleUrls: [
     './app.component.css'
   ],
-  template: `<nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./drivers/1'] ">
-          Drivers
-        </a>
-      </span>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>`
+  template: `
+      <navigation-bar></navigation-bar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    `
 })
 export class AppComponent {
   constructor(
