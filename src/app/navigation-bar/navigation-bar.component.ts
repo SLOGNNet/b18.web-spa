@@ -8,9 +8,5 @@ import { Component } from '@angular/core';
     ]
 })
 export class NavigationBarComponent {
-    private slidedIn:boolean = true;
 
-    toggleMenu() {
-        this.slidedIn = !this.slidedIn;
-    }
 }
