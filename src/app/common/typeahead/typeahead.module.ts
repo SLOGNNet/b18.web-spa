@@ -13,5 +13,5 @@ import { TypeaheadUtils } from './typeahead-utils';
   providers: [TypeaheadUtils],
   entryComponents: [TypeaheadContainerComponent]
 })
-export class BdTypeaheadModule {
+export class TypeaheadModule {
 }

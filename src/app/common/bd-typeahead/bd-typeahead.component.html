@@ -1,0 +1,10 @@
+<div class='bd-typeahead-container'>
+  <bd-input [(ngModel)]="value"
+      [typeahead]="states"
+      [labelText]="labelText"
+      [typeaheadItemTemplate]="customItemTemplate"
+      [typeaheadItemTemplate]='footerTempalteId'
+      [typeaheadOptionField]="optionField"
+      (typeaheadOnSelect)="typeaheadOnSelect($event)"
+  ></bd-input>
+</div>

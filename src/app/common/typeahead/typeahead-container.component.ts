@@ -4,35 +4,9 @@ import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
 
-const template = `
-  <ul class="dropdown-menu"
-      [ngStyle]="{top: top, left: left, display: 'block'}"
-      (mouseleave)="focusLost()">
-    <template ngFor let-match let-i="index" [ngForOf]="matches">
-      <li
-        [class.active]="isActive(match)"
-        (mouseenter)="selectActive(match)">
-        <a href="#"
-           *ngIf="!itemTemplate"
-           (click)="selectMatch(match, $event)"
-           tabindex="-1"
-           [innerHtml]="hightlight(match, query)"></a>
-        <a href="#"
-           *ngIf="itemTemplate"
-           (click)="selectMatch(match, $event)"
-           tabindex="-1">
-            <template [ngTemplateOutlet]="itemTemplate"
-                      [ngOutletContext]="{item: match.item, index: i}">
-            </template>
-        </a>
-      </li>
-    </template>
-  </ul>
-`;
-
 @Component({
   selector: 'typeahead-container',
-  template: template,
+  templateUrl: './typeahead-container.component.html',
   encapsulation: ViewEncapsulation.None
 })
 export class TypeaheadContainerComponent {
@@ -74,14 +48,9 @@ export class TypeaheadContainerComponent {
   }
 
   public position(hostEl: ElementRef): void {
-    this.top = '0px';
     this.left = '0px';
-    let p = positionService
-      .positionElements(hostEl.nativeElement,
-      this.element.nativeElement.children[0],
-      this.placement, false);
-    this.top = p.top + 'px';
-    this.left = p.left + 'px';
+    debugger;
+    this.top = hostEl.nativeElement.offsetHeight;
   }
 
   public selectActiveMatch(): void {

@@ -38,12 +38,7 @@ export class TypeaheadDirective implements OnInit {
   @Input() public typeaheadWaitMs: number;
   @Input() public typeaheadOptionsLimit: number;
   @Input() public typeaheadOptionField: string;
-  @Input() public typeaheadGroupField: string;
   @Input() public typeaheadAsync: boolean = void 0;
-  @Input() public typeaheadLatinize: boolean = true;
-  @Input() public typeaheadSingleWords: boolean = true;
-  @Input() public typeaheadWordDelimiters: string = ' ';
-  @Input() public typeaheadPhraseDelimiters: string = '\'"';
   @Input() public typeaheadItemTemplate: TemplateRef<any>;
   @Input() public typeaheadFooterTemplate: TemplateRef<any>;
 

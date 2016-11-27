@@ -6,10 +6,11 @@
   </template>
   <h4>Custom item template</h4>
   <pre class="card card-block card-header">Model: {{customSelected | json}}</pre>
-  <input [(ngModel)]="customSelected"
-         [typeahead]="statesComplex"
-         [typeaheadItemTemplate]="customItemTemplate"
-         [typeaheadOptionField]="'name'"
-         (typeaheadOnSelect)="typeaheadOnSelect($event)"
-         class="form-control">
+
+    <bd-typeahead
+           [source]="dataSource"
+           [itemTemplate]="customItemTemplate"
+           [optionField]="'name'"
+           (onSelect)="typeaheadOnSelect($event)">
+      </bd-typeahead>
 </div>

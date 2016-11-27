@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
-import { BdTypeaheadModule } from './common/typeahead/typeahead.module.ts';
+import { TypeaheadModule } from './common/typeahead/typeahead.module.ts';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -19,6 +19,7 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
+import { BdTypeaheadComponent } from './common/bd-typeahead';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
@@ -43,6 +44,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
      AppComponent,
+     BdTypeaheadComponent,
      HomeComponent,
      CommonInputComponent,
      DriversComponent,
@@ -52,13 +54,13 @@ type StoreType = {
      TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
+    TypeaheadModule,
     BrowserModule,
     InfiniteScrollModule,
     FormsModule,
     HttpModule,
     SharedModule,
     Angular2DataTableModule,
-    BdTypeaheadModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
