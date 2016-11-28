@@ -31,19 +31,19 @@ $error-background: rgba(251,58,58,0.2);
   @extend .flex-element;
   flex-flow: row wrap;
   background-color: $white;
-  
+
   .bd-label{
-    position: relative;
-    width: 80px;
-    margin-right: 32px;
-    color: $nobel;
-    text-align: right;
     font-size: 10px;
+    width: 80px;
+    height: 100%;
+    color: $nobel;
     text-transform: uppercase;
     label{
-      position: absolute;
-      top: -15px;
-      left: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      margin-right: 25px;
       font-weight:normal;
     }
   }
@@ -95,7 +95,7 @@ $error-background: rgba(251,58,58,0.2);
   }
 
   &.bd-focused{
-    border-bottom-color: $seagul; 
+    border-bottom-color: $seagul;
     .bd-label{
       color: $seagul;
     }
@@ -117,16 +117,21 @@ $error-background: rgba(251,58,58,0.2);
   }
 
 &.bd-collapsed-input{
-    .bd-label{
+    .bd-label {
       flex-grow: 1;
       color: $nobel;
+      width: 100%;
       text-align: left;
       font-size: 16px;
+      label{
+        justify-content: flex-start;
+      }
     }
   }
   &.bd-expanded-input{
     .bd-label{
       animation: labelFlight 0.1s 1;
+      text-align: right;
     }
   }
 }
