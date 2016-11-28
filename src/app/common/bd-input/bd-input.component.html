@@ -1,14 +1,14 @@
 <div class="bd-input-wrapper"
      [class.bd-focused]="_focused"
      [class.bd-invalid]="_isInvalid"
-     [class.bd-collapsed-input]="collapsedInput"
-     
+     [class.bd-collapsed-input]="isCollapsed"
+     [class.bd-expanded-input]="!isCollapsed"
 >
         <div class="bd-label">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
-              Estimated weight
+              {{labelText}}
           </label>
         </div>
         <div class="bd-input">
@@ -27,7 +27,6 @@
               (focus)="_handleFocus($event)"
               placeholder="placeholder"
               (change)="_handleChange($event)"
-              (keypress)="_handleKeyPress($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"
               [type]="type"

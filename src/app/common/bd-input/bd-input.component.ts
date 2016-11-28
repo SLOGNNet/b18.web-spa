@@ -17,33 +17,22 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 
 export class CommonInputComponent {
-  private _onTouchedCallback: () => void = noop;
-  private _onChangeCallback: (_: any) => void = noop;
-  private _value: string = '';
-  private _isInvalid: boolean = false;
-  private _focused: boolean = false;
-  private _disabled: boolean = false;
-  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-  private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-
-  private coerceBooleanProperty(value: any): boolean {
-    return value != null && `${value}` !== 'false';
-  }
-
-  private _convertValueForInputType(v: any): any {
-    switch (this.type) {
-      case 'number': return parseFloat(v);
-      default: return v;
-    }
-  }
 
   get focused() { return this._focused; }
+
+  get isCollapsed() { return this.collapsibleInput && !this._focused && this.empty; }
+
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
   }
-  get empty() { return (this._value == null || this._value === '')}
+  get empty() { return (this._value == null || this._value === ''); }
+
+  get value(): any {
+    return this._value;
+  };
+
   @Input() errorText: string = '';
-  @Input() collapsedInput: boolean;
+  @Input() collapsibleInput: boolean;
   @Input() labelText: any;
   @Input() name: string = null;
   @Input() type: string = 'text';
@@ -60,9 +49,25 @@ export class CommonInputComponent {
       this._onChangeCallback(v);
     }
   }
-  get value(): any {
-    return this._value;
-  };
+  private _onTouchedCallback: () => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
+  private _value: string = '';
+  private _isInvalid: boolean = false;
+  private _focused: boolean = false;
+  private _disabled: boolean = false;
+  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+  private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+   coerceBooleanProperty(value: any): boolean {
+    return value != null && `${value}` !== 'false';
+  }
+
+   _convertValueForInputType(v: any): any {
+    switch (this.type) {
+      case 'number': return parseFloat(v);
+      default: return v;
+    }
+  }
 
   _handleFocus(event: FocusEvent) {
     this._focused = true;
@@ -73,13 +78,7 @@ export class CommonInputComponent {
     this._disabled = this.coerceBooleanProperty(value);
   }
 
-
   _handleChange(event: Event) {
-    this.value = (<HTMLInputElement>event.target).value;
-    this._onTouchedCallback();
-  }
-
-  _handleKeyPress(event: Event) {
     this.value = (<HTMLInputElement>event.target).value;
     this._onTouchedCallback();
   }

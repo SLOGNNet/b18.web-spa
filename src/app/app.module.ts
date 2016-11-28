@@ -20,9 +20,9 @@ import { DriversComponent } from './drivers';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
 import { BdTypeaheadComponent } from './common/bd-typeahead';
+import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
-import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
