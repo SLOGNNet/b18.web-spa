@@ -26,7 +26,6 @@ $error-background: rgba(251,58,58,0.2);
   width: 100%;
   border-bottom: 1px solid $iron;
   margin-bottom: 0;
-  padding:0 17px;
   overflow: hidden;
   @extend .flex-element;
   flex-flow: row wrap;
@@ -34,20 +33,21 @@ $error-background: rgba(251,58,58,0.2);
 
   .bd-label{
     font-size: 10px;
-    width: 80px;
+    width: 63px;
     height: 100%;
     color: $nobel;
     text-transform: uppercase;
+    margin-left: 17px;
     label{
       display: flex;
       justify-content: flex-end;
       align-items: center;
       height: 100%;
-      margin-right: 25px;
       font-weight:normal;
     }
   }
   .bd-input{
+    margin-left: 32px;
     @extend .flex-element;
     flex-grow: 1;
     justify-content: space-between;
