@@ -1,49 +1,68 @@
-import { Component, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
+const noop = () => { };
+const COMPLETER_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => BdTypeaheadComponent),
+    multi: true
+};
 
 @Component({
   selector: 'bd-typeahead',
   templateUrl: './bd-typeahead.component.html',
-  styleUrls: ['./bd-typeahead.component.scss']
+  styleUrls: ['./bd-typeahead.component.scss'],
+  providers: [COMPLETER_CONTROL_VALUE_ACCESSOR]
 })
-export class BdTypeaheadComponent {
+export class BdTypeaheadComponent implements ControlValueAccessor {
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
-
-  public value: string;
-  private footerTempalteId: string = 'footerTemplate';
+  protected value: string;
+  protected isLoading: boolean = false;
+  protected isNoResultsShown: boolean = false;
+  private _onTouchedCallback: () => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
   public constructor() {
 
   }
-  public states: Array<string> = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
-    'California', 'Colorado',
-    'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-    'Illinois', 'Indiana', 'Iowa',
-    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts',
-    'Michigan', 'Minnesota',
-    'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-    'New Jersey', 'New Mexico',
-    'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon',
-    'Pennsylvania', 'Rhode Island',
-    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'];
-  public changeTypeaheadLoading(e: boolean): void {
-    this.footerTempalteId = e ? 'footerWithLoadingTemplate' : 'footerTemplate';
+
+  public get forceShowPopup(): boolean {
+        console.log('forceShowPopup' + this.isLoading || this.isNoResultsShown)
+    return this.isLoading || this.isNoResultsShown;
   }
 
-  public changeTypeaheadNoResults(e: boolean): void {
+  public changeTypeaheadLoading(isLoading: boolean): void {
+        console.log('isLoading' + isLoading)
+      this.isLoading = isLoading;
+
+  }
+
+  public changeTypeaheadNoResults(isNoResultsShown: boolean): void {
+            console.log('isNoResultsShown' +  isNoResultsShown)
+      this.isNoResultsShown = isNoResultsShown;
   }
 
   public typeaheadOnSelect(match): void {
       debugger;
       this.onSelect.emit(match);
   }
+
+  public writeValue(value: any) {
+    this.value = value;
+}
+
+public registerOnChange(fn: any) {
+    this._onChangeCallback = fn;
+}
+
+public registerOnTouched(fn: any) {
+    this._onTouchedCallback = fn;
+}
 }

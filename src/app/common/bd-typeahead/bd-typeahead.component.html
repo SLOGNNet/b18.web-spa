@@ -1,10 +1,21 @@
 <div class='bd-typeahead-container'>
+    <template #footerTemplate>
+      Footer
+    </template>
+    <template #loaderTemplate>
+      Loading
+    </template>
   <bd-input [(ngModel)]="value"
-      [typeahead]="states"
+      [typeahead]="source"
       [labelText]="labelText"
-      [typeaheadItemTemplate]="customItemTemplate"
-      [typeaheadItemTemplate]='footerTempalteId'
+      [typeaheadItemTemplate]="itemTemplate"
+      [typeaheadFooterTemplate]="footerTemplate"
+      [typeaheadLoaderTemplate]="loaderTemplate"
       [typeaheadOptionField]="optionField"
+      [typeaheadForceShowPopup]="forceShowPopup"
       (typeaheadOnSelect)="typeaheadOnSelect($event)"
+      (typeaheadLoading)="changeTypeaheadLoading($event)"
+      (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+      [typeaheadOptionsLimit]="'5'"
   ></bd-input>
 </div>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewEncapsulation, OnInit } from '@angular/core';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
@@ -10,7 +10,6 @@ import { TypeaheadMatch } from './typeahead-match.class';
   encapsulation: ViewEncapsulation.None
 })
 export class TypeaheadContainerComponent {
-  public parent: TypeaheadDirective;
   public query: any;
   public element: ElementRef;
   public isFocused: boolean = false;
@@ -19,7 +18,9 @@ export class TypeaheadContainerComponent {
   public display: string;
 
   protected _active: TypeaheadMatch;
+  protected _parent: TypeaheadDirective;
   protected _matches: Array<TypeaheadMatch> = [];
+  protected isLoading: boolean = false;
   protected placement: string;
 
   public constructor(element: ElementRef, options: TypeaheadOptions) {
@@ -39,6 +40,25 @@ export class TypeaheadContainerComponent {
     return this.parent ? this.parent.typeaheadFooterTemplate : undefined;
   }
 
+  public get loaderTemplate(): TemplateRef<any> {
+    return this.parent ? this.parent.typeaheadLoaderTemplate : undefined;
+  }
+
+  public get showLoader() {
+     console.log('showLoader', this.isLoading && this.loaderTemplate)
+    return this.isLoading && this.loaderTemplate;
+  }
+
+  public set parent(value: TypeaheadDirective) {
+    this._parent = value;
+    debugger;
+    this.subscribeOnLoad();
+  }
+
+  public get parent(): TypeaheadDirective {
+    return this._parent;
+  }
+
   public set matches(value: Array<TypeaheadMatch>) {
     this._matches = value;
 
@@ -49,7 +69,6 @@ export class TypeaheadContainerComponent {
 
   public position(hostEl: ElementRef): void {
     this.left = '0px';
-    debugger;
     this.top = hostEl.nativeElement.offsetHeight;
   }
 
@@ -82,6 +101,15 @@ export class TypeaheadContainerComponent {
 
   public isActive(value: TypeaheadMatch): boolean {
     return this._active === value;
+  }
+
+  protected subscribeOnLoad(): void {
+    if (this.parent) {
+      this.parent.typeaheadLoading.subscribe(value => {
+          debugger;
+        this.isLoading = value;
+      });
+    }
   }
 
   protected selectMatch(value: TypeaheadMatch, e: Event = void 0): boolean {

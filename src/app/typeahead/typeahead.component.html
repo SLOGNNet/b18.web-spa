@@ -9,6 +9,7 @@
 
     <bd-typeahead
            [source]="dataSource"
+           [(ngModel)]="query"
            [itemTemplate]="customItemTemplate"
            [optionField]="'name'"
            (onSelect)="typeaheadOnSelect($event)">

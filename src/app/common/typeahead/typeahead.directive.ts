@@ -41,17 +41,24 @@ export class TypeaheadDirective implements OnInit {
   @Input() public typeaheadAsync: boolean = void 0;
   @Input() public typeaheadItemTemplate: TemplateRef<any>;
   @Input() public typeaheadFooterTemplate: TemplateRef<any>;
-
+  @Input() public typeaheadLoaderTemplate: TemplateRef<any>;
+  @Input('typeaheadForceShowPopup')
+      set typeaheadForceShowPopup(value) {
+        console.log('typeaheadForceShowPopup' + value);
+        this.forceShowPopup = value;
+        const action: any = value ? this.show : this.hide;
+        action.call(this);
+      }
   public container: TypeaheadContainerComponent;
-  public isTypeaheadOptionsListActive: boolean = false;
 
   protected keyUpEventEmitter: EventEmitter<any> = new EventEmitter();
-  protected _matches: Array<TypeaheadMatch>;
+  protected _matches: Array<TypeaheadMatch> = [];
   protected placement: string = 'bottom-left';
   protected popup: ComponentRef<TypeaheadContainerComponent>;
   protected typeaheadUtils: TypeaheadUtils;
 
   protected ngControl: NgControl;
+  protected forceShowPopup: boolean = false
   protected viewContainerRef: ViewContainerRef;
   protected element: ElementRef;
   protected renderer: Renderer;
@@ -174,6 +181,10 @@ export class TypeaheadDirective implements OnInit {
   }
 
   public show(): void {
+    if (this.container) {
+        return;
+    }
+
     let options = new TypeaheadOptions({
       typeaheadRef: this,
       placement: this.placement,
@@ -260,7 +271,7 @@ export class TypeaheadDirective implements OnInit {
     this.typeaheadLoading.emit(false);
     this.typeaheadNoResults.emit(!this.hasMatches());
 
-    if (!this.hasMatches()) {
+    if (!this.hasMatches() && !this.forceShowPopup) {
       this.hide();
       return;
     }

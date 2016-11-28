@@ -12,21 +12,9 @@ export class TypeaheadDemoComponent {
   public selected: string = '';
   public dataSource: Observable<any>;
   public asyncSelected: string = '';
+  public query: string = ''
   public typeaheadLoading: boolean = false;
   public typeaheadNoResults: boolean = false;
-  public states: Array<string> = ['Alabama', 'Alaska', 'Arizona', 'Arkansas',
-    'California', 'Colorado',
-    'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-    'Illinois', 'Indiana', 'Iowa',
-    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts',
-    'Michigan', 'Minnesota',
-    'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-    'New Jersey', 'New Mexico',
-    'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon',
-    'Pennsylvania', 'Rhode Island',
-    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington',
-    'West Virginia', 'Wisconsin', 'Wyoming'];
   public statesComplex: Array<any> = [
     { id: 1, name: 'Alabama', region: 'South' }, { id: 2, name: 'Alaska', region: 'West' }, { id: 3, name: 'Arizona', region: 'West' },
     { id: 4, name: 'Arkansas', region: 'South' }, { id: 5, name: 'California', region: 'West' },
@@ -57,7 +45,7 @@ export class TypeaheadDemoComponent {
   public constructor() {
     this.dataSource = Observable.create((observer: any) => {
       // Runs on every search
-      observer.next(this.asyncSelected);
+      observer.next(this.query);
     }).mergeMap((token: string) => this.getStatesAsObservable(token));
   }
 
@@ -68,7 +56,7 @@ export class TypeaheadDemoComponent {
       this.statesComplex.filter((state: any) => {
         return query.test(state.name);
       })
-    );
+  ).delay(5000);
   }
 
   public changeTypeaheadLoading(e: boolean): void {
