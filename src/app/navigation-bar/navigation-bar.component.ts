@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'navigation-bar',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
         './navigation-bar.component.scss'
     ]
 })
-export class NavigationBarComponent {
 
+export class NavigationBarComponent {
+    @Input() switchState: number;
+    @Output() switchStateChange: EventEmitter<any>  = new EventEmitter();
+
+    onSwitchStateChange(switchState) {
+        this.switchStateChange.emit(switchState);
+    }
 }

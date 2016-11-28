@@ -23,6 +23,38 @@ body {
 	overflow: hidden;
 }
 
-.content {
-	margin-left: 140px;
+app {
+    display: flex;
 }
+
+/*page layout start*/
+.content,
+navigation-bar {
+    transition: margin 0.5s;
+    position: relative;
+    display: inline-block;
+}
+
+.content.slide {
+    z-index: 1;
+    left: -20px;
+}
+
+navigation-bar {
+    width: 140px;
+    height: 100vh;
+}
+
+navigation-bar.slide {
+    margin-left: -140px;
+    padding-right: 20px;
+    height: 100vh;
+    width: 160px;
+    z-index: 2;
+}
+
+navigation-bar.slide:hover {
+	margin-left: 0px;
+}
+
+/*page layout end*/

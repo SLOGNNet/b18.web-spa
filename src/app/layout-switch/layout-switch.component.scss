@@ -1,0 +1,32 @@
+.pane-switch-container {
+	text-align: center;
+	margin-top: 80px;
+
+	ul {
+        display: inline-block;
+		list-style: none;
+        padding: 0;
+	}
+
+	li {
+		border: 1px solid #fff;
+		margin-left: -1px;
+		min-width: 15px;
+		display: inline;
+		height: 20px;
+		background: none;
+		float: left;
+
+		&:first-child {
+			border-radius: 5px 0 0 5px;
+		}
+
+		&:last-child {
+			border-radius: 0 5px 6px 0;
+		}
+
+		&.active {
+			background: #ccc;
+		}
+	}
+}
