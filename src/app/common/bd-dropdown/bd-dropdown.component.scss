@@ -75,7 +75,7 @@ $dropitem: #f5fefe;
 			overflow: scroll;
 			padding: 0;
 			margin: 0;
-			border-top: 1px solid $iron;
+			border-top: 1px solid $seagul;
 			max-height: 150px;
 
 			li {
@@ -95,6 +95,23 @@ $dropitem: #f5fefe;
 					border-bottom: 1px solid $iron;
 				}
 
+				&.dropdown-footer {
+					padding: 0;
+					background: $white;
+					text-align: center;
+
+					button {
+						border: 0;
+						margin: 0 auto;
+						background: transparent;
+						color: $seagul;
+
+						&:focus {
+							outline: 0;
+						}
+					}
+				}
+
 				&:hover {
 					background: $dropitem;
 					cursor: pointer;
@@ -106,20 +123,5 @@ $dropitem: #f5fefe;
 			}
 		}
 
-		.dropdow-footer {
-			background: $white;
-			text-align: center;
-
-			button {
-				border: 0;
-				margin: 0 auto;
-				background: transparent;
-				color: $seagul;
-
-				&:focus {
-					outline: 0;
-				}
-			}
-		}
 	}
 }
