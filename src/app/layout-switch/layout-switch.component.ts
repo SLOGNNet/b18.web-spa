@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { SwitchState } from '../shared/enums/SwitchState';
 
 @Component({
     selector: 'layout-switch',
@@ -9,18 +10,27 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class LayoutSwitchComponent {
-    @Input() switchState: number = 0;
-    @Output() switchStateChange: EventEmitter<any>  = new EventEmitter();
+    @Input() switchState: SwitchState = SwitchState.ALL;
+    @Output() switchStateChange: EventEmitter<any> = new EventEmitter();
 
-    isActive(switchButtonState: number) {
+    private switchStateEnum = SwitchState;
+
+    constructor(private cdr: ChangeDetectorRef) {
+    }
+
+    ngAfterViewInit() {
+        this.cdr.detectChanges();
+    }
+
+    isActive(switchButtonState: SwitchState) {
         return !!(this.switchState & switchButtonState);
     }
 
-    onSwithcChange(switchButton) {
+    onSwitchChange(switchButton) {
         if (switchButton.classList.contains('active')) {
-            this.switchState -= switchButton.value;
+            this.switchState &= ~switchButton.state;
         } else {
-            this.switchState += switchButton.value;
+            this.switchState |= switchButton.state;
         }
 
         this.switchStateChange.emit(this.switchState);

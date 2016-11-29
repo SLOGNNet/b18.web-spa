@@ -1,8 +1,28 @@
 <div class="pane-switch-container">
     <ul id="pane-switch-group">
-        <li #toggleFirst [class.active]="isActive(toggleFirst.value)" (click)="onSwithcChange(toggleFirst)" value="1"></li>
-        <li #toggleSecond [class.active]="isActive(toggleSecond.value)" (click)="onSwithcChange(toggleSecond)" value="2"></li>
-        <li #toggleThird [class.active]="isActive(toggleThird.value)" (click)="onSwithcChange(toggleThird)" value="4"></li>
-        <li #toggleFourt [class.active]="isActive(toggleFourt.value)" (click)="onSwithcChange(toggleFourt)" value="8"></li>
+        <li 
+            #toggleFirst 
+            [class.active]="isActive(toggleFirst.state)"
+            (click)="onSwitchChange(toggleFirst)"
+            [state]="switchStateEnum.MENU_SLIDED">
+        </li>
+        <li 
+            #toggleSecond 
+            [class.active]="isActive(toggleSecond.state)"
+            (click)="onSwitchChange(toggleSecond)"
+            [state]="switchStateEnum.FIRST_SLOT_VISIBLE">
+        </li>
+        <li 
+            #toggleThird
+            [class.active]="isActive(toggleThird.state)"
+            (click)="onSwitchChange(toggleThird)"
+            [state]="switchStateEnum.SECOND_SLOT_VISIBLE">
+        </li>
+        <li 
+            #toggleFourt
+            [class.active]="isActive(toggleFourt.state)"
+            (click)="onSwitchChange(toggleFourt)"
+            [state]="switchStateEnum.THIRD_SLOT_VISIBLE">
+        </li>
     </ul>
 </div>

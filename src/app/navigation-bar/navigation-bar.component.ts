@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SwitchState } from '../shared/enums/SwitchState';
 
 @Component({
     selector: 'navigation-bar',
@@ -9,10 +10,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class NavigationBarComponent {
-    @Input() switchState: number;
+    @Input() switchState: SwitchState;
     @Output() switchStateChange: EventEmitter<any>  = new EventEmitter();
 
-    onSwitchStateChange(switchState) {
+    onSwitchStateChange(switchState: SwitchState) {
         this.switchStateChange.emit(switchState);
     }
 }
