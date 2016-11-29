@@ -35,7 +35,7 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   }
 
   public changeTypeaheadLoading(isLoading: boolean): void {
-      this.isLoading = isLoading
+      this.isLoading = isLoading;
   }
 
   public changeTypeaheadNoResults(isNoResultsShown: boolean): void {
