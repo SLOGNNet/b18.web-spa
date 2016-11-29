@@ -1,62 +1,54 @@
-import { Component, Input, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
+import { Component, Input, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
-const noop = () => { };
-
-export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CommonDropdownComponent),
-  multi: true
-};
 
 @Component({
   selector: 'bd-dropdown',
   styleUrls: ['bd-dropdown.component.scss'],
-  templateUrl: './bd-dropdown.component.html',
-  providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR]
+  templateUrl: './bd-dropdown.component.html'
 })
-export class CommonDropdownComponent implements ControlValueAccessor {
+export class CommonDropdownComponent {
 
-  private _currentValue: any;
-  private value: any;
+  @Input() dropdownHeaderTemplate: TemplateRef<any>;
+  @Input() dropdownFooterTemplate: TemplateRef<any>;
+  @Input() dropdownItemTemplate: TemplateRef<any>;
+
+  @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
+
   private _items: any[];
-  private disabled: boolean = false;
-  private _onTouchedCallback: () => void = noop;
-  private _onChangeCallback: (_: any) => void = noop;
+  private _selectedValue: any;
+  private value: any;
+
+  get currentDisplayText(){
+    return this.value ? this.value : 'Select Contact';
+  }
+
+  get isSelectedValue(){
+    return this.value;
+  }
 
   @Input() set items(args: any[]){
     this._items = args;
-    console.log(this._items);
+  }
+  get items(): any[]{
+    return this._items;
   }
 
-  public toggled(open: boolean): void {
-    console.log('Dropdown is now: ', open);
+  @Input() set selectedValue(v: any) {
+      this._selectedValue = v;
+      this.value = this._selectedValue;
   }
 
   public _handleDropdownHeaderClick(event): void {
-    this._currentValue = undefined;
+    this.value = undefined;
   }
 
   public _handleDropdownItemClick(event): void {
-    this._currentValue = event.target.getAttribute('value');
+    this.value = event.target.getAttribute('value');
+    this.onItemClick.emit(this.value);
   }
 
-  @HostListener('click', ['$event'])
-  public toggleDropdown(event: MouseEvent): boolean {
-    event.stopPropagation();
-    return false;
+  public _handleFooterClick(event): void {
+    console.log('Dropdown footer clicked. Event = ', event);
   }
 
-  public writeValue(value: any) {
-    this.value = value;
-  }
-
-  public registerOnChange(fn: any) {
-    this._onChangeCallback = fn;
-  }
-
-  public registerOnTouched(fn: any) {
-    this._onTouchedCallback = fn;
-  }
 }

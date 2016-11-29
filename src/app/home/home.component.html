@@ -3,6 +3,28 @@ Home page
 
 <div style="margin:50px auto; width:400px; background:#c1c1c1;padding:20px;">
 
-<bd-dropdown [items]="items"></bd-dropdown>
+<template #dropdownHeaderTemplate>
+      Leave empty
+</template>
+
+<template #dropdownFooterTemplate>
+  <button
+    class="form-button">
+      Add Contact
+  </button>
+</template>
+
+<template #dropdownItemTemplate let-item="item">
+      {{item}}
+</template>
+
+
+<bd-dropdown
+  [dropdownHeaderTemplate]="dropdownHeaderTemplate"
+  [dropdownFooterTemplate]="dropdownFooterTemplate"
+  [dropdownItemTemplate]="dropdownItemTemplate"
+  [selectedValue]="items[0]"
+  [items]="items">
+</bd-dropdown>
 
 </div>

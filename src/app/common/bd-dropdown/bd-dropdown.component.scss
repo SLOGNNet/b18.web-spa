@@ -7,11 +7,6 @@ $error: #fb3a3a;
 $dropitem: #f5fefe;
 
 .bd-dropdown-container {
-	a {
-		&:hover {
-			text-decoration: none;
-		}
-	}
 
 	.bd-dropdown-wrapper {
 		display: flex;
@@ -96,20 +91,9 @@ $dropitem: #f5fefe;
 				}
 
 				&.dropdown-footer {
-					padding: 0;
+					display: flex;
 					background: $white;
-					text-align: center;
-
-					button {
-						border: 0;
-						margin: 0 auto;
-						background: transparent;
-						color: $seagul;
-
-						&:focus {
-							outline: 0;
-						}
-					}
+					justify-content: center;
 				}
 
 				&:hover {

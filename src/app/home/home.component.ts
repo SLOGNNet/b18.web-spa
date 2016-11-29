@@ -4,6 +4,7 @@ import { CommonDropdownComponent } from './common/bd-dropdown/bd-dropdown.compon
 
 @Component({
     selector: 'home',
+    styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
