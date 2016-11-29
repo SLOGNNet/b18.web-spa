@@ -9,7 +9,7 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'bd-input',
+  selector: 'bd-input, bd-textarea',
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
@@ -52,6 +52,16 @@ export class CommonInputComponent {
   }
 
    @ViewChild('input') _inputElement: ElementRef;
+
+   _elementType: 'input' | 'textarea';
+
+   constructor(elementRef: ElementRef) {
+  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
+  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+      'input' :
+      'textarea';
+      console.log(this._elementType,'this._elementType');
+    }
 
    private _onTouchedCallback: () => void = noop;
    private _onChangeCallback: (_: any) => void = noop;

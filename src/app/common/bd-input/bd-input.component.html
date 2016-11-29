@@ -20,6 +20,7 @@
           <div class="bd-input-infix">
             <input
               #input
+              *ngIf="_elementType === 'input'"
               name="bd-input-element"
               type="text"
               [(ngModel)]="value"
@@ -35,6 +36,21 @@
               id="customer-input-id"
               autocomplete="off"
             >
+
+            <textarea
+              #input
+              *ngIf="_elementType === 'textarea'"
+              md-autosize
+              [disabled]="disabled"
+              [(ngModel)]="value"
+              [attr.maxlength]="maxlength"
+              class="bd-input-element {{_invalidClass}}"
+              (focus)="_handleFocus($event)"
+              (change)="_handleChange($event)"
+              (blur)="_handleBlur($event)"
+              placeholder="placeholder"
+              id="customer-input-id"
+            ></textarea>
           </div>
           <div class="bd-input-suffix">
             <ng-content select="[bd-sufix]"></ng-content>
