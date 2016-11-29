@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, HostBinding, forwardRef } from '@angular/core';
+import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -12,7 +12,8 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'bd-input',
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
-  providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR]
+  providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
+  host: {'(click)' : 'focus($event)'}
 })
 
 
@@ -49,14 +50,17 @@ export class CommonInputComponent {
       this._onChangeCallback(v);
     }
   }
-  private _onTouchedCallback: () => void = noop;
-  private _onChangeCallback: (_: any) => void = noop;
-  private _value: string = '';
-  private _isInvalid: boolean = false;
-  private _focused: boolean = false;
-  private _disabled: boolean = false;
-  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-  private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+   @ViewChild('input') _inputElement: ElementRef;
+
+   private _onTouchedCallback: () => void = noop;
+   private _onChangeCallback: (_: any) => void = noop;
+   private _value: string = '';
+   private _isInvalid: boolean = false;
+   private _focused: boolean = false;
+   private _disabled: boolean = false;
+   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
    coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';
@@ -67,6 +71,11 @@ export class CommonInputComponent {
       case 'number': return parseFloat(v);
       default: return v;
     }
+  }
+
+  focus($event) {
+    this._inputElement.nativeElement.focus();
+    $event.preventDefault();
   }
 
   _handleFocus(event: FocusEvent) {
