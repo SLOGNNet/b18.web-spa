@@ -10,5 +10,7 @@ pipelines:
     - step:
         script: # Modify the commands below to build your repository.
           - npm i
-          - npm run build:prod
           - npm ci
+          - git submodule update
+          - nom run build:libs
+          - npm run build:prod
