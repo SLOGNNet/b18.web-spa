@@ -3,7 +3,9 @@
       Footer
     </template>
     <template #loaderTemplate>
-      Loading
+        <div class='loader'>
+          Loading indicator
+        </div>
     </template>
   <bd-input [(ngModel)]="value"
       [typeahead]="source"
@@ -12,10 +14,10 @@
       [typeaheadFooterTemplate]="footerTemplate"
       [typeaheadLoaderTemplate]="loaderTemplate"
       [typeaheadOptionField]="optionField"
-      [typeaheadForceShowPopup]="forceShowPopup"
       (typeaheadOnSelect)="typeaheadOnSelect($event)"
       (typeaheadLoading)="changeTypeaheadLoading($event)"
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+      (typeaheadFooterClick)="onFooterClick()"
       [typeaheadOptionsLimit]="'5'"
   ></bd-input>
 </div>

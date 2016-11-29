@@ -16,7 +16,8 @@ const COMPLETER_CONTROL_VALUE_ACCESSOR = {
   selector: 'bd-typeahead',
   templateUrl: './bd-typeahead.component.html',
   styleUrls: ['./bd-typeahead.component.scss'],
-  providers: [COMPLETER_CONTROL_VALUE_ACCESSOR]
+  providers: [COMPLETER_CONTROL_VALUE_ACCESSOR],
+  encapsulation: ViewEncapsulation.None
 })
 export class BdTypeaheadComponent implements ControlValueAccessor {
   @Input() public itemTemplate: TemplateRef<any>;
@@ -33,11 +34,6 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
 
   }
 
-  public get forceShowPopup(): boolean {
-        console.log('forceShowPopup' + this.isLoading || this.isNoResultsShown)
-    return this.isLoading || this.isNoResultsShown;
-  }
-
   public changeTypeaheadLoading(isLoading: boolean): void {
         console.log('isLoading' + isLoading)
       this.isLoading = isLoading;
@@ -50,8 +46,10 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   }
 
   public typeaheadOnSelect(match): void {
-      debugger;
       this.onSelect.emit(match);
+  }
+
+  public onFooterClick(): void {
   }
 
   public writeValue(value: any) {

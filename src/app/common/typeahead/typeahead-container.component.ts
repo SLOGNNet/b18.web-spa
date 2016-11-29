@@ -20,7 +20,6 @@ export class TypeaheadContainerComponent {
   protected _active: TypeaheadMatch;
   protected _parent: TypeaheadDirective;
   protected _matches: Array<TypeaheadMatch> = [];
-  protected isLoading: boolean = false;
   protected placement: string;
 
   public constructor(element: ElementRef, options: TypeaheadOptions) {
@@ -45,14 +44,11 @@ export class TypeaheadContainerComponent {
   }
 
   public get showLoader() {
-     console.log('showLoader', this.isLoading && this.loaderTemplate)
-    return this.isLoading && this.loaderTemplate;
+    return this.parent && this.parent.isLoading && this.loaderTemplate;
   }
 
   public set parent(value: TypeaheadDirective) {
     this._parent = value;
-    debugger;
-    this.subscribeOnLoad();
   }
 
   public get parent(): TypeaheadDirective {
@@ -61,7 +57,6 @@ export class TypeaheadContainerComponent {
 
   public set matches(value: Array<TypeaheadMatch>) {
     this._matches = value;
-
     if (this._matches.length > 0) {
       this._active = this._matches[0];
     }
@@ -69,7 +64,8 @@ export class TypeaheadContainerComponent {
 
   public position(hostEl: ElementRef): void {
     this.left = '0px';
-    this.top = hostEl.nativeElement.offsetHeight;
+    const hostPosition = positionService.position(hostEl.nativeElement);
+    this.top = hostPosition.height + 'px';
   }
 
   public selectActiveMatch(): void {
@@ -103,15 +99,6 @@ export class TypeaheadContainerComponent {
     return this._active === value;
   }
 
-  protected subscribeOnLoad(): void {
-    if (this.parent) {
-      this.parent.typeaheadLoading.subscribe(value => {
-          debugger;
-        this.isLoading = value;
-      });
-    }
-  }
-
   protected selectMatch(value: TypeaheadMatch, e: Event = void 0): boolean {
     if (e) {
       e.stopPropagation();
@@ -121,6 +108,11 @@ export class TypeaheadContainerComponent {
     setTimeout(() =>
       this.parent.typeaheadOnSelect.emit(value), 0
     );
+    return false;
+  }
+
+  protected footerClick(): boolean {
+    this.parent.typeaheadFooterClick.emit();
     return false;
   }
 }

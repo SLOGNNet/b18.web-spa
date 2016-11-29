@@ -16,7 +16,8 @@
     </li>
   </template>
   <li *ngIf="showLoader">
-    Loading
+      <template [ngTemplateOutlet]="loaderTemplate">
+      </template>
   </li>
   <li *ngIf="footerTemplate"
     (click)="footerClick($event)">

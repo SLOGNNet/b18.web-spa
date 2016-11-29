@@ -32,6 +32,7 @@ export class TypeaheadDirective implements OnInit {
   @Output() public typeaheadLoading: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @Output() public typeaheadNoResults: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @Output() public typeaheadOnSelect: EventEmitter<TypeaheadMatch> = new EventEmitter<TypeaheadMatch>(false);
+  @Output() public typeaheadFooterClick: EventEmitter<void> = new EventEmitter<void>(false);
 
   @Input() public typeahead: any;
   @Input() public typeaheadMinLength: number = void 0;
@@ -42,14 +43,8 @@ export class TypeaheadDirective implements OnInit {
   @Input() public typeaheadItemTemplate: TemplateRef<any>;
   @Input() public typeaheadFooterTemplate: TemplateRef<any>;
   @Input() public typeaheadLoaderTemplate: TemplateRef<any>;
-  @Input('typeaheadForceShowPopup')
-      set typeaheadForceShowPopup(value) {
-        console.log('typeaheadForceShowPopup' + value);
-        this.forceShowPopup = value;
-        const action: any = value ? this.show : this.hide;
-        action.call(this);
-      }
   public container: TypeaheadContainerComponent;
+  public isLoading: boolean = false;
 
   protected keyUpEventEmitter: EventEmitter<any> = new EventEmitter();
   protected _matches: Array<TypeaheadMatch> = [];
@@ -58,7 +53,6 @@ export class TypeaheadDirective implements OnInit {
   protected typeaheadUtils: TypeaheadUtils;
 
   protected ngControl: NgControl;
-  protected forceShowPopup: boolean = false
   protected viewContainerRef: ViewContainerRef;
   protected element: ElementRef;
   protected renderer: Renderer;
@@ -146,6 +140,10 @@ export class TypeaheadDirective implements OnInit {
     this.viewContainerRef = viewContainerRef;
     this.renderer = renderer;
     this.typeaheadUtils = typeaheadUtils;
+    this.typeaheadLoading.subscribe(value => {
+      this.show();
+      this.isLoading = value;
+    });
   }
 
   public ngOnInit(): void {
@@ -270,11 +268,6 @@ export class TypeaheadDirective implements OnInit {
 
     this.typeaheadLoading.emit(false);
     this.typeaheadNoResults.emit(!this.hasMatches());
-
-    if (!this.hasMatches() && !this.forceShowPopup) {
-      this.hide();
-      return;
-    }
 
     if (this.container) {
       this.container.query = this.ngControl.control.value.toString().toLowerCase();
