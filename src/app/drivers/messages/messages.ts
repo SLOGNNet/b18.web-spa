@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit {
     { message: 'have a safe trip', username: 'username', type: 'system', date: '18:25 21-12-2016',
       img: 'https://qph.ec.quoracdn.net/main-qimg-f6e63c9de812fc2660abad36006414e3?convert_to_webp=true'},
     { message: 'ok received', username: 'username', type: 'user', date: '18:26 21-12-2016',
-      img: "https://s-media-cache-ak0.pinimg.com/originals/e1/48/b3/e148b3200bcd954ca641428a148a2c71.jpg"},
+      img: 'https://s-media-cache-ak0.pinimg.com/originals/e1/48/b3/e148b3200bcd954ca641428a148a2c71.jpg'},
     { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016',
       img: 'https://qph.ec.quoracdn.net/main-qimg-f6e63c9de812fc2660abad36006414e3?convert_to_webp=true'},
     { message: 'hey there!', username: 'username', type: 'system', date: '18:39 21-12-2016',

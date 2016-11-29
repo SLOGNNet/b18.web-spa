@@ -12,7 +12,7 @@ export class TypeaheadDemoComponent {
   public selected: string = '';
   public dataSource: Observable<any>;
   public asyncSelected: string = '';
-  public query: string = ''
+  public query: string = '';
   public typeaheadLoading: boolean = false;
   public typeaheadNoResults: boolean = false;
   public statesComplex: Array<any> = [

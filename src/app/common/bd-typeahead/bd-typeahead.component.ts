@@ -35,13 +35,11 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   }
 
   public changeTypeaheadLoading(isLoading: boolean): void {
-        console.log('isLoading' + isLoading)
       this.isLoading = isLoading;
 
   }
 
   public changeTypeaheadNoResults(isNoResultsShown: boolean): void {
-            console.log('isNoResultsShown' +  isNoResultsShown)
       this.isNoResultsShown = isNoResultsShown;
   }
 
