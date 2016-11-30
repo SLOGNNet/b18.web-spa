@@ -15,20 +15,20 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 }
 
-.flex-element {
+@mixin flex-element {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
 }
 
 .bd-input-wrapper {
+	@include flex-element;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
 	height: 50px;
 	border-bottom: 1px solid $iron;
 	margin-bottom: 0;
-	@extend %.flex-element;
 	flex-flow: row wrap;
 	background-color: $white;
 
@@ -39,7 +39,8 @@ $error-background: rgba(251, 58, 58, .2);
 		font-size: 10px;
 		text-transform: uppercase;
 
-		label {
+		label,
+		textarea {
 			display: flex;
 			height: 100%;
 			font-weight: normal;
@@ -49,22 +50,23 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 
 	.bd-input {
+		@include flex-element;
 		margin-left: 32px;
-		@extend %.flex-element;
 		flex-grow: 1;
 		justify-content: space-between;
 
 		.bd-input-prefix {
+			@include flex-element;
 			margin-right: 15px;
-			@extend %.flex-element;
 			flex-grow: 0;
 		}
 
 		.bd-input-infix {
-			@extend %.flex-element;
+			@include flex-element;
 			flex-grow: 1;
 
-			input {
+			input,
+			textarea {
 				position: relative;
 				z-index: 1;
 				top: 0;
@@ -91,7 +93,7 @@ $error-background: rgba(251, 58, 58, .2);
 		}
 
 		.bd-input-suffix {
-			@extend %.flex-element;
+			@include flex-element;
 			flex-grow: 0;
 		}
 
@@ -120,7 +122,7 @@ $error-background: rgba(251, 58, 58, .2);
 		}
 
 		+ .error-message {
-			@extend %.flex-element;
+			@include flex-element;
 			background: $error-background;
 			color: $error;
 			text-align: left;
@@ -152,4 +154,5 @@ $error-background: rgba(251, 58, 58, .2);
 			animation: labelFlight .1s 1;
 		}
 	}
+
 }
