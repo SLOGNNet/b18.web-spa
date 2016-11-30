@@ -36,7 +36,7 @@ Home page
     [limit]="10">
 </datatable>
 
-<div style="width:500px; margin-top:100px;">
+<div style="width:500px; margin:100px auto;">
     <bd-input
         placeholder="placeholder"
         [collapsibleInput]="false"
@@ -52,4 +52,17 @@ Home page
         [attr.name]="'Andrew'">
     </bd-input>
 
+
+  <div style="margin-top:30px;"></div>
+  <bd-textarea
+  [labelText]="'textarea'"
+  [collapsibleInput]="false"
+  >
+  <span class="prefix" bd-prefix>$&nbsp;</span>
+  </bd-textarea>
+
+  <bd-textarea
+  [collapsibleInput]="true"
+  [labelText]="'textarea'">
+  </bd-textarea>
 </div>
