@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
+import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
+import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 
 @Component({
     selector: 'home',
+    styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
@@ -37,6 +40,8 @@ export class HomeComponent {
       'company': 'Suretech',
       'age': 14
   }];
+
+  items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
 
   columns = [
      { prop: 'name' },

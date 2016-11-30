@@ -16,8 +16,11 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
+import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
+import { BdDropdownComponent } from './common/bd-dropdown';
+import { BdFormButtonComponent } from './common/bd-form-button';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
@@ -43,6 +46,8 @@ type StoreType = {
      AppComponent,
      HomeComponent,
      CommonInputComponent,
+     BdDropdownComponent,
+     BdFormButtonComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
@@ -55,6 +60,7 @@ type StoreType = {
     HttpModule,
     SharedModule,
     Angular2DataTableModule,
+    DropdownModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
