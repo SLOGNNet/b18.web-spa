@@ -1,1 +1,1 @@
-export * from './bd-input.component';   
+export * from './bd-input.component';
