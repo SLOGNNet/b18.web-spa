@@ -20,6 +20,7 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
 import { BdDropdownComponent } from './common/bd-dropdown';
+import { BdFormButtonComponent } from './common/bd-form-button';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
@@ -46,6 +47,7 @@ type StoreType = {
      HomeComponent,
      CommonInputComponent,
      BdDropdownComponent,
+     BdFormButtonComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
