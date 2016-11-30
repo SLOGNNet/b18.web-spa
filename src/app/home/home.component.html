@@ -1,4 +1,30 @@
 Home page
+
+
+<div style="margin:50px auto; width:400px; background:#c1c1c1;padding:20px;">
+  <template #dropdownHeaderTemplate>
+        Leave empty
+  </template>
+
+  <template #dropdownFooterTemplate>
+    <bd-form-button
+      buttonText="Add Contact">
+    </bd-form-button>
+  </template>
+
+  <template #dropdownItemTemplate let-item="item">
+        {{item}}
+  </template>
+
+  <bd-dropdown
+    [dropdownHeaderTemplate]="dropdownHeaderTemplate"
+    [dropdownFooterTemplate]="dropdownFooterTemplate"
+    [dropdownItemTemplate]="dropdownItemTemplate"
+    [selectedValue]="items[0]"
+    [items]="items">
+  </bd-dropdown>
+</div>
+
 <datatable
     class='material striped'
     [rows]='rows'
@@ -7,26 +33,27 @@ Home page
     [headerHeight]="50"
     [footerHeight]="50"
     [rowHeight]="'auto'"
-    [limit]="10"
->
+    [limit]="10">
 </datatable>
 
-<div style="width:500px; margin:100px auto">
-  <bd-input
-      placeholder="placeholder"
-      [collapsibleInput]="false"
-      [labelText]="'date'">
-      <span class="prefix" bd-prefix>$&nbsp;</span>
-  </bd-input>
+<div style="width:500px; margin:100px auto;">
+    <bd-input
+        placeholder="placeholder"
+        [collapsibleInput]="false"
+        [labelText]="'date'">
+        <span class="prefix" bd-prefix>$&nbsp;</span>
+    </bd-input>
+
+    <div style="margin-top:30px;"></div>
+
+    <bd-input
+        [labelText]="'Estimated distance Estimated'"
+        [collapsibleInput]="true"
+        [attr.name]="'Andrew'">
+    </bd-input>
+
 
   <div style="margin-top:30px;"></div>
-
-  <bd-input
-      [labelText]="'Estimated distance Estimated'"
-      [collapsibleInput]="true"
-      [attr.name]="'Andrew'">
-  </bd-input>
-    <div style="margin-top:30px;"></div>
   <bd-textarea
   [labelText]="'textarea'"
   [collapsibleInput]="false"
@@ -34,7 +61,6 @@ Home page
   <span class="prefix" bd-prefix>$&nbsp;</span>
   </bd-textarea>
 
-  <div style="margin-top:30px;"></div>
   <bd-textarea
   [collapsibleInput]="true"
   [labelText]="'textarea'">

@@ -1,0 +1,11 @@
+$seagul: #75b3e2;
+
+.form-button {
+	border: 0;
+	background: transparent;
+	color: $seagul;
+
+	&:focus {
+		outline: 0;
+	}
+}
