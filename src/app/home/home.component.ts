@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CommonInputComponent } from './common/bd-input/bd-input.component'
-import { CommonDropdownComponent } from './common/bd-dropdown/bd-dropdown.component'
+import { CommonInputComponent } from './common/bd-input/bd-input.component';
+import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 
 @Component({
     selector: 'home',
@@ -40,7 +40,7 @@ export class HomeComponent {
       'age': 14
   }];
 
-  items = ["Jacky Chan - actor", "Bill Gates - MS CEO","John Doe - xz", "Vasia Pupkin - clown", "Anton Ivanovich - director"];
+  items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
 
   columns = [
      { prop: 'name' },

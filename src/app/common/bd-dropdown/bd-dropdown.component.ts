@@ -6,13 +6,14 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
   styleUrls: ['bd-dropdown.component.scss'],
   templateUrl: './bd-dropdown.component.html'
 })
-export class CommonDropdownComponent {
+export class BdDropdownComponent {
 
   @Input() dropdownHeaderTemplate: TemplateRef<any>;
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
 
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
+  @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
 
   private _items: any[];
   private _selectedValue: any;
@@ -50,6 +51,7 @@ export class CommonDropdownComponent {
   }
 
   public _handleFooterClick(event): void {
+    this.onFooterClick.emit(event);
     console.log('Dropdown footer clicked. Event = ', event);
   }
 
