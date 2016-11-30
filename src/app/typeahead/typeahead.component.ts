@@ -56,7 +56,7 @@ export class TypeaheadDemoComponent {
       this.statesComplex.filter((state: any) => {
         return query.test(state.name);
       })
-  ).delay(5000);
+    ).delay(5000);
   }
 
   public changeTypeaheadLoading(e: boolean): void {
@@ -68,6 +68,5 @@ export class TypeaheadDemoComponent {
   }
 
   public typeaheadOnSelect(e: any): void {
-    console.log('Selected value: ', e.value);
   }
 }

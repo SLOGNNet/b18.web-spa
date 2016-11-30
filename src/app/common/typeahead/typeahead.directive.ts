@@ -180,7 +180,7 @@ export class TypeaheadDirective implements OnInit {
 
   public show(): void {
     if (this.container) {
-        return;
+      return;
     }
 
     let options = new TypeaheadOptions({

@@ -7,9 +7,9 @@ import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
 const noop = () => { };
 const COMPLETER_CONTROL_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => BdTypeaheadComponent),
-    multi: true
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => BdTypeaheadComponent),
+  multi: true
 };
 
 @Component({
@@ -35,15 +35,15 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   }
 
   public changeTypeaheadLoading(isLoading: boolean): void {
-      this.isLoading = isLoading;
+    this.isLoading = isLoading;
   }
 
   public changeTypeaheadNoResults(isNoResultsShown: boolean): void {
-      this.isNoResultsShown = isNoResultsShown;
+    this.isNoResultsShown = isNoResultsShown;
   }
 
   public typeaheadOnSelect(match): void {
-      this.onSelect.emit(match);
+    this.onSelect.emit(match);
   }
 
   public onFooterClick(): void {
@@ -51,13 +51,13 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
 
   public writeValue(value: any) {
     this.value = value;
-}
+  }
 
-public registerOnChange(fn: any) {
+  public registerOnChange(fn: any) {
     this._onChangeCallback = fn;
-}
+  }
 
-public registerOnTouched(fn: any) {
+  public registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
-}
+  }
 }
