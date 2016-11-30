@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: 'textarea[md-autosize]',
+  selector: 'textarea[bd-autosize]',
   host: {
     '(input)': 'resizeToFitContent()',
     '[style.min-height]': '_minHeight',
