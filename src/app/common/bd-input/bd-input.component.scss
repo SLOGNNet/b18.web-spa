@@ -1,137 +1,155 @@
-$white: #FFFFFF;
-$seagul: #75B3E2;
-$nobel: #B3B2B2;
-$iron: #D7D8DB;
+$white: #fff;
+$seagul: #75b3e2;
+$nobel: #b3b2b2;
+$iron: #d7d8db;
 $error: #fb3a3a;
-$error-background: rgba(251,58,58,0.2);
+$error-background: rgba(251, 58, 58, .2);
 
 @keyframes labelFlight {
-  from {
-    left: 200px;
-  }
-  to {
-    left: 0;
-  }
+	from {
+		left: 200px;
+	}
+
+	to {
+		left: 0;
+	}
 }
 
-.flex-element{
-  display: flex;
-  align-items: center;
-  flex-direction: row;
+.flex-element {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
 }
 
-.bd-input-wrapper{
-  position: relative;
-  height: 50px;
-  width: 100%;
-  border-bottom: 1px solid $iron;
-  margin-bottom: 0;
-  overflow: hidden;
-  @extend .flex-element;
-  flex-flow: row wrap;
-  background-color: $white;
+.bd-input-wrapper {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid $iron;
+	margin-bottom: 0;
+	@extend %.flex-element;
+	flex-flow: row wrap;
+	background-color: $white;
 
-  .bd-label{
-    font-size: 10px;
-    width: 80px;
-    height: 100%;
-    color: $nobel;
-    text-transform: uppercase;
-    label{
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-      font-weight:normal;
-    }
-  }
-  .bd-input{
-    margin-left: 32px;
-    @extend .flex-element;
-    flex-grow: 1;
-    justify-content: space-between;
-    .bd-input-prefix{
-        margin-right: 15px;
-        @extend .flex-element;
-        flex-grow: 0;
-    }
-    .bd-input-infix{
-      @extend .flex-element;
-      flex-grow: 1;
-      input{
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        border: none;
-        padding: 8px 0;
-        background: none;
-        box-shadow: none;
-        outline: 0;
-        &:focus {
-          &::placeholder {
-            color: $nobel;
-            opacity:1;
-          }
-        }
-        &::placeholder {
-            color:#fff;
-            opacity:0;
-        }
-      }
-    }
-    .bd-input-suffix{
-        @extend .flex-element;
-        flex-grow: 0;
-    }
-    .error-message{
-      display:none;
-    }
-  }
-  + .error-message{
-    display: none;
-  }
+	.bd-label {
+		width: 80px;
+		height: 100%;
+		color: $nobel;
+		font-size: 10px;
+		text-transform: uppercase;
 
-  &.bd-focused{
-    border-bottom-color: $seagul;
-    .bd-label{
-      color: $seagul;
-    }
-  }
-  &.bd-invalid{
-    border-bottom-color: $error;
-    .bd-label{
-      color: $error;
-    }
-    + .error-message{
-          @extend .flex-element;
-          color: $error;
-          background: $error-background;
-          text-align: left;
-          i{
-            margin: 0 15px 0 17px;
-          }
-      }
-  }
+		label {
+			display: flex;
+			height: 100%;
+			font-weight: normal;
+			justify-content: flex-end;
+			align-items: center;
+		}
+	}
 
-&.bd-collapsed-input{
-    .bd-label {
-      padding-left: 17px;
-      flex-grow: 1;
-      color: $nobel;
-      width: 100%;
-      text-align: left;
-      font-size: 16px;
-      label{
-        justify-content: flex-start;
-      }
-    }
-  }
-  &.bd-expanded-input{
-    .bd-label{
-      animation: labelFlight 0.1s 1;
-      text-align: right;
-    }
-  }
+	.bd-input {
+		margin-left: 32px;
+		@extend %.flex-element;
+		flex-grow: 1;
+		justify-content: space-between;
+
+		.bd-input-prefix {
+			margin-right: 15px;
+			@extend %.flex-element;
+			flex-grow: 0;
+		}
+
+		.bd-input-infix {
+			@extend %.flex-element;
+			flex-grow: 1;
+
+			input {
+				position: relative;
+				z-index: 1;
+				top: 0;
+				width: 100%;
+				padding: 8px 0;
+				border: 0;
+				background: none;
+				left: 0;
+				box-shadow: none;
+				outline: 0;
+
+				&:focus {
+					&::placeholder {
+						color: $nobel;
+						opacity: 1;
+					}
+				}
+
+				&::placeholder {
+					color: $white;
+					opacity: 0;
+				}
+			}
+		}
+
+		.bd-input-suffix {
+			@extend %.flex-element;
+			flex-grow: 0;
+		}
+
+		.error-message {
+			display: none;
+		}
+	}
+
+	+ .error-message {
+		display: none;
+	}
+
+	&.bd-focused {
+		border-bottom-color: $seagul;
+
+		.bd-label {
+			color: $seagul;
+		}
+	}
+
+	&.bd-invalid {
+		border-bottom-color: $error;
+
+		.bd-label {
+			color: $error;
+		}
+
+		+ .error-message {
+			@extend %.flex-element;
+			background: $error-background;
+			color: $error;
+			text-align: left;
+
+			i {
+				margin: 0 15px 0 17px;
+				}
+		}
+	}
+
+	&.bd-collapsed-input {
+		.bd-label {
+			width: 100%;
+			color: $nobel;
+			font-size: 16px;
+			text-align: left;
+			padding-left: 17px;
+			flex-grow: 1;
+
+			label {
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	&.bd-expanded-input {
+		.bd-label {
+			text-align: right;
+			animation: labelFlight .1s 1;
+		}
+	}
 }
