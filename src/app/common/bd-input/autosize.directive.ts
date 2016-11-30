@@ -8,7 +8,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
     '[style.max-height]': '_maxHeight',
   },
 })
-export class MdTextareaAutosize implements OnInit {
+export class BdTextareaAutosize implements OnInit {
   /** Minimum number of rows for this textarea. */
  @Input() minRows: number;
 

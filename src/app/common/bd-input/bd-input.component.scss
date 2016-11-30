@@ -43,14 +43,19 @@ $error-background: rgba(251, 58, 58, .2);
 		label {
 			margin: 0;
 			font-weight: normal;
-    }
+		}
 
 		textarea {
 			display: flex;
+			overflow: auto;
+			width: 100%;
 			height: 100%;
+			padding: 0;
+			border: 0;
 			font-weight: normal;
 			justify-content: flex-end;
 			align-items: center;
+			resize: none;
 		}
 	}
 
@@ -82,6 +87,7 @@ $error-background: rgba(251, 58, 58, .2);
 				left: 0;
 				box-shadow: none;
 				outline: 0;
+				resize: none;
 
 				&:focus {
 					&::placeholder {

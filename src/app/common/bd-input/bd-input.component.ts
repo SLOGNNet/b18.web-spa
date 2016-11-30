@@ -4,7 +4,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CommonInputComponent),
+  useExisting: forwardRef(() => BdInputComponent),
   multi: true
 };
 
@@ -17,7 +17,7 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 
 
-export class CommonInputComponent {
+export class BdInputComponent {
 
   get focused() { return this._focused; }
 
