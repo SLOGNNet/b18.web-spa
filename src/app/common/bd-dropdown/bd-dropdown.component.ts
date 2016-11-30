@@ -42,7 +42,7 @@ export class BdDropdownComponent {
   }
 
   public _handleDropdownHeaderClick(event): void {
-    this.value = undefined;
+    this.value = null;
   }
 
   public _handleDropdownItemClick(event): void {
