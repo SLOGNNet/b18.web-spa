@@ -9,5 +9,10 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
+          - echo $PASSWORD
+          - git remote set-url origin https://$USERNAME:$PASSWORD@bitbucket.org/bridge18/web-spa-datatable.git
+          - git submodule update --init
           - npm i
           - npm run ci
+          - npm run build:libs
+          - npm run build:prod
