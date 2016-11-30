@@ -1,7 +1,7 @@
 Bridge18 Web Single Page Application
 
 ##Initial Machine Setup
-1. **Install [Node 6.9.0 or greater](https://nodejs.org)**
+1. **Install [Latest Node 6.x.x version](https://nodejs.org)**
 2. **Install [Git](https://git-scm.com/downloads)**. 
 3. On a Mac? You're all set. If you're on Windows, complete the steps for your OS below.  
  
