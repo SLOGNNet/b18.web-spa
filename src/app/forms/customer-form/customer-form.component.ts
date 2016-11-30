@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'customer-form',
   templateUrl: './customer-form.component.html'
 })
-export class CustomerFormComponent {
+export class BdCustomerFormComponent {
 
 
   public constructor() {

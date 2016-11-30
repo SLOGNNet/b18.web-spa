@@ -5,7 +5,6 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
 
 @Component({
     selector: 'home',
-    styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html'
 })
 export class HomeComponent {

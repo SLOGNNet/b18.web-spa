@@ -27,6 +27,12 @@ import { AppState } from './app.service';
           Drivers
         </a>
       </span>
+      |
+      <span>
+        <a [routerLink]=" ['./customer-form'] ">
+          Customer Form
+        </a>
+      </span>
     </nav>
 
     <main>
