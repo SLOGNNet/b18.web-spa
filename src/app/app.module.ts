@@ -20,8 +20,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
 import { BdDropdownComponent } from './common/bd-dropdown';
-import { MessagesComponent } from './drivers/messages'
-import { MessageComponent } from './drivers/messages/message'
+import { MessagesComponent } from './drivers/messages';
+import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
