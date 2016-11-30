@@ -2,7 +2,7 @@ Bridge18 Web Single Page Application
 
 ## Build and run ##
     * clone repository
-    * git submodule update
+    * git submodule update --init
     * npm install
     * npm run build:libs
     * npm start
