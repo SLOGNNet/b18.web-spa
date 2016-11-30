@@ -1,12 +1,12 @@
 <div class='bd-typeahead-container'>
-    <template #footerTemplate>
-      Footer
-    </template>
-    <template #loaderTemplate>
-        <div class='loader'>
-          Loading indicator
-        </div>
-    </template>
+  <template #footerTemplate>
+    Footer
+  </template>
+  <template #loaderTemplate>
+    <div class='loader'>
+      Loading indicator
+    </div>
+  </template>
   <bd-input [(ngModel)]="value"
       [typeahead]="source"
       [labelText]="labelText"
@@ -18,6 +18,6 @@
       (typeaheadLoading)="changeTypeaheadLoading($event)"
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
       (typeaheadFooterClick)="onFooterClick()"
-      [typeaheadOptionsLimit]="'5'"
-  ></bd-input>
+      [typeaheadOptionsLimit]="'5'">
+    </bd-input>
 </div>
