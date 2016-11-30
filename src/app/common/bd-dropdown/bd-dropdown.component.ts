@@ -52,7 +52,6 @@ export class BdDropdownComponent {
 
   public _handleFooterClick(event): void {
     this.onFooterClick.emit(event);
-    console.log('Dropdown footer clicked. Event = ', event);
   }
 
 }
