@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
-import { MdTextareaAutosize } from './directives/autosize.directive';
+import { MdTextareaAutosize } from './common/bd-input/autosize.directive';
 import { CommonInputComponent } from './common/bd-input';
 
 /*

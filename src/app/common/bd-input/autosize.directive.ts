@@ -1,7 +1,5 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
-/**
-* Directive to automatically resize a textarea to fit its content.
-*/
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+
 @Directive({
   selector: 'textarea[md-autosize]',
   host: {
@@ -37,13 +35,16 @@ export class MdTextareaAutosize implements OnInit {
     this.resizeToFitContent();
   }
 
-  /**
-   * Cache the hight of a single-row textarea.
-   *
-   * We need to know how large a single "row" of a textarea is in order to apply minRows and
-  * maxRows. For the initial version, we will assume that the height of a single line in the
-  * textarea does not ever change.
-  */
+  /** Resize the textarea to fit its content. */
+  resizeToFitContent() {
+    let textarea = this._elementRef.nativeElement as HTMLTextAreaElement;
+    // Reset the textarea height to auto in order to shrink back to its default size.
+    textarea.style.height = '24px';
+
+   // Use the scrollHeight to know how large the textarea *would* be if fit its entire value.
+   textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+
  private _cacheTextareaLineHeight(): void {
     let textarea = this._elementRef.nativeElement as HTMLTextAreaElement;
 
@@ -56,24 +57,15 @@ export class MdTextareaAutosize implements OnInit {
    // would affect the height.
    textareaClone.style.position = 'absolute';
     textareaClone.style.visibility = 'hidden';
-    textareaClone.style.border = 'none';
+     textareaClone.style.border = '';
     textareaClone.style.padding = '';
     textareaClone.style.height = '';
     textareaClone.style.minHeight = '';
     textareaClone.style.maxHeight = '';
 
-   textarea.parentNode.appendChild(textareaClone);
-    this._cachedLineHeight = textareaClone.offsetHeight;
-    textarea.parentNode.removeChild(textareaClone);
+    textarea.parentNode.appendChild(textareaClone);
+     this._cachedLineHeight = textareaClone.offsetHeight;
+     textarea.parentNode.removeChild(textareaClone);
   }
 
-  /** Resize the textarea to fit its content. */
-  resizeToFitContent() {
-    let textarea = this._elementRef.nativeElement as HTMLTextAreaElement;
-    // Reset the textarea height to auto in order to shrink back to its default size.
-    textarea.style.height = 'auto';
-
-   // Use the scrollHeight to know how large the textarea *would* be if fit its entire value.
-   textarea.style.height = `${textarea.scrollHeight}px`;
-  }
 }

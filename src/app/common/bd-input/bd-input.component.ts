@@ -55,14 +55,6 @@ export class CommonInputComponent {
 
    _elementType: 'input' | 'textarea';
 
-   constructor(elementRef: ElementRef) {
-  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
-  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
-      'input' :
-      'textarea';
-      console.log(this._elementType,'this._elementType');
-    }
-
    private _onTouchedCallback: () => void = noop;
    private _onChangeCallback: (_: any) => void = noop;
    private _value: string = '';
@@ -71,6 +63,13 @@ export class CommonInputComponent {
    private _disabled: boolean = false;
    private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
    private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+   constructor(elementRef: ElementRef) {
+  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
+  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+      'input' :
+      'textarea';
+    }
 
    coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';
