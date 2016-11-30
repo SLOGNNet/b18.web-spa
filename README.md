@@ -3,14 +3,13 @@ Bridge18 Web Single Page Application
 ##Initial Machine Setup
 1. **Install [Latest Node 6.x.x version](https://nodejs.org)**
 2. **Install [Git](https://git-scm.com/downloads)**. 
-3. On a Mac? You're all set. If you're on Windows, complete the steps for your OS below.  
  
 **On Windows:** 
  
 * **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
 
 ## Get Started
-1. **Clone the project**. `git clone https://USERNAME@bitbucket.org/bridge18/web-spa.git`.
+1. **Clone the project**. `git clone https://$USERNAME@bitbucket.org/bridge18/web-spa.git`. Where $USERNAME is your bitbucket username.
 2. **Update git submodules**. `git submodule update --init`
 3. **Run install node modules script**. `npm install`
 4. **Run third party libs build/install script**. `npm run build:libs`
