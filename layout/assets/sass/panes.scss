@@ -33,33 +33,33 @@
 
 .main-content{
 	margin-left: 140px;
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .main-area{
 	display:flex;
 	margin:0;
-  flex-grow: 1;
-  box-sizing: border-box;
+	flex-grow: 1;
+	box-sizing: border-box;
 	height: calc(100vh - 84px);
 }
 
 .main-area-container {
-  width: inherit;
-  padding: 0;
-  box-sizing: border-box;
+	width: inherit;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .pane{
 	display:flex;
 	flex-grow:1;
 	align-items: center;
-  justify-content: center;
+	justify-content: center;
 	min-height:calc(100vh - 47px);
 	overflow:scroll;
 	height:100%;
 	padding:0;
-  box-sizing: border-box;
+	box-sizing: border-box;
 	margin: 20px 10px 20px;
 		div{
 			color:#666;
