@@ -34,8 +34,10 @@ export class CommonDropdownComponent {
   }
 
   @Input() set selectedValue(v: any) {
-      this._selectedValue = v;
-      this.value = this._selectedValue;
+      if ((<any>Object).values(this.items).includes(v)){
+        this._selectedValue = v;
+        this.value = this._selectedValue;
+      }
   }
 
   public _handleDropdownHeaderClick(event): void {
