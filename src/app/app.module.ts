@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { TypeaheadModule } from './common/typeahead/typeahead.module.ts';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -19,6 +20,8 @@ import { DriversComponent } from './drivers';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { HomeComponent } from './home';
 import { CommonInputComponent } from './common/bd-input';
+import { BdTypeaheadComponent } from './common/bd-typeahead';
+import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { BdDropdownComponent } from './common/bd-dropdown';
 import { BdFormButtonComponent } from './common/bd-form-button';
 import { MessagesComponent } from './drivers/messages';
@@ -44,6 +47,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
      AppComponent,
+     BdTypeaheadComponent,
      HomeComponent,
      CommonInputComponent,
      BdDropdownComponent,
@@ -51,9 +55,11 @@ type StoreType = {
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
-     MessageComponent
+     MessageComponent,
+     TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
+    TypeaheadModule,
     BrowserModule,
     InfiniteScrollModule,
     FormsModule,
