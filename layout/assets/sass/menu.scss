@@ -1,59 +1,59 @@
 .sidebar-menu{
-    background: $shark;
-    color: $white;
-    position: fixed;
-    height: 100%;
-    width: 140px;
+		background: $shark;
+		color: $white;
+		position: fixed;
+		height: 100%;
+		width: 140px;
 }
 
 .menu-container {
-  margin-top: 20px;
-  padding: 0 15px;
+	margin-top: 20px;
+	padding: 0 15px;
 
-  div {
-    border-top: 15px solid #fff;
-    border-left: 15px solid #fff;
-    border-bottom: 7px solid #000;
-    border-right: 26px solid #000;
-    height: 40px;
-    width: 90%;
-    margin-bottom: 40px;
-    position: relative;
+	div {
+		border-top: 15px solid #fff;
+		border-left: 15px solid #fff;
+		border-bottom: 7px solid #000;
+		border-right: 26px solid #000;
+		height: 40px;
+		width: 90%;
+		margin-bottom: 40px;
+		position: relative;
 
-    &:hover {
-      cursor: pointer;
-    }
+		&:hover {
+			cursor: pointer;
+		}
 
-    &.active {
-      border-top-color: $menuActiveColor;
-      border-left-color: $menuActiveColor;
+		&.active {
+			border-top-color: $menuActiveColor;
+			border-left-color: $menuActiveColor;
 
-      a {
-        color: $menuActiveColor;
-      }
-    }
+			a {
+				color: $menuActiveColor;
+			}
+		}
 
-    a {
-      color: #fff;
-      position: absolute;
-      bottom: -30px;
-      left: -15px;
-      width: 80px;
-    }
-  }
+		a {
+			color: #fff;
+			position: absolute;
+			bottom: -30px;
+			left: -15px;
+			width: 80px;
+		}
+	}
 }
 
 .menu-master-container {
-  padding-top: 20px;
-  text-align: center;
+	padding-top: 20px;
+	text-align: center;
 
-  button {
-    background: none;
-    border: 0;
+	button {
+		background: none;
+		border: 0;
 
-    span:before {
-      content: '\25CF';
-      font-size: 10px;
-    }
-  }
+		span:before {
+			content: '\25CF';
+			font-size: 10px;
+		}
+	}
 }

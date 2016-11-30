@@ -9,11 +9,11 @@ import { IDriverMessage } from '../../services/message.service';
  export class MessageComponent {
   @Input () message: IDriverMessage;
   private currentClass: string = 'message-';
-  private currentClassContainer:  string = 'container-left';
+  private currentClassContainer:  string = 'container-right';
 
  ngOnInit() {
    this.currentClass += this.message.type;
-   this.currentClassContainer = this.message.type === 'system' ? 'container-right' : 'container-left';
+   this.currentClassContainer = this.message.type === 'carrier' ? 'container-left' : 'container-right';
  }
 
 }
