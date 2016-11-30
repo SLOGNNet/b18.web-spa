@@ -4,12 +4,12 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CommonInputComponent),
+  useExisting: forwardRef(() => BdInputComponent),
   multi: true
 };
 
 @Component({
-  selector: 'bd-input',
+  selector: 'bd-input, bd-textarea',
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
@@ -17,7 +17,7 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 
 
-export class CommonInputComponent {
+export class BdInputComponent {
 
   get focused() { return this._focused; }
 
@@ -53,6 +53,8 @@ export class CommonInputComponent {
 
    @ViewChild('input') _inputElement: ElementRef;
 
+   _elementType: 'input' | 'textarea';
+
    private _onTouchedCallback: () => void = noop;
    private _onChangeCallback: (_: any) => void = noop;
    private _value: string = '';
@@ -61,6 +63,13 @@ export class CommonInputComponent {
    private _disabled: boolean = false;
    private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
    private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+   constructor(elementRef: ElementRef) {
+  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
+  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+      'input' :
+      'textarea';
+    }
 
    coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';

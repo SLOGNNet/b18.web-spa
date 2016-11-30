@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { BdTextareaAutosize } from './common/bd-input/autosize.directive';
+import { BdInputComponent } from './common/bd-input';
 import { TypeaheadModule } from './common/typeahead/typeahead.module.ts';
 /*
  * Platform and Environment providers/directives/pipes
@@ -19,7 +21,6 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { HomeComponent } from './home';
-import { CommonInputComponent } from './common/bd-input';
 import { BdTypeaheadComponent } from './common/bd-typeahead';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { BdDropdownComponent } from './common/bd-dropdown';
@@ -49,13 +50,14 @@ type StoreType = {
      AppComponent,
      BdTypeaheadComponent,
      HomeComponent,
-     CommonInputComponent,
      BdDropdownComponent,
      BdFormButtonComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
      MessageComponent,
+     BdTextareaAutosize,
+     BdInputComponent,
      TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
