@@ -1,36 +1,41 @@
 $white: #fff;
-$background-color: #ccc;
+$active-color: #626f78;
+$background-color: #485158;
+$border-color: #5c656b;
 
 
 .pane-switch-container {
+	padding: 17px;
+	line-height: 0;
 	text-align: center;
-	margin-top: 80px;
+	background-color: $background-color;
 
 	ul {
 		display: inline-block;
 		padding: 0;
+		margin: 0;
 		list-style: none;
 	}
 
 	li {
 		display: inline;
-		height: 20px;
-		border: 1px solid $white;
+		height: 25px;
+		border: 1px solid $border-color;
 		background: none;
-		min-width: 15px;
+		min-width: 25px;
 		margin-left: -1px;
 		float: left;
 
 		&:first-child {
-			border-radius: 5px 0 0 5px;
+			border-radius: 10px 0 0 10px;
 		}
 
 		&:last-child {
-			border-radius: 0 5px 6px 0;
+			border-radius: 0 10px 10px 0;
 		}
 
 		&.active {
-			background: $background-color;
+			background: $active-color;
 		}
 	}
 }
