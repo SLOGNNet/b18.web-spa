@@ -1,11 +1,19 @@
-Bridge18 Web Single Page Application
+#Bridge18 Web Single Page Application#
 
-## Build and run ##
-    * clone repository
-    * git submodule update
-    * npm install
-    * npm run build:libs
-    * npm start
+##Initial Machine Setup
+1. **Install [Latest Node 6.x.x version](https://nodejs.org)**
+2. **Install [Git](https://git-scm.com/downloads)**. 
+ 
+**On Windows:** 
+ 
+* **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
+
+## Get Started
+1. **Clone the project**. `git clone https://$USERNAME@bitbucket.org/bridge18/web-spa.git`. Where $USERNAME is your bitbucket username.
+2. **Update git submodules**. `git submodule update --init`
+3. **Run install node modules script**. `npm install`
+4. **Run third party libs build/install script**. `npm run build:libs`
+5. **Run app on dev servert**. `npm start`
 
 ## *GIT* ##
 ### Branching ###
@@ -35,7 +43,7 @@ Z - patch
     * When ready to create pull request, run ci checks ('npm run ci'), ci steps can be run step by step with next commands
         - typescript lints - 'npm run lint'
         - style lints - 'npm run lint:style'
-        - tests = 'nom run test'
+        - tests = 'npm run test'
     * Create pull request into `develop` branch, assign code-reviewer and after send PR url to code-reviewer through slack (@dev-webapp room)
     * Code reviewing & merging
         - on merge, code-reviewer has to notify QA team through slack (@dev-webapp room) that task is assinged to QA
