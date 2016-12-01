@@ -24,7 +24,7 @@ import { BdTypeaheadComponent } from './common/bd-typeahead';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { BdDropdownComponent } from './common/bd-dropdown';
 import { BdFormButtonComponent } from './common/bd-form-button';
-import { BdCustomerFormComponent } from './forms/customer-form';
+import { BdLoadFormComponent } from './forms/load-form';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
@@ -53,7 +53,7 @@ type StoreType = {
      CommonInputComponent,
      BdDropdownComponent,
      BdFormButtonComponent,
-     BdCustomerFormComponent,
+     BdLoadFormComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,

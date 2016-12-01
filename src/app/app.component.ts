@@ -29,8 +29,8 @@ import { AppState } from './app.service';
       </span>
       |
       <span>
-        <a [routerLink]=" ['./customer-form'] ">
-          Customer Form
+        <a [routerLink]=" ['./load-form'] ">
+          Load Form
         </a>
       </span>
     </nav>
