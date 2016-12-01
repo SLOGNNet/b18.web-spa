@@ -1,0 +1,17 @@
+<div class="main-area">
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.FIRST_SLOT_VISIBLE)">
+        <div class="panel">
+            <ng-content select="first-slot"></ng-content>
+        </div>
+    </div>
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.SECOND_SLOT_VISIBLE)">
+        <div class="panel">
+            <ng-content select="second-slot"></ng-content>
+        </div>
+    </div>
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.THIRD_SLOT_VISIBLE)">
+        <div class="panel">
+            <ng-content select="third-slot"></ng-content>
+        </div>
+    </div>
+</div>

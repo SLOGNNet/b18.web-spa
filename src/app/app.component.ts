@@ -3,6 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, CanActivate } from '@angular/router';
+import { SwitchState } from './shared/enums/SwitchState';
 
 import { AppState } from './app.service';
 
@@ -11,53 +12,53 @@ import { AppState } from './app.service';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.component.css'
-  ],
-  template: `
+    selector: 'app',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: [
+        './app.component.scss'
+    ],
+    template: `
       <navigation-bar [class.slide]="isSlided()"
         [switchState]="switchState"
         (switchStateChange)="updateSwitchState($event)">
       </navigation-bar>
 
-      <div class="content" [class.slide]="isSlided()">
+      <main>
         <router-outlet></router-outlet>
-      </div>
+      </main>
     `
 })
 export class AppComponent {
-  private switchState: number = 8;;
+    private switchState: number = SwitchState.ALL;
 
-  constructor(
-    public appState: AppState,
-    private route: ActivatedRoute,
-    private router: Router) {
-  }
+    constructor(
+        public appState: AppState,
+        private route: ActivatedRoute,
+        private router: Router) {
+    }
 
-  ngOnInit() {
-    this.route
-      .queryParams
-      .subscribe(params => {
-        this.updateSwitchState(params['switchState']);
-      });
-  }
+    ngOnInit() {
+        this.route
+            .queryParams
+            .subscribe(params => {
+                this.updateSwitchState(params['switchState']);
+            });
+    }
 
-  isSlided() {
-    return !!(this.switchState & 1);
-  }
+    isSlided() {
+        return !!(this.switchState & 1);
+    }
 
-  updateSwitchState(newSwitchState) {
-    this.switchState = parseInt(newSwitchState) >= 0 ? parseInt(newSwitchState) : this.switchState;
+    updateSwitchState(newSwitchState) {
+        this.switchState = parseInt(newSwitchState, 10) >= 0 ? parseInt(newSwitchState, 10) : this.switchState;
 
-    this.router.navigate(
-      [location.pathname],
-      {
-        queryParams: {
-          'switchState': this.switchState
-        }
-      }
-    );
-  }
+        this.router.navigate(
+            [location.pathname],
+            {
+                queryParams: {
+                    'switchState': this.switchState
+                }
+            }
+        );
+    }
 }
