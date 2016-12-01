@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationService } from './notification.service';
 import { SocketService } from './socket.service';
 import { CommonModule } from '@angular/common';
@@ -28,7 +28,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     CommonModule,
     FormsModule,
     TypeaheadModule,
-    DropdownModule
+    DropdownModule,
+    ReactiveFormsModule
   ],
   exports: [
     BdTypeaheadComponent,
@@ -39,7 +40,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     TypeaheadModule,
     DropdownModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
