@@ -1,11 +1,10 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
-
+import { BdFormsModule } from './forms/forms.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,6 +22,7 @@ import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
+import { LoadsComponent } from './loads';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,13 +48,14 @@ type StoreType = {
      NoContentComponent,
      MessagesComponent,
      MessageComponent,
+     LoadsComponent,
      TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
     SharedModule,
     BrowserModule,
     InfiniteScrollModule,
-    FormsModule,
+    BdFormsModule,
     HttpModule,
     Angular2DataTableModule,
     RouterModule.forRoot(ROUTES)

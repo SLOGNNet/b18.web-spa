@@ -33,7 +33,7 @@ export class BdInputComponent {
   };
 
   @Input() errorText: string = '';
-  @Input() collapsibleInput: boolean;
+  @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
   @Input() name: string = null;
   @Input() type: string = 'text';
