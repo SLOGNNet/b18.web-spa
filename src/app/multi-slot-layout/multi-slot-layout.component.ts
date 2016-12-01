@@ -15,7 +15,7 @@
  * </multi-slot-layout>
  */
 
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/SwitchState';
@@ -30,12 +30,11 @@ import { SwitchState } from '../shared/enums/SwitchState';
 export class MultiSlotLayoutComponent {
 
     private currentState: SwitchState = SwitchState.ALL;
-    private switchStateEnum: typeof SwitchState = SwitchState;
+    private switchStateEnum: any = SwitchState;
 
     constructor(
         private router: Router,
-        private route: ActivatedRoute,
-        private cdr: ChangeDetectorRef) {
+        private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -49,8 +48,6 @@ export class MultiSlotLayoutComponent {
     }
 
     ngAfterViewInit() {
-        this.cdr.detectChanges();
-
         if (isNaN(this.currentState)) {
             this.setCurrentState(SwitchState.ALL);
         }
