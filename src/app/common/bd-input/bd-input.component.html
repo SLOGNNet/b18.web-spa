@@ -5,7 +5,7 @@
      [class.bd-expanded-input]="!isCollapsed"
 >
         <div class="bd-label"
-             [class.bd-hidden-label-prefix]="!isEmptyLabel">
+             [class.bd-hidden-label]="!isEmptyLabel">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
@@ -14,9 +14,7 @@
         </div>
         <div class="bd-input">
 
-          <div class="bd-input-prefix"
-            [class.bd-hidden-label-prefix]="!isEmptyLabel"
-          >
+          <div class="bd-input-prefix">
             <ng-content select="[bd-prefix]"></ng-content>
           </div>
 
@@ -30,7 +28,7 @@
               [disabled]="disabled"
               [attr.maxlength]="maxlength"
               (focus)="_handleFocus($event)"
-              placeholder="placeholder"
+              placeholder=""
               (change)="_handleChange($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"

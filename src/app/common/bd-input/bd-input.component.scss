@@ -74,10 +74,10 @@ $error-background: rgba(251, 58, 58, .2);
 			margin: 0;
 			font-weight: normal;
 		}
+	}
 
-		&.bd-hidden-label-prefix {
-			display: none;
-		}
+	.bd-hidden-label {
+		display: none;
 	}
 
 	.bd-input {
@@ -92,12 +92,8 @@ $error-background: rgba(251, 58, 58, .2);
 			align-self: flex-start;
 			align-items: center;
 			justify-content: flex-end;
-			margin-right: 15px;
 			flex-grow: 0;
-
-			&.bd-hidden-label-prefix {
-				display: none;
-			}
+			margin-right: 15px;
 		}
 
 		.bd-input-infix {
