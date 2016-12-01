@@ -1,0 +1,31 @@
+$nobel: #b3b2b2;
+$black: #000;
+
+.item-wrapper {
+	display: flex;
+	height: 100%;
+	padding: 0 17px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	.left-panel {
+
+		.name {
+			color: $black;
+			font-size: 14px;
+		}
+
+		.address {
+			color: $nobel;
+			font-size: 10px;
+		}
+	}
+
+	.right-panel {
+		.number {
+			color: $black;
+			font-size: 14px;
+		}
+	}
+}
