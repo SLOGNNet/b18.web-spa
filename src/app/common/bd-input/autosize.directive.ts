@@ -39,7 +39,7 @@ export class BdTextareaAutosize implements OnInit {
   resizeToFitContent() {
     let textarea = this._elementRef.nativeElement as HTMLTextAreaElement;
     // Reset the textarea height to auto in order to shrink back to its default size.
-    textarea.style.height = '24px';
+    textarea.style.height = '36px';
 
    // Use the scrollHeight to know how large the textarea *would* be if fit its entire value.
    textarea.style.height = `${textarea.scrollHeight}px`;
