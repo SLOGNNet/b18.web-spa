@@ -1,12 +1,59 @@
+$iron: #d7d8db;
+$dropitem: #f5fefe;
+
 .bd-typeahead-container {
 	position: relative;
 
 	.loader {
 		height: 50px;
+		text-align: center;
+
+		img {
+			height: 100%;
+			padding: 15px;
+		}
 	}
 
 	.dropdown-menu {
 		width: 100%;
+		padding: 0;
 		margin-top: 0;
+
+		li {
+			height: 49px;
+			border-bottom: 1px solid $iron;
+
+			&:last-child {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				
+				&:hover {
+					background-color: $dropitem;
+				}
+			}
+
+			&.active {
+				a {
+					background-color: $dropitem;
+					outline: 0;
+
+					&:hover {
+						background-color: $dropitem;
+						outline: 0;
+					}
+
+					&:focus {
+						background-color: $dropitem;
+						outline: 0;
+					}
+				}
+			}
+
+			a {
+				height: 50px;
+				padding: 0;
+			}
+		}
 	}
 }

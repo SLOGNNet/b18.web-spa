@@ -22,6 +22,7 @@ const COMPLETER_CONTROL_VALUE_ACCESSOR = {
 export class BdTypeaheadComponent implements ControlValueAccessor {
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
+  @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
@@ -30,10 +31,10 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   protected isNoResultsShown: boolean = false;
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
+
   public constructor() {
 
   }
-
   public changeTypeaheadLoading(isLoading: boolean): void {
     this.isLoading = isLoading;
   }

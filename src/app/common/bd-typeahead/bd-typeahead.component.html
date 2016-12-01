@@ -1,10 +1,12 @@
 <div class='bd-typeahead-container'>
   <template #footerTemplate>
-    Footer
+    <bd-form-button
+      buttonText="{{footerButtonText}}">
+    </bd-form-button>
   </template>
   <template #loaderTemplate>
     <div class='loader'>
-      Loading indicator
+      <img src="../../assets/img/spinner.png" alt="">
     </div>
   </template>
   <bd-input [(ngModel)]="value"
