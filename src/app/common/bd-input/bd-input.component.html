@@ -4,7 +4,8 @@
      [class.bd-collapsed-input]="isCollapsed"
      [class.bd-expanded-input]="!isCollapsed"
 >
-        <div class="bd-label">
+        <div class="bd-label"
+             [class.bd-hidden-label]="!isEmptyLabel">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">

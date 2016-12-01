@@ -65,6 +65,7 @@ $error-background: rgba(251, 58, 58, .2);
 		font-size: 10px;
 		align-self: flex-start;
 		text-transform: uppercase;
+		margin-right: 32px;
 		align-items: center;
 		justify-content: flex-end;
 
@@ -72,11 +73,14 @@ $error-background: rgba(251, 58, 58, .2);
 			margin: 0;
 			font-weight: normal;
 		}
+
+		&.bd-hidden-label {
+			display: none;
+		}
 	}
 
 	.bd-input {
 		@include flex-element;
-		margin-left: 32px;
 		flex-grow: 1;
 		justify-content: space-between;
 
@@ -170,5 +174,6 @@ $error-background: rgba(251, 58, 58, .2);
 			animation: labelFlight .1s 1;
 		}
 	}
+
 
 }

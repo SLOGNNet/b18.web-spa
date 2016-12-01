@@ -23,6 +23,8 @@ export class BdInputComponent {
 
   get isCollapsed() { return this.collapsibleInput && !this._focused && this.empty; }
 
+  get isEmptyLabel() { return this.labelText; }
+
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
   }
