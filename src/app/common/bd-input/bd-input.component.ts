@@ -39,9 +39,7 @@ export class BdInputComponent {
   @Input() labelText: any;
   @Input() name: string = null;
   @Input() type: string = 'text';
-  @Input() set invalid(v: any) {
-    this._isInvalid = v;
-  }
+
   @Input() get disabled(): boolean {
     return this._disabled;
   }
@@ -60,7 +58,6 @@ export class BdInputComponent {
    private _onTouchedCallback: () => void = noop;
    private _onChangeCallback: (_: any) => void = noop;
    private _value: string = '';
-   private _isInvalid: boolean = false;
    private _focused: boolean = false;
    private _disabled: boolean = false;
    private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
