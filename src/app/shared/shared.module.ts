@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationService } from './notification.service';
 import { SocketService } from './socket.service';
+import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 
 import { TypeaheadModule } from '../common/typeahead/typeahead.module.ts';
@@ -15,7 +16,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 @NgModule({
   providers: [
     NotificationService,
-    SocketService
+    SocketService,
+    EnumHelperService
   ],
   declarations: [
     BdTypeaheadComponent,
