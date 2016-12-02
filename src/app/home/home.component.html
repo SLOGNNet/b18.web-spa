@@ -1,24 +1,84 @@
 <multi-slot-layout>
     <first-slot>
+        <div style="margin:50px auto; width:400px; background:#c1c1c1;padding:20px;">
+        <template #dropdownHeaderTemplate>
+                Leave empty
+        </template>
 
-    </first-slot>
+        <template #dropdownFooterTemplate>
+            <bd-form-button
+            buttonText="Add Contact">
+            </bd-form-button>
+        </template>
 
-    <second-slot>
-        <datatable class='material striped' [rows]='rows' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-            [rowHeight]="'auto'" [limit]="10">
+        <template #dropdownItemTemplate let-item="item">
+            {{item}}
+        </template>
+
+        <bd-dropdown
+            [defaultLabelText]="'contact'"
+            [defaultTitleText]="'Select Contact'"
+            [dropdownHeaderTemplate]="dropdownHeaderTemplate"
+            [dropdownFooterTemplate]="dropdownFooterTemplate"
+            [dropdownItemTemplate]="dropdownItemTemplate"
+            [items]="items">
+        </bd-dropdown>
+        </div>
+
+        <datatable
+            class='material striped'
+            [rows]='rows'
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10">
         </datatable>
-    </second-slot>
-    
-    <third-slot>
-        <div style="width:500px; margin-top:100px; ">
-            <bd-input placeholder="placeholder" [collapsibleInput]="false" [labelText]="'Estimated distance calculate'">
+
+        <div style="width:500px; margin:100px auto;">
+            <bd-input
+                placeholder=""
+                [collapsibleInput]="false"
+                [labelText]="'date'">
                 <span class="prefix" bd-prefix>$&nbsp;</span>
+                <span  bd-suffix>$&nbsp;</span>
             </bd-input>
 
             <div style="margin-top:30px;"></div>
 
-            <bd-input [labelText]="'Estimated'" [collapsibleInput]="true" [attr.name]="'Andrew'">
+            <bd-input
+                [labelText]="'Estimated distance Estimated'"
+                [collapsibleInput]="true"
+                [attr.name]="'Andrew'">
             </bd-input>
+
+        <div style="margin-top:30px;"></div>
+        <bd-input
+            placeholder=""
+            [collapsibleInput]="false">
+        </bd-input>
+
+        <div style="margin-top:30px;"></div>
+        <bd-textarea
+        [labelText]="'textarea'"
+        [collapsibleInput]="false"
+        >
+        <span class="prefix" bd-prefix>$&nbsp;</span>
+        </bd-textarea>
+
+        <bd-textarea
+        [collapsibleInput]="true"
+        [labelText]="'Estimated distance Estimated'">
+        </bd-textarea>
         </div>
+    </first-slot>
+
+    <second-slot>
+
+    </second-slot>
+    
+    <third-slot>
+
     </third-slot>
 </multi-slot-layout>

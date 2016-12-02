@@ -1,132 +1,181 @@
-$white: #FFFFFF;
-$seagul: #75B3E2;
-$nobel: #B3B2B2;
-$iron: #D7D8DB;
+$white: #fff;
+$seagul: #75b3e2;
+$nobel: #b3b2b2;
+$iron: #d7d8db;
 $error: #fb3a3a;
-$error-background: rgba(251,58,58,0.2);
+$error-background: rgba(251, 58, 58, .2);
 
 @keyframes labelFlight {
-  from {
-    left: 200px;
-  }
-  to {
-    left: 0;
-  }
+	from {
+		left: 200px;
+	}
+
+	to {
+		left: 0;
+	}
 }
 
-.flex-element{
-  display: flex;
-  align-items: center;
-  flex-direction: row;
+@mixin flex-element {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
 }
 
-.bd-input-wrapper{
-  position: relative;
-  height: 50px;
-  width: 100%;
-  border-bottom: 1px solid $iron;
-  margin-bottom: 0;
-  padding:0 17px;
-  overflow: hidden;
-  @extend .flex-element;
-  flex-flow: row wrap;
-  background-color: $white;
-  
-  .bd-label{
-    position: relative;
-    width: 80px;
-    margin-right: 32px;
-    color: $nobel;
-    text-align: right;
-    font-size: 10px;
-    text-transform: uppercase;
-    label{
-      position: absolute;
-      top: -15px;
-      left: 0;
-      font-weight:normal;
-    }
-  }
-  .bd-input{
-    @extend .flex-element;
-    flex-grow: 1;
-    justify-content: space-between;
-    .bd-input-prefix{
-        margin-right: 15px;
-        @extend .flex-element;
-        flex-grow: 0;
-    }
-    .bd-input-infix{
-      @extend .flex-element;
-      flex-grow: 1;
-      input{
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        border: none;
-        padding: 8px 0;
-        background: none;
-        box-shadow: none;
-        outline: 0;
-        &:focus {
-          &::placeholder {
-            color: $nobel;
-            opacity:1;
-          }
-        }
-        &::placeholder {
-            color:#fff;
-            opacity:0;
-        }
-      }
-    }
-    .bd-input-suffix{
-        @extend .flex-element;
-        flex-grow: 0;
-    }
-    .error-message{
-      display:none;
-    }
-  }
-  + .error-message{
-    display: none;
-  }
+@mixin input-textarea {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	padding: 8px 0;
+	border: 0;
+	background: none;
+	box-shadow: none;
+	outline: 0;
+	resize: none;
 
-  &.bd-focused{
-    border-bottom-color: $seagul; 
-    .bd-label{
-      color: $seagul;
-    }
-  }
-  &.bd-invalid{
-    border-bottom-color: $error;
-    .bd-label{
-      color: $error;
-    }
-    + .error-message{
-          @extend .flex-element;
-          color: $error;
-          background: $error-background;
-          text-align: left;
-          i{
-            margin: 0 15px 0 17px;
-          }
-      }
-  }
+	&:focus {
+		&::placeholder {
+			color: $nobel;
+			opacity: 1;
+		}
+	}
 
-&.bd-collapsed-input{
-    .bd-label{
-      flex-grow: 1;
-      color: $nobel;
-      text-align: left;
-      font-size: 16px;
-    }
-  }
-  &.bd-expanded-input{
-    .bd-label{
-      animation: labelFlight 0.1s 1;
-    }
-  }
+	&::placeholder {
+		color: $white;
+		opacity: 0;
+	}
+}
+
+.bd-input-wrapper {
+	@include flex-element;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	padding: 0 17px;
+	min-height: 50px;
+	border-bottom: 1px solid $iron;
+	margin-bottom: 0;
+	flex-flow: row wrap;
+	background-color: $white;
+
+	.bd-label {
+		display: flex;
+		width: 80px;
+		height: 50px;
+		color: $nobel;
+		font-size: 10px;
+		align-self: flex-start;
+		text-transform: uppercase;
+		margin-left: -17px;
+		margin-right: 32px;
+		align-items: center;
+		justify-content: flex-end;
+
+		label {
+			margin: 0;
+			font-weight: normal;
+		}
+	}
+
+	.bd-hidden-label {
+		display: none;
+	}
+
+	.bd-input {
+		@include flex-element;
+		flex-grow: 1;
+		justify-content: space-between;
+
+		.bd-input-prefix {
+			@include flex-element;
+			display: flex;
+			height: 50px;
+			align-self: flex-start;
+			align-items: center;
+			justify-content: flex-end;
+			flex-grow: 0;
+			margin-right: 15px;
+		}
+
+		.bd-input-infix {
+			@include flex-element;
+			flex-grow: 1;
+			min-height: 50px;
+
+			input {
+				@include input-textarea;
+			}
+
+			textarea {
+				@include input-textarea;
+				overflow: hidden;
+				align-self: flex-start;
+				margin-top: 7px;
+			}
+		}
+
+		.bd-input-suffix {
+			@include flex-element;
+			flex-grow: 0;
+			margin-left: 15px;
+		}
+	}
+
+	&.bd-focused {
+		border-bottom-color: $seagul;
+
+		.bd-label {
+			color: $seagul;
+		}
+	}
+
+	&.bd-collapsed-input {
+
+		.bd-input {
+			width: 0;
+		}
+
+		.bd-label {
+			width: auto;
+			margin: 0;
+			color: $nobel;
+			font-size: 16px;
+			text-align: left;
+			flex-grow: 1;
+			justify-content: flex-start;
+		}
+
+	}
+
+	&.bd-expanded-input {
+		.bd-label {
+			text-align: right;
+			animation: labelFlight .1s 1;
+		}
+	}
+}
+
+.error-message {
+	display: none;
+}
+
+:host(.ng-invalid) {
+	.error-message {
+		@include flex-element;
+		background: $error-background;
+		color: $error;
+		text-align: left;
+
+		i {
+			margin: 0 15px 0 17px;
+		}
+	}
+
+	.bd-input-wrapper {
+		border-bottom-color: $error;
+
+		.bd-label {
+			color: $error;
+		}
+	}
 }

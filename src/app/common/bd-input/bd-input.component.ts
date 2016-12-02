@@ -1,26 +1,29 @@
-import { Component, Input, EventEmitter, HostBinding, forwardRef } from '@angular/core';
+import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => CommonInputComponent),
+  useExisting: forwardRef(() => BdInputComponent),
   multi: true
 };
 
 @Component({
-  selector: 'bd-input',
+  selector: 'bd-input, bd-textarea',
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
-  providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR]
+  providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
+  host: {'(click)' : 'focus($event)'}
 })
 
 
-export class CommonInputComponent {
+export class BdInputComponent {
 
   get focused() { return this._focused; }
 
   get isCollapsed() { return this.collapsibleInput && !this._focused && this.empty; }
+
+  get isEmptyLabel() { return this.labelText; }
 
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
@@ -31,14 +34,17 @@ export class CommonInputComponent {
     return this._value;
   };
 
+  @ViewChild('input') _inputElement: ElementRef;
+  @ViewChild('prefix') prefixContainer: ElementRef;
+  @ViewChild('suffix') suffixContainer: ElementRef;
+
   @Input() errorText: string = '';
-  @Input() collapsibleInput: boolean;
+  @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
+  @Input() placeholder: string;
   @Input() name: string = null;
   @Input() type: string = 'text';
-  @Input() set invalid(v: any) {
-    this._isInvalid = v;
-  }
+
   @Input() get disabled(): boolean {
     return this._disabled;
   }
@@ -49,14 +55,32 @@ export class CommonInputComponent {
       this._onChangeCallback(v);
     }
   }
-  private _onTouchedCallback: () => void = noop;
-  private _onChangeCallback: (_: any) => void = noop;
-  private _value: string = '';
-  private _isInvalid: boolean = false;
-  private _focused: boolean = false;
-  private _disabled: boolean = false;
-  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-  private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+    _elementType: 'input' | 'textarea';
+
+         private _onTouchedCallback: () => void = noop;
+         private _onChangeCallback: (_: any) => void = noop;
+         private _value: string = '';
+         private _prefixEmpty: boolean = false;
+         private _suffixEmpty: boolean = false;
+         private _focused: boolean = false;
+         private _disabled: boolean = false;
+         private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+         private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+
+
+      ngAfterViewInit() {
+          this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
+          this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
+        }
+
+   constructor(elementRef: ElementRef) {
+  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
+  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+      'input' :
+      'textarea';
+    }
 
    coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';
@@ -67,6 +91,11 @@ export class CommonInputComponent {
       case 'number': return parseFloat(v);
       default: return v;
     }
+  }
+
+  focus($event) {
+    this._inputElement.nativeElement.focus();
+    $event.preventDefault();
   }
 
   _handleFocus(event: FocusEvent) {

@@ -1,10 +1,10 @@
 import { NgModule, ApplicationRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { BdFormsModule } from './forms/forms.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -20,10 +20,11 @@ import { LayoutSwitchComponent } from './layout-switch';
 import { NavigationBarComponent } from './navigation-bar';
 import { MultiSlotLayoutComponent } from './multi-slot-layout';
 import { HomeComponent } from './home';
-import { CommonInputComponent } from './common/bd-input';
+import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
+import { LoadsComponent } from './loads';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -49,18 +50,19 @@ type StoreType = {
      NavigationBarComponent,
      MultiSlotLayoutComponent,
      HomeComponent,
-     CommonInputComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
-     MessageComponent
+     MessageComponent,
+     LoadsComponent,
+     TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
+    SharedModule,
     BrowserModule,
     InfiniteScrollModule,
-    FormsModule,
+    BdFormsModule,
     HttpModule,
-    SharedModule,
     Angular2DataTableModule,
     RouterModule.forRoot(ROUTES)
   ],

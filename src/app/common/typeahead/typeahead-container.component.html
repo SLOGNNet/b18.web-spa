@@ -1,0 +1,29 @@
+<ul class="dropdown-menu"
+    [ngStyle]="{top: top, left: left, display: 'block'}"
+    (mouseleave)="focusLost()">
+  <template ngFor let-match let-i="index" [ngForOf]="matches">
+    <li *ngIf="!showLoader"
+      [class.active]="isActive(match)"
+      (mouseenter)="selectActive(match)">
+      <a href="#"
+         *ngIf="itemTemplate"
+         (click)="selectMatch(match, $event)"
+         tabindex="-1">
+          <template [ngTemplateOutlet]="itemTemplate"
+                    [ngOutletContext]="{item: match.item, index: i}">
+          </template>
+      </a>
+    </li>
+  </template>
+  <li *ngIf="showLoader">
+      <template [ngTemplateOutlet]="loaderTemplate">
+      </template>
+  </li>
+  <li *ngIf="footerTemplate"
+      [class.active]="isActive(match)"
+      (mouseenter)="selectActive(match)"
+      (click)="footerClick($event)">
+        <template [ngTemplateOutlet]="footerTemplate">
+        </template>
+  </li>
+</ul>

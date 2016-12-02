@@ -1,10 +1,10 @@
 <div class="bd-input-wrapper"
      [class.bd-focused]="_focused"
-     [class.bd-invalid]="_isInvalid"
      [class.bd-collapsed-input]="isCollapsed"
      [class.bd-expanded-input]="!isCollapsed"
 >
-        <div class="bd-label">
+        <div class="bd-label"
+             [class.bd-hidden-label]="!isEmptyLabel">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
@@ -13,19 +13,21 @@
         </div>
         <div class="bd-input">
 
-          <div class="bd-input-prefix">
+          <div #prefix class="bd-input-prefix" *ngIf='!_prefixEmpty'>
             <ng-content select="[bd-prefix]"></ng-content>
           </div>
 
           <div class="bd-input-infix">
             <input
+              #input
+              *ngIf="_elementType === 'input'"
               name="bd-input-element"
               type="text"
               [(ngModel)]="value"
               [disabled]="disabled"
               [attr.maxlength]="maxlength"
               (focus)="_handleFocus($event)"
-              placeholder="placeholder"
+              placeholder="{{placeholder}}"
               (change)="_handleChange($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"
@@ -34,13 +36,28 @@
               id="customer-input-id"
               autocomplete="off"
             >
+
+            <textarea
+              #input
+              *ngIf="_elementType === 'textarea'"
+              bd-autosize
+              [disabled]="disabled"
+              [(ngModel)]="value"
+              [attr.maxlength]="maxlength"
+              class="bd-input-element {{_invalidClass}}"
+              (focus)="_handleFocus($event)"
+              (change)="_handleChange($event)"
+              (blur)="_handleBlur($event)"
+              placeholder="placeholder"
+              id="customer-input-id"
+            ></textarea>
           </div>
-          <div class="bd-input-suffix">
-            <ng-content select="[bd-sufix]"></ng-content>
+          <div #suffix class="bd-input-suffix" *ngIf='!_suffixEmpty'>
+            <ng-content select="[bd-suffix]"></ng-content>
           </div>
         </div>
       </div>
       <div class="error-message">
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
           {{errorText}}
-      </div>
+    </div>

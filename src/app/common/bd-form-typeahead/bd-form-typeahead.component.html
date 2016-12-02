@@ -1,0 +1,24 @@
+<div class='bd-typeahead-container'>
+  <template #footerTemplate>
+    <bd-form-button
+      buttonText="{{footerButtonText}}">
+    </bd-form-button>
+  </template>
+  <template #loaderTemplate>
+    <bd-spinner></bd-spinner>
+  </template>
+  <bd-input [(ngModel)]="value"
+      [typeahead]="source"
+      [collapsibleInput]="false"
+      [labelText]="labelText"
+      [typeaheadItemTemplate]="itemTemplate"
+      [typeaheadFooterTemplate]="footerTemplate"
+      [typeaheadLoaderTemplate]="loaderTemplate"
+      [typeaheadOptionField]="optionField"
+      (typeaheadOnSelect)="typeaheadOnSelect($event)"
+      (typeaheadLoading)="changeTypeaheadLoading($event)"
+      (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+      (typeaheadFooterClick)="onFooterClick()"
+      [typeaheadOptionsLimit]="'5'">
+    </bd-input>
+</div>

@@ -15,7 +15,7 @@
     "build:demo:layout": "webpack --config layout/webpack.config.js  --progress --profile",
     "build": "npm run build:dev",
     "build:hybrid:dev": "cross-env NODE_ENV=development webpack --config config/webpack.hybrid.js --progress --profile",
-    "ci": "npm run lint && npm run style:lint",
+    "ci": "npm run lint && npm run lint:style",
     "clean:dist": "npm run rimraf -- dist",
     "clean:install": "npm set progress=false && npm install",
     "clean:start": "npm start",
@@ -81,7 +81,7 @@
     "http-server": "^0.9.0",
     "ie-shim": "^0.1.0",
     "immutable": "^3.8.1",
-    "ng2-bootstrap": "^1.1.14",
+    "ng2-bootstrap": "^1.1.16",
     "rxjs": "5.0.0-beta.12",
     "socket.io-client": "^1.5.1",
     "zone.js": "~0.6.17"

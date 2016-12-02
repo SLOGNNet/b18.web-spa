@@ -1,0 +1,17 @@
+<form [formGroup]="customerForm">
+
+	<bd-input [labelText]="'Company Name'" formControlName="companyName" [errorText]="'Company name is required'">
+	</bd-input>
+	<bd-dropdown [selectedValue]="selectedCustomerType" [items]="customerTypes">
+	</bd-dropdown>
+	<bd-dropdown [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
+	</bd-dropdown>
+	<bd-input [labelText]="'MC #'" formControlName="mc">
+	</bd-input>
+	<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
+	</bd-input>
+	<address-form [group]='customerForm' [address]='customer.address'></address-form>
+	<div>
+		<button type="submit" [disabled]="!customerForm.valid">Submit</button>
+	</div>
+</form>

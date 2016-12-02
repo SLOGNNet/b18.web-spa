@@ -11,7 +11,6 @@ options:
 files:
   include:
       - 'src/**/*.s+(a|c)ss'
-      - 'layout/**/*.s+(a|c)ss'
 # Rule Configuration
 rules:
   bem-depth:
