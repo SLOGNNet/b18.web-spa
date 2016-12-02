@@ -4,7 +4,7 @@
     class="bd-dropdown-wrapper"
     name="bd-dropdown-wrapper">
       <div class="bd-dropdown-label">
-        <label>contact</label>
+        <label>{{defaultLabelText}}</label>
       </div>
       <div class="bd-dropdown-value" name="bd-dropdown-value">
         <span
@@ -33,10 +33,15 @@
       <li *ngFor="let item of _items"
           attr.value="{{item}}"
           (click)="_handleDropdownItemClick($event)">
-          <template
-            [ngTemplateOutlet]="dropdownItemTemplate"
-            [ngOutletContext]="{item: item}">
-          </template>
+          <div *ngIf="dropdownItemTemplate">
+            <template
+              [ngTemplateOutlet]="dropdownItemTemplate"
+              [ngOutletContext]="{item: item}">
+            </template>
+          </div>
+          <div *ngIf="!dropdownItemTemplate">
+            {{item}}
+          </div>
       </li>
      <li
        *ngIf="dropdownFooterTemplate"
