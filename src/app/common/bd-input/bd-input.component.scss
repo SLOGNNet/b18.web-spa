@@ -93,10 +93,11 @@ $error-background: rgba(251, 58, 58, .2);
 			align-items: center;
 			justify-content: flex-end;
 			flex-grow: 0;
+			margin-right: 15px;
 
-			/deep/ span ::content {
-				margin-right: 15px;
-			}
+			&:empty {
+				margin-right: 0;
+			 }
 		}
 
 		.bd-input-infix {
@@ -118,6 +119,11 @@ $error-background: rgba(251, 58, 58, .2);
 		.bd-input-suffix {
 			@include flex-element;
 			flex-grow: 0;
+			margin-left: 15px;
+
+			&:empty {
+				margin-right: 0;
+			 }
 		}
 	}
 
