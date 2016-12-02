@@ -37,7 +37,7 @@ export class BdInputComponent {
   @Input() errorText: string = '';
   @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
-  @Input() placeholder: any;
+  @Input() placeholder: string;
   @Input() name: string = null;
   @Input() type: string = 'text';
 
