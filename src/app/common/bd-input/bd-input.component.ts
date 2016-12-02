@@ -82,7 +82,6 @@ export class BdInputComponent {
    private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
    constructor(elementRef: ElementRef) {
-     console.log(this.prefixEmpty);
   // Set the element type depending on normalized selector used(bd-input / bd-textarea)
   this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
