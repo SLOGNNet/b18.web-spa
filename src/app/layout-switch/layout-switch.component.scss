@@ -1,0 +1,41 @@
+$white: #fff;
+$active-color: #626f78;
+$background-color: #485158;
+$border-color: #5c656b;
+
+
+.pane-switch-container {
+	padding: 17px;
+	line-height: 0;
+	text-align: center;
+	background-color: $background-color;
+
+	ul {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	li {
+		display: inline;
+		height: 25px;
+		border: 1px solid $border-color;
+		background: none;
+		min-width: 25px;
+		margin-left: -1px;
+		float: left;
+
+		&:first-child {
+			border-radius: 10px 0 0 10px;
+		}
+
+		&:last-child {
+			border-radius: 0 10px 10px 0;
+		}
+
+		&.active {
+			background: $active-color;
+		}
+	}
+}

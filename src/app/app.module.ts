@@ -1,4 +1,4 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -16,7 +16,9 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
-
+import { LayoutSwitchComponent } from './layout-switch';
+import { NavigationBarComponent } from './navigation-bar';
+import { MultiSlotLayoutComponent } from './multi-slot-layout';
 import { HomeComponent } from './home';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
@@ -41,8 +43,12 @@ type StoreType = {
  */
 @NgModule({
   bootstrap: [ AppComponent ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   declarations: [
      AppComponent,
+     LayoutSwitchComponent,
+     NavigationBarComponent,
+     MultiSlotLayoutComponent,
      HomeComponent,
      DriversComponent,
      NoContentComponent,
