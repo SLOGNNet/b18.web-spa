@@ -1,0 +1,36 @@
+$iron: #d7d8db;
+$dropitem: #f5fefe;
+
+.bd-typeahead-container {
+	position: relative;
+
+	.dropdown-menu {
+		width: 100%;
+		padding: 0;
+		margin-top: 0;
+
+		li {
+			height: 49px;
+			border-bottom: 1px solid $iron;
+
+			&:last-child {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			&.active {
+				a {
+					background-color: $dropitem;
+					border-bottom: 1px solid $iron;
+					outline: 0;
+				}
+			}
+
+			a {
+				height: 50px;
+				padding: 0;
+			}
+		}
+	}
+}

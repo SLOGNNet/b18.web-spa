@@ -23,6 +23,8 @@ export class BdInputComponent {
 
   get isCollapsed() { return this.collapsibleInput && !this._focused && this.empty; }
 
+  get isEmptyLabel() { return this.labelText; }
+
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
   }
@@ -32,9 +34,14 @@ export class BdInputComponent {
     return this._value;
   };
 
+  @ViewChild('input') _inputElement: ElementRef;
+  @ViewChild('prefix') prefixContainer: ElementRef;
+  @ViewChild('suffix') suffixContainer: ElementRef;
+
   @Input() errorText: string = '';
   @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
+  @Input() placeholder: string;
   @Input() name: string = null;
   @Input() type: string = 'text';
 
@@ -49,17 +56,24 @@ export class BdInputComponent {
     }
   }
 
-   @ViewChild('input') _inputElement: ElementRef;
+    _elementType: 'input' | 'textarea';
 
-   _elementType: 'input' | 'textarea';
+         private _onTouchedCallback: () => void = noop;
+         private _onChangeCallback: (_: any) => void = noop;
+         private _value: string = '';
+         private _prefixEmpty: boolean = false;
+         private _suffixEmpty: boolean = false;
+         private _focused: boolean = false;
+         private _disabled: boolean = false;
+         private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+         private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
-   private _onTouchedCallback: () => void = noop;
-   private _onChangeCallback: (_: any) => void = noop;
-   private _value: string = '';
-   private _focused: boolean = false;
-   private _disabled: boolean = false;
-   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+
+
+      ngAfterViewInit() {
+          this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
+          this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
+        }
 
    constructor(elementRef: ElementRef) {
   // Set the element type depending on normalized selector used(bd-input / bd-textarea)
