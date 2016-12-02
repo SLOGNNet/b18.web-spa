@@ -18,7 +18,7 @@
 import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SwitchState } from '../shared/enums/SwitchState';
+import { SwitchState } from '../shared/enums/switchState';
 
 @Component({
     selector: 'multi-slot-layout',
@@ -29,8 +29,21 @@ import { SwitchState } from '../shared/enums/SwitchState';
 })
 export class MultiSlotLayoutComponent {
 
-    private currentState: SwitchState = SwitchState.ALL;
+    private currentState: SwitchState = SwitchState.AllSlotsVisible;
     private switchStateEnum: any = SwitchState;
+
+    private classes = {
+        0: '',
+        1: 'col-sm-12',
+        2: 'col-sm-6',
+        3: 'col-sm-4'
+    };
+
+    private slotsState = [
+        SwitchState.FirstSlotVisible,
+        SwitchState.SecondSlotVisible,
+        SwitchState.ThirdSlotVisible
+    ];
 
     constructor(
         private router: Router,
@@ -49,7 +62,7 @@ export class MultiSlotLayoutComponent {
 
     ngAfterViewInit() {
         if (isNaN(this.currentState)) {
-            this.setCurrentState(SwitchState.ALL);
+            this.setCurrentState(this.switchStateEnum.AllSlotsVisible);
         }
     }
 
@@ -57,28 +70,17 @@ export class MultiSlotLayoutComponent {
         return !!(this.currentState & state);
     }
 
-    setCurrentState(state: SwitchState = SwitchState.ALL) {
-        this.currentState = state;
+    setCurrentState(state: SwitchState = SwitchState.AllSlotsVisible) {
+        if (isFinite(state) && (state <= this.switchStateEnum.All)) {
+            this.currentState = state;
+        }
     }
 
     getClass() {
-        const slotsState = [
-            SwitchState.FIRST_SLOT_VISIBLE,
-            SwitchState.SECOND_SLOT_VISIBLE,
-            SwitchState.THIRD_SLOT_VISIBLE
-        ];
-
-        const classes = {
-            0: 'none',
-            1: 'col-sm-12',
-            2: 'col-sm-6',
-            3: 'col-sm-4'
-        };
-
-        const columnsCount = slotsState.filter(value => {
-            return (value & this.currentState) > 0;
+        const columnsCount = this.slotsState.filter(value => {
+            return !!(value & this.currentState);
         }).length;
 
-        return classes[columnsCount];
+        return this.classes[columnsCount];
     }
 }

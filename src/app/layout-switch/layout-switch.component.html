@@ -2,23 +2,23 @@
     <ul id="pane-switch-group">
         <li 
             #toggleFirst 
-            [class.active]="isActive(switchStateEnum.MENU_SLIDED)"
-            (click)="onSwitchChange(toggleFirst, switchStateEnum.MENU_SLIDED)">
+            [class.active]="isActive(switchStateEnum.MenuVisible)"
+            (click)="onSwitchChange(toggleFirst, switchStateEnum.MenuVisible)">
         </li>
         <li 
             #toggleSecond 
-            [class.active]="isActive(switchStateEnum.FIRST_SLOT_VISIBLE)"
-            (click)="onSwitchChange(toggleSecond, switchStateEnum.FIRST_SLOT_VISIBLE)">
+            [class.active]="isActive(switchStateEnum.FirstSlotVisible)"
+            (click)="onSwitchChange(toggleSecond, switchStateEnum.FirstSlotVisible)">
         </li>
         <li 
             #toggleThird
-            [class.active]="isActive(switchStateEnum.SECOND_SLOT_VISIBLE)"
-            (click)="onSwitchChange(toggleThird, switchStateEnum.SECOND_SLOT_VISIBLE)">
+            [class.active]="isActive(switchStateEnum.SecondSlotVisible)"
+            (click)="onSwitchChange(toggleThird, switchStateEnum.SecondSlotVisible)">
         </li>
         <li 
             #toggleFourt
-            [class.active]="isActive(switchStateEnum.THIRD_SLOT_VISIBLE)"
-            (click)="onSwitchChange(toggleFourt, switchStateEnum.THIRD_SLOT_VISIBLE)">
+            [class.active]="isActive(switchStateEnum.ThirdSlotVisible)"
+            (click)="onSwitchChange(toggleFourt, switchStateEnum.ThirdSlotVisible)">
         </li>
     </ul>
 </div>

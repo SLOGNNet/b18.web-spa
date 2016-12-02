@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SwitchState } from '../shared/enums/SwitchState';
+import { SwitchState } from '../shared/enums/switchState';
 
 @Component({
     selector: 'layout-switch',
@@ -10,12 +10,12 @@ import { SwitchState } from '../shared/enums/SwitchState';
 })
 
 export class LayoutSwitchComponent {
-    @Input() switchState: SwitchState = SwitchState.ALL;
+    @Input() switchState: SwitchState = SwitchState.AllSlotsVisible;
     @Output() switchStateChange: EventEmitter<any> = new EventEmitter();
 
     private switchStateEnum: any = SwitchState;
 
-    isActive(switchButtonState = SwitchState.ALL) {
+    isActive(switchButtonState = SwitchState.AllSlotsVisible) {
         return !!(this.switchState & switchButtonState);
     }
 

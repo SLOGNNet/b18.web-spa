@@ -3,7 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, CanActivate } from '@angular/router';
-import { SwitchState } from './shared/enums/SwitchState';
+import { SwitchState } from './shared/enums/switchState';
 
 import { AppState } from './app.service';
 
@@ -29,7 +29,8 @@ import { AppState } from './app.service';
     `
 })
 export class AppComponent {
-    private switchState: number = SwitchState.ALL;
+    private switchState: number = SwitchState.AllSlotsVisible;
+    private switchStateEnum: any = SwitchState;
 
     constructor(
         public appState: AppState,
@@ -46,19 +47,23 @@ export class AppComponent {
     }
 
     isSlided() {
-        return !!(this.switchState & 1);
+        return !!(this.switchState & SwitchState.MenuVisible);
     }
 
-    updateSwitchState(newSwitchState) {
-        this.switchState = parseInt(newSwitchState, 10) >= 0 ? parseInt(newSwitchState, 10) : this.switchState;
+    updateSwitchState(switchState) {
+        const newSwitchState = parseInt(switchState, 10);
 
-        this.router.navigate(
-            [location.pathname],
-            {
-                queryParams: {
-                    'switchState': this.switchState
+        if (isFinite(newSwitchState) && (newSwitchState <= this.switchStateEnum.All)) {
+            this.switchState = newSwitchState;
+
+            this.router.navigate(
+                [location.pathname],
+                {
+                    queryParams: {
+                        'switchState': this.switchState
+                    }
                 }
-            }
-        );
+            );
+        }
     }
 }
