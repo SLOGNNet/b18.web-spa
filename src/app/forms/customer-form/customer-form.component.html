@@ -1,14 +1,10 @@
 <form [formGroup]="customerForm">
 
-	<template #enumItemTemplate let-item="item">
-        {{item}}
-  </template>
-
 	<bd-input [labelText]="'Company Name'" formControlName="companyName" [errorText]="'Company name is required'">
 	</bd-input>
-	<bd-dropdown [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerType" [items]="customerTypes">
+	<bd-dropdown [selectedValue]="selectedCustomerType" [items]="customerTypes">
 	</bd-dropdown>
-	<bd-dropdown  [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
+	<bd-dropdown [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
 	</bd-dropdown>
 	<bd-input [labelText]="'MC #'" formControlName="mc">
 	</bd-input>
