@@ -53,18 +53,36 @@ export class BdInputComponent {
   }
 
    @ViewChild('input') _inputElement: ElementRef;
+   @ViewChild('prefix') prefixContainer: ElementRef;
+     get prefixEmpty() {
+       return !this.prefixContainer
+         || this.prefixContainer.nativeElement.children.length === 0;
+      }
+   @ViewChild('suffix') suffixContainer: ElementRef;
+        get suffixEmpty() {
+          return !this.suffixContainer
+            || this.suffixContainer.nativeElement.children.length === 0;
+         }
+
+      ngAfterViewInit() {
+          this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
+          this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
+        }
 
    _elementType: 'input' | 'textarea';
 
    private _onTouchedCallback: () => void = noop;
    private _onChangeCallback: (_: any) => void = noop;
    private _value: string = '';
+   private _prefixEmpty:boolean = false;
+   private _suffixEmpty:boolean = false;
    private _focused: boolean = false;
    private _disabled: boolean = false;
    private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
    private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
    constructor(elementRef: ElementRef) {
+     console.log(this.prefixEmpty);
   // Set the element type depending on normalized selector used(bd-input / bd-textarea)
   this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :

@@ -13,7 +13,9 @@
         </div>
         <div class="bd-input">
 
-          <div class="bd-input-prefix"><ng-content class="qq" select="[bd-prefix]"></ng-content></div>
+          <div #prefix class="bd-input-prefix" *ngIf='!_prefixEmpty'>
+            <ng-content  select="[bd-prefix]"></ng-content>
+          </div>
 
           <div class="bd-input-infix">
             <input
@@ -50,7 +52,9 @@
               id="customer-input-id"
             ></textarea>
           </div>
-          <div class="bd-input-suffix"><ng-content select="[bd-suffix]"></ng-content></div>
+          <div #suffix class="bd-input-suffix" *ngIf='!_suffixEmpty'>
+            <ng-content select="[bd-suffix]"></ng-content>
+          </div>
         </div>
       </div>
       <div class="error-message">
