@@ -34,6 +34,10 @@ export class BdInputComponent {
     return this._value;
   };
 
+  @ViewChild('input') _inputElement: ElementRef;
+  @ViewChild('prefix') prefixContainer: ElementRef;
+  @ViewChild('suffix') suffixContainer: ElementRef;
+
   @Input() errorText: string = '';
   @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
@@ -51,18 +55,6 @@ export class BdInputComponent {
       this._onChangeCallback(v);
     }
   }
-
-   @ViewChild('input') _inputElement: ElementRef;
-   @ViewChild('prefix') prefixContainer: ElementRef;
-     get prefixEmpty() {
-       return !this.prefixContainer
-         || this.prefixContainer.nativeElement.children.length === 0;
-      }
-   @ViewChild('suffix') suffixContainer: ElementRef;
-        get suffixEmpty() {
-          return !this.suffixContainer
-            || this.suffixContainer.nativeElement.children.length === 0;
-         }
 
     _elementType: 'input' | 'textarea';
 
