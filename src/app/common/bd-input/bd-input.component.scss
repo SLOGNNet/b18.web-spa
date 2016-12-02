@@ -93,7 +93,10 @@ $error-background: rgba(251, 58, 58, .2);
 			align-items: center;
 			justify-content: flex-end;
 			flex-grow: 0;
-			margin-right: 15px;
+
+			/deep/ span ::content {
+				margin-right: 15px;
+			}
 		}
 
 		.bd-input-infix {
@@ -140,13 +143,13 @@ $error-background: rgba(251, 58, 58, .2);
 			flex-grow: 1;
 			justify-content: flex-start;
 		}
-		
+
 	}
 
 	&.bd-expanded-input {
 		.bd-label {
 			text-align: right;
-			animation: labelFlight 0.1s 1;
+			animation: labelFlight .1s 1;
 		}
 	}
 }
