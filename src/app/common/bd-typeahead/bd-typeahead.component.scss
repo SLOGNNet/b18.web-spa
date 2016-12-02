@@ -4,16 +4,6 @@ $dropitem: #f5fefe;
 .bd-typeahead-container {
 	position: relative;
 
-	.loader {
-		height: 50px;
-		text-align: center;
-
-		img {
-			height: 100%;
-			padding: 15px;
-		}
-	}
-
 	.dropdown-menu {
 		width: 100%;
 		padding: 0;
@@ -27,26 +17,18 @@ $dropitem: #f5fefe;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				
+
 				&:hover {
 					background-color: $dropitem;
 				}
 			}
 
 			&.active {
+
 				a {
 					background-color: $dropitem;
+					border-bottom: 1px solid $iron;
 					outline: 0;
-
-					&:hover {
-						background-color: $dropitem;
-						outline: 0;
-					}
-
-					&:focus {
-						background-color: $dropitem;
-						outline: 0;
-					}
 				}
 			}
 

@@ -5,9 +5,7 @@
     </bd-form-button>
   </template>
   <template #loaderTemplate>
-    <div class='loader'>
-      <img src="../../assets/img/spinner.png" alt="">
-    </div>
+    <bd-spinner></bd-spinner>
   </template>
   <bd-input [(ngModel)]="value"
       [typeahead]="source"

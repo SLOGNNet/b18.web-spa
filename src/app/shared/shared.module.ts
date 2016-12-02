@@ -11,6 +11,7 @@ import { BdDropdownComponent } from '../common/bd-dropdown';
 import { BdFormButtonComponent } from '../common/bd-form-button';
 import { BdTextareaAutosize } from '../common/bd-input/autosize.directive';
 import { BdInputComponent } from '../common/bd-input';
+import { BdSpinnerComponent } from '../common/bd-spinner';
 import { BdLoadFormComponent } from '../forms/load-form';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 
@@ -26,7 +27,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     BdFormButtonComponent,
     BdDropdownComponent,
     BdTextareaAutosize,
-    BdInputComponent
+    BdInputComponent,
+    BdSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     BdFormButtonComponent,
     BdTextareaAutosize,
     BdInputComponent,
+    BdSpinnerComponent,
     BdDropdownComponent,
     BdLoadFormComponent,
     TypeaheadModule,
