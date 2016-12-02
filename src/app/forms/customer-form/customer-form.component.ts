@@ -22,11 +22,14 @@ export class CustomerForm {
     this.selectedCustomerType = CustomerStatuses[this.customer.type];
     this.customerStatuses = this.enumHelperService.getNames(CustomerStatuses);
     this.selectedCustomerStatus = CustomerStatuses[this.customer.status];
+
     this.customerForm = this.formBuilder.group({
       companyName: [this.customer.companyName, Validators.required],
       mc: [this.customer.mc],
-      taxId: [this.customer.taxId]
+      taxId: [this.customer.taxId],
+      address: this.formBuilder.group({
+        steetAddress: [this.customer.address.streetAddress, Validators.required]
+      })
     });
-
   }
 }

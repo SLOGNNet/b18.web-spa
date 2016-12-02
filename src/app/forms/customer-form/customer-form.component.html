@@ -1,22 +1,20 @@
 <form [formGroup]="customerForm">
-	<template #typeHeaderTemplate>
-        Select Customer Type
-  </template>
 
 	<template #enumItemTemplate let-item="item">
         {{item}}
   </template>
 
-	<bd-input [labelText]="'Company Name'" formControlName="companyName">
+	<bd-input [labelText]="'Company Name'" formControlName="companyName" [errorText]="'Company name is required'">
 	</bd-input>
-	<bd-dropdown [dropdownHeaderTemplate]="typeHeaderTemplate" [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerType" [items]="customerTypes">
+	<bd-dropdown [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerType" [items]="customerTypes">
 	</bd-dropdown>
-	<bd-dropdown [dropdownHeaderTemplate]="typeHeaderTemplate" [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerType" [items]="customerTypes">
+	<bd-dropdown  [dropdownItemTemplate]="enumItemTemplate" [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
 	</bd-dropdown>
 	<bd-input [labelText]="'MC #'" formControlName="mc">
 	</bd-input>
 	<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
 	</bd-input>
+	<address-form [group]='customerForm' [address]='customer.address'></address-form>
 	<div>
 		<button type="submit" [disabled]="!customerForm.valid">Submit</button>
 	</div>

@@ -1,1 +1,2 @@
-export { Customer, CustomerStatuses, CustomerTypes } from './customer';
+export * from './customer';
+export * from './address';
