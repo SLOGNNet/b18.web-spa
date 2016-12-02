@@ -6,7 +6,7 @@ import { CustomerService } from './customer.service';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from '../common/typeahead/typeahead.module.ts';
-import { BdTypeaheadComponent } from '../common/bd-typeahead';
+import { BdFormTypeaheadComponent } from '../common/bd-form-typeahead';
 import { BdDropdownComponent } from '../common/bd-dropdown';
 import { BdFormButtonComponent } from '../common/bd-form-button';
 import { BdTextareaAutosize } from '../common/bd-input/autosize.directive';
@@ -23,7 +23,7 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     EnumHelperService
   ],
   declarations: [
-    BdTypeaheadComponent,
+    BdFormTypeaheadComponent,
     BdLoadFormComponent,
     BdFormButtonComponent,
     BdDropdownComponent,
@@ -39,7 +39,7 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     ReactiveFormsModule
   ],
   exports: [
-    BdTypeaheadComponent,
+    BdFormTypeaheadComponent,
     BdFormButtonComponent,
     BdTextareaAutosize,
     BdInputComponent,

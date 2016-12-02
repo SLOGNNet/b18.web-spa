@@ -8,18 +8,18 @@ import { Observable } from 'rxjs/Observable';
 const noop = () => { };
 const COMPLETER_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => BdTypeaheadComponent),
+  useExisting: forwardRef(() => BdFormTypeaheadComponent),
   multi: true
 };
 
 @Component({
   selector: 'bd-typeahead',
-  templateUrl: './bd-typeahead.component.html',
-  styleUrls: ['./bd-typeahead.component.scss'],
+  templateUrl: './bd-form-typeahead.component.html',
+  styleUrls: ['./bd-form-typeahead.component.scss'],
   providers: [COMPLETER_CONTROL_VALUE_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
-export class BdTypeaheadComponent implements ControlValueAccessor {
+export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
   @Input() public footerButtonText: string = '';
