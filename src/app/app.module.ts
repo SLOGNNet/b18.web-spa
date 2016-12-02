@@ -1,10 +1,10 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { BdFormsModule } from './forms/forms.module';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -16,14 +16,13 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
-import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
+
 import { HomeComponent } from './home';
-import { CommonInputComponent } from './common/bd-input';
-import { BdDropdownComponent } from './common/bd-dropdown';
-import { BdFormButtonComponent } from './common/bd-form-button';
+import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
+import { LoadsComponent } from './loads';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -45,22 +44,20 @@ type StoreType = {
   declarations: [
      AppComponent,
      HomeComponent,
-     CommonInputComponent,
-     BdDropdownComponent,
-     BdFormButtonComponent,
      DriversComponent,
      NoContentComponent,
      MessagesComponent,
-     MessageComponent
+     MessageComponent,
+     LoadsComponent,
+     TypeaheadDemoComponent
   ],
   imports: [ // import Angular's modules
+    SharedModule,
     BrowserModule,
     InfiniteScrollModule,
-    FormsModule,
+    BdFormsModule,
     HttpModule,
-    SharedModule,
     Angular2DataTableModule,
-    DropdownModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
