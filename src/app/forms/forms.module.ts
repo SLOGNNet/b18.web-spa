@@ -8,7 +8,7 @@ import { BdLoadFormComponent } from './load-form';
 @NgModule({
   declarations: [
     CustomerForm,
-    AddressForm
+    AddressForm,
     BdFormTypeaheadComponent,
     BdLoadFormComponent
   ],
@@ -17,7 +17,7 @@ import { BdLoadFormComponent } from './load-form';
   ],
   exports: [
     CustomerForm,
-    AddressForm
+    AddressForm,
     BdFormTypeaheadComponent,
     BdLoadFormComponent
   ]
