@@ -17,14 +17,9 @@ $dropitem: #f5fefe;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
-				&:hover {
-					background-color: $dropitem;
-				}
 			}
 
 			&.active {
-
 				a {
 					background-color: $dropitem;
 					border-bottom: 1px solid $iron;
