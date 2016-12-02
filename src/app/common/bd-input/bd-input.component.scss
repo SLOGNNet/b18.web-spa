@@ -15,83 +15,100 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 }
 
-.flex-element {
+@mixin flex-element {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
 }
 
+@mixin input-textarea {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	padding: 8px 0;
+	border: 0;
+	background: none;
+	box-shadow: none;
+	outline: 0;
+	resize: none;
+
+	&:focus {
+		&::placeholder {
+			color: $nobel;
+			opacity: 1;
+		}
+	}
+
+	&::placeholder {
+		color: $white;
+		opacity: 0;
+	}
+}
+
 .bd-input-wrapper {
+	@include flex-element;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	height: 50px;
+	height: 100%;
+	min-height: 50px;
 	border-bottom: 1px solid $iron;
 	margin-bottom: 0;
-	@extend %.flex-element;
 	flex-flow: row wrap;
 	background-color: $white;
 
 	.bd-label {
+		display: flex;
 		width: 80px;
-		height: 100%;
+		height: 50px;
 		color: $nobel;
 		font-size: 10px;
+		align-self: flex-start;
 		text-transform: uppercase;
+		align-items: center;
+		justify-content: flex-end;
 
 		label {
-			display: flex;
-			height: 100%;
+			margin: 0;
 			font-weight: normal;
-			justify-content: flex-end;
-			align-items: center;
 		}
 	}
 
 	.bd-input {
+		@include flex-element;
 		margin-left: 32px;
-		@extend %.flex-element;
 		flex-grow: 1;
 		justify-content: space-between;
 
 		.bd-input-prefix {
+			@include flex-element;
+			display: flex;
+			height: 50px;
+			align-self: flex-start;
+			align-items: center;
+			justify-content: flex-end;
 			margin-right: 15px;
-			@extend %.flex-element;
 			flex-grow: 0;
 		}
 
 		.bd-input-infix {
-			@extend %.flex-element;
+			@include flex-element;
 			flex-grow: 1;
+			min-height: 50px;
 
 			input {
-				position: relative;
-				z-index: 1;
-				top: 0;
-				width: 100%;
-				padding: 8px 0;
-				border: 0;
-				background: none;
-				left: 0;
-				box-shadow: none;
-				outline: 0;
+				@include input-textarea;
+			}
 
-				&:focus {
-					&::placeholder {
-						color: $nobel;
-						opacity: 1;
-					}
-				}
-
-				&::placeholder {
-					color: $white;
-					opacity: 0;
-				}
+			textarea {
+				@include input-textarea;
+				align-self: flex-start;
+				margin-top: 7px;
 			}
 		}
 
 		.bd-input-suffix {
-			@extend %.flex-element;
+			@include flex-element;
 			flex-grow: 0;
 		}
 
@@ -120,7 +137,7 @@ $error-background: rgba(251, 58, 58, .2);
 		}
 
 		+ .error-message {
-			@extend %.flex-element;
+			@include flex-element;
 			background: $error-background;
 			color: $error;
 			text-align: left;
@@ -133,7 +150,7 @@ $error-background: rgba(251, 58, 58, .2);
 
 	&.bd-collapsed-input {
 		.bd-label {
-			width: 100%;
+			width: auto;
 			color: $nobel;
 			font-size: 16px;
 			text-align: left;
@@ -144,6 +161,7 @@ $error-background: rgba(251, 58, 58, .2);
 				justify-content: flex-start;
 			}
 		}
+
 	}
 
 	&.bd-expanded-input {
@@ -152,4 +170,5 @@ $error-background: rgba(251, 58, 58, .2);
 			animation: labelFlight .1s 1;
 		}
 	}
+
 }
