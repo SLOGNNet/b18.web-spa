@@ -155,10 +155,8 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 }
 
-:host(.ng-valid) {
-	.error-message {
-		display: none;
-	}
+.error-message {
+	display: none;
 }
 
 :host(.ng-invalid) {
