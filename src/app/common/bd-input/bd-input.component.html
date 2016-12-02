@@ -3,7 +3,8 @@
      [class.bd-collapsed-input]="isCollapsed"
      [class.bd-expanded-input]="!isCollapsed"
 >
-        <div class="bd-label">
+        <div class="bd-label"
+             [class.bd-hidden-label]="!isEmptyLabel">
           <label
             class="bd-input-placeholder"
             for="customer-input-id">
@@ -12,7 +13,7 @@
         </div>
         <div class="bd-input">
 
-          <div class="bd-input-prefix">
+          <div #prefix class="bd-input-prefix" *ngIf='!_prefixEmpty'>
             <ng-content select="[bd-prefix]"></ng-content>
           </div>
 
@@ -26,7 +27,7 @@
               [disabled]="disabled"
               [attr.maxlength]="maxlength"
               (focus)="_handleFocus($event)"
-              placeholder="placeholder"
+              placeholder="{{placeholder}}"
               (change)="_handleChange($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"
@@ -51,8 +52,8 @@
               id="customer-input-id"
             ></textarea>
           </div>
-          <div class="bd-input-suffix">
-            <ng-content select="[bd-sufix]"></ng-content>
+          <div #suffix class="bd-input-suffix" *ngIf='!_suffixEmpty'>
+            <ng-content select="[bd-suffix]"></ng-content>
           </div>
         </div>
       </div>
