@@ -8,20 +8,21 @@ import { Observable } from 'rxjs/Observable';
 const noop = () => { };
 const COMPLETER_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => BdTypeaheadComponent),
+  useExisting: forwardRef(() => BdFormTypeaheadComponent),
   multi: true
 };
 
 @Component({
   selector: 'bd-typeahead',
-  templateUrl: './bd-typeahead.component.html',
-  styleUrls: ['./bd-typeahead.component.scss'],
+  templateUrl: './bd-form-typeahead.component.html',
+  styleUrls: ['./bd-form-typeahead.component.scss'],
   providers: [COMPLETER_CONTROL_VALUE_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
-export class BdTypeaheadComponent implements ControlValueAccessor {
+export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
+  @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
@@ -30,10 +31,10 @@ export class BdTypeaheadComponent implements ControlValueAccessor {
   protected isNoResultsShown: boolean = false;
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
+
   public constructor() {
 
   }
-
   public changeTypeaheadLoading(isLoading: boolean): void {
     this.isLoading = isLoading;
   }

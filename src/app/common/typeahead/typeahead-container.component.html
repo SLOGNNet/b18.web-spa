@@ -20,7 +20,9 @@
       </template>
   </li>
   <li *ngIf="footerTemplate"
-    (click)="footerClick($event)">
+      [class.active]="isActive(match)"
+      (mouseenter)="selectActive(match)"
+      (click)="footerClick($event)">
         <template [ngTemplateOutlet]="footerTemplate">
         </template>
   </li>
