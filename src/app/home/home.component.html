@@ -13,14 +13,15 @@ Home page
   </template>
 
   <template #dropdownItemTemplate let-item="item">
-        {{item}}
+      {{item}}
   </template>
 
   <bd-dropdown
+    [defaultLabelText]="'contact'"
+    [defaultTitleText]="'Select Contact'"
     [dropdownHeaderTemplate]="dropdownHeaderTemplate"
     [dropdownFooterTemplate]="dropdownFooterTemplate"
     [dropdownItemTemplate]="dropdownItemTemplate"
-    [selectedValue]="items[0]"
     [items]="items">
   </bd-dropdown>
 </div>
