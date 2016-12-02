@@ -111,14 +111,6 @@ $error-background: rgba(251, 58, 58, .2);
 			@include flex-element;
 			flex-grow: 0;
 		}
-
-		.error-message {
-			display: none;
-		}
-	}
-
-	+ .error-message {
-		display: none;
 	}
 
 	&.bd-focused {
@@ -126,25 +118,6 @@ $error-background: rgba(251, 58, 58, .2);
 
 		.bd-label {
 			color: $seagul;
-		}
-	}
-
-	&.bd-invalid {
-		border-bottom-color: $error;
-
-		.bd-label {
-			color: $error;
-		}
-
-		+ .error-message {
-			@include flex-element;
-			background: $error-background;
-			color: $error;
-			text-align: left;
-
-			i {
-				margin: 0 15px 0 17px;
-				}
 		}
 	}
 
@@ -172,5 +145,31 @@ $error-background: rgba(251, 58, 58, .2);
 			animation: labelFlight .1s 1;
 		}
 	}
+}
 
+:host(.ng-valid) {
+	.error-message {
+		display: none;
+	}
+}
+
+:host(.ng-invalid) {
+	.error-message {
+		@include flex-element;
+		background: $error-background;
+		color: $error;
+		text-align: left;
+
+		i {
+			margin: 0 15px 0 17px;
+		}
+	}
+
+	.bd-input-wrapper {
+		border-bottom-color: $error;
+
+		.bd-label {
+			color: $error;
+		}
+	}
 }

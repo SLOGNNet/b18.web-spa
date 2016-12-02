@@ -12,6 +12,9 @@ export class BdDropdownComponent {
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
 
+  @Input() defaultLabelText: string = '';
+  @Input() defaultTitleText: string = 'Select Item';
+
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
 
@@ -20,7 +23,7 @@ export class BdDropdownComponent {
   private value: any;
 
   get currentDisplayText(){
-    return this.value ? this.value : 'Select Contact';
+    return this.value ? this.value : this.defaultTitleText;
   }
 
   get isSelectedValue(){
