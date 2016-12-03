@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
 /*
  * Platform and Environment providers/directives/pipes
@@ -16,8 +17,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
-import { LayoutSwitchComponent } from './layout-switch';
-import { NavigationBarComponent } from './navigation-bar';
 import { MultiSlotLayoutComponent } from './multi-slot-layout';
 import { HomeComponent } from './home';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
@@ -46,8 +45,6 @@ type StoreType = {
   schemas: [ NO_ERRORS_SCHEMA ],
   declarations: [
      AppComponent,
-     LayoutSwitchComponent,
-     NavigationBarComponent,
      MultiSlotLayoutComponent,
      HomeComponent,
      DriversComponent,
@@ -59,6 +56,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     SharedModule,
+    NavigationBarModule,
     BrowserModule,
     InfiniteScrollModule,
     BdFormsModule,

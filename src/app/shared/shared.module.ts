@@ -5,13 +5,14 @@ import { SocketService } from './socket.service';
 import { CustomerService } from './customer.service';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
-import { TypeaheadModule } from '../common/typeahead/typeahead.module.ts';
-import { BdDropdownComponent } from '../common/bd-dropdown';
-import { BdFormButtonComponent } from '../common/bd-form-button';
-import { BdTextareaAutosize } from '../common/bd-input/autosize.directive';
-import { BdInputComponent } from '../common/bd-input';
-import { BdSpinnerComponent } from '../common/bd-spinner';
+import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
+import { BdDropdownComponent } from './components/bd-dropdown';
+import { BdFormButtonComponent } from './components/bd-form-button';
+import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
+import { BdInputComponent } from './components/bd-input';
+import { BdSpinnerComponent } from './components/bd-spinner';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
+import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 
 @NgModule({
   providers: [
@@ -25,7 +26,8 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     BdDropdownComponent,
     BdTextareaAutosize,
     BdInputComponent,
-    BdSpinnerComponent
+    BdSpinnerComponent,
+    BdFormTypeaheadComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
     BdInputComponent,
     BdSpinnerComponent,
     BdDropdownComponent,
+    BdFormTypeaheadComponent,
     TypeaheadModule,
     DropdownModule,
     CommonModule,
