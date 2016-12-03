@@ -17,30 +17,26 @@ export class NavigationBarComponent {
     private items = [{
         label: 'Home',
         icon: 'icon',
-        hidden: false,
+        queryParams: "{switchState: 2}",
         items: [{
             label: 'Sub menu',
-            link: './home',
-            hidden: false
+            link: './home'
         }, {
-            label: 'Sub menu',
+            label: 'Sub menu1',
             link: './home1',
-            hidden: false
+            hidden: true
         }, {
             label: 'Sub menu',
             link: './home2',
-            hidden: false
         }]
     }, {
         label: 'Drivers',
         icon: 'icon',
-        link: './drivers/1',
-        hidden: false
+        link: './drivers/1'
     }, {
         label: 'Load Form',
         icon: 'icon',
-        link: './load-form',
-        hidden: false
+        link: './load-form'
     }];
 
     onSwitchStateChange(switchState: SwitchState) {
