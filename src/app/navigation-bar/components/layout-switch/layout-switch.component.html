@@ -7,18 +7,18 @@
         </li>
         <li 
             #toggleSecond 
-            [class.active]="isActive(switchStateEnum.FirstSlotVisible)"
-            (click)="onSwitchChange(toggleSecond, switchStateEnum.FirstSlotVisible)">
+            [class.active]="isActive(switchStateEnum.FirstPaneVisible)"
+            (click)="onSwitchChange(toggleSecond, switchStateEnum.FirstPaneVisible)">
         </li>
         <li 
             #toggleThird
-            [class.active]="isActive(switchStateEnum.SecondSlotVisible)"
-            (click)="onSwitchChange(toggleThird, switchStateEnum.SecondSlotVisible)">
+            [class.active]="isActive(switchStateEnum.SecondPaneVisible)"
+            (click)="onSwitchChange(toggleThird, switchStateEnum.SecondPaneVisible)">
         </li>
         <li 
-            #toggleFourt
-            [class.active]="isActive(switchStateEnum.ThirdSlotVisible)"
-            (click)="onSwitchChange(toggleFourt, switchStateEnum.ThirdSlotVisible)">
+            #toggleFourth
+            [class.active]="isActive(switchStateEnum.ThirdPaneVisible)"
+            (click)="onSwitchChange(toggleFourth, switchStateEnum.ThirdPaneVisible)">
         </li>
     </ul>
 </div>

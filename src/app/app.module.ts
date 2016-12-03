@@ -17,7 +17,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
-import { MultiSlotLayoutComponent } from './multi-slot-layout';
+import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
@@ -45,7 +45,7 @@ type StoreType = {
   schemas: [ NO_ERRORS_SCHEMA ],
   declarations: [
      AppComponent,
-     MultiSlotLayoutComponent,
+     MultiPaneLayoutComponent,
      HomeComponent,
      DriversComponent,
      NoContentComponent,
