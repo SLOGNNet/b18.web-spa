@@ -18,6 +18,7 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { LayoutSwitchComponent } from './layout-switch';
 import { NavigationBarComponent } from './navigation-bar';
+import { MenuItemComponent } from './navigation-bar/components/menu-item';
 import { MultiSlotLayoutComponent } from './multi-slot-layout';
 import { HomeComponent } from './home';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
@@ -47,6 +48,7 @@ type StoreType = {
   declarations: [
      AppComponent,
      LayoutSwitchComponent,
+     MenuItemComponent,
      NavigationBarComponent,
      MultiSlotLayoutComponent,
      HomeComponent,

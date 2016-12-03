@@ -1,13 +1,7 @@
 $shark: #23282d;
 $white: #fff;
-$black: #000;
-$logo-letter-color: #a4c2f4;
 $tango: #e67517;
-$active-background-color: #75b3e2;
-$hover-background-color: #30353b;
-$icon-color: #9ea3a9;
-$sub-munu-background-color: #485158;
-$sub-munu-color: #a4a9af;
+
 
 .side-menu {
 	z-index: 99999;
@@ -17,113 +11,8 @@ $sub-munu-color: #a4a9af;
 	background-color: $shark;
 }
 
-.menu-item {
-	width: 100%;
-
-	.sub-menu {
-		display: none;
-		width: 130px;
-		background-color: $sub-munu-background-color;
-
-		.sub-menu-item {
-			width: 130px;
-			height: 30px;
-
-			a {
-				padding: 6px 10px 6px 40px;
-				color: $sub-munu-color;
-			}
-
-			&:first-child {
-				a {
-					padding-top: 9px;
-					padding-bottom: 3px;
-				}
-			}
-
-			&:last-child {
-				a {
-					padding-top: 3px;
-					padding-bottom: 9px;
-				}
-			}		
-		}
-	}
-
-	.menu-icon {
-		display: inline-block;
-		width: 22px;
-		height: 22px;
-		margin: 9px 0 3px 10px;
-		mask:  url('../../assets/img/menu-icon.svg') no-repeat;
-		background-color: $icon-color;
-	}
-
-	a {
-		position: absolute;		
-		width: 130px;
-		padding: 10px 10px 10px 40px;
-		color: $white;
-		cursor: pointer;
-		left: 0;
-		background-color: transparent;
-		white-space: nowrap;
-		text-decoration: none;
-	}
-
-	&:not(.active) {
-		&:hover {
-			background-color: $hover-background-color;
-
-			.sub-menu {
-				position: absolute;
-				z-index: 9999;
-				display: block;
-				margin-left: 130px;
-				margin-top: -40px;
-
-				a {
-					padding-left: 20px;
-
-					&:hover {
-						color: $logo-letter-color;
-					}
-				}
-			}
-
-			.menu-icon {
-				background-color: $logo-letter-color;
-			}
-
-			a {
-				color: $logo-letter-color;
-			}
-		}
-	}
-
-	&.active {
-		background-color: $active-background-color;
-
-		.menu-icon {
-			background-color: $white;
-		}
-
-		.sub-menu {
-			display: block;
-
-			.sub-menu-item {
-				&.active {
-					a {
-						color: $white;
-					}
-				}
-			}
-		}
-
-		>a {
-			color: $white;
-		}
-	}
+.icon {
+	mask:  url('../../assets/img/menu-icon.svg') no-repeat;
 }
 
 .logo-container {
