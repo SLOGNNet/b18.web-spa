@@ -2,17 +2,17 @@
  * Component that has three horizontal separated sections
  * 
  * @example
- * <multi-slot-layout>
- *   <first-slot>
+ * <multi-pane-layout>
+ *   <first-pane>
  *       Content
- *   </first-slot>
- *   <second-slot>
+ *   </first-pane>
+ *   <second-pane>
  *       Content
- *   </second-slot>
- *   <third-slot>
+ *   </second-pane>
+ *   <third-pane>
  *       Content
- *   </third-slot>
- * </multi-slot-layout>
+ *   </third-pane>
+ * </multi-pane-layout>
  */
 
 import { Component } from '@angular/core';
@@ -21,15 +21,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
 
 @Component({
-    selector: 'multi-slot-layout',
-    templateUrl: './multi-slot-layout.component.html',
+    selector: 'multi-pane-layout',
+    templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
-        './multi-slot-layout.component.css'
+        './multi-pane-layout.component.css'
     ]
 })
-export class MultiSlotLayoutComponent {
+export class MultiPaneLayoutComponent {
 
-    private currentState: SwitchState = SwitchState.AllSlotsVisible;
+    private currentState: SwitchState = SwitchState.AllPanesVisible;
     private switchStateEnum: any = SwitchState;
 
     private classes = {
@@ -39,10 +39,10 @@ export class MultiSlotLayoutComponent {
         3: 'col-sm-4'
     };
 
-    private slotsState = [
-        SwitchState.FirstSlotVisible,
-        SwitchState.SecondSlotVisible,
-        SwitchState.ThirdSlotVisible
+    private panesState = [
+        SwitchState.FirstPaneVisible,
+        SwitchState.SecondPaneVisible,
+        SwitchState.ThirdPaneVisible
     ];
 
     constructor(
@@ -62,7 +62,7 @@ export class MultiSlotLayoutComponent {
 
     ngAfterViewInit() {
         if (isNaN(this.currentState)) {
-            this.setCurrentState(this.switchStateEnum.AllSlotsVisible);
+            this.setCurrentState(this.switchStateEnum.AllPanesVisible);
         }
     }
 
@@ -70,14 +70,14 @@ export class MultiSlotLayoutComponent {
         return !!(this.currentState & state);
     }
 
-    setCurrentState(state: SwitchState = SwitchState.AllSlotsVisible) {
+    setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
         if (isFinite(state) && (state <= this.switchStateEnum.All)) {
             this.currentState = state;
         }
     }
 
     getClass() {
-        const columnsCount = this.slotsState.filter(value => {
+        const columnsCount = this.panesState.filter(value => {
             return !!(value & this.currentState);
         }).length;
 

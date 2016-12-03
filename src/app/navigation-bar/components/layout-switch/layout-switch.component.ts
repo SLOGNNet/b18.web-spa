@@ -10,12 +10,12 @@ import { SwitchState } from '../../../shared/enums/switchState';
 })
 
 export class LayoutSwitchComponent {
-    @Input() switchState: SwitchState = SwitchState.AllSlotsVisible;
+    @Input() switchState: SwitchState = SwitchState.AllPanesVisible;
     @Output() switchStateChange: EventEmitter<any> = new EventEmitter();
 
     private switchStateEnum: any = SwitchState;
 
-    isActive(switchButtonState = SwitchState.AllSlotsVisible) {
+    isActive(switchButtonState = SwitchState.AllPanesVisible) {
         return !!(this.switchState & switchButtonState);
     }
 

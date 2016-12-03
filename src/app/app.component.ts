@@ -29,7 +29,7 @@ import { AppState } from './app.service';
     `
 })
 export class AppComponent {
-    private switchState: number = SwitchState.AllSlotsVisible;
+    private switchState: number = SwitchState.AllPanesVisible;
     private switchStateEnum: any = SwitchState;
 
     constructor(
