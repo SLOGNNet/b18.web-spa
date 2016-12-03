@@ -17,7 +17,6 @@ export class NavigationBarComponent {
     private items = [{
         label: 'Home',
         icon: 'icon',
-        queryParams: "{switchState: 2}",
         items: [{
             label: 'Sub menu',
             link: './home'

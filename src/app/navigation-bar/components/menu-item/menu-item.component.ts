@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 
 export class MenuItemComponent {
-  @Input() menuItem : {};
+  @Input() menuItem;
 }
