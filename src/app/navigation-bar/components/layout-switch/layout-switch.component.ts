@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SwitchState } from '../shared/enums/switchState';
+import { SwitchState } from '../../../shared/enums/switchState';
 
 @Component({
     selector: 'layout-switch',

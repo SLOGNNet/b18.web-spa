@@ -1,1 +1,2 @@
-export * from './navigation-bar.component';
+export { NavigationBarComponent} from './navigation-bar.component';
+export { MenuItemComponent} from './components';

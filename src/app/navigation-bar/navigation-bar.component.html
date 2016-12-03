@@ -4,35 +4,7 @@
         <span class="logo-number">18</span>
     </div>
 
-    <div class="menu-item active" [routerLinkActive]="['active']">
-        <div class="menu-icon"></div>
-        <a>Home</a>
-        <div class="sub-menu">
-            <div class="sub-menu-item" [routerLinkActive]="['active']">
-                <a [routerLink]="['./home']">sub item</a>
-            </div>
-            <div class="sub-menu-item">
-                <a [routerLink]="['./home2']">sub item</a>
-            </div>
-            <div class="sub-menu-item">
-                <a [routerLink]="['./home3']">sub item</a>
-            </div>
-        </div>
-    </div>
-    <div class="menu-item" [routerLinkActive]="['active']">
-        <div class="menu-icon"></div>
-        <a [routerLink]="['./drivers/1']">Drivers</a>
-    </div>
+    <menu-item [menuItem]="item" *ngFor="let item of items"></menu-item>
 
-    <div class="menu-item" [routerLinkActive]="['active']">
-        <div class="menu-icon"></div>
-        <a [routerLink]="['./load-form']">Load Form</a>
-    </div>
-    <div class="menu-item" [routerLinkActive]="['active']">
-        <div class="menu-icon"></div>
-        <a [routerLink]="['./#']">Menu item</a>
-    </div>
-
-    <layout-switch [switchState]="switchState" (switchStateChange)="onSwitchStateChange($event)">
-    </layout-switch>
+    <layout-switch [switchState]="switchState" (switchStateChange)="onSwitchStateChange($event)"></layout-switch>
 </div>
