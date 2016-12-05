@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
 import { URLSearchParams } from '@angular/http';
-import { IMessage, ISocketItem } from '../../models';
 import { SocketService } from './socket.service';
 
 @Injectable()
