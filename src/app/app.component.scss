@@ -1,18 +1,4 @@
-@font-face {
-	font-family: 'SFUIText-Bold';
-	src: ('../assets/fonts/sf-bold.woff');
-}
-@font-face {
-	font-family: 'SFUIText-Medium';
-	src: ('../assets/fonts/sf-medium.woff');
-}
-@font-face {
-	font-family: 'SFUIText-Regular';
-	src: ('../assets/fonts/sf-regular.woff');
-}
-
-
-$black-squeeze: #f5f9fc;
+@import '../assets/styles/variables';
 
 html,
 body {
@@ -22,7 +8,7 @@ body {
 
 body {
 	overflow: hidden;
-	background: $black-squeeze;
+	background: $serenity;
 	font-family: 'SFUIText-Regular', Arial, Helvetica, sans-serif;
 }
 

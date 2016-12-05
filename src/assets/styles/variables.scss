@@ -48,19 +48,8 @@ $small-font-size: .875rem;
 $large-font-size: 1.25rem;
 
 @font-face {
-	font-family: 'SFUIText-Bold';
-	src: ('../fonts/sf-bold.woff');
-}
-
-@font-face {
-	font-family: 'SFUIText-Medium';
-	src: ('../fonts/sf-medium.woff');
-}
-
-@font-face {
 	font-family: 'SFUIText-Regular';
-	src: ('../fonts/sf-regular.woff');
+	src: ('../assets/fonts/sf-regular.woff');
 }
-
 /* default input height */
 $input-height: 50px;
