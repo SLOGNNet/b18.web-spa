@@ -20,11 +20,11 @@ $label-active: $blue;
 $label-warning: $red;
 
 /* buttons */
-$btn-blue-background: $blue;
-$btn-blue-color: $white;
+$btn-primary-background: $blue;
+$btn-primary-color: $white;
 
-$btn-grey-background: $light-grey;
-$btn-grey-color: $black;
+$btn-secondary-background: $light-grey;
+$btn-secondary-color: $black;
 
 
 /* placeholder */
@@ -41,6 +41,7 @@ $default-border-radius: 3px;
 /* fonts */
 $base-font-size: 16px;
 
+$default-font-size: 1rem;
 $mini-font-size: .625rem;
 $tiny-font-size: .75rem;
 $small-font-size: .875rem;
