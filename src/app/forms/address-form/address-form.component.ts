@@ -19,5 +19,29 @@ export class AddressForm {
       'streetAddress',
       this.formBuilder.control(this.address.streetAddress, [Validators.required])
     );
+    this.addressForm.addControl(
+      'secondStreetAddress',
+      this.formBuilder.control(this.address.secondStreetAddress, [Validators.required])
+    );
+    this.addressForm.addControl(
+      'city',
+      this.formBuilder.control(this.address.city, [Validators.required])
+    );
+    this.addressForm.addControl(
+      'phone',
+      this.formBuilder.control(this.address.phone)
+    );
+    this.addressForm.addControl(
+      'fax',
+      this.formBuilder.control(this.address.fax)
+    );
+    this.addressForm.addControl(
+      'state',
+      this.formBuilder.control(this.address.state)
+    );
+    this.addressForm.addControl(
+      'zip',
+      this.formBuilder.control(this.address.zip)
+    );
   }
 }

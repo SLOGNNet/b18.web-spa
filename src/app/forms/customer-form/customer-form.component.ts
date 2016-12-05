@@ -28,7 +28,14 @@ export class CustomerForm {
       mc: [this.customer.mc],
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({
-        steetAddress: [this.customer.address.streetAddress, Validators.required]
+        steetAddress: [this.customer.address.streetAddress],
+        secondStreetAddress: [this.customer.address.secondStreetAddress],
+        city: [this.customer.address.city],
+        phone: [this.customer.address.phone],
+        fax: [this.customer.address.fax],
+        state: [this.customer.address.state],
+        zip: [this.customer.address.zip]
+
       })
     });
   }

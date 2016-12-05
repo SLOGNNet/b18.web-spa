@@ -1,4 +1,27 @@
 <form [formGroup]="addressForm">
-	<bd-input [labelText]="'Street Address'" formControlName="streetAddress">
+	<bd-input placeholder="Street address 1" formControlName="streetAddress">
 	</bd-input>
+	<div style="display:flex;flex-direction:row;">
+		<div style="width:70%; ">
+			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
+			</bd-input>
+			<bd-input formControlName="city">
+			</bd-input>
+				<div style="display:flex;flex-direction:row;">
+					<bd-input placeholder="state" formControlName="state">
+					</bd-input>
+					<bd-input placeholder="zip" formControlName="zip">
+					</bd-input>
+				</div>
+		</div>
+		<div style="width:30%; background:red; ">
+		</div>
+	</div>
+	<bd-input  [labelText]="'phone'" formControlName="phone">
+	</bd-input>
+	<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
+	</bd-input>
+	<bd-textarea
+	[labelText]="'Estimated distance Estimated'">
+	</bd-textarea>
 </form>

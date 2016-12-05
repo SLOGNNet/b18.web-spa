@@ -16,7 +16,13 @@ export class LoadsComponent {
     this.selectedCustomer.status = CustomerStatuses.ACTIVE;
     this.selectedCustomer.type = CustomerTypes.Broker;
     const customerAddress = new Address();
-    customerAddress.streetAddress = 'Street address';
+    customerAddress.streetAddress = 'Street address 1';
+    customerAddress.secondStreetAddress = 'Street address 2';
+    customerAddress.city = 'City';
+    customerAddress.phone = '';
+    customerAddress.state = 'FL state';
+    customerAddress.zip = '33708 zip';
+    customerAddress.fax = '';
     this.selectedCustomer.address = customerAddress;
   }
 }
