@@ -1,9 +1,9 @@
-$seagul: #75b3e2;
+@import '../../../../assets/styles/variables';
 
 .form-button {
 	border: 0;
 	background: transparent;
-	color: $seagul;
+	color: $blue;
 
 	&:focus {
 		outline: 0;

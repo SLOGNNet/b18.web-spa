@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotificationService } from './notification.service';
-import { SocketService } from './socket.service';
-import { CustomerService } from './customer.service';
+import { NotificationService } from './services/notification.service';
+import { SocketService } from './services/socket.service';
+import { CustomerService } from './services/customer.service';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
@@ -13,13 +13,14 @@ import { BdInputComponent } from './components/bd-input';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
-
+import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
 @NgModule({
   providers: [
     NotificationService,
     SocketService,
     CustomerService,
-    EnumHelperService
+    EnumHelperService,
+    BdFormBuilder
   ],
   declarations: [
     BdFormButtonComponent,
