@@ -1,4 +1,4 @@
-
+import { Address } from './index';
 export enum CustomerTypes {
   Broker = 1,
   'FreightForwarder' = 2,
@@ -18,4 +18,5 @@ export class Customer {
   type: CustomerTypes;
   mc: string;
   taxId: string;
+  address: Address;
 }

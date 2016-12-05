@@ -1,0 +1,60 @@
+@font-face {
+	font-family: 'SFUIText-Bold';
+	src: ('../assets/fonts/sf-bold.woff');
+}
+@font-face {
+	font-family: 'SFUIText-Medium';
+	src: ('../assets/fonts/sf-medium.woff');
+}
+@font-face {
+	font-family: 'SFUIText-Regular';
+	src: ('../assets/fonts/sf-regular.woff');
+}
+
+
+$black-squeeze: #f5f9fc;
+
+
+html, 
+body {
+	height: 100%;
+}
+
+body {
+	overflow: hidden;
+	background: $black-squeeze;
+	font-family: 'SFUIText-Medium, Arial, Helvetica, sans-serif';
+	font-size: 14px;
+}
+
+app {
+	display: flex;
+}
+
+/*page layout start*/
+navigation-bar {
+	position: relative;
+	display: inline-block;
+	width: 160px;
+	height: 100vh;
+	transition: all .5s;
+	padding-right: 20px;
+
+	&.slide {
+		z-index: 2;
+		height: 100vh;
+		margin-left: -140px;
+
+		&:hover {
+			margin-left: 0;
+		}
+	}
+}
+
+main {
+	width: 100%;
+	height: 100vh;
+	margin-left: -20px;
+}
+
+/*page layout end*/
