@@ -15,9 +15,9 @@ $light-red: #ffebeb;
 $text-color: $black;
 
 /* labels */
-$label-default: $dark-grey;
-$label-active: $blue;
-$label-warning: $red;
+$label-default-color: $dark-grey;
+$label-active-color: $blue;
+$label-warning-color: $red;
 
 /* buttons */
 $btn-primary-background: $blue;
@@ -52,4 +52,4 @@ $large-font-size: 1.25rem;
 	src: ('../assets/fonts/sf-regular.woff');
 }
 /* default input height */
-$input-height: 50px;
+$form-control-height: 50px;
