@@ -13,19 +13,19 @@
 
 		.name {
 			color: $black;
-			font-size: 14px;
+			font-size: $small-font-size;
 		}
 
 		.address {
 			color: $label-default;
-			font-size: 10px;
+			font-size: $mini-font-size;
 		}
 	}
 
 	.right-panel {
 		.number {
 			color: $black;
-			font-size: 14px;
+			font-size: $small-font-size;
 		}
 	}
 }
