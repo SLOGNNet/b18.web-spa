@@ -8,11 +8,11 @@ import { DataResolver } from './app.resolver';
 import { LoadsComponent } from './loads';
 
 export const ROUTES: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'drivers/:id', component: DriversComponent },
   { path: 'load-form', component: BdLoadFormComponent },
   { path: 'loads', component: LoadsComponent },
   { path: 'typeahead', component: TypeaheadDemoComponent },
-  { path: '**',    component: NoContentComponent },
+  { path: '**',    component: NoContentComponent }
 ];

@@ -1,9 +1,10 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
+import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
 /*
  * Platform and Environment providers/directives/pipes
@@ -16,7 +17,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
-
+import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
@@ -41,8 +42,10 @@ type StoreType = {
  */
 @NgModule({
   bootstrap: [ AppComponent ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   declarations: [
      AppComponent,
+     MultiPaneLayoutComponent,
      HomeComponent,
      DriversComponent,
      NoContentComponent,
@@ -53,6 +56,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     SharedModule,
+    NavigationBarModule,
     BrowserModule,
     InfiniteScrollModule,
     BdFormsModule,

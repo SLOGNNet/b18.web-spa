@@ -1,0 +1,17 @@
+<div class="main-area">
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.FirstPaneVisible)">
+        <div class="panel">
+            <ng-content select="first-pane"></ng-content>
+        </div>
+    </div>
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.SecondPaneVisible)">
+        <div class="panel">
+            <ng-content select="second-pane"></ng-content>
+        </div>
+    </div>
+    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
+        <div class="panel">
+            <ng-content select="third-pane"></ng-content>
+        </div>
+    </div>
+</div>
