@@ -1,5 +1,4 @@
-$nobel: #b3b2b2;
-$black: #000;
+@import '../../../assets/styles/variables';
 
 .item-wrapper {
 	display: flex;
@@ -13,19 +12,19 @@ $black: #000;
 
 		.name {
 			color: $black;
-			font-size: 14px;
+			font-size: $small-font-size;
 		}
 
 		.address {
-			color: $nobel;
-			font-size: 10px;
+			color: $label-default-color;
+			font-size: $mini-font-size;
 		}
 	}
 
 	.right-panel {
 		.number {
 			color: $black;
-			font-size: 14px;
+			font-size: $small-font-size;
 		}
 	}
 }

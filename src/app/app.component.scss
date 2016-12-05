@@ -1,30 +1,15 @@
-@font-face {
-	font-family: 'SFUIText-Bold';
-	src: ('../assets/fonts/sf-bold.woff');
-}
-@font-face {
-	font-family: 'SFUIText-Medium';
-	src: ('../assets/fonts/sf-medium.woff');
-}
-@font-face {
-	font-family: 'SFUIText-Regular';
-	src: ('../assets/fonts/sf-regular.woff');
-}
+@import '../assets/styles/variables';
 
-
-$black-squeeze: #f5f9fc;
-
-
-html, 
+html,
 body {
 	height: 100%;
+	font-size: $base-font-size;
 }
 
 body {
 	overflow: hidden;
-	background: $black-squeeze;
-	font-family: 'SFUIText-Medium, Arial, Helvetica, sans-serif';
-	font-size: 14px;
+	background: $serenity;
+	font-family: 'SFUIText-Regular', Arial, Helvetica, sans-serif;
 }
 
 app {
