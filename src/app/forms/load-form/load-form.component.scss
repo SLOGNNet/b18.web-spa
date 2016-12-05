@@ -4,6 +4,7 @@
 	display: flex;
 	height: 100%;
 	padding: 0 17px;
+	font-family: 'SFUIText-Regular', sans-serif;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
@@ -16,7 +17,7 @@
 		}
 
 		.address {
-			color: $nobel;
+			color: $label-default;
 			font-size: 10px;
 		}
 	}
