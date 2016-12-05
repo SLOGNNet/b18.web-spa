@@ -2,7 +2,8 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Router, ActivatedRoute, CanActivate } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { SwitchState } from './shared/enums/switchState';
 
 import { AppState } from './app.service';
@@ -35,7 +36,8 @@ export class AppComponent {
     constructor(
         public appState: AppState,
         private route: ActivatedRoute,
-        private router: Router) {
+        private router: Router,
+        private location: Location) {
     }
 
     ngOnInit() {
@@ -52,18 +54,33 @@ export class AppComponent {
 
     updateSwitchState(switchState) {
         const newSwitchState = parseInt(switchState, 10);
+        const newHref = this.getRoutePath();
 
         if (isFinite(newSwitchState) && (newSwitchState <= this.switchStateEnum.All)) {
             this.switchState = newSwitchState;
-
-            this.router.navigate(
-                [location.pathname],
-                {
-                    queryParams: {
-                        'switchState': this.switchState
-                    }
-                }
-            );
         }
+
+
+        this.router.navigate(
+            [newHref], {
+                queryParams: {
+                    'switchState': this.switchState
+                }
+            }
+        );
+    }
+
+    getRoutePath() {
+        const currentHref = this.location.path(false);
+        const queryPosition = currentHref.indexOf('?');
+        let result = '';
+
+        if (queryPosition >= 0) {
+            result = currentHref.substr(0, queryPosition);
+        } else {
+            result = currentHref;
+        }
+
+        return result;
     }
 }
