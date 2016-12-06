@@ -1,33 +1,33 @@
 <form [formGroup]="addressForm">
 	<bd-input placeholder="Street address 1" formControlName="streetAddress">
 	</bd-input>
-	<div class="address-map-inputs-wrapper">
-		<div class="city-zip-state-second-address-wrapper">
+	<div class="section">
+		<div class="left-side right-line">
 			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
 			</bd-input>
 			<bd-input formControlName="city">
 			</bd-input>
-				<div class="zip-state-wrapper">
-					<div class="address-state-wrapper">
+			<div class="section">
+				<div class="right-line">
 					<bd-input placeholder="State" formControlName="state">
 					</bd-input>
-					</div>
-					<bd-input placeholder="Zip" formControlName="zip">
-					</bd-input>
 				</div>
+				<bd-input placeholder="Zip" formControlName="zip">
+				</bd-input>
+			</div>
 		</div>
-		<div class="address-map-wrapper">
+		<div class="right-side bottom-line">
 			google map
 		</div>
 	</div>
-	<div class="phone-fax-extensions-wrapper">
-			<div class="fax-phone-wrapper">
+	<div class="section">
+			<div class="left-side right-line">
 				<bd-input [labelText]="'phone'" formControlName="phone">
 				</bd-input>
 				<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
 				</bd-input>
 			</div>
-			<div class="extensions-wrapper">
+			<div class="right-side">
 				<bd-input formControlName="phoneExtension">
 				</bd-input>
 				<bd-input formControlName="faxExtension">

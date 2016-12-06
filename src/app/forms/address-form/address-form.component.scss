@@ -1,53 +1,21 @@
 @import '../../../assets/styles/variables';
 
-@mixin address-input-wrapper {
+.section {
 	display: flex;
-	flex-direction: row;
 }
 
-@mixin address-left-side-wrappers {
+.left-side {
 	width: 60%;
 }
 
-@mixin address-input-right-border {
-	border-right: $border;
-}
-
-@mixin address-right-side-wrappers {
+.right-side {
 	width: 40%;
 }
 
-.address-map-inputs-wrapper {
-	@include address-input-wrapper;
-
-	.city-zip-state-second-address-wrapper {
-		@include address-left-side-wrappers;
-		@include address-input-right-border;
-	}
-
-	.zip-state-wrapper {
-		@include address-input-wrapper;
-
-		.address-state-wrapper {
-			@include address-input-right-border;
-		}
-	}
-
-	.address-map-wrapper {
-		@include address-right-side-wrappers;
-		border-bottom: $border;
-	}
+.right-line {
+	border-right: $border;
 }
 
-.phone-fax-extensions-wrapper {
-	@include address-input-wrapper;
-
-	.fax-phone-wrapper {
-		@include address-left-side-wrappers;
-		@include address-input-right-border;
-	}
-
-	.extensions-wrapper {
-		@include address-right-side-wrappers;
-	}
+.bottom-line {
+	border-bottom: $border;
 }

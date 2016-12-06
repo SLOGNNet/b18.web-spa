@@ -10,48 +10,49 @@ import { EnumHelperService, BdFormGroup, BdFormBuilder } from '../../shared';
 })
 export class AddressForm {
   @Input('address')
-  public address: Address;
   @Input('group')
+
+  public address: Address;
   public addressForm: BdFormGroup;
+  
   constructor(private formBuilder: BdFormBuilder) {
   }
 
   ngOnInit() {
-    this.addressForm.addControl(
-      'streetAddress',
-      this.formBuilder.control(this.address.streetAddress, [Validators.required])
-    );
-    this.addressForm.addControl(
-      'secondStreetAddress',
-      this.formBuilder.control(this.address.secondStreetAddress, [Validators.required])
-    );
-    this.addressForm.addControl(
-      'city',
-      this.formBuilder.control(this.address.city, [Validators.required])
-    );
-    this.addressForm.addControl(
+    this.addFieldsToFormControl();
+    this.addRequiredFieldsToFormControl();
+  }
+
+  addFieldsToFormControl() {
+    const fields = [
       'phone',
-      this.formBuilder.control(this.address.phone)
-    );
-    this.addressForm.addControl(
       'fax',
-      this.formBuilder.control(this.address.fax)
-    );
-    this.addressForm.addControl(
       'state',
-      this.formBuilder.control(this.address.state)
-    );
-    this.addressForm.addControl(
       'zip',
-      this.formBuilder.control(this.address.zip)
-    );
-    this.addressForm.addControl(
       'phoneExtension',
-      this.formBuilder.control(this.address.phoneExtension)
-    );
-    this.addressForm.addControl(
-      'faxExtension',
-      this.formBuilder.control(this.address.faxExtension)
-    );
+      'faxExtension'
+    ];
+
+    fields.forEach(fieldName => {
+      this.addressForm.addControl(
+        fieldName,
+        this.formBuilder.control(this.address[fieldName])
+      );
+    });
+  }
+
+  addRequiredFieldsToFormControl() {
+    const requiredFields = [
+      'streetAddress',
+      'secondStreetAddress',
+      'city'
+    ];
+
+    requiredFields.forEach(fieldName => {
+      this.addressForm.addControl(
+        fieldName,
+        this.formBuilder.control(this.address[fieldName], [Validators.required])
+      );
+    });
   }
 }
