@@ -1,0 +1,36 @@
+@mixin address-inp-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+@mixin address-left-side-wrappers {
+	width: 60%;
+}
+
+@mixin address-right-side-wrappers {
+	width: 40%;
+}
+
+.address-map-inpts-wrapper {
+	@include address-inp-wrapper;
+
+	.city-zip-state-second-address-wrapper {
+		@include address-left-side-wrappers;
+	}
+
+	.address-map-wrapper {
+		@include address-right-side-wrappers;
+	}
+}
+
+.phone-fax-extensions-wrapper {
+	@include address-inp-wrapper;
+
+	.fax-phone-wrapper {
+		@include address-left-side-wrappers;
+	}
+
+	.extensions-wrapper {
+		@include address-right-side-wrappers;
+	}
+}
