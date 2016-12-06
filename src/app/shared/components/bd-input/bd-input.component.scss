@@ -1,9 +1,4 @@
-$white: #fff;
-$seagul: #75b3e2;
-$nobel: #b3b2b2;
-$iron: #d7d8db;
-$error: #fb3a3a;
-$error-background: rgba(251, 58, 58, .2);
+@import '../../../../assets/styles/variables';
 
 @keyframes labelFlight {
 	from {
@@ -32,8 +27,15 @@ $error-background: rgba(251, 58, 58, .2);
 	outline: 0;
 	resize: none;
 
+	&:focus {
+		&::placeholder {
+			color: $label-default-color;
+			opacity: 1;
+		}
+	}
+
 	&::placeholder {
-		color: $nobel;
+		color: $placeholder-color;
 		opacity: 1;
 	}
 }
@@ -44,8 +46,8 @@ $error-background: rgba(251, 58, 58, .2);
 	overflow: hidden;
 	width: 100%;
 	padding: 0 17px;
-	min-height: 50px;
-	border-bottom: 1px solid $iron;
+	min-height: $form-control-height;
+	border-bottom: $border;
 	margin-bottom: 0;
 	flex-flow: row wrap;
 	background-color: $white;
@@ -53,9 +55,9 @@ $error-background: rgba(251, 58, 58, .2);
 	.bd-label {
 		display: flex;
 		width: 80px;
-		height: 50px;
-		color: $nobel;
-		font-size: 10px;
+		height: $form-control-height;
+		color: $label-default-color;
+		font-size: $mini-font-size;
 		align-self: flex-start;
 		text-transform: uppercase;
 		margin-left: -17px;
@@ -81,7 +83,7 @@ $error-background: rgba(251, 58, 58, .2);
 		.bd-input-prefix {
 			@include flex-element;
 			display: flex;
-			height: 50px;
+			height: $form-control-height;
 			align-self: flex-start;
 			align-items: center;
 			justify-content: flex-end;
@@ -92,7 +94,7 @@ $error-background: rgba(251, 58, 58, .2);
 		.bd-input-infix {
 			@include flex-element;
 			flex-grow: 1;
-			min-height: 50px;
+			min-height: $form-control-height;
 
 			input {
 				@include input-textarea;
@@ -114,10 +116,10 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 
 	&.bd-focused {
-		border-bottom-color: $seagul;
+		border-bottom-color: $label-active-color;
 
 		.bd-label {
-			color: $seagul;
+			color: $label-active-color;
 		}
 	}
 
@@ -141,8 +143,8 @@ $error-background: rgba(251, 58, 58, .2);
 		.bd-label {
 			width: auto;
 			margin: 0;
-			color: $nobel;
-			font-size: 16px;
+			color: $label-default-color;
+			font-size: $default-font-size;
 			text-align: left;
 			flex-grow: 1;
 			justify-content: flex-start;
@@ -172,8 +174,8 @@ $error-background: rgba(251, 58, 58, .2);
 :host(.ng-invalid) {
 	.error-message {
 		@include flex-element;
-		background: $error-background;
-		color: $error;
+		background: $light-red;
+		color: $label-warning-color;
 		text-align: left;
 
 		i {
@@ -182,10 +184,10 @@ $error-background: rgba(251, 58, 58, .2);
 	}
 
 	.bd-input-wrapper {
-		border-bottom-color: $error;
+		border-bottom-color: $label-warning-color;
 
 		.bd-label {
-			color: $error;
+			color: $label-warning-color;
 		}
 	}
 }

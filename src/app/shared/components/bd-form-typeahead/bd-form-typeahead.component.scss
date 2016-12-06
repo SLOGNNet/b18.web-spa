@@ -1,5 +1,4 @@
-$iron: #d7d8db;
-$dropitem: #f5fefe;
+@import '../../../../assets/styles/variables';
 
 .bd-typeahead-container {
 	position: relative;
@@ -11,7 +10,7 @@ $dropitem: #f5fefe;
 
 		li {
 			height: 49px;
-			border-bottom: 1px solid $iron;
+			border-bottom: $border;
 
 			&:last-child {
 				display: flex;
@@ -21,14 +20,14 @@ $dropitem: #f5fefe;
 
 			&.active {
 				a {
-					background-color: $dropitem;
-					border-bottom: 1px solid $iron;
+					background-color: $light-blue;
+					border-bottom: $border;
 					outline: 0;
 				}
 			}
 
 			a {
-				height: 50px;
+				height: $form-control-height;
 				padding: 0;
 			}
 		}
