@@ -1,10 +1,10 @@
 <form [formGroup]="customerForm">
 
-	<bd-input [labelText]="'Company Name'" formControlName="companyName" *ngIf="controlVisible('companyName')" [errorText]="'Company name is required'">
+	<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="controlVisible('name')" [errorText]="'Company name is required'">
 	</bd-input>
-	<bd-dropdown [selectedValue]="selectedCustomerType" [items]="customerTypes">
+	<bd-dropdown [defaultLabelText]="'Customer type'" [selectedValue]="selectedCustomerType" [items]="customerTypes">
 	</bd-dropdown>
-	<bd-dropdown [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
+	<bd-dropdown [defaultLabelText]="'Status'" [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
 	</bd-dropdown>
 	<bd-input [labelText]="'MC #'" formControlName="mc">
 	</bd-input>

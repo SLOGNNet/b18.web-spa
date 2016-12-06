@@ -7,7 +7,8 @@
   <template #loaderTemplate>
     <bd-spinner></bd-spinner>
   </template>
-  <bd-input [(ngModel)]="value"
+  <bd-input [ngModel]="value"
+      (ngModelChange)="changeValue($event)"
       [typeahead]="source"
       [collapsibleInput]="false"
       [labelText]="labelText"
@@ -20,5 +21,5 @@
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
       (typeaheadFooterClick)="onFooterClick()"
       [typeaheadOptionsLimit]="'5'">
-    </bd-input>
+  </bd-input>
 </div>
