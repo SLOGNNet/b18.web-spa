@@ -1,6 +1,5 @@
 import { NgModule, ApplicationRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
@@ -54,13 +53,12 @@ type StoreType = {
      LoadsComponent,
      TypeaheadDemoComponent
   ],
-  imports: [ // import Angular's modules
+  imports: [
     SharedModule,
     NavigationBarModule,
     BrowserModule,
     InfiniteScrollModule,
     BdFormsModule,
-    HttpModule,
     Angular2DataTableModule,
     RouterModule.forRoot(ROUTES)
   ],

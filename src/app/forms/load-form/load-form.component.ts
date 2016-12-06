@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../shared';
+import { Load, Customer } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 
 
@@ -13,25 +14,22 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
 })
 export class BdLoadFormComponent {
 
-  public _customers: any[];
-  public loadData: any[];
-  public query: string = '';
+  @Input() load: Load;
+  private customerSource: any[];
+  private customerQuery: string = '';
 
+  public constructor(private customerService: CustomerService) {
 
-  public constructor(customerService: CustomerService) {
-    this._customers = customerService.getCustomersCollection();
-    this.loadData = Observable.create((observer: any) => {
-      observer.next(this.query);
-    }).mergeMap((token: string) => this.getStatesAsObservable(token));
   }
 
-  public getStatesAsObservable(token: string): Observable<any> {
-    let query = new RegExp(token, 'ig');
+  ngOnInit() {
+    this.customerQuery = this.load.customer.name;
+    this.customerSource = Observable.create((observer: any) => {
+      observer.next(this.customerQuery);
+    }).mergeMap((token: string) => this.customerService.search(token));
+  }
 
-    return Observable.of(
-      this._customers.filter((state: any) => {
-        return query.test(state.name);
-      })
-    );
+  public onCustomerSelect(customer: Customer) {
+    this.load.customer = customer;
   }
 }

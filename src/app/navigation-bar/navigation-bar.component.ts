@@ -22,11 +22,11 @@ export class NavigationBarComponent {
             link: './home'
         }, {
             label: 'Sub menu1',
-            link: './home1',
+            link: './home',
             hidden: true
         }, {
             label: 'Sub menu',
-            link: './home2',
+            link: './home',
         }]
     }, {
         label: 'Drivers',
@@ -35,7 +35,7 @@ export class NavigationBarComponent {
     }, {
         label: 'Load Form',
         icon: 'icon',
-        link: './load-form'
+        link: './loads'
     }];
 
     onSwitchStateChange(switchState: SwitchState) {

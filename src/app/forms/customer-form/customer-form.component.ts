@@ -31,7 +31,7 @@ export class CustomerForm {
 
     this.customerForm = this.formBuilder.group({
       companyName: {
-        formState: this.customer.companyName,
+        formState: this.customer.name,
         validators: Validators.required,
         viewMode: ViewMode.Edit
       },
