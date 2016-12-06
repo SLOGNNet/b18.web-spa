@@ -43,5 +43,13 @@ export class AddressForm {
       'zip',
       this.formBuilder.control(this.address.zip)
     );
+    this.addressForm.addControl(
+      'phoneExtension',
+      this.formBuilder.control(this.address.phoneExtension)
+    );
+    this.addressForm.addControl(
+      'faxExtension',
+      this.formBuilder.control(this.address.faxExtension)
+    );
   }
 }

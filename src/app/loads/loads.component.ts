@@ -23,6 +23,8 @@ export class LoadsComponent {
     customerAddress.state = 'FL state';
     customerAddress.zip = '33708 zip';
     customerAddress.fax = '';
+    customerAddress.phoneExtension = '311';
+    customerAddress.faxExtension = '322';
     this.selectedCustomer.address = customerAddress;
   }
 }

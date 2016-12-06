@@ -34,7 +34,9 @@ export class CustomerForm {
         phone: [this.customer.address.phone],
         fax: [this.customer.address.fax],
         state: [this.customer.address.state],
-        zip: [this.customer.address.zip]
+        zip: [this.customer.address.zip],
+        phoneExtension: [this.customer.address.phoneExtension],
+        faxExtension: [this.customer.address.phoneExtension]
 
       })
     });

@@ -6,4 +6,6 @@ export class Address {
   state: string;
   zip: string;
   fax: string;
+  phoneExtension: string;
+  faxExtension: string;
 }

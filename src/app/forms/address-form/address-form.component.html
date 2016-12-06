@@ -2,25 +2,40 @@
 	<bd-input placeholder="Street address 1" formControlName="streetAddress">
 	</bd-input>
 	<div style="display:flex;flex-direction:row;">
-		<div style="width:70%; ">
+		<div style="width:60%;">
 			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
 			</bd-input>
 			<bd-input formControlName="city">
 			</bd-input>
 				<div style="display:flex;flex-direction:row;">
-					<bd-input placeholder="state" formControlName="state">
+					<bd-input placeholder="State" formControlName="state">
 					</bd-input>
-					<bd-input placeholder="zip" formControlName="zip">
+					<bd-input placeholder="Zip" formControlName="zip">
 					</bd-input>
 				</div>
 		</div>
-		<div style="width:30%; background:red; ">
+		<div style="width:40%; text-align:center;">
+			google map
 		</div>
 	</div>
-	<bd-input  [labelText]="'phone'" formControlName="phone">
+	<div style="display:flex;flex-direction:row;">
+			<div style="width:60%;">
+				<bd-input [labelText]="'phone'" formControlName="phone">
+				</bd-input>
+				<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
+				</bd-input>
+			</div>
+			<div style="width:40%;">
+				<bd-input formControlName="phoneExtension">
+				</bd-input>
+				<bd-input formControlName="faxExtension">
+				</bd-input>
+			</div>
+	</div>
+	<!-- <bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
 	</bd-input>
-	<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
-	</bd-input>
+	<bd-input formControlName="faxExtension">
+	</bd-input> -->
 	<bd-textarea
 	[labelText]="'Estimated distance Estimated'">
 	</bd-textarea>

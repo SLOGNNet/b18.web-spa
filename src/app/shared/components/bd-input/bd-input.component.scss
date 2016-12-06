@@ -32,16 +32,9 @@ $error-background: rgba(251, 58, 58, .2);
 	outline: 0;
 	resize: none;
 
-	&:focus {
-		&::placeholder {
-			color: $nobel;
-			opacity: 1;
-		}
-	}
-
 	&::placeholder {
-		color: $white;
-		opacity: 0;
+		color: $nobel;
+		opacity: 1;
 	}
 }
 
@@ -132,6 +125,17 @@ $error-background: rgba(251, 58, 58, .2);
 
 		.bd-input {
 			width: 0;
+
+			.bd-input-infix {
+				input,
+				textarea {
+
+					&::placeholder {
+						color: $white;
+						opacity: 0;
+					}
+				}
+			}
 		}
 
 		.bd-label {
@@ -150,6 +154,13 @@ $error-background: rgba(251, 58, 58, .2);
 		.bd-label {
 			text-align: right;
 			animation: labelFlight .1s 1;
+		}
+
+	}
+
+	&.bd-not-empty-label {
+		.bd-input {
+			width: 0;
 		}
 	}
 }
