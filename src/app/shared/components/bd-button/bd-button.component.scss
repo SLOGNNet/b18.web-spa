@@ -1,0 +1,11 @@
+@import '../../../../assets/styles/variables';
+
+.primary {
+	border: 0;
+	background: $label-active-color;
+}
+
+.default {
+	border: $border;
+	background: $btn-primary-color;
+}
