@@ -1,4 +1,6 @@
-@mixin address-inp-wrapper {
+@import '../../../assets/styles/variables';
+
+@mixin address-input-wrapper {
 	display: flex;
 	flex-direction: row;
 }
@@ -7,27 +9,42 @@
 	width: 60%;
 }
 
+@mixin address-input-right-border {
+	border-right: $border;
+}
+
 @mixin address-right-side-wrappers {
 	width: 40%;
 }
 
-.address-map-inpts-wrapper {
-	@include address-inp-wrapper;
+.address-map-inputs-wrapper {
+	@include address-input-wrapper;
 
 	.city-zip-state-second-address-wrapper {
 		@include address-left-side-wrappers;
+		@include address-input-right-border;
+	}
+
+	.zip-state-wrapper {
+		@include address-input-wrapper;
+
+		.address-state-wrapper {
+			@include address-input-right-border;
+		}
 	}
 
 	.address-map-wrapper {
 		@include address-right-side-wrappers;
+		border-bottom: $border;
 	}
 }
 
 .phone-fax-extensions-wrapper {
-	@include address-inp-wrapper;
+	@include address-input-wrapper;
 
 	.fax-phone-wrapper {
 		@include address-left-side-wrappers;
+		@include address-input-right-border;
 	}
 
 	.extensions-wrapper {
