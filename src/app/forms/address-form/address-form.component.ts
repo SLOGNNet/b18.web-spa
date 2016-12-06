@@ -15,43 +15,30 @@ export class AddressForm {
   @Input('group')
   public addressForm: BdFormGroup;
 
+  private fields = [
+    { name: 'phone', validators: [] },
+    { name: 'fax', validators: [] },
+    { name: 'state', validators: [] },
+    { name: 'zip', validators: [] },
+    { name: 'phoneExtension', validators: [] },
+    { name: 'faxExtension', validators: [] },
+    { name: 'streetAddress', validators: [Validators.required] },
+    { name: 'secondStreetAddress', validators: [Validators.required] },
+    { name: 'city', validators: [Validators.required] }
+  ];
+
   constructor(private formBuilder: BdFormBuilder) {
   }
 
   ngOnInit() {
     this.addFieldsToFormControl();
-    this.addRequiredFieldsToFormControl();
   }
 
   addFieldsToFormControl() {
-    const fields = [
-      'phone',
-      'fax',
-      'state',
-      'zip',
-      'phoneExtension',
-      'faxExtension'
-    ];
-
-    fields.forEach(fieldName => {
+    this.fields.forEach(field => {
       this.addressForm.addControl(
-        fieldName,
-        this.formBuilder.control(this.address[fieldName])
-      );
-    });
-  }
-
-  addRequiredFieldsToFormControl() {
-    const requiredFields = [
-      'streetAddress',
-      'secondStreetAddress',
-      'city'
-    ];
-
-    requiredFields.forEach(fieldName => {
-      this.addressForm.addControl(
-        fieldName,
-        this.formBuilder.control(this.address[fieldName], [Validators.required])
+        field.name,
+        this.formBuilder.control(this.address[field.name], field.validators)
       );
     });
   }
