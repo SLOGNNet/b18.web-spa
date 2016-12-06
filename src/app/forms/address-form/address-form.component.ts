@@ -5,7 +5,8 @@ import { EnumHelperService, BdFormGroup, BdFormBuilder } from '../../shared';
 
 @Component({
   selector: 'address-form',
-  templateUrl: './address-form.component.html'
+  templateUrl: './address-form.component.html',
+  styleUrls: ['./address-form.component.scss']
 })
 export class AddressForm {
   @Input('address')

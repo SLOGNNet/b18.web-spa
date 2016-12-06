@@ -1,8 +1,8 @@
 <form [formGroup]="addressForm">
 	<bd-input placeholder="Street address 1" formControlName="streetAddress">
 	</bd-input>
-	<div style="display:flex;flex-direction:row;">
-		<div style="width:60%;">
+	<div class="address-map-inpts-wrapper">
+		<div class="city-zip-state-second-address-wrapper">
 			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
 			</bd-input>
 			<bd-input formControlName="city">
@@ -14,18 +14,18 @@
 					</bd-input>
 				</div>
 		</div>
-		<div style="width:40%; text-align:center;">
+		<div class="address-map-wrapper">
 			google map
 		</div>
 	</div>
-	<div style="display:flex;flex-direction:row;">
-			<div style="width:60%;">
+	<div class="phone-fax-extensions-wrapper">
+			<div class="fax-phone-wrapper">
 				<bd-input [labelText]="'phone'" formControlName="phone">
 				</bd-input>
 				<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
 				</bd-input>
 			</div>
-			<div style="width:40%;">
+			<div class="extensions-wrapper">
 				<bd-input formControlName="phoneExtension">
 				</bd-input>
 				<bd-input formControlName="faxExtension">
