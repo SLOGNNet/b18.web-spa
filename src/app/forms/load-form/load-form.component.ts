@@ -25,7 +25,6 @@ export class BdLoadFormComponent {
   ngOnInit() {
     this.customerQuery = this.load.customer.name;
     this.customerSource = Observable.create((observer: any) => {
-      debugger;
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
   }
