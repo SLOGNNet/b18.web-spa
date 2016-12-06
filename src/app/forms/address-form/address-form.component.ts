@@ -10,11 +10,11 @@ import { EnumHelperService, BdFormGroup, BdFormBuilder } from '../../shared';
 })
 export class AddressForm {
   @Input('address')
-  @Input('group')
-
   public address: Address;
+
+  @Input('group')
   public addressForm: BdFormGroup;
-  
+
   constructor(private formBuilder: BdFormBuilder) {
   }
 
