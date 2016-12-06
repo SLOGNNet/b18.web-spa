@@ -150,6 +150,7 @@ module.exports = function (config) {
         aggregateTimeout: 300,
         poll: 1000
       },
+      publicPath: config.baseUrl,
       outputPath: helpers.root('dist')
     },
 
