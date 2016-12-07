@@ -42,6 +42,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.appState.set('switchState', this.switchState);
     this.route
       .queryParams
       .subscribe(params => {
@@ -60,6 +61,7 @@ export class AppComponent {
       return;
     }
     this.switchState = newSwitchState;
+    this.appState.set('switchState', this.switchState);
     const url = this.getRoutePath();
     const params = this.getQueryParams(newSwitchState);
     this.router.navigate(
