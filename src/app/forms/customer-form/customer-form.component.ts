@@ -37,9 +37,7 @@ export class CustomerForm {
       },
       mc: [this.customer.mc],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({
-        steetAddress: [this.customer.address.streetAddress, Validators.required]
-      })
+      address: this.formBuilder.group({ })
     });
     this.customerForm.setViewMode(ViewMode.View);
   }
