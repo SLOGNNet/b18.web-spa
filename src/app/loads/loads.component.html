@@ -6,12 +6,6 @@
     </second-pane>
 
     <third-pane>
-      <div class="container">
-        <div class="row row-centered">
-            <div class="col-sm-4 col-centered">
-        				<load-form *ngIf="selectedLoad" [load]="selectedLoad"></load-form>
-        		</div>
-        </div>
-      </div>
+      <load-form *ngIf="selectedLoad" [load]="selectedLoad"></load-form>
     </third-pane>
 </multi-pane-layout>
