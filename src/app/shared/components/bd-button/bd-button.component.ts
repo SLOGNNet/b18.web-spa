@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class BdButtonComponent {
   @Input() type: string;
+  @Input() disabled: boolean;
+  @Input() value: any;
 }
