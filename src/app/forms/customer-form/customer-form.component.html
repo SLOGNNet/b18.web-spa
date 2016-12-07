@@ -13,7 +13,6 @@
 	<address-form [group]='customerForm' [address]='customer.address'></address-form>
 	<div class="section">
 		<bd-button
-		[disabled]='false'
 		type='default'
 		(click)="onCancel()"
 		[text]="'Cancel'"
@@ -23,7 +22,6 @@
 		<bd-button
 		type='primary'
 		class="bd-button"
-		[disabled]='false'
 		(click)="onSubmit()"
 		[text]="'Add Customer'"
 		>
