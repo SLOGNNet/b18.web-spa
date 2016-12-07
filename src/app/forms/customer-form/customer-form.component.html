@@ -12,9 +12,21 @@
 	<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
 	</bd-input>
 	<address-form [group]='customerForm' [address]='customer.address'></address-form>
-	<div>
-		<button type="submit" (click)="submit()" class="btn btn-primary">Submit</button>
-		<button (click)="changeMode()" class="btn">Change Mode</button>
+	<div class="section">
+		<bd-button
+		type='default'
+		(click)="onCancel()"
+		[text]="'Cancel'"
+		class="bd-button"
+		>
+		</bd-button>
+		<bd-button
+		type='primary'
+		class="bd-button"
+		(click)="onSubmit()"
+		[text]="'Add Customer'"
+		>
+		</bd-button>
 	</div>
 </form>
 </div>
