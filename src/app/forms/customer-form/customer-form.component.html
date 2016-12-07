@@ -15,4 +15,20 @@
 		<button type="submit" (click)="submit()" class="btn btn-primary">Submit</button>
 		<button (click)="changeMode()" class="btn">Change Mode</button>
 	</div>
+	<div class="section">
+		<bd-button
+		[disabled]='false'
+		type='default'
+		[text]="'Cancel'"
+		class="bd-button"
+		>
+		</bd-button>
+		<bd-button
+		type='primary'
+		class="bd-button"
+		[disabled]='false'
+		[text]="'Add Customer'"
+		>
+		</bd-button>
+	</div>
 </form>

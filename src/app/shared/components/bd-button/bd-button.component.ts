@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'bd-button',
@@ -8,5 +8,9 @@ import { Component, Input } from '@angular/core';
 export class BdButtonComponent {
   @Input() type: string;
   @Input() disabled: boolean;
-  @Input() value: any;
+  @Input() text: any;
+
+   _handleClick($event) {
+     
+   }
 }

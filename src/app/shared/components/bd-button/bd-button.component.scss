@@ -1,11 +1,29 @@
 @import '../../../../assets/styles/variables';
 
+.bd-button {
+	width: 100%;
+}
+
 .primary {
+	width: 100%;
+	height: 50px;
 	border: 0;
-	background: $label-active-color;
+	background: $blue;
+	color: $white;
+
+	&:hover {
+		background: $blue;
+	}
 }
 
 .default {
+	width: 100%;
+	height: 50px;
 	border: $border;
-	background: $btn-primary-color;
+	background: $light-grey;
+	color: $black;
+
+	&:hover {
+		background: $light-grey;
+	}
 }

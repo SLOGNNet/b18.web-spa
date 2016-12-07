@@ -6,7 +6,8 @@ import { ViewMode } from '../../shared/enums';
 
 @Component({
   selector: 'customer-form',
-  templateUrl: './customer-form.component.html'
+  templateUrl: './customer-form.component.html',
+  styleUrls: ['./customer-form.component.scss']
 })
 export class CustomerForm {
 
