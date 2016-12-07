@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotificationService } from './services/notification.service';
-import { SocketService } from './services/socket.service';
-import { CustomerService } from './services/customer.service';
+import { HttpModule } from '@angular/http';
+
+import { NotificationService, CustomerService, SocketService, LoadService} from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
@@ -18,6 +18,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
 @NgModule({
   providers: [
     NotificationService,
+    LoadService,
     SocketService,
     CustomerService,
     EnumHelperService,
@@ -37,7 +38,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     FormsModule,
     TypeaheadModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -51,7 +53,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BdButtonComponent
+    BdButtonComponent,
+    HttpModule
   ]
 
 })

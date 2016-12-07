@@ -1,6 +1,4 @@
-<div style="margin:30px auto; background:#777777; max-width:500px; width:100%; padding:50px;">
-
-
+<div>
   <template #customItemTemplate let-model="item" let-index="index">
       <div class="item-wrapper">
         <div class="left-panel">
@@ -8,29 +6,28 @@
               {{model.name}}
           </div>
           <div class="address">
-              {{model.address}}
+              {{model.address.streetAddress}}
           </div>
         </div>
         <div class="right-panel">
           <div class="number">
-            {{model.number}}
+            {{model.mc}}
           </div>
         </div>
       </div>
   </template>
 
-
-
   <div class="bd-form">
     <bd-typeahead
        [labelText]="'Name or MC#'"
        [footerButtonText]="'Add New Customer'"
-       [source]="loadData"
-       [(ngModel)]="query"
+       [source]="customerSource"
+       [(value)]="customerQuery"
        [itemTemplate]="customItemTemplate"
+       (onSelect)="onCustomerSelect($event)"
        [optionField]="'name'">
      </bd-typeahead>
 
+     <customer-form *ngIf='load.customer' [customer]='load.customer'> </customer-form>
   </div>
-
 </div>

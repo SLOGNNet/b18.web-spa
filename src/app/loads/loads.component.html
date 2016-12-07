@@ -1,7 +1,17 @@
-<div class="container">
-  <div class="row row-centered">
-      <div class="col-sm-4 col-centered">
-  				<customer-form [customer]="selectedCustomer"></customer-form>
-  		</div>
-  </div>
-</div>
+<multi-pane-layout>
+    <first-pane>
+    </first-pane>
+
+    <second-pane>
+    </second-pane>
+
+    <third-pane>
+      <div class="container">
+        <div class="row row-centered">
+            <div class="col-sm-4 col-centered">
+        				<load-form *ngIf="selectedLoad" [load]="selectedLoad"></load-form>
+        		</div>
+        </div>
+      </div>
+    </third-pane>
+</multi-pane-layout>

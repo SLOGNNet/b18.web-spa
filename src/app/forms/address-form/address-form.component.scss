@@ -1,0 +1,21 @@
+@import '../../../assets/styles/variables';
+
+.section {
+	display: flex;
+}
+
+.left-side {
+	width: 60%;
+}
+
+.right-side {
+	width: 40%;
+}
+
+.right-border {
+	border-right: $border;
+}
+
+.bottom-border {
+	border-bottom: $border;
+}

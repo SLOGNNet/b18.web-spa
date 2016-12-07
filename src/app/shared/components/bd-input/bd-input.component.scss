@@ -35,8 +35,8 @@
 	}
 
 	&::placeholder {
-		color: $white;
-		opacity: 0;
+		color: $placeholder-color;
+		opacity: 1;
 	}
 }
 
@@ -45,7 +45,6 @@
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	height: 100%;
 	padding: 0 17px;
 	min-height: $form-control-height;
 	border-bottom: $border;
@@ -128,6 +127,17 @@
 
 		.bd-input {
 			width: 0;
+
+			.bd-input-infix {
+				input,
+				textarea {
+
+					&::placeholder {
+						color: $white;
+						opacity: 0;
+					}
+				}
+			}
 		}
 
 		.bd-label {
@@ -146,6 +156,13 @@
 		.bd-label {
 			text-align: right;
 			animation: labelFlight .1s 1;
+		}
+
+	}
+
+	&.bd-not-empty-label {
+		.bd-input {
+			width: 0;
 		}
 	}
 }

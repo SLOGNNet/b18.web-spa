@@ -21,7 +21,7 @@ export class BdInputComponent {
 
   get focused() { return this._focused; }
 
-  get isCollapsed() { return this.collapsibleInput && !this._focused && this.empty; }
+  get isCollapsed() { return this.collapsibleInput && !this.focused && this.empty && this.isEmptyLabel; }
 
   get isEmptyLabel() { return this.labelText; }
 

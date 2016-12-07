@@ -31,15 +31,13 @@ export class CustomerForm {
 
     this.customerForm = this.formBuilder.group({
       companyName: {
-        formState: this.customer.companyName,
+        formState: this.customer.name,
         validators: Validators.required,
         viewMode: ViewMode.Edit
       },
       mc: [this.customer.mc],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({
-        steetAddress: [this.customer.address.streetAddress, Validators.required]
-      })
+      address: this.formBuilder.group({ })
     });
     this.customerForm.setViewMode(ViewMode.View);
   }

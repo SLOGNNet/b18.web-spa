@@ -13,7 +13,8 @@ export enum CustomerStatuses {
 }
 
 export class Customer {
-  companyName: string;
+  id: number;
+  name: string;
   status: CustomerStatuses;
   type: CustomerTypes;
   mc: string;
