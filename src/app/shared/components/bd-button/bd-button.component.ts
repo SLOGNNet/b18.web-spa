@@ -9,7 +9,4 @@ export class BdButtonComponent {
   @Input() type: string;
   @Input() disabled: boolean;
   @Input() text: any;
-
-   _handleClick($event) {
-   }
 }

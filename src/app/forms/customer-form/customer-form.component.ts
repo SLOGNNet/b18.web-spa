@@ -43,11 +43,11 @@ export class CustomerForm {
     this.customerForm.setViewMode(ViewMode.View);
   }
 
-  submit() {
+  onSubmit() {
     this.customerForm.submit();
   }
 
-  changeMode() {
+  onCancel() {
     const mode: ViewMode = this.customerForm.getViewMode() === ViewMode.View ? ViewMode.Edit : ViewMode.View;
     this.customerForm.setViewMode(mode);
     this.cdr.detectChanges();
