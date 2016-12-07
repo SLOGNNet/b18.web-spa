@@ -1,3 +1,4 @@
+<div>
 <form [formGroup]="customerForm">
 
 	<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="controlVisible('name')" [errorText]="'Company name is required'">
@@ -16,3 +17,4 @@
 		<button (click)="changeMode()" class="btn">Change Mode</button>
 	</div>
 </form>
+</div>

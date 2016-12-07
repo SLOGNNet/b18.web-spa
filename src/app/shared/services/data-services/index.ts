@@ -1,2 +1,2 @@
 export * from './customer.service';
-export * from './load.service.ts';
+export * from './load.service';
