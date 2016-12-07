@@ -11,6 +11,5 @@ export class BdButtonComponent {
   @Input() text: any;
 
    _handleClick($event) {
-     
    }
 }
