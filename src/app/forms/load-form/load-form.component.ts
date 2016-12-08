@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
@@ -18,12 +18,21 @@ export class BdLoadFormComponent {
   private customerSource: any[];
   private customerQuery: string = '';
 
-  public constructor(private customerService: CustomerService) {
+  public constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
 
   }
 
   ngOnInit() {
-    this.customerQuery = this.load.customer.name;
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.load) {
+      this.initCustomerTypeahead(changes.load.currentValue);
+    }
+  }
+
+  private initCustomerTypeahead(load) {
+    this.customerQuery = load.customer.name;
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
@@ -31,5 +40,6 @@ export class BdLoadFormComponent {
 
   public onCustomerSelect(customer: Customer) {
     this.load.customer = customer;
+    this.cdr.detectChanges();
   }
 }
