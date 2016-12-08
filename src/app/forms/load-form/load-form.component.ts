@@ -30,7 +30,6 @@ export class BdLoadFormComponent {
     }
   }
   public onCustomerSelect(customer: Customer) {
-    console.log(customer);
     this.load.customer = customer;
   }
 
