@@ -6,16 +6,9 @@ import { Component, Input } from '@angular/core';
   templateUrl: './expandable-panel.component.html'
 })
 export class ExpandablePanelComponent {
-  private isCustomerForm: boolean;
-  private isArrow: boolean = true;
+  private isExpanded: boolean = true;
 
-  showForm(){
-    this.isCustomerForm = true;
-    this.isArrow = false;
-  }
-
-  hideForm(){
-    this.isCustomerForm = false;
-    this.isArrow = true;
+  toggleForm(){
+    this.isExpanded = !this.isExpanded;
   }
 }
