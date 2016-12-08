@@ -9,9 +9,19 @@ export class BdButtonSwitchComponent {
 
   @Input() labelText: string;
   @Input() items: any[];
-  @Input() activeItemIndex: any;
+
+  @Input() set selectedValue(v: any) {
+      if ((<any>Object).values(this.items).includes(v)){
+        this._selectedValue = v;
+        this.value = this._selectedValue;
+      }
+  }
+  get selectedValue(): any {
+    return this._selectedValue;
+  }
 
   private _value: any;
+  private _selectedValue: any;
 
   set value(v: any){
     this._value = v;
@@ -21,16 +31,15 @@ export class BdButtonSwitchComponent {
   }
 
   ngAfterViewInit(){
-    this.value = this.activeItemIndex;
+    this.value = this.selectedValue;
   }
 
   private isActive(element) {
-    return element === this.activeItemIndex;
+    return element === this.selectedValue;
   }
 
-  private _handleItemClick(event, index){
-    this.activeItemIndex = index;
-    this.value = event.target.getAttribute('value');
+  private _handleItemClick(event){
+    this.selectedValue = event.target.getAttribute('value');
   }
 
 }
