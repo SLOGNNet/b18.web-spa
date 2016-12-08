@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
-  host: {'(click)' : 'focus($event)'}
+  host: { '(click)': 'focus($event)' }
 })
 
 
@@ -56,37 +56,35 @@ export class BdInputComponent {
     }
   }
 
-    _elementType: 'input' | 'textarea';
+  private _elementType: 'input' | 'textarea';
+  private _onTouchedCallback: () => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
+  private _value: string = '';
+  private _prefixEmpty: boolean = false;
+  private _suffixEmpty: boolean = false;
+  private _focused: boolean = false;
+  private _disabled: boolean = false;
+  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+  private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
-         private _onTouchedCallback: () => void = noop;
-         private _onChangeCallback: (_: any) => void = noop;
-         private _value: string = '';
-         private _prefixEmpty: boolean = false;
-         private _suffixEmpty: boolean = false;
-         private _focused: boolean = false;
-         private _disabled: boolean = false;
-         private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
-         private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+  ngAfterViewInit() {
+     this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
+     this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
+     this.changeDetectionRef.detectChanges();
+  }
 
-
-
-      ngAfterViewInit() {
-          this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
-          this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
-        }
-
-   constructor(elementRef: ElementRef) {
-  // Set the element type depending on normalized selector used(bd-input / bd-textarea)
-  this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+  constructor(elementRef: ElementRef, private changeDetectionRef: ChangeDetectorRef) {
+    // Set the element type depending on normalized selector used(bd-input / bd-textarea)
+    this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
-    }
+  }
 
-   coerceBooleanProperty(value: any): boolean {
+  coerceBooleanProperty(value: any): boolean {
     return value != null && `${value}` !== 'false';
   }
 
-   _convertValueForInputType(v: any): any {
+  _convertValueForInputType(v: any): any {
     switch (this.type) {
       case 'number': return parseFloat(v);
       default: return v;

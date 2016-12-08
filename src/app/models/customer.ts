@@ -1,7 +1,7 @@
 import { Address } from './index';
 export enum CustomerTypes {
   Broker = 1,
-  'FreightForwarder' = 2,
+  FreightForwarder = 2,
   Shipper = 3,
   Carrier = 4
 };

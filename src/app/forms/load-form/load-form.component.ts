@@ -22,14 +22,19 @@ export class BdLoadFormComponent {
 
   }
 
-  ngOnInit() {
-    this.customerQuery = this.load.customer.name;
+  ngOnChanges(changes: any) {
+    if (changes.load) {
+      this.initCustomerTypeahead(changes.load.currentValue);
+    }
+  }
+  public onCustomerSelect(customer: Customer) {
+    this.load.customer = customer;
+  }
+
+  private initCustomerTypeahead(load) {
+    this.customerQuery = load.customer.name;
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
-  }
-
-  public onCustomerSelect(customer: Customer) {
-    this.load.customer = customer;
   }
 }

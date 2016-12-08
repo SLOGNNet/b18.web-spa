@@ -10,7 +10,7 @@
 	</bd-input>
 	<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
 	</bd-input>
-	<address-form [group]='customerForm' [address]='customer.address'></address-form>
+	<address-form [group]='customerForm.controls.address' [address]='customer.address'></address-form>
 	<div class="section">
 		<bd-button
 		type='default'

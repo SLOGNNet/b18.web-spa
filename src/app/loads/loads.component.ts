@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
@@ -10,10 +10,21 @@ import { LoadService } from '../shared';
     templateUrl: './loads.component.html'
 })
 export class LoadsComponent {
-  public selectedLoad: Load = new Load();
+  columns = [
+     { prop: 'id', name: 'Load #' },
+     { prop: 'customer.name', name: 'Customer' },
+     { prop: 'status', name: 'Status'}
+   ];
+  public selectedLoad: Load = null;
+  public loads: Load[] = new Array<Load>();
+
   constructor(private loadService: LoadService) {
-    loadService.getDetails(1).subscribe((load) => {
-      this.selectedLoad = load;
+    loadService.getAll().subscribe((loads) => {
+      this.loads = loads;
     });
+  }
+
+  public onLoadSelect(load) {
+     this.selectedLoad = load.selected[0];
   }
 }
