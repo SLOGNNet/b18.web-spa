@@ -10,5 +10,6 @@ export class BdFormSwitchComponent {
   @Input() items: any[];
   @Input() selectedValue: any;
   @Input() enableButtonSwitch: boolean;
+  @Input() defaultTitleText: string;
 
 }
