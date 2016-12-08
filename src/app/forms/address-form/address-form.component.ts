@@ -30,11 +30,11 @@ export class AddressForm {
   constructor(private formBuilder: BdFormBuilder) {
   }
 
-  ngOnInit() {
-    this.addFieldsToFormControl();
+  ngOnChanges(changes: any) {
+    this.initForm();
   }
 
-  addFieldsToFormControl() {
+  initForm() {
     this.fields.forEach(field => {
       this.addressForm.addControl(
         field.name,

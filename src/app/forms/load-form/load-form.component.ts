@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
@@ -18,7 +18,7 @@ export class BdLoadFormComponent {
   private customerSource: any[];
   private customerQuery: string = '';
 
-  public constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
+  public constructor(private customerService: CustomerService) {
 
   }
 
@@ -32,7 +32,6 @@ export class BdLoadFormComponent {
   }
   public onCustomerSelect(customer: Customer) {
     this.load.customer = customer;
-    this.cdr.detectChanges();
   }
 
   private initCustomerTypeahead(load) {
