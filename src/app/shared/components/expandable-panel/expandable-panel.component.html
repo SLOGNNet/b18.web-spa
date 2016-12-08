@@ -1,5 +1,14 @@
-<div>
-<ng-content select="[expanded]">
+<div
+(click)="showForm()"
+*ngIf="isArrow"
+class="expandable-arrow-wrapper">
+    <i class="fa fa-chevron-down expandable-arrow" aria-hidden="true"></i>
+  </div>
+<ng-content *ngIf="isCustomerForm" expanded>
 </ng-content>
-<h1>expanded</h1>
+<div
+(click)="hideForm()"
+*ngIf="!isArrow"
+class="expandable-arrow-wrapper">
+  <i class="fa fa-chevron-up expandable-arrow" aria-hidden="true"></i>
 </div>

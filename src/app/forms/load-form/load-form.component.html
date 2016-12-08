@@ -27,7 +27,10 @@
        (onSelect)="onCustomerSelect($event)"
        [optionField]="'name'">
      </bd-typeahead>
-
-     <customer-form *ngIf='load.customer' [customer]='load.customer'> </customer-form>
+     <expandable-panel>
+       <div expanded>
+         <customer-form *ngIf='load.customer' [customer]='load.customer'> </customer-form>
+      </div>
+     </expandable-panel>
   </div>
 </div>
