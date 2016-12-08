@@ -1,6 +1,6 @@
 /**
  * Component that has three horizontal separated sections
- * 
+ *
  * @example
  * <multi-pane-layout>
  *   <first-pane>
@@ -19,6 +19,7 @@ import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
+import { AppState } from '../app.service';
 
 @Component({
     selector: 'multi-pane-layout',
@@ -46,18 +47,7 @@ export class MultiPaneLayoutComponent {
     ];
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute) {
-    }
-
-    ngOnInit() {
-        this.route
-            .queryParams
-            .subscribe(params => {
-                const newState = parseInt(params['switchState'], 10);
-
-                this.setCurrentState(newState);
-            });
+        public appState: AppState) {
     }
 
     ngAfterViewInit() {
@@ -66,21 +56,22 @@ export class MultiPaneLayoutComponent {
         }
     }
 
+    getCurrentState() {
+      return this.appState.get('switchState');
+    }
+
     isVisible(state: SwitchState) {
-        return !!(this.currentState & state);
+        return !!( this.getCurrentState() & state);
     }
 
     setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
-        if (isFinite(state) && (state <= this.switchStateEnum.All)) {
-            this.currentState = state;
-        }
+      this.currentState = state;
     }
 
     getClass() {
         const columnsCount = this.panesState.filter(value => {
-            return !!(value & this.currentState);
+            return !!(value & this.getCurrentState());
         }).length;
-
         return this.classes[columnsCount];
     }
 }
