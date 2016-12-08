@@ -40,7 +40,7 @@ export class BdLoadFormComponent {
   }
 
   private initCustomerTypeahead(load) {
-    this.customerQuery = load.customer.name;
+    this.customerQuery =  load.customer && load.customer.name;
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
