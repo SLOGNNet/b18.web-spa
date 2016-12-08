@@ -18,7 +18,7 @@ export class LoadsComponent {
   public selectedLoad: Load = null;
   public loads: Load[] = new Array<Load>();
 
-  constructor(private loadService: LoadService, private cdr: ChangeDetectorRef) {
+  constructor(private loadService: LoadService) {
     loadService.getAll().subscribe((loads) => {
       this.loads = loads;
     });
@@ -26,6 +26,5 @@ export class LoadsComponent {
 
   public onLoadSelect(load) {
      this.selectedLoad = load.selected[0];
-     this.cdr.detectChanges();
   }
 }
