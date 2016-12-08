@@ -7,20 +7,21 @@
 		width: 100%;
 		height: $form-control-height;
 		background: $white;
-		border-bottom: $active-border;
+		border-bottom: $border;
 		outline: 0;
 		align-items: center;
 		justify-content: space-between;
 
 		.bd-dropdown-label {
 			width: 80px;
-			color: $label-active-color;
+			color: $label-default-color;
 			text-align: right;
 			margin-right: 32px;
 
 			label {
 				font-size: 10px;
 				font-weight: 300;
+				margin-bottom: 0;
 				text-transform: uppercase;
 				}
 			}
@@ -61,9 +62,9 @@
 		}
 
 		ul {
-			overflow: scroll;
 			padding: 0;
 			margin: 0;
+			overflow-y: scroll;
 			border-top: $active-border;
 			max-height: $form-control-height * 3;
 
@@ -100,6 +101,15 @@
 				}
 			}
 		}
+	}
 
+	&.open {
+		.bd-dropdown-wrapper {
+			border-bottom: $active-border;
+
+			.bd-dropdown-label {
+				color: $label-active-color;
+			}
+		}
 	}
 }
