@@ -74,19 +74,22 @@
     </first-pane>
 
     <second-pane>
-      <div style="padding: 10px; background: #d9edf7;margin:10px;">
-        <bd-button-switch
-          [labelText]="'Pallet Exchange'"
-          [items]="switchButtons1"
-          [activeItemIndex]="1"
-        ></bd-button-switch>
-<div style="margin-top:20px;"></div>
+      <div style="padding: 10px; background: #d9edf7; margin: 10px;">
 
-        <bd-button-switch
+        <bd-form-switch
+          [enableButtonSwitch]="false"
+          [labelText]="'Pallet Exchange'"
+          [items]="items">
+        </bd-form-switch>
+
+        <div style="margin-top:20px;"></div>
+
+        <bd-form-switch
+          [enableButtonSwitch]="true"
           [labelText]="'Freight'"
           [items]="switchButtons2"
-          [activeItemIndex]="0"
-        ></bd-button-switch>
+          [selectedValue]="switchButtons2[0]">
+        </bd-form-switch>
       </div>
 
     </second-pane>

@@ -43,19 +43,12 @@ export class HomeComponent {
   items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
 
   columns = [
-     { prop: 'name' },
+     { prop: 'name' } ,
      { name: 'Company' },
      { name: 'Gender' }
    ];
 
-   switchButtons1 = [
-     { val: 'Company' },
-     { val: 'Customer' },
-     { val: 'None' }
-   ] ;
+   switchButtons1 = [ 'Company', 'Customer' , 'None'];
 
-   switchButtons2 = [
-     { val: 'Dry' },
-     { val: 'Reefer' }
-   ] ;
+   switchButtons2 = [ 'Dry', 'Reefer' ];
 }
