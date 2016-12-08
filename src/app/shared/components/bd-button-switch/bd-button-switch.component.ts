@@ -11,28 +11,13 @@ export class BdButtonSwitchComponent {
   @Input() items: any[];
 
   @Input() set selectedValue(v: any) {
-      if ((<any>Object).values(this.items).includes(v)){
         this._selectedValue = v;
-        this.value = this._selectedValue;
-      }
   }
   get selectedValue(): any {
     return this._selectedValue;
   }
 
-  private _value: any;
   private _selectedValue: any;
-
-  set value(v: any){
-    this._value = v;
-  }
-  get value(): any{
-    return this._value;
-  }
-
-  ngAfterViewInit(){
-    this.value = this.selectedValue;
-  }
 
   private isActive(element) {
     return element === this.selectedValue;
