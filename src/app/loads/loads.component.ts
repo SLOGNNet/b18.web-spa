@@ -17,7 +17,7 @@ export class LoadsComponent {
    ];
   public selectedLoad: Load = null;
   public loads: Load[] = new Array<Load>();
-  
+
   constructor(private loadService: LoadService, private cdr: ChangeDetectorRef) {
     loadService.getAll().subscribe((loads) => {
       this.loads = loads;
