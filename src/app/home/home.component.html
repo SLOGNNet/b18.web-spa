@@ -17,6 +17,7 @@
 
         <bd-dropdown
             [defaultLabelText]="'contact'"
+            [labelText]="'contact'"
             [defaultTitleText]="'Select Contact'"
             [dropdownHeaderTemplate]="dropdownHeaderTemplate"
             [dropdownFooterTemplate]="dropdownFooterTemplate"
@@ -78,8 +79,9 @@
 
         <bd-form-switch
           [enableButtonSwitch]="false"
-          [labelText]="'Pallet Exchange'"
-          [items]="items">
+          [labelText]="'contact'"
+          [items]="items"
+          [selectedValue]="items[0]">
         </bd-form-switch>
 
         <div style="margin-top:20px;"></div>

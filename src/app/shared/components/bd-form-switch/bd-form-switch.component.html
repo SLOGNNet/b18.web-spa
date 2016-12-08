@@ -7,11 +7,13 @@
   </bd-button-switch>
   <bd-dropdown
       *ngSwitchCase="false"
-      [defaultLabelText]="'contact'"
+      [defaultLabelText]="defaultLabelText"
+      [labelText]="labelText"
       [defaultTitleText]="'Select Contact'"
       [dropdownHeaderTemplate]="dropdownHeaderTemplate"
       [dropdownFooterTemplate]="dropdownFooterTemplate"
       [dropdownItemTemplate]="dropdownItemTemplate"
-      [items]="items">
+      [items]="items"
+      [selectedValue]="selectedValue">
   </bd-dropdown>
 </div>
