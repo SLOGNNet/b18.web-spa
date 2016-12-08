@@ -12,8 +12,8 @@ export class BdDropdownComponent {
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
 
-  @Input() defaultLabelText: string = '';
   @Input() defaultTitleText: string = 'Select Item';
+  @Input() labelText: string;
 
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);

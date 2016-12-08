@@ -2,9 +2,9 @@
 	<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [viewMode]='viewMode'>
 		<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="controlVisible('name')" [errorText]="'Company name is required'">
 		</bd-input>
-		<bd-dropdown [defaultLabelText]="'Customer type'" [selectedValue]="selectedCustomerType" [items]="customerTypes">
+		<bd-dropdown [labelText]="'Customer type'" [selectedValue]="selectedCustomerType" [items]="customerTypes">
 		</bd-dropdown>
-		<bd-dropdown [defaultLabelText]="'Status'" [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
+		<bd-dropdown [labelText]="'Status'" [selectedValue]="selectedCustomerStatus" [items]="customerStatuses">
 		</bd-dropdown>
 		<bd-input [labelText]="'MC #'" formControlName="mc">
 		</bd-input>
