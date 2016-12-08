@@ -13,7 +13,6 @@ import { ViewMode } from '../../shared/enums';
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
-
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
@@ -21,6 +20,9 @@ export class BdLoadFormComponent {
 
   public constructor(private customerService: CustomerService) {
 
+  }
+  onRemove(){
+    this.load.customer = null;
   }
 
   ngOnChanges(changes: any) {
