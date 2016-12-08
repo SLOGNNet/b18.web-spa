@@ -1,0 +1,11 @@
+<ng-content expanded>
+</ng-content>
+ <div
+(click)="toggleForm()"
+class="expandable-arrow-wrapper">
+    <i
+    [class.fa-chevron-down]="isExpanded"
+    [class.fa-chevron-up]="!isExpanded"
+    class="fa expandable-arrow"
+    aria-hidden="true"></i>
+  </div>
