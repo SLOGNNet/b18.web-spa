@@ -47,4 +47,15 @@ export class HomeComponent {
      { name: 'Company' },
      { name: 'Gender' }
    ];
+
+   switchButtons1 = [
+     { val: 'Company' },
+     { val: 'Customer' },
+     { val: 'None' }
+   ] ;
+
+   switchButtons2 = [
+     { val: 'Dry' },
+     { val: 'Reefer' }
+   ] ;
 }

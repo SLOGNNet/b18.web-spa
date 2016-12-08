@@ -1,6 +1,6 @@
 <multi-pane-layout>
     <first-pane>
-        <div style="margin:50px auto; width:400px; background:#c1c1c1;padding:20px;">
+        <div style="margin:50px auto; width:400px; background: #d9edf7;padding:20px;">
         <template #dropdownHeaderTemplate>
                 Leave empty
         </template>
@@ -75,6 +75,20 @@
     </first-pane>
 
     <second-pane>
+      <div style="padding: 10px; background: #d9edf7;margin:10px;">
+        <bd-button-switch
+          [labelText]="'Pallet Exchange'"
+          [items]="switchButtons1"
+          [activeItemIndex]="1"
+        ></bd-button-switch>
+<div style="margin-top:20px;"></div>
+
+        <bd-button-switch
+          [labelText]="'Freight'"
+          [items]="switchButtons2"
+          [activeItemIndex]="0"
+        ></bd-button-switch>
+      </div>
 
     </second-pane>
 
