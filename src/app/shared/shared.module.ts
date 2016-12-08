@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdDropdownComponent } from './components/bd-dropdown';
 import { BdFormButtonComponent } from './components/bd-form-button';
+import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
 import { BdSpinnerComponent } from './components/bd-spinner';
@@ -29,7 +30,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdTextareaAutosize,
     BdInputComponent,
     BdSpinnerComponent,
-    BdFormTypeaheadComponent
+    BdFormTypeaheadComponent,
+    BdButtonSwitchComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdSpinnerComponent,
     BdDropdownComponent,
     BdFormTypeaheadComponent,
+    BdButtonSwitchComponent,
     TypeaheadModule,
     DropdownModule,
     CommonModule,
