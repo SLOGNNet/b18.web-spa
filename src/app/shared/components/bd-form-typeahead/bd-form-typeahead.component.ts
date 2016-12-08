@@ -21,6 +21,7 @@ export class BdFormTypeaheadComponent {
   @Input() value: string;
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() public valueChange = new EventEmitter();
+  @Output() public onRemove: EventEmitter<any> = new EventEmitter();
   protected isLoading: boolean = false;
   protected isNoResultsShown: boolean = false;
 
@@ -39,6 +40,11 @@ export class BdFormTypeaheadComponent {
 
   public typeaheadOnSelect(match): void {
     this.onSelect.emit(match);
+  }
+
+  remove(event): void {
+    this.value = '';
+    this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
