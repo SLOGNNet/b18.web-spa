@@ -22,9 +22,6 @@ export class BdLoadFormComponent {
 
   }
 
-  ngOnInit() {
-  }
-
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.initCustomerTypeahead(changes.load.currentValue);
