@@ -14,8 +14,9 @@ import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
 import { BdButtonComponent } from './components/bd-button';
 import { BdSpinnerComponent } from './components/bd-spinner';
-import { ExpandablePanelComponent } from './components/expandable-panel';
+import { ViewModeToogleComponent } from './components/view-mode-toogle';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
+import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
 @NgModule({
@@ -34,10 +35,11 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdInputComponent,
     BdSpinnerComponent,
     BdFormTypeaheadComponent,
+    ViewModeToogleComponent,
+    BdButtonComponent,
+    BdFormSectionComponent,
     BdButtonSwitchComponent,
-    BdFormSwitchComponent,
-    ExpandablePanelComponent,
-    BdButtonComponent
+    BdFormSwitchComponent
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdSpinnerComponent,
     BdDropdownComponent,
     BdFormTypeaheadComponent,
+    BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
     TypeaheadModule,
@@ -61,7 +64,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ExpandablePanelComponent,
+    ViewModeToogleComponent,
     BdButtonComponent,
     HttpModule
   ]

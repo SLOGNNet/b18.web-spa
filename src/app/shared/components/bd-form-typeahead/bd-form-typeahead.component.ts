@@ -39,7 +39,7 @@ export class BdFormTypeaheadComponent {
   }
 
   public typeaheadOnSelect(match): void {
-    this.onSelect.emit(match);
+    this.onSelect.emit(match.item);
   }
 
   remove(event): void {

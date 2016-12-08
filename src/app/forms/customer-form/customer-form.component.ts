@@ -12,6 +12,7 @@ import { ViewMode } from '../../shared/enums';
 export class CustomerForm {
 
   @Input() public customer: Customer;
+  @Input() public viewMode: ViewMode = ViewMode.View;
   customerForm: BdFormGroup;
   customerTypes: Array<string>;
   selectedCustomerType: string;
