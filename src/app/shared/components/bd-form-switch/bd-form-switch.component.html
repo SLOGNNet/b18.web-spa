@@ -1,0 +1,17 @@
+<div [ngSwitch]="enableButtonSwitch">
+  <bd-button-switch
+      *ngSwitchCase="true"
+      [labelText]="labelText"
+      [items]="items"
+      [selectedValue]="selectedValue">
+  </bd-button-switch>
+  <bd-dropdown
+      *ngSwitchCase="false"
+      [defaultLabelText]="'contact'"
+      [defaultTitleText]="'Select Contact'"
+      [dropdownHeaderTemplate]="dropdownHeaderTemplate"
+      [dropdownFooterTemplate]="dropdownFooterTemplate"
+      [dropdownItemTemplate]="dropdownItemTemplate"
+      [items]="items">
+  </bd-dropdown>
+</div>
