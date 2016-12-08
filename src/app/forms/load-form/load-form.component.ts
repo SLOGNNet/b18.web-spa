@@ -13,13 +13,15 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
-
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
 
   public constructor(private customerService: CustomerService) {
 
+  }
+  onRemove(){
+    this.load.customer = null;
   }
 
   ngOnChanges(changes: any) {
@@ -28,6 +30,7 @@ export class BdLoadFormComponent {
     }
   }
   public onCustomerSelect(customer: Customer) {
+    console.log(customer);
     this.load.customer = customer;
   }
 

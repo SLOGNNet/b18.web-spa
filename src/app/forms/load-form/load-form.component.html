@@ -22,6 +22,7 @@
        [labelText]="'Name or MC#'"
        [footerButtonText]="'Add New Customer'"
        [source]="customerSource"
+       (onRemove)="onRemove()"
        [(value)]="customerQuery"
        [itemTemplate]="customItemTemplate"
        (onSelect)="onCustomerSelect($event)"

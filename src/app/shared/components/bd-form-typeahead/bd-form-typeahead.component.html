@@ -21,5 +21,6 @@
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
       (typeaheadFooterClick)="onFooterClick()"
       [typeaheadOptionsLimit]="'5'">
+      <i bd-suffix (click)="remove($event)" class="fa fa-minus-circle" aria-hidden="true"></i>
   </bd-input>
 </div>
