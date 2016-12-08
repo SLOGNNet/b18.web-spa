@@ -1,5 +1,9 @@
 @import '../../../assets/styles/variables';
 
+.wrapper {
+	max-width: 340px;
+}
+
 .item-wrapper {
 	display: flex;
 	height: 100%;
