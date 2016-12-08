@@ -1,0 +1,52 @@
+@import '../../../../assets/styles/variables';
+
+.bd-switch-container {
+	display: flex;
+	height: $form-control-height;
+	background: $white;
+	border-bottom: $border;
+
+	.bd-switch-label {
+		display: flex;
+		width: 80px;
+		height: 100%;
+		color: $dark-grey;
+		font-size: $mini-font-size;
+		text-align: right;
+		margin-right: 15px;
+		text-transform: uppercase;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.bd-buttons-container {
+		display: flex;
+		flex: 1;
+
+		button {
+			width: 100%;
+			padding: 0;
+			border: 0;
+			margin: 1px 1px 1px 0;
+			background: transparent;
+			color: $black;
+			letter-spacing: 1px;
+			border-radius: $default-border-radius;
+			flex: 1;
+
+			&.active {
+				background: $blue;
+				color: $white;
+			}
+
+			&:focus {
+				outline: 0;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+		}
+	}
+}

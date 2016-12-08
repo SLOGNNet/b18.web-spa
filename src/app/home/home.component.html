@@ -1,6 +1,6 @@
 <multi-pane-layout>
     <first-pane>
-        <div style="margin:50px auto; width:400px; background:#c1c1c1;padding:20px;">
+        <div style="margin:50px auto; width:400px; background: #d9edf7;padding:20px;">
         <template #dropdownHeaderTemplate>
                 Leave empty
         </template>
@@ -17,6 +17,7 @@
 
         <bd-dropdown
             [defaultLabelText]="'contact'"
+            [labelText]="'contact'"
             [defaultTitleText]="'Select Contact'"
             [dropdownHeaderTemplate]="dropdownHeaderTemplate"
             [dropdownFooterTemplate]="dropdownFooterTemplate"
@@ -74,6 +75,25 @@
     </first-pane>
 
     <second-pane>
+      <div style="padding: 10px; background: #d9edf7; margin: 10px;">
+
+        <bd-form-switch
+          [enableButtonSwitch]="false"
+          [labelText]="'contact'"
+          [defaultTitleText]="'Select contact'"
+          [items]="items"
+          [selectedValue]="items[0]">
+        </bd-form-switch>
+
+        <div style="margin-top:20px;"></div>
+
+        <bd-form-switch
+          [enableButtonSwitch]="true"
+          [labelText]="'Freight'"
+          [items]="switchButtons2"
+          [selectedValue]="switchButtons2[0]">
+        </bd-form-switch>
+      </div>
 
     </second-pane>
 
