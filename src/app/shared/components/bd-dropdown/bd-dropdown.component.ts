@@ -3,12 +3,6 @@ import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 const noop = () => { };
 
-export const BD_DROPDOWN_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => BdDropdownComponent),
-  multi: true
-};
-
 @Component({
   selector: 'bd-dropdown',
   styleUrls: ['bd-dropdown.component.scss'],
@@ -64,6 +58,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   public _handleDropdownItemClick(event): void {
     this.value = event.target.getAttribute('value');
+    this._onChangeCallback(this.value);
     this.onItemClick.emit(this.value);
   }
 
