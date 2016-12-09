@@ -1,8 +1,12 @@
 .bd-button {
-	width: 100%;
-	margin: 2px;
+	width: calc(50% - 3px);
 }
 
 .section {
 	display: flex;
+	justify-content: space-between;
+
+	&.btn-container {
+		padding-top: 30px;
+	}
 }

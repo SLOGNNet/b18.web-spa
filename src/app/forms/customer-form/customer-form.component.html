@@ -14,20 +14,18 @@
 	<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [viewMode]='viewMode'>
 		<address-form [group]='customerForm.controls.address' [address]='customer.address'></address-form>
 	</bd-form-section>
-	<div class="section">
+	<div class="section btn-container">
 		<bd-button
-		type='default'
-		(click)="onCancel()"
-		[text]="'Cancel'"
-		class="bd-button"
-		>
+			type='default'
+			(click)="onCancel()"
+			[text]="'Cancel'"
+			class="bd-button">
 		</bd-button>
 		<bd-button
-		type='primary'
-		class="bd-button"
-		(click)="onSubmit()"
-		[text]="'Add Customer'"
-		>
+			type='primary'
+			class="bd-button"
+			(click)="onSubmit()"
+			[text]="'Add Customer'">
 		</bd-button>
 	</div>
 </form>
