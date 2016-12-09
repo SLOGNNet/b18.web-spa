@@ -3,7 +3,8 @@ import { ViewMode } from '../../enums';
 import { ExpandablePanelComponent } from '../expandable-panel';
 @Component({
   selector: 'bd-form-section',
-  templateUrl: './bd-form-section.component.html'
+  templateUrl: './bd-form-section.component.html',
+  styleUrls: ['./bd-form-section.component.scss']
 })
 export class BdFormSectionComponent {
 
