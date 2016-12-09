@@ -128,6 +128,11 @@
 		.bd-input {
 			width: 0;
 
+			.bd-input-suffix,
+			.bd-input-prefix {
+				display: none;
+			}
+
 			.bd-input-infix {
 				input,
 				textarea {
