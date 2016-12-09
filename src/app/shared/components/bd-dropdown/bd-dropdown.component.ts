@@ -1,12 +1,20 @@
-import { Component, Input, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
+import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
+const noop = () => { };
+
+export const BD_DROPDOWN_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => BdDropdownComponent),
+  multi: true
+};
 
 @Component({
   selector: 'bd-dropdown',
   styleUrls: ['bd-dropdown.component.scss'],
   templateUrl: './bd-dropdown.component.html'
 })
-export class BdDropdownComponent {
+export class BdDropdownComponent implements ControlValueAccessor {
 
   @Input() dropdownHeaderTemplate: TemplateRef<any>;
   @Input() dropdownFooterTemplate: TemplateRef<any>;
@@ -18,10 +26,17 @@ export class BdDropdownComponent {
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
 
+  private _onTouchedCallback: () => void = noop;
+  private _onChangeCallback: (_: any) => void = noop;
   private _items: any[];
   private _selectedValue: any;
   private value: any;
 
+  constructor(@Optional() ngControl: NgControl) {
+    if (ngControl) {
+      ngControl.valueAccessor = this;
+    }
+  }
   get currentDisplayText(){
     return this.value ? this.value : this.defaultTitleText;
   }
@@ -38,10 +53,9 @@ export class BdDropdownComponent {
   }
 
   @Input() set selectedValue(v: any) {
-      if ((<any>Object).values(this.items).includes(v)){
-        this._selectedValue = v;
-        this.value = this._selectedValue;
-      }
+    this._selectedValue = v;
+    this.value = this._selectedValue;
+    this._onChangeCallback(v);
   }
 
   public _handleDropdownHeaderClick(event): void {
@@ -55,6 +69,18 @@ export class BdDropdownComponent {
 
   public _handleFooterClick(event): void {
     this.onFooterClick.emit(event);
+  }
+
+  writeValue(value: any) {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any) {
+    this._onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this._onTouchedCallback = fn;
   }
 
 }
