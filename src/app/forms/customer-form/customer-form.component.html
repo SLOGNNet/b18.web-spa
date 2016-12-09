@@ -14,6 +14,12 @@
 	<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [viewMode]='viewMode'>
 		<address-form [group]='customerForm.controls.address' [address]='customer.address'></address-form>
 	</bd-form-section>
+
+<bd-form-section [labelText]="'CUSTOMER > BILLING'" [viewMode]='viewMode'>
+ <!-- <same as company address>
+ <address-form [group]='customerForm.controls.address' [address]='customer.billlingAddress'></address-form>
+ <notes cusotmer.notes> -->
+</bd-form-section>
 	<div class="section">
 		<bd-button
 		type='default'
