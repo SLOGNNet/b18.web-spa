@@ -44,6 +44,7 @@ export class BdFormTypeaheadComponent {
 
   remove(event): void {
     this.value = '';
+    event.stopPropagation();
     this.onRemove.emit(event);
   }
 
