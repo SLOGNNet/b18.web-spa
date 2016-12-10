@@ -22,15 +22,14 @@
        [labelText]="'Name or MC#'"
        [footerButtonText]="'Add New Customer'"
        [source]="customerSource"
+       (onRemove)="onRemove()"
        [(value)]="customerQuery"
        [itemTemplate]="customItemTemplate"
        (onSelect)="onCustomerSelect($event)"
        [optionField]="'name'">
      </bd-typeahead>
-     <expandable-panel>
-       <div expanded>
-         <customer-form *ngIf='load.customer' [customer]='load.customer'> </customer-form>
-      </div>
-     </expandable-panel>
+     <view-mode-toogle [viewMode]="customerViewMode" (changed)="customerViewModeChanged($event)">
+         <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
+     </view-mode-toogle>
   </div>
 </div>

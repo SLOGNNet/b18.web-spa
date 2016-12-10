@@ -12,6 +12,7 @@ import { ViewMode } from '../../shared/enums';
 export class CustomerForm {
 
   @Input() public customer: Customer;
+  @Input() public viewMode: ViewMode = ViewMode.View;
   customerForm: BdFormGroup;
   customerTypes: Array<string>;
   selectedCustomerType: string;
@@ -30,9 +31,7 @@ export class CustomerForm {
 
   initForm() {
     this.customerTypes = this.enumHelperService.getNames(CustomerTypes);
-    this.selectedCustomerType = CustomerStatuses[this.customer.type];
     this.customerStatuses = this.enumHelperService.getNames(CustomerStatuses);
-    this.selectedCustomerStatus = CustomerStatuses[this.customer.status];
 
     this.customerForm = this.formBuilder.group({
       name: {
@@ -40,6 +39,8 @@ export class CustomerForm {
         validators: Validators.required,
         viewMode: ViewMode.Edit
       },
+      customerType: [CustomerTypes[this.customer.type], Validators.required],
+      status: [CustomerStatuses[this.customer.status], Validators.required],
       mc: [this.customer.mc],
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({ })

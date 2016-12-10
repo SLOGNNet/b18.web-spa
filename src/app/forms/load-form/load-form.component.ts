@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../shared';
 import { Load, Customer } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
-
+import { ViewMode } from '../../shared/enums';
 
 @Component({
   selector: 'load-form',
@@ -13,13 +13,16 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
-
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
+  private customerViewMode: ViewMode = ViewMode.View;
 
   public constructor(private customerService: CustomerService) {
 
+  }
+  onRemove(){
+    this.load.customer = null;
   }
 
   ngOnChanges(changes: any) {
@@ -29,10 +32,15 @@ export class BdLoadFormComponent {
   }
   public onCustomerSelect(customer: Customer) {
     this.load.customer = customer;
+    this.customerViewMode = ViewMode.View;
+  }
+
+  public customerViewModeChanged(viewMode) {
+    this.customerViewMode = viewMode;
   }
 
   private initCustomerTypeahead(load) {
-    this.customerQuery = load.customer.name;
+    this.customerQuery =  load.customer && load.customer.name;
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
