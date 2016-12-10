@@ -34,7 +34,7 @@
               [attr.name]="name"
               [type]="type"
               class="bd-input-element {{_invalidClass}}"
-              id="customer-input-id"
+              [id]="inputId"
               autocomplete="off"
             >
 
@@ -50,7 +50,7 @@
               (change)="_handleChange($event)"
               (blur)="_handleBlur($event)"
               placeholder="placeholder"
-              id="customer-input-id"
+              [id]="inputId"
             ></textarea>
           </div>
           <div #suffix class="bd-input-suffix" *ngIf='!_suffixEmpty'>

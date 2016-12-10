@@ -18,6 +18,10 @@ export class CustomerService {
     fax: '',
     phoneExtension: '311',
     faxExtension: '322',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   },
   {
     streetAddress: 'test',
@@ -29,6 +33,10 @@ export class CustomerService {
     fax: '44',
     phoneExtension: '441',
     faxExtension: '36',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   }
 ];
 

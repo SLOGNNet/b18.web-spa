@@ -14,6 +14,8 @@ import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
 import { BdButtonComponent } from './components/bd-button';
 import { BdSpinnerComponent } from './components/bd-spinner';
+import { GoogleAutocompleteComponent } from './components/google-autocomplete';
+import { GoogleMapComponent } from './components/google-map';
 import { ExpandablePanelComponent } from './components/expandable-panel';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
@@ -37,7 +39,9 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
     ExpandablePanelComponent,
-    BdButtonComponent
+    BdButtonComponent,
+    GoogleAutocompleteComponent,
+    GoogleMapComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +56,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdTextareaAutosize,
     BdInputComponent,
     BdSpinnerComponent,
+    GoogleAutocompleteComponent,
+    GoogleMapComponent,
     BdDropdownComponent,
     BdFormTypeaheadComponent,
     BdButtonSwitchComponent,

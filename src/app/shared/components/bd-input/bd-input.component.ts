@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };
+let nextUniqueId = 0;
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -34,6 +35,8 @@ export class BdInputComponent {
     return this._value;
   };
 
+  get inputId(): string { return `${this.id}-input`; }
+
   @ViewChild('input') _inputElement: ElementRef;
   @ViewChild('prefix') prefixContainer: ElementRef;
   @ViewChild('suffix') suffixContainer: ElementRef;
@@ -44,6 +47,7 @@ export class BdInputComponent {
   @Input() placeholder: string;
   @Input() name: string = null;
   @Input() type: string = 'text';
+  @Input() id: string = `bd-${nextUniqueId++}`;
 
   @Input() get disabled(): boolean {
     return this._disabled;

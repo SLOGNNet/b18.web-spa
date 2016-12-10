@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Address } from '../../models';
 import { EnumHelperService, BdFormGroup, BdFormBuilder } from '../../shared';
@@ -15,6 +15,13 @@ export class AddressForm {
   @Input('group')
   public addressForm: BdFormGroup;
 
+   @ViewChild('googleMap') googleMap;
+
+   private _location = {
+     lat: 2,
+     lng: 3
+   };
+
   private fields = [
     { name: 'phone', validators: [] },
     { name: 'fax', validators: [] },
@@ -24,7 +31,8 @@ export class AddressForm {
     { name: 'faxExtension', validators: [] },
     { name: 'streetAddress', validators: [Validators.required] },
     { name: 'secondStreetAddress', validators: [Validators.required] },
-    { name: 'city', validators: [Validators.required] }
+    { name: 'city', validators: [Validators.required] },
+    { name: 'location', validators: []}
   ];
 
   constructor(private formBuilder: BdFormBuilder) {
@@ -41,5 +49,12 @@ export class AddressForm {
         this.formBuilder.control(this.address[field.name], field.validators)
       );
     });
+  }
+
+  onPlaceChanged(data) {
+    const info = `${data.info.route}`;
+    this._location = data.location;
+    console.log('update');
+    // this.googleMap.update(data.location, info);
   }
 }

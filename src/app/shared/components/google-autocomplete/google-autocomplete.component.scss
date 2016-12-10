@@ -1,0 +1,26 @@
+.gm-style .gm-style-iw {
+    font-weight: 300;
+    font-size: 7px;
+    overflow: hidden;
+}
+
+.pac-icon,
+.pac-logo:after {
+  display: none;
+}
+
+.pac-item {
+  height: 50px;
+  padding-left: 17px;
+  align-items: center;
+  display: flex;
+
+  &:hover,
+  &.pac-item-selected {
+    background: #f5fefe;
+  }
+
+  span {
+    font-size: 17px;
+  }
+}

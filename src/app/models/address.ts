@@ -8,4 +8,8 @@ export class Address {
   fax: string;
   phoneExtension: string;
   faxExtension: string;
+  location: {
+    lat: number,
+    lng: number
+  }
 }

@@ -3,8 +3,8 @@
 	</bd-input>
 	<div class="section">
 		<div class="left-side right-border">
-			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
-			</bd-input>
+			<google-autocomplete placeholder="Street address 2" formControlName="streetAddress" (placeChanged)="onPlaceChanged($event)">
+			</google-autocomplete>
 			<bd-input formControlName="city">
 			</bd-input>
 			<div class="section">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="right-side bottom-border">
-			google map
+			<google-map #googleMap [location]="_location"></google-map>
 		</div>
 	</div>
 	<div class="section">
