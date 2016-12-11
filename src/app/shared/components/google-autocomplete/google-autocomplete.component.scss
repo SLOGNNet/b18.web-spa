@@ -1,26 +1,30 @@
-.gm-style .gm-style-iw {
-    font-weight: 300;
-    font-size: 7px;
-    overflow: hidden;
+$hover-clor: #f5fefe;
+
+.gm-style {
+	.gm-style-iw {
+		overflow: hidden;
+		font-size: 7px;
+		font-weight: 300;
+	}
 }
 
 .pac-icon,
 .pac-logo:after {
-  display: none;
+	display: none;
 }
 
 .pac-item {
-  height: 50px;
-  padding-left: 17px;
-  align-items: center;
-  display: flex;
+	display: flex;
+	height: 50px;
+	padding-left: 17px;
+	align-items: center;
 
-  &:hover,
-  &.pac-item-selected {
-    background: #f5fefe;
-  }
+	&:hover,
+	&.pac-item-selected {
+		background: $hover-clor;
+	}
 
-  span {
-    font-size: 17px;
-  }
+	span {
+		font-size: 17px;
+	}
 }

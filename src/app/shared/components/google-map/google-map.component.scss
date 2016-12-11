@@ -1,34 +1,34 @@
 .map {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 }
 
 .google-map {
-  height: 100%;
-  width: 100%;
+	width: 100%;
+	height: 100%;
 
-  * {
-    cursor: default !important;
-  }
+	* {
+		cursor: default;
+	}
 }
 
 .google-map-info {
-  position: absolute;
-  left: calc(100% / 2 + 10px);
-  line-height: 1;
-  color: red;
-  font-weight: bold;
-  white-space: nowrap;
+	position: absolute;
+	color: red;
+	left: calc(100% / 2 + 10px);
+	line-height: 1;
+	font-weight: bold;
+	white-space: nowrap;
 }
 
 .gmnoprint, .gmnoscreen {
-  display: none;
-  visibility: hidden;
+	display: none;
+	visibility: hidden;
 }
 
 img[src*="google4"],
 img[src*="google_white"] {
-    display: none;
+		display: none;
 }

@@ -9,7 +9,7 @@ export class Address {
   phoneExtension: string;
   faxExtension: string;
   location: {
-    lat: number,
-    lng: number
-  }
+    lat: number;
+    lng: number;
+  };
 }

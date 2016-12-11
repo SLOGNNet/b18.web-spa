@@ -16,7 +16,7 @@ export class GoogleMapComponent implements OnChanges {
     @Input() info = '';
     @Input() infoLabelSize = 10;
     @Input() markerSize = 20;
-    @Input() markerIcon = "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png";
+    @Input() markerIcon = 'https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png';
 
 
     private _map;

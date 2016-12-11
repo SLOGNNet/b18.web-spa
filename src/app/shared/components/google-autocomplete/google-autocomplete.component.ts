@@ -49,7 +49,7 @@ export class GoogleAutocompleteComponent implements ControlValueAccessor {
         const location = {
             lat: place.geometry.location.lat(),
             lng: place.geometry.location.lng()
-        }
+        };
 
         const placeInfo = this.getPlaceInfo(place.address_components);
 
@@ -59,7 +59,7 @@ export class GoogleAutocompleteComponent implements ControlValueAccessor {
             streetSumber: placeInfo.street_number,
             state: placeInfo.administrative_area_level_1,
             streetAddress: `${placeInfo.route} ${placeInfo.locality}`
-        }
+        };
 
         this.onSelect.emit({ location, info });
         this.value = info.streetAddress;
@@ -76,12 +76,12 @@ export class GoogleAutocompleteComponent implements ControlValueAccessor {
             administrative_area_level_1: ''
         };
 
-        for (var i = 0; i < address.length; i++) {
-            var addressType = address[i].types[0];
-            info[addressType] = address[i].short_name
+        for (let i = 0; i < address.length; i++) {
+            const addressType = address[i].types[0];
+            info[addressType] = address[i].short_name;
         }
 
-        return info
+        return info;
     }
 
     changeValue(v: any) {
