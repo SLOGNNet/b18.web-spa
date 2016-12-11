@@ -15,13 +15,6 @@ export class AddressForm {
   @Input('group')
   public addressForm: BdFormGroup;
 
-   @ViewChild('googleMap') googleMap;
-
-   private _location = {
-     lat: 2,
-     lng: 3
-   };
-
   private fields = [
     { name: 'phone', validators: [] },
     { name: 'fax', validators: [] },
@@ -52,9 +45,7 @@ export class AddressForm {
   }
 
   onPlaceChanged(data) {
-    const info = `${data.info.route}`;
-    this._location = data.location;
-    console.log('update');
-    // this.googleMap.update(data.location, info);
+    this.address.location = data.location;
+    this.address.streetAddress = data.info.streetAddress;
   }
 }

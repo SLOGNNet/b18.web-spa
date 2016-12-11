@@ -1,10 +1,7 @@
-import { Component, ViewEncapsulation, forwardRef, Output, Input, OnChanges } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, ViewEncapsulation, Output, Input, OnChanges } from '@angular/core';
 
 declare let google: any;
 let nextUniqueId = 0;
-const noop = () => { };
-
 
 @Component({
     selector: 'google-map',
@@ -21,31 +18,18 @@ export class GoogleMapComponent implements OnChanges {
     @Input() markerSize = 20;
     @Input() markerIcon = "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png";
 
+
     private _map;
     private _mapTag;
     private _infowindow;
     private _marker;
     private _infoLabel;
     private _isInitialized = false;
-    private _onChangeCallback: (_: any) => void = noop;
 
 
     get mapId(): string { return `${this.id}-map`; }
 
-    writeValue(location: any) {
-        debugger;
 
-        if (location && location['lat'] && location['lng']) {
-            this.location = location;
-        }
-    }
-
-    registerOnChange(fn: any) {
-        this._onChangeCallback = fn;
-    }
-    registerOnTouched(fn: any) {
-        this._onChangeCallback = fn;
-    }
     ngOnChanges(changes) {
         this.update(this.location, this.info);
     }

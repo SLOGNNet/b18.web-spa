@@ -1,5 +1,6 @@
 <bd-input
-[value]="_value"
-  #bdinput placeholder="State" 
+  #bdinput
+  [ngModel]="value"
+  (ngModelChange)="changeValue($event)"
   placeholder="{{placeholder}}">
 </bd-input>

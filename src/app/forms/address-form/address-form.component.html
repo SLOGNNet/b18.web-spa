@@ -1,10 +1,13 @@
 <form [formGroup]="addressForm">
-	<bd-input placeholder="Street address 1" formControlName="streetAddress">
-	</bd-input>
+	<google-autocomplete
+		placeholder="Street address 1"
+		formControlName="streetAddress"
+		(onSelect)="onPlaceChanged($event)">
+	</google-autocomplete>
 	<div class="section">
 		<div class="left-side right-border">
-			<google-autocomplete placeholder="Street address 2" formControlName="streetAddress" (placeChanged)="onPlaceChanged($event)">
-			</google-autocomplete>
+		<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
+		</bd-input>
 			<bd-input formControlName="city">
 			</bd-input>
 			<div class="section">
@@ -17,7 +20,10 @@
 			</div>
 		</div>
 		<div class="right-side bottom-border">
-			<google-map #googleMap [location]="_location"></google-map>
+			<google-map
+				[location]="address.location"
+				[info]="address.streetAddress">
+			</google-map>
 		</div>
 	</div>
 	<div class="section">
