@@ -9,9 +9,9 @@ import { ExpandablePanelComponent } from '../expandable-panel';
 export class BdFormSectionComponent {
 
   @Input() labelText: string;
-  @Input() viewMode: ViewMode = ViewMode.Edit;
+  @Input() isExpanded: boolean = true;
 
   private get isLabelVisisble() {
-    return this.viewMode === ViewMode.Edit;
+    return this.isExpanded;
   }
 }

@@ -11,9 +11,9 @@ import { EnumHelperService, BdFormGroup, BdFormBuilder } from '../../shared';
 export class AddressForm {
   @Input('address')
   public address: Address;
-
   @Input('group')
   public addressForm: BdFormGroup;
+  @Input() isExpanded: boolean = false;
 
   private fields = [
     { name: 'phone', validators: [] },

@@ -45,8 +45,7 @@ export class CustomerForm {
 
     this.customerForm = this.formBuilder.group({
       name: {
-        formState: this.customer.name,
-        viewMode: ViewMode.Edit
+        formState: this.customer.name
       },
       customerType: [CustomerTypes[this.customer.type]],
       status: [CustomerStatuses[this.customer.status], Validators.required],
@@ -65,7 +64,7 @@ export class CustomerForm {
     this.customerForm.reset();
   }
 
-  private onExpandChange(expanded) {
+  private onExpandChanged(expanded) {
     this.isExpanded = expanded;
   }
 }
