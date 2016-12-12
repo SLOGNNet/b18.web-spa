@@ -20,9 +20,6 @@ export class BdLoadFormComponent {
   public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder) {
 
   }
-  onRemove(){
-    this.load.customer = null;
-  }
 
   ngOnChanges(changes: any) {
     if (changes.load) {
@@ -31,19 +28,24 @@ export class BdLoadFormComponent {
     }
   }
 
+  onCustomerRemove() {
+    this.load.customer = null;
+  }
+
+  onAddCustomer() {
+    this.load.customer = new Customer();
+    this.customerViewMode = ViewMode.Edit;
+  }
+
   public initForm() {
     this.loadForm = this.formBuilder.group({
-      customer: [this.load.customer]
+      customer: [this.load.customer, Validators.required]
     });
   }
 
   public onCustomerSelect(customer: Customer) {
     this.load.customer = customer;
     this.customerViewMode = ViewMode.View;
-  }
-
-  public customerViewModeChanged(viewMode) {
-    this.customerViewMode = viewMode;
   }
 
   private initCustomerTypeahead(load) {

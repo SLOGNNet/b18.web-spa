@@ -13,11 +13,21 @@ export class CustomerForm {
 
   @Input() public customer: Customer;
   @Input() public viewMode: ViewMode = ViewMode.View;
+  @Input() isExpanded: boolean = false;
   customerForm: BdFormGroup;
   customerTypes: Array<string>;
   selectedCustomerType: string;
   customerStatuses: Array<string>;
   selectedCustomerStatus: string;
+
+  private get isEditMode(): boolean {
+    return this.viewMode === ViewMode.Edit;
+  }
+
+  private get isFormExpanded(): boolean {
+    return this.isExpanded || this.isEditMode;
+  }
+
   constructor(private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
   }
 
@@ -52,7 +62,10 @@ export class CustomerForm {
   }
 
   onCancel() {
-    const mode: ViewMode = this.customerForm.getViewMode() === ViewMode.View ? ViewMode.Edit : ViewMode.View;
-    this.customerForm.setViewMode(mode);
+    this.customerForm.reset();
+  }
+
+  private onExpandChange(expanded) {
+    this.isExpanded = expanded;
   }
 }

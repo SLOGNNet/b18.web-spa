@@ -21,16 +21,14 @@ export class BdValidatorComponent implements OnChanges {
   ngOnChanges(changes: any): void {
     const component: BdFormControl = changes.component.currentValue;
     component.valueChanges.subscribe(() => {
-      debugger;
       this.checkErrors(component);
     });
-debugger;
     this.checkErrors(component);
   }
   checkErrors(control) {
     this.errorMessage = '';
     const errors = control.errors;
-    if (errors /* && control.touched */) {
+    if (errors /* && control.parent._submitted && control.touched */) {
       Object.keys(this.errorDefs).some(key => {
         if (errors[key]) {
           this.errorMessage = this.errorDefs[key];

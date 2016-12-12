@@ -1,35 +1,37 @@
-<form [formGroup]="customerForm">
-	<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [viewMode]='viewMode'>
-		<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="controlVisible('name')">
-		</bd-input>
-		<bd-dropdown [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
-		</bd-dropdown>
-		<bd-validator [component]="customerForm.controls.status" [errorDefs]="{required: 'Status is required'}">
-			<bd-dropdown [labelText]="'Status'" formControlName="status" [items]="customerStatuses">
-			</bd-dropdown>
-		</bd-validator>
-		<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
-			<bd-input [labelText]="'MC #'" formControlName="mc">
+<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChange">
+	<form [formGroup]="customerForm">
+		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [viewMode]='viewMode'>
+			<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="controlVisible('name')">
 			</bd-input>
-		</bd-validator>
-		<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
-		</bd-input>
-	</bd-form-section>
-	<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [viewMode]='viewMode'>
-		<address-form [group]='customerForm.controls.address' [address]='customer.address'></address-form>
-	</bd-form-section>
-	<div class="section btn-container">
-		<bd-button
-			type='default'
-			(click)="onCancel()"
-			[text]="'Cancel'"
-			class="bd-button">
-		</bd-button>
-		<bd-button
-			type='primary'
-			class="bd-button"
-			(click)="onSubmit()"
-			[text]="'Add Customer'">
-		</bd-button>
-	</div>
-</form>
+			<bd-dropdown [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
+			</bd-dropdown>
+			<bd-validator [component]="customerForm.controls.status" [errorDefs]="{required: 'Status is required'}">
+				<bd-dropdown [labelText]="'Status'" formControlName="status" [items]="customerStatuses">
+				</bd-dropdown>
+			</bd-validator>
+			<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
+				<bd-input [labelText]="'MC #'" formControlName="mc">
+				</bd-input>
+			</bd-validator>
+			<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId">
+			</bd-input>
+		</bd-form-section>
+		<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [viewMode]='viewMode'>
+			<address-form [group]='customerForm.controls.address' [address]='customer.address'></address-form>
+		</bd-form-section>
+		<div class="section btn-container" *ngIf="isEditMode">
+			<bd-button
+				type='default'
+				(click)="onCancel()"
+				[text]="'Cancel'"
+				class="bd-button">
+			</bd-button>
+			<bd-button
+				type='primary'
+				class="bd-button"
+				(click)="onSubmit()"
+				[text]="'Add Customer'">
+			</bd-button>
+		</div>
+	</form>
+</bd-form-expand>
