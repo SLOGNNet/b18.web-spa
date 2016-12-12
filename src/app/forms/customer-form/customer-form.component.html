@@ -1,4 +1,4 @@
-<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)">
+<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode">
 	<form [formGroup]="customerForm">
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isFormExpanded'>
 			<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="isFormExpanded">
