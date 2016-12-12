@@ -20,4 +20,8 @@ export class Customer {
   mc: string;
   taxId: string;
   address: Address;
+
+  constructor() {
+    this.address = new Address();
+  }
 }

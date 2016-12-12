@@ -1,12 +1,12 @@
 <ng-content>
 </ng-content>
  <div
-  (click)="toggleViewMode()"
+  (click)="toggleExpand()"
   class="expandable-arrow-wrapper"
-  [class.open]="editMode">
+  [class.open]="expanded">
   <i
-    [class.fa-chevron-up]="editMode"
-    [class.fa-chevron-down]="!editMode"
+    [class.fa-chevron-up]="expanded"
+    [class.fa-chevron-down]="!expanded"
     class="fa expandable-arrow"
     aria-hidden="true">
   </i>

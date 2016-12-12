@@ -16,23 +16,26 @@
         </div>
       </div>
   </template>
-
+<form [formGroup]="loadForm">
   <div class="bd-form">
     <div class="bd-form-title">
       Customer
     </div>
-    <bd-typeahead
-       [labelText]="'Name or MC#'"
-       [footerButtonText]="'Add New Customer'"
-       [source]="customerSource"
-       (onRemove)="onRemove()"
-       [(value)]="customerQuery"
-       [itemTemplate]="customItemTemplate"
-       (onSelect)="onCustomerSelect($event)"
-       [optionField]="'name'">
-     </bd-typeahead>
-     <view-mode-toogle [viewMode]="customerViewMode" (changed)="customerViewModeChanged($event)">
-         <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
-     </view-mode-toogle>
+    <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
+      <bd-typeahead
+         formControlName="customer"
+         [labelText]="'Name or MC#'"
+         [footerButtonText]="'Add New Customer'"
+         [source]="customerSource"
+         (onRemove)="onCustomerRemove()"
+         [(value)]="customerQuery"
+         [itemTemplate]="customItemTemplate"
+         (onSelect)="onCustomerSelect($event)"
+         (onFooterButtonClick)="onAddCustomer()"
+         [optionField]="'name'">
+       </bd-typeahead>
+     </bd-validator>
+      <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
   </div>
+</form>
 </div>
