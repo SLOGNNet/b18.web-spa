@@ -22,4 +22,9 @@ export class Customer {
   taxId: string;
   address: Address;
   billingAddresses: Address;
+
+  constructor() {
+    this.address = new Address();
+  }
+
 }

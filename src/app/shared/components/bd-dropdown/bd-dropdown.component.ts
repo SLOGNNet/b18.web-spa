@@ -1,6 +1,6 @@
 import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 const noop = () => { };
 
 @Component({
@@ -31,6 +31,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
       ngControl.valueAccessor = this;
     }
   }
+
   get currentDisplayText(){
     return this.value ? this.value : this.defaultTitleText;
   }
@@ -59,6 +60,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   public _handleDropdownItemClick(event, item): void {
     this.value = item;
     this._onChangeCallback(this.value);
+    this._onTouchedCallback();
     this.onItemClick.emit(this.value);
   }
 

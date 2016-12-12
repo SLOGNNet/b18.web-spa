@@ -113,6 +113,7 @@ export class TypeaheadContainerComponent {
 
   protected footerClick(): boolean {
     this.parent.typeaheadFooterClick.emit();
+    this.parent.hide();
     return false;
   }
 }
