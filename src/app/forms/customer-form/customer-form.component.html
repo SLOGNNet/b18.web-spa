@@ -18,7 +18,7 @@
 		</bd-form-section>
 		<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [isExpanded]='isFormExpanded'>
 			<address-form [group]='customerForm.controls.address' [isExpanded]="isFormExpanded" [address]='customer.address'></address-form>
-			<bd-input [labelText]="'Email'" *ngIf='isExpanded'>
+			<bd-input [labelText]="'Email'" formControlName="email" *ngIf='isExpanded'>
 			</bd-input>
 		</bd-form-section>
 		<bd-form-section [labelText]="'CUSTOMER > BILLING'" *ngIf='isExpanded' [isExpanded]="isFormExpanded">

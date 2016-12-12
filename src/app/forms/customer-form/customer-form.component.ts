@@ -52,7 +52,8 @@ export class CustomerForm {
       mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({ }),
-      billingAddresses : this.formBuilder.group({ })
+      billingAddresses : this.formBuilder.group({ }),
+      email: [this.customer.email]
     });
     this.customerForm.setViewMode(ViewMode.View);
   }
