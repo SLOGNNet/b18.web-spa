@@ -23,7 +23,7 @@
 		 <label class="same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
 		 <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses'></address-form>
 		 <bd-textarea
-		 [labelText]="'Notes'">
+		  [labelText]="'Notes'">
 		 </bd-textarea>
 		</bd-form-section>
 		<div class="section btn-container" *ngIf="isEditMode">
