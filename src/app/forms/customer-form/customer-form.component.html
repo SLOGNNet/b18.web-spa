@@ -16,9 +16,8 @@
 	</bd-form-section>
 
 <bd-form-section [labelText]="'CUSTOMER > BILLING'" [viewMode]='viewMode'>
- <!-- <same as company address>
- <address-form [group]='customerForm.controls.address' [address]='customer.billlingAddress'></address-form>
- <notes cusotmer.notes> -->
+ <label class="same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
+ <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses'></address-form>
 </bd-form-section>
 	<div class="section">
 		<bd-button

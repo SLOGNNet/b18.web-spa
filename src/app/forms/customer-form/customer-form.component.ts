@@ -43,13 +43,19 @@ export class CustomerForm {
       status: [CustomerStatuses[this.customer.status], Validators.required],
       mc: [this.customer.mc],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({ })
+      address: this.formBuilder.group({ }),
+      billingAddresses : this.formBuilder.group({ })
     });
     this.customerForm.setViewMode(ViewMode.View);
   }
 
   onSubmit() {
     this.customerForm.submit();
+  }
+
+  sameAsCompanyChange(event) {
+    if (event.target.checked) {
+      }
   }
 
   onCancel() {

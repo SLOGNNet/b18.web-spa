@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .bd-button {
 	width: 100%;
 	margin: 2px;
@@ -5,4 +7,23 @@
 
 .section {
 	display: flex;
+}
+
+.same-as-company-label {
+	display: flex;
+	width: 100%;
+	border-bottom: $border;
+	margin-bottom: 0;
+	font-weight: normal;
+	padding-left: 15px;
+	min-height: 50px;
+	align-items: center;
+
+	input {
+		margin: 0;
+	}
+
+	span {
+		padding-left: 15px;
+	}
 }
