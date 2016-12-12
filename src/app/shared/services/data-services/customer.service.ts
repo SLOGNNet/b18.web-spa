@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Customer } from './models';
+import { Customer, CustomerStatuses, CustomerTypes } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
@@ -33,14 +33,22 @@ export class CustomerService {
 ];
 
   private _customersData: Array<Customer> = [
-    { id: 1, name: 'ARP Logistic INC', address: this._addresses[0], status: 1, type: 1, taxId: '1', mc: '423466' },
-    { id: 2, name: 'DNS Logistic Corp', address: this._addresses[1], status: 1, type: 1, taxId: '1', mc: '889065' },
-    { id: 3, name: 'Purum Company', address: this._addresses[0], status: 1, type: 1, taxId: '1', mc: '254785' },
-    { id: 4, name: 'Approximately', address: this._addresses[1], status: 1, type: 1, taxId: '1', mc: '456887' },
-    { id: 5, name: 'Satisfying company', address: this._addresses[0], status: 1, type: 1, taxId: '1', mc: '123452' },
-    { id: 6, name: 'Dido & CO', address: this._addresses[0], status: 1, type: 1, taxId: '1', mc: '342903' },
-    { id: 7, name: 'Tydysh-tydysh', address: this._addresses[1], status: 1, type: 1, taxId: '1', mc: '678904' },
-    { id: 8, name: 'Umpa Lumpa INC', address: this._addresses[0], status: 1, type: 1, taxId: '1', mc: '341112' }];
+    { id: 1, name: 'ARP Logistic INC', address: this._addresses[0],
+      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
+    { id: 2, name: 'DNS Logistic Corp', address: this._addresses[1],
+      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
+    { id: 3, name: 'Purum Company', address: this._addresses[0],
+      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '254785' },
+    { id: 4, name: 'Approximately', address: this._addresses[1],
+      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '456887' },
+    { id: 5, name: 'Satisfying company', address: this._addresses[0],
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '123452' },
+    { id: 6, name: 'Dido & CO', address: this._addresses[0],
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '342903' },
+    { id: 7, name: 'Tydysh-tydysh', address: this._addresses[1],
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '678904' },
+    { id: 8, name: 'Umpa Lumpa INC', address: this._addresses[0],
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '341112' }];
 
   constructor(private http: Http) {
     this.http = http;

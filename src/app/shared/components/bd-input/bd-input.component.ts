@@ -1,6 +1,8 @@
-import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Optional, EventEmitter,
+  HostBinding, forwardRef, ViewEncapsulation,
+  ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -13,10 +15,9 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   styleUrls: ['bd-input.component.scss'],
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
-  host: { '(click)': 'focus($event)' }
+  host: { '(click)': 'focus($event)' },
+  encapsulation: ViewEncapsulation.None
 })
-
-
 export class BdInputComponent {
 
   get focused() { return this._focused; }
@@ -38,7 +39,6 @@ export class BdInputComponent {
   @ViewChild('prefix') prefixContainer: ElementRef;
   @ViewChild('suffix') suffixContainer: ElementRef;
 
-  @Input() errorText: string = '';
   @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
   @Input() placeholder: string;
@@ -68,9 +68,9 @@ export class BdInputComponent {
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
   ngAfterViewInit() {
-     this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
-     this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
-     this.changeDetectionRef.detectChanges();
+    this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
+    this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
+    this.changeDetectionRef.detectChanges();
   }
 
   constructor(elementRef: ElementRef, private changeDetectionRef: ChangeDetectorRef) {
@@ -78,6 +78,10 @@ export class BdInputComponent {
     this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
+
+    // if (ngControl) {
+    //   ngControl.valueAccessor = this;
+    // }
   }
 
   coerceBooleanProperty(value: any): boolean {

@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables';
 
 .wrapper {
-	max-width: 340px;
+	max-width: 100%;
 }
 
 .item-wrapper {
@@ -30,5 +30,15 @@
 			color: $black;
 			font-size: $small-font-size;
 		}
+	}
+}
+
+.bd-form {
+	.bd-form-title {
+		margin: 30px 0 20px 15px;
+		color: $black;
+		font-weight: bold;
+		text-transform: uppercase;
+		letter-spacing: 2px;
 	}
 }

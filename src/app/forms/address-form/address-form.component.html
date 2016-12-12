@@ -24,13 +24,13 @@
 			<div class="left-side right-border">
 				<bd-input [labelText]="'phone'" formControlName="phone">
 				</bd-input>
-				<bd-input  [labelText]="'fax'" placeholder="fax" formControlName="fax">
+				<bd-input  [labelText]="'fax'" *ngIf='isExpanded' placeholder="fax" formControlName="fax">
 				</bd-input>
 			</div>
 			<div class="right-side">
 				<bd-input formControlName="phoneExtension">
 				</bd-input>
-				<bd-input formControlName="faxExtension">
+				<bd-input formControlName="faxExtension" *ngIf='isExpanded'>
 				</bd-input>
 			</div>
 	</div>
