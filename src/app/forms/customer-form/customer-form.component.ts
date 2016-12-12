@@ -31,17 +31,16 @@ export class CustomerForm {
 
   initForm() {
     this.customerTypes = this.enumHelperService.getNames(CustomerTypes);
-    this.customerStatuses = this.enumHelperService.getNames(CustomerStatuses);
+    this.customerStatuses = [ '', ...this.enumHelperService.getNames(CustomerStatuses)];
 
     this.customerForm = this.formBuilder.group({
       name: {
         formState: this.customer.name,
-        validators: Validators.required,
         viewMode: ViewMode.Edit
       },
-      customerType: [CustomerTypes[this.customer.type], Validators.required],
+      customerType: [CustomerTypes[this.customer.type]],
       status: [CustomerStatuses[this.customer.status], Validators.required],
-      mc: [this.customer.mc],
+      mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({ })
     });

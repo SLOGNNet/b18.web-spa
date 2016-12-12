@@ -16,9 +16,10 @@
         </div>
       </div>
   </template>
-
+<form [formGroup]="loadForm">
   <div class="bd-form">
     <bd-typeahead
+       formControlName="customer"
        [labelText]="'Name or MC#'"
        [footerButtonText]="'Add New Customer'"
        [source]="customerSource"
@@ -32,4 +33,5 @@
          <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
      </view-mode-toogle>
   </div>
+</form>
 </div>

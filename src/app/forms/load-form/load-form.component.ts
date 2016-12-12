@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService } from '../../shared';
+import { CustomerService, BdFormBuilder, BdFormGroup  } from '../../shared';
 import { Load, Customer } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
@@ -17,8 +16,8 @@ export class BdLoadFormComponent {
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
-
-  public constructor(private customerService: CustomerService) {
+  private loadForm: BdFormGroup;
+  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder) {
 
   }
   onRemove(){
@@ -27,9 +26,17 @@ export class BdLoadFormComponent {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
+      this.initForm();
       this.initCustomerTypeahead(changes.load.currentValue);
     }
   }
+
+  public initForm() {
+    this.loadForm = this.formBuilder.group({
+      customer: [this.load.customer]
+    });
+  }
+
   public onCustomerSelect(customer: Customer) {
     this.load.customer = customer;
     this.customerViewMode = ViewMode.View;

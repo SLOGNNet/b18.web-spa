@@ -1,0 +1,18 @@
+@import '../../../../assets/styles/variables';
+
+.error-message {
+	display: none;
+}
+
+.bd-invalid {
+	.error-message {
+		display: flex;
+		background: $light-red;
+		color: $label-warning-color;
+		text-align: left;
+
+		i {
+			margin: 0 15px 0 17px;
+		}
+	}
+}

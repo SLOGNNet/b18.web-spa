@@ -22,9 +22,9 @@ export class AddressForm {
     { name: 'zip', validators: [] },
     { name: 'phoneExtension', validators: [] },
     { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress', validators: [Validators.required] },
-    { name: 'secondStreetAddress', validators: [Validators.required] },
-    { name: 'city', validators: [Validators.required] }
+    { name: 'streetAddress', validators: [] },
+    { name: 'secondStreetAddress', validators: [] },
+    { name: 'city', validators: [] }
   ];
 
   constructor(private formBuilder: BdFormBuilder) {

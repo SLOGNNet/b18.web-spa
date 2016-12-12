@@ -18,6 +18,7 @@ import { ViewModeToogleComponent } from './components/view-mode-toogle';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
+import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
 @NgModule({
   providers: [
@@ -39,7 +40,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdButtonComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
-    BdFormSwitchComponent
+    BdFormSwitchComponent,
+    BdValidatorComponent
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
+    BdValidatorComponent,
     TypeaheadModule,
     DropdownModule,
     CommonModule,
