@@ -24,6 +24,12 @@ export class Customer {
   billingAddresses: Address;
   email: string;
 
+  static create(): Customer{
+    const result = new Customer();
+    result.status = CustomerStatuses.INACTIVE;
+    return result;
+  }
+
   constructor() {
     this.address = new Address();
   }

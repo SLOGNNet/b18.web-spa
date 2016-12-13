@@ -37,7 +37,7 @@ export class BdLoadFormComponent {
   }
 
   onAddCustomer() {
-    this.load.customer = new Customer();
+    this.load.customer = Customer.create();
     this.customerViewMode = ViewMode.Edit;
   }
 
