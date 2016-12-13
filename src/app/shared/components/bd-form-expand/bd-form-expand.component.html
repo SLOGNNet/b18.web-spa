@@ -1,0 +1,13 @@
+<ng-content>
+</ng-content>
+ <div *ngIf='isExpandButtonVisible'
+  (click)="toggleExpand()"
+  class="expandable-arrow-wrapper"
+  [class.open]="expanded">
+  <i
+    [class.fa-chevron-up]="expanded"
+    [class.fa-chevron-down]="!expanded"
+    class="fa expandable-arrow"
+    aria-hidden="true">
+  </i>
+</div>

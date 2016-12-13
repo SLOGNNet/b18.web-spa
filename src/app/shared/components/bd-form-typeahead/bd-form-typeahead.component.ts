@@ -24,6 +24,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() public valueChange = new EventEmitter();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter();
+  @Output() public onFooterButtonClick: EventEmitter<any> = new EventEmitter();
   protected isLoading: boolean = false;
   protected isNoResultsShown: boolean = false;
   private _onTouchedCallback: () => void = noop;
@@ -39,7 +40,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
     this.value = v;
     // fire change callback only for selected from list items
     // if user change input value - consider it as empty result
-    this._onChangeCallback(undefined);
+    this._onChangeCallback('');
     this.valueChange.emit(v);
   }
 
@@ -57,13 +58,14 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   remove(event): void {
-    this.value = '';
     event.stopPropagation();
-    this._onChangeCallback(this.value);
+    this.changeValue('');
     this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
+    this.changeValue('');
+    this.onFooterButtonClick.emit();
   }
 
   writeValue(value: any) {

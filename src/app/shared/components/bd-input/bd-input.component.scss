@@ -172,22 +172,7 @@
 	}
 }
 
-.error-message {
-	display: none;
-}
-
-:host(.ng-invalid) {
-	.error-message {
-		@include flex-element;
-		background: $light-red;
-		color: $label-warning-color;
-		text-align: left;
-
-		i {
-			margin: 0 15px 0 17px;
-		}
-	}
-
+.bd-invalid {
 	.bd-input-wrapper {
 		border-bottom-color: $label-warning-color;
 

@@ -13,11 +13,21 @@ export class CustomerForm {
 
   @Input() public customer: Customer;
   @Input() public viewMode: ViewMode = ViewMode.View;
+  @Input() isExpanded: boolean = false;
   customerForm: BdFormGroup;
   customerTypes: Array<string>;
   selectedCustomerType: string;
   customerStatuses: Array<string>;
   selectedCustomerStatus: string;
+
+  private get isEditMode(): boolean {
+    return this.viewMode === ViewMode.Edit;
+  }
+
+  private get isFormExpanded(): boolean {
+    return this.isExpanded || this.isEditMode;
+  }
+
   constructor(private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
   }
 
@@ -35,15 +45,15 @@ export class CustomerForm {
 
     this.customerForm = this.formBuilder.group({
       name: {
-        formState: this.customer.name,
-        validators: Validators.required,
-        viewMode: ViewMode.Edit
+        formState: this.customer.name
       },
-      customerType: [CustomerTypes[this.customer.type], Validators.required],
+      customerType: [CustomerTypes[this.customer.type]],
       status: [CustomerStatuses[this.customer.status], Validators.required],
-      mc: [this.customer.mc],
+      mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({ })
+      address: this.formBuilder.group({ }),
+      billingAddresses : this.formBuilder.group({ }),
+      email: [this.customer.email]
     });
     this.customerForm.setViewMode(ViewMode.View);
   }
@@ -52,8 +62,16 @@ export class CustomerForm {
     this.customerForm.submit();
   }
 
+  sameAsCompanyChange(event) {
+    if (event.target.checked) {
+      }
+  }
+
   onCancel() {
-    const mode: ViewMode = this.customerForm.getViewMode() === ViewMode.View ? ViewMode.Edit : ViewMode.View;
-    this.customerForm.setViewMode(mode);
+    this.customerForm.reset();
+  }
+
+  private onExpandChanged(expanded) {
+    this.isExpanded = expanded;
   }
 }

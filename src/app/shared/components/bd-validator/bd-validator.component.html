@@ -1,0 +1,7 @@
+<div [ngClass]="{'bd-invalid':errorMessage}">
+	<ng-content></ng-content>
+	<div class="error-message">
+	    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+	    {{errorMessage}}
+	</div>
+</div>
