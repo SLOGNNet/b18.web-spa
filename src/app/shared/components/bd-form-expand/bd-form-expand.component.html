@@ -1,6 +1,6 @@
 <ng-content>
 </ng-content>
- <div
+ <div *ngIf='isExpandButtonVisible'
   (click)="toggleExpand()"
   class="expandable-arrow-wrapper"
   [class.open]="expanded">

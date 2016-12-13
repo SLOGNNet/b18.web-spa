@@ -41,7 +41,7 @@ export class CustomerForm {
 
   initForm() {
     this.customerTypes = this.enumHelperService.getNames(CustomerTypes);
-    this.customerStatuses = [ '', ...this.enumHelperService.getNames(CustomerStatuses)];
+    this.customerStatuses = this.enumHelperService.getNames(CustomerStatuses);
 
     this.customerForm = this.formBuilder.group({
       name: {
