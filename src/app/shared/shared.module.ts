@@ -43,7 +43,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
-    BdValidatorComponent
+    BdValidatorComponent,
     GoogleMapComponent
   ],
   imports: [

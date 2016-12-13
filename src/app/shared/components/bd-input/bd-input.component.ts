@@ -1,4 +1,4 @@
-import { Component, Input, Optional, EventEmitter,
+import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };

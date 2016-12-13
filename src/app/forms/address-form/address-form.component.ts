@@ -36,7 +36,7 @@ export class AddressForm {
     { name: 'faxExtension', validators: [] },
     { name: 'streetAddress', validators: [] },
     { name: 'secondStreetAddress', validators: [] },
-    { name: 'city', validators: [] }
+    { name: 'city', validators: [] },
     { name: 'location', validators: [] }
   ];
 
