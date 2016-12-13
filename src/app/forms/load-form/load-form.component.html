@@ -36,7 +36,7 @@
        </bd-typeahead>
      </bd-validator>
       <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
-      <bd-form-section [isExpanded]='isFormExpanded'>
+      <bd-form-section>
         <bd-dropdown [labelText]="'Driver'" formControlName="driverRequirment" [items]="driverRequirmentsNames">
         </bd-dropdown>
         <bd-dropdown [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
