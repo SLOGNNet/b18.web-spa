@@ -1,6 +1,19 @@
-<bd-input
+<template #customItemTemplate let-model="item" let-index="index">
+    <div class="item-wrapper">
+      <div class="left-panel">
+        <div class="name">
+            {{model.description}}
+        </div>
+      </div>
+    </div>
+</template>
+<bd-typeahead
   #bdinput
-  [ngModel]="value"
-  (ngModelChange)="changeValue($event)"
-  placeholder="{{placeholder}}">
-</bd-input>
+  [labelText]="'Search'"
+  [source]="customerSource"
+  (onRemove)="onRemove()"
+  [(value)]="customerQuery"
+  [itemTemplate]="customItemTemplate"
+  (onSelect)="onCustomerSelect($event)"
+  [optionField]="'description'">
+</bd-typeahead>

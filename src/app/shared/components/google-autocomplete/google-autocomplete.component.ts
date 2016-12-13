@@ -1,6 +1,10 @@
 import { Component, ViewEncapsulation, forwardRef, Optional, Output, Input, ViewChild, EventEmitter } from '@angular/core';
 import { BdInputComponent } from './bd-input/bd-input.component';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ViewMode } from '../../enums';
+import { GoogleService } from '../../../shared';
+import { Observable } from 'rxjs/Observable';
+
 
 declare var google: any;
 const noop = () => { };
@@ -24,64 +28,47 @@ export class GoogleAutocompleteComponent implements ControlValueAccessor {
     private _onChangeCallback: (_: any) => void = noop;
     private _autocomplete;
 
-    constructor( @Optional() ngControl: NgControl) {
+    constructor( @Optional() ngControl: NgControl,
+        private customerService: GoogleService) {
         if (ngControl) {
             ngControl.valueAccessor = this;
         }
     }
 
-    ngOnInit() {
-        setTimeout(() => {
-            const input = document.getElementById(this.bdinput.inputId);
-            this._autocomplete = new google.maps.places.Autocomplete(input);
 
-            this._autocomplete.addListener('place_changed', () => this.selectValue());
-        }, 0);
+    private customerSource: any[];
+    private customerQuery: string = '';
+    private customerViewMode: ViewMode = ViewMode.View;
+
+    onRemove() {
+        this.value = null;
     }
 
-    selectValue() {
-        const place = this._autocomplete.getPlace();
-
-        if (!place.geometry) {
-            return;
+    ngOnChanges(changes: any) {
+        debugger;
+        if (changes) {
+            this.initCustomerTypeahead();
         }
-
-        const location = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-        };
-
-        const placeInfo = this.getPlaceInfo(place.address_components);
-
-        const info = {
-            zip: placeInfo.zip,
-            city: placeInfo.locality,
-            streetSumber: placeInfo.street_number,
-            state: placeInfo.administrative_area_level_1,
-            streetAddress: `${placeInfo.route} ${placeInfo.locality}`
-        };
-
-        this.onSelect.emit({ location, info });
-        this.value = info.streetAddress;
-        this._onChangeCallback(this.value);
+    }
+    public onCustomerSelect(customer) {
+        this.value = customer;
+        this.customerViewMode = ViewMode.View;
     }
 
-    getPlaceInfo(address) {
-        let info = {
-            zip: '',
-            city: '',
-            route: '',
-            locality: '',
-            street_number: '',
-            administrative_area_level_1: ''
-        };
+    public customerViewModeChanged(viewMode) {
+        this.customerViewMode = viewMode;
+    }
 
-        for (let i = 0; i < address.length; i++) {
-            const addressType = address[i].types[0];
-            info[addressType] = address[i].short_name;
-        }
-
-        return info;
+    private initCustomerTypeahead() {
+        // this.customerSource = Observable.create((observer: any) => {
+        //     //   observer.next(this.value);
+        //     var service = new google.maps.places.AutocompleteService();
+        //     service.getQueryPredictions({ input: this.customerQuery }, data => observer.next(data));
+        // });
+        this.customerSource = Observable.create((observer: any) => {
+            debugger;
+            observer.next(this.customerQuery);
+        }).mergeMap((token: string) => this.customerService.search(token));
     }
 
     changeValue(v: any) {

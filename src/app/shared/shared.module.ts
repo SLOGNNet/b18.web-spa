@@ -28,6 +28,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     SocketService,
     CustomerService,
     EnumHelperService,
+    GoogleService,
     BdFormBuilder
   ],
   declarations: [
