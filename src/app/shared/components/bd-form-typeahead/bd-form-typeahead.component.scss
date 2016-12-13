@@ -12,10 +12,10 @@
 			height: 49px;
 			border-bottom: $border;
 
-			&:last-child {
+			bd-form-button {
 				display: flex;
-				align-items: center;
 				justify-content: center;
+				height: 100%;
 			}
 
 			&.active {

@@ -10,31 +10,31 @@
 	formControlName="streetAddress"
 	placeholder="Street address 1"
   [source]="placeSource"
-  (onRemove)="onRemove()"
   [(value)]="placeQuery"
   [itemTemplate]="customItemTemplate"
+	[deleteButtonHidden]="true"
   (onSelect)="onPlaceSelect($event)"
 	[optionField]="'description'">
 </bd-typeahead>
 	<div class="section">
 		<div class="left-side right-border">
-		<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
+		<bd-input placeholder="Street address 2" (valueChange)="onRemoveMap($event)" formControlName="secondStreetAddress">
 		</bd-input>
-			<bd-input formControlName="city">
+			<bd-input formControlName="city" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
 				<div class="right-border">
-					<bd-input placeholder="State" formControlName="state">
+					<bd-input placeholder="State" formControlName="state" (valueChange)="onRemoveMap($event)">
 					</bd-input>
 				</div>
-				<bd-input placeholder="Zip" formControlName="zip">
+				<bd-input placeholder="Zip" (valueChange)="onRemoveMap($event)" formControlName="zip">
 				</bd-input>
 			</div>
 		</div>
 		<div class="right-side bottom-border">
 			<google-map
-				[location]="address.location"
-				[info]="address.streetAddress">
+				[location]="map.location"
+				[info]="map.labelText">
 			</google-map>
 		</div>
 	</div>

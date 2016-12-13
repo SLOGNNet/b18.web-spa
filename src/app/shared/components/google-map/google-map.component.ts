@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Output, Input, OnChanges } from '@angular/core';
+import { Component, ViewEncapsulation, Input, OnChanges } from '@angular/core';
 
 declare let google: any;
 let nextUniqueId = 0;
@@ -40,7 +40,7 @@ export class GoogleMapComponent implements OnChanges {
             this._infoLabel = document.getElementById(`${this.mapId}-info`);
 
             const top = (this._mapTag.clientHeight / 2);
-            this._infoLabel.style.top = `${top - this.infoLabelSize}px`;
+            this._infoLabel.style.top = `${top}px`;
             this._infoLabel.style.fontSize = `${this.infoLabelSize}px`;
 
             this._map = new google.maps.Map(this._mapTag, {

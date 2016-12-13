@@ -20,6 +20,13 @@ export class AddressForm {
   private placeSource: any[];
   private placeQuery: string = '';
   private placeViewMode: ViewMode = ViewMode.View;
+  private map = {
+    labelText: '',
+    location: {
+      lat: 0,
+      lng: 0
+    }
+  };
   private fields = [
     { name: 'phone', validators: [] },
     { name: 'fax', validators: [] },
@@ -47,6 +54,7 @@ export class AddressForm {
   ngOnChanges(changes: any) {
     this.initForm();
     this.initPlaceTypeahead();
+    this._updateMap(this.address.location, this.address.streetAddress);
   }
 
   initForm() {
@@ -58,17 +66,18 @@ export class AddressForm {
     });
   }
 
-  onRemove() {
-    this.address.location = { lat: 0, lng: 0 };
+  onRemoveMap() {
+    this._updateMap();
   }
 
   public onPlaceSelect(place) {
     this.googleService.getDetails(place.place_id)
       .subscribe(detail => {
         if (detail) {
-            this.address = Object.assign({}, this.address, detail);
-            this.placeQuery = this.address.streetAddress;
-            this.changeDetectionRef.detectChanges();
+          this.placeQuery = detail.streetAddress;
+          this._updateMap(detail.location, detail.streetAddress);
+          this.addressForm.setValue(Object.assign({}, this.address, detail));
+          this.changeDetectionRef.detectChanges();
         }
       });
 
@@ -85,5 +94,12 @@ export class AddressForm {
     this.placeSource = Observable.create((observer: any) => {
       observer.next(this.placeQuery);
     }).mergeMap((token: string) => this.googleService.getPredictions(token));
+  }
+
+  private _updateMap(location = { lat: 0, lng: 0}, labelText = ''): void {
+    this.map = {
+      location,
+      labelText
+    }
   }
 }

@@ -64,12 +64,10 @@ export class GoogleService {
     }
 
     return {
-      route: details.route,
       city: details.locality,
-      country: details.country,
       zip: details.postal_code,
       streetAddress: streetAddress,
-      streetNumber: details.street_number,
+      secondStreetAddress: details.street_number,
       state: details.administrative_area_level_1,
       location: {
         lat: place.geometry.location.lat(),

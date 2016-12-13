@@ -17,10 +17,9 @@
 .google-map-info {
 	position: absolute;
 	color: red;
-	left: calc(100% / 2 + 10px);
-	line-height: 1;
+	width: 100%;
+	text-align: center;
 	font-weight: bold;
-	white-space: nowrap;
 }
 
 .gmnoprint, .gmnoscreen {

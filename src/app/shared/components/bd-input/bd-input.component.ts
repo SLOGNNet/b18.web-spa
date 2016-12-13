@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostBinding, forwardRef, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };
 let nextUniqueId = 0;
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
@@ -60,6 +60,8 @@ export class BdInputComponent {
     }
   }
 
+  @Output() valueChange = new EventEmitter();
+
   private _elementType: 'input' | 'textarea';
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
@@ -111,6 +113,7 @@ export class BdInputComponent {
 
   _handleChange(event: Event) {
     this.value = (<HTMLInputElement>event.target).value;
+    this.valueChange.emit(this.value);
     this._onTouchedCallback();
   }
 
