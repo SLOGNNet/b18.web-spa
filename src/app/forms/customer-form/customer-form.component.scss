@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .bd-button {
 	width: calc(50% - 3px);
 }
@@ -8,5 +10,24 @@
 
 	&.btn-container {
 		padding-top: 30px;
+	}
+}
+
+.same-as-company-label {
+	display: flex;
+	width: 100%;
+	border-bottom: $border;
+	margin-bottom: 0;
+	font-weight: normal;
+	padding-left: 15px;
+	min-height: $form-control-height;
+	align-items: center;
+
+	input {
+		margin: 0;
+	}
+
+	span {
+		padding-left: 15px;
 	}
 }

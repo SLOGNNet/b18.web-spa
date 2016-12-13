@@ -1,4 +1,5 @@
 import { Address } from './index';
+
 export enum CustomerTypes {
   Broker = 1,
   FreightForwarder = 2,
@@ -20,6 +21,8 @@ export class Customer {
   mc: string;
   taxId: string;
   address: Address;
+  billingAddresses: Address;
+  email: string;
 
   static create(): Customer{
     const result = new Customer();
@@ -30,4 +33,5 @@ export class Customer {
   constructor() {
     this.address = new Address();
   }
+
 }
