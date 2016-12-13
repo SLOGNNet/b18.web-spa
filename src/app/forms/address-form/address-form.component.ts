@@ -100,6 +100,6 @@ export class AddressForm {
     this.map = {
       location,
       labelText
-    }
+    };
   }
 }

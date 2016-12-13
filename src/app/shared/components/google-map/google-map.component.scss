@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables';
+
 .map {
 	position: relative;
 	overflow: hidden;
@@ -16,18 +18,21 @@
 
 .google-map-info {
 	position: absolute;
-	color: red;
 	width: 100%;
+	color: $red;
 	text-align: center;
 	font-weight: bold;
 }
 
-.gmnoprint, .gmnoscreen {
+.gmnoprint,
+.gmnoscreen {
 	display: none;
 	visibility: hidden;
 }
 
-img[src*="google4"],
-img[src*="google_white"] {
+img {
+	&[src*='google4'],
+	&[src*='google_white5'] {
 		display: none;
+	}
 }

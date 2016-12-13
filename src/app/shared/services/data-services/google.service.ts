@@ -7,8 +7,7 @@ declare var google: any;
 export class GoogleService {
   private predictionsService;
   private detailsService;
-
-  componentForm = {
+  private componentForm = {
     street_number: 'short_name',
     route: 'long_name',
     locality: 'long_name',
@@ -24,13 +23,13 @@ export class GoogleService {
 
   getPredictions(query: string): Observable<any[]> {
     return Observable.create((observer: any) => {
-      this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []))
+      this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []));
     });
   }
 
   getDetails(placeId: string): Observable<any> {
     return Observable.create((observer: any) => {
-      this.detailsService.getDetails({ placeId: placeId }, data => observer.next(this.formatDetails(data)))
+      this.detailsService.getDetails({ placeId: placeId }, data => observer.next(this.formatDetails(data)));
     });
   }
 
@@ -48,8 +47,8 @@ export class GoogleService {
       postal_code: ''
     };
 
-    for (var i = 0; i < place.address_components.length; i++) {
-      var addressType = place.address_components[i].types[0];
+    for (let i = 0; i < place.address_components.length; i++) {
+      let addressType = place.address_components[i].types[0];
 
       if (this.componentForm[addressType]) {
         details[addressType] = place.address_components[i][this.componentForm[addressType]];
@@ -73,6 +72,6 @@ export class GoogleService {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       }
-    }
+    };
   }
 }
