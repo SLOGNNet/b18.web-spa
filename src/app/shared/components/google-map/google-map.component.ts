@@ -108,7 +108,7 @@ export class GoogleMapComponent implements OnChanges {
     }
 
     private hideMapElelemts(): void {
-        this._infoLabel.style.visibility = 'visible';
-        this._mapTag.style.visibility = 'visible';
+        this._infoLabel.style.visibility = 'hidden';
+        this._mapTag.style.visibility = 'hidden';
     }
 }

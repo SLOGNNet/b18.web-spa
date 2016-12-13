@@ -1,9 +1,21 @@
 <form [formGroup]="addressForm">
-	<google-autocomplete
-		placeholder="Street address 1"
-		formControlName="streetAddress"
-		(onSelect)="onPlaceChanged($event)">
-	</google-autocomplete>
+	<template #customItemTemplate let-model="item" let-index="index">
+    <div class="item-wrapper">
+			<div class="text">
+				{{model.description}}
+			</div>
+    </div>
+</template>
+<bd-typeahead
+	formControlName="streetAddress"
+	placeholder="Street address 1"
+  [source]="placeSource"
+  (onRemove)="onRemove()"
+  [(value)]="placeQuery"
+  [itemTemplate]="customItemTemplate"
+  (onSelect)="onPlaceSelect($event)"
+	[optionField]="'description'">
+</bd-typeahead>
 	<div class="section">
 		<div class="left-side right-border">
 		<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">

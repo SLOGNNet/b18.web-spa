@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { NotificationService, CustomerService, SocketService, LoadService } from './services';
+import { NotificationService, CustomerService, SocketService, LoadService, GoogleService } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
@@ -15,7 +15,6 @@ import { BdInputComponent } from './components/bd-input';
 import { BdButtonComponent } from './components/bd-button';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { ViewModeToogleComponent } from './components/view-mode-toogle';
-import { GoogleAutocompleteComponent } from './components/google-autocomplete';
 import { GoogleMapComponent } from './components/google-map';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormSectionComponent } from './components/bd-form-section';
@@ -44,7 +43,6 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
     BdButtonComponent,
-    GoogleAutocompleteComponent,
     GoogleMapComponent
   ],
   imports: [
@@ -60,7 +58,6 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdTextareaAutosize,
     BdInputComponent,
     BdSpinnerComponent,
-    GoogleAutocompleteComponent,
     GoogleMapComponent,
     BdDropdownComponent,
     BdFormTypeaheadComponent,
