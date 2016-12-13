@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService, BdFormBuilder, BdFormGroup  } from '../../shared';
-import { Load, Customer } from '../../models';
+import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
+import { Load, Customer, driverRequirments, powerUnitTypes, trailerTypes } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 
@@ -12,12 +12,16 @@ import { ViewMode } from '../../shared/enums';
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
+  driverRequirments: Array<string>;
+  powerUnitTypes: Array<string>;
+  trailerTypes: Array<string>;
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
   private loadForm: BdFormGroup;
-  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder) {
+
+  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
 
   }
 
@@ -38,8 +42,16 @@ export class BdLoadFormComponent {
   }
 
   public initForm() {
+    this.driverRequirments = this.enumHelperService.getNames(driverRequirments);
+    this.powerUnitTypes = this.enumHelperService.getNames(powerUnitTypes);
+    this.trailerTypes = this.enumHelperService.getNames(trailerTypes);
+
     this.loadForm = this.formBuilder.group({
-      customer: [this.load.customer, Validators.required]
+      customer: [this.load.customer, Validators.required],
+      driverRequirment: [driverRequirments[this.load.driverRequirment]],
+      powerUnitType: [powerUnitTypes[this.load.powerUnitType]],
+      trailerType: [trailerTypes[this.load.trailerType]],
+      specialRequirment: [this.load.specialRequirment]
     });
   }
 
