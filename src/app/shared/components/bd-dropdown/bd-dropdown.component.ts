@@ -57,8 +57,8 @@ export class BdDropdownComponent implements ControlValueAccessor {
     this.value = null;
   }
 
-  public _handleDropdownItemClick(event): void {
-    this.value = event.target.getAttribute('value');
+  public _handleDropdownItemClick(event, item): void {
+    this.value = item;
     this._onChangeCallback(this.value);
     this._onTouchedCallback();
     this.onItemClick.emit(this.value);
