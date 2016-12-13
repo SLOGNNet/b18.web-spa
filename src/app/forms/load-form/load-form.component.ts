@@ -16,6 +16,7 @@ export class BdLoadFormComponent {
   powerUnitTypesNames: Array<string>;
   trailerTypesNames: Array<string>;
   @Input() load: Load;
+  private isEditMode: boolean = true;
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;

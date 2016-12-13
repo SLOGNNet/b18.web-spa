@@ -37,8 +37,8 @@
      </bd-validator>
       <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
       <bd-form-section>
-        <bd-dropdown [labelText]="'Driver'" formControlName="driverRequirment" [items]="driverRequirmentsNames">
-        </bd-dropdown>
+        <bd-form-switch [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+        </bd-form-switch>
         <bd-dropdown [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
         </bd-dropdown>
         <bd-dropdown [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
