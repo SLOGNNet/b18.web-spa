@@ -37,11 +37,11 @@
      </bd-validator>
       <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
       <bd-form-section [isExpanded]='isFormExpanded'>
-        <bd-dropdown [labelText]="'Driver'" formControlName="driverRequirment" [items]="driverRequirments">
+        <bd-dropdown [labelText]="'Driver'" formControlName="driverRequirment" [items]="driverRequirmentsNames">
         </bd-dropdown>
-        <bd-dropdown [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypes">
+        <bd-dropdown [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
         </bd-dropdown>
-        <bd-dropdown [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypes">
+        <bd-dropdown [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
         </bd-dropdown>
         <bd-textarea
         formControlName="specialRequirment"

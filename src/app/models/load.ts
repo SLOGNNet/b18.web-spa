@@ -5,19 +5,19 @@ export enum LoadStatuses {
   Assigned = 2
 }
 
-export enum driverRequirments {
+export enum DriverRequirments {
   Tom = 1,
   Harry = 2,
   Mike = 3,
 };
 
-export enum powerUnitTypes {
+export enum PowerUnitTypes {
   Tractor = 1,
   Bus = 2,
   Other = 3,
 };
 
-export enum trailerTypes {
+export enum TrailerTypes {
   Reefer = 1,
   DryVan = 2,
   Other = 3,
@@ -28,8 +28,8 @@ export class Load {
   customerId: number;
   status: LoadStatuses;
   customer: Customer;
-  driverRequirment: driverRequirments;
-  powerUnitType: powerUnitTypes;
-  trailerType: trailerTypes;
+  driverRequirment: DriverRequirments;
+  powerUnitType: PowerUnitTypes;
+  trailerType: TrailerTypes;
   specialRequirment: string;
 }

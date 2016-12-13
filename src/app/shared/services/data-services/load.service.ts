@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Load, Customer, LoadStatuses, driverRequirments, powerUnitTypes, trailerTypes } from './models';
+import { Load, Customer, LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
@@ -16,27 +16,27 @@ export class LoadService {
       customerId: 1,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: driverRequirments.Tom,
-      powerUnitType: powerUnitTypes.Tractor,
-      trailerType: trailerTypes.Reefer,
+      driverRequirment: DriverRequirments.Tom,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.Reefer,
       specialRequirment: 'specialRequirments1'
     },
     { id: 2,
       customerId: 2,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: driverRequirments.Mike,
-      powerUnitType: powerUnitTypes.Tractor,
-      trailerType: trailerTypes.Other,
+      driverRequirment: DriverRequirments.Mike,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.Other,
       specialRequirment: 'specialRequirments2'
     },
     { id: 3,
       customerId: 3,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: driverRequirments.Harry,
-      powerUnitType: powerUnitTypes.Other,
-      trailerType: trailerTypes.DryVan,
+      driverRequirment: DriverRequirments.Harry,
+      powerUnitType: PowerUnitTypes.Other,
+      trailerType: TrailerTypes.DryVan,
       specialRequirment: 'specialRequirments3'
     },
   ];
