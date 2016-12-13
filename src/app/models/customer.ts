@@ -21,6 +21,12 @@ export class Customer {
   taxId: string;
   address: Address;
 
+  static create(): Customer{
+    const result = new Customer();
+    result.status = CustomerStatuses.INACTIVE;
+    return result;
+  }
+
   constructor() {
     this.address = new Address();
   }

@@ -5,10 +5,8 @@
 			</bd-input>
 			<bd-dropdown [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
 			</bd-dropdown>
-			<bd-validator [component]="customerForm.controls.status" [errorDefs]="{required: 'Status is required'}">
-				<bd-dropdown [labelText]="'Status'" formControlName="status" [items]="customerStatuses">
-				</bd-dropdown>
-			</bd-validator>
+			<bd-form-switch [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
+			</bd-form-switch>
 			<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
 				<bd-input [labelText]="'MC #'" formControlName="mc">
 				</bd-input>
