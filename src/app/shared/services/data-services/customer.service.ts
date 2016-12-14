@@ -18,6 +18,10 @@ export class CustomerService {
     fax: '',
     phoneExtension: '311',
     faxExtension: '322',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   },
   {
     streetAddress: 'test',
@@ -29,6 +33,10 @@ export class CustomerService {
     fax: '44',
     phoneExtension: '441',
     faxExtension: '36',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   }
 ];
 
@@ -43,6 +51,10 @@ private _billingAddresses = [{
   fax: '',
   phoneExtension: '355',
   faxExtension: '377',
+  location: {
+    lat: 0,
+    lng: 0
+  }
 },
 {
   streetAddress: 'billing street address 2',
@@ -54,14 +66,18 @@ private _billingAddresses = [{
   fax: '44',
   phoneExtension: '455',
   faxExtension: '477',
+  location: {
+   lat: 0,
+   lng: 0
+  }
 }
 ];
 
   private _customersData: Array<Customer> = [
     { id: 1, name: 'ARP Logistic INC', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty1@gmail.com',
-      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
     { id: 2, name: 'DNS Logistic Corp', address: this._addresses[1], billingAddresses: this._billingAddresses[1], email: 'qwerty2@gmail.com',
-      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
+      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
     { id: 3, name: 'Purum Company', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty3@gmail.com',
       status: CustomerStatuses.INACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '254785' },
     { id: 4, name: 'Approximately', address: this._addresses[1], billingAddresses: this._billingAddresses[0], email: 'qwerty4@gmail.com',

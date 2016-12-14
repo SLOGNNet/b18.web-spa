@@ -13,7 +13,7 @@
       [collapsibleInput]="true"
       [labelText]="labelText"
       [typeaheadItemTemplate]="itemTemplate"
-      [typeaheadFooterTemplate]="footerTemplate"
+      [typeaheadFooterTemplate]="footerButtonText == '' ? null : footerTemplate"
       [typeaheadLoaderTemplate]="loaderTemplate"
       [typeaheadOptionField]="optionField"
       (typeaheadOnSelect)="typeaheadOnSelect($event)"
@@ -21,6 +21,6 @@
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
       (typeaheadFooterClick)="onFooterClick()"
       [typeaheadOptionsLimit]="'5'">
-      <i bd-suffix (click)="remove($event)" class="fa fa-minus-circle" aria-hidden="true"></i>
+      <i bd-suffix *ngIf="!removeButtonHidden" (click)="remove($event)" class="fa fa-minus-circle" aria-hidden="true"></i>
   </bd-input>
 </div>

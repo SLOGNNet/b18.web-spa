@@ -1,23 +1,41 @@
 <form [formGroup]="addressForm">
-	<bd-input placeholder="Street address 1" formControlName="streetAddress">
-	</bd-input>
+	<template #customItemTemplate let-model="item" let-index="index">
+    <div class="item-wrapper">
+			<div class="text">
+				{{model.description}}
+			</div>
+    </div>
+</template>
+<bd-typeahead
+	formControlName="streetAddress"
+	placeholder="Street address 1"
+  [source]="_placeSource"
+  [(value)]="_placeQuery"
+  [itemTemplate]="customItemTemplate"
+	[removeButtonHidden]="true"
+  (onSelect)="onPlaceSelect($event)"
+	[optionField]="'description'">
+</bd-typeahead>
 	<div class="section">
 		<div class="left-side right-border">
-			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
-			</bd-input>
-			<bd-input formControlName="city">
+		<bd-input placeholder="Street address 2" (valueChange)="onRemoveMap($event)" formControlName="secondStreetAddress">
+		</bd-input>
+			<bd-input formControlName="city" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
 				<div class="right-border">
-					<bd-input placeholder="State" formControlName="state">
+					<bd-input placeholder="State" formControlName="state" (valueChange)="onRemoveMap($event)">
 					</bd-input>
 				</div>
-				<bd-input placeholder="Zip" formControlName="zip">
+				<bd-input placeholder="Zip" (valueChange)="onRemoveMap($event)" formControlName="zip">
 				</bd-input>
 			</div>
 		</div>
 		<div class="right-side bottom-border">
-			google map
+			<google-map
+				[location]="_map.location"
+				[info]="_map.labelText">
+			</google-map>
 		</div>
 	</div>
 	<div class="section">
