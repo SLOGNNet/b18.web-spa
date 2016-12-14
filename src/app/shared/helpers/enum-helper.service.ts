@@ -10,6 +10,16 @@ export class EnumHelperService {
     return this.getObjectValues(e).filter(function(v) { return typeof v === 'string'; });
   };
 
+  public getDropdownKeyValues(e) {
+    const keyValues = [];
+    const keys = Object.keys(e).filter((el) => !isNaN(parseInt(el, 10)));
+    for (let i = 0; i < keys.length; i++) {
+        const key =  keys[i];
+        keyValues.push({key: parseInt(key, 10), value: e[key]});
+    }
+    return keyValues;
+  }
+
   private getObjectValues(e) {
     return Object.keys(e).map(function(k) { return e[k]; });
   };

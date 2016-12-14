@@ -1,9 +1,16 @@
-import { Component, Input, Optional } from '@angular/core';
-import { NgControl, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, Optional, ChangeDetectorRef, forwardRef } from '@angular/core';
+import { NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => { };
+
+export const BD_FORM_SWITCHL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => BdFormSwitchComponent),
+  multi: true
+};
 
 @Component({
   selector: 'bd-form-switch',
+  providers: [BD_FORM_SWITCHL_VALUE_ACCESSOR],
   templateUrl: './bd-form-switch.component.html'
 })
 export class BdFormSwitchComponent implements ControlValueAccessor {
@@ -17,10 +24,9 @@ export class BdFormSwitchComponent implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor(@Optional() ngControl: NgControl) {
-    if (ngControl) {
-      ngControl.valueAccessor = this;
-    }
+  onItemClick(item) {
+    this.selectedValue = item.key;
+    this._onChangeCallback(item.key);
   }
 
   writeValue(value: any) {

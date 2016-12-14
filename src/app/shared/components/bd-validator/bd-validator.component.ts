@@ -28,7 +28,7 @@ export class BdValidatorComponent implements OnChanges {
   checkErrors(control) {
     this.errorMessage = '';
     const errors = control.errors;
-    if (errors /* && control.parent._submitted && control.touched */) {
+    if (errors && control.parent._submitted /* && control.touched */) {
       Object.keys(this.errorDefs).some(key => {
         if (errors[key]) {
           this.errorMessage = this.errorDefs[key];

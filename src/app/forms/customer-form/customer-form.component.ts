@@ -1,5 +1,5 @@
 import { Component, Input  } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
 import { ViewMode } from '../../shared/enums';
@@ -12,12 +12,13 @@ import { ViewMode } from '../../shared/enums';
 export class CustomerForm {
 
   @Input() public customer: Customer;
-  @Input() public viewMode: ViewMode = ViewMode.View;
+  @Input() public viewMode: ViewMode = ViewMode.Edit;
   @Input() isExpanded: boolean = false;
-  customerForm: BdFormGroup;
-  customerTypes: Array<string>;
+
+  customerForm: FormGroup;
+  customerTypes: Array<any>;
   selectedCustomerType: string;
-  customerStatuses: Array<string>;
+  customerStatuses: Array<any>;
   selectedCustomerStatus: string;
 
   private get isEditMode(): boolean {
@@ -28,11 +29,9 @@ export class CustomerForm {
     return this.isExpanded || this.isEditMode;
   }
 
-  constructor(private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
-  }
-
-  controlVisible(name) {
-    return this.customerForm.controlVisible(name);
+  constructor(private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
+    this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
+    this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
 
   ngOnChanges(changes: any) {
@@ -40,26 +39,20 @@ export class CustomerForm {
   }
 
   initForm() {
-    this.customerTypes = this.enumHelperService.getNames(CustomerTypes);
-    this.customerStatuses = this.enumHelperService.getNames(CustomerStatuses);
-
     this.customerForm = this.formBuilder.group({
-      name: {
-        formState: this.customer.name
-      },
-      customerType: [CustomerTypes[this.customer.type]],
-      status: [CustomerStatuses[this.customer.status], Validators.required],
+      name: [this.customer.name],
+      customerType: [this.customer.type],
+      status: [this.customer.status, Validators.required],
       mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({ }),
       billingAddresses : this.formBuilder.group({ }),
       email: [this.customer.email]
     });
-    this.customerForm.setViewMode(ViewMode.View);
+    //  this.customerForm.setViewMode(ViewMode.View);
   }
 
-  onSubmit() {
-    this.customerForm.submit();
+  onSubmit(value: Customer) {
   }
 
   sameAsCompanyChange(event) {

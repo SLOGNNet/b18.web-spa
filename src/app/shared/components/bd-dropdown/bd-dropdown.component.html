@@ -24,14 +24,12 @@
       <li
         *ngIf="dropdownHeaderTemplate"
         class="dropdown-header"
-        attr.value="false"
         (click)="_handleDropdownHeaderClick($event)">
           <template
             [ngTemplateOutlet]="dropdownHeaderTemplate">
           </template>
       </li>
       <li *ngFor="let item of _items"
-          attr.value="{{item}}"
           (click)="_handleDropdownItemClick($event, item)">
           <div *ngIf="dropdownItemTemplate">
             <template
@@ -40,7 +38,7 @@
             </template>
           </div>
           <div *ngIf="!dropdownItemTemplate">
-            {{item}}
+            {{displayText(item)}}
           </div>
       </li>
      <li

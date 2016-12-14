@@ -19,3 +19,18 @@
 .bottom-border {
 	border-bottom: $border;
 }
+
+.item-wrapper {
+	display: flex;
+	overflow: hidden;
+	height: 100%;
+	padding: 0 17px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	.text {
+		color: $black;
+		font-size: 14px;
+	}
+}
