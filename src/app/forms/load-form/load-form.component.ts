@@ -12,9 +12,9 @@ import { ViewMode } from '../../shared/enums';
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
-  driverRequirmentsNames: Array<string>;
-  powerUnitTypesNames: Array<string>;
-  trailerTypesNames: Array<string>;
+  driverRequirmentsNames: Array<any>;
+  powerUnitTypesNames: Array<any>;
+  trailerTypesNames: Array<any>;
   @Input() load: Load;
   private isEditMode: boolean = true;
   private customerSource: any[];
@@ -23,7 +23,9 @@ export class BdLoadFormComponent {
   private loadForm: BdFormGroup;
 
   public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
-
+    this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
+    this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
+    this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
   }
 
   ngOnChanges(changes: any) {
@@ -43,15 +45,12 @@ export class BdLoadFormComponent {
   }
 
   public initForm() {
-    this.driverRequirmentsNames = this.enumHelperService.getNames(DriverRequirments);
-    this.powerUnitTypesNames = this.enumHelperService.getNames(PowerUnitTypes);
-    this.trailerTypesNames = this.enumHelperService.getNames(TrailerTypes);
 
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
-      driverRequirment: [DriverRequirments[this.load.driverRequirment]],
-      powerUnitType: [PowerUnitTypes[this.load.powerUnitType]],
-      trailerType: [TrailerTypes[this.load.trailerType]],
+      driverRequirment: [this.load.driverRequirment],
+      powerUnitType: [this.load.powerUnitType],
+      trailerType: [this.load.trailerType],
       specialRequirment: [this.load.specialRequirment]
     });
   }
