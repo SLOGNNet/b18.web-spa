@@ -1,5 +1,5 @@
 import { Component, Input  } from '@angular/core';
-import { Validators, FormBuilder, FormGroup} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
 import { ViewMode } from '../../shared/enums';
@@ -34,10 +34,6 @@ export class CustomerForm {
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
 
-  controlVisible(name) {
-    //return this.customerForm.controlVisible(name);
-  }
-
   ngOnChanges(changes: any) {
     this.initForm();
   }
@@ -53,7 +49,7 @@ export class CustomerForm {
       billingAddresses : this.formBuilder.group({ }),
       email: [this.customer.email]
     });
-  //  this.customerForm.setViewMode(ViewMode.View);
+    //  this.customerForm.setViewMode(ViewMode.View);
   }
 
   onSubmit(value: Customer) {
