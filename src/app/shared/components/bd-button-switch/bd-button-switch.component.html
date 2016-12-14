@@ -5,10 +5,10 @@
   <div class="bd-buttons-container">
     <button
       *ngFor="let item; of:items; let i=index"
-      attr.value="{{item}}"
+      type='button'
       [class.active]="isActive(item)"
-      (click)="_handleItemClick($event)">
-        {{item}}
+      (click)="_handleItemClick($event, item)">
+        {{displayText(item)}}
     </button>
   </div>
 </div>

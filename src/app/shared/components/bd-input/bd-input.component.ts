@@ -84,10 +84,6 @@ export class BdInputComponent {
     this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
-
-    // if (ngControl) {
-    //   ngControl.valueAccessor = this;
-    // }
   }
 
   coerceBooleanProperty(value: any): boolean {

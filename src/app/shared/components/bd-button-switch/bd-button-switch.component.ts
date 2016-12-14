@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => { };
 
 @Component({
@@ -7,10 +7,13 @@ const noop = () => { };
   styleUrls: ['./bd-button-switch.component.scss'],
   templateUrl: './bd-button-switch.component.html'
 })
-export class BdButtonSwitchComponent implements ControlValueAccessor {
+export class BdButtonSwitchComponent implements ControlValueAccessor  {
 
   @Input() labelText: string;
   @Input() items: any[];
+  @Input() keyField: string = 'key';
+  @Input() valueField: string = 'value';
+  @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
 
   @Input() set selectedValue(v: any) {
         this._selectedValue = v;
@@ -22,6 +25,10 @@ export class BdButtonSwitchComponent implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
   private _selectedValue: any;
+
+  displayText(item: any) {
+    return item[this.valueField];
+  }
 
   writeValue(value: any) {
     this.selectedValue = value;
@@ -36,11 +43,12 @@ export class BdButtonSwitchComponent implements ControlValueAccessor {
   }
 
   private isActive(element) {
-    return element === this.selectedValue;
+    return element[this.keyField] === this.selectedValue;
   }
 
-  private _handleItemClick(event){
-    this.selectedValue = event.target.getAttribute('value');
+  private _handleItemClick(event, item){
+    this.selectedValue = item[this.keyField];
     this._onChangeCallback(this.selectedValue);
+    this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField]});
   }
 }
