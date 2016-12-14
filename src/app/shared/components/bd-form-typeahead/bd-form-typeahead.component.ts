@@ -17,6 +17,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
+  @Input() placeholder: string;
   @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
