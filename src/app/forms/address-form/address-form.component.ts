@@ -42,18 +42,14 @@ export class AddressForm {
 
 
   constructor(
-    private changeDetectionRef: ChangeDetectorRef,
-    private formBuilder: BdFormBuilder,
-    private googleService: GoogleService) {
-  }
-
-  ngAfterViewInit() {
-    this.changeDetectionRef.detectChanges();
+    private _changeDetectionRef: ChangeDetectorRef,
+    private _formBuilder: BdFormBuilder,
+    private _googleService: GoogleService) {
   }
 
   ngOnChanges(changes: any) {
     this.initForm();
-    this.initPlaceTypeahead();
+    this._initPlaceTypeahead();
     this._updateMap(this.address.location, this.address.streetAddress);
   }
 
@@ -61,7 +57,7 @@ export class AddressForm {
     this.fields.forEach(field => {
       this.addressForm.addControl(
         field.name,
-        this.formBuilder.control(this.address[field.name], field.validators)
+        this._formBuilder.control(this.address[field.name], field.validators)
       );
     });
   }
@@ -71,13 +67,13 @@ export class AddressForm {
   }
 
   public onPlaceSelect(place) {
-    this.googleService.getDetails(place.place_id)
+    this._googleService.getDetails(place.place_id)
       .subscribe(detail => {
         if (detail) {
           this.placeQuery = detail.streetAddress;
           this._updateMap(detail.location, detail.streetAddress);
           this.addressForm.setValue(Object.assign({}, this.address, detail));
-          this.changeDetectionRef.detectChanges();
+          this._changeDetectionRef.detectChanges();
         }
       });
 
@@ -88,12 +84,12 @@ export class AddressForm {
     this.placeViewMode = viewMode;
   }
 
-  private initPlaceTypeahead() {
+  private _initPlaceTypeahead() {
     this.placeQuery = this.address.streetAddress;
 
     this.placeSource = Observable.create((observer: any) => {
       observer.next(this.placeQuery);
-    }).mergeMap((token: string) => this.googleService.getPredictions(token));
+    }).mergeMap((token: string) => this._googleService.getPredictions(token));
   }
 
   private _updateMap(location = { lat: 0, lng: 0}, labelText = ''): void {
