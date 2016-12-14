@@ -17,10 +17,10 @@ export class AddressForm {
   public addressForm: BdFormGroup;
   @Input() isExpanded: boolean = false;
 
-  private placeSource: any[];
-  private placeQuery: string = '';
-  private placeViewMode: ViewMode = ViewMode.View;
-  private map = {
+  private _placeSource: any[];
+  private _placeQuery: string = '';
+  private _placeViewMode: ViewMode = ViewMode.View;
+  private _map = {
     labelText: '',
     location: {
       lat: 0,
@@ -70,30 +70,30 @@ export class AddressForm {
     this._googleService.getDetails(place.place_id)
       .subscribe(detail => {
         if (detail) {
-          this.placeQuery = detail.streetAddress;
+          this._placeQuery = detail.streetAddress;
           this._updateMap(detail.location, detail.streetAddress);
           this.addressForm.setValue(Object.assign({}, this.address, detail));
           this._changeDetectionRef.detectChanges();
         }
       });
 
-    this.placeViewMode = ViewMode.View;
+    this._placeViewMode = ViewMode.View;
   }
 
   public placeViewModeChanged(viewMode) {
-    this.placeViewMode = viewMode;
+    this._placeViewMode = viewMode;
   }
 
   private _initPlaceTypeahead() {
-    this.placeQuery = this.address.streetAddress;
+    this._placeQuery = this.address.streetAddress;
 
-    this.placeSource = Observable.create((observer: any) => {
-      observer.next(this.placeQuery);
+    this._placeSource = Observable.create((observer: any) => {
+      observer.next(this._placeQuery);
     }).mergeMap((token: string) => this._googleService.getPredictions(token));
   }
 
   private _updateMap(location = { lat: 0, lng: 0}, labelText = ''): void {
-    this.map = {
+    this._map = {
       location,
       labelText
     };

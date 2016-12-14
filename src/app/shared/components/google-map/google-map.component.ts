@@ -73,22 +73,22 @@ export class GoogleMapComponent implements OnChanges {
             this._marker.setVisible(false);
 
             if (location['lat'] && location['lng']) {
-                this.showMapElelemts();
+                this._showMapElelemts();
 
-                this.updateMap(location);
-                this.updateMarker(location);
-                this.updateInfowindow(info);
+                this._updateMap(location);
+                this._updateMarker(location);
+                this._updateInfowindow(info);
             } else {
-                this.hideMapElelemts();
+                this._hideMapElelemts();
             }
         }
     }
 
-    private updateMap(location: Object): void {
+    private _updateMap(location: Object): void {
         this._map.setCenter(location);
     }
 
-    private updateMarker(location: Object): void {
+    private _updateMarker(location: Object): void {
         this._marker.setIcon({
             url: this.markerIcon,
             scaledSize: new google.maps.Size(this.markerSize, this.markerSize),
@@ -98,16 +98,16 @@ export class GoogleMapComponent implements OnChanges {
         this._marker.setVisible(true);
     }
 
-    private updateInfowindow(info = ''): void {
+    private _updateInfowindow(info = ''): void {
         this._infoLabel.innerText = info;
     }
 
-    private showMapElelemts(): void {
+    private _showMapElelemts(): void {
         this._infoLabel.style.visibility = 'visible';
         this._mapTag.style.visibility = 'visible';
     }
 
-    private hideMapElelemts(): void {
+    private _hideMapElelemts(): void {
         this._infoLabel.style.visibility = 'hidden';
         this._mapTag.style.visibility = 'hidden';
     }
