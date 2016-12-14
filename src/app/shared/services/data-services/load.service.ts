@@ -16,7 +16,7 @@ export class LoadService {
       customerId: 1,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Tom,
+      driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.Reefer,
       specialRequirment: 'specialRequirments1'
@@ -25,7 +25,7 @@ export class LoadService {
       customerId: 2,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Mike,
+      driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.Other,
       specialRequirment: 'specialRequirments2'
@@ -34,9 +34,9 @@ export class LoadService {
       customerId: 3,
       customer: null,
       status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Harry,
+      driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Other,
-      trailerType: TrailerTypes.DryVan,
+      trailerType: TrailerTypes.Reefer,
       specialRequirment: 'specialRequirments3'
     },
   ];

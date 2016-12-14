@@ -6,21 +6,24 @@ export enum LoadStatuses {
 }
 
 export enum DriverRequirments {
-  Tom = 1,
-  Harry = 2,
-  Mike = 3,
+  Solo = 1
 };
 
 export enum PowerUnitTypes {
   Tractor = 1,
-  Bus = 2,
-  Other = 3,
+  StraightTruck25 = 2,
+  StraightTruckFlatbed = 3,
+  Bus = 4,
+  Other = 5
 };
 
 export enum TrailerTypes {
-  Reefer = 1,
-  DryVan = 2,
-  Other = 3,
+  DryVan53 = 1,
+  Reefer = 2,
+  DryVan48 = 3,
+  Reefer48 = 4,
+  FlatBed53 = 5,
+  Other = 6,
 };
 
 export class Load {
