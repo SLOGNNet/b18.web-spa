@@ -52,8 +52,8 @@ private _billingAddresses = [{
   phoneExtension: '355',
   faxExtension: '377',
   location: {
-   lat: 0,
-   lng: 0
+    lat: 0,
+    lng: 0
   }
 },
 {
