@@ -18,6 +18,10 @@ export class CustomerService {
     fax: '',
     phoneExtension: '311',
     faxExtension: '322',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   },
   {
     streetAddress: 'test',
@@ -29,6 +33,10 @@ export class CustomerService {
     fax: '44',
     phoneExtension: '441',
     faxExtension: '36',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
   }
 ];
 
@@ -43,6 +51,10 @@ private _billingAddresses = [{
   fax: '',
   phoneExtension: '355',
   faxExtension: '377',
+  location: {
+    lat: 0,
+    lng: 0
+  }
 },
 {
   streetAddress: 'billing street address 2',
@@ -54,6 +66,10 @@ private _billingAddresses = [{
   fax: '44',
   phoneExtension: '455',
   faxExtension: '477',
+  location: {
+    lat: 0,
+    lng: 0
+  }
 }
 ];
 
