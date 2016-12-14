@@ -14,7 +14,7 @@ const noop = () => { };
   encapsulation: ViewEncapsulation.None
 })
 export class BdFormTypeaheadComponent implements ControlValueAccessor {
-  @Input() deleteButtonHidden = false;
+  @Input() removeButtonHidden = false;
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
   @Input() public footerButtonText: string = '';
