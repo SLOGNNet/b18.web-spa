@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService, BdFormBuilder, BdFormGroup  } from '../../shared';
-import { Load, Customer } from '../../models';
+import { CustomerService, BdFormBuilder, BdFormGroup, ContactService } from '../../shared';
+import { Load, Customer , Contacts} from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 
@@ -17,7 +17,7 @@ export class BdLoadFormComponent {
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
   private loadForm: BdFormGroup;
-  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder) {
+  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private contactService: ContactService) {
 
   }
 
@@ -38,6 +38,7 @@ export class BdLoadFormComponent {
   }
 
   public initForm() {
+    console.log(this.contactService.getContacts());
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required]
     });

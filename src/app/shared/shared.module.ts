@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { NotificationService, CustomerService, SocketService, LoadService } from './services';
+import { NotificationService, CustomerService, SocketService, LoadService, ContactService } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
@@ -26,6 +26,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     LoadService,
     SocketService,
     CustomerService,
+    ContactService,
     EnumHelperService,
     BdFormBuilder
   ],
