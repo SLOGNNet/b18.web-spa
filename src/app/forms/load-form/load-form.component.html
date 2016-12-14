@@ -36,6 +36,18 @@
        </bd-typeahead>
      </bd-validator>
       <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
+      <bd-form-section>
+        <bd-form-switch [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+        </bd-form-switch>
+        <bd-dropdown [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+        </bd-dropdown>
+        <bd-dropdown [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+        </bd-dropdown>
+        <bd-textarea
+        formControlName="specialRequirment"
+         [labelText]="'Special Requirements'">
+        </bd-textarea>
+      </bd-form-section>
   </div>
 </form>
 </div>
