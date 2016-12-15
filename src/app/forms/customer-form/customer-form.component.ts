@@ -3,13 +3,13 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
 import { ViewMode } from '../../shared/enums';
-
+import { BaseForm } from '../index'
 @Component({
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss']
 })
-export class CustomerForm {
+export class CustomerForm extends BaseForm{
 
   @Input() public customer: Customer;
   @Input() public viewMode: ViewMode = ViewMode.Edit;
@@ -23,16 +23,13 @@ export class CustomerForm {
   customerStatuses: Array<any>;
   selectedCustomerStatus: string;
 
-  private get isEditMode(): boolean {
-    return this.viewMode === ViewMode.Edit;
-  }
-
   private get isFormExpanded(): boolean {
     return this.isExpanded || this.isEditMode;
   }
 
   constructor(private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService) {
+    super();
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
