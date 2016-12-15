@@ -1,6 +1,6 @@
 <multi-pane-layout>
     <first-pane>
-      <datatable
+      <swui-datatable
           class='material striped'
           [rows]='loads'
           [columns]="columns"
@@ -11,7 +11,7 @@
           [selectionType]="'single'"
           (select)='onLoadSelect($event)'
           [limit]="10">
-      </datatable>
+      </swui-datatable>
     </first-pane>
 
     <second-pane>
