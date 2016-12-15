@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Address } from '../../models';
 import { ViewMode } from '../../shared/enums';
-import { EnumHelperService, BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
+import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
 
 @Component({
   selector: 'address-form',
@@ -16,10 +16,10 @@ export class AddressForm {
   @Input('group')
   public addressForm: BdFormGroup;
   @Input() isExpanded: boolean = false;
+  @Input() viewMode = ViewMode.View;
 
   private _placeSource: any[];
   private _placeQuery: string = '';
-  private _placeViewMode: ViewMode = ViewMode.View;
   private _map = {
     labelText: '',
     location: {
@@ -45,6 +45,11 @@ export class AddressForm {
     private _changeDetectionRef: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
     private _googleService: GoogleService) {
+  }
+
+  get formViewMode () {
+    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
+    return mode;
   }
 
   ngOnChanges(changes: any) {
@@ -76,12 +81,6 @@ export class AddressForm {
           this._changeDetectionRef.detectChanges();
         }
       });
-
-    this._placeViewMode = ViewMode.View;
-  }
-
-  public placeViewModeChanged(viewMode) {
-    this._placeViewMode = viewMode;
   }
 
   private _initPlaceTypeahead() {

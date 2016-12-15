@@ -16,15 +16,18 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
+  @Input() keyField: string = 'key';
+  @Input() valueField: string = 'value';
 
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
 
+  @HostBinding('class.bd-focused') _isOpen: boolean = false;
+
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
-  private _items: any[];
+  private _items: any[] = [];
   private _selectedValue: any;
-  private value: any;
 
   constructor(@Optional() ngControl: NgControl) {
     if (ngControl) {
@@ -33,11 +36,26 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   get currentDisplayText(){
-    return this.value ? this.value : this.defaultTitleText;
+    let result = this.defaultTitleText;
+    const selectedItem = this.getSelectedItem();
+    if (selectedItem) {
+      result = this.displayText(selectedItem);
+    }
+    return result;
+  }
+
+  getSelectedItem() {
+    const selectedItem = this.items && this.items
+      .find((item) => item[this.keyField] === this._selectedValue);
+      return selectedItem;
+  }
+
+  displayText(item: any) {
+    return item[this.valueField];
   }
 
   get isSelectedValue(){
-    return this.value;
+    return this._selectedValue;
   }
 
   @Input() set items(args: any[]){
@@ -47,29 +65,32 @@ export class BdDropdownComponent implements ControlValueAccessor {
     return this._items;
   }
 
-  @Input() set selectedValue(v: any) {
-    this._selectedValue = v;
-    this.value = this._selectedValue;
-    this._onChangeCallback(v);
+  @Input() set selectedValue(value: any) {
+    this._selectedValue = value;
+    this._onChangeCallback(this._selectedValue);
   }
 
   public _handleDropdownHeaderClick(event): void {
-    this.value = null;
+    this._selectedValue = null;
   }
 
   public _handleDropdownItemClick(event, item): void {
-    this.value = item;
-    this._onChangeCallback(this.value);
+    this._selectedValue = item[this.keyField];
+    this._onChangeCallback(this._selectedValue);
     this._onTouchedCallback();
-    this.onItemClick.emit(this.value);
+    this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField]});
   }
 
   public _handleFooterClick(event): void {
     this.onFooterClick.emit(event);
   }
 
+  onToggle(isOpen) {
+    this._isOpen = isOpen;
+  }
+
   writeValue(value: any) {
-    this.value = value;
+    this._selectedValue = value;
   }
 
   registerOnChange(fn: any) {
