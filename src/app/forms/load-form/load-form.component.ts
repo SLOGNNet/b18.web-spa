@@ -44,6 +44,11 @@ export class BdLoadFormComponent {
     this.customerViewMode = ViewMode.Edit;
   }
 
+  get formViewMode () {
+    const mode = this.customerViewMode === ViewMode.Edit ? 'edit' : 'view';
+    return mode;
+  }
+
   public initForm() {
 
     this.loadForm = this.formBuilder.group({
