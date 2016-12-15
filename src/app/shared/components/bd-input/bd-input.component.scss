@@ -1,183 +1,176 @@
 @import '../../../../assets/styles/variables';
-
 @keyframes labelFlight {
-	from {
-		left: 200px;
-	}
+  from {
+    left: 200px;
+  }
 
-	to {
-		left: 0;
-	}
+  to {
+    left: 0;
+  }
 }
-
 @mixin flex-element {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
-
 @mixin input-textarea {
-	position: relative;
-	z-index: 1;
-	width: 100%;
-	padding: 8px 0;
-	border: 0;
-	background: none;
-	box-shadow: none;
-	outline: 0;
-	resize: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  outline: 0;
+  resize: none;
 
-	&:focus {
-		&::placeholder {
-			color: $label-default-color;
-			opacity: 1;
-		}
-	}
+  &:focus {
+    &::placeholder {
+      color: $label-default-color;
+      opacity: 1;
+    }
+  }
 
-	&::placeholder {
-		color: $placeholder-color;
-		opacity: 1;
-	}
+  &::placeholder {
+    color: $placeholder-color;
+    opacity: 1;
+  }
 }
 
 .bd-input-wrapper {
-	@include flex-element;
-	position: relative;
-	overflow: hidden;
-	width: 100%;
-	padding: 0 17px;
-	min-height: $form-control-height;
-	border-bottom: $border;
-	margin-bottom: 0;
-	flex-flow: row wrap;
-	background-color: inherit;
+  @include flex-element;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 17px;
+  min-height: $form-control-height;
+  border-bottom: $border;
+  margin-bottom: 0;
+  flex-flow: row wrap;
+  background-color: inherit;
 
-	.bd-label {
-		display: flex;
-		width: 80px;
-		height: $form-control-height;
-		color: $label-default-color;
-		font-size: $mini-font-size;
-		align-self: flex-start;
-		margin-left: -17px;
-		margin-right: 32px;
-		align-items: center;
-		justify-content: flex-end;
+  .bd-label {
+    display: flex;
+    width: 80px;
+    height: $form-control-height;
+    color: $label-default-color;
+    font-size: $mini-font-size;
+    align-self: flex-start;
+    margin-left: -17px;
+    margin-right: 32px;
+    align-items: center;
+    justify-content: flex-end;
 
-		label {
-			margin: 0;
-			font-weight: normal;
-		}
-	}
+    label {
+      margin: 0;
+      font-weight: normal;
+    }
+  }
 
-	.bd-hidden-label {
-		display: none;
-	}
+  .bd-hidden-label {
+    display: none;
+  }
 
-	.bd-input {
-		@include flex-element;
-		flex-grow: 1;
-		justify-content: space-between;
+  .bd-input {
+    @include flex-element;
+    flex-grow: 1;
+    justify-content: space-between;
 
-		.bd-input-prefix {
-			@include flex-element;
-			display: flex;
-			height: $form-control-height;
-			align-self: flex-start;
-			align-items: center;
-			justify-content: flex-end;
-			flex-grow: 0;
-			margin-right: 15px;
-		}
+    .bd-input-prefix {
+      @include flex-element;
+      display: flex;
+      height: $form-control-height;
+      align-self: flex-start;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 0;
+      margin-right: 15px;
+    }
 
-		.bd-input-infix {
-			@include flex-element;
-			flex-grow: 1;
-			min-height: $form-control-height;
+    .bd-input-infix {
+      @include flex-element;
+      flex-grow: 1;
+      min-height: $form-control-height;
 
-			input {
-				@include input-textarea;
-			}
+      input {
+        @include input-textarea;
+      }
 
-			textarea {
-				@include input-textarea;
-				overflow: hidden;
-				align-self: flex-start;
-				margin-top: 7px;
-			}
-		}
+      textarea {
+        @include input-textarea;
+        overflow: hidden;
+        align-self: flex-start;
+        margin-top: 7px;
+      }
+    }
 
-		.bd-input-suffix {
-			@include flex-element;
-			flex-grow: 0;
-			margin-left: 15px;
-		}
-	}
+    .bd-input-suffix {
+      @include flex-element;
+      flex-grow: 0;
+      margin-left: 15px;
+    }
+  }
 
-	&.bd-focused {
-		border-bottom-color: $label-active-color;
+  &.bd-focused {
+    border-bottom-color: $label-active-color;
 
-		.bd-label {
-			color: $label-active-color;
-		}
-	}
+    .bd-label {
+      color: $label-active-color;
+    }
+  }
 
-	&.bd-collapsed-input {
+  &.bd-collapsed-input {
+    .bd-input {
+      width: 0;
 
-		.bd-input {
-			width: 0;
+      .bd-input-prefix,
+      .bd-input-suffix {
+        display: none;
+      }
 
-			.bd-input-suffix,
-			.bd-input-prefix {
-				display: none;
-			}
+      .bd-input-infix {
+        input,
+        textarea {
+          &::placeholder {
+            color: $white;
+            opacity: 0;
+          }
+        }
+      }
+    }
 
-			.bd-input-infix {
-				input,
-				textarea {
+    .bd-label {
+      width: auto;
+      margin: 0;
+      color: $label-default-color;
+      font-size: $default-font-size;
+      text-align: left;
+      flex-grow: 1;
+      justify-content: flex-start;
+    }
+  }
 
-					&::placeholder {
-						color: $white;
-						opacity: 0;
-					}
-				}
-			}
-		}
+  &.bd-expanded-input {
+    .bd-label {
+      text-align: right;
+      text-transform: uppercase;
+      animation: labelFlight .1s 1;
+    }
+  }
 
-		.bd-label {
-			width: auto;
-			margin: 0;
-			color: $label-default-color;
-			font-size: $default-font-size;
-			text-align: left;
-			flex-grow: 1;
-			justify-content: flex-start;
-		}
-
-	}
-
-	&.bd-expanded-input {
-		.bd-label {
-			text-align: right;
-			text-transform: uppercase;
-			animation: labelFlight .1s 1;
-		}
-
-	}
-
-	&.bd-not-empty-label {
-		.bd-input {
-			width: 0;
-		}
-	}
+  &.bd-not-empty-label {
+    .bd-input {
+      width: 0;
+    }
+  }
 }
 
 .bd-invalid {
-	.bd-input-wrapper {
-		border-bottom-color: $label-warning-color;
+  .bd-input-wrapper {
+    border-bottom-color: $label-warning-color;
 
-		.bd-label {
-			color: $label-warning-color;
-		}
-	}
+    .bd-label {
+      color: $label-warning-color;
+    }
+  }
 }
