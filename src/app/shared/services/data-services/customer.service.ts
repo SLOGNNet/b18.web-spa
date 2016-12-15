@@ -74,21 +74,21 @@ private _billingAddresses = [{
 
   private _customersData: Array<Customer> = [
     { id: 1, name: 'ARP Logistic INC', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty1@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
+      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
     { id: 2, name: 'DNS Logistic Corp', address: this._addresses[1], billingAddresses: this._billingAddresses[1], email: 'qwerty2@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
+      status: CustomerStatuses.Unavaliable, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
     { id: 3, name: 'Purum Company', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty3@gmail.com',
-      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '254785' },
+      status: CustomerStatuses.Inactive, type: CustomerTypes.Broker, taxId: '1', mc: '254785' },
     { id: 4, name: 'Approximately', address: this._addresses[1], billingAddresses: this._billingAddresses[0], email: 'qwerty4@gmail.com',
-      status: CustomerStatuses.INACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '456887' },
+      status: CustomerStatuses.Inactive, type: CustomerTypes.Shipper, taxId: '1', mc: '456887' },
     { id: 5, name: 'Satisfying company', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty5@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '123452' },
+      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '123452' },
     { id: 6, name: 'Dido & CO', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty6@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '342903' },
+      status: CustomerStatuses.Active, type: CustomerTypes.Shipper, taxId: '1', mc: '342903' },
     { id: 7, name: 'Tydysh-tydysh', address: this._addresses[1], billingAddresses: this._billingAddresses[0], email: 'qwerty7@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Broker, taxId: '1', mc: '678904' },
+      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '678904' },
     { id: 8, name: 'Umpa Lumpa INC', address: this._addresses[0], billingAddresses: this._billingAddresses[0], email: 'qwerty8@gmail.com',
-      status: CustomerStatuses.ACTIVE, type: CustomerTypes.Shipper, taxId: '1', mc: '341112' }];
+      status: CustomerStatuses.Active, type: CustomerTypes.Shipper, taxId: '1', mc: '341112' }];
 
   constructor(private http: Http) {
     this.http = http;

@@ -61,6 +61,8 @@ export class BdInputComponent {
   }
 
   @Output() valueChange = new EventEmitter();
+  @Output() focusChange = new EventEmitter();
+  @HostBinding('class.bd-focused') _focused: boolean = false;
 
   private _elementType: 'input' | 'textarea';
   private _onTouchedCallback: () => void = noop;
@@ -68,7 +70,6 @@ export class BdInputComponent {
   private _value: string = '';
   private _prefixEmpty: boolean = false;
   private _suffixEmpty: boolean = false;
-  private _focused: boolean = false;
   private _disabled: boolean = false;
   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
@@ -105,6 +106,7 @@ export class BdInputComponent {
   _handleFocus(event: FocusEvent) {
     this._focused = true;
     this._focusEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   set disabled(value) {
@@ -125,6 +127,7 @@ export class BdInputComponent {
     this._focused = false;
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   /**

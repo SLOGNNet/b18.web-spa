@@ -8,10 +8,12 @@
     <bd-spinner></bd-spinner>
   </template>
   <bd-input [ngModel]="value"
+      (focusChange)="onFocusChanged($event)"
       (ngModelChange)="changeValue($event)"
       [typeahead]="source"
       [collapsibleInput]="true"
       [labelText]="labelText"
+      placeholder="{{placeholder}}"
       [typeaheadItemTemplate]="itemTemplate"
       [typeaheadFooterTemplate]="footerButtonText == '' ? null : footerTemplate"
       [typeaheadLoaderTemplate]="loaderTemplate"

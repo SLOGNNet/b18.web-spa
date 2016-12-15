@@ -37,6 +37,11 @@ export class CustomerForm {
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
 
+  get formViewMode () {
+    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
+    return mode;
+  }
+
   ngOnChanges(changes: any) {
     this.initForm();
   }

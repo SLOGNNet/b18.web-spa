@@ -22,6 +22,8 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
 
+  @HostBinding('class.bd-focused') _isOpen: boolean = false;
+
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
   private _items: any[] = [];
@@ -81,6 +83,10 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   public _handleFooterClick(event): void {
     this.onFooterClick.emit(event);
+  }
+
+  onToggle(isOpen) {
+    this._isOpen = isOpen;
   }
 
   writeValue(value: any) {

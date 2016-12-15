@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService, BdFormBuilder, BdFormGroup  } from '../../shared';
-import { Load, Customer } from '../../models';
+import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 
@@ -12,14 +12,21 @@ import { ViewMode } from '../../shared/enums';
   templateUrl: './load-form.component.html'
 })
 export class BdLoadFormComponent {
+  driverRequirmentsNames: Array<any>;
+  powerUnitTypesNames: Array<any>;
+  trailerTypesNames: Array<any>;
   @Input() load: Load;
+  private isEditMode: boolean = true;
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
   private loadForm: BdFormGroup;
   private selectedCustomer: Customer;
-  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder) {
 
+  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
+    this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
+    this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
+    this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
   }
 
   ngOnChanges(changes: any) {
@@ -50,9 +57,19 @@ export class BdLoadFormComponent {
     this.selectedCustomer = this.load.customer;
   }
 
+  get formViewMode () {
+    const mode = this.customerViewMode === ViewMode.Edit ? 'edit' : 'view';
+    return mode;
+  }
+
   public initForm() {
+
     this.loadForm = this.formBuilder.group({
-      customer: [this.load.customer, Validators.required]
+      customer: [this.load.customer, Validators.required],
+      driverRequirment: [this.load.driverRequirment],
+      powerUnitType: [this.load.powerUnitType],
+      trailerType: [this.load.trailerType],
+      specialRequirment: [this.load.specialRequirment]
     });
   }
 

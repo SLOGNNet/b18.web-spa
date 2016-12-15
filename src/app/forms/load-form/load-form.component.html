@@ -16,13 +16,14 @@
         </div>
       </div>
   </template>
-<form [formGroup]="loadForm">
+<form [formGroup]="loadForm" [ngClass]="formViewMode">
   <div class="bd-form">
     <div class="bd-form-title">
       Customer
     </div>
     <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
       <bd-typeahead
+         class="bd-form-control"
          formControlName="customer"
          [labelText]="'Name or MC#'"
          [footerButtonText]="'Add New Customer'"
@@ -36,6 +37,19 @@
        </bd-typeahead>
      </bd-validator>
       <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <bd-form-section>
+        <bd-form-switch [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+        </bd-form-switch>
+        <bd-dropdown class="bd-form-control" [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+        </bd-dropdown>
+        <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+        </bd-dropdown>
+        <bd-textarea
+          class="bd-form-control"
+          formControlName="specialRequirment"
+         [labelText]="'Special Requirements'">
+        </bd-textarea>
+      </bd-form-section>
   </div>
 </form>
 </div>
