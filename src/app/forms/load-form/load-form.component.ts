@@ -21,6 +21,7 @@ export class BdLoadFormComponent {
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
   private loadForm: BdFormGroup;
+  private selectedCustomer: Customer;
 
   public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
@@ -30,18 +31,30 @@ export class BdLoadFormComponent {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
+      this.selectedCustomer = this.load.customer;
       this.initForm();
-      this.initCustomerTypeahead(changes.load.currentValue);
+      this.initCustomerTypeahead(this.selectedCustomer);
     }
   }
 
   onCustomerRemove() {
-    this.load.customer = null;
+    this.selectedCustomer = null;
   }
 
-  onAddCustomer() {
-    this.load.customer = Customer.create();
+  onAddNewCustomer() {
+    this.selectedCustomer = Customer.create();
     this.customerViewMode = ViewMode.Edit;
+  }
+
+  onCustomerSave(customer: Customer) {
+    this.selectedCustomer = customer;
+    this.customerService.create(customer);
+    this.customerViewMode = ViewMode.View;
+    this.initCustomerTypeahead(customer);
+  }
+
+  onCustomerEditCancel() {
+    this.selectedCustomer = this.load.customer;
   }
 
   get formViewMode () {
@@ -65,8 +78,8 @@ export class BdLoadFormComponent {
     this.customerViewMode = ViewMode.View;
   }
 
-  private initCustomerTypeahead(load) {
-    this.customerQuery =  load.customer && load.customer.name;
+  private initCustomerTypeahead(customer) {
+    this.customerQuery =  customer && customer.name;
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));

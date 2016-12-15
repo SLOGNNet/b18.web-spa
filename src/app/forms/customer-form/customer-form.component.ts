@@ -1,4 +1,4 @@
-import { Component, Input  } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
@@ -14,6 +14,8 @@ export class CustomerForm {
   @Input() public customer: Customer;
   @Input() public viewMode: ViewMode = ViewMode.Edit;
   @Input() isExpanded: boolean = false;
+  @Output() save: EventEmitter<any> = new EventEmitter();
+  @Output() cancel: EventEmitter<any> = new EventEmitter();
 
   customerForm: FormGroup;
   customerTypes: Array<any>;
@@ -29,7 +31,8 @@ export class CustomerForm {
     return this.isExpanded || this.isEditMode;
   }
 
-  constructor(private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
+  constructor(private formBuilder: FormBuilder,
+    private enumHelperService: EnumHelperService) {
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
@@ -41,6 +44,17 @@ export class CustomerForm {
 
   ngOnChanges(changes: any) {
     this.initForm();
+  }
+
+  submit(customer: Customer, isValid: boolean) {
+    if (customer && isValid) {
+      this.save.emit(customer);
+    }
+  }
+
+  onCancel() {
+    this.customerForm.reset();
+    this.cancel.emit();
   }
 
   initForm() {
@@ -57,16 +71,9 @@ export class CustomerForm {
     //  this.customerForm.setViewMode(ViewMode.View);
   }
 
-  onSubmit(value: Customer) {
-  }
-
   sameAsCompanyChange(event) {
     if (event.target.checked) {
       }
-  }
-
-  onCancel() {
-    this.customerForm.reset();
   }
 
   private onExpandChanged(expanded) {
