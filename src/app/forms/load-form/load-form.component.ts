@@ -16,7 +16,6 @@ export class BdLoadFormComponent {
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
   @Input() load: Load;
-  private isEditMode: boolean = true;
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.View;
@@ -44,9 +43,8 @@ export class BdLoadFormComponent {
     this.customerViewMode = ViewMode.Edit;
   }
 
-  get formViewMode () {
-    const mode = this.customerViewMode === ViewMode.Edit ? 'edit' : 'view';
-    return mode;
+  get isEditMode (): boolean {
+    return this.customerViewMode === ViewMode.Edit;
   }
 
   public initForm() {

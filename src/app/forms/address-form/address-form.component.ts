@@ -47,9 +47,8 @@ export class AddressForm {
     private _googleService: GoogleService) {
   }
 
-  get formViewMode () {
-    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
-    return mode;
+  get isEditMode (): boolean {
+    return this.viewMode === ViewMode.Edit;
   }
 
   ngOnChanges(changes: any) {

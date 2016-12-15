@@ -1,5 +1,5 @@
-<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode" [ngClass]="formViewMode">
-	<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)" [ngClass]="formViewMode">
+<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode">
+	<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)" [class.edit]="isEditMode" [class.view]="!isEditMode">
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isFormExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isFormExpanded">
 			</bd-input>
@@ -20,7 +20,7 @@
 			</bd-input>
 		</bd-form-section>
 		<bd-form-section [labelText]="'CUSTOMER > BILLING'" *ngIf='isExpanded' [isExpanded]="isFormExpanded">
-		 <label class="same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
+		 <label class="bd-form-control same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
 		 <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses'></address-form>
 		 <bd-textarea class="bd-form-control" [labelText]="'Notes'">
 		 </bd-textarea>
