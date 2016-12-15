@@ -276,7 +276,7 @@ export class TypeaheadDirective implements OnInit {
     } else {
       this.show();
     }
-    
+
     this._changeDetectionRef.detectChanges();
   }
 
