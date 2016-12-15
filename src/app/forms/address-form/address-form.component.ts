@@ -47,9 +47,8 @@ export class AddressForm {
     private _googleService: GoogleService) {
   }
 
-  get formViewMode () {
-    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
-    return mode;
+  get isEditMode (): boolean {
+    return this.viewMode === ViewMode.Edit;
   }
 
   ngOnChanges(changes: any) {
@@ -72,15 +71,17 @@ export class AddressForm {
   }
 
   public onPlaceSelect(place) {
-    this._googleService.getDetails(place.place_id)
-      .subscribe(detail => {
-        if (detail) {
-          this._placeQuery = detail.streetAddress;
-          this._updateMap(detail.location, detail.streetAddress);
-          this.addressForm.setValue(Object.assign({}, this.address, detail));
-          this._changeDetectionRef.detectChanges();
-        }
-      });
+    if (place && typeof place.place_id === 'string') {
+      this._googleService.getDetails(place.place_id)
+        .subscribe(detail => {
+          if (detail) {
+            this._placeQuery = detail.streetAddress;
+            this._updateMap(detail.location, detail.streetAddress);
+            this.addressForm.setValue(Object.assign({}, this.address, detail));
+            this._changeDetectionRef.detectChanges();
+          }
+        });
+    }
   }
 
   private _initPlaceTypeahead() {

@@ -1,4 +1,4 @@
-<form [formGroup]="addressForm" [ngClass]="formViewMode">
+<form [formGroup]="addressForm" [class.edit]="isEditMode" [class.view]="!isEditMode">
 	<template #customItemTemplate let-model="item" let-index="index">
     <div class="item-wrapper">
 			<div class="text">
@@ -28,7 +28,7 @@
 			<bd-input class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
-				<div class="right-border">
+				<div class="right-border half-side">
 					<bd-input
 					class="bd-form-control"
 					placeholder="State"
@@ -37,7 +37,7 @@
 					</bd-input>
 				</div>
 				<bd-input
-					class="bd-form-control"
+					class="bd-form-control half-side"
 					placeholder="Zip"
 					(valueChange)="onRemoveMap($event)"
 					formControlName="zip">

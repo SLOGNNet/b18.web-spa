@@ -3,13 +3,13 @@
 form {
   &.view {
     .bd-form-control {
-      background-color: $white;
+      background-color: $light-blue;
     }
   }
 
   &.edit {
     .bd-form-control {
-      background-color: $light-blue;
+      background-color: $white;
     }
   }
 
