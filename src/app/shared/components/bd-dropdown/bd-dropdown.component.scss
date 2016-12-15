@@ -2,12 +2,14 @@
 
 .bd-dropdown-container {
   background-color: inherit;
+  box-shadow: inherit;
 
   .bd-dropdown-wrapper {
     display: flex;
     width: 100%;
     height: $form-control-height;
     background-color: inherit;
+    box-shadow: inherit;
     border-bottom: $border;
     outline: 0;
     align-items: center;

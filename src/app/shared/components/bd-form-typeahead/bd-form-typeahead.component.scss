@@ -2,7 +2,12 @@
 
 .bd-typeahead-container {
   position: relative;
-  background-color: inherit;
+
+  &,
+  bd-input {
+    background-color: inherit;
+    box-shadow: inherit;
+	}
 
   .dropdown-menu {
     width: 100%;
