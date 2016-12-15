@@ -1,24 +1,24 @@
 @import '../../../../assets/styles/variables';
 
 .expandable-arrow-wrapper {
-	display: flex;
-	width: 100%;
-	height: 50px;
-	background: $light-blue;
-	border-bottom: $border;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background: $light-blue;
+  border-bottom: $border;
+  align-items: center;
+  justify-content: center;
 
-	&.open {
-		margin-top: 20px;
-	}
+  &.open {
+    margin-top: 20px;
+  }
 
-	&:hover {
-		cursor: pointer;
-	}
+  &:hover {
+    cursor: pointer;
+  }
 
-	.expandable-arrow {
-		color: $grey;
-		font-size: 28px;
-	}
+  .expandable-arrow {
+    color: $grey;
+    font-size: 28px;
+  }
 }

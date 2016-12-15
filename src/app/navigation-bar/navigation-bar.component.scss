@@ -2,44 +2,43 @@ $shark: #23282d;
 $white: #fff;
 $tango: #e67517;
 
-
 .side-menu {
-	z-index: 99999;
-	width: 130px;
-	height: 100%;
-	padding: 0;
-	background-color: $shark;
+  z-index: 99999;
+  width: 130px;
+  height: 100%;
+  padding: 0;
+  background-color: $shark;
 }
 
 .icon {
-	mask:  url('assets/img/menu-icon.svg') no-repeat;
+  mask: url('assets/img/menu-icon.svg') no-repeat;
 }
 
 .logo-container {
-	width: 100%;
-	text-align: center;
-	padding-top: 10px;
-	padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-	span {
-		font-family: Orbitron;
-		text-transform: uppercase;
-		font-weight: 600;
-	}
+  span {
+    font-family: Orbitron;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 
-	.logo-letter {
-		color: $white;
-		font-size: 24px;
-	}
+  .logo-letter {
+    color: $white;
+    font-size: 24px;
+  }
 
-	.logo-number {
-		color: $tango;
-		font-size: 24px;
-		margin-left: -3px;
-	}
+  .logo-number {
+    color: $tango;
+    font-size: 24px;
+    margin-left: -3px;
+  }
 }
 
 layout-switch {
-	position: absolute;
-	bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
