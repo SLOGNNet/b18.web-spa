@@ -21,8 +21,12 @@
 	background: $blue;
 	color: $white;
 
+	&:focus {
+		background: $btn-primary-focus;
+	}
+
 	&:hover {
-		background: $blue;
+		background: $btn-primary-hover;
 	}
 }
 
@@ -30,7 +34,11 @@
 	background: $light-grey;
 	color: $black;
 
+	&:focus {
+		background: $btn-default-focus;
+	}
+
 	&:hover {
-		background: $light-grey;
+		background: $btn-default-hover;
 	}
 }
