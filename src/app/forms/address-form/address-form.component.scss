@@ -2,36 +2,40 @@
 @import '../../../assets/styles/form-control';
 
 .section {
-	display: flex;
+  display: flex;
 }
 
 .left-side {
-	width: 60%;
+  width: 60%;
 }
 
 .right-side {
-	width: 40%;
+  width: 40%;
 }
 
 .right-border {
-	border-right: $border;
+  border-right: $border;
 }
 
 .bottom-border {
-	border-bottom: $border;
+  border-bottom: $border;
+}
+
+.half-side {
+  width: 50%;
 }
 
 .item-wrapper {
-	display: flex;
-	overflow: hidden;
-	height: 100%;
-	padding: 0 17px;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  padding: 0 17px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-	.text {
-		color: $black;
-		font-size: 14px;
-	}
+  .text {
+    color: $black;
+    font-size: 14px;
+  }
 }

@@ -4,81 +4,81 @@ $color-carrier: #1e90ff;
 $color-message: #000;
 
 .message-container {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .message {
-	position: relative;
-	display: flex;
-	width: 30%;
-	height: 5%;
-	padding: 10px;
-	margin: 15px;
-	color: $color-message;
-	word-wrap: break-word;
-	flex-direction: column;
-	min-height: 40px;
-	border-radius: 5px;
+  position: relative;
+  display: flex;
+  width: 30%;
+  height: 5%;
+  padding: 10px;
+  margin: 15px;
+  color: $color-message;
+  word-wrap: break-word;
+  flex-direction: column;
+  min-height: 40px;
+  border-radius: 5px;
 
-	&:before {
-		position: absolute;
-		width: 0;
-		height: 0;
-		content: '';
-		border-top: 0 solid transparent;
-		border-bottom: 20px solid transparent;
-	}
+  &:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 0 solid transparent;
+    border-bottom: 20px solid transparent;
+  }
 }
 
 .message-system {
-	background: $color-system;
+  background: $color-system;
 
-	&:before {
-		right: -15px;
-		border-left: 20px solid $color-system;
-	}
+  &:before {
+    right: -15px;
+    border-left: 20px solid $color-system;
+  }
 }
 
 .message-carrier {
-	background: $color-carrier;
+  background: $color-carrier;
 
-	&:before {
-		left: -15px;
-		border-right: 20px solid $color-carrier;
-	}
+  &:before {
+    left: -15px;
+    border-right: 20px solid $color-carrier;
+  }
 }
 
 .message-user {
-	background: $color-user;
+  background: $color-user;
 
-	&:before {
-		right: -15px;
-		border-left: 20px solid $color-user;
-	}
+  &:before {
+    right: -15px;
+    border-left: 20px solid $color-user;
+  }
 }
 
 .date {
-	position: relative;
-	display: flex;
-	padding: 28px;
-	margin: 0 0 0 20px;
-	align-content: center;
-	word-wrap: break-word;
+  position: relative;
+  display: flex;
+  padding: 28px;
+  margin: 0 0 0 20px;
+  align-content: center;
+  word-wrap: break-word;
 }
 
 .container-right {
-	flex-direction: row;
+  flex-direction: row;
 }
 
 .container-left {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 img {
-	width: 50px;
-	height: 50px;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
 }

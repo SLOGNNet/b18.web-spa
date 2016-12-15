@@ -2,44 +2,43 @@
 @import '../../../assets/styles/form-control';
 
 .wrapper {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .item-wrapper {
-	display: flex;
-	height: 100%;
-	padding: 0 17px;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 0 17px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-	.left-panel {
+  .left-panel {
+    .name {
+      color: $black;
+      font-size: $small-font-size;
+    }
 
-		.name {
-			color: $black;
-			font-size: $small-font-size;
-		}
+    .address {
+      color: $label-default-color;
+      font-size: $mini-font-size;
+    }
+  }
 
-		.address {
-			color: $label-default-color;
-			font-size: $mini-font-size;
-		}
-	}
-
-	.right-panel {
-		.number {
-			color: $black;
-			font-size: $small-font-size;
-		}
-	}
+  .right-panel {
+    .number {
+      color: $black;
+      font-size: $small-font-size;
+    }
+  }
 }
 
 .bd-form {
-	.bd-form-title {
-		margin: 30px 0 20px 15px;
-		color: $black;
-		font-weight: bold;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-	}
+  .bd-form-title {
+    margin: 30px 0 20px 15px;
+    color: $black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
 }

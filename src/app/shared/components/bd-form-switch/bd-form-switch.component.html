@@ -15,6 +15,7 @@
       [dropdownItemTemplate]="dropdownItemTemplate"
       [items]="items"
       [selectedValue]="selectedValue"
-      (onItemClick)="onItemClick($event)">
+      (onItemClick)="onItemClick($event)"
+      (focusChange)="onDropdownFocusChange($event)">
   </bd-dropdown>
 </div>

@@ -16,7 +16,7 @@
         </div>
       </div>
   </template>
-<form [formGroup]="loadForm" [ngClass]="formViewMode">
+<form [formGroup]="loadForm" [class.edit]="isEditMode" [class.view]="!isEditMode">
   <div class="bd-form">
     <div class="bd-form-title">
       Customer
@@ -37,10 +37,10 @@
        </bd-typeahead>
      </bd-validator>
       <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
-      <bd-form-section>
-        <bd-form-switch [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+        <bd-form-section [labelText]="'REQUIREMENTS'">
+        <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
         </bd-form-switch>
-        <bd-dropdown class="bd-form-control" [labelText]="'Pover unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+        <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
         </bd-dropdown>
         <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
         </bd-dropdown>
