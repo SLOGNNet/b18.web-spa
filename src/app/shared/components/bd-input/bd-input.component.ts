@@ -113,7 +113,11 @@ export class BdInputComponent {
 
   _handleChange(event: Event) {
     this.value = (<HTMLInputElement>event.target).value;
+    this._onTouchedCallback();
     this.valueChange.emit(this.value);
+  }
+
+  _handleKeyDown() {
     this._onTouchedCallback();
   }
 
