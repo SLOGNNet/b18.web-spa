@@ -15,23 +15,24 @@ export enum CustomerStatuses {
 
 export class Customer {
   id: number;
-  name: string;
+  name: string = '';
   status: CustomerStatuses;
   type: CustomerTypes;
-  mc: string;
-  taxId: string;
+  mc: string = '';
+  taxId: string = '';
   address: Address;
   billingAddresses: Address;
-  email: string;
+  email: string = '';
 
   static create(): Customer{
     const result = new Customer();
     result.status = CustomerStatuses.INACTIVE;
+    result.type = CustomerTypes.Broker;
     return result;
   }
 
   constructor() {
     this.address = new Address();
+    this.billingAddresses = new Address();
   }
-
 }

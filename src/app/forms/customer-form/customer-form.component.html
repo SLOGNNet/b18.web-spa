@@ -1,5 +1,5 @@
 <bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode">
-	<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
+	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)">
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isFormExpanded'>
 			<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="isFormExpanded">
 			</bd-input>
@@ -19,16 +19,15 @@
 			<bd-input [labelText]="'Email'" formControlName="email" *ngIf='isExpanded'>
 			</bd-input>
 		</bd-form-section>
-		<bd-form-section [labelText]="'CUSTOMER > BILLING'" *ngIf='isExpanded' [isExpanded]="isFormExpanded">
+		<bd-form-section [labelText]="'CUSTOMER > BILLING'" *ngIf='isFormExpanded' [isExpanded]="isFormExpanded">
 		 <label class="same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
-		 <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses'></address-form>
+		 <address-form [group]='customerForm.controls.billingAddresses' [isExpanded]="isFormExpanded" [address]='customer.billingAddresses'></address-form>
 		 <bd-textarea
 		  [labelText]="'Notes'">
 		 </bd-textarea>
 		</bd-form-section>
 		<div class="section btn-container" *ngIf="isEditMode">
 			<bd-button
-				type="default"
 				(click)="onCancel()"
 				[text]="'Cancel'"
 				class="bd-button">
@@ -37,7 +36,6 @@
 				type="submit"
 				color="primary"
 				class="bd-button"
-				(click)="onSubmit()"
 				[text]="'Add Customer'">
 			</bd-button>
 		</div>
