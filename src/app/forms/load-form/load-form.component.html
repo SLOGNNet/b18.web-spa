@@ -32,11 +32,11 @@
          [(value)]="customerQuery"
          [itemTemplate]="customItemTemplate"
          (onSelect)="onCustomerSelect($event)"
-         (onFooterButtonClick)="onAddCustomer()"
+         (onFooterButtonClick)="onAddNewCustomer()"
          [optionField]="'name'">
        </bd-typeahead>
      </bd-validator>
-      <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
+      <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
       <bd-form-section>
         <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
         </bd-form-switch>

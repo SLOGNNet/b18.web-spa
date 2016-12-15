@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Customer, CustomerStatuses, CustomerTypes } from './models';
+import { Customer, Address, CustomerStatuses, CustomerTypes } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
@@ -8,7 +8,7 @@ import { delay } from 'rxjs/Delay';
 @Injectable()
 export class CustomerService {
 
-  private _addresses = [{
+  private _addresses: Array<Address> = [{
     streetAddress: 'Street address 1',
     secondStreetAddress: 'Street address 2',
     city: 'City',
@@ -39,7 +39,6 @@ export class CustomerService {
     }
   }
 ];
-
 
 private _billingAddresses = [{
   streetAddress: 'billing street address 1',
@@ -99,6 +98,10 @@ private _billingAddresses = [{
     return Observable.of(
       this._customersData.find((customer) => id === customer.id)
     );
+  }
+
+  create(customer: Customer) {
+    this._customersData.push(customer);
   }
 
   search(query: string): Observable<Customer[]> {
