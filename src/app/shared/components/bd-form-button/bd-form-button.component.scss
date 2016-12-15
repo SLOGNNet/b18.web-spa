@@ -1,11 +1,11 @@
 @import '../../../../assets/styles/variables';
 
 .form-button {
-	border: 0;
-	background: transparent;
-	color: $blue;
+  border: 0;
+  background: transparent;
+  color: $blue;
 
-	&:focus {
-		outline: 0;
-	}
+  &:focus {
+    outline: 0;
+  }
 }
