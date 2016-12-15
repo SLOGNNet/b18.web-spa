@@ -1,4 +1,5 @@
 @import '../../../assets/styles/variables';
+@import '../../../assets/styles/form-control';
 
 .section {
 	display: flex;
@@ -18,4 +19,23 @@
 
 .bottom-border {
 	border-bottom: $border;
+}
+
+.half-side {
+	width: 50%;
+}
+
+.item-wrapper {
+	display: flex;
+	overflow: hidden;
+	height: 100%;
+	padding: 0 17px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	.text {
+		color: $black;
+		font-size: 14px;
+	}
 }

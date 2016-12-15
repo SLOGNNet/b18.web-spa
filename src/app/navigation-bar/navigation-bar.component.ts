@@ -33,7 +33,7 @@ export class NavigationBarComponent {
         icon: 'icon',
         link: './drivers/1'
     }, {
-        label: 'Load Form',
+        label: 'Loads',
         icon: 'icon',
         link: './loads'
     }];

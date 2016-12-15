@@ -2,6 +2,7 @@
 
 .bd-typeahead-container {
 	position: relative;
+	background-color: inherit;
 
 	.dropdown-menu {
 		width: 100%;
@@ -12,9 +13,9 @@
 			height: 49px;
 			border-bottom: $border;
 
-			&:last-child {
+			bd-form-button {
 				display: flex;
-				align-items: center;
+				height: 100%;
 				justify-content: center;
 			}
 

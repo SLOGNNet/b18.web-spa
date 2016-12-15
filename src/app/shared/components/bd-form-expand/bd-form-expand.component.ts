@@ -9,6 +9,11 @@ import { ViewMode } from '../../enums';
 export class BdFormExpandComponent {
   @Output() changed = new EventEmitter();
   @Input() expanded: boolean = true;
+  @Input() viewMode: ViewMode = ViewMode.View;
+
+  private get isExpandButtonVisible() {
+    return this.viewMode === ViewMode.View;
+  }
 
   toggleExpand(){
     this.expanded = !this.expanded;

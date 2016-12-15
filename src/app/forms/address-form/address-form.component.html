@@ -1,36 +1,67 @@
-<form [formGroup]="addressForm">
-	<bd-input placeholder="Street address 1" formControlName="streetAddress">
-	</bd-input>
+<form [formGroup]="addressForm" [class.edit]="isEditMode" [class.view]="!isEditMode">
+	<template #customItemTemplate let-model="item" let-index="index">
+    <div class="item-wrapper">
+			<div class="text">
+				{{model.description}}
+			</div>
+    </div>
+</template>
+<bd-typeahead
+	class="bd-form-control"
+	formControlName="streetAddress"
+	placeholder="Street address 1"
+  [source]="_placeSource"
+  [(value)]="_placeQuery"
+  [itemTemplate]="customItemTemplate"
+	[removeButtonHidden]="true"
+  (onSelect)="onPlaceSelect($event)"
+	[optionField]="'description'">
+</bd-typeahead>
 	<div class="section">
 		<div class="left-side right-border">
-			<bd-input placeholder="Street address 2" formControlName="secondStreetAddress">
-			</bd-input>
-			<bd-input formControlName="city">
+		<bd-input
+			class="bd-form-control"
+			placeholder="Street address 2"
+			(valueChange)="onRemoveMap($event)"
+			formControlName="secondStreetAddress">
+		</bd-input>
+			<bd-input class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
-				<div class="right-border">
-					<bd-input placeholder="State" formControlName="state">
+				<div class="right-border half-side">
+					<bd-input
+					class="bd-form-control"
+					placeholder="State"
+					formControlName="state"
+					(valueChange)="onRemoveMap($event)">
 					</bd-input>
 				</div>
-				<bd-input placeholder="Zip" formControlName="zip">
+				<bd-input
+					class="bd-form-control half-side"
+					placeholder="Zip"
+					(valueChange)="onRemoveMap($event)"
+					formControlName="zip">
 				</bd-input>
 			</div>
 		</div>
 		<div class="right-side bottom-border">
-			google map
+			<google-map
+				[location]="_map.location"
+				[info]="_map.labelText">
+			</google-map>
 		</div>
 	</div>
 	<div class="section">
 			<div class="left-side right-border">
-				<bd-input [labelText]="'phone'" formControlName="phone">
+				<bd-input class="bd-form-control" [labelText]="'Phone'" formControlName="phone">
 				</bd-input>
-				<bd-input  [labelText]="'fax'" *ngIf='isExpanded' placeholder="fax" formControlName="fax">
+				<bd-input class="bd-form-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
 				</bd-input>
 			</div>
 			<div class="right-side">
-				<bd-input formControlName="phoneExtension">
+				<bd-input class="bd-form-control" placeholder="Extension" formControlName="phoneExtension">
 				</bd-input>
-				<bd-input formControlName="faxExtension" *ngIf='isExpanded'>
+				<bd-input class="bd-form-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
 				</bd-input>
 			</div>
 	</div>

@@ -1,8 +1,9 @@
-import { Component, Input, Optional, EventEmitter,
+import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
+let nextUniqueId = 0;
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -35,6 +36,8 @@ export class BdInputComponent {
     return this._value;
   };
 
+  get inputId(): string { return `${this.id}-input`; }
+
   @ViewChild('input') _inputElement: ElementRef;
   @ViewChild('prefix') prefixContainer: ElementRef;
   @ViewChild('suffix') suffixContainer: ElementRef;
@@ -44,6 +47,7 @@ export class BdInputComponent {
   @Input() placeholder: string;
   @Input() name: string = null;
   @Input() type: string = 'text';
+  @Input() id: string = `bd-${nextUniqueId++}`;
 
   @Input() get disabled(): boolean {
     return this._disabled;
@@ -56,13 +60,16 @@ export class BdInputComponent {
     }
   }
 
+  @Output() valueChange = new EventEmitter();
+  @Output() focusChange = new EventEmitter();
+  @HostBinding('class.bd-focused') _focused: boolean = false;
+
   private _elementType: 'input' | 'textarea';
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
   private _value: string = '';
   private _prefixEmpty: boolean = false;
   private _suffixEmpty: boolean = false;
-  private _focused: boolean = false;
   private _disabled: boolean = false;
   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
@@ -78,10 +85,6 @@ export class BdInputComponent {
     this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
-
-    // if (ngControl) {
-    //   ngControl.valueAccessor = this;
-    // }
   }
 
   coerceBooleanProperty(value: any): boolean {
@@ -103,6 +106,7 @@ export class BdInputComponent {
   _handleFocus(event: FocusEvent) {
     this._focused = true;
     this._focusEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   set disabled(value) {
@@ -112,12 +116,18 @@ export class BdInputComponent {
   _handleChange(event: Event) {
     this.value = (<HTMLInputElement>event.target).value;
     this._onTouchedCallback();
+    this.valueChange.emit(this.value);
+  }
+
+  _handleKeyDown() {
+    this._onTouchedCallback();
   }
 
   _handleBlur(event: FocusEvent) {
     this._focused = false;
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   /**

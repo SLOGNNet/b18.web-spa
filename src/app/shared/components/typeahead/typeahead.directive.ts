@@ -1,6 +1,6 @@
 import {
   ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  ReflectiveInjector, Renderer, TemplateRef, ViewContainerRef
+  ReflectiveInjector, Renderer, TemplateRef, ViewContainerRef, ChangeDetectorRef
 } from '@angular/core';
 import { FormControl, NgControl } from '@angular/forms';
 
@@ -134,7 +134,8 @@ export class TypeaheadDirective implements OnInit {
   }
 
   public constructor(control: NgControl, viewContainerRef: ViewContainerRef, element: ElementRef,
-    renderer: Renderer, typeaheadUtils: TypeaheadUtils) {
+    renderer: Renderer, typeaheadUtils: TypeaheadUtils,
+    private _changeDetectionRef: ChangeDetectorRef) {
     this.element = element;
     this.ngControl = control;
     this.viewContainerRef = viewContainerRef;
@@ -143,6 +144,7 @@ export class TypeaheadDirective implements OnInit {
     this.typeaheadLoading.subscribe(value => {
       this.show();
       this.isLoading = value;
+      this._changeDetectionRef.detectChanges();
     });
   }
 
