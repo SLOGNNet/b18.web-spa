@@ -33,9 +33,9 @@ export class CustomerForm {
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
-  
+
   get formViewMode () {
-    const mode = this.viewMode == ViewMode.Edit ? 'edit' : 'view';
+    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
     return mode;
   }
 

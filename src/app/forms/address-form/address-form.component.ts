@@ -48,7 +48,7 @@ export class AddressForm {
   }
 
   get formViewMode () {
-    const mode = this.viewMode == ViewMode.Edit ? 'edit' : 'view';
+    const mode = this.viewMode === ViewMode.Edit ? 'edit' : 'view';
     return mode;
   }
 
