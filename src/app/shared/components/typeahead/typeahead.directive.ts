@@ -144,7 +144,6 @@ export class TypeaheadDirective implements OnInit {
     this.typeaheadLoading.subscribe(value => {
       this.show();
       this.isLoading = value;
-      this._changeDetectionRef.detectChanges();
     });
   }
 
@@ -277,6 +276,8 @@ export class TypeaheadDirective implements OnInit {
     } else {
       this.show();
     }
+
+    this._changeDetectionRef.detectChanges();
   }
 
   protected prepareMatches(options: any[]): void {
