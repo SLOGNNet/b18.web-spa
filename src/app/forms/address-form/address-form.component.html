@@ -51,18 +51,26 @@
 			</google-map>
 		</div>
 	</div>
-	<div class="section">
-			<div class="left-side right-border">
-				<bd-input class="bd-form-control" [labelText]="'Phone'" formControlName="phone">
-				</bd-input>
-				<bd-input class="bd-form-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
-				</bd-input>
-			</div>
-			<div class="right-side">
-				<bd-input class="bd-form-control" placeholder="Extension" formControlName="phoneExtension">
-				</bd-input>
-				<bd-input class="bd-form-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
-				</bd-input>
-			</div>
-	</div>
+  	<bd-validator [component]="addressForm.controls.phone" [errorDefs]="{required: 'Phone is required'}">
+      <div class="section">
+      <div class="left-side right-border">
+        <bd-input class="bd-form-control" [labelText]="'Phone'" formControlName="phone">
+        </bd-input>
+      </div>
+      <div class="right-side">
+        <bd-input class="bd-form-control" placeholder="Extension" formControlName="phoneExtension">
+        </bd-input>
+      </div>
+    </div>
+    </bd-validator>
+    <div class="section">
+      <div class="left-side right-border">
+        <bd-input class="bd-form-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
+        </bd-input>
+      </div>
+      <div class="right-side">
+        <bd-input class="bd-form-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
+        </bd-input>
+      </div>
+    </div>
 </form>
