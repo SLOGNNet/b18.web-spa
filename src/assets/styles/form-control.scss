@@ -3,6 +3,7 @@
 form {
   &.view {
     .bd-form-control {
+      box-shadow: inset 0 0 0 1px $white;
       background-color: $light-blue;
     }
   }
@@ -14,8 +15,6 @@ form {
   }
 
   .bd-form-control {
-    box-shadow: inset 0 0 0 1px $white;
-
     &:hover {
       background-color: $white;
     }
