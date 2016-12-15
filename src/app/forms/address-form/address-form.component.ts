@@ -28,7 +28,7 @@ export class AddressForm {
     }
   };
   private fields = [
-    { name: 'phone', validators: [] },
+    { name: 'phone', validators: [Validators.required] },
     { name: 'fax', validators: [] },
     { name: 'state', validators: [] },
     { name: 'zip', validators: [] },
