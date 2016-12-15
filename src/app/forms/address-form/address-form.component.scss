@@ -21,6 +21,10 @@
 	border-bottom: $border;
 }
 
+.half-side {
+	width: 50%;
+}
+
 .item-wrapper {
 	display: flex;
 	overflow: hidden;
