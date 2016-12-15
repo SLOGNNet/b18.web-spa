@@ -11,7 +11,8 @@ export const BD_FORM_SWITCHL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'bd-form-switch',
   providers: [BD_FORM_SWITCHL_VALUE_ACCESSOR],
-  templateUrl: './bd-form-switch.component.html'
+  templateUrl: './bd-form-switch.component.html',
+  styleUrls: ['./bd-form-switch.component.scss']
 })
 export class BdFormSwitchComponent implements ControlValueAccessor {
 

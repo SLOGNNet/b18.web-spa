@@ -50,7 +50,7 @@
 	border-bottom: $border;
 	margin-bottom: 0;
 	flex-flow: row wrap;
-	background-color: $white;
+	background-color: inherit;
 
 	.bd-label {
 		display: flex;

@@ -1,0 +1,21 @@
+@import './variables';
+
+form {
+	&.view {
+		.bd-form-control {
+				background-color: $white;
+		}
+	}
+	
+	&.edit {
+		.bd-form-control {
+				background-color: $light-blue;
+		}
+	}
+
+	.bd-form-control {
+		&.bd-focused {
+			background-color: $white;
+		}
+	}
+}

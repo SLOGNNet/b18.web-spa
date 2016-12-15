@@ -1,4 +1,4 @@
-import { Component, Optional, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Optional, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter, forwardRef, HostBinding } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
@@ -26,6 +26,9 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Output() public valueChange = new EventEmitter();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter();
   @Output() public onFooterButtonClick: EventEmitter<any> = new EventEmitter();
+
+  @HostBinding('class.bd-focused') _focused: boolean = false;
+
   protected isLoading: boolean = false;
   protected isNoResultsShown: boolean = false;
   private _onTouchedCallback: () => void = noop;
@@ -67,6 +70,10 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   public onFooterClick(): void {
     this.changeValue('');
     this.onFooterButtonClick.emit();
+  }
+
+  onFocusChanged(isFocused) {
+    this._focused = isFocused;
   }
 
   writeValue(value: any) {
