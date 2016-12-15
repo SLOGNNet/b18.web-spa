@@ -9,100 +9,99 @@ $icon-color: #9ea3a9;
 $sub-munu-background-color: #485158;
 $sub-munu-color: #a4a9af;
 
-
 .menu-item {
-	width: 100%;
+  width: 100%;
 
-	//Default state
-	.menu-icon {
-		display: inline-block;
-		width: 22px;
-		height: 22px;
-		margin: 9px 0 3px 10px;
-		background-color: $icon-color;
-	}
+  //Default state
+  .menu-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin: 9px 0 3px 10px;
+    background-color: $icon-color;
+  }
 
-	a {
-		position: absolute;		
-		width: 130px;
-		padding: 10px 10px 10px 40px;
-		color: $white;
-		cursor: pointer;
-		left: 0;
-		background-color: transparent;
-		white-space: nowrap;
-		text-decoration: none;
-	}
+  a {
+    position: absolute;
+    width: 130px;
+    padding: 10px 10px 10px 40px;
+    color: $white;
+    cursor: pointer;
+    left: 0;
+    background-color: transparent;
+    white-space: nowrap;
+    text-decoration: none;
+  }
 
-	.sub-menu {
-		display: none;
-		width: 130px;
-		background-color: $sub-munu-background-color;
+  .sub-menu {
+    display: none;
+    width: 130px;
+    background-color: $sub-munu-background-color;
 
-		.sub-menu-item {
-			width: 130px;
-			height: 30px;
+    .sub-menu-item {
+      width: 130px;
+      height: 30px;
 
-			a {
-				padding: 6px 10px 6px 40px;
-				color: $sub-munu-color;
-			}	
-		}
-	}
+      a {
+        padding: 6px 10px 6px 40px;
+        color: $sub-munu-color;
+      }
+    }
+  }
 
-	//Hover state
-	&:not(.active) {
-		&:hover {
-			background-color: $hover-background-color;
+  //Hover state
+  &:not(.active) {
+    &:hover {
+      background-color: $hover-background-color;
 
-			.menu-icon {
-				background-color: $logo-letter-color;
-			}
+      .menu-icon {
+        background-color: $logo-letter-color;
+      }
 
-			a {
-				color: $logo-letter-color;
-			}
+      a {
+        color: $logo-letter-color;
+      }
 
-			.sub-menu {
-				position: absolute;
-				z-index: 9999;
-				display: block;
-				margin-left: 130px;
-				margin-top: -40px;
+      .sub-menu {
+        position: absolute;
+        z-index: 9999;
+        display: block;
+        margin-left: 130px;
+        margin-top: -40px;
 
-				a {
-					padding-left: 20px;
+        a {
+          padding-left: 20px;
 
-					&:hover {
-						color: $logo-letter-color;
-					}
-				}
-			}
-		}
-	}
+          &:hover {
+            color: $logo-letter-color;
+          }
+        }
+      }
+    }
+  }
 
-	//Active state
-	&.active {
-		background-color: $active-background-color;
+  //Active state
+  &.active {
+    background-color: $active-background-color;
 
-		.menu-icon {
-			background-color: $white;
-		}
+    .menu-icon {
+      background-color: $white;
+    }
 
-		.sub-menu {
-			display: block;
+    .sub-menu {
+      display: block;
 
-			.sub-menu-item {
-				&.active {
-					a {
-						color: $white;
-					}
-				}
-			}
-		}
+      .sub-menu-item {
+        &.active {
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
 
-		a {
-			color: $white;
-		}
-	}
+    a {
+      color: $white;
+    }
+  }
 }

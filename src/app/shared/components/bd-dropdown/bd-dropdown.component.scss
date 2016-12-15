@@ -1,117 +1,120 @@
 @import '../../../../assets/styles/variables';
 
 .bd-dropdown-container {
-	background-color: inherit;
+  background-color: inherit;
+  box-shadow: inherit;
 
-	.bd-dropdown-wrapper {
-		display: flex;
-		width: 100%;
-		height: $form-control-height;
-		background-color: inherit;
-		border-bottom: $border;
-		outline: 0;
-		align-items: center;
-		justify-content: space-between;
+  .bd-dropdown-wrapper {
+    display: flex;
+    width: 100%;
+    height: $form-control-height;
+    background-color: inherit;
+    box-shadow: inherit;
+    border-bottom: $border;
+    outline: 0;
+    align-items: center;
+    justify-content: space-between;
 
-		.bd-dropdown-label {
-			width: 80px;
-			color: $label-default-color;
-			line-height: $tiny-font-size;
-			text-align: right;
-			margin-right: 32px;
+    .bd-dropdown-label {
+      width: 80px;
+      color: $label-default-color;
+      line-height: $tiny-font-size;
+      text-align: right;
+      margin-right: 32px;
 
-			label {
-				font-size: 10px;
-				font-weight: 300;
-				margin-bottom: 0;
-				text-transform: uppercase;
-				}
-			}
+      label {
+        font-size: 10px;
+        font-weight: 300;
+        margin-bottom: 0;
+        text-transform: uppercase;
+      }
+    }
 
-		.bd-dropdown-value {
-			flex-grow: 1;
+    .bd-dropdown-value {
+      flex-grow: 1;
 
-			span {
-				color: $label-default-color;
-			}
+      span {
+        color: $label-default-color;
+      }
 
-			.item-selected {
-				color: $black;
-				}
-			}
+      .item-selected {
+        color: $black;
+      }
+    }
 
-		.bd-dropdown-icon {
-			color: $label-default-color;
-			margin-right: 17px;
-		}
+    .bd-dropdown-icon {
+      color: $label-default-color;
+      margin-right: 17px;
+    }
 
-		&:hover {
-			cursor: pointer;
-		}
-	}
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
-	.bd-dropdown-list {
-		width: 100%;
-		padding: 0;
-		border: 0;
-		margin: -1px 0 0;
-		border-radius: 0;
+  .bd-dropdown-list {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    margin: -1px 0 0;
+    border-radius: 0;
 
-		div {
-			display: flex;
-			height: $form-control-height;
-			align-items: center;
-		}
+    div {
+      display: flex;
+      height: $form-control-height;
+      align-items: center;
+    }
 
-		ul {
-			padding: 0;
-			margin: 0;
-			overflow-y: scroll;
-			border-top: $active-border;
-			max-height: $form-control-height * 3;
+    ul {
+      padding: 0;
+      margin: 0;
+      overflow-y: scroll;
+      border-top: $active-border;
+      max-height: $form-control-height * 3;
 
-			li {
-				display: flex;
-				height: $form-control-height;
-				background: $white;
-				color: $black;
-				padding-left: 17px;
-				border-bottom: $border;
-				align-items: center;
+      li {
+        display: flex;
+        height: $form-control-height;
+        background: $white;
+        color: $black;
+        font-size: 16px;
+        padding-left: 17px;
+        border-bottom: $border;
+        align-items: center;
 
-				&.dropdown-header {
-					background: $white;
-					color: $label-default-color;
-					font-size: inherit;
-					border-top: $border;
-					border-bottom: $border;
-				}
+        &.dropdown-header {
+          background: $white;
+          color: $label-default-color;
+          font-size: inherit;
+          border-top: $border;
+          border-bottom: $border;
+        }
 
-				&.dropdown-footer {
-					display: flex;
-					background: $white;
-					justify-content: center;
-				}
+        &.dropdown-footer {
+          display: flex;
+          background: $white;
+          justify-content: center;
+        }
 
-				&:hover {
-					background: $light-blue;
-					cursor: pointer;
-				}
+        &:hover {
+          background: $light-blue;
+          cursor: pointer;
+        }
 
-				a {
-					color: $black;
-				}
-			}
-		}
-	}
+        a {
+          color: $black;
+        }
+      }
+    }
+  }
 
-	&.open {
-		.bd-dropdown-wrapper {
-			border-bottom: $active-border;
+  &.open {
+    .bd-dropdown-wrapper {
+      border-bottom: $active-border;
 
-			.bd-dropdown-label {
-				color: $label-active-color;
-			}
-		}
-	}
+      .bd-dropdown-label {
+        color: $label-active-color;
+      }
+    }
+  }
 }
