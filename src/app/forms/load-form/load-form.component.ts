@@ -1,17 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
 import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
+import { BaseForm } from '../base-form';
 
 @Component({
   selector: 'load-form',
   styleUrls: ['load-form.component.scss'],
-  templateUrl: './load-form.component.html'
+  templateUrl: './load-form.component.html',
+  inputs: BaseForm.genericInputs
 })
-export class BdLoadFormComponent {
+export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirmentsNames: Array<any>;
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
@@ -23,6 +25,7 @@ export class BdLoadFormComponent {
   private selectedCustomer: Customer;
 
   public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
+    super();
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
     this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
@@ -56,12 +59,8 @@ export class BdLoadFormComponent {
     this.selectedCustomer = this.load.customer;
   }
 
-  get isEditMode (): boolean {
-    return this.customerViewMode === ViewMode.Edit;
-  }
-
   public initForm() {
-
+    this.customerViewMode = ViewMode.View;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
       driverRequirment: [this.load.driverRequirment],

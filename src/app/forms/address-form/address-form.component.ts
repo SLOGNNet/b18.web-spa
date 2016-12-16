@@ -4,20 +4,21 @@ import { Validators } from '@angular/forms';
 import { Address } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
+import { BaseForm } from '../base-form';
 
 @Component({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
   styleUrls: ['./address-form.component.scss']
 })
-export class AddressForm {
+export class AddressForm extends BaseForm  {
   @Input()
   public address: Address;
+  @Input()
+  public viewMode: ViewMode;
   @Input('group')
   public addressForm: BdFormGroup;
-  @Input() isExpanded: boolean = false;
-  @Input() viewMode = ViewMode.View;
-
+  @Input() isExpanded: boolean = true;
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {
@@ -45,10 +46,7 @@ export class AddressForm {
     private _changeDetectionRef: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
     private _googleService: GoogleService) {
-  }
-
-  get isEditMode (): boolean {
-    return this.viewMode === ViewMode.Edit;
+      super();
   }
 
   ngOnChanges(changes: any) {

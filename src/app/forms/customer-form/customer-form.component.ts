@@ -1,19 +1,18 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
-import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
+import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
-import { BaseForm } from '../index'
+import { BaseForm } from '../base-form';
+
 @Component({
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  styleUrls: ['./customer-form.component.scss'],
+  inputs: BaseForm.genericInputs
 })
-export class CustomerForm extends BaseForm{
-
+export class CustomerForm extends BaseForm {
   @Input() public customer: Customer;
-  @Input() public viewMode: ViewMode = ViewMode.Edit;
-  @Input() isExpanded: boolean = false;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
 
@@ -22,10 +21,6 @@ export class CustomerForm extends BaseForm{
   selectedCustomerType: string;
   customerStatuses: Array<any>;
   selectedCustomerStatus: string;
-
-  private get isFormExpanded(): boolean {
-    return this.isExpanded || this.isEditMode;
-  }
 
   constructor(private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService) {
