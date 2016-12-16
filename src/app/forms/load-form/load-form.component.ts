@@ -20,7 +20,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
-  private customerViewMode: ViewMode = ViewMode.View;
+  private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: BdFormGroup;
   private selectedCustomer: Customer;
 
@@ -60,7 +60,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   }
 
   public initForm() {
-    this.customerViewMode = ViewMode.View;
+    this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
       driverRequirment: [this.load.driverRequirment],
@@ -71,8 +71,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   }
 
   public onCustomerSelect(customer: Customer) {
-    this.load.customer = customer;
-    this.customerViewMode = ViewMode.View;
+    this.selectedCustomer = customer;
+    this.customerViewMode = ViewMode.ViewCollapsed;
   }
 
   private initCustomerTypeahead(customer) {

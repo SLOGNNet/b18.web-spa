@@ -68,7 +68,7 @@ export class CustomerForm extends BaseForm {
       }
   }
 
-  private onExpandChanged(expanded) {
-    this.isExpanded = expanded;
+  private onExpandChanged(viewMode) {
+    this.viewMode = viewMode;
   }
 }

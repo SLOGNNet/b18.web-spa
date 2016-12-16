@@ -2,19 +2,7 @@ import { Input, Output } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
-    public static genericInputs: string[] = ['isEpxanded', 'viewMode'];
-
-    get isExpanded(): boolean {
-       return this._isExpanded;
-   }
-   set isExpanded(isExpanded: boolean) {
-      if (!this.isEditMode) {
-       this._isExpanded = isExpanded;
-      }
-      else {
-        console.log("can't expand in edit mode");
-      }
-   }
+   public static genericInputs: string[] = ['viewMode'];
 
    get viewMode(): ViewMode {
      return this._viewMode;
@@ -22,9 +10,6 @@ export class BaseForm {
 
    set viewMode(viewMode: ViewMode) {
      this._viewMode = viewMode;
-     if (this.isEditMode) {
-       this._isExpanded = true;
-     }
    }
 
     private _isExpanded: boolean = false;
@@ -33,4 +18,8 @@ export class BaseForm {
     public get isEditMode(): boolean {
       return this.viewMode === ViewMode.Edit;
     }
+
+    public get isExpanded(): boolean {
+       return this.viewMode !== ViewMode.ViewCollapsed;
+   }
 }
