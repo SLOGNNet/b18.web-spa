@@ -21,7 +21,6 @@ export class BaseForm {
    }
 
    set viewMode(viewMode: ViewMode) {
-     debugger;
      this._viewMode = viewMode;
      if (this.isEditMode) {
        this._isExpanded = true;
