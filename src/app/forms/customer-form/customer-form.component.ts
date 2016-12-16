@@ -1,19 +1,19 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
-import { EnumHelperService, BdFormBuilder, BdFormGroup } from '../../shared';
+import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
+import { BaseForm } from '../base-form';
 
 @Component({
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  styleUrls: ['./customer-form.component.scss'],
+  providers: [FormValidationService],
+  inputs: BaseForm.genericInputs
 })
-export class CustomerForm {
-
+export class CustomerForm extends BaseForm {
   @Input() public customer: Customer;
-  @Input() public viewMode: ViewMode = ViewMode.Edit;
-  @Input() isExpanded: boolean = false;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
 
@@ -23,16 +23,10 @@ export class CustomerForm {
   customerStatuses: Array<any>;
   selectedCustomerStatus: string;
 
-  private get isEditMode(): boolean {
-    return this.viewMode === ViewMode.Edit;
-  }
-
-  private get isFormExpanded(): boolean {
-    return this.isExpanded || this.isEditMode;
-  }
-
   constructor(private formBuilder: FormBuilder,
-    private enumHelperService: EnumHelperService) {
+    private enumHelperService: EnumHelperService,
+    private validationService: FormValidationService) {
+    super();
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }
@@ -42,6 +36,9 @@ export class CustomerForm {
   }
 
   submit(customer: Customer, isValid: boolean) {
+    if (!isValid) {
+      this.validationService.show();
+    }
     if (customer && isValid) {
       this.save.emit(customer);
     }
@@ -71,7 +68,7 @@ export class CustomerForm {
       }
   }
 
-  private onExpandChanged(expanded) {
-    this.isExpanded = expanded;
+  private onExpandChanged(viewMode) {
+    this.viewMode = viewMode;
   }
 }

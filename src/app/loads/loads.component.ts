@@ -4,6 +4,7 @@ import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component'
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { Load } from '../models';
 import { LoadService } from '../shared';
+import { ViewMode } from '../shared/enums';
 
 @Component({
     selector: 'loads',
@@ -16,6 +17,7 @@ export class LoadsComponent {
      { prop: 'status', name: 'Status'}
    ];
   public selectedLoad: Load = null;
+  public loadViewMode: ViewMode = ViewMode.Edit;
   public loads: Load[] = new Array<Load>();
 
   constructor(private loadService: LoadService) {

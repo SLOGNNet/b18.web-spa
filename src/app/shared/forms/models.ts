@@ -9,7 +9,7 @@ interface IBdControlInterface {
 
 export class BdFormGroup extends FormGroup implements IBdControlInterface {
   private _submitted: boolean = false;
-  private _viewMode: ViewMode = ViewMode.All;
+  private _viewMode: ViewMode = ViewMode.View;
   constructor(
     public controls: { [key: string]: AbstractControl }, validator: ValidatorFn = null,
     asyncValidator: AsyncValidatorFn = null) {
@@ -75,7 +75,7 @@ export class BdFormControl extends FormControl implements IBdControlInterface {
   constructor(
     formState: any = null, validator: ValidatorFn|ValidatorFn[] = null,
     asyncValidator: AsyncValidatorFn|AsyncValidatorFn[] = null,
-    allowedViewMode: ViewMode = ViewMode.All) {
+    allowedViewMode: ViewMode = ViewMode.View) {
       super(formState, validator, asyncValidator);
       this._allowedViewMode = allowedViewMode;
   };
