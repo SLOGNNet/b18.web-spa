@@ -9,6 +9,7 @@ import { BaseForm } from '../base-form';
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss'],
+  providers: [FormValidationService],
   inputs: BaseForm.genericInputs
 })
 export class CustomerForm extends BaseForm {
@@ -23,7 +24,8 @@ export class CustomerForm extends BaseForm {
   selectedCustomerStatus: string;
 
   constructor(private formBuilder: FormBuilder,
-    private enumHelperService: EnumHelperService) {
+    private enumHelperService: EnumHelperService,
+    private validationService: FormValidationService) {
     super();
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
@@ -34,6 +36,9 @@ export class CustomerForm extends BaseForm {
   }
 
   submit(customer: Customer, isValid: boolean) {
+    if (!isValid) {
+      this.validationService.show();
+    }
     if (customer && isValid) {
       this.save.emit(customer);
     }
