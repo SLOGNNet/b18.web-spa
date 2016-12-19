@@ -20,11 +20,11 @@
     border-top: 0;
 
     .item-wrapper {
-      height: 75px;
+      height: $form-control-height;
     }
 
     li {
-      height: 75px;
+      height: $form-control-height;
       border-bottom: $border;
 
       bd-form-button {
@@ -36,13 +36,12 @@
       &.active {
         a {
           background-color: $light-blue;
-          border-bottom: $border;
           outline: 0;
         }
       }
 
       a {
-        height: 75px;
+        height: 100%;
         padding: 0;
       }
 
