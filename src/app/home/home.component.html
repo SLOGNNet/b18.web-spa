@@ -94,6 +94,25 @@
           [items]="switchButtons2"
           [selectedValue]="switchButtons2[0]">
         </bd-form-switch>
+        <input #input test type="text">
+        <button (click)="onClick()">submit</button>
+
+        <bd-input
+            #bdinput
+            [labelText]="'Estimated distance Estimated'"
+            [collapsibleInput]="true"
+            [attr.name]="'Andrew'">
+            <span class="prefix" bd-prefix>$&nbsp;</span>
+            <span bd-suffix>$&nbsp;</span>
+        </bd-input>
+          <button (click)="onBdInpClick()">submit</button>
+
+          <!-- <bd-typeahead
+          test
+          #bdtypeahead
+          >
+          </bd-typeahead>
+          <button (click)="onBdTypeaheadClick()">submit</button> -->
       </div>
 
     </second-pane>

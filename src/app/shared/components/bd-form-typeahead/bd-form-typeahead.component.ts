@@ -5,6 +5,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
+import { testDirective } from './test.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
 import { BdInputComponent } from '../bd-input';
@@ -14,7 +15,7 @@ const noop = () => { };
   selector: 'bd-typeahead',
   templateUrl: './bd-form-typeahead.component.html',
   styleUrls: ['./bd-form-typeahead.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
@@ -67,7 +68,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   remove(event): void {
     event.stopPropagation();
     this.changeValue('');
-    debugger;
+    console.log(this.inputElement, 'this.inputElement');
     this.inputElement.blur();
     this.onRemove.emit(event);
   }

@@ -100,6 +100,7 @@ export class TypeaheadDirective implements OnInit {
 
   @HostListener('focus')
   public onFocus(): void {
+    console.log(222);
       debugger;
     if (this.typeaheadMinLength === 0) {
       this.typeaheadLoading.emit(true);
@@ -107,8 +108,9 @@ export class TypeaheadDirective implements OnInit {
     }
   }
 
-  @HostListener('blur')
+  @HostListener('blur', ['$event'])
   public onBlur(): void {
+    console.log(111);
     debugger;
     if (this.container && !this.container.isFocused) {
       this.hide();

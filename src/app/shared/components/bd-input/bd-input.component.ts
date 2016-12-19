@@ -1,6 +1,7 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
+  import { TypeaheadDirective } from './typeahead.directive';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 let nextUniqueId = 0;
@@ -99,15 +100,20 @@ export class BdInputComponent {
   }
 
   focus($event) {
+    console.log('focus');
     this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'focus');
     $event.preventDefault();
   }
 
   blur() {
-        // this._inputElement.nativeElement.focus();
-        //       this._inputElement.nativeElement.blur();
+      console.log('blur');
+    console.log(this._inputElement.nativeElement,'this._inputElement.nativeElement');
+        this._inputElement.nativeElement.blur();
+        console.log(this._inputElement.nativeElement.blur());
+    //     this._inputElement.nativeElement.focus();
+          // this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'blur', []);
         debugger;
-    this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'blur', []);
+        // console.log(this._inputElement.nativeElement.classList);
 
   }
 
