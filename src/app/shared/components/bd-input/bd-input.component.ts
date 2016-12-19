@@ -1,7 +1,7 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
-  import { TypeaheadDirective } from './typeahead.directive';
+import { TypeaheadDirective } from './typeahead.directive';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 let nextUniqueId = 0;
@@ -81,9 +81,10 @@ export class BdInputComponent {
     this.changeDetectionRef.detectChanges();
   }
 
-  constructor(elementRef: ElementRef, private changeDetectionRef: ChangeDetectorRef, private renderer: Renderer) {
+  constructor(private element: ElementRef,
+    private changeDetectionRef: ChangeDetectorRef, private renderer: Renderer) {
     // Set the element type depending on normalized selector used(bd-input / bd-textarea)
-    this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+    this._elementType = element.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
   }
@@ -100,21 +101,14 @@ export class BdInputComponent {
   }
 
   focus($event) {
-    console.log('focus');
     this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'focus');
     $event.preventDefault();
   }
 
   blur() {
-      console.log('blur');
-    console.log(this._inputElement.nativeElement,'this._inputElement.nativeElement');
-        this._inputElement.nativeElement.blur();
-        console.log(this._inputElement.nativeElement.blur());
-    //     this._inputElement.nativeElement.focus();
-          // this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'blur', []);
-        debugger;
-        // console.log(this._inputElement.nativeElement.classList);
-
+    const blurEvent = new Event('blur', { bubbles: true });
+    this.renderer.invokeElementMethod(
+      this.element.nativeElement, 'dispatchEvent', [blurEvent]);
   }
 
   _handleFocus(event: FocusEvent) {
