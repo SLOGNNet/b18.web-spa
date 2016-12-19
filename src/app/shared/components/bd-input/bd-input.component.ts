@@ -1,7 +1,6 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
-import { TypeaheadDirective } from './typeahead.directive';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 let nextUniqueId = 0;

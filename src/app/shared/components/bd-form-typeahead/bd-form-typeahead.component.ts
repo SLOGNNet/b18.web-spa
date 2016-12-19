@@ -15,7 +15,7 @@ const noop = () => { };
   selector: 'bd-typeahead',
   templateUrl: './bd-form-typeahead.component.html',
   styleUrls: ['./bd-form-typeahead.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
