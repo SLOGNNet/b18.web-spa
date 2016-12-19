@@ -100,18 +100,14 @@ export class TypeaheadDirective implements OnInit {
 
   @HostListener('focus')
   public onFocus(): void {
-    console.log(222);
-      debugger;
     if (this.typeaheadMinLength === 0) {
       this.typeaheadLoading.emit(true);
       this.keyUpEventEmitter.emit('');
     }
   }
 
-  @HostListener('blur', ['$event'])
+  @HostListener('blur')
   public onBlur(): void {
-    console.log(111);
-    debugger;
     if (this.container && !this.container.isFocused) {
       this.hide();
     }
@@ -153,7 +149,7 @@ export class TypeaheadDirective implements OnInit {
 
   public ngOnInit(): void {
     this.typeaheadOptionsLimit = this.typeaheadOptionsLimit || 20;
-    this.typeaheadMinLength = this.typeaheadMinLength === void 0 ? 0 : this.typeaheadMinLength;
+    this.typeaheadMinLength = this.typeaheadMinLength === void 0 ? 1 : this.typeaheadMinLength;
     this.typeaheadWaitMs = this.typeaheadWaitMs || 0;
 
     // async should be false in case of array

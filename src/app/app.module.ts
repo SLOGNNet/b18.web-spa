@@ -5,7 +5,6 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
-import { testDirective } from './home'
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -52,8 +51,7 @@ type StoreType = {
      MessagesComponent,
      MessageComponent,
      LoadsComponent,
-     TypeaheadDemoComponent,
-     testDirective
+     TypeaheadDemoComponent
   ],
   imports: [
     SharedModule,
