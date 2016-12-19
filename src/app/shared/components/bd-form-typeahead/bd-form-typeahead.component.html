@@ -8,6 +8,7 @@
     <bd-spinner></bd-spinner>
   </template>
   <bd-input [ngModel]="value"
+      #input
       (focusChange)="onFocusChanged($event)"
       (ngModelChange)="changeValue($event)"
       [typeahead]="source"
