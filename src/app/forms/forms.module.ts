@@ -4,12 +4,16 @@ import { AddressForm } from './address-form';
 import { SharedModule } from '../shared/shared.module';
 
 import { BdLoadFormComponent } from './load-form';
+import { CommodityComponent } from './commodity-form/components/commodity/commodity.component';
+import { CommodityFormComponent } from './commodity-form/commodity-form.component';
 
 @NgModule({
   declarations: [
     CustomerForm,
     AddressForm,
-    BdLoadFormComponent
+    BdLoadFormComponent,
+    CommodityComponent,
+    CommodityFormComponent
   ],
   imports: [
     SharedModule
@@ -17,7 +21,9 @@ import { BdLoadFormComponent } from './load-form';
   exports: [
     CustomerForm,
     AddressForm,
-    BdLoadFormComponent
+    BdLoadFormComponent,
+    CommodityComponent,
+    CommodityFormComponent
   ]
 })
 export class BdFormsModule {

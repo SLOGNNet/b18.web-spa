@@ -1,0 +1,22 @@
+<div [formGroup]="commodityForm" class="commodity">
+  <div class="inputs">
+      <input
+        *ngFor="let field of fields; let i = index"
+        [attr.index]="i"
+        [formControlName]="field.name"
+        [type]="field.type"
+        (blur)="onBlur($event)"
+        (focus)="onFocus($event)">
+  </div>
+  <button
+    *ngIf="_isActive && !isRemoveButtonHidden"
+    index=""
+    class="remove-button"
+    (click)="onRemove()"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    on-mouseover="over()"
+    on-mouseleave="leave()">
+    Remove
+  </button>
+</div>

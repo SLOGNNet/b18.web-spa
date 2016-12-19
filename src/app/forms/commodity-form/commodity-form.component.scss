@@ -1,0 +1,48 @@
+.commodity-form {
+  min-width: 365px; 
+}
+
+.header {
+  display: flex;
+
+  div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 0 1px 1px 0;
+
+    &:last-child {
+      border-right-width: 0;
+    }
+
+    &.active {
+      p {
+        color: #87bce6;
+      }
+    }
+
+    p {
+      font-size: 10px;
+      margin: 0;
+      color: #757575;
+      cursor: default;
+    }
+  }
+}
+
+.add-button{
+  width: 100%;
+  height: 50px;
+  background: white;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 0 0 1px 0;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+} 

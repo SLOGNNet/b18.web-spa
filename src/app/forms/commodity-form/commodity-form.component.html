@@ -1,0 +1,19 @@
+<form [formGroup]="_commodityFormGroup" novalidate class="commodity-form">
+  <div class="header">
+    <div 
+      *ngFor="let title of _titles; let i=index"    
+      [class.active]="_focusedCol == i">
+      <p [innerHTML]="title.name"></p>
+    </div>
+  </div>
+  <commodity
+    *ngFor="let commodity of formControl.controls; let i = index"
+    [isRemoveButtonHidden]="formControl.controls.length === 1"
+    [group]="formControl.controls[i]"
+    [fields]="_fields"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+    (remove)="onRemove(i)">
+  </commodity>
+  <button class="add-button" (click)="onAdd()">Add</button>
+</form>
