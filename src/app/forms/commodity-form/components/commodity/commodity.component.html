@@ -12,11 +12,9 @@
     *ngIf="_isActive && !isRemoveButtonHidden"
     index=""
     class="remove-button"
-    (click)="onRemove()"
+    (mousedown)="onRemove()"
     (blur)="onBlur($event)"
-    (focus)="onFocus($event)"
-    on-mouseover="over()"
-    on-mouseleave="leave()">
+    (focus)="onFocus($event)">
     Remove
   </button>
 </div>

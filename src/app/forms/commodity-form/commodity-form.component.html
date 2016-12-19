@@ -1,4 +1,4 @@
-<form [formGroup]="_commodityFormGroup" novalidate class="commodity-form">
+<form [formGroup]="formControl" novalidate class="commodity-form">
   <div class="header">
     <div 
       *ngFor="let title of _titles; let i=index"    
@@ -7,13 +7,13 @@
     </div>
   </div>
   <commodity
-    *ngFor="let commodity of formControl.controls; let i = index"
-    [isRemoveButtonHidden]="formControl.controls.length === 1"
-    [group]="formControl.controls[i]"
+    *ngFor="let commodity of commoditiesformControl.controls; let i = index"
+    [isRemoveButtonHidden]="commoditiesformControl.controls.length === 1"
+    [group]="commoditiesformControl.controls[i]"
     [fields]="_fields"
     (blur)="onBlur($event)"
     (focus)="onFocus($event)"
     (remove)="onRemove(i)">
   </commodity>
-  <button class="add-button" (click)="onAdd()">Add</button>
+  <button class="add-button" (mousedown)="onAdd()">Add</button>
 </form>

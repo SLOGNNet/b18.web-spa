@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CommodityService } from '../../shared';
 import { Commodity } from '../../models';
@@ -11,8 +11,9 @@ import { Commodity } from '../../models';
 export class CommodityFormComponent implements OnInit {
 
   private _focusedCol = null;
-  private _commodities: Array<any>;
-  private _commodityFormGroup: FormGroup;
+  @Input('group') formControl: FormGroup;
+  @Input('commodities') _commodities: Array<Commodity>;
+
   private _titles = [
     { name: 'PICKUP<br />#'},
     { name: 'P.O.'},
@@ -38,31 +39,25 @@ export class CommodityFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._commodityService
-      .getAll()
-      .subscribe(commodities => {
-        this._commodities = Array.from(commodities);
+    this.initForm();
+  }
 
-        this._commodityFormGroup = this._formBuilder.group({
-          commodities: this._formBuilder.array(
-            this.initCommodities(this._commodities),
-          )
-        });
-      });
+  ngOnChange() {
+    this.initForm();
+  }
 
-    if (this.formControl.length === 0) {
-      this.formControl.push(this.initCommodity(new Commodity()));
+  initForm() {    
+    this.initCommodities(this._commodities);
+
+    if (this.commoditiesformControl.length === 0) {
+      this.commoditiesformControl.push(this.initCommodity(new Commodity()));
     }
   }
 
-  initCommodities(commodities: Array<Commodity>): Array<FormGroup> {
-    let groups = [];
-
+  initCommodities(commodities: Array<Commodity>) {
     commodities.forEach(item =>
-      groups.push(this.initCommodity(item))
+      this.commoditiesformControl.push(this.initCommodity(item))
     );
-
-    return groups;
   }
 
   initCommodity(commodity: Commodity): FormGroup {
@@ -84,19 +79,19 @@ export class CommodityFormComponent implements OnInit {
   }
 
   onAdd() {
-    this.formControl.push(this.initCommodity(new Commodity()));
+    this.commoditiesformControl.push(this.initCommodity(new Commodity()));
   }
 
   onRemove(i: number) {
     this._focusedCol = null;
-    this.formControl.removeAt(i);
+    this.commoditiesformControl.removeAt(i);
 
-    if (this.formControl.length === 0) {
-      this.formControl.push(this.initCommodity(new Commodity()));
+    if (this.commoditiesformControl.length === 0) {
+      this.commoditiesformControl.push(this.initCommodity(new Commodity()));
     }
   }
 
-  get formControl() {
-    return <FormArray>this._commodityFormGroup.controls['commodities'];
+  get commoditiesformControl() {
+    return <FormArray>this.formControl.controls['commodities'];
   }
 }

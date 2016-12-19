@@ -28,6 +28,7 @@
 		 <bd-textarea class="bd-form-control" [labelText]="'Notes'">
 		 </bd-textarea>
 		</bd-form-section>
+		<commodity-form [group]="commoditiesFormControl" [commodities]="customerStops[0].commodities"></commodity-form>
 		<div class="section btn-container" *ngIf="isEditMode">
 			<bd-button
 				(click)="onCancel()"

@@ -36,7 +36,10 @@
          [optionField]="'name'">
        </bd-typeahead>
      </bd-validator>
-      <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' [customerStops]="selectedCustomerStops" (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+        <bd-form-section [labelText]="'PICKUPS'">
+          //
+        </bd-form-section>
         <bd-form-section [labelText]="'REQUIREMENTS'">
         <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
         </bd-form-switch>

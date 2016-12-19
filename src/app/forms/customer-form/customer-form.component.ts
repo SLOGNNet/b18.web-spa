@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
+import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Customer, CustomerStatuses, CustomerTypes, Stop } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -14,6 +14,7 @@ import { BaseForm } from '../base-form';
 })
 export class CustomerForm extends BaseForm {
   @Input() public customer: Customer;
+  @Input() public customerStops: Array<Stop>;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
 
@@ -58,8 +59,14 @@ export class CustomerForm extends BaseForm {
       taxId: [this.customer.taxId],
       address: this.formBuilder.group({ }),
       billingAddresses : this.formBuilder.group({ }),
-      email: [this.customer.email]
+      email: [this.customer.email],
+      stops: this.formBuilder.array([
+        this.formBuilder.group({
+          commodities: this.formBuilder.array([])
+        })
+      ])
     });
+
     //  this.customerForm.setViewMode(ViewMode.View);
   }
 
@@ -70,5 +77,13 @@ export class CustomerForm extends BaseForm {
 
   private onExpandChanged(viewMode) {
     this.viewMode = viewMode;
+  }
+
+  get stopsFormControl() {
+    return <FormArray>this.customerForm.controls['stops'];
+  }
+
+  get commoditiesFormControl() {
+    return <FormArray>this.stopsFormControl.controls[0];
   }
 }

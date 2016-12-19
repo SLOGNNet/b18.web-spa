@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -23,6 +23,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: BdFormGroup;
   private selectedCustomer: Customer;
+  private selectedCustomerStops: Array<Stop>;
 
   public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
     super();
@@ -34,6 +35,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.selectedCustomer = this.load.customer;
+      this.selectedCustomerStops = this.load.stops;
       this.initForm();
       this.initCustomerTypeahead(this.selectedCustomer);
     }
@@ -63,6 +65,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
+      stops: [this.load.stops],
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],

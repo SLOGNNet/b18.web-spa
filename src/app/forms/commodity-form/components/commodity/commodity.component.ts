@@ -18,14 +18,11 @@ export class CommodityComponent {
   @Output() remove = new EventEmitter();
 
   private _isActive = false;
-  private _isBlurPrevented = false;
-  
+
 
   onBlur(e) {
-    if (!this._isBlurPrevented) {
-      this._isActive = false;
-      this.blur.emit(parseInt(e.target.attributes.index.nodeValue));
-    }
+    this._isActive = false;
+    this.blur.emit(parseInt(e.target.attributes.index.nodeValue));
   }
 
   onFocus(e) {
@@ -35,13 +32,5 @@ export class CommodityComponent {
 
   onRemove() {
     this.remove.emit();
-  }
-
-  over() {
-    this._isBlurPrevented = true;
-  }
-
-  leave() {
-    this._isBlurPrevented = false;
   }
 }
