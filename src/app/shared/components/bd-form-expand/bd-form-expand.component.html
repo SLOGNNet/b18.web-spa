@@ -3,10 +3,10 @@
  <div *ngIf='isExpandButtonVisible'
   (click)="toggleExpand()"
   class="expandable-arrow-wrapper"
-  [class.open]="expanded">
+  [class.open]="isExpanded">
   <i
-    [class.fa-chevron-up]="expanded"
-    [class.fa-chevron-down]="!expanded"
+    [class.fa-chevron-up]="isExpanded"
+    [class.fa-chevron-down]="!isExpanded"
     class="fa expandable-arrow"
     aria-hidden="true">
   </i>
