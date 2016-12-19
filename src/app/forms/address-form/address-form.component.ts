@@ -18,7 +18,6 @@ export class AddressForm extends BaseForm  {
   public viewMode: ViewMode;
   @Input('group')
   public addressForm: BdFormGroup;
-  @Input() isExpanded: boolean = true;
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {

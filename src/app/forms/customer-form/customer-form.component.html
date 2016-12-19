@@ -1,4 +1,4 @@
-<bd-form-expand [expanded]="isExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode" [class.edit]="isEditMode" [class.view]="!isEditMode">
+<bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode" [class.edit]="isEditMode" [class.view]="!isEditMode">
 	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)" [class.edit]="isEditMode" [class.view]="!isEditMode">
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
@@ -15,7 +15,7 @@
 			</bd-input>
 		</bd-form-section>
 		<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [isExpanded]='isExpanded'>
-			<address-form [group]='customerForm.controls.address' [isExpanded]="isExpanded" [address]='customer.address' [viewMode]="viewMode"></address-form>
+			<address-form [group]='customerForm.controls.address'[address]='customer.address' [viewMode]="viewMode"></address-form>
 			<bd-input class="bd-form-control" [labelText]="'Email'" formControlName="email" *ngIf='isExpanded'>
 			</bd-input>
 		</bd-form-section>
@@ -24,7 +24,7 @@
 			 <input type="checkbox" (change)="sameAsCompanyChange($event)">
 			 <span>Same as Company Address</span>
 		 </label>
-		 <address-form [group]='customerForm.controls.billingAddresses' [isExpanded]="isExpanded" [address]='customer.billingAddresses' [viewMode]="viewMode"></address-form>
+		 <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses' [viewMode]="viewMode"></address-form>
 		 <bd-textarea class="bd-form-control" [labelText]="'Notes'">
 		 </bd-textarea>
 		</bd-form-section>
