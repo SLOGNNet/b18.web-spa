@@ -2,7 +2,7 @@
     [ngStyle]="{top: top, left: left, display: 'block'}"
     (mouseleave)="focusLost()">
   <template ngFor let-match let-i="index" [ngForOf]="matches">
-    <li *ngIf="!showLoader"
+    <li style="height:100%;" *ngIf="!showLoader"
       [class.active]="isActive(match)"
       (mouseenter)="selectActive(match)">
       <a href="#"
