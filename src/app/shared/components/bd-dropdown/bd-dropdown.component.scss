@@ -118,3 +118,16 @@
     }
   }
 }
+
+//sass-lint:disable force-element-nesting
+:host-context(.view).bd-form-control {
+  .bd-dropdown-icon {
+    display: none;
+  }
+
+  &:hover {
+    .bd-dropdown-icon {
+      display: block;
+    }
+  }
+}

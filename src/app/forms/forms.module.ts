@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CustomerForm } from './customer-form';
 import { AddressForm } from './address-form';
+import { AddressesForm } from './addresses-form';
 import { SharedModule } from '../shared/shared.module';
 
 import { BdLoadFormComponent } from './load-form';
@@ -10,6 +11,7 @@ import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComp
   declarations: [
     CustomerForm,
     AddressForm,
+    AddressesForm,
     BdLoadFormComponent,
     CommodityComponent,
     BaseCommodityFormComponent,

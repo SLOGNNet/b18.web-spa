@@ -56,18 +56,11 @@ export class CustomerForm extends BaseForm {
       status: [this.customer.status, Validators.required],
       mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({}),
-      billingAddresses: this.formBuilder.group({}),
+      addresses: this.formBuilder.array([]),
       email: [this.customer.email]
     });
-
-    //  this.customerForm.setViewMode(ViewMode.View);
   }
 
-  sameAsCompanyChange(event) {
-    if (event.target.checked) {
-    }
-  }
 
   private onExpandChanged(viewMode) {
     this.viewMode = viewMode;
