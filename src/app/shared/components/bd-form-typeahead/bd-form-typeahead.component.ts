@@ -1,10 +1,13 @@
-import { Component, Optional, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter, forwardRef, HostBinding } from '@angular/core';
+import { Component, Optional, ElementRef, TemplateRef,
+  ViewEncapsulation, Input, Output, EventEmitter,
+  forwardRef, HostBinding, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
+import { BdInputComponent } from '../bd-input';
 const noop = () => { };
 
 @Component({
@@ -26,7 +29,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Output() public valueChange = new EventEmitter();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter();
   @Output() public onFooterButtonClick: EventEmitter<any> = new EventEmitter();
-
+  @ViewChild('input') inputElement: BdInputComponent;
   @HostBinding('class.bd-focused') _focused: boolean = false;
 
   protected isLoading: boolean = false;
@@ -63,7 +66,9 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
   remove(event): void {
     event.stopPropagation();
+    this.inputElement.blur();
     this.changeValue('');
+
     this.onRemove.emit(event);
   }
 

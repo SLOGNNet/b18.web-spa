@@ -1,0 +1,26 @@
+@import '../../../../../../assets/styles/variables';
+
+.c-row {
+  display: flex;
+
+  .c-col {
+    height: $form-control-height;
+    font-size: $mini-font-size;
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    border-color: $grey;
+    border-width: 0 1px 1px 0;
+    outline: none;
+    box-shadow: none;
+
+    &:active,
+    &:focus {
+      border-bottom-color: $blue;
+    }
+
+    &:last-child {
+      border-right-width: 0;
+    }
+  }
+}
