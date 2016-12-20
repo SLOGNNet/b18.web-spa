@@ -9,7 +9,8 @@ import { BaseForm } from '../base-form';
 @Component({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss']
+  styleUrls: ['./address-form.component.scss'],
+  inputs: BaseForm.genericInputs
 })
 export class AddressForm extends BaseForm  {
   @Input()

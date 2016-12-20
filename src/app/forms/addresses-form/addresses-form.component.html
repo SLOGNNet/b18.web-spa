@@ -1,0 +1,5 @@
+<template let-data ngFor [ngForOf]="_addressFormData" let-i="index">
+  <div (click)='onRemoveAddress(data)'> Address #{{i + 1}}</div>
+  <address-form [group]='data.group' [address]='data.address' [viewMode]="viewMode"></address-form>
+</template>
+<div (click)='onAddNew()'> Add </div>

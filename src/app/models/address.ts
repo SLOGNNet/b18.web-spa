@@ -13,6 +13,11 @@ export class Address {
     lng: number;
   };
 
+  static create(): Address{
+    const result = new Address();
+    return result;
+  }
+
   constructor() {
     this.location = { lat: 0, lng: 0 };
   }
