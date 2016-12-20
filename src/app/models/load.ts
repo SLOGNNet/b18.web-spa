@@ -1,4 +1,4 @@
-import { Customer } from './index';
+import { Customer, Stop } from './index';
 
 export enum LoadStatuses {
   Booked = 1,
@@ -35,4 +35,5 @@ export class Load {
   powerUnitType: PowerUnitTypes;
   trailerType: TrailerTypes;
   specialRequirment: string;
+  stops: Array<Stop>;
 }

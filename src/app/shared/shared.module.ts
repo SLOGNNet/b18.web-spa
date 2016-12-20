@@ -7,6 +7,7 @@ import { NotificationService,
   SocketService,
   LoadService,
   GoogleService,
+  CommodityService,
   FormValidationService
 } from './services';
 import { EnumHelperService } from './helpers';
@@ -35,6 +36,7 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     CustomerService,
     EnumHelperService,
     GoogleService,
+    CommodityService,
     BdFormBuilder,
     FormValidationService
   ],
