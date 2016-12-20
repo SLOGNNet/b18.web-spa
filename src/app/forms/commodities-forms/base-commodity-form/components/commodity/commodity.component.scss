@@ -4,8 +4,8 @@
   display: flex;
 
   .c-col {
-    height: 50px;
-    font-size: 10px;
+    height: $form-control-height;
+    font-size: $mini-font-size;
     text-align: center;
     flex: 1;
     min-width: 0;
@@ -27,7 +27,7 @@
 
 .remove-button {
   width: 100%;
-  height: 50px;
+  height: $form-control-height;
   padding: 0;
   background: $white;
   border-style: solid;
