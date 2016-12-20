@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
 export class BdAddRemoveButtonComponent {
   @Input() type: string = 'button';
   @Input() disabled: boolean = false;
-  @Input() preLabel: string = '';
-  @Input() sufLabel: string = '';
+  @Input() prefixLabel: string = '';
+  @Input() suffixLabel: string = '';
 
   protected iconUrl: string = '';
 }
