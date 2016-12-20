@@ -8,13 +8,11 @@
         (blur)="onBlur($event)"
         (focus)="onFocus($event)">
   </div>
-  <button
+  <bd-remove-button
     *ngIf="_isActive && !isRemoveButtonHidden"
     index=""
-    class="remove-button"
     (mousedown)="onRemove()"
     (blur)="onBlur($event)"
     (focus)="onFocus($event)">
-    Remove
-  </button>
+  </bd-remove-button>
 </div>
