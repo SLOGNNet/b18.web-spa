@@ -1,0 +1,32 @@
+@import '../../../../../assets/styles/variables';
+
+.button {
+  display: flex;
+  width: 100%;
+  height: $form-control-height;
+  border: 0;
+  background: $white;
+  text-align: right;
+  cursor: pointer;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+  justify-content: flex-end;
+  align-items: center;
+  outline: 0;
+
+  .icon,
+  .text {
+    margin: auto 11px auto 6px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    mask: none;
+  }
+
+  .text {
+    font-size: $mini-font-size;
+    font-weight: bold;
+  }
+}

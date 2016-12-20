@@ -14,12 +14,10 @@ import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdDropdownComponent } from './components/bd-dropdown';
-import { BdFormButtonComponent } from './components/bd-form-button';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
-import { BdButtonComponent } from './components/bd-button';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
@@ -28,6 +26,11 @@ import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
+import { BdRemoveButtonComponent,
+  BdAddButtonComponent,
+  BdButtonComponent,
+  BdFormButtonComponent
+} from './components/bd-buttons';
 @NgModule({
   providers: [
     NotificationService,
@@ -49,6 +52,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     BdFormTypeaheadComponent,
     BdFormExpandComponent,
     BdButtonComponent,
+    BdRemoveButtonComponent,
+    BdAddButtonComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
@@ -82,6 +87,8 @@ import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
     ReactiveFormsModule,
     BdFormExpandComponent,
     BdButtonComponent,
+    BdRemoveButtonComponent,
+    BdAddButtonComponent,
     HttpModule
   ]
 
