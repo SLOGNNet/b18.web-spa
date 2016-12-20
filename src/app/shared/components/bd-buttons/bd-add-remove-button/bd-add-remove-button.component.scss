@@ -10,19 +10,27 @@
   cursor: pointer;
   border-bottom: $border;
   border-radius: $default-border-radius;
-  justify-content: flex-end;
-  align-items: center;
   outline: 0;
+  align-items: center;
 
-  .icon,
-  .text {
+  .suffix-label {
     margin: auto 11px auto 6px;
   }
 
   .icon {
-    width: 18px;
-    height: 18px;
+    text-align: right;
+    margin-right: 11px;
     mask: none;
+    flex: 1;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .prefix-label {
+    margin-left: 11px;
   }
 
   .text {
