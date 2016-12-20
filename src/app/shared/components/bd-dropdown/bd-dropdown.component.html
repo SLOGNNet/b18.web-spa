@@ -1,4 +1,4 @@
-<div dropdown class="bd-dropdown-container" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
+<div dropdown class="bd-dropdown-container" [class.view-mode]="viewMode" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
   <div dropdownToggle
     id="bd-dropdown"
     class="bd-dropdown-wrapper"

@@ -89,6 +89,7 @@ export class GoogleMapComponent implements OnChanges {
     }
 
     private _updateMarker(location: Object): void {
+      return;
         this._marker.setIcon({
             url: this.markerIcon,
             scaledSize: new google.maps.Size(this.markerSize, this.markerSize),

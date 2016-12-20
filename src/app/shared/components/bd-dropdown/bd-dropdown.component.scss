@@ -117,4 +117,16 @@
       }
     }
   }
+
+  &.view-mode {
+    .bd-dropdown-icon {
+      display: none;
+    }
+
+    &:hover {
+      .bd-dropdown-icon {
+        display: block;
+      }
+    }
+  }
 }

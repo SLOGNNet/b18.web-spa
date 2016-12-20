@@ -67,11 +67,8 @@ export class AddressForm extends BaseForm  {
     this._updateMap();
   }
 
-  onAddressRemove(streetAddress: HTMLInputElement, city: HTMLInputElement, state: HTMLInputElement, zip: HTMLInputElement){
-    streetAddress.value = null;
-    city.value = null;
-    zip.value = null;
-    state.value = null;
+  onAddressRemove(){
+    this.addressForm.setValue(Object.assign({}, this.addressForm.value, {city:'', state: '', zip:'', secondStreetAddress:''}));
   }
 
   public onPlaceSelect(place) {
@@ -81,7 +78,7 @@ export class AddressForm extends BaseForm  {
           if (detail) {
             this._placeQuery = detail.streetAddress;
             this._updateMap(detail.location, detail.streetAddress);
-            this.addressForm.setValue(Object.assign({}, this.address, detail));
+            this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
             this._changeDetectionRef.detectChanges();
           }
         });

@@ -17,6 +17,7 @@ export const BD_FORM_SWITCHL_VALUE_ACCESSOR: any = {
 export class BdFormSwitchComponent implements ControlValueAccessor {
 
   @Input() labelText: string;
+  @Input() viewMode:boolean;
   @Input() items: any[];
   @Input() selectedValue: any;
   @Input() enableButtonSwitch: boolean = false;
