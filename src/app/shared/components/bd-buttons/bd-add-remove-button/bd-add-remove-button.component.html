@@ -1,0 +1,7 @@
+<button
+  [disabled]="disabled"
+  [type]="type"
+  class="button">
+  <img class="icon" [src]="iconUrl" alt="Button">
+  <span *ngIf="text.length" class="text">{{text}}</span>
+</button>
