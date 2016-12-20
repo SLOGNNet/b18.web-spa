@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/variables';
+
+.add-button {
+  width: 100%;
+  height: 50px;
+  padding: 0;
+  background: $white;
+  border-style: solid;
+  border-color: $grey;
+  border-width: 0 0 1px;
+  outline: none;
+  box-shadow: none;
+}

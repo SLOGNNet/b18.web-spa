@@ -22,12 +22,12 @@ export class CommodityComponent {
 
   onBlur(e) {
     this._isActive = false;
-    this.blur.emit(parseInt(e.target.attributes.index.nodeValue));
+    this.blur.emit(parseInt(e.target.attributes.index.nodeValue, 10));
   }
 
   onFocus(e) {
     this._isActive = true;
-    this.focus.emit(parseInt(e.target.attributes.index.nodeValue));
+    this.focus.emit(parseInt(e.target.attributes.index.nodeValue, 10));
   }
 
   onRemove() {

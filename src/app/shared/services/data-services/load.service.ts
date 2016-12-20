@@ -8,7 +8,7 @@ import { CustomerService } from  './index';
 
 @Injectable()
 export class LoadService {
-  
+
   private _commodities: Array<Commodity> = [{
     pickupNumber: 1,
     po: '23324234',

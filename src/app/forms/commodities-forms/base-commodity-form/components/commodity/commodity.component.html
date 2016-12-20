@@ -1,6 +1,6 @@
-<div [formGroup]="commodityForm" class="commodity">
-  <div class="inputs">
-      <input
+<div class="commodity" [formGroup]="commodityForm" class="commodity">
+  <div class="c-row">
+      <input class="c-col"
         *ngFor="let field of fields; let i = index"
         [attr.index]="i"
         [formControlName]="field.name"

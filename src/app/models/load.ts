@@ -35,5 +35,5 @@ export class Load {
   powerUnitType: PowerUnitTypes;
   trailerType: TrailerTypes;
   specialRequirment: string;
-  stops: Array<Stop>
+  stops: Array<Stop>;
 }
