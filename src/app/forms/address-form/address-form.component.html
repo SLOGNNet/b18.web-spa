@@ -13,30 +13,34 @@
   [source]="_placeSource"
   [(value)]="_placeQuery"
   [itemTemplate]="customItemTemplate"
-	[removeButtonHidden]="true"
+	[removeButtonHidden]="false"
+  (onRemove)="onAddressRemove(streetAddress, city, state, zip)"
   (onSelect)="onPlaceSelect($event)"
 	[optionField]="'description'">
 </bd-typeahead>
 	<div class="section">
 		<div class="left-side right-border">
 		<bd-input
+      #streetAddress
 			class="bd-form-control"
 			placeholder="Street address 2"
 			(valueChange)="onRemoveMap($event)"
 			formControlName="secondStreetAddress">
 		</bd-input>
-			<bd-input class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
+			<bd-input #city class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
 				<div class="right-border half-side">
 					<bd-input
-					class="bd-form-control"
-					placeholder="State"
-					formControlName="state"
-					(valueChange)="onRemoveMap($event)">
+           #state
+					 class="bd-form-control"
+					 placeholder="State"
+					 formControlName="state"
+					 (valueChange)="onRemoveMap($event)">
 					</bd-input>
 				</div>
 				<bd-input
+          #zip
 					class="bd-form-control half-side"
 					placeholder="Zip"
 					(valueChange)="onRemoveMap($event)"

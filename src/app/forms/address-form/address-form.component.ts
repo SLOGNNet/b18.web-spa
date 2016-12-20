@@ -67,6 +67,13 @@ export class AddressForm extends BaseForm  {
     this._updateMap();
   }
 
+  onAddressRemove(streetAddress: HTMLInputElement, city: HTMLInputElement, state: HTMLInputElement, zip: HTMLInputElement){
+    streetAddress.value = null;
+    city.value = null;
+    zip.value = null;
+    state.value = null;
+  }
+
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
       this._googleService.getDetails(place.place_id)
