@@ -2,6 +2,7 @@
   [disabled]="disabled"
   [type]="type"
   class="button">
-  <img class="icon" [src]="iconUrl" alt="Button">
-  <span *ngIf="text.length" class="text">{{text}}</span>
+  <span *ngIf="preLabel.length" class="pre-label text">{{preLabel}}</span>
+  <span class="icon"><img [src]="iconUrl" alt="Button"></span>
+  <span *ngIf="sufLabel.length" class="suf-label text">{{sufLabel}}</span>
 </button>
