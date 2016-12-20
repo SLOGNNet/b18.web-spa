@@ -7,7 +7,7 @@
     </div>
 </template>
 <bd-typeahead
-	class="bd-form-control"
+	class="bd-form-control middle-control"
 	formControlName="streetAddress"
 	placeholder="Street address 1"
   [source]="_placeSource"
@@ -18,33 +18,33 @@
 	[optionField]="'description'">
 </bd-typeahead>
 	<div class="section">
-		<div class="left-side right-border">
+		<div class="left-side left-control-border">
 		<bd-input
-			class="bd-form-control"
+			class="bd-form-control middle-control"
 			placeholder="Street address 2"
 			(valueChange)="onRemoveMap($event)"
 			formControlName="secondStreetAddress">
 		</bd-input>
-			<bd-input class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
+			<bd-input class="bd-form-control middle-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
-				<div class="right-border half-side">
+				<div class="half-side left-control-border">
 					<bd-input
-					class="bd-form-control"
+					class="bd-form-control left-control"
 					placeholder="State"
 					formControlName="state"
 					(valueChange)="onRemoveMap($event)">
 					</bd-input>
 				</div>
 				<bd-input
-					class="bd-form-control half-side"
+					class="bd-form-control right-control half-side"
 					placeholder="Zip"
 					(valueChange)="onRemoveMap($event)"
 					formControlName="zip">
 				</bd-input>
 			</div>
 		</div>
-		<div class="right-side bottom-border">
+		<div class="right-side bottom-control-border">
 			<google-map
 				[location]="_map.location"
 				[info]="_map.labelText">
@@ -53,23 +53,23 @@
 	</div>
   	<bd-validator [component]="addressForm.controls.phone" [errorDefs]="{required: 'Phone is required'}">
       <div class="section">
-      <div class="left-side right-border">
-        <bd-input class="bd-form-control" [labelText]="'Phone'" formControlName="phone">
+      <div class="left-side left-control-border">
+        <bd-input class="bd-form-control left-control" [labelText]="'Phone'" formControlName="phone">
         </bd-input>
       </div>
       <div class="right-side">
-        <bd-input class="bd-form-control" placeholder="Extension" formControlName="phoneExtension">
+        <bd-input class="bd-form-control right-control" placeholder="Extension" formControlName="phoneExtension">
         </bd-input>
       </div>
     </div>
     </bd-validator>
     <div class="section">
       <div class="left-side right-border">
-        <bd-input class="bd-form-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
+        <bd-input class="bd-form-control left-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
         </bd-input>
       </div>
       <div class="right-side">
-        <bd-input class="bd-form-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
+        <bd-input class="bd-form-control right-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
         </bd-input>
       </div>
     </div>
