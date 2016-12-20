@@ -3,9 +3,9 @@
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
 			</bd-input>
-			<bd-dropdown class="bd-form-control" [viewMode]="true" [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
+			<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
 			</bd-dropdown>
-			<bd-form-switch class="bd-form-control" [viewMode]="true" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
+			<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
 			</bd-form-switch>
 			<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
 				<bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">

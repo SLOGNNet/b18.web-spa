@@ -16,7 +16,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
-  @Input() viewMode: boolean;
   @Input() keyField: string = 'key';
   @Input() valueField: string = 'value';
 
