@@ -13,16 +13,8 @@
   width: 40%;
 }
 
-.right-border {
-  border-right: $border;
-}
-
-.bottom-border {
-  border-bottom: $border;
-}
-
 .half-side {
-  width: 50%;
+  flex: 1;
 }
 
 .item-wrapper {
