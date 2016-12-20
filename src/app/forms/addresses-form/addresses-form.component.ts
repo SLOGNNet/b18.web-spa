@@ -17,4 +17,8 @@ export class AddressesForm extends BaseListForm<Address>  {
   createItem(): Address {
     return Address.create();
   }
+
+  label(index) {
+    return `Address #${index + 1}`;
+  }
 }

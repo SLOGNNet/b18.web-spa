@@ -43,7 +43,7 @@ export abstract class BaseListForm<T> extends BaseForm {
      this.addData(this.createItem());
    }
 
-   onRemoveAddress(removeData) {
+   removeItem(removeData) {
      this.renderFormData = this.renderFormData.filter(data => data !== removeData);
    }
 
