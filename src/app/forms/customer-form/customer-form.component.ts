@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
@@ -56,16 +56,17 @@ export class CustomerForm extends BaseForm {
       status: [this.customer.status, Validators.required],
       mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
-      address: this.formBuilder.group({ }),
-      billingAddresses : this.formBuilder.group({ }),
+      address: this.formBuilder.group({}),
+      billingAddresses: this.formBuilder.group({}),
       email: [this.customer.email]
     });
+
     //  this.customerForm.setViewMode(ViewMode.View);
   }
 
   sameAsCompanyChange(event) {
     if (event.target.checked) {
-      }
+    }
   }
 
   private onExpandChanged(viewMode) {

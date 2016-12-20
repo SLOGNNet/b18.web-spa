@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -21,10 +21,11 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.None;
-  private loadForm: BdFormGroup;
+  private loadForm: FormGroup;
   private selectedCustomer: Customer;
+  private stops: Array<Stop>;
 
-  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
+  public constructor(private customerService: CustomerService, private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
     super();
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
@@ -34,6 +35,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.selectedCustomer = this.load.customer;
+      this.stops = this.load.stops;
       this.initForm();
       this.initCustomerTypeahead(this.selectedCustomer);
     }
@@ -66,7 +68,10 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
-      specialRequirment: [this.load.specialRequirment]
+      specialRequirment: [this.load.specialRequirment],
+      stops: this.formBuilder.array([{
+          commoditiesGroup: this.formBuilder.group({})
+      }])
     });
   }
 
@@ -80,5 +85,15 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
+  }
+
+  private get stopsFormControl() {
+    return this.loadForm.controls['stops'];
+  }
+
+  private getCommoditiesFormGroup(index = 0) {
+    const controls = this.stopsFormControl['controls'][index];
+
+    return controls.value.commoditiesGroup;
   }
 }
