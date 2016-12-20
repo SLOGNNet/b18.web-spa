@@ -68,7 +68,7 @@ export class AddressForm extends BaseForm  {
   }
 
   onAddressRemove(){
-    this.addressForm.setValue(Object.assign({}, this.addressForm.value, {city:'', state: '', zip:'', secondStreetAddress:''}));
+   this.addressForm.setValue(Object.assign( {}, this.addressForm.value, {city: '', state: '', zip: '', secondStreetAddress: ''}));
   }
 
   public onPlaceSelect(place) {
