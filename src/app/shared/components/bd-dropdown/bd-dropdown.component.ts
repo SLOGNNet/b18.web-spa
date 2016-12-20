@@ -56,7 +56,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   get isSelectedValue(){
-    return this._selectedValue;
+    return !isNaN(this._selectedValue) && this._selectedValue != null;
   }
 
   @Input() set items(args: any[]){
