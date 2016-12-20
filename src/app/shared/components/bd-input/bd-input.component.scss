@@ -42,8 +42,8 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  height: $form-control-height;
   padding: 0 17px;
-  min-height: $form-control-height;
   border-bottom: $border;
   margin-bottom: 0;
   flex-flow: row wrap;

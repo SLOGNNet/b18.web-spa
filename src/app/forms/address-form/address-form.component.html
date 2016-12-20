@@ -13,7 +13,8 @@
   [source]="_placeSource"
   [(value)]="_placeQuery"
   [itemTemplate]="customItemTemplate"
-	[removeButtonHidden]="true"
+	[removeButtonHidden]="false"
+  (onRemove)="onAddressRemove()"
   (onSelect)="onPlaceSelect($event)"
 	[optionField]="'description'">
 </bd-typeahead>
