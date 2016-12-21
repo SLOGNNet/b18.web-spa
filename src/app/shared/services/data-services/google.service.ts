@@ -8,7 +8,6 @@ export class GoogleService {
   private predictionsService;
   private detailsService;
   private componentForm = {
-    street_number: 'short_name',
     route: 'long_name',
     locality: 'long_name',
     administrative_area_level_1: 'short_name',
@@ -39,7 +38,6 @@ export class GoogleService {
     }
 
     let details = {
-      street_number: '',
       route: '',
       locality: '',
       administrative_area_level_1: '',
@@ -66,7 +64,6 @@ export class GoogleService {
       city: details.locality,
       zip: details.postal_code,
       streetAddress: streetAddress,
-      secondStreetAddress: details.street_number,
       state: details.administrative_area_level_1,
       location: {
         lat: place.geometry.location.lat(),
