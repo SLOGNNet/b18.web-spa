@@ -6,17 +6,14 @@ import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss'],
-  inputs: BaseForm.genericInputs
-})
+  styleUrls: ['./address-form.component.scss']
+}, BaseForm.metaData))
 export class AddressForm extends BaseForm  {
   @Input()
   public address: Address;
-  @Input()
-  public viewMode: ViewMode;
   @Input('group')
   public addressForm: BdFormGroup;
   private _placeSource: any[];

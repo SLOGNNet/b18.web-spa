@@ -1,5 +1,5 @@
-<bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode" [class.edit]="isEditMode" [class.view]="!isEditMode">
-	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)" [class.edit]="isEditMode" [class.view]="!isEditMode">
+<bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode">
+	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)">
 		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
 			</bd-input>

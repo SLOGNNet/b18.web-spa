@@ -2,15 +2,13 @@ import { Input, Output } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
-  public static metaData = {
+  public static metaData: Object = {
     inputs: ['viewMode'],
     host: {
-      '[class.view]' : '!isEditMode',
-      '[class.edit]' : 'isEditMode'
+      '[class.bd-view-mode]' : '!isEditMode',
+      '[class.bd-edit-mode]' : 'isEditMode'
     }
   };
-
-   public static genericInputs: string[] = ['viewMode'];
 
    get viewMode(): ViewMode {
      return this._viewMode;
