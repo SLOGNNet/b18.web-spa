@@ -1,7 +1,7 @@
 import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { isNil } from 'lodash'
+import { isNil } from 'lodash';
 const noop = () => { };
 
 @Component({
