@@ -5,8 +5,8 @@ export class BaseForm {
   public static metaData = {
     inputs: ['viewMode'],
     host: {
-      '[class.view]' : '!isEditMode', 
-      '[class.edit]' : 'isEditMode' 
+      '[class.view]' : '!isEditMode',
+      '[class.edit]' : 'isEditMode'
     }
   };
 
