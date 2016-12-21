@@ -1,6 +1,7 @@
 <base-commodity-form
+  [viewMode]="viewMode"
   #commodityForm
   [group]="formGroup"
   [commodities]="commodities">
 </base-commodity-form>
-<bd-add-button (mousedown)="onAdd()"></bd-add-button>
+<bd-add-button class="bd-form-control" (mousedown)="onAdd()"></bd-add-button>

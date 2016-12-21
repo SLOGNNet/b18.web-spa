@@ -3,13 +3,11 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseForm } from '../../base-form';
 
-
-@Component({
+@Component(Object.assign({
   selector: 'base-commodity-form',
   templateUrl: './base-commodity-form.component.html',
   styleUrls: ['./base-commodity-form.component.scss'],
-  inputs: BaseForm.genericInputs
-})
+}, BaseForm.metaData))
 export class BaseCommodityFormComponent extends BaseForm {
 
   @Input('group') formGroup: FormGroup;

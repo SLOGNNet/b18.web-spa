@@ -9,6 +9,7 @@
   <commodity
     *ngFor="let commodity of commoditiesFormControl.controls; let i = index"
     [isRemoveButtonHidden]="commoditiesFormControl.controls.length === 1"
+    [viewMode]="viewMode"
     [group]="commoditiesFormControl.controls[i]"
     [fields]="_fields"
     (blur)="onBlur($event)"
