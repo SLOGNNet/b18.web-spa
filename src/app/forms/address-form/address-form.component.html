@@ -13,31 +13,30 @@
   [source]="_placeSource"
   [(value)]="_placeQuery"
   [itemTemplate]="customItemTemplate"
-	[removeButtonHidden]="true"
+	[removeButtonHidden]="false"
+  (onRemove)="onAddressRemove()"
   (onSelect)="onPlaceSelect($event)"
 	[optionField]="'description'">
 </bd-typeahead>
 	<div class="section">
-		<div class="left-side right-border">
-		<bd-input
-			class="bd-form-control"
-			placeholder="Street address 2"
-			(valueChange)="onRemoveMap($event)"
-			formControlName="secondStreetAddress">
-		</bd-input>
-			<bd-input class="bd-form-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
+		<div class="left-side">
+			<bd-input
+				class="bd-form-control left-control"
+				placeholder="Street address 2"
+				(valueChange)="onRemoveMap($event)"
+				formControlName="secondStreetAddress">
+			</bd-input>
+			<bd-input class="bd-form-control left-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
-				<div class="right-border half-side">
-					<bd-input
-					class="bd-form-control"
+				<bd-input
+					class="bd-form-control left-control half-side"
 					placeholder="State"
 					formControlName="state"
 					(valueChange)="onRemoveMap($event)">
-					</bd-input>
-				</div>
+				</bd-input>
 				<bd-input
-					class="bd-form-control half-side"
+					class="bd-form-control middle-control half-side"
 					placeholder="Zip"
 					(valueChange)="onRemoveMap($event)"
 					formControlName="zip">
@@ -53,24 +52,16 @@
 	</div>
   	<bd-validator [component]="addressForm.controls.phone" [errorDefs]="{required: 'Phone is required'}">
       <div class="section">
-      <div class="left-side right-border">
-        <bd-input class="bd-form-control" [labelText]="'Phone'" formControlName="phone">
+        <bd-input class="bd-form-control left-control left-side" [labelText]="'Phone'" formControlName="phone">
         </bd-input>
-      </div>
-      <div class="right-side">
-        <bd-input class="bd-form-control" placeholder="Extension" formControlName="phoneExtension">
+        <bd-input class="bd-form-control right-control right-side" placeholder="Extension" formControlName="phoneExtension">
         </bd-input>
-      </div>
     </div>
     </bd-validator>
     <div class="section">
-      <div class="left-side right-border">
-        <bd-input class="bd-form-control" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
-        </bd-input>
-      </div>
-      <div class="right-side">
-        <bd-input class="bd-form-control" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
-        </bd-input>
-      </div>
+			<bd-input class="bd-form-control left-control left-side" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
+			</bd-input>
+			<bd-input class="bd-form-control right-control right-side" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
+			</bd-input>
     </div>
 </form>

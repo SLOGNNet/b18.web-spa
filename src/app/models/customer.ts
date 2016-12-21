@@ -20,19 +20,17 @@ export class Customer {
   type: CustomerTypes;
   mc: string = '';
   taxId: string = '';
-  address: Address;
-  billingAddresses: Address;
+  addresses: Array<Address>;
   email: string = '';
 
   static create(): Customer{
     const result = new Customer();
-    result.status = CustomerStatuses.Inactive;    result.status = CustomerStatuses.Inactive;
+    result.status = CustomerStatuses.Inactive;
     result.type = CustomerTypes.Broker;
     return result;
   }
 
   constructor() {
-    this.address = new Address();
-    this.billingAddresses = new Address();
+    this.addresses = new Array<Address>();
   }
 }

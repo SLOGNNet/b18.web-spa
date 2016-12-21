@@ -1,12 +1,12 @@
 <div class="wrapper">
   <template #customItemTemplate let-model="item" let-index="index">
-      <div class="item-wrapper">
+      <div class="customer-item-wrapper">
         <div class="left-panel">
           <div class="name">
               {{model.name}}
           </div>
           <div class="address">
-              {{model.address.streetAddress}}
+              {{model.addresses[0]?.streetAddress}}
           </div>
         </div>
         <div class="right-panel">

@@ -9,7 +9,8 @@ import { BaseForm } from '../base-form';
 @Component({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss']
+  styleUrls: ['./address-form.component.scss'],
+  inputs: BaseForm.genericInputs
 })
 export class AddressForm extends BaseForm  {
   @Input()
@@ -67,6 +68,10 @@ export class AddressForm extends BaseForm  {
     this._updateMap();
   }
 
+  onAddressRemove(){
+   this.addressForm.setValue(Object.assign( {}, this.addressForm.value, {city: '', state: '', zip: '', secondStreetAddress: ''}));
+  }
+
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
       this._googleService.getDetails(place.place_id)
@@ -74,7 +79,7 @@ export class AddressForm extends BaseForm  {
           if (detail) {
             this._placeQuery = detail.streetAddress;
             this._updateMap(detail.location, detail.streetAddress);
-            this.addressForm.setValue(Object.assign({}, this.address, detail));
+            this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
             this._changeDetectionRef.detectChanges();
           }
         });

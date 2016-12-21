@@ -3,8 +3,20 @@
 form {
   &.view {
     .bd-form-control {
-      box-shadow: inset 0 0 0 1px $white;
       background-color: $light-blue;
+      box-shadow: inset  0  1px 0 0 $white, inset  0 -1px 0 0 $white;
+
+      &.left-control {
+        box-shadow: inset  -1px  1px 0 0 $white, inset  0 -1px 0 0 $white;
+      }
+
+      &.middle-control {
+        box-shadow: inset 0 0 0 1px $white; 
+      }
+
+      &.right-control {
+        box-shadow: inset  1px  1px 0 0 $white, inset  0 -1px 0 0 $white;
+      }
     }
   }
 
@@ -15,6 +27,16 @@ form {
   }
 
   .bd-form-control {
+    display: block;
+
+    &.left-control {
+      border-right: $border;
+    }
+
+    &.middle-control {
+      border-right: $border;
+    }
+
     &:hover {
       background-color: $white;
     }
