@@ -28,7 +28,7 @@ export abstract class BaseListForm<T> extends BaseForm {
      for (let item of this.items) {
        this.addData(item);
      }
-     
+
      if (this.items.length === 0) {
        this.addNewItem();
      }

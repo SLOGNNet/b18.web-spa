@@ -38,7 +38,7 @@ export class CustomerForm extends BaseForm {
     if (!isValid) {
       this.validationService.show();
     }
-    
+
     if (customer && isValid) {
       this.save.emit(customer);
     }
