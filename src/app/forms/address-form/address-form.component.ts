@@ -74,7 +74,7 @@ export class AddressForm extends BaseForm {
         state: '',
         zip: '',
         secondStreetAddress: '',
-        location: { 
+        location: {
           lat: 0,
           lng: 0
         }
