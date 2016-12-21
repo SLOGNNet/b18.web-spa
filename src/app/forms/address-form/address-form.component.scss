@@ -17,6 +17,10 @@
   flex: 1;
 }
 
+.bottom-border {
+  border-bottom: $border;
+}
+
 .item-wrapper {
   display: flex;
   overflow: hidden;
