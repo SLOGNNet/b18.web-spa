@@ -5,9 +5,10 @@
   width: 100%;
   height: $form-control-height;
   border: 0;
-  background: $white;
   text-align: right;
   cursor: pointer;
+  background-color: inherit;
+  box-shadow: inherit;
   border-bottom: $border;
   border-radius: $default-border-radius;
   outline: 0;
@@ -26,6 +27,7 @@
     img {
       width: 18px;
       height: 18px;
+      vertical-align: sub;
     }
   }
 
@@ -34,7 +36,7 @@
   }
 
   .text {
-    font-size: $mini-font-size;
-    font-weight: bold;
+    font-size: $small-font-size;
+    text-transform: uppercase;
   }
 }

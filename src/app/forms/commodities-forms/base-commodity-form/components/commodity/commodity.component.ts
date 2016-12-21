@@ -1,12 +1,13 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { BaseForm } from '../../../../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'commodity',
   templateUrl: './commodity.component.html',
   styleUrls: ['./commodity.component.scss']
-})
-export class CommodityComponent {
+}, BaseForm.metaData))
+export class CommodityComponent extends BaseForm {
 
   @Input('group')
   public commodityForm: FormGroup;
