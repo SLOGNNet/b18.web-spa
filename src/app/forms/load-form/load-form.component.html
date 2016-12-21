@@ -1,17 +1,12 @@
 <div class="wrapper">
   <template #customItemTemplate let-model="item" let-index="index">
       <div class="customer-item-wrapper">
-        <div class="left-panel">
+        <div class="name-number-wrapper">
           <div class="name">
-              {{model.name}}
+            {{model.name}}
           </div>
-          <div class="address">
-              {{model.addresses[0]?.streetAddress}}
-          </div>
-        </div>
-        <div class="right-panel">
           <div class="number">
-            {{model.mc}}
+            MC#: {{model.mc}}
           </div>
         </div>
       </div>

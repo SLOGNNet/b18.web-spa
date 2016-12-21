@@ -13,24 +13,20 @@
   justify-content: space-between;
   align-items: center;
 
-  .left-panel {
+  .name-number-wrapper {
+
     .name {
       color: $black;
       font-size: $small-font-size;
-    }
+      }
 
-    .address {
-      color: $label-default-color;
-      font-size: $mini-font-size;
-    }
-  }
-
-  .right-panel {
     .number {
-      color: $black;
-      font-size: $small-font-size;
+      color: $label-default-color;
+      font-size: $tiny-font-size;
+      margin-top: 10px;
     }
   }
+
 }
 
 .bd-form {
