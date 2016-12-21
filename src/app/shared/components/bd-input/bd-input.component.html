@@ -30,6 +30,7 @@
               (focus)="_handleFocus($event)"
               placeholder="{{placeholder}}"
               (change)="_handleChange($event)"
+              (keydown)="_handleKeyDown($event)"
               (blur)="_handleBlur($event)"
               [attr.name]="name"
               [type]="type"
@@ -48,8 +49,9 @@
               class="bd-input-element {{_invalidClass}}"
               (focus)="_handleFocus($event)"
               (change)="_handleChange($event)"
+              (keydown)="_handleKeyDown($event)"
               (blur)="_handleBlur($event)"
-              placeholder="placeholder"
+              placeholder="{{placeholder}}"
               [id]="inputId"
             ></textarea>
           </div>

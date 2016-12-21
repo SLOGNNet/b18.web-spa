@@ -1,6 +1,6 @@
-import { Component, Input, ViewChild, OnChanges, QueryList, ViewChildren } from '@angular/core';
+import { Component, Optional, Input, ViewChild, OnChanges, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { BdFormControl } from '../..';
+import { BdFormControl, FormValidationService } from '../..';
 @Component({
   selector: 'bd-validator',
   styleUrls: ['./bd-validator.component.scss'],
@@ -14,8 +14,11 @@ export class BdValidatorComponent implements OnChanges {
   @ViewChild(NgControl) controls;
   errorMessage: string = '';
 
-  ngAfterViewInit() {
-    const test = this.controls;
+  constructor(@Optional() validationService: FormValidationService) {
+    if (validationService) {
+      validationService.showValidation
+        .subscribe(() => this.checkErrors(this.component, true));
+    }
   }
 
   ngOnChanges(changes: any): void {
@@ -25,10 +28,12 @@ export class BdValidatorComponent implements OnChanges {
     });
     this.checkErrors(component);
   }
-  checkErrors(control) {
+
+  checkErrors(control, force: boolean = false) {
     this.errorMessage = '';
     const errors = control.errors;
-    if (errors && control.parent._submitted /* && control.touched */) {
+    const shouldShow =  control.touched || force;
+    if (errors && shouldShow) {
       Object.keys(this.errorDefs).some(key => {
         if (errors[key]) {
           this.errorMessage = this.errorDefs[key];

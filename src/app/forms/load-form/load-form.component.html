@@ -1,12 +1,12 @@
 <div class="wrapper">
   <template #customItemTemplate let-model="item" let-index="index">
-      <div class="item-wrapper">
+      <div class="customer-item-wrapper">
         <div class="left-panel">
           <div class="name">
               {{model.name}}
           </div>
           <div class="address">
-              {{model.address.streetAddress}}
+              {{model.addresses[0]?.streetAddress}}
           </div>
         </div>
         <div class="right-panel">
@@ -16,13 +16,14 @@
         </div>
       </div>
   </template>
-<form [formGroup]="loadForm">
+<form [formGroup]="loadForm" class="edit">
   <div class="bd-form">
     <div class="bd-form-title">
       Customer
     </div>
     <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
       <bd-typeahead
+         class="bd-form-control"
          formControlName="customer"
          [labelText]="'Name or MC#'"
          [footerButtonText]="'Add New Customer'"
@@ -31,13 +32,27 @@
          [(value)]="customerQuery"
          [itemTemplate]="customItemTemplate"
          (onSelect)="onCustomerSelect($event)"
-         (onFooterButtonClick)="onAddCustomer()"
+         (onFooterButtonClick)="onAddNewCustomer()"
          [optionField]="'name'">
        </bd-typeahead>
      </bd-validator>
-      <customer-form *ngIf='load.customer' [customer]='load.customer' [viewMode]="customerViewMode"> </customer-form>
-      <bd-dropdown [labelText]="'Contacts'">
-      </bd-dropdown>
+      <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+        <bd-form-section [labelText]="'PICKUPS'">
+          <pick-up-commodity-form [group]="getCommoditiesFormGroup()" [commodities]="stops[0].commodities"></pick-up-commodity-form>
+        </bd-form-section>
+        <bd-form-section [labelText]="'REQUIREMENTS'">
+        <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+        </bd-form-switch>
+        <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+        </bd-dropdown>
+        <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+        </bd-dropdown>
+        <bd-textarea
+          class="bd-form-control"
+          formControlName="specialRequirment"
+         [labelText]="'Special Requirements'">
+        </bd-textarea>
+      </bd-form-section>
   </div>
 </form>
 </div>

@@ -5,7 +5,11 @@ $dark-grey: #b3b2b2;
 $grey: #d7d8db;
 $light-grey: #f0f0f0;
 $dirty-grey: #b7bcc1;
+$iron: #cccecf;
+$gray-chateau: #9fa3a6;
 $blue: #75b3e2;
+$horizon: #597c97;
+$mako: #485158;
 $light-blue: #f5fefe;
 $serenity: #f5f9fc;
 $red: #fc3b3b;
@@ -22,6 +26,10 @@ $label-warning-color: $red;
 /* buttons */
 $btn-primary-background: $blue;
 $btn-primary-color: $white;
+$btn-default-hover: $iron;
+$btn-default-focus: $gray-chateau;
+$btn-primary-hover: $horizon;
+$btn-primary-focus: $mako;
 
 $btn-secondary-background: $light-grey;
 $btn-secondary-color: $black;
@@ -48,8 +56,8 @@ $small-font-size: .875rem;
 $large-font-size: 1.25rem;
 
 @font-face {
-	font-family: 'SFUIText-Regular';
-	src: ('../assets/fonts/sf-regular.woff');
+  font-family: 'SFUIText-Regular';
+  src: ('../assets/fonts/sf-regular.woff');
 }
 /* default input height */
 $form-control-height: 50px;

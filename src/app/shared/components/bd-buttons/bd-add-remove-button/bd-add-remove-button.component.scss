@@ -1,0 +1,40 @@
+@import '../../../../../assets/styles/variables';
+
+.button {
+  display: flex;
+  width: 100%;
+  height: $form-control-height;
+  border: 0;
+  background: $white;
+  text-align: right;
+  cursor: pointer;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+  outline: 0;
+  align-items: center;
+
+  .suffix-label {
+    margin: auto 11px auto 6px;
+  }
+
+  .icon {
+    text-align: right;
+    margin-right: 11px;
+    mask: none;
+    flex: 1;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .prefix-label {
+    margin-left: 11px;
+  }
+
+  .text {
+    font-size: $mini-font-size;
+    font-weight: bold;
+  }
+}

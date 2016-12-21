@@ -7,6 +7,6 @@ import { Component, EventEmitter } from '@angular/core';
 })
 export class BdSpinnerComponent {
 
-private imgSrc = '/assets/img/spinner.gif';
+private imgSrc = 'assets/img/spinner.gif';
 
 }

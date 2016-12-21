@@ -19,7 +19,7 @@ export class BdFormBuilder {
 
   control(
     formState: Object, validator: ValidatorFn | ValidatorFn[] = null,
-    asyncValidator: AsyncValidatorFn | AsyncValidatorFn[] = null, viewMode: ViewMode = ViewMode.All): BdFormControl {
+    asyncValidator: AsyncValidatorFn | AsyncValidatorFn[] = null, viewMode: ViewMode = ViewMode.View): BdFormControl {
     return new BdFormControl(formState, validator, asyncValidator, viewMode);
   }
 

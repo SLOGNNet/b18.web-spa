@@ -1,6 +1,6 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
-  ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+  ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 let nextUniqueId = 0;
@@ -61,6 +61,8 @@ export class BdInputComponent {
   }
 
   @Output() valueChange = new EventEmitter();
+  @Output() focusChange = new EventEmitter();
+  @HostBinding('class.bd-focused') _focused: boolean = false;
 
   private _elementType: 'input' | 'textarea';
   private _onTouchedCallback: () => void = noop;
@@ -68,7 +70,6 @@ export class BdInputComponent {
   private _value: string = '';
   private _prefixEmpty: boolean = false;
   private _suffixEmpty: boolean = false;
-  private _focused: boolean = false;
   private _disabled: boolean = false;
   private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
@@ -79,9 +80,10 @@ export class BdInputComponent {
     this.changeDetectionRef.detectChanges();
   }
 
-  constructor(elementRef: ElementRef, private changeDetectionRef: ChangeDetectorRef) {
+  constructor(private element: ElementRef,
+    private changeDetectionRef: ChangeDetectorRef, private renderer: Renderer) {
     // Set the element type depending on normalized selector used(bd-input / bd-textarea)
-    this._elementType = elementRef.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
+    this._elementType = element.nativeElement.nodeName.toLowerCase() === 'bd-input' ?
       'input' :
       'textarea';
   }
@@ -98,13 +100,20 @@ export class BdInputComponent {
   }
 
   focus($event) {
-    this._inputElement.nativeElement.focus();
+    this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'focus');
     $event.preventDefault();
+  }
+
+  blur() {
+    const blurEvent = new Event('blur', { bubbles: true });
+    this.renderer.invokeElementMethod(
+      this.element.nativeElement, 'dispatchEvent', [blurEvent]);
   }
 
   _handleFocus(event: FocusEvent) {
     this._focused = true;
     this._focusEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   set disabled(value) {
@@ -113,7 +122,11 @@ export class BdInputComponent {
 
   _handleChange(event: Event) {
     this.value = (<HTMLInputElement>event.target).value;
+    this._onTouchedCallback();
     this.valueChange.emit(this.value);
+  }
+
+  _handleKeyDown() {
     this._onTouchedCallback();
   }
 
@@ -121,6 +134,7 @@ export class BdInputComponent {
     this._focused = false;
     this._onTouchedCallback();
     this._blurEmitter.emit(event);
+    this.focusChange.emit(this._focused);
   }
 
   /**

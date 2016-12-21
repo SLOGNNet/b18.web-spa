@@ -1,6 +1,7 @@
-<div [ngSwitch]="enableButtonSwitch">
+<div class="wrapper" [ngSwitch]="enableButtonSwitch">
   <bd-button-switch
       *ngSwitchCase="true"
+      class="bd-form-control"
       [labelText]="labelText"
       [items]="items"
       [selectedValue]="selectedValue"
@@ -8,6 +9,7 @@
   </bd-button-switch>
   <bd-dropdown
       *ngSwitchCase="false"
+      class="bd-form-control"
       [labelText]="labelText"
       [defaultTitleText]="defaultTitleText"
       [dropdownHeaderTemplate]="dropdownHeaderTemplate"
@@ -15,6 +17,7 @@
       [dropdownItemTemplate]="dropdownItemTemplate"
       [items]="items"
       [selectedValue]="selectedValue"
-      (onItemClick)="onItemClick($event)">
+      (onItemClick)="onItemClick($event)"
+      (focusChange)="onDropdownFocusChange($event)">
   </bd-dropdown>
 </div>

@@ -3,23 +3,24 @@ import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Address } from '../../models';
 import { ViewMode } from '../../shared/enums';
-import { EnumHelperService, BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
+import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
+import { BaseForm } from '../base-form';
 
 @Component({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss']
+  styleUrls: ['./address-form.component.scss'],
+  inputs: BaseForm.genericInputs
 })
-export class AddressForm {
+export class AddressForm extends BaseForm  {
   @Input()
   public address: Address;
+  @Input()
+  public viewMode: ViewMode;
   @Input('group')
   public addressForm: BdFormGroup;
-  @Input() isExpanded: boolean = false;
-
   private _placeSource: any[];
   private _placeQuery: string = '';
-  private _placeViewMode: ViewMode = ViewMode.View;
   private _map = {
     labelText: '',
     location: {
@@ -28,7 +29,7 @@ export class AddressForm {
     }
   };
   private fields = [
-    { name: 'phone', validators: [] },
+    { name: 'phone', validators: [Validators.required] },
     { name: 'fax', validators: [] },
     { name: 'state', validators: [] },
     { name: 'zip', validators: [] },
@@ -45,6 +46,7 @@ export class AddressForm {
     private _changeDetectionRef: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
     private _googleService: GoogleService) {
+      super();
   }
 
   ngOnChanges(changes: any) {
@@ -66,22 +68,22 @@ export class AddressForm {
     this._updateMap();
   }
 
-  public onPlaceSelect(place) {
-    this._googleService.getDetails(place.place_id)
-      .subscribe(detail => {
-        if (detail) {
-          this._placeQuery = detail.streetAddress;
-          this._updateMap(detail.location, detail.streetAddress);
-          this.addressForm.setValue(Object.assign({}, this.address, detail));
-          this._changeDetectionRef.detectChanges();
-        }
-      });
-
-    this._placeViewMode = ViewMode.View;
+  onAddressRemove(){
+   this.addressForm.setValue(Object.assign( {}, this.addressForm.value, {city: '', state: '', zip: '', secondStreetAddress: ''}));
   }
 
-  public placeViewModeChanged(viewMode) {
-    this._placeViewMode = viewMode;
+  public onPlaceSelect(place) {
+    if (place && typeof place.place_id === 'string') {
+      this._googleService.getDetails(place.place_id)
+        .subscribe(detail => {
+          if (detail) {
+            this._placeQuery = detail.streetAddress;
+            this._updateMap(detail.location, detail.streetAddress);
+            this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
+            this._changeDetectionRef.detectChanges();
+          }
+        });
+    }
   }
 
   private _initPlaceTypeahead() {

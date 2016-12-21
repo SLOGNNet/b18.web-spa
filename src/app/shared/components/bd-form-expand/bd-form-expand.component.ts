@@ -8,15 +8,18 @@ import { ViewMode } from '../../enums';
 })
 export class BdFormExpandComponent {
   @Output() changed = new EventEmitter();
-  @Input() expanded: boolean = true;
   @Input() viewMode: ViewMode = ViewMode.View;
 
-  private get isExpandButtonVisible() {
-    return this.viewMode === ViewMode.View;
+  private get isExpandButtonVisible(): boolean {
+    return this.viewMode !== ViewMode.Edit;
+  }
+
+  private get isExpanded(): boolean {
+    return this.viewMode !== ViewMode.ViewCollapsed;
   }
 
   toggleExpand(){
-    this.expanded = !this.expanded;
-    this.changed.emit(this.expanded);
+    this.viewMode = this.isExpanded ? ViewMode.ViewCollapsed : ViewMode.View;
+    this.changed.emit(this.viewMode);
   }
 }

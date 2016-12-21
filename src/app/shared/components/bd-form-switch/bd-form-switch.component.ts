@@ -1,4 +1,4 @@
-import { Component, Input, Optional, ChangeDetectorRef, forwardRef } from '@angular/core';
+import { Component, Input, Optional, ChangeDetectorRef, forwardRef, HostBinding } from '@angular/core';
 import { NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => { };
 
@@ -11,7 +11,8 @@ export const BD_FORM_SWITCHL_VALUE_ACCESSOR: any = {
 @Component({
   selector: 'bd-form-switch',
   providers: [BD_FORM_SWITCHL_VALUE_ACCESSOR],
-  templateUrl: './bd-form-switch.component.html'
+  templateUrl: './bd-form-switch.component.html',
+  styleUrls: ['./bd-form-switch.component.scss']
 })
 export class BdFormSwitchComponent implements ControlValueAccessor {
 
@@ -21,12 +22,18 @@ export class BdFormSwitchComponent implements ControlValueAccessor {
   @Input() enableButtonSwitch: boolean = false;
   @Input() defaultTitleText: string = null;
 
+  @HostBinding('class.bd-focused') _isFocused: boolean = false;
+
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
   onItemClick(item) {
     this.selectedValue = item.key;
     this._onChangeCallback(item.key);
+  }
+
+  onDropdownFocusChange(isFocused) {
+    this._isFocused = isFocused;
   }
 
   writeValue(value: any) {

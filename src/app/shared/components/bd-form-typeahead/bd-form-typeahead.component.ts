@@ -1,10 +1,13 @@
-import { Component, Optional, ElementRef, TemplateRef, ViewEncapsulation, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Optional, ElementRef, TemplateRef,
+  ViewEncapsulation, Input, Output, EventEmitter,
+  forwardRef, HostBinding, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
+import { BdInputComponent } from '../bd-input';
 const noop = () => { };
 
 @Component({
@@ -17,6 +20,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
+  @Input() placeholder: string;
   @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
@@ -25,6 +29,9 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Output() public valueChange = new EventEmitter();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter();
   @Output() public onFooterButtonClick: EventEmitter<any> = new EventEmitter();
+  @ViewChild('input') inputElement: BdInputComponent;
+  @HostBinding('class.bd-focused') _focused: boolean = false;
+
   protected isLoading: boolean = false;
   protected isNoResultsShown: boolean = false;
   private _onTouchedCallback: () => void = noop;
@@ -59,13 +66,19 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
   remove(event): void {
     event.stopPropagation();
+    this.inputElement.blur();
     this.changeValue('');
+
     this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
     this.changeValue('');
     this.onFooterButtonClick.emit();
+  }
+
+  onFocusChanged(isFocused) {
+    this._focused = isFocused;
   }
 
   writeValue(value: any) {

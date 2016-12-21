@@ -8,30 +8,29 @@ export enum CustomerTypes {
 };
 
 export enum CustomerStatuses {
-  INACTIVE = 0,
-  ACTIVE = 1,
-  UNAVALIABLE = 2
+  Inactive = 0,
+  Active = 1,
+  Unavaliable = 2
 }
 
 export class Customer {
   id: number;
-  name: string;
+  name: string = '';
   status: CustomerStatuses;
   type: CustomerTypes;
-  mc: string;
-  taxId: string;
-  address: Address;
-  billingAddresses: Address;
-  email: string;
+  mc: string = '';
+  taxId: string = '';
+  addresses: Array<Address>;
+  email: string = '';
 
   static create(): Customer{
     const result = new Customer();
-    result.status = CustomerStatuses.INACTIVE;
+    result.status = CustomerStatuses.Inactive;
+    result.type = CustomerTypes.Broker;
     return result;
   }
 
   constructor() {
-    this.address = new Address();
+    this.addresses = new Array<Address>();
   }
-
 }

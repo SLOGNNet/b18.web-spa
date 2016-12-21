@@ -1,34 +1,24 @@
-<bd-form-expand [expanded]="isFormExpanded" (changed)="onExpandChanged($event)" [viewMode]="viewMode">
-	<form [formGroup]="customerForm" (ngSubmit)="onSubmit(customerForm.value)">
-		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isFormExpanded'>
-			<bd-input [labelText]="'Company Name'" formControlName="name" *ngIf="isFormExpanded">
+<bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode" [class.edit]="isEditMode" [class.view]="!isEditMode">
+	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)" [class.edit]="isEditMode" [class.view]="!isEditMode">
+		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
+			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
 			</bd-input>
-			<bd-dropdown [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
+			<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
 			</bd-dropdown>
-			<bd-form-switch [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
+			<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
 			</bd-form-switch>
 			<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
-				<bd-input [labelText]="'MC #'" formControlName="mc">
+				<bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">
 				</bd-input>
 			</bd-validator>
-			<bd-input [labelText]="'Tax ID (W9)'" formControlName="taxId" *ngIf="isFormExpanded">
+			<bd-input class="bd-form-control" [labelText]="'Tax ID (W9)'" formControlName="taxId" *ngIf="isExpanded">
 			</bd-input>
 		</bd-form-section>
-		<bd-form-section [labelText]="'CUSTOMER > ADDRESS'" [isExpanded]='isFormExpanded'>
-			<address-form [group]='customerForm.controls.address' [isExpanded]="isFormExpanded" [address]='customer.address'></address-form>
-			<bd-input [labelText]="'Email'" formControlName="email" *ngIf='isExpanded'>
-			</bd-input>
-		</bd-form-section>
-		<bd-form-section [labelText]="'CUSTOMER > BILLING'" *ngIf='isExpanded' [isExpanded]="isFormExpanded">
-		 <label class="same-as-company-label"><input type="checkbox" (change)="sameAsCompanyChange($event)"><span>Same as Company Address</span></label>
-		 <address-form [group]='customerForm.controls.billingAddresses' [address]='customer.billingAddresses'></address-form>
-		 <bd-textarea
-		  [labelText]="'Notes'">
-		 </bd-textarea>
+		<bd-form-section [labelText]="'CUSTOMER > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
+			<addresses-form [formArray]='customerForm.controls.addresses'[items]='customer.addresses' [viewMode]="viewMode"></addresses-form>
 		</bd-form-section>
 		<div class="section btn-container" *ngIf="isEditMode">
 			<bd-button
-				type="default"
 				(click)="onCancel()"
 				[text]="'Cancel'"
 				class="bd-button">
@@ -37,7 +27,6 @@
 				type="submit"
 				color="primary"
 				class="bd-button"
-				(click)="onSubmit()"
 				[text]="'Add Customer'">
 			</bd-button>
 		</div>
