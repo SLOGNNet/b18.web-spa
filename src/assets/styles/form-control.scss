@@ -1,6 +1,7 @@
 @import './variables';
 
-form {
+*,
+:host {
   &.view {
     .bd-form-control {
       background-color: $light-blue;
