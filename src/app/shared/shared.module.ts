@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-// <<<<<<< HEAD
-// import { NotificationService, CustomerService, SocketService, LoadService, GoogleService, ContactService } from './services';
-// =======
 
 import { NotificationService,
   CustomerService,
