@@ -1,6 +1,7 @@
 import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { isNil } from 'lodash';
 const noop = () => { };
 
 @Component({
@@ -21,6 +22,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
+  @Output() focusChange = new EventEmitter();
 
   @HostBinding('class.bd-focused') _isOpen: boolean = false;
 
@@ -55,7 +57,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   get isSelectedValue(){
-    return this._selectedValue;
+    return !isNil(this._selectedValue);
   }
 
   @Input() set items(args: any[]){
@@ -87,6 +89,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   onToggle(isOpen) {
     this._isOpen = isOpen;
+    this.focusChange.emit(this._isOpen);
   }
 
   writeValue(value: any) {

@@ -1,21 +1,45 @@
 @import './variables';
 
-form {
-	&.view {
-		.bd-form-control {
-			background-color: $white;
-		}
-	}
-	
-	&.edit {
-		.bd-form-control {
-			background-color: $light-blue;
-		}
-	}
+:host {
+  &.bd-view-mode {
+    .bd-form-control {
+      background-color: $light-blue;
+      box-shadow: inset  0  1px 0 0 $white, inset  0 -1px 0 0 $white;
 
-	.bd-form-control {
-		&.bd-focused {
-			background-color: $white;
-		}
-	}
+      &:hover,
+      &.bd-focused {
+        background-color: $white;
+      }
+
+      &.left-control {
+        box-shadow: inset  -1px  1px 0 0 $white, inset  0 -1px 0 0 $white;
+      }
+
+      &.middle-control {
+        box-shadow: inset 0 0 0 1px $white; 
+      }
+
+      &.right-control {
+        box-shadow: inset  1px  1px 0 0 $white, inset  0 -1px 0 0 $white;
+      }
+    }
+  }
+
+  &.bd-edit-mode {
+    .bd-form-control {
+      background-color: $white;
+    }
+  }
+
+  .bd-form-control {
+    display: block;
+
+    &.left-control {
+      border-right: $border;
+    }
+
+    &.middle-control {
+      border-right: $border;
+    }
+  }
 }

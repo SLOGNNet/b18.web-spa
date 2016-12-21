@@ -1,29 +1,31 @@
-import { Component, Input } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Component, Input, OnChanges } from '@angular/core';
+import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
+import { BaseForm } from '../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'load-form',
   styleUrls: ['load-form.component.scss'],
   templateUrl: './load-form.component.html'
-})
-export class BdLoadFormComponent {
+}, BaseForm.metaData))
+export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirmentsNames: Array<any>;
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
   @Input() load: Load;
-  private isEditMode: boolean = true;
   private customerSource: any[];
   private customerQuery: string = '';
-  private customerViewMode: ViewMode = ViewMode.View;
-  private loadForm: BdFormGroup;
+  private customerViewMode: ViewMode = ViewMode.None;
+  private loadForm: FormGroup;
   private selectedCustomer: Customer;
+  private stops: Array<Stop>;
 
-  public constructor(private customerService: CustomerService, private formBuilder: BdFormBuilder, private enumHelperService: EnumHelperService) {
+  public constructor(private customerService: CustomerService, private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
+    super();
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
     this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
@@ -32,6 +34,7 @@ export class BdLoadFormComponent {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.selectedCustomer = this.load.customer;
+      this.stops = this.load.stops;
       this.initForm();
       this.initCustomerTypeahead(this.selectedCustomer);
     }
@@ -57,25 +60,23 @@ export class BdLoadFormComponent {
     this.selectedCustomer = this.load.customer;
   }
 
-  get formViewMode () {
-    const mode = this.customerViewMode === ViewMode.Edit ? 'edit' : 'view';
-    return mode;
-  }
-
   public initForm() {
-
+    this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
-      specialRequirment: [this.load.specialRequirment]
+      specialRequirment: [this.load.specialRequirment],
+      stops: this.formBuilder.array([{
+          commoditiesGroup: this.formBuilder.group({})
+      }])
     });
   }
 
   public onCustomerSelect(customer: Customer) {
-    this.load.customer = customer;
-    this.customerViewMode = ViewMode.View;
+    this.selectedCustomer = customer;
+    this.customerViewMode = ViewMode.ViewCollapsed;
   }
 
   private initCustomerTypeahead(customer) {
@@ -83,5 +84,15 @@ export class BdLoadFormComponent {
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
+  }
+
+  private get stopsFormControl() {
+    return this.loadForm.controls['stops'];
+  }
+
+  private getCommoditiesFormGroup(index = 0) {
+    const controls = this.stopsFormControl['controls'][index];
+
+    return controls.value.commoditiesGroup;
   }
 }

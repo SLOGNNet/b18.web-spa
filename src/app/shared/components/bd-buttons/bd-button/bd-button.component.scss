@@ -1,0 +1,44 @@
+@import '../../../../../assets/styles/variables';
+
+.common {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.primary {
+  border: 0;
+  background: $blue;
+  color: $white;
+
+  &:focus {
+    background: $btn-primary-focus;
+  }
+
+  &:hover {
+    background: $btn-primary-hover;
+  }
+}
+
+.default {
+  background: $light-grey;
+  color: $black;
+
+  &:focus {
+    background: $btn-default-focus;
+  }
+
+  &:hover {
+    background: $btn-default-hover;
+  }
+}
