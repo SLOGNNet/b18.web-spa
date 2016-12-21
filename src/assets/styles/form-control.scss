@@ -1,18 +1,6 @@
 @import './variables';
 
 form {
-  .left-control-border {
-    border-right: $border;
-  }
-
-  .right-control-border {
-    border-left: $border;
-  }
-
-  .bottom-control-border {
-    border-bottom: $border;
-  }
-
   &.view {
     .bd-form-control {
       background-color: $light-blue;
@@ -39,6 +27,16 @@ form {
   }
 
   .bd-form-control {
+    display: block;
+
+    &.left-control {
+      border-right: $border;
+    }
+
+    &.middle-control {
+      border-right: $border;
+    }
+
     &:hover {
       background-color: $white;
     }
