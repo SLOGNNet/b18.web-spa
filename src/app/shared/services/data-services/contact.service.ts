@@ -4,13 +4,10 @@ import { Contacts, Address } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
+import MockData from './mock-data';
 
 @Injectable()
 export class ContactService {
-
-private _contacts: Array<Contacts> = [
-  { id: 1, name: 'John', phone: '1234567', email: 'qwerty@gmail.com', position: 'CEO'},
-  { id: 2, name: 'Mike', phone: '1234567', email: 'qwerty@gmail.com', position: 'CEO'}];
 
   constructor(private http: Http) {
     this.http = http;
@@ -18,7 +15,7 @@ private _contacts: Array<Contacts> = [
 
     getContacts(): Observable<Contacts[]> {
       return Observable.of(
-        this._contacts
+        MockData.contacts
       );
     }
 }

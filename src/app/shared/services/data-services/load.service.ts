@@ -5,84 +5,17 @@ import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import { CustomerService } from  './index';
+import MockData from './mock-data';
 
 @Injectable()
 export class LoadService {
-
-  private _commodities: Array<Commodity> = [{
-    pickupNumber: 1,
-    po: '23324234',
-    commodity: 'Strawberry',
-    unitType: 'Boxes',
-    unitCount: 22,
-    palletCount: 10,
-    weight: 14,
-  },
-  {
-    pickupNumber: 2,
-    po: '789',
-    commodity: 'Toma',
-    unitType: 'Boxes',
-    unitCount: 10,
-    palletCount: 10,
-    weight: 5
-  }];
-
-  private _loadsData: Array<Load> = [
-    {
-      id: 1,
-      customerId: 1,
-      customer: null,
-      addressId: 1,
-      contactsId: 1,
-      billingAddressId: 3,
-      status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Solo,
-      powerUnitType: PowerUnitTypes.Tractor,
-      trailerType: TrailerTypes.Reefer,
-      specialRequirment: 'specialRequirments1',
-      stops: [{
-        commodities: this._commodities
-      }]
-    },
-    { id: 2,
-      customerId: 2,
-      customer: null,
-      addressId: 2,
-      contactsId: 2,
-      billingAddressId: 4,
-      status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Solo,
-      powerUnitType: PowerUnitTypes.Tractor,
-      trailerType: TrailerTypes.Other,
-      specialRequirment: 'specialRequirments2',
-      stops: [{
-        commodities: this._commodities
-      }]
-    },
-    { id: 3,
-      customerId: 3,
-      customer: null,
-      addressId: 1,
-      billingAddressId: 3,
-      contactsId: 1,
-      status: LoadStatuses.Booked,
-      driverRequirment: DriverRequirments.Solo,
-      powerUnitType: PowerUnitTypes.Other,
-      trailerType: TrailerTypes.Reefer,
-      specialRequirment: 'specialRequirments3',
-      stops: [{
-        commodities: this._commodities
-      }]
-    },
-  ];
 
   constructor(private http: Http, private customerService: CustomerService) {
 
   }
 
   getAll(): Observable<Load[]> {
-    return Observable.from(this._loadsData)
+    return Observable.from(MockData.loads)
       .flatMap(
         (load) => this.customerService
           .get(load.id)
@@ -91,7 +24,7 @@ export class LoadService {
   }
 
   getDetails(loadId: number): Observable<Load> {
-    return Observable.of(this._loadsData.find((load) => load.id === loadId))
+    return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) =>
         this.customerService
           .get(load.id)
