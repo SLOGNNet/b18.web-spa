@@ -8,6 +8,7 @@ import { NotificationService,
   LoadService,
   GoogleService,
   CommodityService,
+  ContactService,
   FormValidationService
 } from './services';
 import { EnumHelperService } from './helpers';
@@ -37,6 +38,7 @@ import { BdRemoveButtonComponent,
     LoadService,
     SocketService,
     CustomerService,
+    ContactService,
     EnumHelperService,
     GoogleService,
     CommodityService,

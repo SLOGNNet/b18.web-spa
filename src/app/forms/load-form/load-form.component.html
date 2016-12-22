@@ -56,6 +56,19 @@
             valueField="name">
           </bd-dropdown>
         </bd-form-section>
+        <bd-form-section>
+          <bd-dropdown
+            *ngIf='selectedCustomer'
+            clearLabel='Leave Empty'
+            class="bd-form-control"
+            labelText='Contact'
+            defaultTitleText="Select Contact"
+            formControlName="contactId"
+            [items]="selectedCustomer.contacts"
+            keyField="id"
+            valueField="name">
+          </bd-dropdown>
+        </bd-form-section>
         <bd-form-section [labelText]="'PICKUPS'">
             <pick-up-commodity-form [group]="getCommoditiesFormGroup()" [commodities]="stops[0].commodities" [viewMode]="customerViewMode"></pick-up-commodity-form>
           </bd-form-section>

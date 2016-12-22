@@ -1,5 +1,5 @@
 import { Load, Customer, Address, CustomerStatuses, CustomerTypes,
-  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity } from './models';
+  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity, Contact } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -73,25 +73,41 @@ class MockData {
   }
   ];
 
+  public contacts: Array<Contact> = [{
+   id: 1,
+   name: 'Contact 1',
+   phone: '1234567',
+   email: 'qwerty@gmail.com',
+   position: 'CEO'
+ },
+ {
+   id: 2,
+   name: 'Contact 2',
+   phone: '1234567',
+   email: 'qwerty@gmail.com',
+   position: 'CEO'
+ }
+ ];
+
   public customers: Array<Customer> = [
     {
-      id: 1, name: 'ARP Logistic INC', addresses: this.addresses, email: 'qwerty1@gmail.com',
+      id: 1, name: 'ARP Logistic INC', addresses: this.addresses, contacts: this.contacts, email: 'qwerty1@gmail.com',
       status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '423466'
     },
     {
-      id: 2, name: 'DNS Logistic Corp', addresses: this.billingAddresses, email: 'qwerty2@gmail.com',
+      id: 2, name: 'DNS Logistic Corp', addresses: this.billingAddresses, contacts: this.contacts, email: 'qwerty2@gmail.com',
       status: CustomerStatuses.Unavaliable, type: CustomerTypes.Shipper, taxId: '1', mc: '889065'
     },
     {
-      id: 3, name: 'Purum Company', addresses: this.addresses, email: 'qwerty3@gmail.com',
+      id: 3, name: 'Purum Company', addresses: this.addresses, contacts: this.contacts, email: 'qwerty3@gmail.com',
       status: CustomerStatuses.Inactive, type: CustomerTypes.Broker, taxId: '1', mc: '254785'
     },
     {
-      id: 4, name: 'Approximately', addresses: this.billingAddresses, email: 'qwerty4@gmail.com',
+      id: 4, name: 'Approximately', addresses: this.billingAddresses, contacts: this.contacts, email: 'qwerty4@gmail.com',
       status: CustomerStatuses.Inactive, type: CustomerTypes.Shipper, taxId: '1', mc: '456887'
     },
     {
-      id: 5, name: 'Satisfying company', addresses: this.addresses, email: 'qwerty5@gmail.com',
+      id: 5, name: 'Satisfying company', addresses: this.addresses, contacts: this.contacts, email: 'qwerty5@gmail.com',
       status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '123452'
     }
   ];
@@ -129,6 +145,7 @@ class MockData {
       customerId: 1,
       customer: null,
       addressId: 1,
+      contactId: 1,
       billingAddressId: 3,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
@@ -143,6 +160,7 @@ class MockData {
       customer: null,
       addressId: 2,
       billingAddressId: 4,
+      contactId: 2,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
@@ -156,6 +174,7 @@ class MockData {
       customer: null,
       addressId: 1,
       billingAddressId: 3,
+      contactId: 1,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Other,
