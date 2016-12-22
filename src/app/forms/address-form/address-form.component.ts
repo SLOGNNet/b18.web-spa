@@ -6,17 +6,14 @@ import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss'],
-  inputs: BaseForm.genericInputs
-})
-export class AddressForm extends BaseForm  {
+  styleUrls: ['./address-form.component.scss']
+}, BaseForm.metaData))
+export class AddressForm extends BaseForm {
   @Input()
   public address: Address;
-  @Input()
-  public viewMode: ViewMode;
   @Input('group')
   public addressForm: BdFormGroup;
   private _placeSource: any[];
@@ -46,7 +43,7 @@ export class AddressForm extends BaseForm  {
     private _changeDetectionRef: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
     private _googleService: GoogleService) {
-      super();
+    super();
   }
 
   ngOnChanges(changes: any) {
@@ -68,8 +65,23 @@ export class AddressForm extends BaseForm  {
     this._updateMap();
   }
 
-  onAddressRemove(){
-   this.addressForm.setValue(Object.assign( {}, this.addressForm.value, {city: '', state: '', zip: '', secondStreetAddress: ''}));
+  onAddressRemove() {
+    this.addressForm.setValue(Object.assign(
+      {},
+      this.addressForm.value,
+      {
+        city: '',
+        state: '',
+        zip: '',
+        secondStreetAddress: '',
+        location: {
+          lat: 0,
+          lng: 0
+        }
+      }
+    ));
+
+    this._updateMap();
   }
 
   public onPlaceSelect(place) {
@@ -94,7 +106,7 @@ export class AddressForm extends BaseForm  {
     }).mergeMap((token: string) => this._googleService.getPredictions(token));
   }
 
-  private _updateMap(location = { lat: 0, lng: 0}, labelText = ''): void {
+  private _updateMap(location = { lat: 0, lng: 0 }, labelText = ''): void {
     this._map = {
       location,
       labelText

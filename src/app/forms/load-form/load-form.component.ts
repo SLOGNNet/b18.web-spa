@@ -7,12 +7,11 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'load-form',
   styleUrls: ['load-form.component.scss'],
-  templateUrl: './load-form.component.html',
-  inputs: BaseForm.genericInputs
-})
+  templateUrl: './load-form.component.html'
+}, BaseForm.metaData))
 export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirmentsNames: Array<any>;
   powerUnitTypesNames: Array<any>;

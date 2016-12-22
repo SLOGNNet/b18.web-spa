@@ -4,7 +4,7 @@ import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 export abstract class BaseListForm<T> extends BaseForm {
-   public static genericInputs: string[] = BaseForm.genericInputs;
+   public static metaData: Object = BaseForm.metaData;
 
    @Input()
    public items: Array<T>;
@@ -24,9 +24,11 @@ export abstract class BaseListForm<T> extends BaseForm {
 
    initForm() {
      this.resetData();
+
      for (let item of this.items) {
        this.addData(item);
      }
+
      if (this.items.length === 0) {
        this.addNewItem();
      }
