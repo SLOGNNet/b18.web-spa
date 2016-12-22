@@ -1,3 +1,9 @@
+import { Address } from './index';
+
 export class Contacts {
-  contact: string;
+  name: string;
+  phone: string;
+  email: string;
+  position: string;
+  address: Array<Address>;
 }

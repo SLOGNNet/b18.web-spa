@@ -32,6 +32,8 @@
        </bd-typeahead>
      </bd-validator>
       <customer-form *ngIf='selectedCustomer' [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <bd-dropdown class="bd-form-control" [labelText]="'contacts'" [items]="this.contactNames">
+      </bd-dropdown>
         <bd-form-section [labelText]="'PICKUPS'">
           <pick-up-commodity-form [group]="getCommoditiesFormGroup()" [commodities]="stops[0].commodities" [viewMode]="customerViewMode"></pick-up-commodity-form>
         </bd-form-section>

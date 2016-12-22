@@ -22,7 +22,7 @@
             [dropdownHeaderTemplate]="dropdownHeaderTemplate"
             [dropdownFooterTemplate]="dropdownFooterTemplate"
             [dropdownItemTemplate]="dropdownItemTemplate"
-            [items]="items">
+            [items]="contacts">
         </bd-dropdown>
         </div>
         <swui-datatable
@@ -95,6 +95,11 @@
           [selectedValue]="switchButtons2[0]">
         </bd-form-switch>
       </div>
+
+      <bd-dropdown
+          [labelText]="'QWERTY'"
+          [items]="contacts">
+      </bd-dropdown>
 
     </second-pane>
 

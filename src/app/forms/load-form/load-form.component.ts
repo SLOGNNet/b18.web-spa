@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Contacts } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -17,6 +17,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirmentsNames: Array<any>;
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
+  contactNames: Array<any> = [];
+  contacts: Array<any>;
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
@@ -25,7 +27,10 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private selectedCustomer: Customer;
   private stops: Array<Stop>;
 
-  public constructor(private customerService: CustomerService, private formBuilder: FormBuilder, private enumHelperService: EnumHelperService, private contactService: ContactService) {
+  public constructor(private customerService: CustomerService,
+    private formBuilder: FormBuilder,
+    private enumHelperService: EnumHelperService,
+    private contactService: ContactService) {
     super();
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
@@ -62,7 +67,9 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   }
 
   public initForm() {
-    console.log(this.contactService.getContacts());
+    this.contactService.getContacts().subscribe(contacts => this.contacts = contacts);
+    this.contacts.forEach((contact) => this.contactNames.push(contact.name));
+     console.log(this.contactNames, 'this.contactNames');
     this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],

@@ -13,6 +13,8 @@ export class HomeComponent {
   loadingIndicator: boolean = true;
   items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
 
+  contacts = ['Jacky Chan - actor', 'Jacky Chan'];
+
   columns = [
      { prop: 'name' } ,
      { name: 'Company' },
