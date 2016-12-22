@@ -15,6 +15,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
 
+  @Input() clearLabel: string = '';
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
   @Input() keyField: string = 'key';

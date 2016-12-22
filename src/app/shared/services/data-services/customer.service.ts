@@ -9,6 +9,8 @@ import { delay } from 'rxjs/Delay';
 export class CustomerService {
 
   private _addresses: Array<Address> = [{
+    id: 1,
+    name: 'Address 1',
     streetAddress: 'Street address 1',
     secondStreetAddress: 'Street address 2',
     city: 'City',
@@ -24,6 +26,8 @@ export class CustomerService {
     }
   },
   {
+    id: 2,
+    name: 'Address 2',
     streetAddress: 'test',
     secondStreetAddress: 'test',
     city: 'City 3',
@@ -41,6 +45,8 @@ export class CustomerService {
 ];
 
 private _billingAddresses = [{
+  id: 3,
+  name: 'Billing Address 1',
   streetAddress: 'billing street address 1',
   secondStreetAddress: 'Street address 2',
   city: 'City',
@@ -56,6 +62,8 @@ private _billingAddresses = [{
   }
 },
 {
+  id: 4,
+  name: 'Billing Address 2',
   streetAddress: 'billing street address 2',
   secondStreetAddress: 'test',
   city: 'City 3',
