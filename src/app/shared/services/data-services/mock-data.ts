@@ -2,6 +2,8 @@ import { Load, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity } from './models';
 class MockData {
   public addresses: Array<Address> = [{
+    id: 1,
+    name: 'Street Address 1',
     streetAddress: 'Street address 1',
     secondStreetAddress: 'Street address 2',
     city: 'City',
@@ -16,24 +18,28 @@ class MockData {
       lng: -73.93600099999998
     }
   },
-    {
-      streetAddress: 'test',
-      secondStreetAddress: 'test',
-      city: 'City 3',
-      phone: '345345',
-      state: 'Fy state',
-      zip: '33708 zip',
-      fax: '44',
-      phoneExtension: '441',
-      faxExtension: '36',
-      location: {
-        lat: 40.795675,
-        lng: -73.93600099999998
-      }
+  {
+    id: 2,
+    name: 'Street Address 2',
+    streetAddress: 'test',
+    secondStreetAddress: 'test',
+    city: 'City 3',
+    phone: '345345',
+    state: 'Fy state',
+    zip: '33708 zip',
+    fax: '44',
+    phoneExtension: '441',
+    faxExtension: '36',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
     }
+  }
   ];
 
   public billingAddresses: Array<Address> = [{
+    id: 3,
+    name: 'Billing Address 1',
     streetAddress: 'billing street address 1',
     secondStreetAddress: 'Street address 2',
     city: 'City',
@@ -48,21 +54,23 @@ class MockData {
       lng: 0
     }
   },
-    {
-      streetAddress: 'billing street address 2',
-      secondStreetAddress: 'test',
-      city: 'City 3',
-      phone: '345345',
-      state: 'Fy state',
-      zip: '33708 zip',
-      fax: '44',
-      phoneExtension: '455',
-      faxExtension: '477',
-      location: {
-        lat: 0,
-        lng: 0
-      }
+  {
+    id: 4,
+    name: 'Billing Address 2',
+    streetAddress: 'billing street address 2',
+    secondStreetAddress: 'test',
+    city: 'City 3',
+    phone: '345345',
+    state: 'Fy state',
+    zip: '33708 zip',
+    fax: '44',
+    phoneExtension: '455',
+    faxExtension: '477',
+    location: {
+      lat: 0,
+      lng: 0
     }
+  }
   ];
 
   public customers: Array<Customer> = [
@@ -120,6 +128,8 @@ class MockData {
       id: 1,
       customerId: 1,
       customer: null,
+      addressId: 1,
+      billingAddressId: 3,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
@@ -131,6 +141,8 @@ class MockData {
       id: 2,
       customerId: 2,
       customer: null,
+      addressId: 2,
+      billingAddressId: 4,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
@@ -142,6 +154,8 @@ class MockData {
       id: 3,
       customerId: 3,
       customer: null,
+      addressId: 1,
+      billingAddressId: 3,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Other,
