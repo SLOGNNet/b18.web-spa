@@ -70,7 +70,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       customer: [this.load.customer, Validators.required],
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
-      contactId: [this.load.contactsId],
+      contactId: [this.load.contactId],
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
