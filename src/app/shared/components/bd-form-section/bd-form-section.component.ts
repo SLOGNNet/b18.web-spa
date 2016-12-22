@@ -12,6 +12,6 @@ export class BdFormSectionComponent {
   @Input() isExpanded: boolean = true;
 
   private get isLabelVisisble() {
-    return this.isExpanded;
+    return this.isExpanded && this.labelText;
   }
 }

@@ -29,6 +29,9 @@ export enum TrailerTypes {
 export class Load {
   id: number;
   customerId: number;
+  addressId: number;
+  billingAddressId: number;
+  contactsId: number;
   status: LoadStatuses;
   customer: Customer;
   driverRequirment: DriverRequirments;

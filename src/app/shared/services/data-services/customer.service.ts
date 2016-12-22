@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Customer, Address, CustomerStatuses, CustomerTypes } from './models';
+import { Customer, Address, CustomerStatuses, CustomerTypes, Contacts } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
@@ -9,6 +9,8 @@ import { delay } from 'rxjs/Delay';
 export class CustomerService {
 
   private _addresses: Array<Address> = [{
+    id: 1,
+    name: 'Address 1',
     streetAddress: 'Street address 1',
     secondStreetAddress: 'Street address 2',
     city: 'City',
@@ -24,6 +26,8 @@ export class CustomerService {
     }
   },
   {
+    id: 2,
+    name: 'Address 2',
     streetAddress: 'test',
     secondStreetAddress: 'test',
     city: 'City 3',
@@ -40,7 +44,25 @@ export class CustomerService {
   }
 ];
 
+private _contacts: Array<Contacts> = [{
+  id: 1,
+  name: 'Contact 1',
+  phone: '1234567',
+  email: 'qwerty@gmail.com',
+  position: 'CEO'
+},
+{
+  id: 2,
+  name: 'Contact 2',
+  phone: '1234567',
+  email: 'qwerty@gmail.com',
+  position: 'CEO'
+}
+];
+
 private _billingAddresses = [{
+  id: 3,
+  name: 'Billing Address 1',
   streetAddress: 'billing street address 1',
   secondStreetAddress: 'Street address 2',
   city: 'City',
@@ -56,6 +78,8 @@ private _billingAddresses = [{
   }
 },
 {
+  id: 4,
+  name: 'Billing Address 2',
   streetAddress: 'billing street address 2',
   secondStreetAddress: 'test',
   city: 'City 3',
@@ -73,15 +97,15 @@ private _billingAddresses = [{
 ];
 
   private _customersData: Array<Customer> = [
-    { id: 1, name: 'ARP Logistic INC', addresses: this._addresses, email: 'qwerty1@gmail.com',
+    { id: 1, name: 'ARP Logistic INC', addresses: this._addresses, contacts: this._contacts, email: 'qwerty1@gmail.com',
       status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '423466' },
-    { id: 2, name: 'DNS Logistic Corp', addresses: this._billingAddresses, email: 'qwerty2@gmail.com',
+    { id: 2, name: 'DNS Logistic Corp', addresses: this._billingAddresses, contacts: this._contacts, email: 'qwerty2@gmail.com',
       status: CustomerStatuses.Unavaliable, type: CustomerTypes.Shipper,  taxId: '1', mc: '889065' },
-    { id: 3, name: 'Purum Company', addresses: this._addresses, email: 'qwerty3@gmail.com',
+    { id: 3, name: 'Purum Company', addresses: this._addresses, contacts: this._contacts, email: 'qwerty3@gmail.com',
       status: CustomerStatuses.Inactive, type: CustomerTypes.Broker, taxId: '1', mc: '254785' },
-    { id: 4, name: 'Approximately', addresses: this._billingAddresses, email: 'qwerty4@gmail.com',
+    { id: 4, name: 'Approximately', addresses: this._billingAddresses, contacts: this._contacts, email: 'qwerty4@gmail.com',
       status: CustomerStatuses.Inactive, type: CustomerTypes.Shipper, taxId: '1', mc: '456887' },
-    { id: 5, name: 'Satisfying company', addresses: this._addresses, email: 'qwerty5@gmail.com',
+    { id: 5, name: 'Satisfying company', addresses: this._addresses, contacts: this._contacts, email: 'qwerty5@gmail.com',
       status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '123452' }];
 
   constructor(private http: Http) {

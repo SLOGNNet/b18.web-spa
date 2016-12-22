@@ -16,8 +16,6 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirmentsNames: Array<any>;
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
-  contactNames: Array<any> = [];
-  contacts: Array<any>;
   @Input() load: Load;
   private customerSource: any[];
   private customerQuery: string = '';
@@ -26,7 +24,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private selectedCustomer: Customer;
   private stops: Array<Stop>;
 
-  public constructor(private customerService: CustomerService,
+  public constructor(
+    private customerService: CustomerService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
     private contactService: ContactService) {
@@ -66,12 +65,12 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   }
 
   public initForm() {
-    this.contactService.getContacts().subscribe(contacts => this.contacts = contacts);
-    this.contacts.forEach((contact) => this.contactNames.push(contact.name));
-     console.log(this.contactNames, 'this.contactNames');
     this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
+      addressId: [this.load.addressId],
+      billingAddressId: [this.load.billingAddressId],
+      contactId: [this.load.contactsId],
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],

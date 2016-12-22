@@ -6,6 +6,10 @@
 			</div>
     </div>
 </template>
+<bd-validator [component]="addressForm.controls.name" [errorDefs]="{required: 'Name is required'}">
+  <bd-input class="bd-form-control" formControlName="name" placeholder="Name">
+  </bd-input>
+</bd-validator>
 <bd-typeahead
 	class="bd-form-control"
 	formControlName="streetAddress"
