@@ -1,5 +1,5 @@
 import { Address } from './index';
-import { Contacts } from './index';
+import { Contact } from './index';
 
 export enum CustomerTypes {
   Broker = 1,
@@ -17,7 +17,7 @@ export enum CustomerStatuses {
 export class Customer {
   id: number;
   name: string = '';
-  contacts: Array<Contacts>;
+  contacts: Array<Contact>;
   status: CustomerStatuses;
   type: CustomerTypes;
   mc: string = '';

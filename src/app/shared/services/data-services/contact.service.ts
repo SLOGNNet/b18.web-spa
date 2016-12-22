@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Contacts, Address } from './models';
+import { Contact, Address } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
@@ -13,7 +13,7 @@ export class ContactService {
     this.http = http;
   }
 
-    getContacts(): Observable<Contacts[]> {
+    getContacts(): Observable<Contact[]> {
       return Observable.of(
         MockData.contacts
       );

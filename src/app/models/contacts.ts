@@ -1,6 +1,6 @@
 import { Address } from './index';
 
-export class Contacts {
+export class Contact {
   id: number = 0;
   name: string;
   phone: string;

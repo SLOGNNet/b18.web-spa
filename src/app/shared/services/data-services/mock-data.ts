@@ -1,5 +1,5 @@
 import { Load, Customer, Address, CustomerStatuses, CustomerTypes,
-  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity, Contacts } from './models';
+  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity, Contact } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -73,7 +73,7 @@ class MockData {
   }
   ];
 
-  public contacts: Array<Contacts> = [{
+  public contacts: Array<Contact> = [{
    id: 1,
    name: 'Contact 1',
    phone: '1234567',

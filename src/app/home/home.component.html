@@ -14,16 +14,6 @@
         <template #dropdownItemTemplate let-item="item">
             {{item}}
         </template>
-
-        <bd-dropdown
-            [defaultLabelText]="'contact'"
-            [labelText]="'contact'"
-            [defaultTitleText]="'Select Contact'"
-            [dropdownHeaderTemplate]="dropdownHeaderTemplate"
-            [dropdownFooterTemplate]="dropdownFooterTemplate"
-            [dropdownItemTemplate]="dropdownItemTemplate"
-            [items]="contacts">
-        </bd-dropdown>
         </div>
         <swui-datatable
           class="material striped"
@@ -95,11 +85,6 @@
           [selectedValue]="switchButtons2[0]">
         </bd-form-switch>
       </div>
-
-      <bd-dropdown
-          [labelText]="'QWERTY'"
-          [items]="contacts">
-      </bd-dropdown>
 
     </second-pane>
 
