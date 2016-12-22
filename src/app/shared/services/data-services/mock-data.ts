@@ -166,4 +166,4 @@ class MockData {
   ];
 }
 
-export = new MockData();
+export default new MockData();
