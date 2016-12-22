@@ -26,6 +26,7 @@ export class AddressForm extends BaseForm {
     }
   };
   private fields = [
+    { name: 'name', validators: [Validators.required] },
     { name: 'phone', validators: [Validators.required] },
     { name: 'fax', validators: [] },
     { name: 'state', validators: [] },

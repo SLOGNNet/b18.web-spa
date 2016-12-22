@@ -9,8 +9,6 @@ import MockData from './mock-data';
 @Injectable()
 export class CustomerService {
 
-
-
   constructor(private http: Http) {
     this.http = http;
   }
