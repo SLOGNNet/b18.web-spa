@@ -1,9 +1,12 @@
+@import '../../../../assets/styles/variables';
+
 :host {
   display: block;
   padding-top: 20px;
 
   .bd-section-title {
     margin: 10px 0 20px 15px;
+    font-size: $small-font-size;
     font-weight: bold;
     letter-spacing: 2px;
     word-spacing: 3px;
