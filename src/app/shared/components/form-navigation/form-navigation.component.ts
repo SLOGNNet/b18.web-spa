@@ -7,12 +7,11 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class FormNavigationComponent {
-  private _activeAnchor: number = null;
-
-  @Input() title: string = "";
+  @Input() title: string = '';
   @Input() anchors: Array<Object>;
 
-  scrollTo(value, index) {
+  private _activeAnchor: number = null;
+  private _scrollTo(value, index) {
     if (value.length && value.trim().length) {
       let linkElement = document.querySelectorAll(`[anchor=${value}]`);
 
