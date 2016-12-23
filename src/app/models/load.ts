@@ -31,6 +31,7 @@ export class Load {
   customerId: number;
   addressId: number;
   billingAddressId: number;
+  contactId: number;
   status: LoadStatuses;
   customer: Customer;
   driverRequirment: DriverRequirments;

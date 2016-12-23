@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Customer, Address, CustomerStatuses, CustomerTypes } from './models';
+import { Customer, Address, CustomerStatuses, CustomerTypes, Contact } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';

@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes } from '../../models';
+import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes, Contact } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -25,7 +25,11 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private selectedCustomer: Customer;
   private stopTypes = StopTypes;
 
-  public constructor(private customerService: CustomerService, private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
+  public constructor(
+    private customerService: CustomerService,
+    private formBuilder: FormBuilder,
+    private enumHelperService: EnumHelperService,
+    private contactService: ContactService) {
     super();
     this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
@@ -66,6 +70,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       customer: [this.load.customer, Validators.required],
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
+      contactId: [this.load.contactId],
       driverRequirment: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
