@@ -12,12 +12,12 @@ export class FormNavigationComponent {
 
   private _activeAnchor: number = null;
 
-  private _scrollTo(value, index) {
-    if (value.length && value.trim().length) {
-      let linkElement = document.querySelectorAll(`[anchor=${value}]`);
+  private _scrollTo(anchorId, index) {
+    if (anchorId.length && anchorId.trim().length) {
+      let targetAnchor = document.querySelector(`[anchorId=${anchorId}]`);
 
-      if (linkElement.length) {
-        linkElement[0].scrollIntoView();
+      if (targetAnchor && targetAnchor.scrollIntoView) {
+        targetAnchor.scrollIntoView();
         this._activeAnchor = index;
       }
     }

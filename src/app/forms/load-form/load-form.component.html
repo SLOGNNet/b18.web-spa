@@ -14,7 +14,8 @@
   </template>
 <form [formGroup]="loadForm" class="edit">
   <div class="bd-form">
-    <bd-form-section anchor="customer" labelText="Customer">
+    <navigation-anchor anchorId="customer"></navigation-anchor>
+    <bd-form-section labelText="Customer">
       <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
         <bd-typeahead
            class="bd-form-control"
@@ -70,10 +71,12 @@
             valueField="name">
           </bd-dropdown>
         </bd-form-section>
-        <bd-form-section anchor="pickups" [labelText]="'PICKUPS'">
+        <navigation-anchor anchorId="pickups"></navigation-anchor>
+        <bd-form-section [labelText]="'PICKUPS'">
             <pick-up-commodity-form [group]="getCommoditiesFormGroup()" [commodities]="stops[0].commodities" [viewMode]="customerViewMode"></pick-up-commodity-form>
-          </bd-form-section>
-          <bd-form-section anchor="requirements" [labelText]="'REQUIREMENTS'">
+        </bd-form-section>
+        <navigation-anchor anchorId="requirements"></navigation-anchor>
+        <bd-form-section [labelText]="'REQUIREMENTS'">
           <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
           </bd-form-switch>
           <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">

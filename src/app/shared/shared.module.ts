@@ -22,7 +22,7 @@ import { BdInputComponent } from './components/bd-input';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
-import { FormNavigationComponent } from './components/form-navigation';
+import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
@@ -64,7 +64,8 @@ import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
-    FormNavigationComponent
+    FormNavigationComponent,
+    NavigationAnchorComponent
   ],
   imports: [
     CommonModule,
@@ -97,6 +98,7 @@ import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
     BdRemoveButtonComponent,
     BdAddButtonComponent,
     FormNavigationComponent,
+    NavigationAnchorComponent,
     HttpModule
   ]
 
