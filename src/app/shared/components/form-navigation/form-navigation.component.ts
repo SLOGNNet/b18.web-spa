@@ -11,6 +11,7 @@ export class FormNavigationComponent {
   @Input() anchors: Array<Object>;
 
   private _activeAnchor: number = null;
+  
   private _scrollTo(value, index) {
     if (value.length && value.trim().length) {
       let linkElement = document.querySelectorAll(`[anchor=${value}]`);

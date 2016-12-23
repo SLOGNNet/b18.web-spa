@@ -38,3 +38,19 @@
     letter-spacing: 2px;
   }
 }
+
+form-navigation {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: calc(100% - 34px); //adjust width by scroll bar width
+}
+
+[anchor] {
+  &:first-child {
+    padding-top: $form-navigation-height * 2;
+  }
+
+  padding-top: $form-navigation-height;
+  margin-top: -$form-navigation-height;
+}
