@@ -1,2 +1,11 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/form-control';
+
+.pickup-commodity-item {
+  background-color: $white;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $light-blue;
+  }
+}

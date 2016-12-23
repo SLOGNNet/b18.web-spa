@@ -6,6 +6,7 @@
   </div>
 </div>
 <commodity
+  class='commodity-item'
   *ngFor="let data of renderFormData; let i = index"
   [isRemoveButtonHidden]="renderFormData.length === 1"
   [viewMode]="viewMode"

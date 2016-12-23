@@ -16,13 +16,20 @@ export class DropOffCommodityFormComponent extends BaseForm {
   @Input() commodities: Array<Commodity>;
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
+  private showPickups: boolean = false;
   get pickupCommodities() {
-      //  formGroup.parent().parent().controls()
-    return [];//this.formArray.parent.parent.controls['pickups'].value[0].commodities;
+    const loadForm =  <FormGroup>this.formArray.root;
+    const pickups = loadForm.controls['pickups'].value[0];
+
+    return pickups && this.showPickups ? pickups.commodities : [];
   }
 
-  onItemClick(data) {
-    const test = data.item;
-     this.commodityFormElement.addCommodity(data.item);
+  onShowPickups() {
+    this.showPickups = true;
+  }
+
+  pickupSelect(commodity: Commodity) {
+      this.showPickups = false;
+      this.commodityFormElement.addCommodity(commodity);
   }
 }

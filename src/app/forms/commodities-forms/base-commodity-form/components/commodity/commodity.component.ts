@@ -14,7 +14,7 @@ export class CommodityComponent extends BaseForm {
   public commodityForm: FormGroup = this.formBuilder.group({});
   @Input() isRemoveButtonHidden = false;
   @Input() commodity: Commodity;
-
+  @Input() disabled: boolean = false;
   @Output() blur = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();
@@ -43,7 +43,7 @@ export class CommodityComponent extends BaseForm {
     this.fields.forEach(field => {
       this.commodityForm.addControl(
        field.name,
-        this.formBuilder.control(this.commodity[field.name], field.validators)
+        this.formBuilder.control({ value: this.commodity[field.name], disabled: this.disabled }, field.validators)
       );
     });
   }

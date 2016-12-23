@@ -41,7 +41,7 @@ export abstract class BaseListForm<T> extends BaseForm {
   protected addItem(item: T) {
       this.addFormData(item);
   }
-  
+
   protected removeItem(removeData) {
     this.renderFormData = this.renderFormData.filter(data => data !== removeData);
   }
