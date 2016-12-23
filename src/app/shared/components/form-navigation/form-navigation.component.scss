@@ -39,7 +39,7 @@
       }
 
       &:last-child {
-        margin-right: 2px;
+        margin-right: 0;
       }
 
     }
@@ -47,13 +47,11 @@
 }
 
 //sass-lint:disable-all
-.ps-container {
-  &.ps-active-x {
-    &.ps-in-scrolling  {
-      .ps-scrollbar-x {
-        height: 5px !important;
-        bottom: -2px !important;
-      }
+.ps-active-x {
+  &.ps-in-scrolling  {
+    .ps-scrollbar-x {
+      height: 5px !important;
+      bottom: -2px !important;
     }
   }
 
