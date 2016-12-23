@@ -5,18 +5,24 @@ import { BaseCommodityFormComponent } from '../base-commodity-form';
 import { BaseForm } from '../../base-form';
 
 @Component(Object.assign({
-  selector: 'pick-up-commodity-form',
-  templateUrl: './pick-up-commodity-form.component.html',
+  selector: 'drop-off-commodity-form',
+  templateUrl: './drop-off-commodity-form.component.html',
   styleUrls: [
-    './pick-up-commodity-form.component.scss'
+    './drop-off-commodity-form.component.scss'
   ]
 }, BaseForm.metaData))
-export class PickUpCommodityFormComponent extends BaseForm {
+export class DropOffCommodityFormComponent extends BaseForm {
   @Input() formArray: FormArray;
   @Input() commodities: Array<Commodity>;
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
-  onAdd() {
-   this.commodityFormElement.addCommodity(new Commodity());
+  get pickupCommodities() {
+      //  formGroup.parent().parent().controls()
+    return [];//this.formArray.parent.parent.controls['pickups'].value[0].commodities;
+  }
+
+  onItemClick(data) {
+    const test = data.item;
+     this.commodityFormElement.addCommodity(data.item);
   }
 }

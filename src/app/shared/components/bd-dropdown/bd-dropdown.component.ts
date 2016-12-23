@@ -81,7 +81,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
     this._selectedValue = item[this.keyField];
     this._onChangeCallback(this._selectedValue);
     this._onTouchedCallback();
-    this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField]});
+    this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField], item: item});
   }
 
   public _handleFooterClick(event): void {

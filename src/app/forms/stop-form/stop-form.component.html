@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">
+  <bd-input
+    class="bd-form-control"
+    placeholder="Date"
+    formControlName="date">
+  </bd-input>
+  <div [ngSwitch]="stop.type">
+      <pick-up-commodity-form *ngSwitchCase="stopTypes.Pickup" [formArray]="formGroup.controls.commodities" [commodities]="stop.commodities" [viewMode]="viewMode"></pick-up-commodity-form>
+      <drop-off-commodity-form *ngSwitchCase="stopTypes.Dropoff" [formArray]="formGroup.controls.commodities" [commodities]="stop.commodities" [viewMode]="viewMode"></drop-off-commodity-form>
+  </div>
+
+  <bd-input
+    class="bd-form-control"
+    placeholder="Notes"
+    formControlName="notes">
+  </bd-input>
+</form>

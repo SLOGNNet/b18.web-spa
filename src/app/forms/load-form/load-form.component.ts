@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -17,12 +17,13 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
   @Input() load: Load;
+
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private selectedCustomer: Customer;
-  private stops: Array<Stop>;
+  private stopTypes = StopTypes;
 
   public constructor(private customerService: CustomerService, private formBuilder: FormBuilder, private enumHelperService: EnumHelperService) {
     super();
@@ -34,7 +35,6 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.selectedCustomer = this.load.customer;
-      this.stops = this.load.stops;
       this.initForm();
       this.initCustomerTypeahead(this.selectedCustomer);
     }
@@ -70,9 +70,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
       specialRequirment: [this.load.specialRequirment],
-      stops: this.formBuilder.array([{
-          commoditiesGroup: this.formBuilder.group({})
-      }])
+      pickups: this.formBuilder.array([]),
+      dropoffs: this.formBuilder.array([])
     });
   }
 
@@ -86,15 +85,5 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.customerService.search(token));
-  }
-
-  private get stopsFormControl() {
-    return this.loadForm.controls['stops'];
-  }
-
-  private getCommoditiesFormGroup(index = 0) {
-    const controls = this.stopsFormControl['controls'][index];
-
-    return controls.value.commoditiesGroup;
   }
 }

@@ -1,19 +1,17 @@
-<form [formGroup]="formGroup" class="commodity-form">
-  <div class="header">
-    <div 
-      *ngFor="let title of _titles; let i=index"    
-      [class.active]="_focusedCol == i">
-      <p [innerHTML]="title.name"></p>
-    </div>
+<div class="header">
+  <div
+    *ngFor="let title of titles; let i=index"
+    [class.active]="_focusedCol == i">
+    <p [innerHTML]="title.name"></p>
   </div>
-  <commodity
-    *ngFor="let commodity of commoditiesFormControl.controls; let i = index"
-    [isRemoveButtonHidden]="commoditiesFormControl.controls.length === 1"
-    [viewMode]="viewMode"
-    [group]="commoditiesFormControl.controls[i]"
-    [fields]="_fields"
-    (blur)="onBlur($event)"
-    (focus)="onFocus($event)"
-    (remove)="onRemove(i)">
-  </commodity>
-</form>
+</div>
+<commodity
+  *ngFor="let data of renderFormData; let i = index"
+  [isRemoveButtonHidden]="renderFormData.length === 1"
+  [viewMode]="viewMode"
+  [commodity]="data.item"
+  [group]="data.group"
+  (blur)="onBlur($event)"
+  (focus)="onFocus($event)"
+  (remove)="onRemove(data)">
+</commodity>

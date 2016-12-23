@@ -1,5 +1,6 @@
 import { Load, Customer, Address, CustomerStatuses, CustomerTypes,
-  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity } from './models';
+  LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes,
+  Commodity } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -117,6 +118,7 @@ class MockData {
 
   public stops: Array<Stop> = [{
     notes: 'notes',
+    type: StopTypes.Pickup,
     address: this.addresses[0],
     date: 'date',
     commodities: this.commodities
@@ -135,7 +137,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.Reefer,
       specialRequirment: 'specialRequirments1',
-      stops: this.stops
+      pickups: this.stops,
+      dropoffs: new Array<Stop>()
     },
     {
       id: 2,
@@ -148,7 +151,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.Other,
       specialRequirment: 'specialRequirments2',
-      stops: this.stops
+      pickups: this.stops,
+      dropoffs: new Array<Stop>()
     },
     {
       id: 3,
@@ -161,7 +165,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Other,
       trailerType: TrailerTypes.Reefer,
       specialRequirment: 'specialRequirments3',
-      stops: this.stops
+      pickups: this.stops,
+      dropoffs: new Array<Stop>()
     },
   ];
 }

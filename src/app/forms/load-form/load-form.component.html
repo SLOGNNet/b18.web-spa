@@ -56,10 +56,13 @@
             valueField="name">
           </bd-dropdown>
         </bd-form-section>
-        <bd-form-section [labelText]="'PICKUPS'">
-            <pick-up-commodity-form [group]="getCommoditiesFormGroup()" [commodities]="stops[0].commodities" [viewMode]="customerViewMode"></pick-up-commodity-form>
-          </bd-form-section>
-          <bd-form-section [labelText]="'REQUIREMENTS'">
+        <bd-form-section labelText="PICKUPS">
+          <stops-form [formArray]="loadForm.controls.pickups" [items]="load.pickups" [viewMode]="viewMode" [type]="stopTypes.Pickup"></stops-form>
+        </bd-form-section>
+        <bd-form-section labelText="DROPOFFS">
+          <stops-form [formArray]="loadForm.controls.dropoffs" [items]="load.dropoffs" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></stops-form>
+        </bd-form-section>
+        <bd-form-section labelText="REQUIREMENTS">
           <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
           </bd-form-switch>
           <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
