@@ -44,6 +44,30 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   }, {
     anchorId: '',
     title: 'Documnets'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
+  }, {
+    anchorId: '',
+    title: 'Link'
   }];
 
   public constructor(
