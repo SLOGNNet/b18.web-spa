@@ -5,7 +5,7 @@
       <span 
         *ngFor="let anchor of anchors; let i = index"
         [class.active]="_activeAnchor === i"
-        (click)="_scrollTo(anchor.anchorId, i)">
+        (click)="_scrollTo(anchor.id, i)">
         {{anchor.title}}
       </span>
     </div>
