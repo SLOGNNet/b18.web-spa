@@ -1,5 +1,8 @@
 @import '../../../../../../assets/styles/variables';
 
+// Trick for offsetting an html anchor to adjust for fixed header
+// http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header/13881860#13881860
+
 :host {
   display: block;
   padding-top: $form-navigation-height;

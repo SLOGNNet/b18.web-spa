@@ -25,7 +25,7 @@ import { AppState } from '../app.service';
     selector: 'multi-pane-layout',
     templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
-        './multi-pane-layout.component.css'
+        './multi-pane-layout.component.scss'
     ]
 })
 export class MultiPaneLayoutComponent {
