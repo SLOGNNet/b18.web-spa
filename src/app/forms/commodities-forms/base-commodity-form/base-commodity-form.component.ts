@@ -29,6 +29,11 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
   public addCommodity(commodity: Commodity) {
     this.addItem(commodity);
   }
+
+  shouldAddDefault() {
+    return false;
+  }
+
   protected createItem(): Commodity {
     return new Commodity();
   }

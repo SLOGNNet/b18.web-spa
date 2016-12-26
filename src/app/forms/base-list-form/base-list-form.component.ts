@@ -10,7 +10,7 @@ export abstract class BaseListForm<T> extends BaseForm {
   public items: Array<T>;
   @Input()
   public formArray: FormArray;
-  private renderFormData: Array<any> = new Array<any>();
+  public renderFormData: Array<any> = new Array<any>();
 
   constructor(private formBuilder: FormBuilder) {
     super();
@@ -29,9 +29,13 @@ export abstract class BaseListForm<T> extends BaseForm {
       this.addFormData(item);
     }
 
-    if (this.items.length === 0) {
+    if (this.shouldAddDefault() && this.items.length === 0) {
       this.addNewItem();
     }
+  }
+
+  protected shouldAddDefault(): boolean {
+    return true;
   }
 
   protected addNewItem() {
