@@ -27,23 +27,17 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     id: 'customer',
     title: 'Customer'
   }, {
-    id: '',
-    title: 'Load'
-  }, {
     id: 'pickups',
     title: 'Pickups'
-  }, {
-    id: '',
-    title: 'Dropoffs'
   }, {
     id: 'requirements',
     title: 'Requirements'
   }, {
     id: '',
-    title: 'Rate'
+    title: 'Link'
   }, {
     id: '',
-    title: 'Documnets'
+    title: 'Link'
   }, {
     id: '',
     title: 'Link'
