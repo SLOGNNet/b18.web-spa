@@ -8,7 +8,8 @@ import { ViewMode } from '../shared/enums';
 
 @Component({
     selector: 'loads',
-    templateUrl: './loads.component.html'
+    templateUrl: './loads.component.html',
+    styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent {
   columns = [

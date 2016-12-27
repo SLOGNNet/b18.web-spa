@@ -34,7 +34,6 @@ import { BdRemoveButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
-import { StickyDirective } from './directives/sticky.directive';
 
 @NgModule({
   providers: [
@@ -66,8 +65,7 @@ import { StickyDirective } from './directives/sticky.directive';
     BdValidatorComponent,
     GoogleMapComponent,
     FormNavigationComponent,
-    NavigationAnchorComponent,
-    StickyDirective
+    NavigationAnchorComponent
   ],
   imports: [
     CommonModule,
@@ -101,7 +99,6 @@ import { StickyDirective } from './directives/sticky.directive';
     BdAddButtonComponent,
     FormNavigationComponent,
     NavigationAnchorComponent,
-    StickyDirective,
     HttpModule
   ]
 

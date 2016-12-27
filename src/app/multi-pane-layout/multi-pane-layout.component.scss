@@ -1,16 +1,16 @@
 .main-area {
+  overflow: hidden;
   height: 100vh;
   padding: 20px 10px 0;
-  overflow-y: auto;
 }
 
 .panel {
   position: relative;
+  overflow: hidden;
   height: calc(100vh - 40px);
   border: 0;
   margin: 0 10px 20px;
   background: transparent;
-  overflow-y: auto;
 }
 
 .col-sm-4,

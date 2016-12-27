@@ -1,0 +1,13 @@
+.button-group {
+  display: flex;
+  width: 100%;
+
+  .button {
+    flex: 1;
+    margin-right: 6px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
