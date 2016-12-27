@@ -193,24 +193,57 @@ class MockData {
 
   public customers: Array<Customer> = [
     {
-      id: 1, name: 'CH ROBINSON COMPANY INC', addresses: [this.addresses[0], this.billingAddresses[0]], contacts: this.contacts, email: 'carrier.services@chrobinson.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '', mc: '384859'
+      id: 1,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: this.contacts,
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859'
     },
     {
-      id: 2, name: 'M W LOGISTICS LLC', addresses: [this.addresses[1], this.billingAddresses[1]], contacts: this.contacts, email: 'HAVETO ADD@mwlogistics.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '', mc: '392137'
+      id: 2,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: this.contacts,
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '392137'
     },
     {
-      id: 3, name: 'United Freight Service UFS', addresses: [this.addresses[2], this.billingAddresses[2]], contacts: this.contacts, email: 'albert@ufs.net',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '', mc: ''
+      id: 3,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: this.contacts,
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: ''
     },
     {
-      id: 4, name: 'SCHNEIDER NATIONAL CARRIERS INC', addresses: [this.addresses[3], this.billingAddresses[3]], contacts: this.contacts, email: 'stmcarrier@schneider.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '', mc: '133655'
+      id: 4,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: this.contacts,
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655'
     },
     {
-      id: 5, name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC', addresses: [this.addresses[4], this.billingAddresses[4]], contacts: this.contacts, email: 'havetoadd@rrdonelley.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '', mc: '283221'
+      id: 5,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221'
     }
   ];
 
