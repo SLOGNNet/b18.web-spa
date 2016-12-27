@@ -1,4 +1,4 @@
-import { Input, Output } from '@angular/core';
+import { Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
@@ -7,7 +7,8 @@ export class BaseForm {
     host: {
       '[class.bd-view-mode]' : '!isEditMode',
       '[class.bd-edit-mode]' : 'isEditMode'
-    }
+    },
+    changeDetection: ChangeDetectionStrategy.OnPush
   };
 
    get viewMode(): ViewMode {

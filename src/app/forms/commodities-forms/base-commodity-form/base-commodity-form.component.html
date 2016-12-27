@@ -7,7 +7,7 @@
 </div>
 <commodity
   class='commodity-item'
-  *ngFor="let data of renderFormData; let i = index"
+  *ngFor="let data of renderFormData; let i = index; trackBy:commodityTrackBy"
   [isRemoveButtonHidden]="renderFormData.length === 1"
   [viewMode]="viewMode"
   [commodity]="data.item"
