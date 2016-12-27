@@ -5,6 +5,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
+import { CommodityStore } from './stores';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -64,7 +65,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    CommodityStore
   ]
 })
 export class AppModule {

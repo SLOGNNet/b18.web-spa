@@ -4,53 +4,65 @@ import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 export abstract class BaseListForm<T> extends BaseForm {
-   public static metaData: Object = BaseForm.metaData;
+  public static metaData: Object = BaseForm.metaData;
 
-   @Input()
-   public items: Array<T>;
-   @Input()
-   public formArray: FormArray;
-   private renderFormData: Array<any> = new Array<any>();
+  @Input()
+  public items: Array<T>;
+  @Input()
+  public formArray: FormArray;
+  public renderFormData: Array<any> = new Array<any>();
 
-   constructor(private formBuilder: FormBuilder) {
-     super();
-   }
+  constructor(private formBuilder: FormBuilder) {
+    super();
+  }
 
-   ngOnChanges(changes: any) {
-     if (changes.items) {
-       this.initForm();
-     }
-   }
+  ngOnChanges(changes: any) {
+    if (changes.items) {
+      this.initForm();
+    }
+  }
 
-   initForm() {
-     this.resetData();
+  protected initForm() {
+    this.resetData();
 
-     for (let item of this.items) {
-       this.addData(item);
-     }
+    for (let item of this.items) {
+      this.addFormData(item);
+    }
 
-     if (this.items.length === 0) {
-       this.addNewItem();
-     }
-   }
+    if (this.shouldAddDefault() && this.items.length === 0) {
+      this.addNewItem();
+    }
+  }
 
-   addData(item: any): void {
-     const group = this.formBuilder.group({});
-     this.renderFormData.push({ group, item });
-     this.formArray.push(group);
-   }
-   resetData() {
-     this.renderFormData = new Array<any>();
-     this.formArray.reset([]);
-   }
+  protected shouldAddDefault(): boolean {
+    return true;
+  }
 
-   addNewItem() {
-     this.addData(this.createItem());
-   }
+  protected addNewItem() {
+    this.addItem(this.createItem());
+  }
 
-   removeItem(removeData) {
-     this.renderFormData = this.renderFormData.filter(data => data !== removeData);
-   }
+  protected addItem(item: T) {
+      this.addFormData(item);
+  }
 
-   abstract createItem(): T;
+  protected removeItem(removeData) {
+    this.renderFormData = this.renderFormData.filter(data => data !== removeData);
+  }
+
+  protected abstract createItem(): T;
+
+  private addFormData(item: any): void {
+    const group = this.formBuilder.group({});
+    this.renderFormData.push({ group, item });
+    this.formArray.push(group);
+  }
+
+  private resetData() {
+    this.renderFormData = new Array<any>();
+
+    while (this.formArray.length > 0) {
+      this.formArray.removeAt(0);
+    }
+  }
 }

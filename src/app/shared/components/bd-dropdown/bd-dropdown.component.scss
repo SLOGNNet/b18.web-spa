@@ -61,7 +61,7 @@
 
     div {
       display: flex;
-      height: $form-control-height;
+      min-height: $form-control-height;
       align-items: center;
     }
 
@@ -74,11 +74,11 @@
 
       li {
         display: flex;
-        height: $form-control-height;
         background: $white;
         color: $black;
         font-size: 16px;
         padding-left: 17px;
+        min-height: $form-control-height; 
         border-bottom: $border;
         align-items: center;
 
