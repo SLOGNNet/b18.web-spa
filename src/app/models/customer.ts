@@ -34,5 +34,6 @@ export class Customer {
 
   constructor() {
     this.addresses = new Array<Address>();
+    this.contacts = new Array<Contact>();
   }
 }
