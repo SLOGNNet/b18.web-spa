@@ -1,11 +1,13 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes, Contact } from '../../models';
+import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes, Contact, Commodity } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
+import { chain, isUndefined } from 'lodash';
+
 
 @Component(Object.assign({
   selector: 'load-form',
@@ -78,17 +80,51 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       pickups: this.formBuilder.array([]),
       dropoffs: this.formBuilder.array([])
     });
+
+    this.updateComodities();
   }
+
+ public createStopStream(source: Observable<any>) {
+   Observable
+    .from(source)
+    .flatMap(pickups => Observable.from(pickups))
+    .filter(p => p['commodities'])
+    .flatMap(p => p['commodities']);
+ }
+
+  public updateComodities() {
+    const loadForm = this.loadForm;
+    const pickupChangeStream = Observable
+      .from(this.loadForm.controls['pickups'].valueChanges)
+      .flatMap(pickups => Observable.from(pickups))
+      .filter(p => p['commodities'])
+      .flatMap(p => p['commodities']);
+
+     pickupChangeStream.subscribe((pickupComodity: Commodity) => {
+       const chain1 = chain;
+       const dropoffStop: FormGroup = <FormGroup>chain1((<FormGroup>loadForm.controls['dropoffs']).controls)
+         .flatMap( dropoff => dropoff.controls['commodities'])
+         .reject(isUndefined)
+         .flatMap(c => c.controls)
+         .filter(c => {  return c.value.id === pickupComodity.id})
+         .first();
+
+         dropoffStop.setValue(Object.assign(
+           pickupComodity,
+           dropoffStop.value.dropoffNumber,
+         ));
+     });
+    }
 
   public onCustomerSelect(customer: Customer) {
-    this.selectedCustomer = customer;
-    this.customerViewMode = ViewMode.ViewCollapsed;
-  }
+        this.selectedCustomer = customer;
+        this.customerViewMode = ViewMode.ViewCollapsed;
+      }
 
   private initCustomerTypeahead(customer) {
-    this.customerQuery =  customer && customer.name;
-    this.customerSource = Observable.create((observer: any) => {
-      observer.next(this.customerQuery);
-    }).mergeMap((token: string) => this.customerService.search(token));
-  }
+        this.customerQuery = customer && customer.name;
+        this.customerSource = Observable.create((observer: any) => {
+          observer.next(this.customerQuery);
+        }).mergeMap((token: string) => this.customerService.search(token));
+      }
 }
