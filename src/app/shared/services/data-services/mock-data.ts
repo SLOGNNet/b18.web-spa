@@ -75,17 +75,19 @@ class MockData {
 
   public contacts: Array<Contact> = [{
    id: 1,
-   name: 'Contact 1',
-   phone: '1234567',
-   email: 'qwerty@gmail.com',
-   position: 'CEO'
+   firstName: 'Contact 1',
+   lastName: 'Last name 1',
+   personalEmail: 'qwerty@gmail.com',
+   position: 'CEO',
+   addressId: 1
  },
  {
    id: 2,
-   name: 'Contact 2',
-   phone: '1234567',
-   email: 'qwerty@gmail.com',
-   position: 'CEO'
+   firstName: 'Contact 2',
+   lastName: 'Last name 2',
+   personalEmail: 'qwerty@gmail.com',
+   position: 'Sales manager',
+   addressId: 2
  }
  ];
 

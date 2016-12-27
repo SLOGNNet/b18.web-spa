@@ -1,0 +1,38 @@
+<form [formGroup]="contactForm">
+  <bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'">
+  </bd-input>
+  <bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'">
+  </bd-input>
+  <bd-input class="bd-form-control" formControlName="personalEmail" [labelText]="'Personal Email'">
+  </bd-input>
+  <bd-input class="bd-form-control" formControlName="position" [labelText]="'Position'">
+  </bd-input>
+  <bd-dropdown
+    clearLabel='Leave Empty'
+    class="bd-form-control"
+    labelText='Address'
+    [items]="addresses"
+    formControlName="addressId"
+    defaultTitleText="Select Address"
+    [dropdownItemTemplate]="contactsAddressDropdown"
+    keyField="id"
+    valueField="streetAddress">
+  </bd-dropdown>
+</form>
+
+<template #contactsAddressDropdown let-item="item">
+  <div class="addresses-item-wrapper">
+    <div class="full-address-properties-wrapper">
+      <div class="street-address-title">
+        {{item.streetAddress}}
+      </div>
+      <div class="address-properties">
+        {{item.name}}
+        {{item.secondStreetAddress}}
+        {{item.city}}
+        {{item.state}}
+        {{item.zip}}
+      </div>
+    </div>
+  </div>
+</template>

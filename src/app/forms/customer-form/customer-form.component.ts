@@ -56,6 +56,7 @@ export class CustomerForm extends BaseForm {
       status: [this.customer.status, Validators.required],
       mc: [this.customer.mc, Validators.required],
       taxId: [this.customer.taxId],
+      contacts: this.formBuilder.array([]),
       addresses: this.formBuilder.array([]),
       email: [this.customer.email]
     });

@@ -15,8 +15,11 @@
 			</bd-input>
 		</bd-form-section>
 		<bd-form-section [labelText]="'CUSTOMER > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
-			<addresses-form [formArray]='customerForm.controls.addresses'[items]='customer.addresses' [viewMode]="viewMode"></addresses-form>
+			<addresses-form [formArray]='customerForm.controls.addresses' [items]='customer.addresses' [viewMode]="viewMode"></addresses-form>
 		</bd-form-section>
+    <bd-form-section [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
+      <contacts-form [formArray]='customerForm.controls.contacts' [addresses]='customer.addresses' [items]='customer.contacts' [viewMode]="viewMode"></contacts-form>
+    </bd-form-section>
 		<div class="section btn-container" *ngIf="isEditMode">
 			<bd-button
 				(click)="onCancel()"
