@@ -69,6 +69,8 @@ export class AppComponent {
         queryParams: params
       }
     );
+
+    this.forceRender();
   }
 
   getQueryParams(switchState) {
@@ -103,5 +105,11 @@ export class AppComponent {
     }
 
     return result;
+  }
+
+  forceRender() {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 0);
   }
 }

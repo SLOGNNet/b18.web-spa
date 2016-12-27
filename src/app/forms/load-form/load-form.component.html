@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <form-navigation sticky [title]="'Loads'" [anchors]="anchors"></form-navigation>
   <template #customItemTemplate let-model="item" let-index="index">
       <div class="customer-item-wrapper">
         <div class="name-number-wrapper">
@@ -13,6 +14,7 @@
   </template>
 <form [formGroup]="loadForm" class="edit">
   <div class="bd-form">
+    <navigation-anchor id="customer"></navigation-anchor>
     <bd-form-section labelText="Customer">
       <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
         <bd-typeahead
@@ -66,15 +68,18 @@
             formControlName="contactId"
             [items]="load.customer.contacts"
             keyField="id"
-            valueField="name">
+            valueField="firstName">
           </bd-dropdown>
         </bd-form-section>
+        <navigation-anchor id="pickups"></navigation-anchor>
         <bd-form-section labelText="PICKUPS">
           <pickups-form [formArray]="loadForm.controls.pickups" [items]="load.pickups" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
         </bd-form-section>
+        <navigation-anchor id="dropoffs"></navigation-anchor>
         <bd-form-section labelText="DROPOFFS">
           <dropoffs-form [formArray]="loadForm.controls.dropoffs" [items]="load.dropoffs" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
         </bd-form-section>
+        <navigation-anchor id="requirements"></navigation-anchor>
         <bd-form-section labelText="REQUIREMENTS">
           <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
           </bd-form-switch>
