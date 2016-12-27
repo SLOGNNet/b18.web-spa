@@ -1,0 +1,13 @@
+<div class="form-navigation">
+  <p class="title">{{title}}</p>
+  <perfect-scrollbar class="container">
+    <div class="content">
+      <span 
+        *ngFor="let anchor of anchors; let i = index"
+        [class.active]="_activeAnchor === i"
+        (click)="_scrollTo(anchor.id, i)">
+        {{anchor.title}}
+      </span>
+    </div>
+  </perfect-scrollbar>
+</div>

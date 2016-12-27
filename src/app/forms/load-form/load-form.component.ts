@@ -23,6 +23,46 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private loadForm: FormGroup;
   private selectedCustomer: Customer;
   private stops: Array<Stop>;
+  private anchors = [{
+    id: 'customer',
+    title: 'Customer'
+  }, {
+    id: 'pickups',
+    title: 'Pickups'
+  }, {
+    id: 'requirements',
+    title: 'Requirements'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }];
 
   public constructor(
     private customerService: CustomerService,
