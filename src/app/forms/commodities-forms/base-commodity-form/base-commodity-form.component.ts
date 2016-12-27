@@ -27,6 +27,10 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
     super(formBuilder);
   }
 
+  commodityTrackBy(index: number, obj: Commodity): any {
+    return obj.id;
+  }
+
   public addCommodity(commodity: Commodity) {
     this.addItem(commodity);
   }

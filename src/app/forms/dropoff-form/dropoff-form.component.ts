@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
@@ -21,19 +21,21 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
   private availablePickups: Array<Commodity> = new Array<Commodity>();
   private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore) {
+  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore, private cdr: ChangeDetectorRef) {
     super();
   }
 
   ngOnChanges(changes: any) {
+    this.initForm();
     this.commodityStore.getDropoffCommodities(this.stop.id).subscribe(items => {
       this.stop.commodities = items;
+      this.cdr.markForCheck();
     });
     this.commodityStore.getAvailableCommodities().subscribe(items => {
       const test = this.availablePickups;
       this.availablePickups = items;
+      this.cdr.markForCheck();
     });
-    this.initForm();
   }
 
   onCommoditySelect(commodity: Commodity) {
