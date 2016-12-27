@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseListForm } from '../../base-list-form';
@@ -11,6 +11,7 @@ import { BaseListForm } from '../../base-list-form';
 
 export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
+  @Output() change = new EventEmitter();
   private focusedCol = null;
   private titles = [
     { name: 'PICKUP<br />#' },
@@ -50,5 +51,9 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
   private onFocus(col) {
     this.focusedCol = col;
+  }
+
+  private onChange(commodity) {
+    this.change.emit(commodity);
   }
 }

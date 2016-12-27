@@ -1,16 +1,17 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
-import { Stop, StopTypes } from '../../models';
+import { Stop, StopTypes, Commodity } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
-  selector: 'stops-form',
-  templateUrl: './stops-form.component.html',
+  selector: 'pickups-form',
+  templateUrl: './pickups-form.component.html',
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
-export class StopsFormComponent extends BaseListForm<Stop>  {
+export class PickupsFormComponent extends BaseListForm<Stop>  {
 
   @Input() type: StopTypes = StopTypes.None;
+  @Input() availableCommodities: Array<Commodity> = new Array<Commodity>();
 
   constructor(formBuilder: FormBuilder) {
     super(formBuilder);
@@ -21,6 +22,6 @@ export class StopsFormComponent extends BaseListForm<Stop>  {
   }
 
   label(index) {
-    return `Stop #${index + 1}`;
+    return `Pickup #${index + 1}`;
   }
 }

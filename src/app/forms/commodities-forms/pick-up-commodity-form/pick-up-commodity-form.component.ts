@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseCommodityFormComponent } from '../base-commodity-form';
@@ -14,9 +14,14 @@ import { BaseForm } from '../../base-form';
 export class PickUpCommodityFormComponent extends BaseForm {
   @Input() formArray: FormArray;
   @Input() commodities: Array<Commodity>;
+  @Output() change: EventEmitter<Commodity> = new EventEmitter<Commodity>();
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
   onAdd() {
    this.commodityFormElement.addCommodity(new Commodity());
+  }
+
+  onChange(commodity: Commodity) {
+    this.change.emit(commodity);
   }
 }

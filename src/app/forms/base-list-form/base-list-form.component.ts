@@ -60,6 +60,9 @@ export abstract class BaseListForm<T> extends BaseForm {
 
   private resetData() {
     this.renderFormData = new Array<any>();
-    this.formArray.reset([]);
+
+    while (this.formArray.length > 0) {
+      this.formArray.removeAt(0);
+    }
   }
 }

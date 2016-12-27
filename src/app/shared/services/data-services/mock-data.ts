@@ -113,7 +113,11 @@ class MockData {
   ];
 
   public commodities: Array<Commodity> = [{
+    id: 1,
+    pickupId: 1,
+    dropoffId: null,
     pickupNumber: 1,
+    dropoffNumber: 44,
     po: '23324234',
     commodity: 'Strawberry',
     unitType: 'Boxes',
@@ -121,17 +125,23 @@ class MockData {
     palletCount: 10,
     weight: 14,
   },
-    {
-      pickupNumber: 2,
-      po: '789',
-      commodity: 'Toma',
-      unitType: 'Boxes',
-      unitCount: 10,
-      palletCount: 10,
-      weight: 5
-    }];
+  {
+    id: 2,
+    pickupId: 1,
+    dropoffId: null,
+    pickupNumber: 2,
+    dropoffNumber: 45,
+    po: '789',
+    commodity: 'Toma',
+    unitType: 'Boxes',
+    unitCount: 10,
+    palletCount: 10,
+    weight: 5
+  }
+];
 
   public stops: Array<Stop> = [{
+    id: 1,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],

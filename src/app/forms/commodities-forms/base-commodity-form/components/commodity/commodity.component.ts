@@ -18,7 +18,7 @@ export class CommodityComponent extends BaseForm {
   @Output() blur = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();
-
+  @Output() change = new EventEmitter();
   public fields = [
     { name: 'pickupNumber', type: 'text', validators: [] },
     { name: 'po', type: 'text', validators: [] },
@@ -37,6 +37,9 @@ export class CommodityComponent extends BaseForm {
 
   ngOnChanges() {
     this.initCommodity(this.commodity);
+    this.commodityForm.valueChanges.subscribe(value => {
+      this.change.emit(Object.assign(this.commodity, value));
+    });
   }
 
   private initCommodity(commodity: Commodity) {
