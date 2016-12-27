@@ -1,0 +1,28 @@
+<template #dropdownItemTemplate let-item="item">
+  <commodity
+    [isRemoveButtonHidden]="'true'"
+    [viewMode]="viewMode"
+    [commodity]="item">
+  </commodity>
+</template>
+<base-commodity-form
+  [viewMode]="viewMode"
+  #commodityForm
+  [formArray]="formArray"
+  (change)="onChange($event)"
+  [items]="commodities">
+</base-commodity-form>
+<div>
+  <bd-add-button class="bd-form-control" (mousedown)="onShowPickups()"></bd-add-button>
+  <div *ngIf="showPickups">
+    <commodity
+      class='pickup-commodity-item'
+      *ngFor="let commodity of availablePickups; let i = index"
+      [isRemoveButtonHidden]="'true'"
+      [viewMode]="viewMode"
+      [disabled]="'true'"
+      (click)="pickupSelect(commodity)"
+      [commodity]="commodity">
+    </commodity>
+  </div>
+</div>

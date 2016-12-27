@@ -5,6 +5,7 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
 import { Load } from '../models';
 import { LoadService } from '../shared';
 import { ViewMode } from '../shared/enums';
+import { cloneDeep } from 'lodash';
 
 @Component({
     selector: 'loads',
@@ -27,6 +28,6 @@ export class LoadsComponent {
   }
 
   public onLoadSelect(load) {
-     this.selectedLoad = load.selected[0];
+     this.selectedLoad = cloneDeep(load.selected[0]);
   }
 }

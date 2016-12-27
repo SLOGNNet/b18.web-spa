@@ -1,0 +1,24 @@
+@import '../../../assets/styles/form-control';
+
+.addresses-item-wrapper {
+  display: flex;
+  height: 75px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .full-address-properties-wrapper {
+
+    .street-address-title {
+      color: $black;
+      font-size: $small-font-size;
+      }
+
+    .address-properties {
+      color: $label-default-color;
+      font-size: $tiny-font-size;
+      margin-top: 10px;
+    }
+  }
+
+}

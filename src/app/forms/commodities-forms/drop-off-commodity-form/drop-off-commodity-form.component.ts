@@ -5,20 +5,29 @@ import { BaseCommodityFormComponent } from '../base-commodity-form';
 import { BaseForm } from '../../base-form';
 
 @Component(Object.assign({
-  selector: 'pick-up-commodity-form',
-  templateUrl: './pick-up-commodity-form.component.html',
+  selector: 'drop-off-commodity-form',
+  templateUrl: './drop-off-commodity-form.component.html',
   styleUrls: [
-    './pick-up-commodity-form.component.scss'
+    './drop-off-commodity-form.component.scss'
   ]
 }, BaseForm.metaData))
-export class PickUpCommodityFormComponent extends BaseForm {
+export class DropOffCommodityFormComponent extends BaseForm {
   @Input() formArray: FormArray;
   @Input() commodities: Array<Commodity>;
+  @Input() availablePickups: Array<Commodity> = new Array<Commodity>();
+  @Output() select: EventEmitter<Commodity> = new EventEmitter<Commodity>();
   @Output() change: EventEmitter<Commodity> = new EventEmitter<Commodity>();
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
-  onAdd() {
-   this.commodityFormElement.addCommodity(new Commodity());
+  private showPickups: boolean = false;
+  onShowPickups() {
+    this.showPickups = true;
+  }
+
+  pickupSelect(commodity: Commodity) {
+    this.showPickups = false;
+    this.select.emit(commodity);
+    this.commodityFormElement.addCommodity(commodity);
   }
 
   onChange(commodity: Commodity) {

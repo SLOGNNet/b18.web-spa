@@ -1,20 +1,19 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
-import { BaseForm } from '../../base-form';
+import { BaseListForm } from '../../base-list-form';
 
 @Component(Object.assign({
   selector: 'base-commodity-form',
   templateUrl: './base-commodity-form.component.html',
   styleUrls: ['./base-commodity-form.component.scss'],
-}, BaseForm.metaData))
-export class BaseCommodityFormComponent extends BaseForm {
+}, BaseListForm.metaData))
 
-  @Input('group') formGroup: FormGroup;
-  @Input('commodities') commodities: Array<Commodity>;
+export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
-  private _focusedCol = null;
-  private _titles = [
+  @Output() change = new EventEmitter();
+  private focusedCol = null;
+  private titles = [
     { name: 'PICKUP<br />#' },
     { name: 'P.O.' },
     { name: 'COMMO-<br />DITY' },
@@ -23,76 +22,38 @@ export class BaseCommodityFormComponent extends BaseForm {
     { name: 'PALLET<br />COUNT' },
     { name: 'WEIGHT<br />(IBS)' }
   ];
-  private _fields = [
-    { name: 'pickupNumber', type: 'text', validators: [] },
-    { name: 'po', type: 'text', validators: [] },
-    { name: 'commodity', type: 'text', validators: [] },
-    { name: 'unitType', type: 'text', validators: [] },
-    { name: 'unitCount', type: 'text', validators: [] },
-    { name: 'palletCount', type: 'text', validators: [] },
-    { name: 'weight', type: 'text', validators: [] }
-  ];
 
-
-  constructor(private _formBuilder: FormBuilder, private _cdr: ChangeDetectorRef) {
-    super();
+  constructor(formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
+    super(formBuilder);
   }
 
-  ngOnInit() {
-    this.initForm();
+  public addCommodity(commodity: Commodity) {
+    this.addItem(commodity);
   }
 
-  ngOnChanges() {
-    this.initForm();
+  shouldAddDefault() {
+    return false;
   }
 
-  public add(commodity: Commodity) {
-    this.commoditiesFormControl.push(this.initCommodity(commodity));
+  protected createItem(): Commodity {
+    return new Commodity();
   }
 
-  private initForm() {
-    this.formGroup.addControl(
-      'commodities', this._formBuilder.array(
-        this.initCommodities(this.commodities),
-      )
-    );
-  }
-
-  private initCommodities(commodities: Array<Commodity>): Array<FormGroup> {
-    let groups = [];
-    commodities.forEach(item =>
-      groups.push(this.initCommodity(item))
-    );
-
-    return groups;
-  }
-
-  private initCommodity(commodity: Commodity): FormGroup {
-    let controls = {};
-
-    this._fields.forEach(field => {
-      controls[field.name] = [commodity[field.name], field.validators];
-    });
-
-    return this._formBuilder.group(controls);
+  protected removeItem(removeData) {
+    super.removeItem(removeData);
+    this.focusedCol = null;
+    this.cdr.detectChanges();
   }
 
   private onBlur(col) {
-    this._focusedCol = null;
+    this.focusedCol = null;
   }
 
   private onFocus(col) {
-    this._focusedCol = col;
+    this.focusedCol = col;
   }
 
-  private onRemove(i: number) {
-    this._focusedCol = null;
-    this.commoditiesFormControl.removeAt(i);
-    this._cdr.detectChanges();
+  private onChange(commodity) {
+    this.change.emit(commodity);
   }
-
-  private get commoditiesFormControl() {
-    return <FormArray>this.formGroup.controls['commodities'];
-  }
-
 }
