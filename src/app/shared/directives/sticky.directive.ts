@@ -1,10 +1,20 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[sticky]'
 })
 export class StickyDirective {
   private _initialTop: number = 0;
+
+  @HostListener('window:resize', ['$event.target'])
+  onResize() {
+    const scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
+
+    if (scrollableContainer) {
+      scrollableContainer.addEventListener('scroll', this._onScrollChanged.bind(this));
+      this.elementRef.nativeElement.style.top = `${scrollableContainer.scrollTop + this._initialTop}px`;
+    }
+  }
 
   constructor(private elementRef: ElementRef) {
   }
