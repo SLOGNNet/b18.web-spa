@@ -1,7 +1,8 @@
 <base-commodity-form
   [viewMode]="viewMode"
   #commodityForm
-  [group]="formGroup"
-  [commodities]="commodities">
+  [formArray]="formArray"
+  (change)="onChange($event)"
+  [items]="commodities">
 </base-commodity-form>
 <bd-add-button class="bd-form-control" (mousedown)="onAdd()"></bd-add-button>

@@ -4,10 +4,14 @@ import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
 import { AddressesForm } from './addresses-form';
+import { DropoffFormComponent } from './dropoff-form';
+import { DropoffsFormComponent } from './dropoffs-form';
+import { PickupFormComponent } from './pickup-form';
+import { PickupsFormComponent } from './pickups-form';
 import { SharedModule } from '../shared/shared.module';
 
 import { BdLoadFormComponent } from './load-form';
-import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComponent } from './commodities-forms';
+import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
 @NgModule({
   declarations: [
@@ -19,18 +23,19 @@ import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComp
     BdLoadFormComponent,
     CommodityComponent,
     BaseCommodityFormComponent,
-    PickUpCommodityFormComponent
+    DropoffFormComponent,
+    DropoffsFormComponent,
+    PickupFormComponent,
+    PickupsFormComponent,
+    PickUpCommodityFormComponent,
+    DropOffCommodityFormComponent
   ],
   imports: [
     SharedModule
   ],
   exports: [
     CustomerForm,
-    AddressForm,
     BdLoadFormComponent,
-    CommodityComponent,
-    BaseCommodityFormComponent,
-    PickUpCommodityFormComponent
   ]
 })
 export class BdFormsModule {
