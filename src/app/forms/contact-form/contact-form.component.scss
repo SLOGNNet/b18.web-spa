@@ -8,11 +8,10 @@
   align-items: center;
 
   .full-address-properties-wrapper {
-
     .name-address-title {
       color: $black;
       font-size: $small-font-size;
-      }
+    }
 
     .address-properties {
       color: $label-default-color;
@@ -20,5 +19,4 @@
       margin-top: 10px;
     }
   }
-
 }
