@@ -4,7 +4,15 @@
     placeholder="Date"
     formControlName="date">
   </bd-input>
-  <drop-off-commodity-form  [formArray]="formGroup.controls.commodities" [commodities]="stop.commodities" [availablePickups]="availablePickups" (change)="onCommodityChange($event)" (select)="onCommoditySelect($event)" [viewMode]="viewMode"></drop-off-commodity-form>
+  <drop-off-commodity-form
+    [formArray]="formGroup.controls.commodities"
+    [commodities]="stop.commodities"
+    [availablePickups]="availablePickups"
+    (update)="onCommodityUpdate($event)"
+    (remove)="onCommodityRemove($event)"
+    (select)="onCommoditySelect($event)"
+    [viewMode]="viewMode">
+  </drop-off-commodity-form>
   <bd-input
     class="bd-form-control"
     placeholder="Notes"

@@ -7,10 +7,10 @@
   <template #loaderTemplate>
     <bd-spinner></bd-spinner>
   </template>
-  <bd-input [ngModel]="value"
+  <bd-input [value]="value"
+      (valueChange)="changeValue($event)"
       #input
       (focusChange)="onFocusChanged($event)"
-      (ngModelChange)="changeValue($event)"
       [typeahead]="source"
       [collapsibleInput]="true"
       [labelText]="labelText"
