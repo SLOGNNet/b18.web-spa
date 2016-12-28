@@ -24,6 +24,7 @@ import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { LoadsComponent } from './loads';
+import { CustomersComponent } from './customers';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -52,6 +53,7 @@ type StoreType = {
      MessagesComponent,
      MessageComponent,
      LoadsComponent,
+     CustomersComponent,
      TypeaheadDemoComponent
   ],
   imports: [

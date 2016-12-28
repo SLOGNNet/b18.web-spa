@@ -13,6 +13,8 @@ import { BaseForm } from '../base-form';
   providers: [FormValidationService, AddressStore]
 }, BaseForm.metaData))
 export class CustomerForm extends BaseForm {
+  @Input() public scrollable: boolean = false;
+  @Input() public submitButtonText: string = '';
   @Input() public customer: Customer;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
@@ -59,6 +61,7 @@ export class CustomerForm extends BaseForm {
 
   initForm() {
     this.customerForm = this.formBuilder.group({
+      id: [this.customer.id],
       name: [this.customer.name],
       customerType: [this.customer.type],
       status: [this.customer.status, Validators.required],

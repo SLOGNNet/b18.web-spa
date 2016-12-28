@@ -1,0 +1,33 @@
+<multi-pane-layout>
+    <first-pane>
+      <div class="data-panel">
+        <bd-button
+          class="add-button"
+          [color]="'primary'"
+          [text]="'Add'"
+          (click)="onAddCustomer()">
+        </bd-button>
+        <swui-datatable
+          #datatable
+          class='material striped'
+          [rows]='customers'
+          [columns]="columns"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [selectionType]="'single'"
+          (select)='onCustomerSelect($event)'
+          [limit]="10">
+        </swui-datatable>
+      </div>
+    </first-pane>
+
+    <second-pane>
+    </second-pane>
+
+    <third-pane>
+      <form-navigation *ngIf='selectedCustomer' [title]="'Customer'" [anchors]="anchors"></form-navigation>
+      <customer-form *ngIf='selectedCustomer' [submitButtonText]="'Save'" [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
+    </third-pane>
+</multi-pane-layout>
