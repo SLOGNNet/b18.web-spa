@@ -36,6 +36,15 @@ export class PickupFormComponent extends BaseForm implements OnChanges {
     this.commodityStore.update(commodity);
   }
 
+  onCommodityRemove(commodity: Commodity) {
+    this.commodityStore.remove(commodity);
+  }
+
+  onCommodityAdd() {
+    const newCommodity = Commodity.create(this.stop);
+    this.commodityStore.add(newCommodity);
+  }
+
   private initForm() {
       this.formGroup.addControl(
         'date',

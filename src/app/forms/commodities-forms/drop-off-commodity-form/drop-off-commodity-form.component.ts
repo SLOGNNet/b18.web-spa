@@ -17,6 +17,8 @@ export class DropOffCommodityFormComponent extends BaseForm {
   @Input() availablePickups: Array<Commodity> = new Array<Commodity>();
   @Output() select: EventEmitter<Commodity> = new EventEmitter<Commodity>();
   @Output() change: EventEmitter<Commodity> = new EventEmitter<Commodity>();
+  @Output() remove: EventEmitter<Commodity> = new EventEmitter<Commodity>();
+
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
   private showPickups: boolean = false;
@@ -32,5 +34,9 @@ export class DropOffCommodityFormComponent extends BaseForm {
 
   onChange(commodity: Commodity) {
     this.change.emit(commodity);
+  }
+
+  onRemove(commodity: Commodity) {
+    this.remove.emit(commodity);
   }
 }

@@ -46,6 +46,10 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
     this.commodityStore.update(commodity);
   }
 
+  onCommodityRemove(commodity: Commodity) {
+    this.commodityStore.deselect(commodity);
+  }
+
   private initForm() {
       this.formGroup.addControl(
         'date',

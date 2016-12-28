@@ -21,11 +21,22 @@ export class CommodityStore {
     this._commodities.next(newSource);
   }
 
+  public remove(removed: Commodity) {
+    this._commodities.next(
+      this._commodities
+        .getValue()
+        .filter(commodity => commodity.id !== removed.id)
+      );
+  }
+
+  public add(added: Commodity) {
+    this._commodities.next([...this._commodities.getValue(), added]);
+  }
+
   public select(commodity: Commodity, stop: Stop) {
     commodity.dropoffId = stop.id;
     this.update(commodity);
   }
-
   public deselect(commodity: Commodity) {
     commodity.dropoffId = null;
     this.update(commodity);

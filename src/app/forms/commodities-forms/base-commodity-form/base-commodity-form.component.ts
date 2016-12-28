@@ -12,6 +12,7 @@ import { BaseListForm } from '../../base-list-form';
 export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
   @Output() change = new EventEmitter();
+  @Output() remove = new EventEmitter();
   private focusedCol = null;
   private titles = [
     { name: 'PICKUP<br />#' },
@@ -44,9 +45,8 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
   }
 
   protected removeItem(removeData) {
-    super.removeItem(removeData);
     this.focusedCol = null;
-    this.cdr.detectChanges();
+    this.remove.emit(removeData.item);
   }
 
   private onBlur(col) {
