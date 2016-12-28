@@ -1,4 +1,4 @@
-import { Input, Output } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -10,6 +10,10 @@ export abstract class BaseListForm<T> extends BaseForm {
   public items: Array<T>;
   @Input()
   public formArray: FormArray;
+
+  @Output() change: EventEmitter<T> = new EventEmitter<T>();
+  @Output() add: EventEmitter<T> = new EventEmitter<T>();
+  @Output() remove: EventEmitter<T> = new EventEmitter<T>();
   public renderFormData: Array<any> = new Array<any>();
 
   constructor(private formBuilder: FormBuilder) {
@@ -39,14 +43,21 @@ export abstract class BaseListForm<T> extends BaseForm {
   }
 
   protected addNewItem() {
-    this.addItem(this.createItem());
+    const item = this.createItem();
+    this.add.emit(item);
+    this.addItem(item);
   }
 
   protected addItem(item: T) {
       this.addFormData(item);
   }
 
+  changeItem(item: T) {
+    this.change.emit(item);
+  }
+
   protected removeItem(removeData) {
+    this.remove.emit(removeData.item);
     this.renderFormData = this.renderFormData.filter(data => data !== removeData);
   }
 

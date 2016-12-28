@@ -49,15 +49,19 @@ export class CommodityStore {
     this._commodities.next(newCommodities);
   }
 
+  get commodities(): Observable<Array<Commodity>>  {
+    return this._commodities;
+  }
+
   getPickupCommodities(pickupId: number): Observable<Array<Commodity>> {
-    return this._commodities.map(list => list.filter(c => c.pickupId === pickupId));
+    return this.commodities.map(list => list.filter(c => c.pickupId === pickupId));
   }
 
   getDropoffCommodities(dropoffId: number): Observable<Array<Commodity>> {
-    return this._commodities.map(list => list.filter(c => c.dropoffId === dropoffId));
+    return this.commodities.map(list => list.filter(c => c.dropoffId === dropoffId));
   }
 
   getAvailableCommodities(): Observable<Array<Commodity>> {
-    return this._commodities.map(list => list.filter(c => !c.dropoffId));
+    return this.commodities.map(list => list.filter(c => !c.dropoffId));
   }
 }
