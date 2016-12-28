@@ -1,5 +1,5 @@
 import { Commodity, Address } from './index';
-import { generateNewId } from './utils'
+import { generateNewId } from './utils';
 
 export enum StopTypes {
   None = 0,
