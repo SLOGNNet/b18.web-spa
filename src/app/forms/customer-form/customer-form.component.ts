@@ -40,7 +40,6 @@ export class CustomerForm extends BaseForm {
       this.cdr.markForCheck();
     });
     this.initForm();
-
   }
 
   submit(customer: Customer, isValid: boolean) {

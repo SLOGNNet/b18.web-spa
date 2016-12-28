@@ -42,10 +42,10 @@ export class CommodityStore {
     this.update(commodity);
   }
 
-  public update(changed: Commodity) {
+  public update(updated: Commodity) {
     const newCommodities = this._commodities
       .getValue()
-      .map(commodity => (commodity.id === changed.id ? changed : commodity));
+      .map(commodity => (commodity.id === updated.id ? updated : commodity));
     this._commodities.next(newCommodities);
   }
 

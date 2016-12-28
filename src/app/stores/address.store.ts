@@ -28,11 +28,11 @@ export class AddressStore {
     this._addresses.next([...this._addresses.getValue(), added]);
   }
 
-  public update(changed: Address) {
-    const newCommodities = this._addresses
+  public update(updated: Address) {
+    const updateItems = this._addresses
       .getValue()
-      .map(commodity => (commodity.id === changed.id ? changed : commodity));
-    this._addresses.next(newCommodities);
+      .map(address => (address.id === updated.id ? updated : address));
+    this._addresses.next(updateItems);
   }
 
   get addresses(): Observable<Array<Address>> {

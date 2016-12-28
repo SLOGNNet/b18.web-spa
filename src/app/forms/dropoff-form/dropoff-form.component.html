@@ -8,7 +8,7 @@
     [formArray]="formGroup.controls.commodities"
     [commodities]="stop.commodities"
     [availablePickups]="availablePickups"
-    (change)="onCommodityChange($event)"
+    (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
     (select)="onCommoditySelect($event)"
     [viewMode]="viewMode">

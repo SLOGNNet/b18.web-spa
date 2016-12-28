@@ -21,4 +21,8 @@ export class AddressesForm extends BaseListForm<Address>  {
   label(index) {
     return `Address #${index + 1}`;
   }
+
+  trackBy(index: number, address: Address) {
+    return address.id;
+  }
 }

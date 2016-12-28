@@ -16,7 +16,7 @@ export class AddressForm extends BaseForm {
   public address: Address;
   @Input('group')
   public addressForm: BdFormGroup;
-  @Output() change = new EventEmitter();
+  @Output() update = new EventEmitter();
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {
@@ -27,6 +27,7 @@ export class AddressForm extends BaseForm {
     }
   };
   private fields = [
+    { name: 'id', validators: [] },
     { name: 'name', validators: [Validators.required] },
     { name: 'phone', validators: [Validators.required] },
     { name: 'fax', validators: [] },
@@ -34,12 +35,11 @@ export class AddressForm extends BaseForm {
     { name: 'zip', validators: [] },
     { name: 'phoneExtension', validators: [] },
     { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress', validators: [] },
+    { name: 'streetAddress', validators: [Validators.required] },
     { name: 'secondStreetAddress', validators: [] },
     { name: 'city', validators: [] },
     { name: 'location', validators: [] }
   ];
-
 
   constructor(
     private _cdr: ChangeDetectorRef,
@@ -63,7 +63,7 @@ export class AddressForm extends BaseForm {
     });
       this.addressForm.valueChanges.subscribe((value) => {
         if (this.addressForm.valid) {
-          this.change.emit(value);
+           this.update.emit(value);
         }
       });
   }

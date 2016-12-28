@@ -6,7 +6,7 @@
   </bd-input>
   <pick-up-commodity-form
     [formArray]="formGroup.controls.commodities"
-    (change)="onCommodityChange($event)"
+    (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
     (add)="onCommodityAdd()"
     [commodities]="stop.commodities"

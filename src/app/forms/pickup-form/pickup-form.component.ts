@@ -32,7 +32,7 @@ export class PickupFormComponent extends BaseForm implements OnChanges {
     this.initForm();
   }
 
-  onCommodityChange(commodity: Commodity) {
+  onCommodityUpdate(commodity: Commodity) {
     this.commodityStore.update(commodity);
   }
 

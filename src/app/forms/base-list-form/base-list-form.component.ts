@@ -11,7 +11,7 @@ export abstract class BaseListForm<T> extends BaseForm {
   @Input()
   public formArray: FormArray;
 
-  @Output() change: EventEmitter<T> = new EventEmitter<T>();
+  @Output() update: EventEmitter<T> = new EventEmitter<T>();
   @Output() add: EventEmitter<T> = new EventEmitter<T>();
   @Output() remove: EventEmitter<T> = new EventEmitter<T>();
   public renderFormData: Array<any> = new Array<any>();
@@ -52,8 +52,8 @@ export abstract class BaseListForm<T> extends BaseForm {
       this.addFormData(item);
   }
 
-  changeItem(item: T) {
-    this.change.emit(item);
+  updateItem(item: T) {
+    this.update.emit(item);
   }
 
   protected removeItem(removeData) {

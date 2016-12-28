@@ -18,7 +18,7 @@ export class CommodityComponent extends BaseForm {
   @Output() blur = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();
-  @Output() change = new EventEmitter();
+  @Output() update = new EventEmitter();
   public fields = [
     { name: 'pickupNumber', type: 'text', validators: [] },
     { name: 'po', type: 'text', validators: [] },
@@ -39,7 +39,7 @@ export class CommodityComponent extends BaseForm {
     this.initCommodity(this.commodity);
     this.commodityForm.valueChanges.subscribe(value => {
       if (this.commodityForm) {
-        this.change.emit(Object.assign(this.commodity, value));
+        this.update.emit(Object.assign(this.commodity, value));
       }
     });
   }

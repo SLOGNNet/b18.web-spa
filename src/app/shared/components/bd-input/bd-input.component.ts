@@ -126,9 +126,14 @@ export class BdInputComponent {
     this.valueChange.emit(this.value);
   }
 
-  _handleKeyDown() {
+  _handleKeyDown(event: Event) {
+
     this._onTouchedCallback();
-    this.valueChange.emit(this.value);
+
+  }
+
+  _handleKeyUp(event: Event) {
+    this._handleChange(event);
   }
 
   _handleBlur(event: FocusEvent) {
