@@ -6,7 +6,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 @Component(Object.assign({
   selector: 'addresses-form',
   templateUrl: './addresses-form.component.html',
-  styleUrls: ['./addresses-form.component.scss']
+  styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class AddressesForm extends BaseListForm<Address>  {
 
