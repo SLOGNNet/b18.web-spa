@@ -66,7 +66,7 @@ export class Load {
     result.id = generateNewId();
     result.status = LoadStatuses.Booked;
     result.customer = Customer.create();
-    result.driverRequirment = DriverRequirments.Solo;
+    result.driverRequirment = DriverRequirements.Solo;
     result.powerUnitType = PowerUnitTypes.Tractor;
     result.trailerType = TrailerTypes.DryVan53;
     result.pickups = [Stop.create(StopTypes.Pickup)];
