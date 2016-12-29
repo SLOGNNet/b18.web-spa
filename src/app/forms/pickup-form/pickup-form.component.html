@@ -4,7 +4,14 @@
     placeholder="Date"
     formControlName="date">
   </bd-input>
-  <pick-up-commodity-form [formArray]="formGroup.controls.commodities" (change)="onCommodityChange($event)" [commodities]="stop.commodities" [viewMode]="viewMode"></pick-up-commodity-form>
+  <pick-up-commodity-form
+    [formArray]="formGroup.controls.commodities"
+    (update)="onCommodityUpdate($event)"
+    (remove)="onCommodityRemove($event)"
+    (add)="onCommodityAdd()"
+    [commodities]="stop.commodities"
+    [viewMode]="viewMode">
+  </pick-up-commodity-form>
   <bd-input
     class="bd-form-control"
     placeholder="Notes"

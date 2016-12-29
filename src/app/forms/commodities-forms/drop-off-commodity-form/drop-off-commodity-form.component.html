@@ -9,7 +9,8 @@
   [viewMode]="viewMode"
   #commodityForm
   [formArray]="formArray"
-  (change)="onChange($event)"
+  (update)="onUpdate($event)"
+  (remove)="onRemove($event)"
   [items]="commodities">
 </base-commodity-form>
 <div>
@@ -17,7 +18,7 @@
   <div *ngIf="showPickups">
     <commodity
       class='pickup-commodity-item'
-      *ngFor="let commodity of availablePickups; let i = index"
+      *ngFor="let commodity of availablePickups; let i = index;"
       [isRemoveButtonHidden]="'true'"
       [viewMode]="viewMode"
       [disabled]="'true'"

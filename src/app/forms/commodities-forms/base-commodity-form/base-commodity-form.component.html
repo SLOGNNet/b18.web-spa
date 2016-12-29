@@ -7,13 +7,12 @@
 </div>
 <commodity
   class='commodity-item'
-  *ngFor="let data of renderFormData; let i = index"
-  [isRemoveButtonHidden]="renderFormData.length === 1"
+  *ngFor="let data of renderFormData; let i = index; trackBy:commodityTrackBy"
   [viewMode]="viewMode"
   [commodity]="data.item"
   [group]="data.group"
   (blur)="onBlur($event)"
   (focus)="onFocus($event)"
-  (change)="onChange($event)"
+  (update)="updateItem($event)"
   (remove)="removeItem(data)">
 </commodity>

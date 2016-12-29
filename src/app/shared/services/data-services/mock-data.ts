@@ -3,16 +3,16 @@ import { Load, Customer, Address, CustomerStatuses, CustomerTypes,
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
-    name: 'Street Address 1',
-    streetAddress: 'Street address 1',
-    secondStreetAddress: 'Street address 2',
-    city: 'City',
-    phone: '',
-    state: 'FL state',
-    zip: '33708 zip',
+    name: 'Main Office',
+    streetAddress: '14701 Charlson Road, United States',
+    secondStreetAddress: '',
+    city: 'Eden Prairie',
+    phone: '(925) 937-8500',
+    state: 'MN',
+    zip: '55347',
     fax: '',
-    phoneExtension: '311',
-    faxExtension: '322',
+    phoneExtension: '',
+    faxExtension: '',
     location: {
       lat: 40.795675,
       lng: -73.93600099999998
@@ -20,16 +20,67 @@ class MockData {
   },
   {
     id: 2,
-    name: 'Street Address 2',
-    streetAddress: 'test',
-    secondStreetAddress: 'test',
-    city: 'City 3',
-    phone: '345345',
-    state: 'Fy state',
-    zip: '33708 zip',
-    fax: '44',
-    phoneExtension: '441',
-    faxExtension: '36',
+    name: 'Main Office',
+    streetAddress: '5429 Lyndon B Johnson Freeway',
+    secondStreetAddress: 'SUITE 550',
+    city: 'Dallas',
+    phone: '(972) 669-4259',
+    state: 'TX',
+    zip: '75240',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
+  },
+  {
+    id: 3,
+    name: 'Main Office',
+    streetAddress: '641 East Watkins Street',
+    secondStreetAddress: '',
+    city: 'Phoenix',
+    phone: '(602) 256-9470',
+    state: 'AZ',
+    zip: '85004',
+    fax: '(602)-256-0631',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
+  },
+  {
+    id: 4,
+    name: 'Main Office',
+    streetAddress: '3101 Packerland Drive, Green Bay, WI, United States',
+    secondStreetAddress: '',
+    city: 'Green Bay',
+    phone: '(800) 558-6767',
+    state: 'WI',
+    zip: '54313',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 40.795675,
+      lng: -73.93600099999998
+    }
+  },
+  {
+    id: 5,
+    name: 'Main Office',
+    streetAddress: '1000 WYNDHAM PKWY',
+    secondStreetAddress: '',
+    city: 'BOLINGBROOK',
+    phone: '(312) 326-8000',
+    state: 'IL',
+    zip: '60490',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
     location: {
       lat: 40.795675,
       lng: -73.93600099999998
@@ -39,16 +90,16 @@ class MockData {
 
   public billingAddresses: Array<Address> = [{
     id: 3,
-    name: 'Billing Address 1',
-    streetAddress: 'billing street address 1',
-    secondStreetAddress: 'Street address 2',
-    city: 'City',
-    phone: '2221',
-    state: 'FL state',
-    zip: '33708 zip',
+    name: 'Billing Address',
+    streetAddress: '14701 Charlson Road, United States',
+    secondStreetAddress: 'SUITE 550',
+    city: 'Dallas',
+    phone: '(972) 669-4259',
+    state: 'MN',
+    zip: '33708',
     fax: '',
-    phoneExtension: '355',
-    faxExtension: '377',
+    phoneExtension: '',
+    faxExtension: '',
     location: {
       lat: 0,
       lng: 0
@@ -56,21 +107,72 @@ class MockData {
   },
   {
     id: 4,
-    name: 'Billing Address 2',
-    streetAddress: 'billing street address 2',
-    secondStreetAddress: 'test',
-    city: 'City 3',
-    phone: '345345',
-    state: 'Fy state',
-    zip: '33708 zip',
-    fax: '44',
-    phoneExtension: '455',
-    faxExtension: '477',
+    name: 'Billing Address',
+    streetAddress: '5429 Lyndon B Johnson Freeway',
+    secondStreetAddress: 'SUITE 550',
+    city: 'Dallas',
+    phone: '(972) 669-4259',
+    state: 'TX',
+    zip: '75240',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
     location: {
       lat: 0,
       lng: 0
     }
-  }
+  },
+  {
+    id: 5,
+    name: 'Billing Address',
+    streetAddress: 'BROKER_BILLING_ADDRESS',
+    secondStreetAddress: 'SUITE 550',
+    city: 'Dallas',
+    phone: '(972) 669-4259',
+    state: 'TX',
+    zip: '75240',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 0,
+      lng: 0
+    }
+  },
+  {
+    id: 6,
+    name: 'Billing Address',
+    streetAddress: 'PO BOX 2545',
+    secondStreetAddress: '',
+    city: 'Green Bay',
+    phone: '(920)-592-6867',
+    state: 'WI',
+    zip: '54313',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 0,
+      lng: 0
+    }
+  },
+  {
+    id: 7,
+    name: 'Billing Address',
+    streetAddress: '1000 WYNDHAM PKWY',
+    secondStreetAddress: '',
+    city: 'BOLINGBROOK',
+    phone: '(312) 326-8000',
+    state: 'IL',
+    zip: '60490',
+    fax: '',
+    phoneExtension: '',
+    faxExtension: '',
+    location: {
+      lat: 0,
+      lng: 0
+    }
+  },
   ];
 
   public contacts: Array<Contact> = [{
@@ -93,24 +195,57 @@ class MockData {
 
   public customers: Array<Customer> = [
     {
-      id: 1, name: 'ARP Logistic INC', addresses: this.addresses, contacts: this.contacts, email: 'qwerty1@gmail.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '423466'
+      id: 1,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: this.contacts,
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859'
     },
     {
-      id: 2, name: 'DNS Logistic Corp', addresses: this.billingAddresses, contacts: this.contacts, email: 'qwerty2@gmail.com',
-      status: CustomerStatuses.Unavaliable, type: CustomerTypes.Shipper, taxId: '1', mc: '889065'
+      id: 2,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: this.contacts,
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '392137'
     },
     {
-      id: 3, name: 'Purum Company', addresses: this.addresses, contacts: this.contacts, email: 'qwerty3@gmail.com',
-      status: CustomerStatuses.Inactive, type: CustomerTypes.Broker, taxId: '1', mc: '254785'
+      id: 3,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: this.contacts,
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: ''
     },
     {
-      id: 4, name: 'Approximately', addresses: this.billingAddresses, contacts: this.contacts, email: 'qwerty4@gmail.com',
-      status: CustomerStatuses.Inactive, type: CustomerTypes.Shipper, taxId: '1', mc: '456887'
+      id: 4,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: this.contacts,
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655'
     },
     {
-      id: 5, name: 'Satisfying company', addresses: this.addresses, contacts: this.contacts, email: 'qwerty5@gmail.com',
-      status: CustomerStatuses.Active, type: CustomerTypes.Broker, taxId: '1', mc: '123452'
+      id: 5,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221'
     }
   ];
 
@@ -163,8 +298,8 @@ class MockData {
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
-      trailerType: TrailerTypes.Reefer,
-      specialRequirment: 'specialRequirments1',
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#143',
       pickups: this.stops,
       dropoffs: new Array<Stop>()
     },
@@ -178,8 +313,8 @@ class MockData {
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
-      trailerType: TrailerTypes.Other,
-      specialRequirment: 'specialRequirments2',
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#141',
       pickups: this.stops,
       dropoffs: new Array<Stop>()
     },
@@ -187,14 +322,29 @@ class MockData {
       id: 3,
       customerId: 3,
       customer: null,
-      addressId: 1,
-      billingAddressId: 3,
-      contactId: 1,
+      addressId: 3,
+      billingAddressId: 5,
+      contactId: 3,
       status: LoadStatuses.Booked,
       driverRequirment: DriverRequirments.Solo,
-      powerUnitType: PowerUnitTypes.Other,
-      trailerType: TrailerTypes.Reefer,
-      specialRequirment: 'specialRequirments3',
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
+      pickups: this.stops,
+      dropoffs: new Array<Stop>()
+    },
+    {
+      id: 4,
+      customerId: 4,
+      customer: null,
+      addressId: 4,
+      billingAddressId: 6,
+      contactId: 4,
+      status: LoadStatuses.Booked,
+      driverRequirment: DriverRequirments.Solo,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
       pickups: this.stops,
       dropoffs: new Array<Stop>()
     },

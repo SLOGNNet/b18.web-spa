@@ -11,7 +11,6 @@ import { BaseListForm } from '../../base-list-form';
 
 export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
-  @Output() change = new EventEmitter();
   private focusedCol = null;
   private titles = [
     { name: 'PICKUP<br />#' },
@@ -25,6 +24,10 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
   constructor(formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
     super(formBuilder);
+  }
+
+  commodityTrackBy(index: number, obj: Commodity): any {
+    return obj.id;
   }
 
   public addCommodity(commodity: Commodity) {
@@ -42,7 +45,6 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
   protected removeItem(removeData) {
     super.removeItem(removeData);
     this.focusedCol = null;
-    this.cdr.detectChanges();
   }
 
   private onBlur(col) {
@@ -51,9 +53,5 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
 
   private onFocus(col) {
     this.focusedCol = col;
-  }
-
-  private onChange(commodity) {
-    this.change.emit(commodity);
   }
 }
