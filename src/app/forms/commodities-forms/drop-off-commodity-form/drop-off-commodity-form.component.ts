@@ -21,13 +21,7 @@ export class DropOffCommodityFormComponent extends BaseForm {
 
   @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
 
-  private showPickups: boolean = false;
-  onShowPickups() {
-    this.showPickups = true;
-  }
-
   pickupSelect(commodity: Commodity) {
-    this.showPickups = false;
     this.select.emit(commodity);
     this.commodityFormElement.addCommodity(commodity);
   }
