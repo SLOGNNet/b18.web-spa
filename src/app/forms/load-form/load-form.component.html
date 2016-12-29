@@ -1,12 +1,12 @@
 <div class="wrapper">
   <form-navigation [title]="'Load'" [anchors]="anchors"></form-navigation>
   <template #customItemTemplate let-model="item" let-index="index">
-      <div class="customer-item-wrapper">
-        <div class="name-number-wrapper">
-          <div class="name">
+      <div class="dropdown-customer-item-wrapper">
+        <div class="full-properties-wrapper">
+          <div class="name-title">
             {{model.name}}
           </div>
-          <div class="number">
+          <div class="properties">
             MC#: {{model.mc}}
           </div>
         </div>
@@ -50,6 +50,7 @@
               clearLabel='Leave Empty'
               formControlName="addressId"
               defaultTitleText="Select address"
+              [dropdownItemTemplate]="addressDropdown"
               [items]="load.customer.addresses"
               keyField="id"
               valueField="name">
@@ -63,6 +64,7 @@
               labelText='Billing Address'
               formControlName="billingAddressId"
               defaultTitleText="Select Billing Address"
+              [dropdownItemTemplate]="addressDropdown"
               [items]="load.customer.addresses"
               keyField="id"
               valueField="name">
@@ -119,4 +121,7 @@
       (click)="onLoadSave()">
     </bd-button>
   </div>
+  <template #addressDropdown let-item="item">
+    <address-item-template [item]='item'></address-item-template>
+  </template>
 </div>
