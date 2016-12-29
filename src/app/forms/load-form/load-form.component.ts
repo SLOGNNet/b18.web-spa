@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
@@ -20,6 +20,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
   @Input() load: Load;
+  @Output() cancel: EventEmitter<any> = new EventEmitter();
+  @Output() save: EventEmitter<any> = new EventEmitter();
 
   private customerSource: any[];
   private customerQuery: string = '';
@@ -130,15 +132,25 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     });
   }
 
- public onCustomerSelect(customer: Customer) {
-        this.load.customer = customer;
-        this.customerViewMode = ViewMode.ViewCollapsed;
-      }
+  public onCustomerSelect(customer: Customer) {
+   this.load.customer = customer;
+   this.customerViewMode = ViewMode.ViewCollapsed;
+  }
 
   private initCustomerTypeahead(customer) {
-        this.customerQuery = customer && customer.name;
-        this.customerSource = Observable.create((observer: any) => {
-          observer.next(this.customerQuery);
-        }).mergeMap((token: string) => this.customerService.search(token));
-      }
+    this.customerQuery = customer && customer.name;
+    this.customerSource = Observable.create((observer: any) => {
+      observer.next(this.customerQuery);
+    }).mergeMap((token: string) => this.customerService.search(token));
+  }
+
+  private onLoadCancel() {
+    this.cancel.emit();
+  }
+
+  private onLoadSave() {
+    if (this.loadForm.valid) {
+      this.save.emit(this.loadForm.value);
+    }
+  }
 }
