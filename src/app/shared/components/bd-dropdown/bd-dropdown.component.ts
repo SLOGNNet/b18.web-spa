@@ -14,13 +14,14 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Input() dropdownHeaderTemplate: TemplateRef<any>;
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
+  @Input() toogleTemplate: TemplateRef<any>;
 
   @Input() clearLabel: string = '';
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
   @Input() keyField: string = 'key';
   @Input() valueField: string = 'value';
-
+  @Input() autoClose: 'nonInput' | 'always' | 'outsideClick' | 'disabled' = 'nonInput';
   @Output() onItemClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() onFooterClick: EventEmitter<any> = new EventEmitter<any>(false);
   @Output() focusChange = new EventEmitter();
