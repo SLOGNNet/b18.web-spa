@@ -10,6 +10,8 @@
   justify-content: space-between;
 
   &.btn-container {
+    min-height: 80px;
+    max-height: 80px;
     padding-top: 30px;
   }
 }
@@ -30,5 +32,18 @@
 
   span {
     padding-left: 15px;
+  }
+}
+
+.scrollable-cantainer {
+  overflow-y: auto;
+}
+
+form {
+  &.scrollable {
+    display: flex;
+    height: 100%;
+    max-width: 100%;
+    flex-direction: column;
   }
 }
