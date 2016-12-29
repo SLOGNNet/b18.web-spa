@@ -109,12 +109,14 @@
   <div class="button-group">
     <bd-button
       [text]="'Cancel'"
-      class="bd-button button">
+      class="bd-button button"
+      (click)="onLoadCancel()">
     </bd-button>
     <bd-button
       color="primary"
       class="bd-button button"
-      [text]="'Save'">
+      [text]="'Save'"
+      (click)="onLoadSave()">
     </bd-button>
   </div>
 </div>

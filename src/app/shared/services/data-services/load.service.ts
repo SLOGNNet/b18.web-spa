@@ -35,4 +35,19 @@ export class LoadService {
           .map(customer => Object.assign(load, { customer: customer }))
       );
   };
+
+  create(load: Load) {
+    MockData.loads.push(load);
+  }
+
+  update(load: Load) {
+    const id = load.id;
+
+    MockData.loads.forEach(l => {
+      if (id === l.id) {
+        Object.assign(l, load);
+        return;
+      }
+    });
+  }
 }
