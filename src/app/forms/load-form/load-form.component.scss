@@ -9,9 +9,10 @@
   flex-direction: column;
 }
 
-@mixin dropdown-item-wrapper {
+.dropdown-customer-item-wrapper {
   display: flex;
   height: 75px;
+  padding: 0 17px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -28,15 +29,6 @@
       margin-top: 10px;
     }
   }
-}
-
-.dropdown-customer-item-wrapper {
-  @include dropdown-item-wrapper;
-  padding: 0 17px;
-}
-
-.dropdown-address-item-wrapper {
-  @include dropdown-item-wrapper;
 }
 
 .bd-form {

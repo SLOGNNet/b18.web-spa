@@ -122,19 +122,6 @@
     </bd-button>
   </div>
   <template #addressDropdown let-item="item">
-    <div class="dropdown-address-item-wrapper">
-      <div class="full-properties-wrapper">
-        <div class="name-title">
-          {{item.name}}
-        </div>
-        <div class="properties">
-          {{item.streetAddress}}
-          {{item.secondStreetAddress}}
-          {{item.city}}
-          {{item.state}}
-          {{item.zip}}
-        </div>
-      </div>
-    </div>
+    <address-item-template [item]='item'></address-item-template>
   </template>
 </div>

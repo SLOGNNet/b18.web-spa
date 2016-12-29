@@ -21,18 +21,5 @@
 </form>
 
 <template #contactsAddressDropdown let-item="item">
-  <div class="addresses-item-wrapper">
-    <div class="full-address-properties-wrapper">
-      <div class="name-address-title">
-        {{item.name}}
-      </div>
-      <div class="address-properties">
-        {{item.streetAddress}}
-        {{item.secondStreetAddress}}
-        {{item.city}}
-        {{item.state}}
-        {{item.zip}}
-      </div>
-    </div>
-  </div>
+  <address-item-template [item]='item'></address-item-template>
 </template>
