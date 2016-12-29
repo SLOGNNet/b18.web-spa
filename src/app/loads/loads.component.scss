@@ -1,6 +1,9 @@
 @import '../../assets/styles/variables';
 
 .data-panel {
+  height: 100%;
+  overflow-y: auto;
+
   .add-button {
     display: block;
     width: 70px;
