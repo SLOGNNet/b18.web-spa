@@ -1,6 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Load, Customer, LoadStatuses, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, Commodity } from './models';
+import {
+  Load, Customer, LoadStatuses,
+  DriverRequirements, PowerUnitTypes,
+  TrailerTypes, Stop, Commodity,
+  LoadType, FreightType, DataAssigneeRequirements } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';

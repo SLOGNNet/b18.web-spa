@@ -15,6 +15,16 @@
   <div class="bd-form">
     <form [formGroup]="loadForm" class="edit">
       <navigation-anchor id="customer"></navigation-anchor>
+      <bd-form-section labelText="Load">
+        <bd-input class="bd-form-control" [labelText]="'Load Number'" formControlName="loadNumber">
+        </bd-input>
+        <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
+        </bd-form-switch>
+        <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
+        </bd-form-switch>
+        <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
+        </bd-dropdown>
+      </bd-form-section>
       <bd-form-section labelText="Customer">
         <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
           <bd-typeahead
@@ -81,7 +91,7 @@
           </bd-form-section>
           <navigation-anchor id="requirements"></navigation-anchor>
           <bd-form-section labelText="REQUIREMENTS">
-            <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirmentsNames">
+            <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirement" [items]="driverRequirementsNames">
             </bd-form-switch>
             <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
             </bd-dropdown>

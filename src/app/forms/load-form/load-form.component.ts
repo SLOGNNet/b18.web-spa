@@ -2,7 +2,11 @@ import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
-import { Load, Customer, DriverRequirments, PowerUnitTypes, TrailerTypes, Stop, StopTypes, Contact, Commodity } from '../../models';
+import {
+  Load, Customer,
+  DriverRequirements, PowerUnitTypes, TrailerTypes,
+  Stop, StopTypes, Contact, Commodity,
+  LoadType, FreightType, DataAssigneeRequirements } from '../../models';
 import { CommodityStore } from '../../stores';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
@@ -16,9 +20,12 @@ import { flatMap } from 'lodash';
   templateUrl: './load-form.component.html'
 }, BaseForm.metaData))
 export class BdLoadFormComponent extends BaseForm implements OnChanges {
-  driverRequirmentsNames: Array<any>;
+  driverRequirementsNames: Array<any>;
   powerUnitTypesNames: Array<any>;
   trailerTypesNames: Array<any>;
+  loadTypesNames: Array<any>;
+  freightTypesNames: Array<any>;
+  dataAssigneeNames: Array<any>;
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
@@ -81,9 +88,12 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     private commodityStore: CommodityStore,
     private contactService: ContactService) {
     super();
-    this.driverRequirmentsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirments);
+    this.driverRequirementsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirements);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
     this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
+    this.loadTypesNames = this.enumHelperService.getDropdownKeyValues(LoadType);
+    this.freightTypesNames = this.enumHelperService.getDropdownKeyValues(FreightType);
+    this.dataAssigneeNames = this.enumHelperService.getDropdownKeyValues(DataAssigneeRequirements);
   }
 
   ngOnChanges(changes: any) {
@@ -123,12 +133,16 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
       contactId: [this.load.contactId],
-      driverRequirment: [this.load.driverRequirment],
+      driverRequirement: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
       specialRequirment: [this.load.specialRequirment],
       pickups: this.formBuilder.array([]),
-      dropoffs: this.formBuilder.array([])
+      dropoffs: this.formBuilder.array([]),
+      loadNumber: [this.load.loadNumber],
+      loadType: [this.load.loadType],
+      freightType: [this.load.freightType],
+      dataAssignee: [this.load.dataAssignee]
     });
   }
 
