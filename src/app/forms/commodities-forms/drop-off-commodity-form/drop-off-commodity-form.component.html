@@ -1,9 +1,15 @@
 <template #dropdownItemTemplate let-item="item">
   <commodity
+    class='pickup-commodity-item'
     [isRemoveButtonHidden]="'true'"
     [viewMode]="viewMode"
+    [disabled]="'true'"
+    (click)="pickupSelect(item)"
     [commodity]="item">
   </commodity>
+</template>
+<template #toogleTemplate>
+  <bd-add-button class="bd-form-control"></bd-add-button>
 </template>
 <base-commodity-form
   [viewMode]="viewMode"
@@ -14,16 +20,16 @@
   [items]="commodities">
 </base-commodity-form>
 <div>
-  <bd-add-button class="bd-form-control" (mousedown)="onShowPickups()"></bd-add-button>
-  <div *ngIf="showPickups">
-    <commodity
-      class='pickup-commodity-item'
-      *ngFor="let commodity of availablePickups; let i = index;"
-      [isRemoveButtonHidden]="'true'"
-      [viewMode]="viewMode"
-      [disabled]="'true'"
-      (click)="pickupSelect(commodity)"
-      [commodity]="commodity">
-    </commodity>
+  <div style="position: relative;">
+    <bd-dropdown
+      clearLabel='Leave Empty'
+      defaultTitleText=''
+      [dropdownItemTemplate]="dropdownItemTemplate"
+      [toogleTemplate]='toogleTemplate'
+      abelText=""
+      keyField="id"
+      valueField="commodity"
+      [items]="availablePickups">
+    </bd-dropdown>
   </div>
 </div>
