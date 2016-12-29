@@ -25,7 +25,7 @@ const KeyboardEvent = (global as any).KeyboardEvent as KeyboardEvent;
 
 @Directive({
   /* tslint:disable */
-  selector: '[typeahead][ngModel],[typeahead][formControlName]'
+  selector: '[typeahead]'
   /* tslint:enable */
 })
 export class TypeaheadDirective implements OnInit {

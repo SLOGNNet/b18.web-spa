@@ -1,5 +1,5 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BaseForm } from '../../../../base-form';
 import { Commodity } from '../../../../../models';
 
@@ -18,7 +18,7 @@ export class CommodityComponent extends BaseForm {
   @Output() blur = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();
-  @Output() change = new EventEmitter();
+  @Output() update = new EventEmitter();
   public fields = [
     { name: 'pickupNumber', type: 'text', validators: [] },
     { name: 'po', type: 'text', validators: [] },
@@ -38,7 +38,9 @@ export class CommodityComponent extends BaseForm {
   ngOnChanges() {
     this.initCommodity(this.commodity);
     this.commodityForm.valueChanges.subscribe(value => {
-      this.change.emit(Object.assign(this.commodity, value));
+      if (this.commodityForm) {
+        this.update.emit(Object.assign(this.commodity, value));
+      }
     });
   }
 

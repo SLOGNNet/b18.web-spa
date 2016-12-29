@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Address } from '../../models';
@@ -16,6 +16,7 @@ export class AddressForm extends BaseForm {
   public address: Address;
   @Input('group')
   public addressForm: BdFormGroup;
+  @Output() update = new EventEmitter();
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {
@@ -26,6 +27,7 @@ export class AddressForm extends BaseForm {
     }
   };
   private fields = [
+    { name: 'id', validators: [] },
     { name: 'name', validators: [Validators.required] },
     { name: 'phone', validators: [Validators.required] },
     { name: 'fax', validators: [] },
@@ -33,15 +35,14 @@ export class AddressForm extends BaseForm {
     { name: 'zip', validators: [] },
     { name: 'phoneExtension', validators: [] },
     { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress', validators: [] },
+    { name: 'streetAddress', validators: [Validators.required] },
     { name: 'secondStreetAddress', validators: [] },
     { name: 'city', validators: [] },
     { name: 'location', validators: [] }
   ];
 
-
   constructor(
-    private _changeDetectionRef: ChangeDetectorRef,
+    private _cdr: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
     private _googleService: GoogleService) {
     super();
@@ -60,6 +61,11 @@ export class AddressForm extends BaseForm {
         this._formBuilder.control(this.address[field.name], field.validators)
       );
     });
+      this.addressForm.valueChanges.subscribe((value) => {
+        if (this.addressForm.valid) {
+           this.update.emit(value);
+        }
+      });
   }
 
   onRemoveMap() {
@@ -93,7 +99,7 @@ export class AddressForm extends BaseForm {
             this._placeQuery = detail.streetAddress;
             this._updateMap(detail.location, detail.streetAddress);
             this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
-            this._changeDetectionRef.detectChanges();
+            this._cdr.detectChanges();
           }
         });
     }

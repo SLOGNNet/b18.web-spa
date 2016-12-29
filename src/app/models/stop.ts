@@ -1,4 +1,5 @@
 import { Commodity, Address } from './index';
+import { generateNewId } from './utils';
 
 export enum StopTypes {
   None = 0,
@@ -14,10 +15,10 @@ export class Stop {
   date: string = '';
   notes: string = '';
   type: StopTypes = StopTypes.None;
+
   static create(type: StopTypes): Stop{
     const result = new Stop();
-    dummyId++;
-    result.id = dummyId;
+    result.id = generateNewId();
     result.type = type;
     result.address = Address.create();
     result.commodities = new Array<Commodity>();

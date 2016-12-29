@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Customer, CustomerStatuses, CustomerTypes } from '../../models';
+import { Customer, CustomerStatuses, CustomerTypes, Address } from '../../models';
+import { AddressStore } from '../../stores';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -9,7 +10,7 @@ import { BaseForm } from '../base-form';
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss'],
-  providers: [FormValidationService]
+  providers: [FormValidationService, AddressStore]
 }, BaseForm.metaData))
 export class CustomerForm extends BaseForm {
   @Input() public customer: Customer;
@@ -23,7 +24,9 @@ export class CustomerForm extends BaseForm {
   selectedCustomerStatus: string;
 
   constructor(private formBuilder: FormBuilder,
+    private addressStore: AddressStore,
     private enumHelperService: EnumHelperService,
+    private cdr: ChangeDetectorRef,
     private validationService: FormValidationService) {
     super();
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
@@ -31,6 +34,11 @@ export class CustomerForm extends BaseForm {
   }
 
   ngOnChanges(changes: any) {
+    this.addressStore.set(this.customer.addresses);
+    this.addressStore.addresses.subscribe(adr => {
+      this.customer.addresses = adr;
+      this.cdr.markForCheck();
+    });
     this.initForm();
   }
 
@@ -62,6 +70,17 @@ export class CustomerForm extends BaseForm {
     });
   }
 
+  onAddressAdd(address: Address) {
+    this.addressStore.add(address);
+  }
+
+  onAddressChange(address: Address) {
+    this.addressStore.update(address);
+  }
+
+  onAddressRemove(address: Address) {
+    this.addressStore.remove(address);
+  }
 
   private onExpandChanged(viewMode) {
     this.viewMode = viewMode;
