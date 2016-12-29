@@ -1,5 +1,6 @@
 import { Address } from './index';
 import { Contact } from './index';
+import { generateNewId } from './utils';
 
 export enum CustomerTypes {
   Broker = 1,
@@ -27,6 +28,7 @@ export class Customer {
 
   static create(): Customer{
     const result = new Customer();
+    result.id = generateNewId();
     result.status = CustomerStatuses.Inactive;
     result.type = CustomerTypes.Broker;
     return result;

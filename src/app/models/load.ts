@@ -5,9 +5,24 @@ export enum LoadStatuses {
   Assigned = 2
 }
 
-export enum DriverRequirments {
+export enum DriverRequirements {
   Solo = 1
 };
+
+export enum DataAssigneeRequirements {
+  MelMel1 = 1,
+  MelMel2 = 2
+};
+
+export enum LoadType {
+  FTL = 1,
+  LTL = 2
+};
+
+export enum FreightType {
+  Dry = 1,
+  Reefer = 2
+}
 
 export enum PowerUnitTypes {
   Tractor = 1,
@@ -30,11 +45,15 @@ export class Load {
   id: number;
   customerId: number;
   addressId: number;
+  loadNumber: number;
+  loadType: LoadType;
+  freightType: FreightType;
+  dataAssignee: DataAssigneeRequirements;
   billingAddressId: number;
   contactId: number;
   status: LoadStatuses;
   customer: Customer;
-  driverRequirment: DriverRequirments;
+  driverRequirment: DriverRequirements;
   powerUnitType: PowerUnitTypes;
   trailerType: TrailerTypes;
   specialRequirment: string;

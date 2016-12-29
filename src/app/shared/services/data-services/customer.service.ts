@@ -13,6 +13,12 @@ export class CustomerService {
     this.http = http;
   }
 
+  getAll(): Observable<Customer[]> {
+    return Observable.of(
+      MockData.customers
+    );
+  }
+
   get(id: number): Observable<Customer> {
     return Observable.of(
       MockData.customers.find((customer) => id === customer.id)
@@ -21,6 +27,17 @@ export class CustomerService {
 
   create(customer: Customer) {
     MockData.customers.push(customer);
+  }
+
+  update(customer: Customer) {
+    const id = customer.id;
+
+    MockData.customers.forEach(c => {
+      if (id === c.id) {
+        Object.assign(c, customer);
+        return;
+      }
+    });
   }
 
   search(query: string): Observable<Customer[]> {

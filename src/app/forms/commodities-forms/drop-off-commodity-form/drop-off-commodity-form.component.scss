@@ -2,7 +2,9 @@
 @import '../../../../assets/styles/form-control';
 
 .pickup-commodity-item {
+  width: 100%;
   background-color: $white;
+  border-bottom: 0;
 
   &:hover {
     cursor: pointer;

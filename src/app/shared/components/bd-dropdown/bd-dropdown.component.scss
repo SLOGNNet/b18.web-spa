@@ -68,7 +68,7 @@
     ul {
       padding: 0;
       margin: 0;
-      overflow-y: scroll;
+      overflow-y: auto;
       border-top: $active-border;
       max-height: $form-control-height * 5;
 
@@ -78,9 +78,14 @@
         color: $black;
         font-size: 16px;
         padding-left: 17px;
-        min-height: $form-control-height; 
+        min-height: $form-control-height;
         border-bottom: $border;
         align-items: center;
+
+        &.template-item {
+          padding-left: 0;
+          border-bottom: 0;
+        }
 
         &.dropdown-header {
           background: $white;
