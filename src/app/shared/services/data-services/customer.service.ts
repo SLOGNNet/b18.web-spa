@@ -26,11 +26,7 @@ export class CustomerService {
   }
 
   create(customer: Customer) {
-    const newId = MockData.customers.length + 1;
-    customer.id = newId;
     MockData.customers.push(customer);
-
-    return customer;
   }
 
   update(customer: Customer) {

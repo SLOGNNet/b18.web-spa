@@ -28,6 +28,6 @@
 
     <third-pane>
       <form-navigation *ngIf='selectedCustomer' [title]="'Customer'" [anchors]="anchors"></form-navigation>
-      <customer-form *ngIf='selectedCustomer' [submitButtonText]="'Save'" [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <customer-form *ngIf='selectedCustomer' [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
     </third-pane>
 </multi-pane-layout>

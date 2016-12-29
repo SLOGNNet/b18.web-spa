@@ -5,7 +5,7 @@
 			<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 				<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
 				</bd-input>
-				<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="customerType" [items]="customerTypes">
+				<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="type" [items]="customerTypes">
 				</bd-dropdown>
 				<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
 				</bd-form-switch>

@@ -13,5 +13,5 @@
 
 customer-form {
   display: block;
-  height: calc(100% - 90px);
+  height: calc(100% - #{$form-navigation-height});
 }

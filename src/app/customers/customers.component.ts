@@ -84,15 +84,12 @@ export class CustomersComponent {
   private onCustomerSave(customer) {
     if (this.isCustomerNew) {
       this.isCustomerNew = false;
-      const createdCustomer = this.customerService.create(customer);
-
-      if (createdCustomer) {
-        this.selectedCustomer = cloneDeep(createdCustomer);
-      }
+      this.customerService.create(customer);
     } else {
       this.customerService.update(customer);
-      this.selectedCustomer = cloneDeep(customer);
     }
+
+    this.selectedCustomer = cloneDeep(customer);
   }
 
   private onCustomerCancel(customer) {
