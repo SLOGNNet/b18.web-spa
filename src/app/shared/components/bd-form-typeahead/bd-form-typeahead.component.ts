@@ -64,6 +64,10 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
     this._onChangeCallback(this.value);
   }
 
+  blurEmitter(event){
+    this.inputElement.blur();
+  }
+
   remove(event): void {
     event.stopPropagation();
     this.inputElement.blur();
