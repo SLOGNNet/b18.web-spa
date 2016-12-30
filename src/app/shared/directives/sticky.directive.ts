@@ -15,12 +15,20 @@ export class StickyDirective {
   }
 
   private update() {
-    const parentWidth =  this._getParentWidth();
-    let updatedTop: string = '';
+    this._updateWidth();
+    this._updateTop();
+  }
+
+  private _updateWidth() {
+    const parentWidth = this._getParentWidth();
 
     if (this.elementRef.nativeElement.clientWidth !== parentWidth) {
       this.elementRef.nativeElement.style.width = parentWidth + 'px';
     }
+  }
+
+  private _updateTop() {
+    let updatedTop: string = '';
 
     if (!this.top) {
       const scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
