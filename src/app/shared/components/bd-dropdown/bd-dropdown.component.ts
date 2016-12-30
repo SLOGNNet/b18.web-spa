@@ -1,4 +1,5 @@
-import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Optional, Output, TemplateRef, EventEmitter,
+  HostBinding, HostListener, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { isNil } from 'lodash';
