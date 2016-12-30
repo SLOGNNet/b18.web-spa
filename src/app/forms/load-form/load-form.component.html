@@ -11,39 +11,22 @@
         </div>
       </div>
   </template>
-  <form [formGroup]="loadForm" class="edit">
-    <navigation-anchor id="load"></navigation-anchor>
-    <bd-form-section labelText="Load">
-      <bd-input class="bd-form-control" [labelText]="'Load Number'" formControlName="loadNumber">
-      </bd-input>
-      <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
-      </bd-form-switch>
-      <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
-      </bd-form-switch>
-      <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
-      </bd-dropdown>
-    </bd-form-section>
-    <navigation-anchor id="customer"></navigation-anchor>
-    <bd-form-section labelText="Customer">
-      <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
-        <bd-typeahead
-          class="bd-form-control"
-          formControlName="customer"
-          [labelText]="'Name or MC#'"
-          [footerButtonText]="'Add New Customer'"
-          [source]="customerSource"
-          (onRemove)="onCustomerRemove()"
-          [(value)]="customerQuery"
-          [itemTemplate]="customItemTemplate"
-          (onSelect)="onCustomerSelect($event)"
-          (onFooterButtonClick)="onAddNewCustomer()"
-          [optionField]="'name'">
-        </bd-typeahead>
-      </bd-validator>
-        <customer-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
-        <bd-form-section>
-          <bd-dropdown
-            *ngIf='load.customer'
+    <form [formGroup]="loadForm" class="edit">
+      <navigation-anchor id="info"></navigation-anchor>
+      <bd-form-section labelText="Info" id="info">
+        <bd-input class="bd-form-control" [labelText]="'Load Number'" formControlName="loadNumber">
+        </bd-input>
+        <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
+        </bd-form-switch>
+        <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
+        </bd-form-switch>
+        <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
+        </bd-dropdown>
+      </bd-form-section>
+      <navigation-anchor id="customer"></navigation-anchor>
+      <bd-form-section labelText="Customer">
+        <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
+          <bd-typeahead
             class="bd-form-control"
             labelText='Address'
             clearLabel='Leave Empty'

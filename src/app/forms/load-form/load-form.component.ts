@@ -34,12 +34,14 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
   private anchors = [{
-    id: 'load',
-    title: 'Load'
-  }, {
+    id: 'info',
+    title: 'Info'
+  },
+  {
     id: 'customer',
     title: 'Customer'
-  }, {
+  },
+  {
     id: 'pickups',
     title: 'Pickups'
   },
