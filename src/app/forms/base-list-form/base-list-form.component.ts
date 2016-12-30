@@ -1,9 +1,9 @@
-import { Input, Output, EventEmitter } from '@angular/core';
+import { Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
-export abstract class BaseListForm<T> extends BaseForm {
+export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;
 
   @Input()
@@ -52,7 +52,7 @@ export abstract class BaseListForm<T> extends BaseForm {
       this.addFormData(item);
   }
 
-  updateItem(item: T) {
+  protected updateItem(item: T) {
     this.update.emit(item);
   }
 
@@ -71,7 +71,6 @@ export abstract class BaseListForm<T> extends BaseForm {
 
   private resetData() {
     this.renderFormData = new Array<any>();
-
     while (this.formArray.length > 0) {
       this.formArray.removeAt(0);
     }

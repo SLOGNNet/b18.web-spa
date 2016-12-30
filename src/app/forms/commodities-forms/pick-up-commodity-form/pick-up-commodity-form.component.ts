@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseCommodityFormComponent } from '../base-commodity-form';
@@ -10,24 +10,15 @@ import { BaseForm } from '../../base-form';
   styleUrls: [
     './pick-up-commodity-form.component.scss'
   ]
-}, BaseForm.metaData))
-export class PickUpCommodityFormComponent extends BaseForm {
-  @Input() formArray: FormArray;
-  @Input() commodities: Array<Commodity>;
-  @Output() update: EventEmitter<Commodity> = new EventEmitter<Commodity>();
-  @Output() add: EventEmitter<Commodity> = new EventEmitter<Commodity>();
-  @ViewChild('commodityForm') commodityFormElement: BaseCommodityFormComponent;
-  @Output() remove: EventEmitter<Commodity> = new EventEmitter<Commodity>();
-
-  onAdd() {
-   this.add.emit();
+}, BaseCommodityFormComponent.metaData))
+export class PickUpCommodityFormComponent extends BaseCommodityFormComponent {
+  protected createTitles(): Array<{name: string}> {
+    const titles = super.createTitles();
+    titles.unshift({ name: 'PICKUP<br />#' });
+    return titles;
   }
 
-  onUpdate(commodity: Commodity) {
-    this.update.emit(commodity);
-  }
-
-  onRemove(commodity: Commodity) {
-    this.remove.emit(commodity);
+  constructor(formBuilder: FormBuilder, cdr: ChangeDetectorRef) {
+    super(formBuilder, cdr);
   }
 }

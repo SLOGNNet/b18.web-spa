@@ -179,18 +179,18 @@ class MockData {
 
   public contacts: Array<Contact> = [{
    id: 1,
-   firstName: 'Contact 1',
-   lastName: 'Last name 1',
-   personalEmail: 'qwerty@gmail.com',
-   position: 'CEO',
+   firstName: 'Jason',
+   lastName: 'Chang',
+   personalEmail: 'CHANJAS@chrobinson.com',
+   position: 'sales',
    addressId: 1
  },
  {
    id: 2,
-   firstName: 'Contact 2',
-   lastName: 'Last name 2',
-   personalEmail: 'qwerty@gmail.com',
-   position: 'Sales manager',
+   firstName: 'Scott',
+   lastName: 'Spearow',
+   personalEmail: 'sspearow@TQL.com',
+   position: 'sales',
    addressId: 2
  }
  ];
@@ -200,7 +200,7 @@ class MockData {
       id: 1,
       name: 'CH ROBINSON COMPANY INC',
       addresses: [this.addresses[0], this.billingAddresses[0]],
-      contacts: this.contacts,
+      contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
@@ -211,7 +211,7 @@ class MockData {
       id: 2,
       name: 'M W LOGISTICS LLC',
       addresses: [this.addresses[1], this.billingAddresses[1]],
-      contacts: this.contacts,
+      contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
@@ -254,38 +254,121 @@ class MockData {
   public commodities: Array<Commodity> = [{
     id: 1,
     pickupId: 1,
-    dropoffId: null,
-    pickupNumber: 1,
-    dropoffNumber: 44,
-    po: '23324234',
-    commodity: 'Strawberry',
-    unitType: 'Boxes',
-    unitCount: 22,
-    palletCount: 10,
-    weight: 14,
+    dropoffId: 5,
+    pickupNumber: null,
+    dropoffNumber: null,
+    po: '8055',
+    commodity: 'BaiDrink',
+    unitType: 'Pallet(S)',
+    unitCount: 0,
+    palletCount: 25,
+    weight: 0,
   },
   {
     id: 2,
-    pickupId: 1,
-    dropoffId: null,
-    pickupNumber: 2,
-    dropoffNumber: 45,
-    po: '789',
-    commodity: 'Toma',
-    unitType: 'Boxes',
-    unitCount: 10,
-    palletCount: 10,
-    weight: 5
+    pickupId: 2,
+    dropoffId: 6,
+    pickupNumber: 5009,
+    dropoffNumber: null,
+    po: '',
+    commodity: 'Gypsum',
+    unitType: 'Truckload',
+    unitCount: 0,
+    palletCount: 0,
+    weight: 0
+  },
+  {
+    id: 3,
+    pickupId: 3,
+    dropoffId: 7,
+    pickupNumber: null,
+    dropoffNumber: null,
+    po: '',
+    commodity: '',
+    unitType: '',
+    unitCount: 0,
+    palletCount: 0,
+    weight: 0
+  },
+  {
+    id: 4,
+    pickupId: 4,
+    dropoffId: 8,
+    pickupNumber: null,
+    dropoffNumber: null,
+    po: '',
+    commodity: '',
+    unitType: '',
+    unitCount: 0,
+    palletCount: 42,
+    weight: 0
   }
 ];
 
-  public stops: Array<Stop> = [{
+  public pickups: Array<Stop> = [{
     id: 1,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
     date: 'date',
-    commodities: this.commodities
+    commodities: [this.commodities[0]]
+  },
+  {
+    id: 2,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[1],
+    date: 'date',
+    commodities: [this.commodities[1]]
+  },
+  {
+    id: 3,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: 'date',
+    commodities: [this.commodities[2]]
+  },
+  {
+    id: 4,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: 'date',
+    commodities: [this.commodities[3]]
+  }];
+
+  public dropoffs: Array<Stop> = [{
+    id: 5,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: 'date',
+    commodities: [this.commodities[0]]
+  },
+  {
+    id: 6,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: 'date',
+    commodities: [this.commodities[1]]
+  },
+  {
+    id: 7,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: 'date',
+    commodities: [this.commodities[2]]
+  },
+  {
+    id: 8,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[3],
+    date: 'date',
+    commodities: [this.commodities[3]]
   }];
 
 
@@ -306,8 +389,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#143',
-      pickups: this.stops,
-      dropoffs: new Array<Stop>()
+      pickups: [this.pickups[0]],
+      dropoffs: [this.dropoffs[0]]
     },
     {
       id: 2,
@@ -325,8 +408,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#141',
-      pickups: this.stops,
-      dropoffs: new Array<Stop>()
+      pickups: [this.pickups[1]],
+      dropoffs: [this.dropoffs[1]]
     },
     {
       id: 3,
@@ -344,8 +427,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: this.stops,
-      dropoffs: new Array<Stop>()
+      pickups: [this.pickups[2]],
+      dropoffs: [this.dropoffs[2]]
     },
     {
       id: 4,
@@ -363,8 +446,8 @@ class MockData {
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: this.stops,
-      dropoffs: new Array<Stop>()
+      pickups: [this.pickups[3]],
+      dropoffs: [this.dropoffs[3]]
     },
   ];
 }

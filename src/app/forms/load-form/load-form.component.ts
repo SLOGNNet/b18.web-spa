@@ -11,8 +11,6 @@ import { CommodityStore } from '../../stores';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { flatMap } from 'lodash';
-
 
 @Component(Object.assign({
   selector: 'load-form',
@@ -101,9 +99,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
-      this.commodityStore.set(
-        flatMap(this.load.pickups, p => p.commodities),
-        flatMap(this.load.dropoffs, d => d.commodities));
+      this.commodityStore.set(this.load.pickups, this.load.dropoffs);
       this.initForm();
       this.initCustomerTypeahead(this.load.customer);
     }

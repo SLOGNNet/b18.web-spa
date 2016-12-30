@@ -1,24 +1,15 @@
-<template #dropdownItemTemplate let-item="item">
-  <commodity
-    class='pickup-commodity-item'
-    [isRemoveButtonHidden]="'true'"
-    [viewMode]="viewMode"
-    [disabled]="'true'"
-    (click)="pickupSelect(item)"
-    [commodity]="item">
-  </commodity>
-</template>
-<template #toogleTemplate>
-  <bd-add-button class="bd-form-control"></bd-add-button>
-</template>
-<base-commodity-form
+<commodities-header [titles]='titles'  [focusedColumnIndex]='focusedCol'></commodities-header>
+<dropoff-commodity
+  class='commodity-item'
+  *ngFor="let data of renderFormData; let i = index; trackBy:commodityTrackBy"
   [viewMode]="viewMode"
-  #commodityForm
-  [formArray]="formArray"
-  (update)="onUpdate($event)"
-  (remove)="onRemove($event)"
-  [items]="commodities">
-</base-commodity-form>
+  [commodity]="data.item"
+  [group]="data.group"
+  (blur)="onBlur($event)"
+  (focus)="onFocus($event)"
+  (update)="updateItem($event)"
+  (remove)="removeItem(data)">
+</dropoff-commodity>
 <div>
   <div style="position: relative;">
     <bd-dropdown
@@ -27,10 +18,21 @@
       defaultTitleText=''
       [dropdownItemTemplate]="dropdownItemTemplate"
       [toogleTemplate]='toogleTemplate'
-      abelText=""
       keyField="id"
-      valueField="commodity"
       [items]="availablePickups">
     </bd-dropdown>
   </div>
 </div>
+<template #dropdownItemTemplate let-item="item">
+  <pickup-commodity
+    class='pickup-commodity-item'
+    [isRemoveButtonHidden]="'true'"
+    [viewMode]="viewMode"
+    [disabled]="'true'"
+    (click)="pickupSelect(item)"
+    [commodity]="item">
+  </pickup-commodity>
+</template>
+<template #toogleTemplate>
+  <bd-add-button class="bd-form-control"></bd-add-button>
+</template>

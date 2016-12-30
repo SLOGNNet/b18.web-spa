@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 import { Todo } from '../Todo';
 import { List } from 'immutable';
 import { BehaviorSubject } from 'rxjs/Rx';
-import { chain } from 'lodash';
+import { chain, flatMap } from 'lodash';
 
 @Injectable()
 export class CommodityStore {
@@ -16,9 +16,13 @@ export class CommodityStore {
   constructor(private customerService: CustomerService) {
   }
 
-  set(pickups, dropoffs) {
-    const newSource = [...pickups,  ...dropoffs];
-    this._commodities.next(newSource);
+  set(pickups: Array<Stop>, dropoffs: Array<Stop>) {
+    const commodities = chain(pickups)
+      .concat(dropoffs)
+      .flatMap(stop => stop.commodities)
+      .uniqBy(commodity => commodity.id)
+      .value();
+    this._commodities.next(commodities);
   }
 
   public remove(removed: Commodity) {
@@ -45,7 +49,7 @@ export class CommodityStore {
   public update(updated: Commodity) {
     const newCommodities = this._commodities
       .getValue()
-      .map(commodity => (commodity.id === updated.id ? updated : commodity));
+      .map(commodity => (commodity.id === updated.id ? Object.assign({}, updated) : commodity));
     this._commodities.next(newCommodities);
   }
 
