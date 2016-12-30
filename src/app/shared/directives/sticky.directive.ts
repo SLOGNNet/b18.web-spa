@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import * as $ from 'jquery';
 
 @Directive({
   selector: '[sticky]'
