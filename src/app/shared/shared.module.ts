@@ -19,6 +19,7 @@ import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
+import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
@@ -65,7 +66,8 @@ import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
     BdValidatorComponent,
     GoogleMapComponent,
     FormNavigationComponent,
-    NavigationAnchorComponent
+    NavigationAnchorComponent,
+    AddressItemTemplate
   ],
   imports: [
     CommonModule,
@@ -99,6 +101,7 @@ import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
     BdAddButtonComponent,
     FormNavigationComponent,
     NavigationAnchorComponent,
+    AddressItemTemplate,
     HttpModule
   ]
 

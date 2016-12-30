@@ -16,23 +16,10 @@
     defaultTitleText="Select Address"
     [dropdownItemTemplate]="contactsAddressDropdown"
     keyField="id"
-    valueField="streetAddress">
+    valueField="name">
   </bd-dropdown>
 </form>
 
 <template #contactsAddressDropdown let-item="item">
-  <div class="addresses-item-wrapper">
-    <div class="full-address-properties-wrapper">
-      <div class="street-address-title">
-        {{item.streetAddress}}
-      </div>
-      <div class="address-properties">
-        {{item.name}}
-        {{item.secondStreetAddress}}
-        {{item.city}}
-        {{item.state}}
-        {{item.zip}}
-      </div>
-    </div>
-  </div>
+  <address-item-template [item]='item'></address-item-template>
 </template>

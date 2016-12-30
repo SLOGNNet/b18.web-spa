@@ -1,0 +1,28 @@
+@import '../../../../../assets/styles/variables';
+
+:host {
+  width: 100%;
+
+  .dropdown-address-item-wrapper {
+    display: flex;
+    height: 75px;
+    padding: 0 17px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $border;
+
+    .full-properties-wrapper {
+      .name-title {
+        color: $black;
+        font-size: $small-font-size;
+      }
+
+      .properties {
+        color: $label-default-color;
+        font-size: $tiny-font-size;
+        margin-top: 10px;
+      }
+    }
+  }
+}

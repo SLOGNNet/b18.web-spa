@@ -10,7 +10,7 @@ import { BaseForm } from '../base-form';
 @Component(Object.assign({
   selector: 'contact-form',
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.scss']
+  styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactForm extends BaseForm {
   @Input()

@@ -1,5 +1,7 @@
-  <template let-data ngFor [ngForOf]="renderFormData" let-i="index">
-  <bd-remove-button class='bd-form-control' (click)='removeItem(data)' [prefixLabel]="label(i)"> </bd-remove-button>
-  <contact-form [group]='data.group' [contact]='data.item' [addresses]="addresses" [viewMode]="viewMode"></contact-form>
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index">
+  <div class='bd-form-list-item'>
+   <bd-remove-button class='bd-form-control' (click)='removeItem(data)' [prefixLabel]="label(i)"> </bd-remove-button>
+   <contact-form [group]='data.group' [contact]='data.item' [addresses]="addresses" [viewMode]="viewMode"></contact-form>
+ </div>
 </template>
 <bd-add-button class='bd-form-control' (click)='addNewItem()' [suffixLabel]="'Contact'"></bd-add-button>
