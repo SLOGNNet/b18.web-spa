@@ -1,18 +1,9 @@
 @import '../../assets/styles/variables';
+@import '../../assets/styles/styles';
 
-.details {
-  padding-bottom: calc(#{$form-control-height} + #{$default-margin});
-
-  form-navigation {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-  }
-
-  customer-form {
-    display: block;
-    height: 100%;
-  }
+customer-form {
+  display: block;
+  height: 100%;
 }
 
 .data-panel {

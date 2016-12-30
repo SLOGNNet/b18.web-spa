@@ -1,24 +1,9 @@
 @import '../../../assets/styles/variables';
 @import '../../../assets/styles/form-control';
+@import '../../../assets/styles/styles';
 
-.bd-button {
-  width: calc(50% - 3px);
-}
-
-.section {
-  display: flex;
-  justify-content: space-between;
-
-  &.btn-container {    
-    min-height: 80px;
-    max-height: 80px;
-    padding-top: 30px;
-
-    &.absolute {
-      position: absolute;
-      z-index: 2;
-    }
-  }
+.button-group {
+  padding-top: 30px;
 }
 
 .same-as-company-label {
@@ -37,12 +22,6 @@
 
   span {
     padding-left: 15px;
-  }
-}
-
-form {
-  &.scrollable {
-    padding-bottom: calc(#{$form-control-height} + #{$default-margin});
   }
 }
 

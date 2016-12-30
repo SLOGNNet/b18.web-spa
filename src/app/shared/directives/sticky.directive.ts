@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 })
 export class StickyDirective {
   @Input() top = true;
+  @Input() scrollable = true;
   private scrollableContainer = null;
 
   constructor(private elementRef: ElementRef) {
@@ -19,6 +20,8 @@ export class StickyDirective {
   private update() {
     this.scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
     const parentWidth =  this._getParentWidth();
+
+    this.elementRef.nativeElement.style.position = this.scrollable ? 'absolute' : '';
 
     if (this.elementRef.nativeElement.clientWidth !== parentWidth) {
       this.elementRef.nativeElement.style.width = parentWidth + 'px';

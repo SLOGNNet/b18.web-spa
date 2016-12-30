@@ -1,6 +1,10 @@
+@import './variables';
+
 .button-group {
+  z-index: 2;
   display: flex;
   width: 100%;
+  min-height: $form-control-height;
 
   .button {
     flex: 1;
@@ -10,4 +14,18 @@
       margin-right: 0;
     }
   }
+}
+
+.sticked-items-section {
+  display: block;
+  padding-bottom: calc(#{$form-control-height} + #{$default-margin});
+}
+
+.sticked-form-navigation {
+  z-index: 2;
+  top: 0;
+  display: block;
+  width: 100%;
+  min-height: $form-navigation-height;
+  max-height: $form-navigation-height;
 }

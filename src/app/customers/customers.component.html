@@ -9,15 +9,15 @@
         </bd-button>
         <swui-datatable
           #datatable
-          class='material striped'
-          [rows]='customers'
+          class="material striped"
+          [rows]="customers"
           [columns]="columns"
           [columnMode]="'force'"
           [headerHeight]="50"
           [footerHeight]="50"
           [rowHeight]="'auto'"
           [selectionType]="'single'"
-          (select)='onCustomerSelect($event)'
+          (select)="onCustomerSelect($event)"
           [limit]="10">
         </swui-datatable>
       </div>
@@ -27,9 +27,22 @@
     </second-pane>
 
     <third-pane>
-      <div class="details">
-        <form-navigation *ngIf='selectedCustomer' sticky [title]="'Customer'" [anchors]="anchors"></form-navigation>
-        <customer-form *ngIf='selectedCustomer' [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <div class="sticked-items-section">
+        <form-navigation 
+          *ngIf="selectedCustomer"
+          sticky
+          [title]="Customer"
+          [anchors]="anchors"
+          class="sticked-form-navigation">
+        </form-navigation>
+        <customer-form
+          *ngIf="selectedCustomer"
+          [scrollable]="true"
+          [customer]="selectedCustomer"
+          [viewMode]="customerViewMode"
+          (save)="onCustomerSave($event)"
+          (cancel)="onCustomerCancel()">
+        </customer-form>
       </div>
     </third-pane>
 </multi-pane-layout>

@@ -2,10 +2,6 @@
 @import '../../../assets/styles/form-control';
 @import '../../../assets/styles/styles';
 
-.wrapper {
-  padding-bottom: calc(#{$form-control-height} + #{$default-margin});
-}
-
 .dropdown-customer-item-wrapper {
   display: flex;
   height: 75px;
@@ -28,29 +24,10 @@
   }
 }
 
-.bd-form {
-  .bd-form-title {
-    margin: 30px 0 20px 15px;
-    color: $black;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-}
-
-form-navigation {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  display: block;
-  width: 100%;
-  min-height: $form-navigation-height;
-  max-height: $form-navigation-height;
-}
-
-.button-group {
-  position: absolute;
-  z-index: 2;
-  min-height: $form-control-height;
-  max-height: $form-control-height;
+.bd-form-title {
+  margin: 30px 0 20px 15px;
+  color: $black;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
