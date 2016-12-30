@@ -1,17 +1,26 @@
 @import '../../assets/styles/variables';
 
+.details {
+  padding-bottom: calc(#{$form-control-height} + #{$default-margin});
+
+  form-navigation {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+  }
+
+  customer-form {
+    display: block;
+    height: 100%;
+  }
+}
+
 .data-panel {
   height: 100%;
-  overflow-y: auto;
 
   .add-button {
     display: block;
     width: 70px;
     margin-bottom: 17px;
   }
-}
-
-customer-form {
-  display: block;
-  height: calc(100% - #{$form-navigation-height});
 }

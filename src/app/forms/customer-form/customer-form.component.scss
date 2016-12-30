@@ -9,10 +9,15 @@
   display: flex;
   justify-content: space-between;
 
-  &.btn-container {
+  &.btn-container {    
     min-height: 80px;
     max-height: 80px;
     padding-top: 30px;
+
+    &.absolute {
+      position: absolute;
+      z-index: 2;
+    }
   }
 }
 
@@ -35,15 +40,14 @@
   }
 }
 
-.scrollable-cantainer {
-  overflow-y: auto;
-}
-
 form {
   &.scrollable {
-    display: flex;
-    height: 100%;
-    max-width: 100%;
-    flex-direction: column;
+    padding-bottom: calc(#{$form-control-height} + #{$default-margin});
+  }
+}
+
+navigation-anchor {
+  &.not-scrollable {
+    padding-top: $form-navigation-height;
   }
 }

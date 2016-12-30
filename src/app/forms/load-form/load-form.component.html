@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <form-navigation [title]="'Load'" [anchors]="anchors"></form-navigation>
+  <form-navigation sticky [title]="'Load'" [anchors]="anchors"></form-navigation>
   <template #customItemTemplate let-model="item" let-index="index">
       <div class="customer-item-wrapper">
         <div class="name-number-wrapper">
@@ -14,7 +14,7 @@
   </template>
   <div class="bd-form">
     <form [formGroup]="loadForm" class="edit">
-      <navigation-anchor id="customer"></navigation-anchor>
+      <navigation-anchor id="load"></navigation-anchor>
       <bd-form-section labelText="Load">
         <bd-input class="bd-form-control" [labelText]="'Load Number'" formControlName="loadNumber">
         </bd-input>
@@ -25,6 +25,7 @@
         <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
         </bd-dropdown>
       </bd-form-section>
+      <navigation-anchor id="customer"></navigation-anchor>
       <bd-form-section labelText="Customer">
         <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
           <bd-typeahead
@@ -106,7 +107,7 @@
         </bd-form-section>
     </form>
   </div>
-  <div class="button-group">
+  <div class="button-group" sticky [top]="false">
     <bd-button
       [text]="'Cancel'"
       class="bd-button button"

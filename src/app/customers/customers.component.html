@@ -27,7 +27,9 @@
     </second-pane>
 
     <third-pane>
-      <form-navigation *ngIf='selectedCustomer' [title]="'Customer'" [anchors]="anchors"></form-navigation>
-      <customer-form *ngIf='selectedCustomer' [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
+      <div class="details">
+        <form-navigation *ngIf='selectedCustomer' sticky [title]="'Customer'" [anchors]="anchors"></form-navigation>
+        <customer-form *ngIf='selectedCustomer' [scrollable]="true" [customer]='selectedCustomer' (save)="onCustomerSave($event)" (cancel)="onCustomerCancel()" [viewMode]="customerViewMode"> </customer-form>
+      </div>
     </third-pane>
 </multi-pane-layout>
