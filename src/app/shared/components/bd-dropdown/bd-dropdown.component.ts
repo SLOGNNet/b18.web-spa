@@ -1,4 +1,5 @@
-import { Component, Input, Optional, Output, TemplateRef, EventEmitter, HostBinding, HostListener, forwardRef } from '@angular/core';
+import { Component, Input, Optional, Output, TemplateRef, EventEmitter,
+  HostBinding, HostListener, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { isNil } from 'lodash';
@@ -7,7 +8,8 @@ const noop = () => { };
 @Component({
   selector: 'bd-dropdown',
   styleUrls: ['bd-dropdown.component.scss'],
-  templateUrl: './bd-dropdown.component.html'
+  templateUrl: './bd-dropdown.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdDropdownComponent implements ControlValueAccessor {
 
@@ -15,7 +17,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Input() dropdownFooterTemplate: TemplateRef<any>;
   @Input() dropdownItemTemplate: TemplateRef<any>;
   @Input() toogleTemplate: TemplateRef<any>;
-
+  @Input() items: any[];
   @Input() clearLabel: string = '';
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
@@ -30,7 +32,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
-  private _items: any[] = [];
   private _selectedValue: any;
 
   constructor(@Optional() ngControl: NgControl) {
@@ -60,13 +61,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   get isSelectedValue(){
     return !isNil(this.getSelectedItem());
-  }
-
-  @Input() set items(args: any[]){
-    this._items = args;
-  }
-  get items(): any[]{
-    return this._items;
   }
 
   @Input() set selectedValue(value: any) {
@@ -104,6 +98,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
-  }
+    }
 
 }

@@ -40,7 +40,7 @@
         (click)="_handleDropdownHeaderClick($event)">
           {{clearLabel}}
       </li>
-      <li *ngFor="let item of _items" [ngClass]="{'template-item': dropdownItemTemplate}"
+      <li *ngFor="let item of items" [ngClass]="{'template-item': dropdownItemTemplate}"
           (click)="_handleDropdownItemClick($event, item)">
         <template *ngIf="dropdownItemTemplate"
           [ngTemplateOutlet]="dropdownItemTemplate"

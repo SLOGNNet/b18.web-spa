@@ -1,1 +1,2 @@
-export * from './commodity/commodity.component';
+export * from './commodity';
+export * from './header';
