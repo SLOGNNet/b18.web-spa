@@ -1,9 +1,13 @@
-<base-commodity-form
+<commodities-header [titles]='titles' [fucsedColumnIndex]='focusedCol'></commodities-header>
+<pickup-commodity
+  class='commodity-item'
+  *ngFor="let data of renderFormData; let i = index; trackBy:commodityTrackBy"
   [viewMode]="viewMode"
-  #commodityForm
-  [formArray]="formArray"
-  (update)="onUpdate($event)"
-  (remove)="onRemove($event)"
-  [items]="commodities">
-</base-commodity-form>
-<bd-add-button class="bd-form-control" (mousedown)="onAdd()"></bd-add-button>
+  [commodity]="data.item"
+  [group]="data.group"
+  (blur)="onBlur($event)"
+  (focus)="onFocus($event)"
+  (update)="updateItem($event)"
+  (remove)="removeItem(data)">
+</pickup-commodity>
+<bd-add-button class="bd-form-control" (mousedown)="addNewItem()"></bd-add-button>

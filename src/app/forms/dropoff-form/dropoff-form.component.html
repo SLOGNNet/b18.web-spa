@@ -6,7 +6,7 @@
   </bd-input>
   <drop-off-commodity-form
     [formArray]="formGroup.controls.commodities"
-    [commodities]="stop.commodities"
+    [items]="stop.commodities"
     [availablePickups]="availablePickups"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"

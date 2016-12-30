@@ -3,31 +3,21 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseListForm } from '../../base-list-form';
 
-@Component(Object.assign({
-  selector: 'base-commodity-form',
-  templateUrl: './base-commodity-form.component.html',
-  styleUrls: ['./base-commodity-form.component.scss'],
-}, BaseListForm.metaData))
-
 export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
-
-  private focusedCol = null;
-  private titles = [
-    { name: 'PICKUP<br />#' },
-    { name: 'P.O.' },
-    { name: 'COMMO-<br />DITY' },
-    { name: 'UNIT<br />TYPE' },
-    { name: 'UNIT<br />COUNT' },
-    { name: 'PALLET<br />COUNT' },
-    { name: 'WEIGHT<br />(IBS)' }
-  ];
-
+  static metaData = BaseListForm.metaData;
+  protected focusedCol = null;
+  protected titles: Array<{name: string}>;
   constructor(formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
     super(formBuilder);
   }
 
-  commodityTrackBy(index: number, obj: Commodity): any {
-    return obj.id;
+  ngOnChanges(changes: any) {
+    super.ngOnChanges(changes);
+    this.titles = this.createTitles();
+  }
+
+  commodityTrackBy(index: number, commodityData: any): any {
+    return commodityData.item.id;
   }
 
   public addCommodity(commodity: Commodity) {
@@ -38,13 +28,24 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
     return false;
   }
 
-  protected createItem(): Commodity {
-    return new Commodity();
+  protected createTitles() {
+    return [
+      { name: 'P.O.' },
+      { name: 'COMMO-<br />DITY' },
+      { name: 'UNIT<br />TYPE' },
+      { name: 'UNIT<br />COUNT' },
+      { name: 'PALLET<br />COUNT' },
+      { name: 'WEIGHT<br />(IBS)' }
+    ];
   }
 
   protected removeItem(removeData) {
     super.removeItem(removeData);
     this.focusedCol = null;
+  }
+
+  protected createItem(): Commodity {
+    return new Commodity();
   }
 
   private onBlur(col) {

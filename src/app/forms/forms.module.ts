@@ -11,7 +11,8 @@ import { PickupsFormComponent } from './pickups-form';
 import { SharedModule } from '../shared/shared.module';
 
 import { BdLoadFormComponent } from './load-form';
-import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
+import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
+  PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { CommodityComponent, BaseCommodityFormComponent, PickUpCommodityFormComp
     ContactForm,
     ContactsForm,
     BdLoadFormComponent,
-    CommodityComponent,
-    BaseCommodityFormComponent,
+    DropoffpCommodityComponent,
+    PickupCommodityComponent,
+    CommoditiesHeaderComponent,
     DropoffFormComponent,
     DropoffsFormComponent,
     PickupFormComponent,
