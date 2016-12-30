@@ -1,42 +1,42 @@
 <bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode">
-	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)" [class.scrollable]="scrollable">
-		<div [class.scrollable-cantainer]="scrollable">
-			<navigation-anchor id="customer-basic-information"></navigation-anchor>
-			<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
-				<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
+	<form [formGroup]="customerForm" novalidate (ngSubmit)="submit(customerForm.value, customerForm.valid)">
+		<navigation-anchor id="customer-basic-information" [isNestedForm]="isNestedForm"></navigation-anchor>
+		<bd-form-section [labelText]="'CUSTOMER > BASIC INFORMATION'" [isExpanded]='isExpanded'>
+			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
+			</bd-input>
+			<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="type" [items]="customerTypes">
+			</bd-dropdown>
+			<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
+			</bd-form-switch>
+			<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
+				<bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">
 				</bd-input>
-				<bd-dropdown class="bd-form-control" [labelText]="'Customer type'" formControlName="type" [items]="customerTypes">
-				</bd-dropdown>
-				<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="customerStatuses">
-				</bd-form-switch>
-				<bd-validator [component]="customerForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
-					<bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">
-					</bd-input>
-				</bd-validator>
-				<bd-input class="bd-form-control" [labelText]="'Tax ID (W9)'" formControlName="taxId" *ngIf="isExpanded">
-				</bd-input>
-			</bd-form-section>
-			<navigation-anchor id="customer-addresses"></navigation-anchor>
-			<bd-form-section [labelText]="'CUSTOMER > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
-				<addresses-form [formArray]='customerForm.controls.addresses' (update)="onAddressChange($event)" (remove)="onAddressRemove($event)" (add)="onAddressAdd($event)"  [items]='customer.addresses' [viewMode]="viewMode"></addresses-form>
-			</bd-form-section>
-			<navigation-anchor id="customer-contacts"></navigation-anchor>
-			<bd-form-section [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
-				<contacts-form [formArray]='customerForm.controls.contacts' [addresses]='customer.addresses' [items]='customer.contacts' [viewMode]="viewMode"></contacts-form>
-			</bd-form-section>
-    </div>
-		<div class="section btn-container" *ngIf="isEditMode">
-			<bd-button
-				(click)="onCancel()"
-				[text]="'Cancel'"
-				class="bd-button">
-			</bd-button>
-			<bd-button
-				type="submit"
-				color="primary"
-				class="bd-button"
-				[text]="submitButtonText">
-			</bd-button>
-		</div>
+			</bd-validator>
+			<bd-input class="bd-form-control" [labelText]="'Tax ID (W9)'" formControlName="taxId" *ngIf="isExpanded">
+			</bd-input>
+		</bd-form-section>
+		<navigation-anchor id="customer-addresses" [isNestedForm]="isNestedForm"></navigation-anchor>
+		<bd-form-section [labelText]="'CUSTOMER > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
+			<addresses-form [formArray]='customerForm.controls.addresses' (update)="onAddressChange($event)" (remove)="onAddressRemove($event)" (add)="onAddressAdd($event)"  [items]='customer.addresses' [viewMode]="viewMode"></addresses-form>
+		</bd-form-section>
+		<navigation-anchor id="customer-contacts" [isNestedForm]="isNestedForm"></navigation-anchor>
+		<bd-form-section [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
+			<contacts-form [formArray]='customerForm.controls.contacts' [addresses]='customer.addresses' [items]='customer.contacts' [viewMode]="viewMode"></contacts-form>
+		</bd-form-section>
+		<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
+			<div class="button-group">
+				<bd-button
+					(click)="onCancel()"
+					[text]="'Cancel'"
+					class="button">
+				</bd-button>
+				<bd-button
+					type="submit"
+					color="primary"
+					class="button"
+					[text]="submitButtonText">
+				</bd-button>
+			</div>
+		</form-sticky-bottom-container>
 	</form>
 </bd-form-expand>

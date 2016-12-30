@@ -3,7 +3,7 @@ import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
   public static metaData: Object = {
-    inputs: ['viewMode'],
+    inputs: ['viewMode', 'isNestedForm'],
     host: {
       '[class.bd-view-mode]' : '!isEditMode',
       '[class.bd-edit-mode]' : 'isEditMode'
