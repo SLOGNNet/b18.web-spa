@@ -14,8 +14,8 @@
   </template>
   <div class="bd-form">
     <form [formGroup]="loadForm" class="edit">
-      <navigation-anchor id="customer"></navigation-anchor>
-      <bd-form-section labelText="Load">
+      <navigation-anchor id="info"></navigation-anchor>
+      <bd-form-section labelText="Info" id="info">
         <bd-input class="bd-form-control" [labelText]="'Load Number'" formControlName="loadNumber">
         </bd-input>
         <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
@@ -25,6 +25,7 @@
         <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
         </bd-dropdown>
       </bd-form-section>
+      <navigation-anchor id="customer"></navigation-anchor>
       <bd-form-section labelText="Customer">
         <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
           <bd-typeahead
