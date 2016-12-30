@@ -1,14 +1,22 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BaseForm } from '../../../../base-form';
-import { Commodity } from '../../../../../models';
+import { Commodity, StopTypes } from '../../../../../models';
 
+export class CommodityField {
+  name: string;
+  hidden?: boolean;
+  type: string;
+  validators: Array<any>;
+}
 @Component(Object.assign({
   selector: 'commodity',
   templateUrl: './commodity.component.html',
   styleUrls: ['./commodity.component.scss']
 }, BaseForm.metaData))
+
 export class CommodityComponent extends BaseForm {
+  public static metaData: Object = BaseForm.metaData;
 
   @Input('group')
   public commodityForm: FormGroup = this.formBuilder.group({});
@@ -19,23 +27,19 @@ export class CommodityComponent extends BaseForm {
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();
   @Output() update = new EventEmitter();
-  public fields = [
-    { name: 'pickupNumber', type: 'text', validators: [] },
-    { name: 'po', type: 'text', validators: [] },
-    { name: 'commodity', type: 'text', validators: [] },
-    { name: 'unitType', type: 'text', validators: [] },
-    { name: 'unitCount', type: 'text', validators: [] },
-    { name: 'palletCount', type: 'text', validators: [] },
-    { name: 'weight', type: 'text', validators: [] }
-  ];
 
+  private _fields: Array<CommodityField> = new Array<CommodityField>();
   private _isActive = false;
 
   constructor(private formBuilder: FormBuilder) {
     super();
   }
 
-  ngOnChanges() {
+  trackByIndex(index: number, item: any): any {
+    return index;
+  }
+
+  ngOnChanges(changes: any) {
     this.initCommodity(this.commodity);
     this.commodityForm.valueChanges.subscribe(value => {
       if (this.commodityForm) {
@@ -44,13 +48,35 @@ export class CommodityComponent extends BaseForm {
     });
   }
 
+  protected getFields(): Array<CommodityField> {
+    const fields = [
+      { name: 'id', hidden: true, type: 'text', validators: [] },
+      { name: 'pickupId', hidden: true, type: 'text', validators: [] },
+      { name: 'dropoffId', hidden: true, type: 'text', validators: [] },
+      { name: 'pickupNumber', hidden: true, type: 'text', validators: [] },
+      { name: 'dropoffNumber', hidden: true, type: 'text', validators: [] },
+      { name: 'po', type: 'text', validators: [] },
+      { name: 'commodity', type: 'text', validators: [] },
+      { name: 'unitType', type: 'text', validators: [] },
+      { name: 'unitCount', type: 'text', validators: [] },
+      { name: 'palletCount', type: 'text', validators: [] },
+      { name: 'weight', type: 'text', validators: [] }
+    ];
+    return fields;
+  }
+
   private initCommodity(commodity: Commodity) {
-    this.fields.forEach(field => {
+    this._fields = this.getFields();
+    this._fields.forEach(field => {
       this.commodityForm.addControl(
-       field.name,
+        field.name,
         this.formBuilder.control({ value: this.commodity[field.name], disabled: this.disabled }, field.validators)
       );
     });
+  }
+
+  private visibleFields(fields: Array<CommodityField>) {
+    return fields.filter(f => !f.hidden);
   }
 
   private onBlur(e) {

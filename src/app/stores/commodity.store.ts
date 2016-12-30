@@ -45,7 +45,7 @@ export class CommodityStore {
   public update(updated: Commodity) {
     const newCommodities = this._commodities
       .getValue()
-      .map(commodity => (commodity.id === updated.id ? updated : commodity));
+      .map(commodity => (commodity.id === updated.id ? Object.assign({}, updated) : commodity));
     this._commodities.next(newCommodities);
   }
 

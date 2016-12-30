@@ -31,7 +31,7 @@ export class AddressStore {
   public update(updated: Address) {
     const updateItems = this._addresses
       .getValue()
-      .map(address => (address.id === updated.id ? updated : address));
+      .map(address => (address.id === updated.id ? Object.assign({}, updated) : address));
     this._addresses.next(updateItems);
   }
 
