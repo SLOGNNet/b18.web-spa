@@ -5,7 +5,9 @@
   padding-top: $form-navigation-height; 
   margin-top: -$form-navigation-height; 
 
-  &:first-child { 
-    padding-top: $form-navigation-height * 2; 
+  &:first-child {
+    &:not(.nested-form) {
+      padding-top: $form-navigation-height * 2;
+    }
   } 
 }
