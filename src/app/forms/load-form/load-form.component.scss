@@ -2,6 +2,10 @@
 @import '../../../assets/styles/form-control';
 @import '../../../assets/styles/styles';
 
+:host {
+  display: block;
+}
+
 .dropdown-customer-item-wrapper {
   display: flex;
   height: 75px;
@@ -30,4 +34,8 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.button-group {
+  margin-top: 20px;
 }

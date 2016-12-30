@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, HostListener } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import * as $ from 'jquery';
 
 @Directive({
@@ -6,8 +6,6 @@ import * as $ from 'jquery';
 })
 export class StickyDirective {
   @Input() top = true;
-  @Input() scrollable = true;
-  private scrollableContainer = null;
 
   constructor(private elementRef: ElementRef) {
   }
@@ -16,22 +14,23 @@ export class StickyDirective {
     this.update();
   }
 
-  @HostListener('window:resize')
   private update() {
-    this.scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
     const parentWidth =  this._getParentWidth();
-
-    this.elementRef.nativeElement.style.position = this.scrollable ? 'absolute' : '';
+    let updatedTop: string = '';
 
     if (this.elementRef.nativeElement.clientWidth !== parentWidth) {
       this.elementRef.nativeElement.style.width = parentWidth + 'px';
     }
 
-    if (this.scrollableContainer && !this.top) {
-      this.elementRef.nativeElement.style.top = this.scrollableContainer.clientHeight - this.elementRef.nativeElement.clientHeight + 'px';
-    } else {
-      this.elementRef.nativeElement.style.top = '';
+    if (!this.top) {
+      const scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
+
+      if (scrollableContainer) {
+        updatedTop = scrollableContainer.clientHeight - this.elementRef.nativeElement.clientHeight + 'px';
+      }
     }
+
+    this.elementRef.nativeElement.style.top = updatedTop;
   }
 
   private _getParentWidth() {

@@ -1,4 +1,3 @@
-<div class="sticked-items-section">
   <form-navigation sticky [title]="'Load'" [anchors]="anchors" class="sticked-form-navigation"></form-navigation>
   <template #customItemTemplate let-model="item" let-index="index">
       <div class="dropdown-customer-item-wrapper">
@@ -41,7 +40,7 @@
           [optionField]="'name'">
         </bd-typeahead>
       </bd-validator>
-        <customer-form *ngIf='load.customer' [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+        <customer-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
         <bd-form-section>
           <bd-dropdown
             *ngIf='load.customer'
@@ -106,21 +105,22 @@
           </bd-textarea>
         </bd-form-section>
       </bd-form-section>
-      <div class="button-group" sticky [top]="false">
-        <bd-button
-          [text]="'Cancel'"
-          class="bd-button button"
-          (click)="onLoadCancel()">
-        </bd-button>
-        <bd-button
-          color="primary"
-          class="bd-button button"
-          [text]="'Save'"
-          (click)="onLoadSave()">
-        </bd-button>
-      </div>
+      <form-sticky-bottom-container>
+        <div class="button-group">
+          <bd-button
+            [text]="'Cancel'"
+            class="bd-button button"
+            (click)="onLoadCancel()">
+          </bd-button>
+          <bd-button
+            color="primary"
+            class="bd-button button"
+            [text]="'Save'"
+            (click)="onLoadSave()">
+          </bd-button>
+        </div>
+      </form-sticky-bottom-container>
   </form>
   <template #addressDropdown let-item="item">
     <address-item-template [item]='item'></address-item-template>
   </template>
-</div>
