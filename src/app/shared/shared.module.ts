@@ -19,6 +19,7 @@ import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
+import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
@@ -67,6 +68,7 @@ import { StickyDirective } from './directives/sticky.directive';
     GoogleMapComponent,
     FormNavigationComponent,
     NavigationAnchorComponent,
+    AddressItemTemplate
     StickyDirective
   ],
   imports: [
@@ -102,6 +104,7 @@ import { StickyDirective } from './directives/sticky.directive';
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,
+    AddressItemTemplate,
     HttpModule
   ]
 

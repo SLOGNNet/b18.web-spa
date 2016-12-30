@@ -6,7 +6,7 @@
   padding-bottom: calc(#{$form-control-height} + #{$default-margin});
 }
 
-.customer-item-wrapper {
+.dropdown-customer-item-wrapper {
   display: flex;
   height: 75px;
   padding: 0 17px;
@@ -14,19 +14,18 @@
   justify-content: space-between;
   align-items: center;
 
-  .name-number-wrapper {
-    .name {
+  .full-properties-wrapper {
+    .name-title {
       color: $black;
       font-size: $small-font-size;
     }
 
-    .number {
+    .properties {
       color: $label-default-color;
       font-size: $tiny-font-size;
       margin-top: 10px;
     }
   }
-
 }
 
 .bd-form {
