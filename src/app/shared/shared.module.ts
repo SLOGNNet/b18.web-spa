@@ -68,7 +68,7 @@ import { StickyDirective } from './directives/sticky.directive';
     GoogleMapComponent,
     FormNavigationComponent,
     NavigationAnchorComponent,
-    AddressItemTemplate
+    AddressItemTemplate,
     StickyDirective
   ],
   imports: [
