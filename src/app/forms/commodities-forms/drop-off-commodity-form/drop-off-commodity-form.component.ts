@@ -19,13 +19,6 @@ export class DropOffCommodityFormComponent extends BaseCommodityFormComponent {
     super(formBuilder, cdr);
   }
 
-  ngOnChanges(changes: any) {
-    super.ngOnChanges(changes);
-  }
-
-  superTest() {
-
-  }
   pickupSelect(commodity: Commodity) {
     this.select.emit(commodity);
   }

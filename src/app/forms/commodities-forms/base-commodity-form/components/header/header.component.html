@@ -1,7 +1,7 @@
 <div class="header">
   <div
     *ngFor="let title of titles; let i=index"
-    [class.active]="fucsedColumnIndex == i">
+    [class.active]="focusedColumnIndex == i">
     <p [innerHTML]="title.name"></p>
   </div>
 </div>

@@ -7,6 +7,6 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 })
 
 export class CommoditiesHeaderComponent  {
-  @Input() fucsedColumnIndex: number = null;
+  @Input() focusedColumnIndex: number = null;
   @Input() titles: Array<string> = new Array<string>();
 }

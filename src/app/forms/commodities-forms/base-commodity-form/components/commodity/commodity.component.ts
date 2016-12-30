@@ -9,11 +9,6 @@ export class CommodityField {
   type: string;
   validators: Array<any>;
 }
-@Component(Object.assign({
-  selector: 'commodity',
-  templateUrl: './commodity.component.html',
-  styleUrls: ['./commodity.component.scss']
-}, BaseForm.metaData))
 
 export class CommodityComponent extends BaseForm {
   public static metaData: Object = BaseForm.metaData;
