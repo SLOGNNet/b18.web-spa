@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
 
 @Directive({
   selector: '[sticky]'
@@ -6,7 +6,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class StickyDirective {
   @Input() top = true;
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
   ngAfterViewChecked() {
@@ -23,6 +23,7 @@ export class StickyDirective {
 
     if (this.elementRef.nativeElement.clientWidth !== parentWidth) {
       this.elementRef.nativeElement.style.width = parentWidth + 'px';
+      this.cdr.detectChanges();
     }
   }
 
