@@ -328,7 +328,8 @@ class MockData {
     address: this.addresses[2],
     date: 'date',
     commodities: [this.commodities[2]]
-  },{
+  },
+  {
     id: 4,
     notes: 'notes',
     type: StopTypes.Pickup,
@@ -360,7 +361,8 @@ class MockData {
     address: this.addresses[2],
     date: 'date',
     commodities: [this.commodities[2]]
-  },{
+  },
+  {
     id: 8,
     notes: 'notes',
     type: StopTypes.Dropoff,
