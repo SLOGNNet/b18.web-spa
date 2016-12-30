@@ -71,7 +71,7 @@ export class BdInputComponent {
   private _prefixEmpty: boolean = false;
   private _suffixEmpty: boolean = false;
   private _disabled: boolean = false;
-  @Output() private blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+  private blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
   ngAfterViewInit() {
@@ -105,9 +105,7 @@ export class BdInputComponent {
   }
 
   blur() {
-    const blurEvent = new Event('blur', { bubbles: true });
-    this.renderer.invokeElementMethod(
-      this.element.nativeElement, 'dispatchEvent', [blurEvent]);
+    this._handleBlur();
   }
 
   _handleFocus(event: FocusEvent) {
@@ -136,10 +134,12 @@ export class BdInputComponent {
     this._handleChange(event);
   }
 
-  _handleBlur(event: FocusEvent) {
+  _handleBlur() {
+    const blurEvent = new Event('blur', { bubbles: true });
+    this.renderer.invokeElementMethod(
+      this.element.nativeElement, 'dispatchEvent', [blurEvent]);
     this._focused = false;
     this._onTouchedCallback();
-    this.blurEmitter.emit(event);
     this.focusChange.emit(this._focused);
   }
 

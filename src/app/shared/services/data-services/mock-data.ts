@@ -192,6 +192,22 @@ class MockData {
    personalEmail: 'sspearow@TQL.com',
    position: 'sales',
    addressId: 2
+ },
+ {
+   id: 3,
+   firstName: 'Emma',
+   lastName: 'Watson',
+   personalEmail: 'Emma@TQL.com',
+   position: 'sales',
+   addressId: 3
+ },
+ {
+   id: 4,
+   firstName: 'Johnny',
+   lastName: 'Depp',
+   personalEmail: 'Johnny@TQL.com',
+   position: 'sales',
+   addressId: 4
  }
  ];
 
@@ -221,7 +237,7 @@ class MockData {
       id: 3,
       name: 'United Freight Service UFS',
       addresses: [this.addresses[2], this.billingAddresses[2]],
-      contacts: this.contacts,
+      contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
@@ -232,7 +248,7 @@ class MockData {
       id: 4,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       addresses: [this.addresses[3], this.billingAddresses[3]],
-      contacts: this.contacts,
+      contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
