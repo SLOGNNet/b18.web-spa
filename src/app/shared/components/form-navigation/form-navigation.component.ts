@@ -1,11 +1,12 @@
-import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, ViewChild, OnChanges } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, ViewChild, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { chain, sortBy, findLastIndex } from 'lodash';
 
 @Component({
   selector: 'form-navigation',
   templateUrl: './form-navigation.component.html',
   styleUrls: ['./form-navigation.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormNavigationComponent implements OnChanges {
   @Input() title: string = '';
@@ -20,8 +21,10 @@ export class FormNavigationComponent implements OnChanges {
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
-  ngOnChanges() {
-    this._update();
+  ngOnChanges(changes) {
+    if (changes.anchors) {
+      this._update();
+    }
   }
 
   ngAfterViewInit() {
@@ -64,7 +67,7 @@ export class FormNavigationComponent implements OnChanges {
     if (this._activeAnchor !== activeIndex) {
       this._activeAnchor = activeIndex;
       this._scrollToActiveLinkButton();
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     }
   }
 
