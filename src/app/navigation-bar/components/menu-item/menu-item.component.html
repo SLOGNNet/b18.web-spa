@@ -4,7 +4,7 @@
   <a *ngIf="menuItem.link" [routerLink]="[menuItem.link]">{{menuItem.label}}</a>
 
   <div *ngIf="menuItem.items" class="sub-menu">
-    <div class="sub-menu-item" [hidden]="subMenu.hidden" [routerLinkActive]="['active']" *ngFor="let subMenu of menuItem.items">
+    <div class="sub-menu-item" [hidden]="subMenu.hidden" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" *ngFor="let subMenu of menuItem.items">
       <a *ngIf="!subMenu.link">{{subMenu.label}}</a>
       <a *ngIf="subMenu.link" [routerLink]="[subMenu.link]">{{subMenu.label}}</a>
     </div>

@@ -5,19 +5,19 @@
           class="add-button"
           [color]="'primary'"
           [text]="'Add'"
-          (click)="onAddCustomer()">
+          (click)="onAdd()">
         </bd-button>
         <swui-datatable
           #datatable
           class="material striped"
-          [rows]="customers"
+          [rows]="items"
           [columns]="columns"
           [columnMode]="'force'"
           [headerHeight]="50"
           [footerHeight]="50"
           [rowHeight]="'auto'"
           [selectionType]="'single'"
-          (select)="onCustomerSelect($event)"
+          (select)="onSelect($event)"
           [limit]="10">
         </swui-datatable>
       </div>
@@ -27,20 +27,18 @@
     </second-pane>
 
     <third-pane>
-      <div>
-        <form-navigation 
-          *ngIf="selectedCustomer"
+      <div *ngIf="selectedItem">
+        <form-navigation
           sticky
           [title]="'Customer'"
           [anchors]="anchors">
         </form-navigation>
         <customer-form
-          *ngIf="selectedCustomer"
           [scrollable]="true"
-          [customer]="selectedCustomer"
+          [customer]="selectedItem"
           [viewMode]="customerViewMode"
-          (save)="onCustomerSave($event)"
-          (cancel)="onCustomerCancel()">
+          (save)="onItemSave($event)"
+          (cancel)="onItemCancel()">
         </customer-form>
       </div>
     </third-pane>

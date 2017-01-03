@@ -1,4 +1,3 @@
-<form-navigation [title]="'Load'" [anchors]="anchors" sticky></form-navigation>
 <template #customItemTemplate let-model="item" let-index="index">
     <div class="dropdown-customer-item-wrapper">
       <div class="full-properties-wrapper">
@@ -42,87 +41,87 @@
         [optionField]="'name'">
       </bd-typeahead>
     </bd-validator>
-      <customer-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
-      <bd-form-section>
-        <bd-dropdown
-          *ngIf='load.customer'
-          class="bd-form-control"
-          labelText='Address'
-          clearLabel='Leave Empty'
-          formControlName="addressId"
-          defaultTitleText="Select address"
-          [dropdownItemTemplate]="addressDropdown"
-          [items]="load.customer.addresses"
-          keyField="id"
-          valueField="name">
-        </bd-dropdown>
-      </bd-form-section>
-      <bd-form-section>
-        <bd-dropdown
-          *ngIf='load.customer'
-          clearLabel='Leave Empty'
-          class="bd-form-control"
-          labelText='Billing Address'
-          formControlName="billingAddressId"
-          defaultTitleText="Select Billing Address"
-          [dropdownItemTemplate]="addressDropdown"
-          [items]="load.customer.addresses"
-          keyField="id"
-          valueField="name">
-        </bd-dropdown>
-      </bd-form-section>
-      <bd-form-section>
-        <bd-dropdown
-          *ngIf='load.customer'
-          clearLabel='Leave Empty'
-          class="bd-form-control"
-          labelText='Contact'
-          defaultTitleText="Select Contact"
-          formControlName="contactId"
-          [items]="load.customer.contacts"
-          keyField="id"
-          valueField="firstName">
-        </bd-dropdown>
-      </bd-form-section>
-      <navigation-anchor id="pickups"></navigation-anchor>
-      <bd-form-section labelText="PICKUPS">
-        <pickups-form [formArray]="loadForm.controls.pickups" [items]="load.pickups" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
-      </bd-form-section>
-      <navigation-anchor id="dropoffs"></navigation-anchor>
-      <bd-form-section labelText="DROPOFFS">
-        <dropoffs-form [formArray]="loadForm.controls.dropoffs" [items]="load.dropoffs" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
-      </bd-form-section>
-      <navigation-anchor id="requirements"></navigation-anchor>
-      <bd-form-section labelText="REQUIREMENTS">
-        <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirement" [items]="driverRequirementsNames">
-        </bd-form-switch>
-        <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
-        </bd-dropdown>
-        <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
-        </bd-dropdown>
-        <bd-textarea
-          class="bd-form-control"
-          formControlName="specialRequirment"
-        [labelText]="'Special Requirements'">
-        </bd-textarea>
-      </bd-form-section>
+    <customer-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+    <bd-form-section>
+      <bd-dropdown
+        *ngIf='load.customer'
+        class="bd-form-control"
+        labelText='Address'
+        clearLabel='Leave Empty'
+        formControlName="addressId"
+        defaultTitleText="Select address"
+        [dropdownItemTemplate]="addressDropdown"
+        [items]="load.customer.addresses"
+        keyField="id"
+        valueField="name">
+      </bd-dropdown>
     </bd-form-section>
-    <form-sticky-bottom-container>
-      <div class="button-group">
-        <bd-button
-          [text]="'Cancel'"
-          class="bd-button button"
-          (click)="onLoadCancel()">
-        </bd-button>
-        <bd-button
-          color="primary"
-          class="bd-button button"
-          [text]="'Save'"
-          (click)="onLoadSave()">
-        </bd-button>
-      </div>
-    </form-sticky-bottom-container>
+    <bd-form-section>
+      <bd-dropdown
+        *ngIf='load.customer'
+        clearLabel='Leave Empty'
+        class="bd-form-control"
+        labelText='Billing Address'
+        formControlName="billingAddressId"
+        defaultTitleText="Select Billing Address"
+        [dropdownItemTemplate]="addressDropdown"
+        [items]="load.customer.addresses"
+        keyField="id"
+        valueField="name">
+      </bd-dropdown>
+    </bd-form-section>
+    <bd-form-section>
+      <bd-dropdown
+        *ngIf='load.customer'
+        clearLabel='Leave Empty'
+        class="bd-form-control"
+        labelText='Contact'
+        defaultTitleText="Select Contact"
+        formControlName="contactId"
+        [items]="load.customer.contacts"
+        keyField="id"
+        valueField="firstName">
+      </bd-dropdown>
+    </bd-form-section>
+    <navigation-anchor id="pickups"></navigation-anchor>
+    <bd-form-section labelText="PICKUPS">
+      <pickups-form [formArray]="loadForm.controls.pickups" [items]="load.pickups" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
+    </bd-form-section>
+    <navigation-anchor id="dropoffs"></navigation-anchor>
+    <bd-form-section labelText="DROPOFFS">
+      <dropoffs-form [formArray]="loadForm.controls.dropoffs" [items]="load.dropoffs" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
+    </bd-form-section>
+    <navigation-anchor id="requirements"></navigation-anchor>
+    <bd-form-section labelText="REQUIREMENTS">
+      <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirement" [items]="driverRequirementsNames">
+      </bd-form-switch>
+      <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+      </bd-dropdown>
+      <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+      </bd-dropdown>
+      <bd-textarea
+        class="bd-form-control"
+        formControlName="specialRequirment"
+      [labelText]="'Special Requirements'">
+      </bd-textarea>
+    </bd-form-section>
+  </bd-form-section>
+  <form-sticky-bottom-container>
+    <div class="button-group">
+      <bd-button
+        [text]="'Cancel'"
+        class="bd-button button"
+        (click)="onLoadCancel()">
+      </bd-button>
+      <bd-button
+        color="primary"
+        class="bd-button button"
+        [text]="'Save'"
+        (click)="onLoadSave()">
+      </bd-button>
+    </div>
+  </form-sticky-bottom-container>
 </form>
-  <template #addressDropdown let-item="item">
-    <address-item-template [item]='item'></address-item-template>
-  </template>
+<template #addressDropdown let-item="item">
+  <address-item-template [item]='item'></address-item-template>
+</template>

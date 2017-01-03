@@ -13,7 +13,9 @@ export const ROUTES: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: 'drivers/:id', component: DriversComponent },
   { path: 'loads', component: LoadsComponent },
+  { path: 'loads/:id', component: LoadsComponent },
   { path: 'customers', component: CustomersComponent },
+  { path: 'customers/:id', component: CustomersComponent },
   { path: 'typeahead', component: TypeaheadDemoComponent },
   { path: '**',    component: NoContentComponent }
 ];

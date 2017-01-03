@@ -5,19 +5,19 @@
         class="add-button"
         [color]="'primary'"
         [text]="'Add'"
-        (click)="onAddLoad()">
+        (click)="onAdd()">
       </bd-button>
       <swui-datatable
         #datatable
         class='material striped'
-        [rows]='loads'
+        [rows]='items'
         [columns]="columns"
         [columnMode]="'force'"
         [headerHeight]="50"
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [selectionType]="'single'"
-        (select)='onLoadSelect($event)'
+        (select)='onSelect($event)'
         [limit]="10">
       </swui-datatable>
     </div>
@@ -27,6 +27,9 @@
   </second-pane>
 
   <third-pane>
-    <load-form *ngIf="selectedLoad" (save)="onLoadSave($event)" (cancel)="onLoadCancel($event)" [load]="selectedLoad" [viewMode]="loadViewMode"></load-form>
+    <div *ngIf="selectedItem">
+      <form-navigation [title]="'Load'" [anchors]="anchors" sticky></form-navigation>
+      <load-form (save)="onItemSave($event)" (cancel)="onItemCancel($event)" [load]="selectedItem" [viewMode]="viewMode"></load-form>
+    </div>
   </third-pane>
 </multi-pane-layout>

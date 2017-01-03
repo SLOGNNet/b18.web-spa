@@ -6,23 +6,22 @@ import { Customer } from '../models';
 import { CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
+import { CustomerStore } from '../stores';
+import {  ActivatedRoute, Router, Params } from '@angular/router';
+import { BaseListDetailComponent } from '../base';
 
 @Component({
   selector: 'customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss']
+  styleUrls: ['./customers.component.scss'],
+  providers: [CustomerStore]
 })
-export class CustomersComponent {
-  @ViewChild('datatable') datatable;
+export class CustomersComponent extends BaseListDetailComponent<Customer> {
   private columns = [
     { prop: 'id', name: 'Customer #' },
     { prop: 'name', name: 'Name' },
     { prop: 'status', name: 'Status' }
   ];
-  private selectedCustomer: Customer = null;
-  private customerViewMode: ViewMode = ViewMode.Edit;
-  private customers: Customer[] = new Array<Customer>();
-  private isCustomerNew = false;
   private anchors = [{
     id: 'customer-basic-information',
     title: 'Basic information'
@@ -64,44 +63,13 @@ export class CustomersComponent {
     title: 'Link'
   }];
 
-  constructor(private customerService: CustomerService) {
-    customerService.getAll().subscribe((customers) => {
-      this.customers = customers;
-    });
+  constructor(customerStore: CustomerStore,
+    route: ActivatedRoute,
+    router: Router) {
+      super(customerStore, route, router);
   }
 
-  private onAddCustomer() {
-    this.deselectRow();
-    this.isCustomerNew = true;
-    this.selectedCustomer = Customer.create();
-  }
-
-  private onCustomerSelect(customer) {
-    this.isCustomerNew = false;
-    this.selectedCustomer = cloneDeep(customer.selected[0]);
-  }
-
-  private onCustomerSave(customer) {
-    if (this.isCustomerNew) {
-      this.isCustomerNew = false;
-      this.customerService.create(customer);
-    } else {
-      this.customerService.update(customer);
-    }
-
-    this.selectedCustomer = cloneDeep(customer);
-  }
-
-  private onCustomerCancel(customer) {
-    if (this.isCustomerNew) {
-      this.isCustomerNew = false;
-      this.selectedCustomer = null;
-    } else {
-      this.selectedCustomer = cloneDeep(this.selectedCustomer);
-    }
-  }
-
-  private deselectRow() {
-    this.datatable.selected = [];
+  protected itemRoute(): string {
+    return 'customers/';
   }
 }
