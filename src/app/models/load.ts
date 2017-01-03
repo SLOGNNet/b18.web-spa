@@ -46,7 +46,8 @@ export class Load {
   id: number;
   customerId: number;
   addressId: number;
-  loadNumber: number;
+  carrierLoadNumber: number;
+  brokerLoadNumber: number;
   loadType: LoadType;
   freightType: FreightType;
   dataAssignee: DataAssigneeRequirements;
@@ -75,4 +76,3 @@ export class Load {
     return result;
   }
 }
-

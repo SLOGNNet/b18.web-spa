@@ -25,11 +25,13 @@ export class BdInputComponent {
 
   get isCollapsed() { return this.collapsibleInput && !this.focused && this.empty && this.isEmptyLabel; }
 
-  get isEmptyLabel() { return this.labelText; }
+  get isEmptyLabel() {
+    return !!this.labelText; }
 
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
   }
+
   get empty() { return (this._value == null || this._value === ''); }
 
   get value(): any {
@@ -101,6 +103,12 @@ export class BdInputComponent {
   focus($event) {
     this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'focus');
     $event.preventDefault();
+  }
+
+  labelClick(event){
+    if (!this.isCollapsed) {
+      event.preventDefault();
+    }
   }
 
   blur() {

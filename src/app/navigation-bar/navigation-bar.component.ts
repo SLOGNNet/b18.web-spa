@@ -14,25 +14,28 @@ export class NavigationBarComponent {
     @Input() switchState: SwitchState;
     @Output() switchStateChange: EventEmitter<any> = new EventEmitter();
 
-    private items = [{
-        label: 'Home',
-        icon: 'icon',
-        items: [{
-            label: 'Sub menu',
-            link: './home'
-        }, {
-            label: 'Sub menu1',
-            link: './home',
-            hidden: true
-        }, {
-            label: 'Sub menu',
-            link: './home',
-        }]
-    }, {
-        label: 'Drivers',
-        icon: 'icon',
-        link: './drivers/1'
-    }, {
+    private items = [
+    //   {
+    //     label: 'Home',
+    //     icon: 'icon',
+    //     items: [{
+    //         label: 'Sub menu',
+    //         link: './home'
+    //     }, {
+    //         label: 'Sub menu1',
+    //         link: './home',
+    //         hidden: true
+    //     }, {
+    //         label: 'Sub menu',
+    //         link: './home',
+    //     }]
+    // },
+    // {
+    //     label: 'Drivers',
+    //     icon: 'icon',
+    //     link: './drivers/1'
+    // },
+    {
         label: 'Loads',
         icon: 'icon',
         link: './loads',
