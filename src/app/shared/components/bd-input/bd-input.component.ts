@@ -108,7 +108,7 @@ export class BdInputComponent {
 
   checkLabel(event){
     if (!this.isCollapsed) {
-      event.stopPropagation();
+      event.preventDefault();
     }
   }
 
