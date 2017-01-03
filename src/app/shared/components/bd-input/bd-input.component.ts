@@ -3,6 +3,7 @@ import { Component, Input, Output, Optional, EventEmitter,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
+import { isEmpty } from 'lodash';
 let nextUniqueId = 0;
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -25,11 +26,13 @@ export class BdInputComponent {
 
   get isCollapsed() { return this.collapsibleInput && !this.focused && this.empty && this.isEmptyLabel; }
 
-  get isEmptyLabel() { return this.labelText; }
+  get isEmptyLabel() {
+    return !!this.labelText; }
 
   get characterCount(): number {
     return this.empty ? 0 : ('' + this._value).length;
   }
+
   get empty() { return (this._value == null || this._value === ''); }
 
   get value(): any {
@@ -101,6 +104,12 @@ export class BdInputComponent {
   focus($event) {
     this.renderer.invokeElementMethod(this._inputElement.nativeElement, 'focus');
     $event.preventDefault();
+  }
+
+  checkLabel(event){
+    if (!this.isCollapsed) {
+      event.stopPropagation();
+    }
   }
 
   blur() {
