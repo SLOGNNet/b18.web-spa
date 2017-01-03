@@ -23,17 +23,24 @@ export class FormNavigationComponent implements OnChanges {
 
   ngOnChanges(changes) {
     if (changes.anchors) {
-      this._update();
+      this._scrollableContainer = null;
+      this._init();
     }
   }
 
-  ngAfterViewInit() {
-    this._update();
+  ngAfterViewChecked() {
+    this._init();
   }
 
-  ngAfterViewChecked() {
+  private _init() {
     if (!this._scrollableContainer) {
-      const scrollableContainer = this._getScrollableParent(this._anchorList[0].parentNode);
+      this._update();
+
+      let scrollableContainer;
+
+      if (this._anchorList[0]) {
+        scrollableContainer = this._getScrollableParent(this._anchorList[0].parentNode);
+      }
 
       if (scrollableContainer) {
         this._scrollableContainer = scrollableContainer;
