@@ -35,11 +35,23 @@ export class NavigationBarComponent {
     }, {
         label: 'Loads',
         icon: 'icon',
-        link: './loads'
+        items: [{
+            label: 'new',
+            link: './loads/0'
+        }, {
+            label: 'loads',
+            link: './loads'
+        }]
     }, {
         label: 'Customers',
         icon: 'icon',
-        link: './customers'
+        items: [{
+            label: 'new',
+            link: './customers/0'
+        }, {
+            label: 'customers',
+            link: './customers'
+        }]
     }];
 
     onSwitchStateChange(switchState: SwitchState) {
