@@ -1,13 +1,15 @@
 @import '../../../../../../assets/styles/variables'; 
 
+$offset: $form-navigation-height - 20;
+
 :host { 
   display: block; 
-  padding-top: $form-navigation-height; 
-  margin-top: -$form-navigation-height; 
+  padding-top: $offset; 
+  margin-top: -$offset; 
 
   &:first-child {
     &:not(.nested-form) {
-      padding-top: $form-navigation-height * 2;
+      padding-top: $offset * 2;
     }
   } 
 }
