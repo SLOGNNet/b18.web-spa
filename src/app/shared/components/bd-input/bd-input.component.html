@@ -5,7 +5,7 @@
      [class.bd-not-empty-label]="isEmptyLabel"
 >
         <div class="bd-label"
-             (mousedown)="checkLabel($event)"
+             (mousedown)="labelClick($event)"
              [class.bd-hidden-label]="!isEmptyLabel">
           <label
             class="bd-input-placeholder"

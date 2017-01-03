@@ -3,7 +3,6 @@ import { Component, Input, Output, Optional, EventEmitter,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
-import { isEmpty } from 'lodash';
 let nextUniqueId = 0;
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -106,7 +105,7 @@ export class BdInputComponent {
     $event.preventDefault();
   }
 
-  checkLabel(event){
+  labelClick(event){
     if (!this.isCollapsed) {
       event.preventDefault();
     }
