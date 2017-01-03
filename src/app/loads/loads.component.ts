@@ -10,23 +10,56 @@ import {  ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListDetailComponent } from '../base';
 
 @Component({
-    selector: 'loads',
-    templateUrl: './loads.component.html',
-    styleUrls: ['./loads.component.scss'],
-    providers: [LoadStore]
+  selector: 'loads',
+  templateUrl: './loads.component.html',
+  styleUrls: ['./loads.component.scss'],
+  providers: [LoadStore]
 })
 export class LoadsComponent extends BaseListDetailComponent<Load>{
-
   columns = [
-     { prop: 'id', name: 'Load #' },
-     { prop: 'customer.name', name: 'Customer' },
-     { prop: 'status', name: 'Status'}
-   ];
+    { prop: 'id', name: 'Load #' },
+    { prop: 'customer.name', name: 'Customer' },
+    { prop: 'status', name: 'Status' }
+  ];
+  private anchors = [{
+    id: 'info',
+    title: 'Info'
+  },  {
+    id: 'customer',
+    title: 'Customer'
+  },  {
+    id: 'pickups',
+    title: 'Pickups'
+  }, {
+    id: 'dropoffs',
+    title: 'Dropoffs'
+  }, {
+    id: 'requirements',
+    title: 'Requirements'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }];
 
   constructor(loadStore: LoadStore,
     route: ActivatedRoute,
     router: Router) {
-      super(loadStore, route, router);
+    super(loadStore, route, router);
   }
 
   protected itemRoute(): string {
