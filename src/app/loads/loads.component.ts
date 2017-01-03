@@ -29,7 +29,7 @@ export class LoadsComponent extends BaseListDetailComponent<Load>{
       super(loadStore, route, router);
   }
 
-  protected itemRoute(item): string {
+  protected itemRoute(): string {
     return 'loads/';
   }
 }

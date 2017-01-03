@@ -69,7 +69,7 @@ export class CustomersComponent extends BaseListDetailComponent<Customer> {
       super(customerStore, route, router);
   }
 
-  protected itemRoute(item): string {
+  protected itemRoute(): string {
     return 'customers/';
   }
 }
