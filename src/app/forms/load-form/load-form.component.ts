@@ -33,56 +33,6 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
-  private anchors = [{
-    id: 'info',
-    title: 'Info'
-  },
-  {
-    id: 'customer',
-    title: 'Customer'
-  },
-  {
-    id: 'pickups',
-    title: 'Pickups'
-  },
-  {
-   id: 'dropoffs',
-   title: 'Dropoffs'
-  },
-  {
-    id: 'requirements',
-    title: 'Requirements'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }];
 
   public constructor(
     private customerService: CustomerService,
