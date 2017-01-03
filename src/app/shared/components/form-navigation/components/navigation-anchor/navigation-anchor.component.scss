@@ -1,4 +1,13 @@
-:host {
-  display: block;
-  height: 0;
+@import '../../../../../../assets/styles/variables'; 
+
+:host { 
+  display: block; 
+  padding-top: $form-navigation-height; 
+  margin-top: -$form-navigation-height; 
+
+  &:first-child {
+    &:not(.nested-form) {
+      padding-top: $form-navigation-height * 2;
+    }
+  } 
 }

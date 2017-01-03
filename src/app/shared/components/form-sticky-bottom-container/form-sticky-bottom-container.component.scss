@@ -1,0 +1,12 @@
+@import '../../../../assets/styles/variables';
+
+:host {
+  display: block;
+}
+
+div {
+  &.sticky {
+    position: absolute;
+    z-index: $sticked-z-index;
+  }
+}

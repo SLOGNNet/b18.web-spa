@@ -1,20 +1,6 @@
 @import '../../../assets/styles/variables';
 @import '../../../assets/styles/form-control';
-
-.bd-button {
-  width: calc(50% - 3px);
-}
-
-.section {
-  display: flex;
-  justify-content: space-between;
-
-  &.btn-container {
-    min-height: 80px;
-    max-height: 80px;
-    padding-top: 30px;
-  }
-}
+@import '../../../assets/styles/styles';
 
 .same-as-company-label {
   display: flex;
@@ -32,18 +18,5 @@
 
   span {
     padding-left: 15px;
-  }
-}
-
-.scrollable-cantainer {
-  overflow-y: auto;
-}
-
-form {
-  &.scrollable {
-    display: flex;
-    height: 100%;
-    max-width: 100%;
-    flex-direction: column;
   }
 }
