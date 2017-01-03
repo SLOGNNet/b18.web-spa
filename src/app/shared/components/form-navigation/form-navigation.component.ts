@@ -1,5 +1,5 @@
-import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, ViewChild } from '@angular/core';
-import * as _ from 'lodash';
+import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, ViewChild, OnChanges } from '@angular/core';
+import { chain, sortBy, findLastIndex } from 'lodash';
 
 @Component({
   selector: 'form-navigation',
@@ -7,10 +7,11 @@ import * as _ from 'lodash';
   styleUrls: ['./form-navigation.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class FormNavigationComponent {
+export class FormNavigationComponent implements OnChanges {
   @Input() title: string = '';
   @Input() anchors: Array<Object>;
 
+  private _anchorOffset = 20;
   private _anchorList = [];
   private _anchorsButton = [];
   private _activeAnchor: number = 0;
@@ -19,9 +20,12 @@ export class FormNavigationComponent {
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
+  ngOnChanges() {
+    this._update();
+  }
+
   ngAfterViewInit() {
-    this._updateAnchorsList();
-    this._updateAnchorsButton();
+    this._update();
   }
 
   ngAfterViewChecked() {
@@ -35,21 +39,26 @@ export class FormNavigationComponent {
     }
   }
 
+  private _update() {
+    this._updateAnchorsList();
+    this._updateAnchorsButton();
+  }
+
   private _updateAnchorsButton() {
     this._anchorsButton = this.elementRef.nativeElement.getElementsByTagName('span');
   }
 
   private _updateAnchorsList() {
-    this._anchorList = _(this.anchors)
+    this._anchorList = chain(this.anchors)
       .filter(anchor => anchor['id'].length > 0)
       .map(anchor => document.querySelector(`[id=${anchor['id']}]`))
-      .sortBy(this.anchors, ['offsetTop'])
+      .sortBy(['offsetTop'])
       .value();
   }
 
   private _onParentScrolled(e) {
-    let activeIndex = _.findLastIndex(this._anchorList,
-      anchor => anchor.offsetTop + 50 <= e.srcElement.scrollTop,
+    let activeIndex = findLastIndex(this._anchorList,
+      anchor => anchor.offsetTop - this._anchorOffset <= e.srcElement.scrollTop,
       this._anchorList.length - 1);
 
     if (this._activeAnchor !== activeIndex) {
