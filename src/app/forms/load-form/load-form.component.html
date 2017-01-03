@@ -14,7 +14,7 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info" id="info">
-    <bd-input class="bd-form-control" [labelText]="'Carrier Load Number'" formControlName="carrierLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'Carrier Load Number'" [disabled]="true" formControlName="carrierLoadNumber">
     </bd-input>
     <bd-input class="bd-form-control" [labelText]="'Broker Load Number'" formControlName="brokerLoadNumber">
     </bd-input>
