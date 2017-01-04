@@ -29,7 +29,7 @@ export class FormNavigationComponent implements OnChanges {
   }
 
   ngAfterViewChecked() {
-    this._init();
+    setTimeout(() => this._init(), 0);
   }
 
   private _init() {
