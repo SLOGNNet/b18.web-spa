@@ -24,6 +24,7 @@ import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { LoadsComponent } from './loads';
+import { ListComponent } from './loads/components/list';
 import { CustomersComponent } from './customers';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
@@ -54,7 +55,8 @@ type StoreType = {
      MessageComponent,
      LoadsComponent,
      CustomersComponent,
-     TypeaheadDemoComponent
+     TypeaheadDemoComponent,
+     ListComponent
   ],
   imports: [
     SharedModule,

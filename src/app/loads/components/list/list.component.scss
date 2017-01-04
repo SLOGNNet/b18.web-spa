@@ -1,0 +1,102 @@
+@import '../../../../assets/styles/variables';
+
+.list-items-wrapper {
+  height: 100px;
+  padding: 17px;
+  background: $white;
+  font-size: $tiny-font-size;
+  margin-top: 20px;
+  border-bottom: $border;
+
+  .load-number-customer-id-wrapper {
+    width: 30%;
+    float: left;
+
+    span {
+      display: block;
+    }
+
+    .load-number {
+      font-weight: bold;
+    }
+
+    .customer-name {
+      color: $blue;
+    }
+  }
+
+  .distance-schedule-date-wrapper {
+    width: 70%;
+    float: left;
+
+    .distance-wrapper {
+      span {
+        &:nth-child(1) {
+          float: left;
+        }
+
+        &:nth-child(2) {
+          float: right;
+        }
+      }
+    }
+
+    .schedule-date-wrapper {
+      clear: both;
+
+      .start-date {
+        color: $grey;
+        float: left;
+      }
+
+      .schedule {
+        float: left;
+      }
+
+      .end-date {
+        color: $grey;
+        float: right;
+      }
+    }
+  }
+
+  .driver-track-trailer-number-current-trip-status-wrapper {
+    clear: both;
+
+    .driver-track-trailer-number-wrapper {
+      float: left;
+
+      span {
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+          margin-left: 10px;
+        }
+        color: $blue;
+      }
+    }
+
+    .current-trip-status-wrapper {
+      position: relative;
+      top: -1px;
+      display: flex;
+      width: 50%;
+      float: right;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .status {
+        display: flex;
+        width: 79px;
+        height: 20px;
+        background: $red;
+        color: $white;
+        float: right;
+        align-items: center;
+        border-radius: 3px;
+        justify-content: center;
+      }
+    }
+  }
+}

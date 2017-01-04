@@ -1,6 +1,10 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
+      <button (click)="loadData=1">Datatable</button>
+      <button (click)="loadData=2">List</button>
+        <div [ngSwitch]="loadData">
+      <div *ngSwitchCase="1">
       <bd-button
         class="add-button"
         [color]="'primary'"
@@ -20,6 +24,9 @@
         (select)='onLoadSelect($event)'
         [limit]="10">
       </swui-datatable>
+    </div>
+      <list *ngSwitchCase="2"></list>
+    </div>
     </div>
   </first-pane>
 
