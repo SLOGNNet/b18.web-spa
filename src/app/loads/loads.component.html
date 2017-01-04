@@ -1,32 +1,20 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
-      <button (click)="loadData=1">Datatable</button>
-      <button (click)="loadData=2">List</button>
-        <div [ngSwitch]="loadData">
-      <div *ngSwitchCase="1">
-      <bd-button
-        class="add-button"
-        [color]="'primary'"
-        [text]="'Add'"
-        (click)="onAdd()">
-      </bd-button>
-      <swui-datatable
-        #datatable
-        class='material striped'
-        [rows]='items'
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="'auto'"
-        [selectionType]="'single'"
-        (select)='onSelect($event)'
-        [limit]="10">
-      </swui-datatable>
-    </div>
-      <list *ngSwitchCase="2"></list>
-    </div>
+
+      <div class="btn-group">
+        <button type="button" (click)="loadData=1" class="btn btn-primary">Datatable</button>
+        <button type="button" (click)="loadData=2" class="btn btn-primary">List</button>
+      </div>
+      <div [ngSwitch]="loadData">
+        <div *ngSwitchCase="1">
+          <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
+          </bd-button>
+          <swui-datatable #datatable class='material striped' [rows]='items' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [selectionType]="'single'" (select)='onSelect($event)' [limit]="10">
+          </swui-datatable>
+        </div>
+        <list *ngSwitchCase="2"></list>
+      </div>
     </div>
   </first-pane>
 
