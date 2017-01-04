@@ -20,14 +20,14 @@ export abstract class BaseListComponent<T> {
 
   protected onAdd() {
     this.deselectRow();
-    this.router.navigate([this.itemRoute(), 0]);
+    this.router.navigate([this.routePath(), 0]);
   }
 
-  protected abstract itemRoute(): string;
+  protected abstract routePath(): string;
 
   private onSelect(event: any) {
     const item: T = event.selected[0];
-    this.router.navigate([this.itemRoute(), item['id']]);
+    this.router.navigate([this.routePath(), item['id']]);
   }
 
   private deselectRow() {

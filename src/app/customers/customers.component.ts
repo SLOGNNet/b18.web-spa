@@ -9,7 +9,6 @@ import { cloneDeep } from 'lodash';
 import { CustomerStore } from '../stores';
 import { Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { CustomerDetailComponent } from './components';
 
 @Component({
   selector: 'customers',
@@ -29,7 +28,7 @@ export class CustomersComponent extends BaseListComponent<Customer> {
       super(customerStore, router);
   }
 
-  protected itemRoute(): string {
+  protected routePath(): string {
     return 'customers/';
   }
 }

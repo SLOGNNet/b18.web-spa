@@ -27,7 +27,7 @@ export class LoadsComponent extends BaseListComponent<Load>{
     super(loadStore, router);
   }
 
-  protected itemRoute(): string {
+  protected routePath(): string {
     return 'loads/';
   }
 }
