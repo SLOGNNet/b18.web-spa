@@ -1,0 +1,82 @@
+@import '../../../../assets/styles/variables';
+
+.list-section {
+  height: 100px;
+  padding: 17px;
+  background: $white;
+  font-size: $tiny-font-size;
+  margin-top: 20px;
+  border-bottom: $border;
+
+  .left {
+    width: 30%;
+    float: left;
+
+    span {
+      display: block;
+    }
+
+    .load-number {
+      font-weight: bold;
+    }
+
+    .customer-name {
+      color: $blue;
+    }
+  }
+
+  .right {
+    width: 70%;
+    float: left;
+
+    .distance-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .schedule-date-wrapper {
+      clear: both;
+
+      .start-date {
+        color: $grey;
+        float: left;
+      }
+
+      .schedule {
+        float: left;
+      }
+
+      .end-date {
+        color: $grey;
+        float: right;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    clear: both;
+
+    .status {
+      display: flex;
+      width: 79px;
+      height: 20px;
+      background: $red;
+      color: $white;
+      float: right;
+      align-items: center;
+      border-radius: 3px;
+      justify-content: center;
+    }
+
+    .current-trip {
+      text-align: center;
+      flex: 1;
+    }
+
+    .link {
+      color: $blue;
+      margin-right: 10px;
+    }
+  }
+}
