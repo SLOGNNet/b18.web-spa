@@ -99,7 +99,7 @@ export class AddressForm extends BaseForm {
             this._placeQuery = detail.streetAddress;
             this._updateMap(detail.location, detail.streetAddress);
             this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
-            this._cdr.detectChanges();
+            this._cdr.markForCheck();
           }
         });
     }
