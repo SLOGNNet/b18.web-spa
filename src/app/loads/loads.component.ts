@@ -3,65 +3,66 @@ import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { Load } from '../models';
-import { LoadService } from '../shared';
+import { LoadStore } from '../stores';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
+import {  ActivatedRoute, Router, Params } from '@angular/router';
+import { BaseListDetailComponent } from '../base';
 
 @Component({
-    selector: 'loads',
-    templateUrl: './loads.component.html',
-    styleUrls: ['./loads.component.scss']
+  selector: 'loads',
+  templateUrl: './loads.component.html',
+  styleUrls: ['./loads.component.scss'],
+  providers: [LoadStore]
 })
-export class LoadsComponent {
-  @ViewChild('datatable') datatable;
+export class LoadsComponent extends BaseListDetailComponent<Load>{
   columns = [
-     { prop: 'id', name: 'Load #' },
-     { prop: 'customer.name', name: 'Customer' },
-     { prop: 'status', name: 'Status'}
-   ];
-  isLoadNew = false;
-  public selectedLoad: Load = null;
-  public loadViewMode: ViewMode = ViewMode.Edit;
-  public loads: Load[] = new Array<Load>();
+    { prop: 'id', name: 'Load #' },
+    { prop: 'customer.name', name: 'Customer' },
+    { prop: 'status', name: 'Status' }
+  ];
+  private anchors = [{
+    id: 'info',
+    title: 'Info'
+  },  {
+    id: 'customer',
+    title: 'Customer'
+  },  {
+    id: 'pickups',
+    title: 'Pickups'
+  }, {
+    id: 'dropoffs',
+    title: 'Dropoffs'
+  }, {
+    id: 'requirements',
+    title: 'Requirements'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }, {
+    id: '',
+    title: 'Link'
+  }];
 
-  constructor(private loadService: LoadService) {
-    loadService.getAll().subscribe((loads) => {
-      this.loads = loads;
-    });
+  constructor(loadStore: LoadStore,
+    route: ActivatedRoute,
+    router: Router) {
+    super(loadStore, route, router);
   }
 
-  public onLoadSelect(load) {
-    this.isLoadNew = false;
-    this.selectedLoad = cloneDeep(load.selected[0]);
-  }
-
-  private onAddLoad() {
-    this.deselectRow();
-    this.isLoadNew = true;
-    this.selectedLoad = Load.create();
-  }
-
-  private onLoadSave(load) {
-    if (this.isLoadNew) {
-      this.isLoadNew = false;
-      this.loadService.create(load);
-    } else {
-      this.loadService.update(load);
-    }
-
-    this.selectedLoad = cloneDeep(load);
-  }
-
-  private onLoadCancel() {
-    if (this.isLoadNew) {
-      this.isLoadNew = false;
-      this.selectedLoad = null;
-    } else {
-      this.selectedLoad = cloneDeep(this.selectedLoad);
-    }
-  }
-
-  private deselectRow() {
-    this.datatable.selected = [];
+  protected itemRoute(): string {
+    return 'loads/';
   }
 }
