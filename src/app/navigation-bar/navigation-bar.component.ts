@@ -40,6 +40,9 @@ export class NavigationBarComponent {
         icon: 'icon',
         link: './loads',
         items: [{
+            label: 'Loads',
+            link: './loads'
+          }, {
           label: 'New Load',
           link: './loads/0'
         }]
@@ -48,6 +51,9 @@ export class NavigationBarComponent {
         icon: 'icon',
         link: './customers',
         items: [{
+              label: 'Customers',
+              link: './customers'
+          }, {
           label: 'New Customer',
           link: './customers/0'
         }]
