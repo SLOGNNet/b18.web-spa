@@ -1,0 +1,4 @@
+<div *ngIf="selectedItem">
+  <form-navigation [title]="'Load'" [anchors]="anchors" sticky></form-navigation>
+  <load-form (save)="onItemSave($event)" (cancel)="onItemCancel($event)" [load]="selectedItem" [viewMode]="viewMode"></load-form>
+</div>

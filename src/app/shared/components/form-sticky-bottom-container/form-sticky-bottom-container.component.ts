@@ -10,7 +10,7 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
   @Input() sticky = true;
 
   ngAfterViewInit() {
-    this.update();
+    setTimeout(() => this.update(), 0);
   }
 
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
