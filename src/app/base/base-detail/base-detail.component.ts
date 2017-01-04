@@ -29,13 +29,15 @@ export abstract class BaseDetailComponent<T> {
   }
 
   private onItemSave(item) {
-    if (this.isNew) {
-      this.isNew = false;
-      this.store.add(item);
-    } else {
-      this.store.update(item);
-    }
-    this.selectedItem = cloneDeep(item);
+    // temporary disable for demo
+
+    // if (this.isNew) {
+    //   this.isNew = false;
+    //   this.store.add(item);
+    // } else {
+    //   this.store.update(item);
+    // }
+    // this.selectedItem = cloneDeep(item);
   }
 
   private onItemCancel() {
