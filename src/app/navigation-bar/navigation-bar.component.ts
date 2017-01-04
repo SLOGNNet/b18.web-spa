@@ -42,20 +42,20 @@ export class NavigationBarComponent {
         items: [{
             label: 'Loads',
             link: './loads'
-        }, {
-            label: 'New Load',
-            link: './loads/0'
+          }, {
+          label: 'New Load',
+          link: './loads/0'
         }]
     }, {
         label: 'Customers',
         icon: 'icon',
         link: './customers',
         items: [{
-            label: 'Customers',
-            link: './customers'
-        }, {
-            label: 'New Customer',
-            link: './customers/0'
+              label: 'Customers',
+              link: './customers'
+          }, {
+          label: 'New Customer',
+          link: './customers/0'
         }]
     }];
 

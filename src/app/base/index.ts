@@ -1,1 +1,2 @@
-export * from './base-list-detail';
+export * from './base-detail';
+export * from './base-list';
