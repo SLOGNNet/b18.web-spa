@@ -19,6 +19,7 @@ export abstract class BaseDetailComponent<T> {
       this.onQueryParams(params);
     });
   }
+
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);
     this.isNew = id === 0;
