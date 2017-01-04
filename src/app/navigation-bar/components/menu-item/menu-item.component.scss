@@ -27,9 +27,9 @@ $sub-munu-color: #a4a9af;
     padding: 10px 10px 10px 40px;
     color: $white;
     cursor: pointer;
+    word-wrap: normal;
     left: 0;
     background-color: transparent;
-    white-space: nowrap;
     text-decoration: none;
   }
 
@@ -37,14 +37,18 @@ $sub-munu-color: #a4a9af;
     display: none;
     width: 130px;
     background-color: $sub-munu-background-color;
+    padding-bottom: 3px;
 
     .sub-menu-item {
+      overflow: hidden;
       width: 130px;
-      height: 30px;
+      padding: 6px 10px 3px 40px;
 
       a {
-        padding: 6px 10px 6px 40px;
+        position: relative;
+        padding: 0;
         color: $sub-munu-color;
+        background-color: $sub-munu-background-color;
       }
     }
   }
@@ -69,11 +73,13 @@ $sub-munu-color: #a4a9af;
         margin-left: 130px;
         margin-top: -40px;
 
-        a {
+        .sub-menu-item {
           padding-left: 20px;
 
-          &:hover {
-            color: $logo-letter-color;
+          a {
+            &:hover {
+              color: $logo-letter-color;
+            }
           }
         }
       }
