@@ -6,7 +6,7 @@ import { Load } from '../models';
 import { LoadStore } from '../stores';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
-import {  Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
 
 @Component({
@@ -23,8 +23,9 @@ export class LoadsComponent extends BaseListComponent<Load>{
   ];
 
   constructor(loadStore: LoadStore,
-    router: Router) {
-    super(loadStore, router);
+    router: Router,
+    route: ActivatedRoute) {
+    super(loadStore, router, route);
   }
 
   protected routePath(): string {
