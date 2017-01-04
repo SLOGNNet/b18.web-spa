@@ -3,18 +3,24 @@ import { Load } from '../models';
 import { IListDataStore } from '../../stores';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
-import { Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
 
 export abstract class BaseListComponent<T> {
   @ViewChild('datatable') datatable;
-
   protected items: T[] = new Array<T>();
 
+  private childRouteSubscription: any;
+  private childRoute: any;
+
   constructor(private store: IListDataStore<T>,
-    private router: Router) {
+    private router: Router, private route: ActivatedRoute) {
     store.getAll();
-    store.items().subscribe((items) => {
+  }
+
+  ngAfterViewInit() {
+    this.store.items().subscribe((items) => {
       this.items = items;
+      this.subscribeToDetailsChildRoute();
     });
   }
 
@@ -32,5 +38,38 @@ export abstract class BaseListComponent<T> {
 
   private deselectRow() {
     this.datatable.selected = [];
+  }
+
+  private selectRow(id: number) {
+    this.datatable.selected = this.items.filter(item => item['id'] === id);
+  }
+
+
+  private subscribeToDetailsChildRoute() {
+    // child route subscribtion approach taken from https://github.com/angular/angular/issues/11692
+    this.router.events.subscribe(e => {
+      const route = this.route.firstChild;
+      if (e instanceof NavigationEnd && this.childRoute !== this.route.firstChild) {
+        if (this.childRouteSubscription) {
+          this.childRouteSubscription.unsubscribe();
+        }
+        this.childRoute = this.route.firstChild;
+        if (this.childRoute) {
+          this.childRouteSubscription = this.childRoute
+            .params
+            .subscribe(this.onDetailRouteChange.bind(this));
+        }
+        else {
+          this.onDetailRouteChange({});
+        }
+      }
+    });
+  }
+
+  private onDetailRouteChange(params: any) {
+    const id = Number.parseInt(params['id']);
+    if (!isNaN(id)) {
+      this.selectRow(id);
+    }
   }
 }
