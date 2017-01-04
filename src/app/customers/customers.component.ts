@@ -7,8 +7,9 @@ import { CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
 import { CustomerStore } from '../stores';
-import {  ActivatedRoute, Router, Params } from '@angular/router';
-import { BaseListDetailComponent } from '../base';
+import { Router, Params } from '@angular/router';
+import { BaseListComponent } from '../base';
+import { CustomerDetailComponent } from './components';
 
 @Component({
   selector: 'customers',
@@ -16,57 +17,16 @@ import { BaseListDetailComponent } from '../base';
   styleUrls: ['./customers.component.scss'],
   providers: [CustomerStore]
 })
-export class CustomersComponent extends BaseListDetailComponent<Customer> {
+export class CustomersComponent extends BaseListComponent<Customer> {
   private columns = [
     { prop: 'id', name: 'Customer #' },
     { prop: 'name', name: 'Name' },
     { prop: 'status', name: 'Status' }
   ];
-  private anchors = [{
-    id: 'customer-basic-information',
-    title: 'Basic information'
-  }, {
-    id: 'customer-addresses',
-    title: 'Adresses'
-  }, {
-    id: 'customer-contacts',
-    title: 'Contacts'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }];
-
-  constructor(customerStore: CustomerStore,
-    route: ActivatedRoute,
-    router: Router) {
-      super(customerStore, route, router);
+    constructor(
+      customerStore: CustomerStore,
+      router: Router) {
+      super(customerStore, router);
   }
 
   protected itemRoute(): string {

@@ -19,12 +19,11 @@ import { AppState, InternalStateType } from './app.service';
 import { DriversComponent } from './drivers';
 import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
-import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
-import { LoadsComponent } from './loads';
-import { CustomersComponent } from './customers';
+import { LoadsComponent, LoadDetailComponent } from './loads';
+import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -53,8 +52,9 @@ type StoreType = {
      MessagesComponent,
      MessageComponent,
      LoadsComponent,
+     LoadDetailComponent,
      CustomersComponent,
-     TypeaheadDemoComponent
+     CustomerDetailComponent
   ],
   imports: [
     SharedModule,

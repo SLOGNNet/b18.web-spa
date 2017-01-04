@@ -22,24 +22,9 @@
         </swui-datatable>
       </div>
     </first-pane>
-
     <second-pane>
     </second-pane>
-
     <third-pane>
-      <div *ngIf="selectedItem">
-        <form-navigation
-          sticky
-          [title]="'Customer'"
-          [anchors]="anchors">
-        </form-navigation>
-        <customer-form
-          [scrollable]="true"
-          [customer]="selectedItem"
-          [viewMode]="viewMode"
-          (save)="onItemSave($event)"
-          (cancel)="onItemCancel()">
-        </customer-form>
-      </div>
+      <router-outlet></router-outlet>
     </third-pane>
 </multi-pane-layout>
