@@ -83,7 +83,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     ReactiveFormsModule,
     HttpModule,
     PerfectScrollbarModule,
-    NgbDatepickerModule
+    NgbDatepickerModule.forRoot()
   ],
   exports: [
     BdFormButtonComponent,
