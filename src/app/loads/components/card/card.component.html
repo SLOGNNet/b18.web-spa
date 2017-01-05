@@ -1,7 +1,7 @@
-<div class="list-section">
+<div *ngFor='let load of this.loads'class="list-section">
   <div class="left">
     <span class="load-number">LD123456</span>
-    <span class="customer-name">CH Robinson</span>
+    <span class="customer-name">{{load.customer.name}}</span>
     <span>1234567</span>
   </div>
   <div class="right">
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">Govind</span>
+    <span class="link">{{load.currentTrip.driverFullName}}</span>
     <span class="link">|</span>
     <span class="link">Tk1021</span>
     <span class="link">|</span>

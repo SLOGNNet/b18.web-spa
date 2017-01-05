@@ -1,7 +1,7 @@
 import {
   Load, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType, FreightType, DataAssigneeRequirements, Facility, Trip } from './models';
+  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType, FreightType, DataAssigneeRequirements, Facility, Trip, StopStatuses } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -372,7 +372,8 @@ class MockData {
     address: this.addresses[0],
     date: 'date',
     commodities: [this.commodities[0]],
-    facility: this.facilities[0]
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
   },
   {
     id: 2,
@@ -381,7 +382,8 @@ class MockData {
     address: this.addresses[1],
     date: 'date',
     commodities: [this.commodities[1]],
-    facility: this.facilities[1]
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
   },
   {
     id: 3,
@@ -390,7 +392,8 @@ class MockData {
     address: this.addresses[2],
     date: 'date',
     commodities: [this.commodities[2]],
-    facility: this.facilities[2]
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
   },
   {
     id: 4,
@@ -399,7 +402,8 @@ class MockData {
     address: this.addresses[3],
     date: 'date',
     commodities: [this.commodities[3]],
-    facility: this.facilities[3]
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
   }];
 
   public dropoffs: Array<Stop> = [{
@@ -409,7 +413,8 @@ class MockData {
     address: this.addresses[0],
     date: 'date',
     commodities: [this.commodities[0]],
-    facility: this.facilities[0]
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
   },
   {
     id: 6,
@@ -418,7 +423,8 @@ class MockData {
     address: this.addresses[1],
     date: 'date',
     commodities: [this.commodities[1]],
-    facility: this.facilities[1]
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
   },
   {
     id: 7,
@@ -427,7 +433,8 @@ class MockData {
     address: this.addresses[2],
     date: 'date',
     commodities: [this.commodities[2]],
-    facility: this.facilities[2]
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
   },
   {
     id: 8,
@@ -436,7 +443,8 @@ class MockData {
     address: this.addresses[3],
     date: 'date',
     commodities: [this.commodities[3]],
-    facility: this.facilities[3]
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
   }];
 
 
