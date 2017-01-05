@@ -1,4 +1,4 @@
-<div class="stops-container">
+<div class="stops-container" *ngIf="stops.length">
   <hr [style.border-color]="lineColor">
   <div class="stops">
       <div
@@ -10,7 +10,7 @@
         [class.bottom]="isDropOff(stop.type)"
         (click)="onStopSelect(stop)"
         *ngFor="let stop of stops">
-        <span></span>
       </div>
+      <span></span>
   </div>
 </div>
