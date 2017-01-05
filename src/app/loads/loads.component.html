@@ -3,7 +3,7 @@
     <div class="data-panel">
       <div class="btn-group">
         <button type="button" (click)="loadData=1" class="btn btn-primary">Datatable</button>
-        <button type="button" (click)="loadData=2" class="btn btn-primary">List</button>
+        <button type="button" (click)="onListButtonClick()" class="btn btn-primary">List</button>
       </div>
       <div [ngSwitch]="loadData">
         <div *ngSwitchCase="1">

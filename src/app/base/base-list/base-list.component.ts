@@ -13,7 +13,7 @@ export abstract class BaseListComponent<T> {
   private childRoute: any;
 
   constructor(private store: IListDataStore<T>,
-    private router: Router, private route: ActivatedRoute) {
+    protected router: Router, protected route: ActivatedRoute) {
     store.getAll();
   }
 

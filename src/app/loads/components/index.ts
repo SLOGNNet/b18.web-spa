@@ -1,1 +1,1 @@
-export * from './load-detail.component';
+export * from './load-details/load-detail.component';

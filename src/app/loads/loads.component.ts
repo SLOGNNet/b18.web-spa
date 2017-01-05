@@ -34,10 +34,15 @@ export class LoadsComponent extends BaseListComponent<Load>{
   }
 
   getAll() {
-       this.loadService.getAll().subscribe(loads => {
-         this.loads = loads;
-       });
-     }
+    this.loadService.getAll().subscribe(loads => {
+      this.loads = loads;
+    });
+  }
+
+  onListButtonClick() {
+    this.loadData = '2';
+    this.router.navigate([this.routePath()]);
+  }
 
   protected routePath(): string {
     return 'loads/';
