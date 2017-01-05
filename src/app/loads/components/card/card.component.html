@@ -1,4 +1,4 @@
-<div *ngFor='let load of this.loads'class="list-section">
+<div class="list-section">
   <div class="left">
     <span class="load-number">LD123456</span>
     <span class="customer-name">{{load.customer.name}}</span>
@@ -24,9 +24,9 @@
   <div class="bottom">
     <span class="link">{{load.currentTrip.driverFullName}}</span>
     <span class="link">|</span>
-    <span class="link">Tk1021</span>
+    <span class="link">Tk{{load.currentTrip.truckNumber}}</span>
     <span class="link">|</span>
-    <span class="link">TI2349</span>
+    <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
     <span class="current-trip">
       TR349616
     </span>
