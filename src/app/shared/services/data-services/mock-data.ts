@@ -342,24 +342,28 @@ class MockData {
   public trips: Array<Trip> = [{
     id: 1,
     address: this.addresses[0],
+    number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 2,
     address: this.addresses[1],
+    number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 1,
     address: this.addresses[2],
+    number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 2,
     address: this.addresses[3],
+    number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
@@ -370,7 +374,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
-    date: 'date',
+    date: '23/05',
     commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
@@ -380,7 +384,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: 'date',
+    date: '23/05',
     commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
@@ -390,7 +394,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: 'date',
+    date: '23/05',
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -400,7 +404,27 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: 'date',
+    date: '23/05',
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 11,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: '23/05',
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 12,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: '23/05',
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
@@ -411,7 +435,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[0],
-    date: 'date',
+    date: '01/05',
     commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
@@ -421,7 +445,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[1],
-    date: 'date',
+    date: '01/05',
     commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
@@ -431,7 +455,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: 'date',
+    date: '01/05',
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -441,7 +465,27 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[3],
-    date: 'date',
+    date: '01/05',
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 9,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: '01/05',
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 10,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[3],
+    date: '01/05',
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
@@ -461,15 +505,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       contactId: 1,
       billingAddressId: 3,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#143',
-      pickups: [this.pickups[0]],
-      dropoffs: [this.dropoffs[0]],
       trips: this.trips,
-      currentTrip: this.trips[0]
+      currentTrip: this.trips[0],
+      stops: [this.pickups[0], this.pickups[5], this.dropoffs[0]]
     },
     {
       id: 2,
@@ -483,15 +526,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel2,
       billingAddressId: 4,
       contactId: 2,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#141',
-      pickups: [this.pickups[1]],
-      dropoffs: [this.dropoffs[1]],
       trips: this.trips,
-      currentTrip: this.trips[1]
+      currentTrip: this.trips[1],
+      stops: [this.pickups[1], this.dropoffs[4], this.pickups[4], this.dropoffs[1]]
     },
     {
       id: 3,
@@ -505,15 +547,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 5,
       contactId: 3,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.Delivered,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: [this.pickups[2]],
-      dropoffs: [this.dropoffs[2]],
       trips: this.trips,
-      currentTrip: this.trips[2]
+      currentTrip: this.trips[2],
+      stops: [this.pickups[2], this.dropoffs[5], this.dropoffs[2]]
     },
     {
       id: 4,
@@ -527,15 +568,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.Canceled,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: [this.pickups[3]],
-      dropoffs: [this.dropoffs[3]],
       trips: this.trips,
-      currentTrip: this.trips[3]
+      currentTrip: this.trips[3],
+      stops: [this.pickups[3], this.dropoffs[3]]
     },
   ];
 }

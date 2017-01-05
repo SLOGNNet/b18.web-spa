@@ -8,4 +8,12 @@ import { Load } from '../../../models';
 })
 export class CardComponent {
   @Input() load: Load;
+
+  get loadStatusColor() {
+    return Load.getStatusColor(this.load.status);
+  }
+
+  get loadStatusText() {
+    return Load.getStatusText(this.load.status);
+  }
 }

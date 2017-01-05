@@ -4,13 +4,13 @@
       <div
         aria-hidden="true"
         class="triangle"
-        [style.background]="stop.color"
+        [style.background]="getColor(stop.type)"
         [style.left.px]="stop.left"
         [style.position]="stop.left ? 'absolute' : ''"
         [class.bottom]="isDropOff(stop.type)"
         (click)="onStopSelect(stop)"
         *ngFor="let stop of stops">
+        <span></span>
       </div>
-      <span></span>
   </div>
 </div>

@@ -7,5 +7,5 @@ import { Load } from '../../../models';
     styleUrls: ['./load-stops.component.scss']
 })
 export class LoadStopsComponent {
-  @Input()loads: Load;
+  @Input()loads: Array<Load>;
 }

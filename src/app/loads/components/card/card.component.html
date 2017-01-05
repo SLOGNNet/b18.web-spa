@@ -6,18 +6,18 @@
   </div>
   <div class="right">
     <div class="distance-wrapper">
-      <span>Laredo, TX</span>
-      <span>San-Francisco, CA</span>
+      <span>{{load.stops[0].address.city}}, {{load.stops[0].address.state}}</span>
+      <span>{{load.stops[load.stops.length - 1].address.city}}, {{load.stops[load.stops.length - 1].address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
-        date1
+        {{load.stops[0].date}}
       </div>
       <div class="schedule">
-        schedule
+        <stops-line [stops]="load.stops"></stops-line>
       </div>
       <div class="end-date">
-        date2
+        {{load.stops[load.stops.length - 1].date}}
       </div>
     </div>
   </div>
@@ -28,10 +28,10 @@
     <span class="link">|</span>
     <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
     <span class="current-trip">
-      TR349616
+      {{load.currentTrip.number}}
     </span>
-    <span class="status">
-        status
+    <span class="status" [style.background]="loadStatusColor">
+        {{loadStatusText}}
     </span>
   </div>
 </div>

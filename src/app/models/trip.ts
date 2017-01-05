@@ -5,6 +5,7 @@ import { generateNewId } from './utils';
 export class Trip {
   id: number;
   address: Address;
+  number: number = 0;
   driverFullName: string = '';
   truckNumber: number = 0;
   trailerNumber: number = 0;
