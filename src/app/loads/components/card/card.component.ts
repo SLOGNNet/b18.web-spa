@@ -16,4 +16,12 @@ export class CardComponent {
   get loadStatusText() {
     return Load.getStatusText(this.load.status);
   }
+
+  get firstStop() {
+    return this.load.stops[0];
+  }
+
+  get lastStop() {
+    return this.load.stops[this.load.stops.length - 1];
+  }
 }

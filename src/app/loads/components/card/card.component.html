@@ -4,20 +4,20 @@
     <span class="customer-name">{{load.customer.name}}</span>
     <span>1234567</span>
   </div>
-  <div class="right">
+  <div class="right" *ngIf="this.load.stops.length">
     <div class="distance-wrapper">
-      <span>{{load.stops[0].address.city}}, {{load.stops[0].address.state}}</span>
-      <span>{{load.stops[load.stops.length - 1].address.city}}, {{load.stops[load.stops.length - 1].address.state}}</span>
+      <span>{{firstStop.address.city}}, {{firstStop.address.state}}</span>
+      <span>{{lastStop.address.city}}, {{lastStop.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
-        {{load.stops[0].date}}
+        {{firstStop.date}}
       </div>
       <div class="schedule">
         <stops-line [stops]="load.stops"></stops-line>
       </div>
       <div class="end-date">
-        {{load.stops[load.stops.length - 1].date}}
+        {{lastStop.date}}
       </div>
     </div>
   </div>
