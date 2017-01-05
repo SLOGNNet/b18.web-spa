@@ -1,0 +1,43 @@
+@import '../../../../assets/styles/variables';
+
+.stops-container {
+  position: relative;
+
+  hr {
+    position: absolute;
+    width: 100%;
+    margin: 8px 0 0;
+    border-color: $grey;
+  }
+}
+
+.stops {
+  display: flex;
+  justify-content: space-between;
+}
+
+.triangle {
+  z-index: 1;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-decoration: none;
+
+  span {
+    width: 10px;
+    height: 9px;
+    background: url('assets/img/triangle-down.png');
+    background-repeat: no-repeat;
+  }
+
+  &.bottom {
+    span {
+      transform: rotate(180deg);
+      margin-bottom: 1px;
+    }
+  }
+}
