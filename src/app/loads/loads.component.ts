@@ -4,9 +4,10 @@ import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component'
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { Load } from '../models';
 import { LoadStore } from '../stores';
+import { LoadService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
-import {  Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
 
 @Component({
@@ -16,16 +17,27 @@ import { BaseListComponent } from '../base';
   providers: [LoadStore]
 })
 export class LoadsComponent extends BaseListComponent<Load>{
+  loadData: string = '1';
+  loads: Array<Object>;
+
   columns = [
     { prop: 'id', name: 'Load #' },
     { prop: 'customer.name', name: 'Customer' },
     { prop: 'status', name: 'Status' }
   ];
 
-  constructor(loadStore: LoadStore,
-    router: Router) {
-    super(loadStore, router);
+  constructor(private loadService: LoadService, loadStore: LoadStore,
+    router: Router,
+    route: ActivatedRoute) {
+    super(loadStore, router, route);
+    this.getAll();
   }
+
+  getAll() {
+       this.loadService.getAll().subscribe(loads => {
+         this.loads = loads;
+       });
+     }
 
   protected routePath(): string {
     return 'loads/';

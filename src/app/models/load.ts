@@ -1,4 +1,4 @@
-import { Customer, Stop, StopTypes } from './index';
+import { Customer, Stop, StopTypes, Trip } from './index';
 import { generateNewId } from './utils';
 
 export enum LoadStatuses {
@@ -61,6 +61,8 @@ export class Load {
   specialRequirment: string;
   pickups: Array<Stop>;
   dropoffs: Array<Stop>;
+  trips: Array<Trip>;
+  currentTrip: Trip;
 
   static create(): Load{
     const result = new Load();
@@ -72,6 +74,8 @@ export class Load {
     result.trailerType = TrailerTypes.DryVan53;
     result.pickups = [Stop.create(StopTypes.Pickup)];
     result.dropoffs = [Stop.create(StopTypes.Dropoff)];
+    result.trips = [Trip.create()];
+    result.currentTrip = Trip.create();
 
     return result;
   }

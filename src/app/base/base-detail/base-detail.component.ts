@@ -19,6 +19,7 @@ export abstract class BaseDetailComponent<T> {
       this.onQueryParams(params);
     });
   }
+
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);
     this.isNew = id === 0;
@@ -28,13 +29,15 @@ export abstract class BaseDetailComponent<T> {
   }
 
   private onItemSave(item) {
-    if (this.isNew) {
-      this.isNew = false;
-      this.store.add(item);
-    } else {
-      this.store.update(item);
-    }
-    this.selectedItem = cloneDeep(item);
+    // temporary disable for demo
+
+    // if (this.isNew) {
+    //   this.isNew = false;
+    //   this.store.add(item);
+    // } else {
+    //   this.store.update(item);
+    // }
+    // this.selectedItem = cloneDeep(item);
   }
 
   private onItemCancel() {
