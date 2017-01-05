@@ -15,7 +15,7 @@ export enum StopStatuses {
 };
 
 export class Stop {
-  private static stopStatusColor = ['#ffbe4d', '#75b3e1', '#85d183', '#fb3a3a'];
+  private static stopStatusColor = ['#75b3e1', '#85d183', '#ffbe4d', '#fb3a3a'];
 
   id: number;
   address: Address;
@@ -36,8 +36,8 @@ export class Stop {
     return result;
   }
 
-  public getStatusColor(): string {
-    return Stop.stopStatusColor[this.status];
+  public static getStatusColor(status): string {
+    return Stop.stopStatusColor[status];
   }
 
 }
