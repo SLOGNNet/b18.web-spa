@@ -26,14 +26,18 @@ export abstract class BaseListComponent<T> {
 
   protected onAdd() {
     this.deselectRow();
-    this.router.navigate([this.routePath(), 0]);
+    this.navigateToDetails(0);
   }
 
   protected abstract routePath(): string;
 
   private onSelect(event: any) {
     const item: T = event.selected[0];
-    this.router.navigate([this.routePath(), item['id']]);
+    this.navigateToDetails(item['id']);
+  }
+
+  private navigateToDetails(id: number) {
+    this.router.navigate([this.routePath(), id],  {preserveQueryParams: true});
   }
 
   private deselectRow() {
