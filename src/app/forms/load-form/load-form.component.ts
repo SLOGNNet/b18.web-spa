@@ -53,6 +53,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
+      this.separateStops(this.load);
       this.commodityStore.set(this.pickups, this.dropoffs);
       this.initForm();
       this.initCustomerTypeahead(this.load.customer);
