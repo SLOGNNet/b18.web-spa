@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { NotificationService,
   CustomerService,
   SocketService,
@@ -29,11 +28,13 @@ import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
+import { NgbDatepickerModule } from './components/datepicker';
 import { BdRemoveButtonComponent,
   BdAddButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
+import { BdFormDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
@@ -71,7 +72,8 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     NavigationAnchorComponent,
     AddressItemTemplate,
     StickyDirective,
-    FormStickyBottomContainerComponent
+    FormStickyBottomContainerComponent,
+    BdFormDatePicker
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,8 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    NgbDatepickerModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -103,6 +106,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     BdButtonComponent,
     BdRemoveButtonComponent,
     BdAddButtonComponent,
+    BdFormDatePicker,
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,
