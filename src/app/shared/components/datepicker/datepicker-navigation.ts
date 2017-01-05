@@ -6,11 +6,7 @@ import { NgbCalendar } from './ngb-calendar';
 
 @Component({
   selector: 'ngb-datepicker-navigation',
-  styles: [`
-    .collapsed {
-        margin-bottom: -1.7rem;
-    }
-  `],
+  styleUrls: ['./styles/datepicker-navigation.scss'],
   template: `
     <table class="w-100" [class.collapsed]="!showSelect">
       <tr>
