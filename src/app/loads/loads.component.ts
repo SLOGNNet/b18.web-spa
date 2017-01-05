@@ -7,7 +7,7 @@ import { LoadStore } from '../stores';
 import { LoadService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
-import { Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
 
 @Component({
@@ -17,7 +17,9 @@ import { BaseListComponent } from '../base';
   providers: [LoadStore]
 })
 export class LoadsComponent extends BaseListComponent<Load>{
+  loadData: string = '1';
   loads: Array<Object>;
+
   columns = [
     { prop: 'id', name: 'Load #' },
     { prop: 'customer.name', name: 'Customer' },
@@ -25,17 +27,17 @@ export class LoadsComponent extends BaseListComponent<Load>{
   ];
 
   constructor(private loadService: LoadService, loadStore: LoadStore,
-    router: Router) {
-    super(loadStore, router);
+    router: Router,
+    route: ActivatedRoute) {
+    super(loadStore, router, route);
     this.getAll();
   }
 
   getAll() {
-     this.loadService.getAll().subscribe(loads => {
-       this.loads = loads;
-       console.log(this.loads, 'this loads');
-     });
-   }
+       this.loadService.getAll().subscribe(loads => {
+         this.loads = loads;
+       });
+     }
 
   protected routePath(): string {
     return 'loads/';

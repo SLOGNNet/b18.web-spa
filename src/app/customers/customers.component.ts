@@ -7,7 +7,7 @@ import { CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
 import { CustomerStore } from '../stores';
-import { Router, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
 
 @Component({
@@ -24,8 +24,9 @@ export class CustomersComponent extends BaseListComponent<Customer> {
   ];
     constructor(
       customerStore: CustomerStore,
-      router: Router) {
-      super(customerStore, router);
+      router: Router,
+      route: ActivatedRoute) {
+      super(customerStore, router, route);
   }
 
   protected routePath(): string {
