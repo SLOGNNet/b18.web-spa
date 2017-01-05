@@ -5,7 +5,6 @@
   padding: 17px;
   background: $white;
   font-size: $tiny-font-size;
-  margin-top: 20px;
   border-bottom: $border;
 
   .left {
@@ -21,7 +20,10 @@
     }
 
     .customer-name {
+      overflow: hidden;
       color: $blue;
+      margin-right: 20px;
+      white-space: nowrap;
     }
   }
 
