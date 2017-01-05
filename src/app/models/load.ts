@@ -50,59 +50,35 @@ export enum TrailerTypes {
 };
 
 // Colors
-const statusColors = [{
-  keys: [LoadStatuses.Pending, LoadStatuses.Booked, LoadStatuses.Scheduled],
-  value: '#75b3e1'
-}, {
-  keys: [LoadStatuses.EnRoute, LoadStatuses.InTransit],
-  value: '#ffbe4d'
-}, {
-  keys: [LoadStatuses.Delivered, LoadStatuses.Completed],
-  value: '#85d183'
-}, {
-  keys: [LoadStatuses.Canceled],
-  value: '#fb3a3a'
-}];
+function createStatusColors() {
+ let result = {};
+  result[LoadStatuses.Pending] = result[LoadStatuses.Booked] = result[LoadStatuses.Scheduled] = '#75b3e1';
+  result[LoadStatuses.EnRoute] = result[LoadStatuses.InTransit] = '#ffbe4d';
+  result[LoadStatuses.Delivered] = result[LoadStatuses.Completed] = '#85d183';
+  result[LoadStatuses.Canceled] = '#fb3a3a';
+
+  return result;
+};
+
+const statusColors = createStatusColors();
 
 // Texts
-const statusTexts = [{
-  keys: [LoadStatuses.Booked],
-  value: 'booked'
-}, {
-  keys: [LoadStatuses.Assigned],
-  value: 'assigned'
-}, {
-  keys: [LoadStatuses.Pending],
-  value: 'pending'
-}, {
-  keys: [LoadStatuses.Scheduled],
-  value: 'scheduled'
-}, {
-  keys: [LoadStatuses.EnRoute],
-  value: 'en route'
-}, {
-  keys: [LoadStatuses.InTransit],
-  value: 'in-transit'
-}, {
-  keys: [LoadStatuses.Delivered],
-  value: 'delivered'
-}, {
-  keys: [LoadStatuses.Completed],
-  value: 'completed'
-}, {
-  keys: [LoadStatuses.Canceled],
-  value: 'canceled'
-}];
+function createStatusTexts() {
+ let result = {};
+  result[LoadStatuses.Booked] = 'booked';
+  result[LoadStatuses.Assigned] = 'assigned';
+  result[LoadStatuses.Pending] = 'pending';
+  result[LoadStatuses.Scheduled] = 'scheduled';
+  result[LoadStatuses.EnRoute] = 'en route';
+  result[LoadStatuses.InTransit] = 'in-transit';
+  result[LoadStatuses.Delivered] = 'delivered';
+  result[LoadStatuses.Completed] = 'completed';
+  result[LoadStatuses.Canceled] = 'canceled';
 
-function getValueByKey(items, key) {
-  return items.reduce((p, n) => {
-    if (n.keys.indexOf(key) !== -1) {
-      p = n.value;
-    }
-
-    return p;
-  }, '');
+  return result;
 };
+
+const statusTexts = createStatusTexts();
 
 export class Load {
   id: number;
@@ -141,10 +117,10 @@ export class Load {
   }
 
   public static getStatusColor(status: LoadStatuses): string {
-    return getValueByKey(statusColors, status);
+    return statusColors[status];
   }
 
   public static getStatusText(status: LoadStatuses): string {
-    return getValueByKey(statusTexts, status);
+    return statusTexts[status];
   }
 }
