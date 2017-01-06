@@ -18,7 +18,6 @@ import { BaseListComponent } from '../base';
 })
 export class LoadsComponent extends BaseListComponent<Load>{
   loadData: string = '1';
-  loads: Array<Object>;
 
   columns = [
     { prop: 'id', name: 'Load #' },
@@ -30,13 +29,6 @@ export class LoadsComponent extends BaseListComponent<Load>{
     router: Router,
     route: ActivatedRoute) {
     super(loadStore, router, route);
-    this.getAll();
-  }
-
-  getAll() {
-    this.loadService.getAll().subscribe(loads => {
-      this.loads = loads;
-    });
   }
 
   onListButtonClick() {

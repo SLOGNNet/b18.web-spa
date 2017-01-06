@@ -12,7 +12,7 @@
           <swui-datatable class='material striped' [selected]="selected" [rows]='items' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [selectionType]="'single'" (select)='onSelect($event)' [limit]="10">
           </swui-datatable>
         </div>
-        <load-stops [loads]="loads" *ngSwitchCase="2"></load-stops>
+        <load-stops [loads]="items" *ngSwitchCase="2"></load-stops>
       </div>
     </div>
   </first-pane>
