@@ -52,6 +52,9 @@ export interface NgbDatepickerNavigateEvent {
     .month:first-child {
       padding-left: 0 !important;
     }
+    .datepicker-table-wrapper {
+      width:100%;
+    }
   `],
   template: `
     <template #dt let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
@@ -69,7 +72,7 @@ export interface NgbDatepickerNavigateEvent {
       (select)="onNavigateDateSelect($event)">
     </ngb-datepicker-navigation>
 
-    <table>
+    <table class="datepicker-table-wrapper">
       <tr *ngIf="navigation !== 'select' || displayMonths > 1">
         <td *ngFor="let month of months" class="text-xs-center font-weight-bold">
           {{ i18n.getMonthName(month.number) }} {{ month.year }}
