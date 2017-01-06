@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/variables';
 
-.list-section {
+.load-stop-card-section {
   height: 100px;
   padding: 17px;
   background: $white;
@@ -37,20 +37,20 @@
     }
 
     .schedule-date-wrapper {
-      clear: both;
+      display: flex;
+      margin-top: 5px;
 
       .start-date {
         color: $grey;
-        float: left;
       }
 
       .schedule {
-        float: left;
+        padding: 0 10px;
+        flex: 1;
       }
 
       .end-date {
         color: $grey;
-        float: right;
       }
     }
   }
@@ -63,7 +63,6 @@
       display: flex;
       width: 79px;
       height: 20px;
-      background: $red;
       color: $white;
       float: right;
       align-items: center;

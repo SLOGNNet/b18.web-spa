@@ -3,7 +3,14 @@ import { generateNewId } from './utils';
 
 export enum LoadStatuses {
   Booked = 1,
-  Assigned = 2
+  Assigned = 2,
+  Pending = 3,
+  Scheduled = 4,
+  EnRoute = 5,
+  InTransit = 6,
+  Delivered = 7,
+  Completed = 8,
+  Canceled = 9,
 }
 
 export enum DriverRequirements {
@@ -42,6 +49,37 @@ export enum TrailerTypes {
   Other = 6,
 };
 
+// Colors
+function createStatusColors() {
+ let result = {};
+  result[LoadStatuses.Pending] = result[LoadStatuses.Booked] = result[LoadStatuses.Scheduled] = '#75b3e1';
+  result[LoadStatuses.EnRoute] = result[LoadStatuses.InTransit] = '#ffbe4d';
+  result[LoadStatuses.Delivered] = result[LoadStatuses.Completed] = '#85d183';
+  result[LoadStatuses.Canceled] = '#fb3a3a';
+
+  return result;
+};
+
+const statusColors = createStatusColors();
+
+// Texts
+function createStatusTexts() {
+ let result = {};
+  result[LoadStatuses.Booked] = 'booked';
+  result[LoadStatuses.Assigned] = 'assigned';
+  result[LoadStatuses.Pending] = 'pending';
+  result[LoadStatuses.Scheduled] = 'scheduled';
+  result[LoadStatuses.EnRoute] = 'en route';
+  result[LoadStatuses.InTransit] = 'in-transit';
+  result[LoadStatuses.Delivered] = 'delivered';
+  result[LoadStatuses.Completed] = 'completed';
+  result[LoadStatuses.Canceled] = 'canceled';
+
+  return result;
+};
+
+const statusTexts = createStatusTexts();
+
 export class Load {
   id: number;
   customerId: number;
@@ -59,12 +97,11 @@ export class Load {
   powerUnitType: PowerUnitTypes;
   trailerType: TrailerTypes;
   specialRequirment: string;
-  pickups: Array<Stop>;
-  dropoffs: Array<Stop>;
   trips: Array<Trip>;
   currentTrip: Trip;
+  stops: Array<Stop>;
 
-  static create(): Load{
+  static create(): Load {
     const result = new Load();
     result.id = generateNewId();
     result.status = LoadStatuses.Booked;
@@ -72,11 +109,18 @@ export class Load {
     result.driverRequirment = DriverRequirements.Solo;
     result.powerUnitType = PowerUnitTypes.Tractor;
     result.trailerType = TrailerTypes.DryVan53;
-    result.pickups = [Stop.create(StopTypes.Pickup)];
-    result.dropoffs = [Stop.create(StopTypes.Dropoff)];
     result.trips = [Trip.create()];
     result.currentTrip = Trip.create();
+    result.stops = [Stop.create(StopTypes.Dropoff)];
 
     return result;
+  }
+
+  public static getStatusColor(status: LoadStatuses): string {
+    return statusColors[status];
+  }
+
+  public static getStatusText(status: LoadStatuses): string {
+    return statusTexts[status];
   }
 }

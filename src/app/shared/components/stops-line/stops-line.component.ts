@@ -15,7 +15,11 @@ export class StopsLineComponent {
     this.select.emit(selected);
   }
 
-  isDropOff (type) {
+  isDropOff(type) {
     return type === StopTypes.Dropoff;
+  }
+
+  getColor(type) {
+    return Stop.getStatusColor(type);
   }
 }

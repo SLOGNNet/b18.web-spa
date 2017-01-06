@@ -2,17 +2,28 @@
   <first-pane>
     <div class="data-panel">
       <div class="btn-group">
-        <button type="button" (click)="loadData=1" class="btn btn-primary">Datatable</button>
-        <button type="button" (click)="loadData=2" class="btn btn-primary">List</button>
+        <button type="button" (click)="onTabClick(1)" class="btn btn-primary">Datatable</button>
+        <button type="button" (click)="onTabClick(2)" class="btn btn-primary">List</button>
       </div>
-      <div [ngSwitch]="loadData">
+      <div [ngSwitch]="selectedTab">
         <div *ngSwitchCase="1">
           <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
           </bd-button>
-          <swui-datatable #datatable class='material striped' [rows]='items' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [selectionType]="'single'" (select)='onSelect($event)' [limit]="10">
+          <swui-datatable 
+            class='material striped'
+            [selected]="selected"
+            [rows]='items'
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [selectionType]="'single'"
+            (select)='onSelect($event)'
+            [limit]="10">
           </swui-datatable>
         </div>
-        <load-stops [loads]="loads" *ngSwitchCase="2"></load-stops>
+        <load-stop-cards [loads]="items" (select)='onSelect($event)' *ngSwitchCase="2"></load-stop-cards>
       </div>
     </div>
   </first-pane>

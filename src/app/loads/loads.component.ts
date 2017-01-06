@@ -17,8 +17,7 @@ import { BaseListComponent } from '../base';
   providers: [LoadStore]
 })
 export class LoadsComponent extends BaseListComponent<Load>{
-  loadData: string = '1';
-  loads: Array<Object>;
+  selectedTab: number = 1;
 
   columns = [
     { prop: 'id', name: 'Load #' },
@@ -30,14 +29,12 @@ export class LoadsComponent extends BaseListComponent<Load>{
     router: Router,
     route: ActivatedRoute) {
     super(loadStore, router, route);
-    this.getAll();
   }
 
-  getAll() {
-       this.loadService.getAll().subscribe(loads => {
-         this.loads = loads;
-       });
-     }
+  onTabClick(tabNumber) {
+    this.selectedTab = tabNumber;
+    this.router.navigate([this.routePath()]);
+  }
 
   protected routePath(): string {
     return 'loads/';

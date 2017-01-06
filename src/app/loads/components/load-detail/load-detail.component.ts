@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Load } from '../../models';
-import { LoadStore } from '../../stores';
-import { BaseDetailComponent } from '../../base';
+import { Load } from '../../../models';
+import { LoadStore } from '../../../stores';
+import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
