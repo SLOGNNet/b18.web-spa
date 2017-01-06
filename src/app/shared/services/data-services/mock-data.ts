@@ -342,40 +342,38 @@ class MockData {
 
   public trips: Array<Trip> = [{
     id: 1,
-    address: this.addresses[0],
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 2,
-    address: this.addresses[1],
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 1,
-    address: this.addresses[2],
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }, {
     id: 2,
-    address: this.addresses[3],
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349
   }];
 
+  public startDate = new Date(2017, 0, 9);
+
   public pickups: Array<Stop> = [{
     id: 1,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
@@ -385,7 +383,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
@@ -395,7 +393,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -405,7 +403,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.None,
     address: this.addresses[3],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
@@ -415,7 +413,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -425,18 +423,20 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: '01/05',
+    date: this.startDate,
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }];
+
+  public endDate = new Date(2017, 0, 22);
 
   public dropoffs: Array<Stop> = [{
     id: 5,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
@@ -446,7 +446,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.None,
     address: this.addresses[0],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
@@ -456,7 +456,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.None,
     address: this.addresses[0],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -466,7 +466,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.None,
     address: this.addresses[1],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
@@ -476,7 +476,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
@@ -486,7 +486,7 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: '23/05',
+    date: this.endDate,
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress

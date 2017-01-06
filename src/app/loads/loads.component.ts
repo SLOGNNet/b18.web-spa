@@ -17,7 +17,7 @@ import { BaseListComponent } from '../base';
   providers: [LoadStore]
 })
 export class LoadsComponent extends BaseListComponent<Load>{
-  loadData: string = '1';
+  selectedTab: number = 1;
 
   columns = [
     { prop: 'id', name: 'Load #' },
@@ -31,8 +31,8 @@ export class LoadsComponent extends BaseListComponent<Load>{
     super(loadStore, router, route);
   }
 
-  onListButtonClick() {
-    this.loadData = '2';
+  onTabClick(tabNumber) {
+    this.selectedTab = tabNumber;
     this.router.navigate([this.routePath()]);
   }
 

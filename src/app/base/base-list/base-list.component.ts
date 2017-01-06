@@ -74,6 +74,8 @@ export abstract class BaseListComponent<T> {
     const id = Number.parseInt(params['id']);
     if (!isNaN(id)) {
       this.selectRow(id);
+    } else {
+      this.deselectRow();
     }
   }
 }

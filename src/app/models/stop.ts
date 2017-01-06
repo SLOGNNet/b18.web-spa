@@ -20,7 +20,7 @@ export class Stop {
   id: number;
   address: Address;
   commodities: Array<Commodity>;
-  date: string = '';
+  date: Date = new Date();
   notes: string = '';
   type: StopTypes = StopTypes.None;
   facility: Facility;

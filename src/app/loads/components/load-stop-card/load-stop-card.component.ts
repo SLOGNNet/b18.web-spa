@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
-  selector: 'card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'load-stop-card',
+  templateUrl: './load-stop-card.component.html',
+  styleUrls: ['./load-stop-card.component.scss']
 })
-export class CardComponent {
+export class LoadStopCardComponent {
   @Input() load: Load;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
