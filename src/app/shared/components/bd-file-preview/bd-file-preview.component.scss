@@ -1,0 +1,46 @@
+@import '../../../../assets/styles/variables';
+
+.loaded-file-container {
+  display: flex;
+  background: $light-blue;
+  margin-bottom: 20px;
+  flex-direction: row;
+
+  .file-info-container {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+
+    .file-type-container {
+      display: flex;
+      height: 50px;
+      padding: 0 17px;
+      background: $white;
+      border-bottom: $border;
+      align-items: center;
+      justify-content: space-between;
+
+      .file-name {
+        color: $black;
+      }
+
+      button {
+        border: 0;
+        background: none;
+
+        &:active {
+          outline: 0;
+        }
+
+        i {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  .file-preview {
+    width: 20%;
+    background: $iron;
+  }
+}

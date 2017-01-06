@@ -19,6 +19,8 @@ import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
+import { BdUploadFileComponent } from './components/bd-upload-file';
+import { BdFilePreviewComponent } from './components/bd-file-preview';
 import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
@@ -56,6 +58,8 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     BdDropdownComponent,
     BdTextareaAutosize,
     BdInputComponent,
+    BdUploadFileComponent,
+    BdFilePreviewComponent,
     BdSpinnerComponent,
     BdFormTypeaheadComponent,
     BdFormExpandComponent,
@@ -80,12 +84,15 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    FileUploadModule
   ],
   exports: [
     BdFormButtonComponent,
     BdTextareaAutosize,
     BdInputComponent,
+    BdUploadFileComponent,
+    BdFilePreviewComponent,
     BdSpinnerComponent,
     GoogleMapComponent,
     BdDropdownComponent,

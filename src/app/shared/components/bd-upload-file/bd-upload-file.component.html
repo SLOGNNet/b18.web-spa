@@ -1,0 +1,22 @@
+<div
+    (dragover)="handleDragEnter($event)"
+    (dragleave)="handleDragLeave($event)"
+    (drop)="handleDrop($event)"
+    class="upload-file-wrapper">
+   <div class="upload-file-container"
+       [class.dragging]="dragging">
+       <div class="text-container">
+         <span>Choose a&nbsp;</span>
+         <span
+           class="file-choose">
+             {{documentType}}
+         </span>
+         <span>&nbsp;or drag it here!&nbsp;</span>
+       </div>
+       <i class="download-icon"></i>
+       <input type="file"
+               class="upload-file-button"
+               multiple
+               (change)="handleInputChange($event)">
+   </div>
+</div>

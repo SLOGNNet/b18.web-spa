@@ -1,0 +1,19 @@
+<div class="loaded-file-container" *ngIf="isDocumentLoaded">
+  <div class="file-info-container">
+    <div class="file-type-container">
+        <span class="file-name">
+          {{documentType}}
+        </span>
+        <button class="btn-delete"
+                (click)="onRemoveClick()">
+          <i class="fa fa-minus-circle"></i>
+        </button>
+    </div>
+      <bd-input
+        [labelText]="'Issue date'"
+        [collapsibleInput]="false">
+      </bd-input>
+  </div>
+  <div class="file-preview">
+  </div>
+</div>

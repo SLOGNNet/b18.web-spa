@@ -1,0 +1,9 @@
+<bd-file-preview
+  [documentType]="documentType"
+  [isDocumentLoaded]="documentLoaded">
+</bd-file-preview>
+
+<bd-upload-file
+  [documentType]="'Rate Sheet'"
+  (documentLoad)="documentOnLoad($event)">
+</bd-upload-file>
