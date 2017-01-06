@@ -12,7 +12,7 @@ import {
   EventEmitter,
   Output
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NgControl } from '@angular/forms';
 
 import { NgbDate } from './ngb-date';
 import { NgbDatepicker, NgbDatepickerNavigateEvent } from './datepicker';
@@ -34,7 +34,7 @@ const NGB_DATEPICKER_VALUE_ACCESSOR = {
  * Manages integration with the input field itself (data entry) and ngModel (validation etc.).
  */
 @Directive({
-  selector: 'input[ngbDatepicker]',
+  selector: 'bd-input[ngbDatepicker], input[ngbDatepicker]',
   exportAs: 'ngbDatepicker',
   host: { '(change)': 'manualDateChange($event.target.value)', '(keyup.esc)': 'close()', '(blur)': 'onBlur()' },
   providers: [NGB_DATEPICKER_VALUE_ACCESSOR]
@@ -112,7 +112,7 @@ export class NgbInputDatepicker implements ControlValueAccessor {
   private _zoneSubscription: any;
 
   constructor(
-    private _parserFormatter: NgbDateParserFormatter, private _elRef: ElementRef, private _vcRef: ViewContainerRef,
+    private _control: NgControl, private _parserFormatter: NgbDateParserFormatter, private _elRef: ElementRef, private _vcRef: ViewContainerRef,
     private _renderer: Renderer, private _cfr: ComponentFactoryResolver, private ngZone: NgZone,
     private _service: NgbDatepickerService) {
     this._zoneSubscription = ngZone.onStable.subscribe(() => {
@@ -227,7 +227,10 @@ export class NgbInputDatepicker implements ControlValueAccessor {
   }
 
   private _writeModelValue(model: NgbDate) {
-    this._renderer.setElementProperty(this._elRef.nativeElement, 'value', this._parserFormatter.format(model));
+    const value = this._parserFormatter.format(model);
+    this._renderer.setElementProperty(this._elRef.nativeElement, 'value', value);
+    this._control.viewToModelUpdate(value);
+    (this._control.control as FormControl).setValue(value);
     if (this.isOpen()) {
       this._cRef.instance.writeValue(model);
       this._onTouched();

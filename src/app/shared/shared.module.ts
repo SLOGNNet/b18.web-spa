@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
@@ -11,9 +11,9 @@ import { NotificationService,
   FormValidationService
 } from './services';
 import { EnumHelperService } from './helpers';
+import { BdDropdownComponent } from './components/bd-dropdown';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
-import { BdDropdownComponent } from './components/bd-dropdown';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
@@ -28,7 +28,11 @@ import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
-import { NgbDatepickerModule } from './components/datepicker';
+import { NgbDatepicker, NgbDatepickerMonthView, NgbDatepickerNavigation,
+  NgbDatepickerNavigationSelect, NgbDatepickerDayView,
+  NgbInputDatepicker, NgbCalendar, NgbCalendarGregorian,
+  NgbDatepickerI18n, NgbDatepickerI18nDefault, NgbDateParserFormatter,
+  NgbDateISOParserFormatter, NgbDatepickerService, NgbDatepickerConfig } from './components/datepicker';
 import { BdRemoveButtonComponent,
   BdAddButtonComponent,
   BdButtonComponent,
@@ -40,22 +44,10 @@ import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 
 @NgModule({
-  providers: [
-    NotificationService,
-    LoadService,
-    SocketService,
-    CustomerService,
-    ContactService,
-    EnumHelperService,
-    GoogleService,
-    CommodityService,
-    BdFormBuilder,
-    FormValidationService
-  ],
   declarations: [
     BdFormButtonComponent,
-    BdDropdownComponent,
     BdTextareaAutosize,
+    BdDropdownComponent,
     BdInputComponent,
     BdSpinnerComponent,
     BdFormTypeaheadComponent,
@@ -73,7 +65,13 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     AddressItemTemplate,
     StickyDirective,
     FormStickyBottomContainerComponent,
-    BdFormDatePicker
+    BdFormDatePicker,
+    NgbDatepicker,
+    NgbDatepickerMonthView,
+    NgbDatepickerNavigation,
+    NgbDatepickerNavigationSelect,
+    NgbDatepickerDayView,
+    NgbInputDatepicker
   ],
   imports: [
     CommonModule,
@@ -82,8 +80,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule,
-    NgbDatepickerModule.forRoot()
+    PerfectScrollbarModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -91,7 +88,6 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     BdInputComponent,
     BdSpinnerComponent,
     GoogleMapComponent,
-    BdDropdownComponent,
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
@@ -112,8 +108,33 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     StickyDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
-    HttpModule
-  ]
-
+    HttpModule,
+    BdDropdownComponent,
+    NgbDatepicker,
+    NgbInputDatepicker
+  ],
+  entryComponents: [NgbDatepicker]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+     return {
+       ngModule: SharedModule,
+       providers: [
+         NotificationService,
+         LoadService,
+         SocketService,
+         CustomerService,
+         ContactService,
+         EnumHelperService,
+         GoogleService,
+         CommodityService,
+         BdFormBuilder,
+         FormValidationService,
+         {provide: NgbCalendar, useClass: NgbCalendarGregorian},
+         {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nDefault},
+         {provide: NgbDateParserFormatter, useClass: NgbDateISOParserFormatter}, NgbDatepickerService,
+         NgbDatepickerConfig
+       ]
+     };
+   }
+}
