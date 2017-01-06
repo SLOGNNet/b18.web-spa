@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
@@ -8,6 +8,7 @@ import { Load } from '../../../models';
 })
 export class CardComponent {
   @Input() load: Load;
+  @Output() select: EventEmitter<any> = new EventEmitter();
 
   get loadStatusColor() {
     return Load.getStatusColor(this.load.status);
@@ -23,5 +24,9 @@ export class CardComponent {
 
   get lastStop() {
     return this.load.stops[this.load.stops.length - 1];
+  }
+
+  onClick() {
+    this.select.emit(this.load);
   }
 }

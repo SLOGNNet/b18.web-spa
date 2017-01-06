@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
@@ -8,4 +8,9 @@ import { Load } from '../../../models';
 })
 export class LoadStopsComponent {
   @Input()loads: Array<Load>;
+  @Output() select: EventEmitter<any> = new EventEmitter();
+
+  onCardSelect(item) {
+    this.select.emit({selected: [item]});
+  }
 }

@@ -1,1 +1,1 @@
-<card [load]='load' *ngFor='let load of this.loads'></card>
+<card [load]='load' (select)="onCardSelect($event)" *ngFor='let load of this.loads'></card>
