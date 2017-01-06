@@ -22,7 +22,7 @@ import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
-import { LoadsComponent, LoadDetailComponent } from './loads';
+import { LoadsComponent, LoadDetailComponent, LoadStopCardComponent, LoadStopCardsComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { Angular2DataTableModule } from 'angular2-data-table';
 // Application wide providers
@@ -54,7 +54,9 @@ type StoreType = {
      LoadsComponent,
      LoadDetailComponent,
      CustomersComponent,
-     CustomerDetailComponent
+     CustomerDetailComponent,
+     LoadStopCardComponent,
+     LoadStopCardsComponent
   ],
   imports: [
     SharedModule,

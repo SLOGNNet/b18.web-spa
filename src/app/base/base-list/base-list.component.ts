@@ -6,14 +6,14 @@ import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
 
 export abstract class BaseListComponent<T> {
-  @ViewChild('datatable') datatable;
   protected items: T[] = new Array<T>();
 
   private childRouteSubscription: any;
   private childRoute: any;
+  private selected = [];
 
   constructor(private store: IListDataStore<T>,
-    private router: Router, private route: ActivatedRoute) {
+    protected router: Router, protected route: ActivatedRoute) {
     store.getAll();
   }
 
@@ -41,11 +41,11 @@ export abstract class BaseListComponent<T> {
   }
 
   private deselectRow() {
-    this.datatable.selected = [];
+    this.selected = [];
   }
 
   private selectRow(id: number) {
-    this.datatable.selected = this.items.filter(item => item['id'] === id);
+    this.selected = this.items.filter(item => item['id'] === id);
   }
 
 
@@ -74,6 +74,8 @@ export abstract class BaseListComponent<T> {
     const id = Number.parseInt(params['id']);
     if (!isNaN(id)) {
       this.selectRow(id);
+    } else {
+      this.deselectRow();
     }
   }
 }

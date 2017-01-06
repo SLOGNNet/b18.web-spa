@@ -33,6 +33,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
+  private pickups: Array<Stop>;
+  private dropoffs: Array<Stop>;
 
   public constructor(
     private customerService: CustomerService,
@@ -51,10 +53,16 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
-      this.commodityStore.set(this.load.pickups, this.load.dropoffs);
+      this.splitStops(this.load);
+      this.commodityStore.set(this.pickups, this.dropoffs);
       this.initForm();
       this.initCustomerTypeahead(this.load.customer);
     }
+  }
+
+  splitStops(load) {
+    this.pickups = load.stops.filter(stop => stop.type === StopTypes.Pickup);
+    this.dropoffs = load.stops.filter(stop => stop.type === StopTypes.Dropoff);
   }
 
   onCustomerRemove() {
@@ -116,6 +124,10 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
 
   private onLoadSave() {
     if (this.loadForm.valid) {
+      let result = this.loadForm.value;
+      result.stops = result.pickups.concat(result.dropoffs);
+      delete result.pickups;
+      delete result.dropoffs;
       this.save.emit(this.loadForm.value);
     }
   }
