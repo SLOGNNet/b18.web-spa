@@ -39,6 +39,7 @@ import { BdRemoveButtonComponent,
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
+import { StopsLineComponent } from './components/stops-line';
 
 @NgModule({
   providers: [
@@ -75,7 +76,8 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     NavigationAnchorComponent,
     AddressItemTemplate,
     StickyDirective,
-    FormStickyBottomContainerComponent
+    FormStickyBottomContainerComponent,
+    StopsLineComponent
   ],
   imports: [
     CommonModule,
@@ -115,6 +117,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     StickyDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
+    StopsLineComponent,
     HttpModule
   ]
 
