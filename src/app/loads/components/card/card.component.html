@@ -1,8 +1,8 @@
 <div class="list-section">
   <div class="left">
-    <span class="load-number">LD123456</span>
+    <span class="load-number">LD{{load.number}}</span>
     <span class="customer-name">{{load.customer.name}}</span>
-    <span>1234567</span>
+    <span>{{load.customer.loadId}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length">
     <div class="distance-wrapper">

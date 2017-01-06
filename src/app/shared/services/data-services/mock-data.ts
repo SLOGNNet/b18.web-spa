@@ -221,7 +221,8 @@ class MockData {
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
       taxId: '',
-      mc: '384859'
+      mc: '384859',
+      loadId: 1213453
     },
     {
       id: 2,
@@ -231,7 +232,9 @@ class MockData {
       email: 'HAVETO ADD@mwlogistics.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
-      taxId: '', mc: '392137'
+      taxId: '',
+      mc: '392137',
+      loadId: 1213453
     },
     {
       id: 3,
@@ -242,7 +245,8 @@ class MockData {
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
       taxId: '',
-      mc: ''
+      mc: '',
+      loadId: 1213453
     },
     {
       id: 4,
@@ -252,7 +256,8 @@ class MockData {
       email: 'stmcarrier@schneider.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
-      taxId: '', mc: '133655'
+      taxId: '', mc: '133655',
+      loadId: 1213453
     },
     {
       id: 5,
@@ -263,7 +268,8 @@ class MockData {
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
       taxId: '',
-      mc: '283221'
+      mc: '283221',
+      loadId: 1213453
     }
   ];
 
@@ -497,6 +503,7 @@ class MockData {
       id: 1,
       customerId: 1,
       customer: null,
+      number: 1213453,
       addressId: 1,
       brokerLoadNumber: 726457361,
       carrierLoadNumber: 209282402,
@@ -518,6 +525,7 @@ class MockData {
       id: 2,
       customerId: 2,
       customer: null,
+      number: 1213453,
       addressId: 2,
       brokerLoadNumber: 234457361,
       carrierLoadNumber: 7367707,
@@ -539,6 +547,7 @@ class MockData {
       id: 3,
       customerId: 3,
       customer: null,
+      number: 1213453,
       addressId: 3,
       brokerLoadNumber: 111557361,
       carrierLoadNumber: 104579538,
@@ -560,6 +569,7 @@ class MockData {
       id: 4,
       customerId: 4,
       customer: null,
+      number: 1213453,
       addressId: 4,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
@@ -581,6 +591,7 @@ class MockData {
       id: 5,
       customerId: 4,
       customer: null,
+      number: 1213453,
       addressId: 4,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
@@ -602,6 +613,7 @@ class MockData {
       id: 1,
       customerId: 4,
       customer: null,
+      number: 1213453,
       addressId: 4,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
@@ -623,6 +635,7 @@ class MockData {
       id: 2,
       customerId: 4,
       customer: null,
+      number: 1213453,
       addressId: 4,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
@@ -644,6 +657,7 @@ class MockData {
       id: 3,
       customerId: 4,
       customer: null,
+      number: 1213453,
       addressId: 4,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,

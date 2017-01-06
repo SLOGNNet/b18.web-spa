@@ -82,6 +82,7 @@ const statusTexts = createStatusTexts();
 
 export class Load {
   id: number;
+  number: number;
   customerId: number;
   addressId: number;
   carrierLoadNumber: number;

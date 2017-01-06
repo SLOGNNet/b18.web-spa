@@ -89,6 +89,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.customerViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
+      number: [this.load.number],
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
       contactId: [this.load.contactId],

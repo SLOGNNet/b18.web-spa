@@ -25,6 +25,7 @@ export class Customer {
   taxId: string = '';
   addresses: Array<Address>;
   email: string = '';
+  loadId: number = 0;
 
   static create(): Customer{
     const result = new Customer();

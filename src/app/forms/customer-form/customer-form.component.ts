@@ -63,6 +63,7 @@ export class CustomerForm extends BaseForm {
     this.customerForm = this.formBuilder.group({
       id: [this.customer.id],
       name: [this.customer.name],
+      loadId: [this.customer.loadId],
       type: [this.customer.type],
       status: [this.customer.status, Validators.required],
       mc: [this.customer.mc, Validators.required],
