@@ -8,9 +8,18 @@ import { Load } from '../../../models';
 })
 export class LoadStopCardsComponent {
   @Input()loads: Array<Load>;
+  @Input()selected: Array<Load>;;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onCardSelect(item) {
+    this.selected = [item];
     this.select.emit({selected: [item]});
+  }
+
+  get selectedIds() {
+    return this.selected.reduce((r, i) => {
+      r.push(i.id);
+      return r;
+    }, []);
   }
 }
