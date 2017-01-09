@@ -8,7 +8,7 @@ import { Load } from '../../../models';
 })
 export class LoadStopCardsComponent {
   @Input()loads: Array<Load>;
-  @Input()selected: Array<Load>;;
+  @Input()selected: Array<Load>;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onCardSelect(item) {
