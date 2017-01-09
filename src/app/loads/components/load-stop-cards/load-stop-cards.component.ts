@@ -17,9 +17,8 @@ export class LoadStopCardsComponent {
   }
 
   get selectedIds() {
-    return this.selected.reduce((r, i) => {
-      r.push(i.id);
-      return r;
-    }, []);
+    return this.selected.map(i => {
+      return i.id;
+    });
   }
 }
