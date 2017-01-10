@@ -1,6 +1,5 @@
 import { NgbCalendarGregorian } from './ngb-calendar';
 import { NgbDate } from './ngb-date';
-import { isBrowser } from '../../test/common';
 
 describe('ngb-calendar-gregorian', () => {
 

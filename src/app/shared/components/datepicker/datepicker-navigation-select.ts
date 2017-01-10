@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { NgbDate } from './ngb-date';
-import { toInteger } from 'lodash';
+import { toInteger } from './utils';
 import { NgbDatepickerI18n } from './datepicker-i18n';
 import { NgbCalendar } from './ngb-calendar';
 

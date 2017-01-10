@@ -68,7 +68,10 @@ module.exports = function (config) {
         {
           enforce: 'pre',
           test: /\.ts$/,
-          loader: 'tslint-loader',
+          loaders: [
+            'tslint-loader',
+            'angular2-template-loader'
+          ],
           exclude: [helpers.root('node_modules')]
         },
 
@@ -96,7 +99,7 @@ module.exports = function (config) {
          */
         {
           test: /\.ts$/,
-          loader: 'awesome-typescript-loader',
+          loaders: 'awesome-typescript-loader',
           query: {
             // use inline sourcemaps for "karma-remap-coverage" reporter
             sourceMap: false,
@@ -121,6 +124,12 @@ module.exports = function (config) {
           test: /\.json$/,
           loader: 'json-loader',
           exclude: [helpers.root('src/index.html')]
+        },
+
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loaders: ['raw-loader', 'postcss-loader', 'sass-loader']
         },
 
         /**

@@ -57,7 +57,7 @@ type StoreType = {
      CustomerDetailComponent
   ],
   imports: [
-    SharedModule.forRoot(),
+    SharedModule,
     NavigationBarModule,
     BrowserModule,
     InfiniteScrollModule,
