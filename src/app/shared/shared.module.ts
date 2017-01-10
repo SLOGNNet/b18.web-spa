@@ -110,14 +110,10 @@ import { StopsLineComponent } from './components/stops-line';
     StickyDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
-<<<<<<< HEAD
-    HttpModule,
     BdDropdownModule,
     NgbDatepickerModule,
-=======
     StopsLineComponent,
     HttpModule
->>>>>>> f928f1e3ad979bacc7a5fe93ec13b224547de177
   ]
 })
 export class SharedModule {
