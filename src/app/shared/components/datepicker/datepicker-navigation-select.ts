@@ -19,16 +19,29 @@ import { NgbCalendar } from './ngb-calendar';
   `],
   template: `
     <select [disabled]="disabled" class="custom-select d-inline-block" [value]="date.month" (change)="changeMonth($event.target.value)">
-      <option *ngFor="let m of months" [value]="m">{{ i18n.getMonthName(m) }}</option>
+      <option *ngFor="let m of months" [value]="m">q{{ i18n.getMonthName(m) }}</option>
     </select>` +
       `<select [disabled]="disabled" class="custom-select d-inline-block" [value]="date.year" (change)="changeYear($event.target.value)">
       <option *ngFor="let y of years" [value]="y">{{ y }}</option>
     </select>
-  `  // template needs to be formatted in a certain way so we don't add empty text nodes
+  ` +
+  `
+    <bd-dropdown
+        [labelText]="'contact'"
+        [defaultTitleText]="'Select Contact'"
+        [dropdownItemTemplate]="dropdownItemTemplate"
+        [items]="items">
+    </bd-dropdown>
+    <template #dropdownItemTemplate let-item="item">
+        {{item}}
+    </template>
+    `
+   // template needs to be formatted in a certain way so we don't add empty text nodes
 })
 export class NgbDatepickerNavigationSelect implements OnChanges {
   months: number[];
   years: number[] = [];
+  items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
 
   @Input() date: NgbDate;
   @Input() disabled: boolean;
@@ -40,6 +53,7 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
   constructor(public i18n: NgbDatepickerI18n, private calendar: NgbCalendar) { this.months = calendar.getMonths(); }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(this.date, 'this date');
     if (changes['maxDate'] || changes['minDate']) {
       this._generateYears();
       this._generateMonths();
