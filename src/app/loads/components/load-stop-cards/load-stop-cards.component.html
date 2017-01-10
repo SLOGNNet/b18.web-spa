@@ -1,0 +1,6 @@
+<load-stop-card
+  *ngFor="let load of this.loads"
+  [load]="load"
+  [class.active]="isActive(load.id)"
+  (select)="onCardSelect($event)">
+</load-stop-card>
