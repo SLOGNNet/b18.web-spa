@@ -1,1 +1,6 @@
-<load-stop-card [class.active]="selectedIds.includes(load.id)" [load]='load' (select)="onCardSelect($event)" *ngFor='let load of this.loads'></load-stop-card>
+<load-stop-card
+  *ngFor="let load of this.loads"
+  [load]="load"
+  [class.active]="isActive(load.id)"
+  (select)="onCardSelect($event)">
+</load-stop-card>
