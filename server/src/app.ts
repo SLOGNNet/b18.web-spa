@@ -35,7 +35,7 @@ class Server {
     this.configureLogging();
     this.routes();
     this.server = http.createServer(this.app);
-    this.sockets();
+    //this.sockets();
     this.listen();
   }
 
