@@ -401,7 +401,66 @@ class MockData {
   {
     id: 4,
     notes: 'notes',
-    type: StopTypes.None,
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 5,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 6,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  }, {
+    id: 7,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[0],
+    date: this.startDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 8,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[1],
+    date: this.startDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 9,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 10,
+    notes: 'notes',
+    type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
     commodities: [this.commodities[3]],
@@ -427,14 +486,24 @@ class MockData {
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
+  },
+  {
+    id: 13,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
   }];
 
   public endDate = new Date(2017, 0, 22);
 
   public dropoffs: Array<Stop> = [{
-    id: 5,
+    id: 13,
     notes: 'notes',
-    type: StopTypes.Pickup,
+    type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
     commodities: [this.commodities[0]],
@@ -442,9 +511,9 @@ class MockData {
     status: StopStatuses.InProgress
   },
   {
-    id: 6,
+    id: 14,
     notes: 'notes',
-    type: StopTypes.None,
+    type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
     commodities: [this.commodities[1]],
@@ -452,9 +521,9 @@ class MockData {
     status: StopStatuses.InProgress
   },
   {
-    id: 7,
+    id: 15,
     notes: 'notes',
-    type: StopTypes.None,
+    type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
     commodities: [this.commodities[2]],
@@ -462,9 +531,9 @@ class MockData {
     status: StopStatuses.InProgress
   },
   {
-    id: 8,
+    id: 16,
     notes: 'notes',
-    type: StopTypes.None,
+    type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
     commodities: [this.commodities[3]],
@@ -472,7 +541,7 @@ class MockData {
     status: StopStatuses.InProgress
   },
   {
-    id: 9,
+    id: 17,
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
@@ -482,13 +551,62 @@ class MockData {
     status: StopStatuses.InProgress
   },
   {
-    id: 10,
+    id: 18,
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
     commodities: [this.commodities[3]],
     facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  }, {
+    id: 19,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 20,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 21,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 22,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 23,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
     status: StopStatuses.InProgress
   }];
 
@@ -513,7 +631,7 @@ class MockData {
       specialRequirment: '#143',
       trips: this.trips,
       currentTrip: this.trips[0],
-      stops: [this.pickups[0], this.pickups[5], this.dropoffs[0]]
+      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]]
     },
     {
       id: 2,
@@ -534,7 +652,7 @@ class MockData {
       specialRequirment: '#141',
       trips: this.trips,
       currentTrip: this.trips[1],
-      stops: [this.pickups[1], this.pickups[4], this.dropoffs[4], this.dropoffs[1]]
+      stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]]
     },
     {
       id: 3,
@@ -555,7 +673,7 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[2],
-      stops: [this.pickups[2], this.dropoffs[5], this.dropoffs[2]]
+      stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]]
     },
     {
       id: 4,
@@ -576,13 +694,13 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[3],
-      stops: [this.pickups[3], this.dropoffs[3]]
+      stops: [this.pickups[5], this.dropoffs[5]]
     },
     {
       id: 5,
-      customerId: 4,
+      customerId: 1,
       customer: null,
-      addressId: 4,
+      addressId: 1,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
       loadType: LoadType.FTL,
@@ -596,14 +714,14 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
-      stops: [this.pickups[1], this.pickups[4], this.dropoffs[4], this.dropoffs[1]]
+      currentTrip: this.trips[0],
+      stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]]
     },
     {
-      id: 1,
-      customerId: 4,
+      id: 6,
+      customerId: 2,
       customer: null,
-      addressId: 4,
+      addressId: 2,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
       loadType: LoadType.FTL,
@@ -617,14 +735,14 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
-      stops: [this.pickups[0], this.pickups[5], this.dropoffs[0]]
+      currentTrip: this.trips[1],
+      stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]]
     },
     {
-      id: 2,
-      customerId: 4,
+      id: 7,
+      customerId: 3,
       customer: null,
-      addressId: 4,
+      addressId: 3,
       brokerLoadNumber: 827461356,
       carrierLoadNumber: 104605109,
       loadType: LoadType.FTL,
@@ -638,11 +756,11 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
-      stops: [this.pickups[3], this.dropoffs[3]]
+      currentTrip: this.trips[2],
+      stops: [this.pickups[10], this.dropoffs[9]]
     },
     {
-      id: 3,
+      id: 8,
       customerId: 4,
       customer: null,
       addressId: 4,
@@ -660,7 +778,7 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[3],
-      stops: [this.pickups[0], this.pickups[5], this.dropoffs[0]]
+      stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]]
     },
   ];
 }

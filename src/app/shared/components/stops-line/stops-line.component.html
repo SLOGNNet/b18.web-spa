@@ -1,16 +1,16 @@
 <div class="stops-container" *ngIf="stops.length">
   <hr [style.border-color]="lineColor">
   <div class="stops">
-      <div
-        aria-hidden="true"
-        class="triangle"
-        [style.background]="getColor(stop.type)"
-        [style.left.px]="stop.left"
-        [style.position]="stop.left ? 'absolute' : ''"
-        [class.bottom]="isDropOff(stop.type)"
-        (click)="onStopSelect(stop)"
-        *ngFor="let stop of stops">
-        <span></span>
-      </div>
+    <div
+      class="stop-icon"
+      aria-hidden="true"
+      [style.color]="getColor(stop.type)"
+      [style.left.px]="stop.left"
+      [style.position]="stop.left ? 'absolute' : ''"
+      [class.icon-dropoff]="isDropOff(stop.type)"
+      [class.icon-pickup]="!isDropOff(stop.type)"
+      (click)="onStopSelect(stop)"
+      *ngFor="let stop of stops">
+    </div>
   </div>
 </div>
