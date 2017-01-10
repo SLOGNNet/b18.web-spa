@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Load } from '../../../models';
-import { includes } from 'lodash';
 
 @Component({
     selector: 'load-stop-cards',
@@ -18,10 +17,10 @@ export class LoadStopCardsComponent {
   }
 
   isActive(id) {
-    const selectedIds: Array<number> = this.selected.map(i => {
-      return i.id;
+    const selected = this.selected.find(i => {
+      return i.id === id;
     });
 
-    return includes(selectedIds, id);
+    return selected;
   }
 }
