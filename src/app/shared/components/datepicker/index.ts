@@ -1,12 +1,1 @@
-export { NgbDatepicker, NgbDatepickerNavigateEvent } from './datepicker';
-export { NgbInputDatepicker } from './datepicker-input';
-export { NgbDatepickerMonthView } from './datepicker-month-view';
-export { NgbDatepickerDayView } from './datepicker-day-view';
-export { NgbDatepickerNavigation } from './datepicker-navigation';
-export { NgbDatepickerNavigationSelect } from './datepicker-navigation-select';
-export { NgbDatepickerConfig } from './datepicker-config';
-export { NgbDateStruct } from './ngb-date-struct';
-export { NgbDatepickerI18n, NgbDatepickerI18nDefault } from './datepicker-i18n';
-export { NgbCalendar, NgbCalendarGregorian } from './ngb-calendar';
-export { NgbDateParserFormatter, NgbDateISOParserFormatter } from './ngb-date-parser-formatter';
-export { NgbDatepickerService } from './datepicker-service';
+export * from './datepicker.module';

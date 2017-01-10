@@ -11,7 +11,6 @@ import { NotificationService,
   FormValidationService
 } from './services';
 import { EnumHelperService } from './helpers';
-import { BdDropdownComponent } from './components/bd-dropdown';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
@@ -23,16 +22,12 @@ import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
 import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
-import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
-import { NgbDatepicker, NgbDatepickerMonthView, NgbDatepickerNavigation,
-  NgbDatepickerNavigationSelect, NgbDatepickerDayView,
-  NgbInputDatepicker, NgbCalendar, NgbCalendarGregorian,
-  NgbDatepickerI18n, NgbDatepickerI18nDefault, NgbDateParserFormatter,
-  NgbDateISOParserFormatter, NgbDatepickerService, NgbDatepickerConfig } from './components/datepicker';
+import { BdDropdownModule } from './components/bd-dropdown';
+import { NgbDatepickerModule } from './components/datepicker';
 import { BdRemoveButtonComponent,
   BdAddButtonComponent,
   BdButtonComponent,
@@ -44,10 +39,21 @@ import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 
 @NgModule({
+  providers: [
+    NotificationService,
+    LoadService,
+    SocketService,
+    CustomerService,
+    ContactService,
+    EnumHelperService,
+    GoogleService,
+    CommodityService,
+    BdFormBuilder,
+    FormValidationService
+  ],
   declarations: [
     BdFormButtonComponent,
     BdTextareaAutosize,
-    BdDropdownComponent,
     BdInputComponent,
     BdSpinnerComponent,
     BdFormTypeaheadComponent,
@@ -66,21 +72,16 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     StickyDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
-    NgbDatepicker,
-    NgbDatepickerMonthView,
-    NgbDatepickerNavigation,
-    NgbDatepickerNavigationSelect,
-    NgbDatepickerDayView,
-    NgbInputDatepicker
   ],
   imports: [
     CommonModule,
     FormsModule,
     TypeaheadModule,
-    DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    NgbDatepickerModule.forRoot(),
+    BdDropdownModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -94,7 +95,6 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
-    DropdownModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -109,32 +109,10 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
     HttpModule,
-    BdDropdownComponent,
-    NgbDatepicker,
-    NgbInputDatepicker
-  ],
-  entryComponents: [NgbDatepicker]
+    BdDropdownModule,
+    NgbDatepickerModule,
+  ]
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-     return {
-       ngModule: SharedModule,
-       providers: [
-         NotificationService,
-         LoadService,
-         SocketService,
-         CustomerService,
-         ContactService,
-         EnumHelperService,
-         GoogleService,
-         CommodityService,
-         BdFormBuilder,
-         FormValidationService,
-         {provide: NgbCalendar, useClass: NgbCalendarGregorian},
-         {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nDefault},
-         {provide: NgbDateParserFormatter, useClass: NgbDateISOParserFormatter}, NgbDatepickerService,
-         NgbDatepickerConfig
-       ]
-     };
-   }
+
 }

@@ -10,7 +10,8 @@ import {
   TemplateRef,
   forwardRef,
   EventEmitter,
-  Output
+  Output,
+  Optional
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NgControl } from '@angular/forms';
 
@@ -112,7 +113,8 @@ export class NgbInputDatepicker implements ControlValueAccessor {
   private _zoneSubscription: any;
 
   constructor(
-    private _control: NgControl, private _parserFormatter: NgbDateParserFormatter, private _elRef: ElementRef, private _vcRef: ViewContainerRef,
+     private _parserFormatter: NgbDateParserFormatter,
+    private _elRef: ElementRef, private _vcRef: ViewContainerRef,
     private _renderer: Renderer, private _cfr: ComponentFactoryResolver, private ngZone: NgZone,
     private _service: NgbDatepickerService) {
     this._zoneSubscription = ngZone.onStable.subscribe(() => {
@@ -229,8 +231,8 @@ export class NgbInputDatepicker implements ControlValueAccessor {
   private _writeModelValue(model: NgbDate) {
     const value = this._parserFormatter.format(model);
     this._renderer.setElementProperty(this._elRef.nativeElement, 'value', value);
-    this._control.viewToModelUpdate(value);
-    (this._control.control as FormControl).setValue(value);
+    // this._control.viewToModelUpdate(value);
+    // (this._control.control as FormControl).setValue(value);
     if (this.isOpen()) {
       this._cRef.instance.writeValue(model);
       this._onTouched();
