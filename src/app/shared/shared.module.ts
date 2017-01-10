@@ -86,8 +86,7 @@ import { StopsLineComponent } from './components/stops-line';
     DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule,
-    FileUploadModule
+    PerfectScrollbarModule
   ],
   exports: [
     BdFormButtonComponent,
