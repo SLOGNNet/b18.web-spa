@@ -2,11 +2,12 @@
   <first-pane>
     <div class="data-panel">
       <div class="btn-group">
-        <button type="button" (click)="onTabClick(1)" class="btn btn-primary">Datatable</button>
-        <button type="button" (click)="onTabClick(2)" class="btn btn-primary">List</button>
+        <button type="button" (click)="onTabClick(1)" class="btn btn-primary">List</button>
+        <button type="button" (click)="onTabClick(2)" class="btn btn-primary">Datatable</button>
       </div>
       <div [ngSwitch]="selectedTab">
-        <div *ngSwitchCase="1">
+        <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)' *ngSwitchCase="1"></load-stop-cards>
+        <div *ngSwitchCase="2">
           <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
           </bd-button>
           <ngx-datatable
@@ -23,7 +24,6 @@
             [limit]="10">
           </ngx-datatable>
         </div>
-        <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)' *ngSwitchCase="2"></load-stop-cards>
       </div>
     </div>
   </first-pane>
