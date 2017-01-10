@@ -24,7 +24,7 @@ import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
 import { LoadsComponent, LoadDetailComponent, LoadStopCardComponent, LoadStopCardsComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
-import { Angular2DataTableModule } from 'angular2-data-table';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -64,7 +64,7 @@ type StoreType = {
     BrowserModule,
     InfiniteScrollModule,
     BdFormsModule,
-    Angular2DataTableModule,
+    NgxDatatableModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
