@@ -8,9 +8,19 @@ import { Load } from '../../../models';
 })
 export class LoadStopCardsComponent {
   @Input()loads: Array<Load>;
+  @Input()selected: Array<Load> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onCardSelect(item) {
+    this.selected = [item];
     this.select.emit({selected: [item]});
+  }
+
+  isActive(id) {
+    const selected = this.selected.find(i => {
+      return i.id === id;
+    });
+
+    return selected;
   }
 }

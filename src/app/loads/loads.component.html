@@ -23,7 +23,7 @@
             [limit]="10">
           </swui-datatable>
         </div>
-        <load-stop-cards [loads]="items" (select)='onSelect($event)' *ngSwitchCase="2"></load-stop-cards>
+        <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)' *ngSwitchCase="2"></load-stop-cards>
       </div>
     </div>
   </first-pane>
