@@ -7,7 +7,7 @@
           [text]="'Add'"
           (click)="onAdd()">
         </bd-button>
-        <swui-datatable
+        <ngx-datatable
           #datatable
           class="material striped"
           [rows]="items"
@@ -19,7 +19,7 @@
           [selectionType]="'single'"
           (select)="onSelect($event)"
           [limit]="10">
-        </swui-datatable>
+        </ngx-datatable>
       </div>
     </first-pane>
     <second-pane>
