@@ -92,16 +92,6 @@ export class AddressForm extends BaseForm {
     this._updateMap();
   }
 
-  public onFormBlur() {
-        debugger;
-
-    if (this.addressForm.valid) {
-
-       this.update.emit(this.addressForm.value);
-    }
-    return false;
-  }
-
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
       this._googleService.getDetails(place.place_id)
