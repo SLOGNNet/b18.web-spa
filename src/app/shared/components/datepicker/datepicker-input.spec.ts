@@ -50,7 +50,7 @@ describe('NgbInputDatepicker', () => {
     });
   });
 
-  describe('ngModel interactions', () => {
+  xdescribe('ngModel interactions', () => {
 
     it('should format bound date as ISO (by default) in the input field', fakeAsync(() => {
       const fixture = createTestCmpt(`<input ngbDatepicker [ngModel]="date">`);
@@ -300,7 +300,7 @@ describe('NgbInputDatepicker', () => {
       expect(dp.startDate).toEqual({ year: 2016, month: 9, day: 13 });
     });
 
-    it('should propagate model as "startDate" option when "startDate" not provided', fakeAsync(() => {
+    xit('should propagate model as "startDate" option when "startDate" not provided', fakeAsync(() => {
       const fixture = createTestCmpt(`<input ngbDatepicker [ngModel]="{year: 2016, month: 9, day: 13}">`);
       const dpInput = fixture.debugElement.query(By.directive(NgbInputDatepicker)).injector.get(NgbInputDatepicker);
 
