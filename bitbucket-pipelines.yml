@@ -6,8 +6,7 @@
 image: node:6.9.1
 
 pipelines:
-  branches:
-    default:
+  default:
     - step:
         script: # Modify the commands below to build your repository.
           - git remote set-url origin https://$USERNAME:$PASSWORD@bitbucket.org/bridge18/web-spa-datatable.git
