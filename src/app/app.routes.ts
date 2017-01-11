@@ -10,7 +10,7 @@ import { CustomersComponent, CustomerDetailComponent } from './customers';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/loads', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
+  { path: 'home',  component: HomeComponent },
   { path: 'loads', component: LoadsComponent, children: [{
         path: ':id',
         component: LoadDetailComponent

@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { NotificationService,
   CustomerService,
   SocketService,
@@ -14,7 +13,6 @@ import { NotificationService,
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
-import { BdDropdownComponent } from './components/bd-dropdown';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
@@ -26,16 +24,18 @@ import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
 import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
-import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
+import { BdDropdownModule } from './components/bd-dropdown';
+import { NgbDatepickerModule } from './components/datepicker';
 import { BdRemoveButtonComponent,
   BdAddButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
+import { BdFormDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
@@ -56,7 +56,6 @@ import { StopsLineComponent } from './components/stops-line';
   ],
   declarations: [
     BdFormButtonComponent,
-    BdDropdownComponent,
     BdTextareaAutosize,
     BdInputComponent,
     BdUploadFileComponent,
@@ -77,16 +76,18 @@ import { StopsLineComponent } from './components/stops-line';
     AddressItemTemplate,
     StickyDirective,
     FormStickyBottomContainerComponent,
+    BdFormDatePicker,
     StopsLineComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     TypeaheadModule,
-    DropdownModule,
     ReactiveFormsModule,
     HttpModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    NgbDatepickerModule.forRoot(),
+    BdDropdownModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -96,14 +97,12 @@ import { StopsLineComponent } from './components/stops-line';
     BdFilePreviewComponent,
     BdSpinnerComponent,
     GoogleMapComponent,
-    BdDropdownComponent,
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
-    DropdownModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -111,14 +110,18 @@ import { StopsLineComponent } from './components/stops-line';
     BdButtonComponent,
     BdRemoveButtonComponent,
     BdAddButtonComponent,
+    BdFormDatePicker,
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
+    BdDropdownModule,
+    NgbDatepickerModule,
     StopsLineComponent,
     HttpModule
   ]
-
 })
-export class SharedModule { }
+export class SharedModule {
+
+}

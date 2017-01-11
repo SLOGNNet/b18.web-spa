@@ -1,10 +1,26 @@
 @import '../../../../assets/styles/variables';
 
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .load-stop-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}
+
 .load-stop-card-section {
   height: 100px;
   padding: 17px;
-  background: $white;
+  background: inherit;
   font-size: $tiny-font-size;
+  cursor: pointer;
   border-bottom: $border;
 
   .left {
