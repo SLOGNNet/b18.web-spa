@@ -11,16 +11,19 @@ import { BaseForm } from '../base-form';
 }, BaseForm.metaData))
 export class LoadDocumentFormComponent extends BaseForm {
 
-  private documentType: string = "";
-  private documentLoaded: boolean = false;
-
+  private documents: Object[];
+  private documentsLoaded: boolean = false;
 
   constructor() {
     super();
+    this.documents = [];
   }
 
-  documentOnLoad(event){
-    this.documentType = event.type;
-    this.documentLoaded = event.isLoaded;
+  documentsOnLoad(event){
+
+    event.documents.map(item => {
+      this.documents.push(item)
+    });
+    this.documentsLoaded = true;
   }
 }

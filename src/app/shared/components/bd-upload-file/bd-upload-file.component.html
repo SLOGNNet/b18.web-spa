@@ -3,17 +3,34 @@
     (dragleave)="handleDragLeave($event)"
     (drop)="handleDrop($event)"
     class="upload-file-wrapper">
-   <div class="upload-file-container"
-       [class.dragging]="dragging">
-       <div class="text-container">
+   <div class="upload-file-container">
+     <div
+       *ngIf="showProgressBar"
+       class="upload-progress"
+       [style.width.%]="progressWidth">
+     </div>
+     <div [ngSwitch]="uploadingProcess">
+       <div
+         *ngSwitchCase="false"
+         class="text-container">
          <span>Choose a&nbsp;</span>
          <span
            class="file-choose">
              {{documentType}}
          </span>
-         <span>&nbsp;or drag it here!&nbsp;</span>
+         <span>&nbsp;document or drag it here!</span>
+         <i class="download-icon"></i>
        </div>
-       <i class="download-icon"></i>
+      <div
+        *ngSwitchCase="true"
+        class="text-container">
+          <span
+              class="file-choose">
+                {{documentType}}
+          </span>
+          <span>&nbsp;document uploading...</span>
+      </div>
+     </div>
        <input type="file"
                class="upload-file-button"
                multiple

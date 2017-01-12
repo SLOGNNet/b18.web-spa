@@ -1,9 +1,21 @@
-<bd-file-preview
-  [documentType]="documentType"
-  [isDocumentLoaded]="documentLoaded">
-</bd-file-preview>
+<div class="preview-container">
+  <bd-file-preview
+     *ngFor="let document of this.documents; let ii = index;"
+    [documentType]="document.documentType"
+    [isDocumentLoaded]="documentsLoaded"
+    [itemIndex]="ii + 1">
+  </bd-file-preview>
+</div>
 
-<bd-upload-file
-  [documentType]="'Rate Sheet'"
-  (documentLoad)="documentOnLoad($event)">
-</bd-upload-file>
+
+<div class="upload-container">
+  <bd-upload-file
+    [documentType]="'Rate Sheet'"
+    (documentsLoad)="documentsOnLoad($event)">
+  </bd-upload-file>
+
+  <bd-upload-file
+    [documentType]="'Bill of Lading'"
+    (documentsLoad)="documentsOnLoad($event)">
+  </bd-upload-file>
+</div>

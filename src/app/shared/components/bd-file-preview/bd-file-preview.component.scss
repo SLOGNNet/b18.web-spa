@@ -42,5 +42,7 @@
   .file-preview {
     width: 20%;
     background: $iron;
+    border-top-right-radius: $default-border-radius;
+    border-bottom-right-radius: $default-border-radius;
   }
 }

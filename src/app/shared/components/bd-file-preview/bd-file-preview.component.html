@@ -2,7 +2,7 @@
   <div class="file-info-container">
     <div class="file-type-container">
         <span class="file-name">
-          {{documentType}}
+          {{titleText}}
         </span>
         <button class="btn-delete"
                 (click)="onRemoveClick()">
@@ -11,7 +11,8 @@
     </div>
       <bd-input
         [labelText]="'Issue date'"
-        [collapsibleInput]="false">
+        [collapsibleInput]="false"
+        [value]="documentIssueDate">
       </bd-input>
   </div>
   <div class="file-preview">

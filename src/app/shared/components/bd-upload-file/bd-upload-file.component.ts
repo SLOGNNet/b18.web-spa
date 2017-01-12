@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+const URL = 'http://localhost:5000/upload';
+
 @Component({
   selector: 'bd-upload-file',
   styleUrls: ['bd-upload-file.component.scss'],
@@ -7,14 +9,37 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BdUploadFileComponent {
 
+
+      public _progressWidth: number = 0;
       private dragging: boolean = false;
       private loading: boolean = false;
       private isDocumentLoaded: boolean = false;
-      private documentFile: any;
+      private documentFiles: any[];
       private documentIssueDate: string;
+
+      get showProgressBar() {
+        return this.dragging;
+      }
+
+      get uploadingProcess() {
+        return this.loading && !this.dragging;
+      }
+
+      get progressWidth(): number {
+          return 100 - this._progressWidth;
+      }
+
+      set progressWidth(val: number) {
+         this._progressWidth = val;
+      }
+
       @Input() private documentType: string = "";
 
-      @Output() documentLoad: EventEmitter<any> = new EventEmitter();
+      @Output() documentsLoad: EventEmitter<any> = new EventEmitter();
+
+      constructor(){
+        this.documentFiles = [];
+      }
 
       handleDragEnter(event) {
           event.preventDefault();
@@ -33,16 +58,52 @@ export class BdUploadFileComponent {
       }
 
       handleInputChange(event) {
-          this.documentFile = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
-          let reader = new FileReader();
           this.isDocumentLoaded = true;
+          let FileList: FileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
 
-          this.documentLoad.emit({
-            type :this.documentType,
-            isLoaded: this.isDocumentLoaded
+          for (let i = 0, length = FileList.length; i < length; i++) {
+              this.documentFiles.push({
+                "document": FileList.item(i),
+                "documentType": this.documentType
+              });
+          }
+          this.documentsLoad.emit({
+            isLoaded: this.isDocumentLoaded,
+            documents: this.documentFiles
           });
 
-          reader.readAsDataURL(this.documentFile);
+          this.upload(this.documentFiles);
       }
+
+      public upload (files: any[]){
+            let formData: FormData = new FormData(),
+                  xhr: XMLHttpRequest = new XMLHttpRequest();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('filename', files[i].document);
+            }
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log("successfully loaded)");
+                    } else {
+                        console.log("something went wrong(");
+                    }
+                }
+                this.progressWidth = 0;
+            };
+
+            xhr.upload.onprogress = (event) => {
+                this.loading = true;
+                this.progressWidth = Math.round(event.loaded / event.total * 100);
+            };
+
+            xhr.upload.onloadend = (event) => {
+                this.loading = false;
+            };
+
+            xhr.open('POST', URL, true);
+            xhr.setRequestHeader("enctype", "multipart/form-data");
+            xhr.send(formData);
+    }
 
 }

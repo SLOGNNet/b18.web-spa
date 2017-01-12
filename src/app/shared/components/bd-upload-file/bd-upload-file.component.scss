@@ -19,11 +19,26 @@
     align-items: center;
     justify-content: center;
 
-    .text-container {
+    div {
+      z-index: 1;
+
+      .text-container {
+        z-index: 1;
+      }
+
       .file-choose {
         font-weight: bold;
       }
+
+      &.upload-progress {
+        position: absolute;
+        z-index: 0;
+        right: 0;
+        height: 100%;
+        background: $white;
+      }
     }
+
 
     .download-icon {
       position: absolute;
@@ -40,10 +55,6 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-    }
-
-    &.dragging {
-      background: $white;
     }
 
     &:hover {
