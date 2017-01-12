@@ -1,5 +1,5 @@
 import { Component, ElementRef, TemplateRef, ViewEncapsulation, OnInit } from '@angular/core';
-import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
+import { position } from '../../helpers/positioning';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
@@ -64,7 +64,7 @@ export class TypeaheadContainerComponent {
 
   public position(hostEl: ElementRef): void {
     this.left = '0px';
-    const hostPosition = positionService.position(hostEl.nativeElement);
+    const hostPosition = position(hostEl.nativeElement);
     this.top = hostPosition.height + 'px';
   }
 
