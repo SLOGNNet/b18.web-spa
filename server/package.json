@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --progress",
     "watch": "webpack --config webpack.config.js --progress --watch",
-    "start": "npm-run-all --parallel watch start:server",
+    "start": "npm-run-all --parallel watch start:demo-emitter start:server",
     "start:server": "nodemon dist/server.js",
     "start:demo-emitter": "nodemon dist/demo-emitter.js",
     "postinstall": "npm run build"
