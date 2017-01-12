@@ -37,6 +37,7 @@ import { BdFormDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective } from './directives/sticky.directive';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
+import { StopsLineComponent } from './components/stops-line';
 
 @NgModule({
   providers: [
@@ -72,6 +73,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     StickyDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
+    StopsLineComponent
   ],
   imports: [
     CommonModule,
@@ -108,9 +110,10 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
     StickyDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
-    HttpModule,
     BdDropdownModule,
     NgbDatepickerModule,
+    StopsLineComponent,
+    HttpModule
   ]
 })
 export class SharedModule {

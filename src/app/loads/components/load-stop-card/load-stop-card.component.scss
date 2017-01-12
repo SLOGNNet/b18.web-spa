@@ -1,0 +1,99 @@
+@import '../../../../assets/styles/variables';
+
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .load-stop-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}
+
+.load-stop-card-section {
+  height: 100px;
+  padding: 17px;
+  background: inherit;
+  font-size: $tiny-font-size;
+  cursor: pointer;
+  border-bottom: $border;
+
+  .left {
+    width: 30%;
+    float: left;
+
+    span {
+      display: block;
+    }
+
+    .load-number {
+      font-weight: bold;
+    }
+
+    .customer-name {
+      overflow: hidden;
+      color: $blue;
+      margin-right: 20px;
+      white-space: nowrap;
+    }
+  }
+
+  .right {
+    width: 70%;
+    float: left;
+
+    .distance-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .schedule-date-wrapper {
+      display: flex;
+      margin-top: 5px;
+
+      .start-date {
+        color: $grey;
+      }
+
+      .schedule {
+        padding: 0 10px;
+        flex: 1;
+      }
+
+      .end-date {
+        color: $grey;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    clear: both;
+
+    .status {
+      display: flex;
+      width: 79px;
+      height: 20px;
+      color: $white;
+      float: right;
+      align-items: center;
+      border-radius: 3px;
+      justify-content: center;
+    }
+
+    .current-trip {
+      text-align: center;
+      flex: 1;
+    }
+
+    .link {
+      color: $blue;
+      margin-right: 10px;
+    }
+  }
+}

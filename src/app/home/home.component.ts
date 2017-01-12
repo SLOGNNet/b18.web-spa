@@ -12,7 +12,7 @@ export class HomeComponent {
   rows = [];
   loadingIndicator: boolean = true;
   items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
-
+date;
   columns = [
      { prop: 'name' } ,
      { name: 'Company' },

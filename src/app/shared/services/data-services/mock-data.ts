@@ -1,7 +1,7 @@
 import {
   Load, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType, FreightType, DataAssigneeRequirements } from './models';
+  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType, FreightType, DataAssigneeRequirements, Facility, Trip, StopStatuses } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -231,7 +231,8 @@ class MockData {
       email: 'HAVETO ADD@mwlogistics.com',
       status: CustomerStatuses.Active,
       type: CustomerTypes.Broker,
-      taxId: '', mc: '392137'
+      taxId: '',
+      mc: '392137'
     },
     {
       id: 3,
@@ -321,70 +322,292 @@ class MockData {
   }
 ];
 
+  public facilities: Array<Facility> = [{
+    id: 1,
+    name: 'Larede, TX',
+    address: this.addresses[0]
+  }, {
+    id: 2,
+    name: 'San Francisco, CA',
+    address: this.addresses[1]
+  }, {
+    id: 1,
+    name: 'Los Angeles, CA',
+    address: this.addresses[2]
+  }, {
+    id: 2,
+    name: 'Los Altos, CA',
+    address: this.addresses[3]
+  }];
+
+  public trips: Array<Trip> = [{
+    id: 1,
+    number: 345351,
+    driverFullName: 'Robinson',
+    truckNumber: 1021,
+    trailerNumber: 2349
+  }, {
+    id: 2,
+    number: 345351,
+    driverFullName: 'Robinson',
+    truckNumber: 1021,
+    trailerNumber: 2349
+  }, {
+    id: 1,
+    number: 345351,
+    driverFullName: 'Robinson',
+    truckNumber: 1021,
+    trailerNumber: 2349
+  }, {
+    id: 2,
+    number: 345351,
+    driverFullName: 'Robinson',
+    truckNumber: 1021,
+    trailerNumber: 2349
+  }];
+
+  public startDate = new Date(2017, 0, 9);
+
   public pickups: Array<Stop> = [{
     id: 1,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
-    date: 'date',
-    commodities: [this.commodities[0]]
+    date: this.startDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
   },
   {
     id: 2,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: 'date',
-    commodities: [this.commodities[1]]
+    date: this.startDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
   },
   {
     id: 3,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: 'date',
-    commodities: [this.commodities[2]]
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
   },
   {
     id: 4,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: 'date',
-    commodities: [this.commodities[3]]
-  }];
-
-  public dropoffs: Array<Stop> = [{
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
     id: 5,
     notes: 'notes',
-    type: StopTypes.Dropoff,
-    address: this.addresses[0],
-    date: 'date',
-    commodities: [this.commodities[0]]
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
   },
   {
     id: 6,
     notes: 'notes',
-    type: StopTypes.Dropoff,
-    address: this.addresses[1],
-    date: 'date',
-    commodities: [this.commodities[1]]
-  },
-  {
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  }, {
     id: 7,
     notes: 'notes',
-    type: StopTypes.Dropoff,
-    address: this.addresses[2],
-    date: 'date',
-    commodities: [this.commodities[2]]
+    type: StopTypes.Pickup,
+    address: this.addresses[0],
+    date: this.startDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
   },
   {
     id: 8,
     notes: 'notes',
-    type: StopTypes.Dropoff,
+    type: StopTypes.Pickup,
+    address: this.addresses[1],
+    date: this.startDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 9,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 10,
+    notes: 'notes',
+    type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: 'date',
-    commodities: [this.commodities[3]]
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 11,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[2],
+    date: this.startDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 12,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 13,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    address: this.addresses[3],
+    date: this.startDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  }];
+
+  public endDate = new Date(2017, 0, 22);
+
+  public dropoffs: Array<Stop> = [{
+    id: 13,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 14,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 15,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 16,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 17,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 18,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: this.endDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  }, {
+    id: 19,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[0]],
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 20,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[1]],
+    facility: this.facilities[1],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 21,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[0],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 22,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[1],
+    date: this.endDate,
+    commodities: [this.commodities[3]],
+    facility: this.facilities[3],
+    status: StopStatuses.InProgress
+  },
+  {
+    id: 23,
+    notes: 'notes',
+    type: StopTypes.Dropoff,
+    address: this.addresses[2],
+    date: this.endDate,
+    commodities: [this.commodities[2]],
+    facility: this.facilities[2],
+    status: StopStatuses.InProgress
   }];
 
 
@@ -401,13 +624,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       contactId: 1,
       billingAddressId: 3,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#143',
-      pickups: [this.pickups[0]],
-      dropoffs: [this.dropoffs[0]]
+      trips: this.trips,
+      currentTrip: this.trips[0],
+      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]]
     },
     {
       id: 2,
@@ -421,13 +645,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel2,
       billingAddressId: 4,
       contactId: 2,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#141',
-      pickups: [this.pickups[1]],
-      dropoffs: [this.dropoffs[1]]
+      trips: this.trips,
+      currentTrip: this.trips[1],
+      stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]]
     },
     {
       id: 3,
@@ -441,13 +666,14 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 5,
       contactId: 3,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: [this.pickups[2]],
-      dropoffs: [this.dropoffs[2]]
+      trips: this.trips,
+      currentTrip: this.trips[2],
+      stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]]
     },
     {
       id: 4,
@@ -461,13 +687,98 @@ class MockData {
       dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
-      status: LoadStatuses.Booked,
+      status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
       powerUnitType: PowerUnitTypes.Tractor,
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
-      pickups: [this.pickups[3]],
-      dropoffs: [this.dropoffs[3]]
+      trips: this.trips,
+      currentTrip: this.trips[3],
+      stops: [this.pickups[5], this.dropoffs[5]]
+    },
+    {
+      id: 5,
+      customerId: 1,
+      customer: null,
+      addressId: 1,
+      brokerLoadNumber: 827461356,
+      carrierLoadNumber: 104605109,
+      loadType: LoadType.FTL,
+      freightType: FreightType.Dry,
+      dataAssignee: DataAssigneeRequirements.MelMel1,
+      billingAddressId: 6,
+      contactId: 4,
+      status: LoadStatuses.InTransit,
+      driverRequirment: DriverRequirements.Solo,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
+      trips: this.trips,
+      currentTrip: this.trips[0],
+      stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]]
+    },
+    {
+      id: 6,
+      customerId: 2,
+      customer: null,
+      addressId: 2,
+      brokerLoadNumber: 827461356,
+      carrierLoadNumber: 104605109,
+      loadType: LoadType.FTL,
+      freightType: FreightType.Dry,
+      dataAssignee: DataAssigneeRequirements.MelMel1,
+      billingAddressId: 6,
+      contactId: 4,
+      status: LoadStatuses.Completed,
+      driverRequirment: DriverRequirements.Solo,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
+      trips: this.trips,
+      currentTrip: this.trips[1],
+      stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]]
+    },
+    {
+      id: 7,
+      customerId: 3,
+      customer: null,
+      addressId: 3,
+      brokerLoadNumber: 827461356,
+      carrierLoadNumber: 104605109,
+      loadType: LoadType.FTL,
+      freightType: FreightType.Dry,
+      dataAssignee: DataAssigneeRequirements.MelMel1,
+      billingAddressId: 6,
+      contactId: 4,
+      status: LoadStatuses.Pending,
+      driverRequirment: DriverRequirements.Solo,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
+      trips: this.trips,
+      currentTrip: this.trips[2],
+      stops: [this.pickups[10], this.dropoffs[9]]
+    },
+    {
+      id: 8,
+      customerId: 4,
+      customer: null,
+      addressId: 4,
+      brokerLoadNumber: 827461356,
+      carrierLoadNumber: 104605109,
+      loadType: LoadType.FTL,
+      freightType: FreightType.Dry,
+      dataAssignee: DataAssigneeRequirements.MelMel1,
+      billingAddressId: 6,
+      contactId: 4,
+      status: LoadStatuses.Completed,
+      driverRequirment: DriverRequirements.Solo,
+      powerUnitType: PowerUnitTypes.Tractor,
+      trailerType: TrailerTypes.DryVan53,
+      specialRequirment: '#128',
+      trips: this.trips,
+      currentTrip: this.trips[3],
+      stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]]
     },
   ];
 }

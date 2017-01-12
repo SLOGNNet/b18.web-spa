@@ -1,0 +1,24 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
+
+.stops-container {
+  position: relative;
+
+  hr {
+    position: absolute;
+    width: 100%;
+    margin: 7px 0 0;
+    border-color: $grey;
+  }
+}
+
+.stops {
+  display: flex;
+  justify-content: space-between;
+
+  .stop-icon {
+    z-index: 1;
+    background: $white;
+    font-size: 16px;
+  }
+}

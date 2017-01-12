@@ -1,0 +1,37 @@
+<div class="load-stop-card-section" (click)="onClick()">
+  <div class="left">
+    <span class="load-number">LD{{load.carrierLoadNumber}}</span>
+    <span class="customer-name">{{load.customer.name}}</span>
+    <span>{{load.brokerLoadNumber}}</span>
+  </div>
+  <div class="right" *ngIf="this.load.stops.length > 1">
+    <div class="distance-wrapper">
+      <span>{{firstStop.address.city}}, {{firstStop.address.state}}</span>
+      <span>{{lastStop.address.city}}, {{lastStop.address.state}}</span>
+    </div>
+    <div class="schedule-date-wrapper">
+      <div class="start-date">
+        {{firstStop.date | date:'MM/dd'}}
+      </div>
+      <div class="schedule">
+        <stops-line [stops]="load.stops"></stops-line>
+      </div>
+      <div class="end-date">
+        {{lastStop.date | date:'MM/dd'}}
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span class="link">{{load.currentTrip.driverFullName}}</span>
+    <span class="link">|</span>
+    <span class="link">Tk{{load.currentTrip.truckNumber}}</span>
+    <span class="link">|</span>
+    <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
+    <span class="current-trip">
+      TR{{load.currentTrip.number}}
+    </span>
+    <span class="status" [style.background]="loadStatusColor">
+        {{loadStatusText}}
+    </span>
+  </div>
+</div>
