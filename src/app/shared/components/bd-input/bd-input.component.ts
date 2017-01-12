@@ -1,6 +1,7 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
 let nextUniqueId = 0;
@@ -62,6 +63,14 @@ export class BdInputComponent {
     }
   }
 
+  @Output('blur')
+  get onBlur(): Observable<FocusEvent> {
+    return this._blurEmitter.asObservable();
+  }
+  @Output('focus')
+  get onFocus(): Observable<FocusEvent> {
+    return this._focusEmitter.asObservable();
+  }
   @Output() valueChange = new EventEmitter();
   @Output() focusChange = new EventEmitter();
   @HostBinding('class.bd-focused') _focused: boolean = false;
@@ -73,6 +82,7 @@ export class BdInputComponent {
   private _prefixEmpty: boolean = false;
   private _suffixEmpty: boolean = false;
   private _disabled: boolean = false;
+  private _blurEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
   ngAfterViewInit() {
@@ -111,10 +121,6 @@ export class BdInputComponent {
     }
   }
 
-  blur() {
-    this._handleBlur();
-  }
-
   _handleFocus(event: FocusEvent) {
     this._focused = true;
     this._focusEmitter.emit(event);
@@ -132,21 +138,20 @@ export class BdInputComponent {
   }
 
   _handleKeyDown(event: Event) {
-
     this._onTouchedCallback();
-
   }
 
   _handleKeyUp(event: Event) {
     this._handleChange(event);
   }
 
-  _handleBlur() {
+  _handleBlur(event: FocusEvent) {
     const blurEvent = new Event('blur', { bubbles: true });
     this.renderer.invokeElementMethod(
       this.element.nativeElement, 'dispatchEvent', [blurEvent]);
     this._focused = false;
     this._onTouchedCallback();
+    this._blurEmitter.emit(event);
     this.focusChange.emit(this._focused);
   }
 

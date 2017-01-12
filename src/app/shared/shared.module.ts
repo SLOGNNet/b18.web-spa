@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
@@ -50,7 +51,8 @@ import { StopsLineComponent } from './components/stops-line';
     GoogleService,
     CommodityService,
     BdFormBuilder,
-    FormValidationService
+    FormValidationService,
+    DatePipe
   ],
   declarations: [
     BdFormButtonComponent,

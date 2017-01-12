@@ -105,7 +105,7 @@ export class NgbInputDatepicker {
   @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
 
   private _cRef: ComponentRef<NgbDatepicker> = null;
-  private _model: NgbDate;
+  private _model: NgbDate = null;
   private _zoneSubscription: any;
 
   constructor(
@@ -114,6 +114,9 @@ export class NgbInputDatepicker {
     private _elRef: ElementRef, private _vcRef: ViewContainerRef,
     private _renderer: Renderer, private _cfr: ComponentFactoryResolver, private ngZone: NgZone,
     private _service: NgbDatepickerService) {
+    if (this._control) {
+      this._control.valueChanges.subscribe(this.writeValue.bind(this));
+    }
     this._zoneSubscription = ngZone.onStable.subscribe(() => {
       if (this._cRef) {
         positionElements(this._elRef.nativeElement, this._cRef.location.nativeElement, 'bottom-left');
@@ -121,10 +124,18 @@ export class NgbInputDatepicker {
     });
   }
 
-
   writeValue(value) {
-    this._model =
-      value ? this._service.toValidDate({ year: value.year, month: value.month, day: value.day }, null) : null;
+    const newModel =
+      value ? this._service.toValidDate(this._parserFormatter.parse(value), null) : null;
+
+    if (this._isModelChanged(newModel)) {
+      this._model = newModel;
+      this._writeModelValue(this._model);
+    }
+  }
+
+  manualDateChange(value: string) {
+    this._model = this._service.toValidDate(this._parserFormatter.parse(value), null);
     this._writeModelValue(this._model);
   }
 
@@ -133,11 +144,6 @@ export class NgbInputDatepicker {
     if (this.isOpen()) {
       this._cRef.instance.setDisabledState(isDisabled);
     }
-  }
-
-  manualDateChange(value: string) {
-    this._model = this._service.toValidDate(this._parserFormatter.parse(value), null);
-    this._writeModelValue(this._model);
   }
 
   isOpen() { return !!this._cRef; }
@@ -158,7 +164,9 @@ export class NgbInputDatepicker {
 
       // date selection event handling
       this._cRef.instance.registerOnChange((selectedDate) => {
-        this.writeValue(selectedDate);
+        this._model =
+          selectedDate ? this._service.toValidDate({year: selectedDate.year, month: selectedDate.month, day: selectedDate.day}, null) : null;
+        this._writeModelValue(selectedDate);
         this.close();
       });
     }
@@ -198,6 +206,12 @@ export class NgbInputDatepicker {
   }
 
   onBlur() {}
+
+  private _isModelChanged(newModel: NgbDate): boolean{
+    const icChanged = (this._model === null && newModel !== null)
+      || ( this._model && !this._model.equals(newModel));
+      return icChanged;
+  }
 
   private _applyDatepickerInputs(datepickerInstance: NgbDatepicker): void {
     ['dayTemplate', 'displayMonths', 'firstDayOfWeek', 'markDisabled', 'minDate', 'maxDate', 'navigation',
