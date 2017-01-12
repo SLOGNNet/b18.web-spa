@@ -36,8 +36,9 @@ import { BdRemoveButtonComponent,
 import { BdFormDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective } from './directives/sticky.directive';
+import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
-import { StopsLineComponent } from './components/stops-line';
+import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 
 @NgModule({
   providers: [
@@ -73,7 +74,8 @@ import { StopsLineComponent } from './components/stops-line';
     StickyDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
-    StopsLineComponent
+    StopsLineComponent,
+    StopPopoverComponent
   ],
   imports: [
     CommonModule,
@@ -83,7 +85,8 @@ import { StopsLineComponent } from './components/stops-line';
     HttpModule,
     PerfectScrollbarModule,
     NgbDatepickerModule.forRoot(),
-    BdDropdownModule
+    BdDropdownModule,
+    BdPopoverModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -113,7 +116,9 @@ import { StopsLineComponent } from './components/stops-line';
     BdDropdownModule,
     NgbDatepickerModule,
     StopsLineComponent,
-    HttpModule
+    StopPopoverComponent,
+    HttpModule,
+    BdPopoverModule
   ]
 })
 export class SharedModule {

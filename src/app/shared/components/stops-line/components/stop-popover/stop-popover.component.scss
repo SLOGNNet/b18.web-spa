@@ -1,0 +1,33 @@
+@import '../../../../../../assets/styles/variables';
+
+$black: #333;
+
+button {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  background: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.stop-popover {
+  .section {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  span {
+    display: block;
+    color: $black;
+    font-size: $tiny-font-size;
+    line-height: 1.5;
+  }
+
+  .blue {
+    color: $blue;
+  }
+}

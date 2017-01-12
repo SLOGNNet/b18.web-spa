@@ -1,0 +1,23 @@
+<button [bd-popover]="myPopover"></button>
+<bd-popover-content
+  #myPopover
+  placement="auto"
+  [width]="215"
+  [horizontalOffset]="40"
+  [closeOnClickOutside]="true">
+    <div class="stop-popover">
+      <div class="section">
+        <span class="blue">Pickup#1</span>
+        <span>08/15/16 | Appt: 20:00 | Complete</span>
+      </div>
+      <div class="section">
+        <span class="blue">CH Robinson</span>
+        <span>17745 Gulf Boulevard, STE 203</span>
+        <span>Redington Shores</span>
+        <span>FL 33708</span>
+      </div>
+      <div class="section">
+        <span>164484362337 | 337</span>
+      </div>
+    </div>
+</bd-popover-content>
