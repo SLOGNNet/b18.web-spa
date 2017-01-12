@@ -33,9 +33,9 @@ export class BdUploadFileComponent {
          this._progressWidth = val;
       }
 
-      @Input() private documentType: string = "";
+      @Input() private documentType: string = '';
 
-      @Output() documentsLoad: EventEmitter<any> = new EventEmitter();
+      @Output() private documentsLoad: EventEmitter<any> = new EventEmitter();
 
       constructor(){
         this.documentFiles = [];
@@ -59,12 +59,12 @@ export class BdUploadFileComponent {
 
       handleInputChange(event) {
           this.isDocumentLoaded = true;
-          let FileList: FileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+          let fileList: FileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
 
-          for (let i = 0, length = FileList.length; i < length; i++) {
+          for (let i = 0, length = fileList.length; i < length; i++) {
               this.documentFiles.push({
-                "document": FileList.item(i),
-                "documentType": this.documentType
+                'document': fileList.item(i),
+                'documentType': this.documentType
               });
           }
           this.documentsLoad.emit({
@@ -84,9 +84,9 @@ export class BdUploadFileComponent {
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log("successfully loaded)");
+                        console.log('successfully loaded)');
                     } else {
-                        console.log("something went wrong(");
+                        console.log('something went wrong(');
                     }
                 }
                 this.progressWidth = 0;
@@ -102,7 +102,7 @@ export class BdUploadFileComponent {
             };
 
             xhr.open('POST', URL, true);
-            xhr.setRequestHeader("enctype", "multipart/form-data");
+            xhr.setRequestHeader('enctype', 'multipart/form-data');
             xhr.send(formData);
     }
 
