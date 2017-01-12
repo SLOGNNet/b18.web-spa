@@ -6,42 +6,49 @@ import { NgbCalendar } from './ngb-calendar';
 
 @Component({
   selector: 'ngb-datepicker-navigation-select',
-  styles: [`
-    select {
-      /* to align with btn-sm */
-      padding: 0.25rem 0.5rem;
-      font-size: 0.875rem;
-      line-height: 1.25;
-      /* to cancel the custom height set by custom-select */
-      height: inherit;
-      width: 50%;
-    }
-  `],
-  template: `
-    <select [disabled]="disabled" class="custom-select d-inline-block" [value]="date.month" (change)="changeMonth($event.target.value)">
-      <option *ngFor="let m of months" [value]="m">q{{ i18n.getMonthName(m) }}</option>
-    </select>` +
-      `<select [disabled]="disabled" class="custom-select d-inline-block" [value]="date.year" (change)="changeYear($event.target.value)">
-      <option *ngFor="let y of years" [value]="y">{{ y }}</option>
-    </select>
-  ` +
+  styleUrls: ['./styles/datepicker-navigation-select.scss'],
+  template:
   `
+  <div class="years-months-wrapper">
+    <div class="dropdowns-wrapper">
     <bd-dropdown
-        [labelText]="'contact'"
-        [defaultTitleText]="'Select Contact'"
-        [dropdownItemTemplate]="dropdownItemTemplate"
-        [items]="items">
+        defaultTitleText='Select month'
+        [dropdownItemTemplate]="dropdownMonthTemplate"
+        (onItemClick)="triggerMonthClick($event)"
+        selectedValue="2"
+        keyField="id"
+        valueField="month"
+        [items]="i18n.getMonthCollection()">
     </bd-dropdown>
-    <template #dropdownItemTemplate let-item="item">
-        {{item}}
+    </div>
+    <template #dropdownMonthTemplate let-item="item">
+          <span class="items-wrapper">{{item.month}}</span>
     </template>
     `
+    +
+    `
+
+      <div class="dropdowns-wrapper">
+      <bd-dropdown
+          [defaultTitleText]="'Select Year'"
+          [dropdownItemTemplate]="dropdownYearTemplate"
+          keyField="id"
+          selectedValue="2"
+          (onItemClick)="triggerYearClick($event)"
+          valueField="year"
+          [items]="years">
+      </bd-dropdown>
+      </div>
+      <template #dropdownYearTemplate let-item="item">
+        <span class="items-wrapper">{{item.year}}</span>
+      </template>
+      </div>
+      `
    // template needs to be formatted in a certain way so we don't add empty text nodes
 })
 export class NgbDatepickerNavigationSelect implements OnChanges {
   months: number[];
-  years: number[] = [];
-  items = ['Jacky Chan - actor', 'Bill Gates - MS CEO', 'John Doe - xz', 'Vasia Pupkin - clown', 'Anton Ivanovich - director'];
+  years: Array<Object>;
 
   @Input() date: NgbDate;
   @Input() disabled: boolean;
@@ -53,7 +60,6 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
   constructor(public i18n: NgbDatepickerI18n, private calendar: NgbCalendar) { this.months = calendar.getMonths(); }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.date, 'this date');
     if (changes['maxDate'] || changes['minDate']) {
       this._generateYears();
       this._generateMonths();
@@ -64,9 +70,13 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
     }
   }
 
-  changeMonth(month: string) { this.select.emit(new NgbDate(this.date.year, toInteger(month), 1)); }
+  triggerMonthClick(item) {
+    this.select.emit(new NgbDate(this.date.year, toInteger(item.key), 1));
+  }
 
-  changeYear(year: string) { this.select.emit(new NgbDate(toInteger(year), this.date.month, 1)); }
+  triggerYearClick(item) {
+    this.select.emit(new NgbDate(toInteger(item.value), this.date.month, 1));
+  }
 
   private _generateMonths() {
     this.months = this.calendar.getMonths();
@@ -83,6 +93,13 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
   }
 
   private _generateYears() {
-    this.years = Array.from({length: this.maxDate.year - this.minDate.year + 1}, (e, i) => this.minDate.year + i);
+    let generateYears = [];
+    for ( let i = 0; i < this.maxDate.year - this.minDate.year + 1; i++) {
+      generateYears[i] = {
+        id: i + '',
+        year: this.minDate.year + i
+      };
+    }
+    this.years = generateYears;
   }
 }

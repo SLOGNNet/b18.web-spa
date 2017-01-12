@@ -13,10 +13,10 @@ import { DayTemplateContext } from './datepicker-day-template-context';
         <td *ngIf="showWeekNumbers"></td>
         <td *ngFor="let w of month.weekdays" class="weekday text-xs-center font-weight-bold">{{ i18n.getWeekdayName(w) }}</td>
       </tr>
-      <tr *ngFor="let week of month.weeks">
+      <tr class="weeks-wrapper" *ngFor="let week of month.weeks">
         <td *ngIf="showWeekNumbers" class="weeknumber small text-xs-center">{{ week.number }}</td>
         <td *ngFor="let day of week.days" (click)="doSelect(day)" class="day" [class.disabled]="isDisabled(day)"
-        [class.collapsed]="isCollapsed(day)" [class.hidden]="isHidden(day)">
+        [class.collapsed]="isCollapsed(day)" [class.bd-hidden]="isHidden(day)">
             <template [ngTemplateOutlet]="dayTemplate"
             [ngOutletContext]="{date: {year: day.date.year, month: day.date.month, day: day.date.day},
               currentMonth: month.number,
@@ -32,7 +32,7 @@ export class NgbDatepickerMonthView {
   @Input() dayTemplate: TemplateRef<DayTemplateContext>;
   @Input() disabled: boolean;
   @Input() month: MonthViewModel;
-  @Input() outsideDays: 'visible' | 'hidden' | 'collapsed';
+  @Input() outsideDays: 'hidden' | 'collapsed';
   @Input() selectedDate: NgbDate;
   @Input() showWeekdays;
   @Input() showWeekNumbers;

@@ -54,6 +54,8 @@ export interface NgbDatepickerNavigateEvent {
     }
     .datepicker-table-wrapper {
       width:100%;
+      background: #fff;
+      border-bottom: 1px solid #d7d8db;
     }
   `],
   template: `
@@ -87,7 +89,7 @@ export interface NgbDatepickerNavigateEvent {
             [showWeekdays]="showWeekdays"
             [showWeekNumbers]="showWeekNumbers"
             [disabled]="disabled"
-            [outsideDays]="displayMonths === 1 ? outsideDays : 'hidden'"
+            [outsideDays]="'hidden'"
             (select)="onDateSelect($event)">
           </ngb-datepicker-month-view>
         </td>

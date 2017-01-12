@@ -1,3 +1,5 @@
+@import '../../../../../assets/styles/variables';
+
 .collapsed {
   margin-bottom: -1.7rem;
 }
@@ -5,6 +7,7 @@
 .header {
   width: 100%;
   height: 50px;
+  background: $white;
   padding-left: 17px;
   padding-right: 17px;
 
