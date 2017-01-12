@@ -1,4 +1,15 @@
-import { Directive, HostListener, ComponentRef, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, Input, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Directive,
+    HostListener,
+    ComponentRef,
+    ViewContainerRef,
+    ElementRef,
+    ComponentFactoryResolver,
+    ComponentFactory,
+    Input,
+    OnChanges,
+    SimpleChange,
+    Output,
+    EventEmitter } from '@angular/core';
 import { BdPopoverContent } from './bd-popover-content';
 
 @Directive({
@@ -6,29 +17,13 @@ import { BdPopoverContent } from './bd-popover-content';
     exportAs: 'bd-popover'
 })
 export class BdPopover implements OnChanges {
-
-    // -------------------------------------------------------------------------
-    // Properties
-    // -------------------------------------------------------------------------
-
     protected bdPopoverComponent = BdPopoverContent;
     protected bdPopover: ComponentRef<BdPopoverContent>;
     protected visible: boolean;
-
-    // -------------------------------------------------------------------------
-    // Constructor
-    // -------------------------------------------------------------------------
-
-    constructor(protected viewContainerRef: ViewContainerRef,
-                protected resolver: ComponentFactoryResolver) {
-    }
-
-    // -------------------------------------------------------------------------
-    // Inputs / Outputs
-    // -------------------------------------------------------------------------
+    protected triggeredByClick: boolean = false;
 
     @Input('bd-popover')
-    content: string|BdPopoverContent;
+    content: string | BdPopoverContent;
 
     @Input()
     popoverDisabled: boolean;
@@ -60,14 +55,24 @@ export class BdPopover implements OnChanges {
     @Output()
     onHidden = new EventEmitter<BdPopover>();
 
-    // -------------------------------------------------------------------------
-    // Event listeners
-    // -------------------------------------------------------------------------
+    constructor(protected element: ElementRef,
+                protected viewContainerRef: ViewContainerRef,
+                protected resolver: ComponentFactoryResolver) {
+    }
 
     @HostListener('click')
     showOrHideOnClick(): void {
-        if (this.popoverOnHover) return;
+        this.element.nativeElement.style.zIndex = '';
+
         if (this.popoverDisabled) return;
+
+        if (this.visible && !this.triggeredByClick) {
+            this.triggeredByClick = true;
+            return;
+        } else if (!this.triggeredByClick) {
+            this.triggeredByClick = true;
+        }
+
         this.toggle();
     }
 
@@ -77,14 +82,16 @@ export class BdPopover implements OnChanges {
         if (!this.popoverOnHover) return;
         if (this.popoverDisabled) return;
         this.show();
+        this.element.nativeElement.style.zIndex = 999999;
     }
 
     @HostListener('focusout')
     @HostListener('mouseleave')
     hideOnHover(): void {
-        if (this.popoverCloseOnMouseOutside) return; // don't do anything since not we control this
+        this.element.nativeElement.style.zIndex = '';
+
         if (!this.popoverOnHover) return;
-        if (this.popoverDisabled) return;
+        if (this.popoverDisabled || this.triggeredByClick) return;
         this.hide();
     }
 
@@ -95,10 +102,6 @@ export class BdPopover implements OnChanges {
             }
         }
     }
-
-    // -------------------------------------------------------------------------
-    // Public Methods
-    // -------------------------------------------------------------------------
 
     toggle() {
         if (!this.visible) {
@@ -161,6 +164,8 @@ export class BdPopover implements OnChanges {
     }
 
     hide() {
+        this.triggeredByClick = false;
+
         if (!this.visible) return;
 
         this.visible = false;

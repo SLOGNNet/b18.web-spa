@@ -4,6 +4,7 @@
       *ngFor="let stop of stops"
       class="stop-icon"
       [bd-popover]="stopPopover"
+      [popoverOnHover]="true"
       [style.color]="getColor(stop.type)"
       [style.left.px]="stop.left"
       [style.position]="stop.left ? 'absolute' : ''"
