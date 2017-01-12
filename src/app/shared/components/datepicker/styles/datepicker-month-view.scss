@@ -1,0 +1,75 @@
+@import '../../../../../assets/styles/variables';
+
+.datepicker-month-table-wrapper {
+  width: 100%;
+
+  tr {
+    &:nth-child(2) {
+      .bd-hidden {
+        display: table-cell;
+      }
+    }
+
+    &:last-child {
+      td {
+        border-bottom: 0;
+      }
+    }
+
+  }
+
+  .bd-hidden {
+    display: none;
+  }
+
+  .weekday {
+    height: 50px;
+    background: $white;
+    text-align: center;
+  }
+
+  .weeks-wrapper {
+    td {
+      width: 50px;
+      border: $border;
+
+      &:first-child {
+        border-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      &.bd-hidden {
+        border: 0;
+      }
+    }
+  }
+
+  .day {
+    height: 50px;
+    padding: 0;
+    cursor: pointer;
+
+    &.bd-hidden {
+      border: 0;
+      background: $white;
+    }
+
+    /deep/ .current-day {
+      background: $light-blue;
+      color: $black;
+    }
+
+    /deep/.text-muted {
+      display: none;
+    }
+
+    &.collapsed,
+    &.disabled,
+    &.hidden {
+      cursor: default;
+    }
+  }
+}
