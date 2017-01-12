@@ -169,6 +169,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         this.arrowLeft = undefined;
         this.isIn = true;
         this.popover.hide();
+        this.cdr.detectChanges();
     }
 
     hideFromPopover() {

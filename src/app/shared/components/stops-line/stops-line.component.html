@@ -3,13 +3,21 @@
     <div
       *ngFor="let stop of stops"
       class="stop-icon"
+      [bd-popover]="stopPopover"
       [style.color]="getColor(stop.type)"
       [style.left.px]="stop.left"
       [style.position]="stop.left ? 'absolute' : ''"
       [class.icon-dropoff]="isDropOff(stop.type)"
       [class.icon-pickup]="!isDropOff(stop.type)"
       (click)="onStopSelect(stop)">
-        <stop-popover></stop-popover>
+      <bd-popover-content
+        #stopPopover
+        placement="auto"
+        [width]="220"
+        [horizontalOffset]="40"
+        [closeOnClickOutside]="true">
+        <stop-popover [stop]="stop"></stop-popover>
+      </bd-popover-content>
     </div>
   </div>
   <hr [style.border-color]="lineColor">
