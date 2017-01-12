@@ -24,12 +24,6 @@ import { positionElements } from './positioning';
 import { NgbDateStruct } from './ngb-date-struct';
 import { NgbDatepickerService } from './datepicker-service';
 
-const NGB_DATEPICKER_VALUE_ACCESSOR = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbInputDatepicker),
-  multi: true
-};
-
 /**
  * A directive that makes it possible to have datepickers on input fields.
  * Manages integration with the input field itself (data entry) and ngModel (validation etc.).
@@ -37,10 +31,12 @@ const NGB_DATEPICKER_VALUE_ACCESSOR = {
 @Directive({
   selector: 'bd-input[ngbDatepicker], input[ngbDatepicker]',
   exportAs: 'ngbDatepicker',
-  host: { '(change)': 'manualDateChange($event.target.value)', '(keyup.esc)': 'close()', '(blur)': 'onBlur()' },
-  providers: [NGB_DATEPICKER_VALUE_ACCESSOR]
+  host: { '(change)': 'manualDateChange($event.target.value)',
+    '(keyup.esc)': 'close()',
+    '(blur)': 'onBlur()'
+  }
 })
-export class NgbInputDatepicker implements ControlValueAccessor {
+export class NgbInputDatepicker {
   /**
    * Reference for the custom template for the day display
    */
@@ -113,7 +109,8 @@ export class NgbInputDatepicker implements ControlValueAccessor {
   private _zoneSubscription: any;
 
   constructor(
-     private _parserFormatter: NgbDateParserFormatter,
+    @Optional() private _control: NgControl,
+    private _parserFormatter: NgbDateParserFormatter,
     private _elRef: ElementRef, private _vcRef: ViewContainerRef,
     private _renderer: Renderer, private _cfr: ComponentFactoryResolver, private ngZone: NgZone,
     private _service: NgbDatepickerService) {
@@ -124,9 +121,6 @@ export class NgbInputDatepicker implements ControlValueAccessor {
     });
   }
 
-  registerOnChange(fn: (value: any) => any): void { this._onChange = fn; }
-
-  registerOnTouched(fn: () => any): void { this._onTouched = fn; }
 
   writeValue(value) {
     this._model =
@@ -143,7 +137,6 @@ export class NgbInputDatepicker implements ControlValueAccessor {
 
   manualDateChange(value: string) {
     this._model = this._service.toValidDate(this._parserFormatter.parse(value), null);
-    this._onChange(this._model ? { year: this._model.year, month: this._model.month, day: this._model.day } : null);
     this._writeModelValue(this._model);
   }
 
@@ -166,7 +159,6 @@ export class NgbInputDatepicker implements ControlValueAccessor {
       // date selection event handling
       this._cRef.instance.registerOnChange((selectedDate) => {
         this.writeValue(selectedDate);
-        this._onChange(selectedDate);
         this.close();
       });
     }
@@ -205,7 +197,7 @@ export class NgbInputDatepicker implements ControlValueAccessor {
     }
   }
 
-  onBlur() { this._onTouched(); }
+  onBlur() {}
 
   private _applyDatepickerInputs(datepickerInstance: NgbDatepicker): void {
     ['dayTemplate', 'displayMonths', 'firstDayOfWeek', 'markDisabled', 'minDate', 'maxDate', 'navigation',
@@ -230,15 +222,12 @@ export class NgbInputDatepicker implements ControlValueAccessor {
 
   private _writeModelValue(model: NgbDate) {
     const value = this._parserFormatter.format(model);
-    this._renderer.setElementProperty(this._elRef.nativeElement, 'value', value);
-    // this._control.viewToModelUpdate(value);
-    // (this._control.control as FormControl).setValue(value);
+    if (this._control) {
+      this._control.viewToModelUpdate(value);
+      (this._control.control as FormControl).setValue(value);
+    }
     if (this.isOpen()) {
       this._cRef.instance.writeValue(model);
-      this._onTouched();
     }
   }
-
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
 }
