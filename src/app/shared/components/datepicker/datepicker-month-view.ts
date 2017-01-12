@@ -32,7 +32,7 @@ export class NgbDatepickerMonthView {
   @Input() dayTemplate: TemplateRef<DayTemplateContext>;
   @Input() disabled: boolean;
   @Input() month: MonthViewModel;
-  @Input() outsideDays: 'hidden' | 'collapsed';
+  @Input() outsideDays: 'visible' | 'hidden' | 'collapsed';
   @Input() selectedDate: NgbDate;
   @Input() showWeekdays;
   @Input() showWeekNumbers;
