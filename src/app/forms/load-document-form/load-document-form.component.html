@@ -1,9 +1,8 @@
 <div class="preview-container">
   <bd-file-preview
-     *ngFor="let document of this.documents; let ii = index;"
+     *ngFor="let document of this.documents; let i = index;"
     [documentType]="document.documentType"
-    [isDocumentLoaded]="documentsLoaded"
-    [itemIndex]="ii + 1">
+    [itemIndex]="i + 1">
   </bd-file-preview>
 </div>
 
