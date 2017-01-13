@@ -27,7 +27,8 @@ import { LoadsComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
-  CustomerPopoverComponent } from './loads';
+  CustomerPopoverComponent,
+  DriverPopoverComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Application wide providers
@@ -63,7 +64,8 @@ type StoreType = {
      LoadStopCardComponent,
      LoadStopCardsComponent,
      TripPopoverComponent,
-     CustomerPopoverComponent
+     CustomerPopoverComponent,
+     DriverPopoverComponent
   ],
   imports: [
     SharedModule,

@@ -6,7 +6,7 @@
       <bd-popover-content
         #customerPopover
         placement="auto"
-        [width]="220"
+        [width]="popupWidth"
         [horizontalOffset]="-10"
         [closeOnClickOutside]="true">
         <customer-popover [customer]="load.customer"></customer-popover>
@@ -34,19 +34,31 @@
   <div class="bottom">
     <span class="link">{{load.currentTrip.driverFullName}}</span>
     <span class="link">|</span>
-    <span class="link">Tk{{load.currentTrip.truckNumber}}</span>
-    <span class="link">|</span>
-    <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
-    <span class="current-trip" [bd-popover]="tripPopover" [popoverOnHover]="true">
-      TR{{load.currentTrip.number}}
+    <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="true">
+      Tk{{load.currentTrip.truckNumber}}
       <bd-popover-content
-        #tripPopover
+        #driverPopover
         placement="auto"
-        [width]="220"
+        [width]="popupWidth"
         [horizontalOffset]="40"
         [closeOnClickOutside]="true">
-        <trip-popover [trip]="load.currentTrip"></trip-popover>
+        <driver-popover [driver]="load.currentTrip.driver"></driver-popover>
       </bd-popover-content>
+      </span>
+    <span class="link">|</span>
+    <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
+    <span class="current-trip">
+      <span [bd-popover]="tripPopover" [popoverOnHover]="true">
+        TR{{load.currentTrip.number}}
+        <bd-popover-content
+          #tripPopover
+          placement="auto"
+          [width]="popupWidth"
+          [horizontalOffset]="40"
+          [closeOnClickOutside]="true">
+          <trip-popover [trip]="load.currentTrip"></trip-popover>
+        </bd-popover-content>
+      </span>
     </span>
     <span class="status" [style.background]="loadStatusColor">
         {{loadStatusText}}

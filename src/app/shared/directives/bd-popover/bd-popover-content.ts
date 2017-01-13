@@ -48,12 +48,6 @@ import { BdPopover } from './bd-popover.directive';
 })
 export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
-    // -------------------------------------------------------------------------
-    // Inputs / Outputs 
-    // -------------------------------------------------------------------------
-
-    // @Input()
-    // hostElement: HTMLElement;
     @Input()
     horizontalOffset: number = 20;
 
@@ -81,10 +75,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     @Input()
     closeOnMouseOutside: boolean = false;
 
-    // -------------------------------------------------------------------------
-    // Properties
-    // -------------------------------------------------------------------------
-
     @ViewChild('popoverDiv')
     popoverDiv: ElementRef;
 
@@ -97,13 +87,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     effectivePlacement: string;
     arrowLeft: number = undefined;
 
-    // -------------------------------------------------------------------------
-    // Anonymous 
-    // -------------------------------------------------------------------------
-
-    /**
-     * Closes dropdown if user clicks outside of this directive.
-     */
     onDocumentMouseDown = (event: any) => {
         const element = this.element.nativeElement;
         if (!element || !this.popover) return;
@@ -112,17 +95,9 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         this.onCloseFromOutside.emit(undefined);
     }
 
-    // -------------------------------------------------------------------------
-    // Constructor
-    // -------------------------------------------------------------------------
-
     constructor(protected element: ElementRef,
         protected cdr: ChangeDetectorRef) {
     }
-
-    // -------------------------------------------------------------------------
-    // Lifecycle callbacks
-    // -------------------------------------------------------------------------
 
     ngAfterViewInit(): void {
         if (this.closeOnClickOutside)
@@ -140,10 +115,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (this.closeOnMouseOutside)
             document.removeEventListener('mouseover', this.onDocumentMouseDown);
     }
-
-    // -------------------------------------------------------------------------
-    // Public Methods
-    // -------------------------------------------------------------------------
 
     show(): void {
         if (!this.popover || !this.popover.getElement())
@@ -179,9 +150,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         this.isIn = true;
     }
 
-    // -------------------------------------------------------------------------
-    // Protected Methods
-    // -------------------------------------------------------------------------
     protected adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
         const offsetParent = this.parentOffsetEl(popover);
         let result = {

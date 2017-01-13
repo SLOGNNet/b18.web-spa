@@ -10,6 +10,8 @@ export class LoadStopCardComponent {
   @Input() load: Load;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
+  private popupWidth = 220;
+
   get loadStatusColor() {
     return Load.getStatusColor(this.load.status);
   }

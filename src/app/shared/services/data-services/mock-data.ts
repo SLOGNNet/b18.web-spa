@@ -1,7 +1,11 @@
 import {
   Load, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType, FreightType, DataAssigneeRequirements, Facility, Trip, StopStatuses } from './models';
+  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
+  FreightType, DataAssigneeRequirements, Facility, Trip,
+  StopStatuses, Driver, Equipment, DriverPaymentOptions,
+  DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
+  EquipmentModes, EquipmentVehicleOperatings } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -340,30 +344,78 @@ class MockData {
     address: this.addresses[3]
   }];
 
+  public equipments: Array<Equipment> = [{
+    id: 0,
+    make: 'Kenworth',
+    model: 'T610',
+    number: '101',
+    vin: '',
+    notes: 'Oil Change',
+    status: EquipmentStatuses.Active,
+    type: EquipmentTypes.PowerUnit,
+    subType: PowerUnitTypes.Tractor,
+    mode: EquipmentModes.Company,
+    vehicleOperating: EquipmentVehicleOperatings.InterState
+  }, {
+    id: 1,
+    make: 'Wabash',
+    model: 'CA9000(Referer 53)',
+    number: '2349',
+    vin: '',
+    notes: '',
+    status: EquipmentStatuses.Active,
+    type: EquipmentTypes.Trailer,
+    subType: TrailerTypes.DryVan48,
+    mode: EquipmentModes.Company,
+    vehicleOperating: EquipmentVehicleOperatings.InterState
+  }];
+
+  public drivers: Array<Driver> = [{
+    id: 0,
+    firstName: 'Goving',
+    lastName: 'Bhatti',
+    dateOfBirth: null,
+    snn: '123144241241242',
+    powerUnitAssigned: this.equipments[0],
+    trailerAssigned: this.equipments[1],
+    paymentOption: DriverPaymentOptions.PerMile,
+    rate: 1.2,
+    contact: this.contacts[0],
+    type: DriverTypes.Company,
+    hireDate: null,
+    terminationDate: null,
+    status: DriverStatuses.Active,
+    notes: 'notes'
+  }];
+
   public trips: Array<Trip> = [{
     id: 1,
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
-    trailerNumber: 2349
+    trailerNumber: 2349,
+    driver: this.drivers[0]
   }, {
     id: 2,
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
-    trailerNumber: 2349
+    trailerNumber: 2349,
+    driver: this.drivers[0]
   }, {
-    id: 1,
+    id: 3,
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
-    trailerNumber: 2349
+    trailerNumber: 2349,
+    driver: this.drivers[0]
   }, {
-    id: 2,
+    id: 4,
     number: 345351,
     driverFullName: 'Robinson',
     truckNumber: 1021,
-    trailerNumber: 2349
+    trailerNumber: 2349,
+    driver: this.drivers[0]
   }];
 
   public startDate = new Date(2017, 0, 9);
