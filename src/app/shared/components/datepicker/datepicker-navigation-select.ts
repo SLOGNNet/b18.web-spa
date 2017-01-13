@@ -9,8 +9,8 @@ import { NgbCalendar } from './ngb-calendar';
   styleUrls: ['./styles/datepicker-navigation-select.scss'],
   template:
   `
-  <div class="years-months-wrapper">
-    <div class="dropdowns-wrapper">
+  <div class="datepicker-navigation-select">
+    <div class="dropdown-container">
     <bd-dropdown
         defaultTitleText='Select month'
         [dropdownItemTemplate]="dropdownMonthTemplate"
@@ -22,13 +22,13 @@ import { NgbCalendar } from './ngb-calendar';
     </bd-dropdown>
     </div>
     <template #dropdownMonthTemplate let-item="item">
-          <span class="items-wrapper">{{item.month}}</span>
+          <span class="dropdown-item">{{item.month}}</span>
     </template>
     `
     +
     `
 
-      <div class="dropdowns-wrapper">
+      <div class="dropdown-container">
       <bd-dropdown
           [defaultTitleText]="'Select Year'"
           [dropdownItemTemplate]="dropdownYearTemplate"
@@ -40,7 +40,7 @@ import { NgbCalendar } from './ngb-calendar';
       </bd-dropdown>
       </div>
       <template #dropdownYearTemplate let-item="item">
-        <span class="items-wrapper">{{item.year}}</span>
+        <span class="dropdown-item">{{item.year}}</span>
       </template>
       </div>
       `

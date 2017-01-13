@@ -8,12 +8,12 @@ import { DayTemplateContext } from './datepicker-day-template-context';
   selector: 'ngb-datepicker-month-view',
   styleUrls: ['./styles/datepicker-month-view.scss'],
   template: `
-    <table class="datepicker-month-table-wrapper">
+    <table class="datepicker-month-table">
       <tr *ngIf="showWeekdays">
         <td *ngIf="showWeekNumbers"></td>
         <td *ngFor="let w of month.weekdays" class="weekday text-xs-center font-weight-bold">{{ i18n.getWeekdayName(w) }}</td>
       </tr>
-      <tr class="weeks-wrapper" *ngFor="let week of month.weeks">
+      <tr class="week-row" *ngFor="let week of month.weeks">
         <td *ngIf="showWeekNumbers" class="weeknumber small text-xs-center">{{ week.number }}</td>
         <td *ngFor="let day of week.days" (click)="doSelect(day)" class="day" [class.disabled]="isDisabled(day)"
         [class.collapsed]="isCollapsed(day)" [class.bd-hidden]="isHidden(day)">

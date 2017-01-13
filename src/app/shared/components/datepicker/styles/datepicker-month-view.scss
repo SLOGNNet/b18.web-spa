@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/variables';
 
-.datepicker-month-table-wrapper {
+.datepicker-month-table {
   width: 100%;
 
   tr {
@@ -28,7 +28,7 @@
     text-align: center;
   }
 
-  .weeks-wrapper {
+  .week-row {
     td {
       width: 50px;
       border: $border;

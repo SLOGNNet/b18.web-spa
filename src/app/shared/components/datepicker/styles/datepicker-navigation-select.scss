@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/variables';
 
-.years-months-wrapper {
+.datepicker-navigation-select {
   display: flex;
   justify-content: center;
 
@@ -10,12 +10,12 @@
 
   }
 
-  .dropdowns-wrapper {
+  .dropdown-container {
     width: 100%;
     max-width: 170px;
   }
 
-  .items-wrapper {
+  .dropdown-item {
     display: flex;
     width: 100%;
     height: 50px;
