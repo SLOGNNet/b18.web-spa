@@ -2,6 +2,7 @@
   <div *ngIf="!toogleTemplate" dropdownToggle
     id="bd-dropdown"
     class="bd-dropdown-wrapper"
+    [class.hide-border]="isBorder"
     name="bd-dropdown-wrapper">
       <div *ngIf="labelText" class="bd-dropdown-label">
         <label>{{labelText}}</label>

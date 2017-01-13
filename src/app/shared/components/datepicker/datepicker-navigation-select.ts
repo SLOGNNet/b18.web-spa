@@ -16,6 +16,7 @@ import { NgbCalendar } from './ngb-calendar';
         [dropdownItemTemplate]="dropdownMonthTemplate"
         (onItemClick)="triggerMonthClick($event)"
         selectedValue="2"
+        [isBorder]="true"
         keyField="id"
         valueField="month"
         [items]="i18n.getMonthCollection()">
@@ -32,6 +33,7 @@ import { NgbCalendar } from './ngb-calendar';
       <bd-dropdown
           [defaultTitleText]="'Select Year'"
           [dropdownItemTemplate]="dropdownYearTemplate"
+          [isBorder]="true"
           keyField="id"
           selectedValue="2"
           (onItemClick)="triggerYearClick($event)"
