@@ -9,4 +9,8 @@ import { Customer } from '../../../../../models';
 })
 export class CustomerPopoverComponent {
   @Input() customer: Customer;
+
+  get status() {
+    return Customer.getStatusText(this.customer.status);
+  }
 }
