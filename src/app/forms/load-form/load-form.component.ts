@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnChanges, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
@@ -41,8 +41,9 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
     private commodityStore: CommodityStore,
-    private contactService: ContactService) {
-    super();
+    private contactService: ContactService,
+    elementRef: ElementRef) {
+    super(elementRef);
     this.driverRequirementsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirements);
     this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
     this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);

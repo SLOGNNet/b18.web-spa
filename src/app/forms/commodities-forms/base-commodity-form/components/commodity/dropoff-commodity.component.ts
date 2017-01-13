@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, ElementRef } from '@angular/core';
 import { CommodityComponent, CommodityField } from './commodity.component';
 import { FormBuilder } from '@angular/forms';
 @Component(Object.assign({
@@ -14,7 +14,7 @@ export class DropoffpCommodityComponent extends CommodityComponent {
       return fields;
     }
 
-    constructor(formBuilder: FormBuilder) {
-      super(formBuilder);
+    constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
+      super(formBuilder, elementRef);
     }
 }

@@ -31,11 +31,18 @@ class Server {
 
   constructor() {
     this.app = express();
+    // cross-domain
+    this.app.use(function (req, res, next) {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, enctype');
+      next();
+    });
     this.config();
     this.configureLogging();
     this.routes();
     this.server = http.createServer(this.app);
-    this.sockets();
+    //this.sockets();
     this.listen();
   }
 

@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { remove, without } from 'lodash';
+import { without } from 'lodash';
 
 @Component(Object.assign({
   selector: 'load-document-form',
@@ -26,6 +26,4 @@ export class LoadDocumentFormComponent extends BaseForm {
   onRemoveFile(event) {
     this.documents = without(this.documents, event.document);
   }
-
-
 }

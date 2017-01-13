@@ -6,36 +6,17 @@ import { DayTemplateContext } from './datepicker-day-template-context';
 
 @Component({
   selector: 'ngb-datepicker-month-view',
-  styles: [`
-    .weekday {
-    }
-    .weeknumber {
-    }
-    .day {
-      padding: 0;
-      height: 100%;
-      cursor: pointer;
-    }
-    .day.disabled, .day.hidden, .day.collapsed {
-      cursor: default;
-    }
-    :host/deep/.day.collapsed > * {
-      display: none;
-    }
-    :host/deep/.day.hidden > * {
-      visibility: hidden;
-    }
-  `],
+  styleUrls: ['./styles/datepicker-month-view.scss'],
   template: `
-    <table>
+    <table class="datepicker-month-table">
       <tr *ngIf="showWeekdays">
         <td *ngIf="showWeekNumbers"></td>
         <td *ngFor="let w of month.weekdays" class="weekday text-xs-center font-weight-bold">{{ i18n.getWeekdayName(w) }}</td>
       </tr>
-      <tr *ngFor="let week of month.weeks">
+      <tr class="week-row" *ngFor="let week of month.weeks">
         <td *ngIf="showWeekNumbers" class="weeknumber small text-xs-center">{{ week.number }}</td>
         <td *ngFor="let day of week.days" (click)="doSelect(day)" class="day" [class.disabled]="isDisabled(day)"
-        [class.collapsed]="isCollapsed(day)" [class.hidden]="isHidden(day)">
+        [class.collapsed]="isCollapsed(day)" [class.bd-hidden]="isHidden(day)">
             <template [ngTemplateOutlet]="dayTemplate"
             [ngOutletContext]="{date: {year: day.date.year, month: day.date.month, day: day.date.day},
               currentMonth: month.number,
