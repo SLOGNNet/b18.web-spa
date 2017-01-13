@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseCommodityFormComponent } from '../base-commodity-form';
@@ -15,8 +15,8 @@ export class DropOffCommodityFormComponent extends BaseCommodityFormComponent {
   @Output() select: EventEmitter<Commodity> = new EventEmitter<Commodity>();
   @Input() availablePickups: Array<Commodity> = new Array<Commodity>();
 
-  constructor(formBuilder: FormBuilder, cdr: ChangeDetectorRef) {
-    super(formBuilder, cdr);
+  constructor(formBuilder: FormBuilder, cdr: ChangeDetectorRef, elementRef: ElementRef) {
+    super(formBuilder, cdr, elementRef);
   }
 
   pickupSelect(commodity: Commodity) {
