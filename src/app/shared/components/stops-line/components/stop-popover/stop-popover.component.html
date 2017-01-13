@@ -1,15 +1,16 @@
 <div class="stop-popover">
   <div class="section">
-    <span class="blue">{{typeText}}#1</span>
+    <span class="blue">{{typeText}}#{{stop.id}}</span>
     <span>{{stop.date | date:'MM/dd/yy'}} | Appt: {{stop.date | date:'HH:mm'}} | {{statusText}}</span>
   </div>
   <div class="section">
-    <span class="blue">CH Robinson</span>
+    <span class="blue">{{stop.facility.name}}</span>
+    <span>{{stop.address.streetAddress}}</span>
     <span>{{stop.address.city}}, {{stop.address.state}}</span>
-    <span>Redington Shores</span>
-    <span>FL 33708</span>
+    <span>{{stop.address.zip}}</span>
   </div>
   <div class="section">
-    <span>164484362337 | 337</span>
+    <span *ngIf="!stop.address.phoneExtension">{{stop.address.phone}}</span>
+    <span *ngIf="stop.address.phoneExtension">{{stop.address.phone}} x {{stop.address.phoneExtension}}</span>
   </div>
 </div>
