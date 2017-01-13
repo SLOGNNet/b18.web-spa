@@ -2,7 +2,6 @@ import { Component, Optional, ElementRef, TemplateRef,
   ViewEncapsulation, Input, Output, EventEmitter,
   forwardRef, HostBinding, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { positionService } from 'ng2-bootstrap/ng2-bootstrap';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
 import { TypeaheadMatch } from './typeahead-match.class';
