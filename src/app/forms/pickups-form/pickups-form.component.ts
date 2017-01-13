@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Stop, StopTypes, Commodity } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -13,8 +13,8 @@ export class PickupsFormComponent extends BaseListForm<Stop>  {
   @Input() type: StopTypes = StopTypes.None;
   @Input() availableCommodities: Array<Commodity> = new Array<Commodity>();
 
-  constructor(formBuilder: FormBuilder) {
-    super(formBuilder);
+  constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
+    super(formBuilder, elementRef);
   }
 
   createItem(): Stop {

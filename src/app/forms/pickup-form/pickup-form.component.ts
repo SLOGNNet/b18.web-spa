@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Component, Input, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
@@ -20,9 +20,9 @@ export class PickupFormComponent extends BaseForm implements OnChanges {
   public stop: Stop;
   private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
-    private cdr: ChangeDetectorRef, private datePipe: DatePipe) {
-    super();
+  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore, private cdr: 
+    ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
+    super(elementRef);
   }
 
   ngOnChanges(changes: any) {

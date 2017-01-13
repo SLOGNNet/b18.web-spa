@@ -1,11 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Address } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
-
 @Component(Object.assign({
   selector: 'address-form',
   templateUrl: './address-form.component.html',
@@ -44,8 +43,10 @@ export class AddressForm extends BaseForm {
   constructor(
     private _cdr: ChangeDetectorRef,
     private _formBuilder: BdFormBuilder,
-    private _googleService: GoogleService) {
-    super();
+    private _googleService: GoogleService,
+    element: ElementRef
+    ) {
+    super(element);
   }
 
   ngOnChanges(changes: any) {

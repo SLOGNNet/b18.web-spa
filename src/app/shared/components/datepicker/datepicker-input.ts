@@ -20,7 +20,7 @@ import { NgbDatepicker, NgbDatepickerNavigateEvent } from './datepicker';
 import { DayTemplateContext } from './datepicker-day-template-context';
 import { NgbDateParserFormatter } from './ngb-date-parser-formatter';
 
-import { positionElements } from './positioning';
+import { positionElements } from '../../helpers/positioning';
 import { NgbDateStruct } from './ngb-date-struct';
 import { NgbDatepickerService } from './datepicker-service';
 

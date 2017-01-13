@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output,
+   ChangeDetectorRef, EventEmitter, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseListForm } from '../../base-list-form';
@@ -7,8 +8,8 @@ export class BaseCommodityFormComponent extends BaseListForm<Commodity>  {
   static metaData = BaseListForm.metaData;
   protected focusedCol = null;
   protected titles: Array<{name: string}>;
-  constructor(formBuilder: FormBuilder, private cdr: ChangeDetectorRef) {
-    super(formBuilder);
+  constructor(formBuilder: FormBuilder, private cdr: ChangeDetectorRef, elementRef: ElementRef) {
+    super(formBuilder, elementRef);
   }
 
   ngOnChanges(changes: any) {
