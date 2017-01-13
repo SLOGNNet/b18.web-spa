@@ -7,8 +7,7 @@ import { without } from 'lodash';
 
 @Component(Object.assign({
   selector: 'load-document-form',
-  templateUrl: './load-document-form.component.html',
-  styleUrls: ['./load-document-form.component.scss'],
+  templateUrl: './load-document-form.component.html'
 }, BaseForm.metaData))
 export class LoadDocumentFormComponent extends BaseForm {
 
