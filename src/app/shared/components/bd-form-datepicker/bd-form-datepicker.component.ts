@@ -44,7 +44,7 @@ export class BdFormDatePicker implements ControlValueAccessor {
     this.datepicker.open();
   }
 
-  onBlur(event: FocusEvent) {
-
+  onClickOutside() {
+    this.datepicker.close();
   }
 }

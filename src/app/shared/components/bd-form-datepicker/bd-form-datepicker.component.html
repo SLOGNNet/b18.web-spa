@@ -1,2 +1,3 @@
-
-<bd-input [placeholder]="datePlaceholder" [(ngModel)]="model" ngbDatepicker (focus)="onFocus($event)" (blur)="onBlur($event)" #datepicker="ngbDatepicker"></bd-input>
+<div (clickOutside)="onClickOutside($event)">
+  <bd-input [placeholder]="datePlaceholder" [(ngModel)]="model" ngbDatepicker  (focus)="onFocus($event)" #datepicker="ngbDatepicker"></bd-input>
+</div>
