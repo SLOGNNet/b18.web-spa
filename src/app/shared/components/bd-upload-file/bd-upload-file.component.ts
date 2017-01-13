@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-const URL = 'http://localhost:5000/upload';
+const URL = 'http://localhost:5000/upload',
+            DEFAULT_WIDTH = 100;
 
 @Component({
   selector: 'bd-upload-file',
@@ -9,11 +10,9 @@ const URL = 'http://localhost:5000/upload';
 })
 export class BdUploadFileComponent {
 
-
-      public _progressWidth: number = 0;
+      private _progressWidth: number = 0;
       private dragging: boolean = false;
       private loading: boolean = false;
-      private isDocumentLoaded: boolean = false;
       private documentFiles: any[];
       private documentIssueDate: string;
 
@@ -26,7 +25,7 @@ export class BdUploadFileComponent {
       }
 
       get progressWidth(): number {
-          return 100 - this._progressWidth;
+          return DEFAULT_WIDTH - this._progressWidth;
       }
 
       set progressWidth(val: number) {
@@ -35,7 +34,7 @@ export class BdUploadFileComponent {
 
       @Input() private documentType: string = '';
 
-      @Output() private documentsLoad: EventEmitter<any> = new EventEmitter();
+      @Output() private documentsSelected: EventEmitter<any> = new EventEmitter();
 
       constructor(){
         this.documentFiles = [];
@@ -58,8 +57,7 @@ export class BdUploadFileComponent {
       }
 
       handleInputChange(event) {
-          this.isDocumentLoaded = true;
-          let fileList: FileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+          let fileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
 
           for (let i = 0, length = fileList.length; i < length; i++) {
               this.documentFiles.push({
@@ -67,8 +65,7 @@ export class BdUploadFileComponent {
                 'documentType': this.documentType
               });
           }
-          this.documentsLoad.emit({
-            isLoaded: this.isDocumentLoaded,
+          this.documentsSelected.emit({
             documents: this.documentFiles
           });
 

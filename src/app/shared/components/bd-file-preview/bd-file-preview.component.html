@@ -1,11 +1,11 @@
-<div class="loaded-file-container" *ngIf="isDocumentLoaded">
+<div class="loaded-file-container">
   <div class="file-info-container">
     <div class="file-type-container">
         <span class="file-name">
           {{titleText}}
         </span>
         <button class="btn-delete"
-                (click)="onRemoveClick()">
+                (click)="onRemoveClick($event)">
           <i class="fa fa-minus-circle"></i>
         </button>
     </div>

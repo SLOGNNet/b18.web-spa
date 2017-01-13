@@ -12,8 +12,10 @@ export class BdFilePreviewComponent {
       private documentIssueDate: any;
       private titleText: string = '';
       @Input() private documentType: string = '';
-      @Input() private isDocumentLoaded: boolean = false;
       @Input() private itemIndex: number;
+      @Input() private item: Object;
+
+      @Output() private removeFile: EventEmitter<any> = new EventEmitter();
 
       constructor(public datepipe: DatePipe){}
 
@@ -22,10 +24,11 @@ export class BdFilePreviewComponent {
         this.documentIssueDate = this.datepipe.transform(new Date(), 'dd/MM/yyyy');
       }
 
-      onRemoveClick(){
-        this.documentType = '';
-        this.isDocumentLoaded = false;
-        // need add deleting file from server
+      onRemoveClick(event){
+        this.removeFile.emit({
+          action: 'remove',
+          document: this.item
+        });
       }
 
 }
