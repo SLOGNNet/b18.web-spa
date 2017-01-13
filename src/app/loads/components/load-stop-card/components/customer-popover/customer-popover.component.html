@@ -16,7 +16,6 @@
     <span>{{customer.addresses[1].zip}}</span>
   </div>
   <div class="section">
-    <span *ngIf="!customer.addresses[0].phoneExtension">{{customer.addresses[0].phone}}</span>
-    <span *ngIf="customer.addresses[0].phoneExtension">{{customer.addresses[0].phone}} x {{customer.addresses[0].phoneExtension}}</span>
+    <span>{{phone}}</span>
   </div>
 </div>

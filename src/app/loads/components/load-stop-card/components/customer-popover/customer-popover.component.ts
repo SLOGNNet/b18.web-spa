@@ -13,4 +13,8 @@ export class CustomerPopoverComponent {
   get status() {
     return Customer.getStatusText(this.customer.status);
   }
+
+  get phone() {
+    return [this.customer.addresses[0].phone, this.customer.addresses[0].phoneExtension].filter(v => v).join(' x ');
+  }
 }
