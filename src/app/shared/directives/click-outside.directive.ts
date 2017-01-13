@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Output, EventEmitter, HostListener} from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
     selector: '[clickOutside]'
@@ -12,7 +12,6 @@ export class ClickOutsideDirective {
 
     @HostListener('document:tap', ['$event', '$event.target'])
     public onClick(event: MouseEvent, targetElement: HTMLElement): void {
-      debugger;
         if (!targetElement) {
             return;
         }

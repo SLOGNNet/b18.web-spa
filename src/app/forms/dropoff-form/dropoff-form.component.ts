@@ -22,8 +22,8 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
   private availablePickups: Array<Commodity> = new Array<Commodity>();
   private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore, 
-  private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
+  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
     super(elementRef);
   }
 
