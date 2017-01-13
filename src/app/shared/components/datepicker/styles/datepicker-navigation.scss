@@ -1,0 +1,27 @@
+@import '../../../../../assets/styles/variables';
+
+.collapsed {
+  margin-bottom: -1.7rem;
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  background: $white;
+  padding-left: 17px;
+  padding-right: 17px;
+  border-bottom: $border;
+
+  .arrow-left {
+    height: 30px;
+    background: url('../../../../../assets/img/arrow-left.svg') no-repeat;
+    margin-left: 17px;
+  }
+
+  .arrow-right {
+    height: 30px;
+    background: url('../../../../../assets/img/arrow-right.svg') no-repeat;
+    float: right;
+    margin-right: 17px;
+   }
+}
