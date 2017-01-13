@@ -1,5 +1,6 @@
 import { Component, Input, Optional, Output, TemplateRef, EventEmitter,
-  HostBinding, HostListener, forwardRef, ChangeDetectionStrategy } from '@angular/core';
+  HostBinding, HostListener, forwardRef,
+  ChangeDetectionStrategy, Renderer, ElementRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { isNil } from 'lodash';
@@ -34,7 +35,8 @@ export class BdDropdownComponent implements ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _selectedValue: any;
 
-  constructor(@Optional() ngControl: NgControl) {
+  constructor(@Optional() ngControl: NgControl,
+    private renderer: Renderer, private elementRef: ElementRef) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -86,6 +88,12 @@ export class BdDropdownComponent implements ControlValueAccessor {
   onToggle(isOpen) {
     this._isOpen = isOpen;
     this.focusChange.emit(this._isOpen);
+
+    if (!isOpen) {
+      const blurEvent = new Event('blur', { bubbles: true });
+      this.renderer.invokeElementMethod(
+        this.elementRef.nativeElement, 'dispatchEvent', [blurEvent]);
+    }
   }
 
   writeValue(value: any) {

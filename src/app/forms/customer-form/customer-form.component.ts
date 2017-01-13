@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes, Address } from '../../models';
 import { AddressStore } from '../../stores';
@@ -29,8 +29,9 @@ export class CustomerForm extends BaseForm {
     private addressStore: AddressStore,
     private enumHelperService: EnumHelperService,
     private cdr: ChangeDetectorRef,
-    private validationService: FormValidationService) {
-    super();
+    private validationService: FormValidationService,
+    elementRef: ElementRef) {
+    super(elementRef);
     this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
     this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
   }

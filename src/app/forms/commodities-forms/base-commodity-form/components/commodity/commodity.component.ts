@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BaseForm } from '../../../../base-form';
 import { Commodity, StopTypes } from '../../../../../models';
@@ -26,8 +26,8 @@ export class CommodityComponent extends BaseForm {
   private _fields: Array<CommodityField> = new Array<CommodityField>();
   private _isActive = false;
 
-  constructor(private formBuilder: FormBuilder) {
-    super();
+  constructor(private formBuilder: FormBuilder, elementRef: ElementRef) {
+    super(elementRef);
   }
 
   trackByIndex(index: number, item: any): any {

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Contact } from '../../models';
@@ -29,8 +29,8 @@ export class ContactForm extends BaseForm {
   ];
 
   constructor(
-    private _formBuilder: BdFormBuilder){
-    super();
+    private _formBuilder: BdFormBuilder, elementRef: ElementRef){
+    super(elementRef);
   }
 
   ngOnChanges(changes: any) {

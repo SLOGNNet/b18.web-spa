@@ -1,4 +1,4 @@
-import { Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -16,8 +16,8 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   @Output() remove: EventEmitter<T> = new EventEmitter<T>();
   public renderFormData: Array<any> = new Array<any>();
 
-  constructor(private formBuilder: FormBuilder) {
-    super();
+  constructor(private formBuilder: FormBuilder, elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges(changes: any) {
