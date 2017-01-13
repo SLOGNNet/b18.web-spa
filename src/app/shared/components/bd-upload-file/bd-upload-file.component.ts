@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { map } from 'lodash';
 
 const URL = 'http://localhost:5000/upload',
             DEFAULT_WIDTH = 100;
@@ -13,8 +14,8 @@ export class BdUploadFileComponent {
       private _progressWidth: number = 0;
       private dragging: boolean = false;
       private loading: boolean = false;
-      private documentFiles: any[];
       private documentIssueDate: string;
+      private documentFiles: any[] = [];
 
       get showProgressBar() {
         return this.dragging;
@@ -36,10 +37,6 @@ export class BdUploadFileComponent {
 
       @Output() private documentsSelected: EventEmitter<any> = new EventEmitter();
 
-      constructor(){
-        this.documentFiles = [];
-      }
-
       handleDragEnter(event) {
           event.preventDefault();
           this.dragging = true;
@@ -59,24 +56,21 @@ export class BdUploadFileComponent {
       handleInputChange(event) {
           let fileList = event.dataTransfer ? event.dataTransfer.files : event.target.files;
 
-          for (let i = 0, length = fileList.length; i < length; i++) {
-              this.documentFiles.push({
-                'document': fileList.item(i),
-                'documentType': this.documentType
-              });
-          }
+          this.documentFiles = map(fileList, item => item);
+
           this.documentsSelected.emit({
-            documents: this.documentFiles
+            documents: this.documentFiles,
+            type: this.documentType
           });
 
-          this.upload(this.documentFiles);
+          this.upload(fileList);
       }
 
-      public upload (files: any[]){
+      public upload (files: File[]){
             let formData: FormData = new FormData(),
                   xhr: XMLHttpRequest = new XMLHttpRequest();
             for (let i = 0; i < files.length; i++) {
-                formData.append('filename', files[i].document);
+                formData.append('filename', files[i]);
             }
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {

@@ -19,7 +19,7 @@ export class LoadDocumentFormComponent extends BaseForm {
   }
 
   documentsOnLoad(event) {
-    event.documents.map(item => this.documents.push(item));
+    event.documents.map(item => this.documents.push({item, documentType:event.type}));
   }
 
   onRemoveFile(event) {
