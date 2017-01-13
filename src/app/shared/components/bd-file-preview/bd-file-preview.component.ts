@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class BdFilePreviewComponent {
 
-      private documentIssueDate: any;
+      private documentIssueDate: string;
       private titleText: string = '';
       @Input() private documentType: string = '';
       @Input() private itemIndex: number;
