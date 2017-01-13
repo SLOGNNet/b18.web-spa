@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BdDropdownComponent } from './bd-dropdown.component';
-import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
-    DropdownModule
+    DropdownModule.forRoot()
   ],
   exports: [
     BdDropdownComponent,

@@ -150,3 +150,8 @@ export function positionElements(
   targetElement.style.top = `${pos.top}px`;
   targetElement.style.left = `${pos.left}px`;
 }
+
+export function position(element: HTMLElement, round = true): ClientRect {
+    const pos = positionService.position(element, round);
+    return pos;
+}
