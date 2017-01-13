@@ -2,18 +2,9 @@
 
 $black: #333;
 
-button {
-  position: absolute;
-  top: 0;
-  width: 16px;
-  height: 16px;
-  border: 0;
-  background: none;
-  outline: none;
-  box-shadow: none;
-}
-
 .stop-popover {
+  overflow: hidden;
+
   .section {
     &:not(:last-child) {
       margin-bottom: 10px;

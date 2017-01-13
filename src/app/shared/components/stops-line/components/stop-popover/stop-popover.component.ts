@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Stop, StopTypes } from '../../../../../models';
 
 @Component({
@@ -7,14 +7,8 @@ import { Stop, StopTypes } from '../../../../../models';
   styleUrls: ['./stop-popover.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StopPopoverComponent implements OnInit {
+export class StopPopoverComponent {
   @Input() stop: Stop;
-
-  constructor() { }
-
-  ngOnInit() {
-
-  }
 
   get statusText() {
     return Stop.getStatusText(this.stop.status);
