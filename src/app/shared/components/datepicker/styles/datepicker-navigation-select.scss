@@ -7,18 +7,44 @@
   .border {
     border-left: $border;
     border-right: $border;
-
   }
 
   .dropdown-container {
-    width: 100%;
-    max-width: 170px;
+
+    /deep/ .datepicker-dropdown {
+      .bd-dropdown-wrapper {
+        position: relative;
+        border-left: $border;
+        border-right: $border;
+        border-bottom: 0;
+        border-color: transparent;
+
+        .bd-dropdown-value {
+          padding-left: 17px;
+          padding-right: 15px;
+        }
+      }
+
+      .dropdown {
+        &.open {
+          .bd-dropdown-wrapper {
+            border-color: $grey;
+          }
+        }
+
+        .bd-dropdown-list {
+          top: $form-control-height + $default-border-size;
+          box-shadow: none;
+          min-width: 0;
+        }
+      }
+    }
   }
 
   .dropdown-item {
     display: flex;
     width: 100%;
-    height: 50px;
+    height: $form-control-height;
     border-bottom: $border;
     border-left: $border;
     border-right: $border;

@@ -10,18 +10,21 @@ import { NgbCalendar } from './ngb-calendar';
   template:
   `
   <div class="datepicker-navigation-select">
-    <div class="dropdown-container">
+    <div class="dropdown-container"
+    [class.opened]="monthsListOpened">
     <bd-dropdown
         defaultTitleText='Select month'
         [dropdownItemTemplate]="dropdownMonthTemplate"
         (onItemClick)="triggerMonthClick($event)"
+        class="datepicker-dropdown"
         selectedValue="2"
-        [isBorder]="true"
         keyField="id"
         valueField="month"
+        (focusChange)="onMonthsDropdownOpen($event)"
         [items]="i18n.getMonthCollection()">
     </bd-dropdown>
     </div>
+
     <template #dropdownMonthTemplate let-item="item">
           <span class="dropdown-item">{{item.month}}</span>
     </template>
@@ -29,15 +32,17 @@ import { NgbCalendar } from './ngb-calendar';
     +
     `
 
-      <div class="dropdown-container">
+      <div class="dropdown-container"
+      [class.opened]="yearsListOpened">
       <bd-dropdown
           [defaultTitleText]="'Select Year'"
           [dropdownItemTemplate]="dropdownYearTemplate"
-          [isBorder]="true"
+          class="datepicker-dropdown"
           keyField="id"
           selectedValue="2"
           (onItemClick)="triggerYearClick($event)"
           valueField="year"
+          (focusChange)="onYearDropdownOpened($event)"
           [items]="years">
       </bd-dropdown>
       </div>
@@ -51,6 +56,8 @@ import { NgbCalendar } from './ngb-calendar';
 export class NgbDatepickerNavigationSelect implements OnChanges {
   months: number[];
   years: Array<Object>;
+  monthsListOpened: boolean = false;
+  yearsListOpened: boolean = false;
 
   @Input() date: NgbDate;
   @Input() disabled: boolean;
@@ -70,6 +77,14 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
     if (changes['date'] && changes['date'].currentValue.year !== changes['date'].previousValue.year) {
       this._generateMonths();
     }
+  }
+
+  onMonthsDropdownOpen(event){
+    this.monthsListOpened = event;
+  }
+
+  onYearDropdownOpened(event){
+    this.yearsListOpened = event;
   }
 
   triggerMonthClick(item) {
