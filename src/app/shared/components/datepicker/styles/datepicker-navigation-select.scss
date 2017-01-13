@@ -33,6 +33,7 @@
         }
 
         .bd-dropdown-list {
+          z-index: auto;
           top: $form-control-height + $default-border-size;
           box-shadow: none;
           min-width: 0;
