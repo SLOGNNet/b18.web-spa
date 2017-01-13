@@ -6,17 +6,13 @@ import { NgbCalendar } from './ngb-calendar';
 
 @Component({
   selector: 'ngb-datepicker-navigation',
-  styles: [`
-    .collapsed {
-        margin-bottom: -1.7rem;
-    }
-  `],
+  styleUrls: ['./styles/datepicker-navigation.scss'],
   template: `
-    <table class="w-100" [class.collapsed]="!showSelect">
+    <table class="w-100" class="header" [class.collapsed]="!showSelect">
       <tr>
         <td class="text-sm-left">
-          <button type="button" (click)="doNavigate(navigation.PREV)" class="btn btn-sm btn-secondary btn-inline"
-            [disabled]="prevDisabled()">&lt;</button>
+          <button type="button" (click)="doNavigate(navigation.PREV)" class="btn btn-sm btn-secondary arrow-left btn-inline"
+            [disabled]="prevDisabled()"></button>
         </td>
 
         <td *ngIf="showSelect">
@@ -30,8 +26,8 @@ import { NgbCalendar } from './ngb-calendar';
         </td>
 
         <td class="text-sm-right">
-          <button type="button" (click)="doNavigate(navigation.NEXT)" class="next btn btn-sm btn-secondary btn-inline"
-            [disabled]="nextDisabled()">&gt;</button>
+          <button type="button" (click)="doNavigate(navigation.NEXT)" class="next btn btn-sm btn-secondary arrow-right btn-inline"
+            [disabled]="nextDisabled()"></button>
         </td>
       </tr>
     </table>
