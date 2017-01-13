@@ -65,7 +65,6 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
   remove(event): void {
     event.stopPropagation();
-    this.inputElement.blur();
     this.changeValue('');
 
     this.onRemove.emit(event);

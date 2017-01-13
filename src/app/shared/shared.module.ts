@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
@@ -35,7 +36,7 @@ import { BdRemoveButtonComponent,
 } from './components/bd-buttons';
 import { BdFormDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
-import { StickyDirective, BlurForwarder } from './directives';
+import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent } from './components/stops-line';
 
@@ -50,7 +51,8 @@ import { StopsLineComponent } from './components/stops-line';
     GoogleService,
     CommodityService,
     BdFormBuilder,
-    FormValidationService
+    FormValidationService,
+    DatePipe
   ],
   declarations: [
     BdFormButtonComponent,
@@ -71,7 +73,8 @@ import { StopsLineComponent } from './components/stops-line';
     NavigationAnchorComponent,
     AddressItemTemplate,
     StickyDirective,
-    BlurForwarder,
+    BlurForwarderDirective,
+    ClickOutsideDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
     StopsLineComponent
@@ -109,7 +112,8 @@ import { StopsLineComponent } from './components/stops-line';
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,
-    BlurForwarder,
+    BlurForwarderDirective,
+    ClickOutsideDirective,
     FormStickyBottomContainerComponent,
     AddressItemTemplate,
     BdDropdownModule,

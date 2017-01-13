@@ -40,9 +40,11 @@ export class BdFormDatePicker implements ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  private onFocusChange(isFocused: boolean) {
-    if (isFocused) {
-      this.datepicker.open();
-    }
+  onFocus() {
+    this.datepicker.open();
+  }
+
+  onClickOutside() {
+    this.datepicker.close();
   }
 }

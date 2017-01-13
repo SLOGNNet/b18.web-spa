@@ -4,7 +4,7 @@ import { Directive, Renderer, ElementRef } from '@angular/core';
   selector: 'input, select, bd-dropdown',
   host: {'(blur)': 'onBlur($event)'}
 })
-export class BlurForwarder {
+export class BlurForwarderDirective {
   constructor(private elRef: ElementRef, private renderer: Renderer) {
 
   }
