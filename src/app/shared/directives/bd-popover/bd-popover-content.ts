@@ -154,7 +154,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             position,
             position.effectivePlacement,
             this.width,
-            this.popoverDiv.nativeElement.offsetParent);
+            this.popover.getElement());
 
         this.displayType = 'block';
         this.top = adjustedPosition.top;
@@ -182,7 +182,8 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
-    protected adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, offsetParent: HTMLElement) {
+    protected adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
+        const offsetParent = this.parentOffsetEl(popover);
         let result = {
             top: position.top,
             left: position.left,
