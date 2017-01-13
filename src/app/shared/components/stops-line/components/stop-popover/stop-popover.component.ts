@@ -18,4 +18,8 @@ export class StopPopoverComponent {
     return Stop.getTypeText(this.stop.type);
   }
 
+  get phone() {
+    return [this.stop.address.phone, this.stop.address.phoneExtension].filter(v => v).join(' x ');
+  }
+
 }

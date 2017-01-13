@@ -391,28 +391,24 @@ class MockData {
   public trips: Array<Trip> = [{
     id: 1,
     number: 345351,
-    driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349,
     driver: this.drivers[0]
   }, {
     id: 2,
     number: 345351,
-    driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349,
     driver: this.drivers[0]
   }, {
     id: 3,
     number: 345351,
-    driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349,
     driver: this.drivers[0]
   }, {
     id: 4,
     number: 345351,
-    driverFullName: 'Robinson',
     truckNumber: 1021,
     trailerNumber: 2349,
     driver: this.drivers[0]

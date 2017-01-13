@@ -27,11 +27,11 @@ export class Equipment {
   private static modeText = ['Company'];
 
   id: number = 0;
-  make: string = 'x';
-  model: string = 'x';
-  number: string = 'x';
-  vin: string = 'x';
-  notes: string = 'x';
+  make: string = '';
+  model: string = '';
+  number: string = '';
+  vin: string = '';
+  notes: string = '';
   status: EquipmentStatuses;
   type: EquipmentTypes;
   subType: PowerUnitTypes | TrailerTypes;

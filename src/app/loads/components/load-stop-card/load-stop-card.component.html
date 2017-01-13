@@ -1,14 +1,14 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.carrierLoadNumber}}</span>
-    <span class="customer-name" [bd-popover]="customerPopover" [popoverOnHover]="true">
+    <span class="customer-name" [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
       {{load.customer.name}}
       <bd-popover-content
         #customerPopover
         placement="auto"
         [width]="popupWidth"
         [horizontalOffset]="-10"
-        [closeOnClickOutside]="true">
+        [closeOnClickOutside]="closeOnClickOutside">
         <customer-popover [customer]="load.customer"></customer-popover>
       </bd-popover-content>
     </span>
@@ -32,30 +32,30 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{load.currentTrip.driverFullName}}</span>
+    <span class="link">{{load.currentTrip.driver.firstName}}</span>
     <span class="link">|</span>
-    <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="true">
+    <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{load.currentTrip.truckNumber}}
       <bd-popover-content
         #driverPopover
         placement="auto"
         [width]="popupWidth"
-        [horizontalOffset]="40"
-        [closeOnClickOutside]="true">
+        [horizontalOffset]="-10"
+        [closeOnClickOutside]="closeOnClickOutside">
         <driver-popover [driver]="load.currentTrip.driver"></driver-popover>
       </bd-popover-content>
       </span>
     <span class="link">|</span>
     <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
     <span class="current-trip">
-      <span [bd-popover]="tripPopover" [popoverOnHover]="true">
+      <span [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
         TR{{load.currentTrip.number}}
         <bd-popover-content
           #tripPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="40"
-          [closeOnClickOutside]="true">
+          [closeOnClickOutside]="closeOnClickOutside">
           <trip-popover [trip]="load.currentTrip"></trip-popover>
         </bd-popover-content>
       </span>
