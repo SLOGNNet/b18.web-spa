@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Address } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -10,8 +10,8 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 }, BaseListForm.metaData))
 export class AddressesForm extends BaseListForm<Address>  {
 
-  constructor(formBuilder: FormBuilder) {
-    super(formBuilder);
+  constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
+    super(formBuilder, elementRef);
   }
 
   createItem(): Address {

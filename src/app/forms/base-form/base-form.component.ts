@@ -1,32 +1,49 @@
-import { Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Input, Output, ChangeDetectionStrategy, ElementRef
+} from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
   public static metaData: Object = {
     inputs: ['viewMode', 'isNestedForm'],
     host: {
-      '[class.bd-view-mode]' : '!isEditMode',
-      '[class.bd-edit-mode]' : 'isEditMode'
+      '[class.bd-view-mode]': '!isEditMode',
+      '[class.bd-edit-mode]': 'isEditMode',
+      '(control-blur)': 'onFormControlBlur($event)'
     },
     changeDetection: ChangeDetectionStrategy.OnPush
   };
+  private _isExpanded: boolean = false;
+  private _viewMode: ViewMode = ViewMode.View;
+  constructor(protected elementRef: ElementRef) {
 
-   get viewMode(): ViewMode {
-     return this._viewMode;
-   }
+  }
 
-   set viewMode(viewMode: ViewMode) {
-     this._viewMode = viewMode;
-   }
+  get viewMode(): ViewMode {
+    return this._viewMode;
+  }
 
-    private _isExpanded: boolean = false;
-    private _viewMode: ViewMode = ViewMode.View;
+  set viewMode(viewMode: ViewMode) {
+    this._viewMode = viewMode;
+  }
 
-    public get isEditMode(): boolean {
-      return this.viewMode === ViewMode.Edit;
+  public onFormBlur() {
+    return false;
+  }
+
+  private onFormControlBlur(event: CustomEvent) {
+    const isFormBlured = !this.elementRef.nativeElement.contains(event.detail.relatedTarget);
+    if (isFormBlured) {
+      if (!this.onFormBlur()) {
+        event.stopPropagation();
+      }
     }
+  }
 
-    public get isExpanded(): boolean {
-       return this.viewMode !== ViewMode.ViewCollapsed;
-   }
+  public get isEditMode(): boolean {
+    return this.viewMode === ViewMode.Edit;
+  }
+
+  public get isExpanded(): boolean {
+    return this.viewMode !== ViewMode.ViewCollapsed;
+  }
 }

@@ -6,12 +6,18 @@ import { NgbDateStruct } from './ngb-date-struct';
   styles: [`
     :host {
       text-align: center;
-      padding: 0.185rem 0.25rem;
       border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height:100%;
+      background:#fff;
+      color: #d7d8db;
     }
   `],
   host: {
     '[class.bg-primary]': 'selected',
+    '[class.current-day]': 'selected',
     '[class.text-white]': 'selected',
     '[class.text-muted]': 'isMuted()',
     '[class.btn-secondary]': '!disabled'

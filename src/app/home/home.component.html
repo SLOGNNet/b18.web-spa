@@ -25,6 +25,15 @@
             [items]="items">
         </bd-dropdown>
         </div>
+        <bd-dropdown
+            [defaultLabelText]="'contact'"
+            [labelText]="'contact'"
+            [defaultTitleText]="'Select Contact'"
+            [dropdownHeaderTemplate]="dropdownHeaderTemplate"
+            [dropdownFooterTemplate]="dropdownFooterTemplate"
+            [dropdownItemTemplate]="dropdownItemTemplate"
+            [items]="items">
+        </bd-dropdown>
         <swui-datatable
           class="material striped"
           [rows]="rows"
@@ -99,7 +108,10 @@
     </second-pane>
 
     <third-pane>
-      <ngb-datepicker></ngb-datepicker>
+      <ngb-datepicker
+      [firstDayOfWeek]="7"
+      [maxDate]="maxdate">
+    </ngb-datepicker>
       <form ngNoForm action="http://localhost:5000/upload" target="_blank" method="POST" enctype="multipart/form-data"> <input type="file" name="fileupload" value="fileupload" id="fileupload"> <label for="fileupload"> Select a file to upload</label> <input type="submit" value="submit"> </form>
     </third-pane>
 </multi-pane-layout>

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Contact } from '../../models';
 import { Address } from '../../models';
@@ -14,8 +14,8 @@ export class ContactsForm extends BaseListForm<Contact>  {
   @Input()
   public addresses: Array<any>;
 
-  constructor(formBuilder: FormBuilder) {
-    super(formBuilder);
+  constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
+    super(formBuilder, elementRef);
   }
 
   createItem(): Contact {

@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, Input, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
@@ -17,11 +18,11 @@ export class PickupFormComponent extends BaseForm implements OnChanges {
   @Input('group') formGroup: FormGroup;
   @Input()
   public stop: Stop;
-
   private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore, private cdr: ChangeDetectorRef) {
-    super();
+  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
+    super(elementRef);
   }
 
   ngOnChanges(changes: any) {
@@ -46,17 +47,18 @@ export class PickupFormComponent extends BaseForm implements OnChanges {
   }
 
   private initForm() {
-      this.formGroup.addControl(
-        'date',
-        this.formBuilder.control(this.stop['date'])
-      );
-      this.formGroup.addControl(
-        'commodities',
-        this.formBuilder.array([])
-      );
-      this.formGroup.addControl(
-        'notes',
-        this.formBuilder.control(this.stop['notes'])
-      );
+    const date = this.datePipe.transform(this.stop['date'], 'yyyy/MM/dd');
+    this.formGroup.addControl(
+      'date',
+      this.formBuilder.control(date)
+    );
+    this.formGroup.addControl(
+      'commodities',
+      this.formBuilder.array([])
+    );
+    this.formGroup.addControl(
+      'notes',
+      this.formBuilder.control(this.stop['notes'])
+    );
   }
 }
