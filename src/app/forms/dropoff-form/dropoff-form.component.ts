@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -21,7 +22,8 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
   private availablePickups: Array<Commodity> = new Array<Commodity>();
   private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore, private cdr: ChangeDetectorRef, elementRef: ElementRef) {
+  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
     super(elementRef);
   }
 
@@ -51,9 +53,10 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
   }
 
   private initForm() {
+      const date = this.datePipe.transform(this.stop['date'], 'yyyy/MM/dd');
       this.formGroup.addControl(
         'date',
-        this.formBuilder.control(this.stop['date'])
+        this.formBuilder.control(date)
       );
       this.formGroup.addControl(
         'commodities',
