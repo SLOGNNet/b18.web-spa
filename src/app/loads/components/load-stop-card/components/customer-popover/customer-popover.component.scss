@@ -1,0 +1,30 @@
+@import '../../../../../../assets/styles/variables';
+
+$black: #333;
+
+.customer-popover {
+  overflow: hidden;
+
+  .section {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  span {
+    display: block;
+    color: $black;
+    font-size: $tiny-font-size;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .blue {
+    color: $blue;
+  }
+
+  .black {
+    display: inline-block;
+    color: $black;
+  }
+}

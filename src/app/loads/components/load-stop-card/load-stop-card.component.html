@@ -1,7 +1,17 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.carrierLoadNumber}}</span>
-    <span class="customer-name">{{load.customer.name}}</span>
+    <span class="customer-name" [bd-popover]="customerPopover" [popoverOnHover]="true">
+      {{load.customer.name}}
+      <bd-popover-content
+        #customerPopover
+        placement="auto"
+        [width]="220"
+        [horizontalOffset]="0"
+        [closeOnClickOutside]="true">
+        <customer-popover [customer]="load.customer"></customer-popover>
+      </bd-popover-content>
+    </span>
     <span>{{load.brokerLoadNumber}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length > 1">
@@ -27,8 +37,16 @@
     <span class="link">Tk{{load.currentTrip.truckNumber}}</span>
     <span class="link">|</span>
     <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
-    <span class="current-trip">
+    <span class="current-trip" [bd-popover]="tripPopover" [popoverOnHover]="true">
       TR{{load.currentTrip.number}}
+      <bd-popover-content
+        #tripPopover
+        placement="auto"
+        [width]="220"
+        [horizontalOffset]="40"
+        [closeOnClickOutside]="true">
+        <trip-popover [trip]="load.currentTrip"></trip-popover>
+      </bd-popover-content>
     </span>
     <span class="status" [style.background]="loadStatusColor">
         {{loadStatusText}}

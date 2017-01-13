@@ -1,0 +1,22 @@
+<div class="customer-popover">
+  <div class="section">
+    <span class="blue">{{customer.name}} <span class="black">| {{customer.status}}</span></span>
+    <span>MC#{{customer.mc}} | USDOT: {{customer.taxId}}</span>
+  </div>
+  <div class="section">
+    <span class="blue">Address</span>
+    <span>{{customer.addresses[0].streetAddress}}</span>
+    <span>{{customer.addresses[0].city}}, {{customer.addresses[0].state}}</span>
+    <span>{{customer.addresses[0].zip}}</span>
+  </div>
+  <div class="section">
+    <span class="blue">Billing Address</span>
+    <span>{{customer.addresses[1].streetAddress}}</span>
+    <span>{{customer.addresses[1].city}}, {{customer.addresses[1].state}}</span>
+    <span>{{customer.addresses[1].zip}}</span>
+  </div>
+  <div class="section">
+    <span *ngIf="!customer.addresses[0].phoneExtension">{{customer.addresses[0].phone}}</span>
+    <span *ngIf="customer.addresses[0].phoneExtension">{{customer.addresses[0].phone}} x {{customer.addresses[0].phoneExtension}}</span>
+  </div>
+</div>
