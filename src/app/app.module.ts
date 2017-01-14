@@ -22,7 +22,13 @@ import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
-import { LoadsComponent, LoadDetailComponent, LoadStopCardComponent, LoadStopCardsComponent } from './loads';
+import { LoadsComponent,
+  LoadDetailComponent,
+  LoadStopCardComponent,
+  LoadStopCardsComponent,
+  TripPopoverComponent,
+  CustomerPopoverComponent,
+  DriverPopoverComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Application wide providers
@@ -56,7 +62,10 @@ type StoreType = {
      CustomersComponent,
      CustomerDetailComponent,
      LoadStopCardComponent,
-     LoadStopCardsComponent
+     LoadStopCardsComponent,
+     TripPopoverComponent,
+     CustomerPopoverComponent,
+     DriverPopoverComponent
   ],
   imports: [
     SharedModule,

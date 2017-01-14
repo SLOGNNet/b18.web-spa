@@ -16,6 +16,8 @@ export enum CustomerStatuses {
 }
 
 export class Customer {
+  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
+
   id: number;
   name: string = '';
   contacts: Array<Contact>;
@@ -32,6 +34,10 @@ export class Customer {
     result.status = CustomerStatuses.Inactive;
     result.type = CustomerTypes.Broker;
     return result;
+  }
+
+  static getStatusText(status) {
+    return Customer.statusText[status];
   }
 
   constructor() {

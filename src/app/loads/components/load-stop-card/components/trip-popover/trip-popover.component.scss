@@ -1,0 +1,10 @@
+@import '../../../../../../assets/styles/variables';
+
+.trip-popover {
+  span {
+    padding: 3px 0;
+    color: $blue;
+    font-size: $tiny-font-size;
+    line-height: 1;
+  }
+}
