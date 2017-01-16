@@ -171,3 +171,30 @@ export function offset(element: HTMLElement): ClientRect {
     const elOffset = positionService.offset(element);
     return elOffset;
 }
+
+
+export function getEffectivePlacement(placement: string, hostElement: HTMLElement, targetElement: HTMLElement): string {
+    const placementParts = placement.split(' ');
+    if (placementParts[0] !== 'auto') {
+        return placement;
+    }
+
+    const hostElBoundingRect = hostElement.getBoundingClientRect();
+
+    const desiredPlacement = placementParts[1] || 'bottom';
+
+    if (desiredPlacement === 'top' && hostElBoundingRect.top - targetElement.offsetHeight < 0) {
+        return 'bottom';
+    }
+    if (desiredPlacement === 'bottom' && hostElBoundingRect.bottom + targetElement.offsetHeight > window.innerHeight) {
+        return 'top';
+    }
+    if (desiredPlacement === 'left' && hostElBoundingRect.left - targetElement.offsetWidth < 0) {
+        return 'right';
+    }
+    if (desiredPlacement === 'right' && hostElBoundingRect.right + targetElement.offsetWidth > window.innerWidth) {
+        return 'left';
+    }
+
+    return desiredPlacement;
+}

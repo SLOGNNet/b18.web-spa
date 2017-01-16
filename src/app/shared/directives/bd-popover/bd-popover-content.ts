@@ -1,6 +1,6 @@
 import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
-import { position, offset, offsetParent, getElementPosition } from '../../helpers/positioning';
+import { offsetParent, getElementPosition, getEffectivePlacement } from '../../helpers/positioning';
 
 @Component({
     selector: 'bd-popover-content',
@@ -50,7 +50,7 @@ import { position, offset, offsetParent, getElementPosition } from '../../helper
 export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
     @Input()
-    horizontalOffset: number = 20;
+    horizontalOffset: number = 0;
 
     @Input()
     width: number;
@@ -121,7 +121,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement())
             return;
 
-        this.effectivePlacement = this.getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
+        this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
         const position = getElementPosition(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
         const adjustedPosition = this.adjustHorizontalPositionIfNeeded(
             position,
@@ -177,29 +177,4 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         return result;
     }
 
-    protected getEffectivePlacement(placement: string, hostElement: HTMLElement, targetElement: HTMLElement): string {
-        const placementParts = placement.split(' ');
-        if (placementParts[0] !== 'auto') {
-            return placement;
-        }
-
-        const hostElBoundingRect = hostElement.getBoundingClientRect();
-
-        const desiredPlacement = placementParts[1] || 'bottom';
-
-        if (desiredPlacement === 'top' && hostElBoundingRect.top - targetElement.offsetHeight < 0) {
-            return 'bottom';
-        }
-        if (desiredPlacement === 'bottom' && hostElBoundingRect.bottom + targetElement.offsetHeight > window.innerHeight) {
-            return 'top';
-        }
-        if (desiredPlacement === 'left' && hostElBoundingRect.left - targetElement.offsetWidth < 0) {
-            return 'right';
-        }
-        if (desiredPlacement === 'right' && hostElBoundingRect.right + targetElement.offsetWidth > window.innerWidth) {
-            return 'left';
-        }
-
-        return desiredPlacement;
-    }
 }

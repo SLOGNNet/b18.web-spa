@@ -1,16 +1,18 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.carrierLoadNumber}}</span>
-    <span class="customer-name" [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
-      {{load.customer.name}}
-      <bd-popover-content
-        #customerPopover
-        placement="auto"
-        [width]="popupWidth"
-        [horizontalOffset]="-10"
-        [closeOnClickOutside]="closeOnClickOutside">
-        <customer-popover [customer]="load.customer"></customer-popover>
-      </bd-popover-content>
+    <span class="customer-name">
+      <span [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
+        {{load.customer.name}}
+        <bd-popover-content
+          #customerPopover
+          placement="auto"
+          [width]="popupWidth"
+          [horizontalOffset]="-10"
+          [closeOnClickOutside]="closeOnClickOutside">
+          <customer-popover [customer]="load.customer"></customer-popover>
+        </bd-popover-content>
+      </span>
     </span>
     <span>{{load.brokerLoadNumber}}</span>
   </div>
@@ -54,7 +56,6 @@
           #tripPopover
           placement="auto"
           [width]="popupWidth"
-          [horizontalOffset]="40"
           [closeOnClickOutside]="closeOnClickOutside">
           <trip-popover [trip]="load.currentTrip"></trip-popover>
         </bd-popover-content>
