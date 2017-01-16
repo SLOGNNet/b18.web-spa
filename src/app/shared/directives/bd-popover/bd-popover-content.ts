@@ -1,6 +1,6 @@
 import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
-import { position, offset, offsetParent, getPositionElements } from '../../helpers/positioning';
+import { position, offset, offsetParent, getElementPosition } from '../../helpers/positioning';
 
 @Component({
     selector: 'bd-popover-content',
@@ -122,7 +122,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             return;
 
         this.effectivePlacement = this.getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
-        const position = getPositionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
+        const position = getElementPosition(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
         const adjustedPosition = this.adjustHorizontalPositionIfNeeded(
             position,
             this.effectivePlacement,

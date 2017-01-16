@@ -145,21 +145,16 @@ export class Positioning {
 
 const positionService = new Positioning();
 export function positionElements(
-    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean) {
+    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean): void {
   const pos = positionService.positionElements(hostElement, targetElement, placement, appendToBody);
 
   targetElement.style.top = `${pos.top}px`;
   targetElement.style.left = `${pos.left}px`;
 }
 
-export function getPositionElements(
-    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean) {
-  const pos = positionService.positionElements(hostElement, targetElement, placement, appendToBody);
-
-  return {
-    top: pos.top,
-    left: pos.left
-  };
+export function getElementPosition(
+    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean): ClientRect {
+  return positionService.positionElements(hostElement, targetElement, placement, appendToBody);
 }
 
 export function position(element: HTMLElement, round = true): ClientRect {
