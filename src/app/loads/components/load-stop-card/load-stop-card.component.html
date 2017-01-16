@@ -1,7 +1,17 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.carrierLoadNumber}}</span>
-    <span class="customer-name">{{load.customer.name}}</span>
+    <span class="customer-name" [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
+      {{load.customer.name}}
+      <bd-popover-content
+        #customerPopover
+        placement="auto"
+        [width]="popupWidth"
+        [horizontalOffset]="-10"
+        [closeOnClickOutside]="closeOnClickOutside">
+        <customer-popover [customer]="load.customer"></customer-popover>
+      </bd-popover-content>
+    </span>
     <span>{{load.brokerLoadNumber}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length > 1">
@@ -22,13 +32,33 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{load.currentTrip.driverFullName}}</span>
+    <span class="link">{{load.currentTrip.driver.firstName}}</span>
     <span class="link">|</span>
-    <span class="link">Tk{{load.currentTrip.truckNumber}}</span>
+    <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
+      Tk{{load.currentTrip.truckNumber}}
+      <bd-popover-content
+        #driverPopover
+        placement="auto"
+        [width]="popupWidth"
+        [horizontalOffset]="-10"
+        [closeOnClickOutside]="closeOnClickOutside">
+        <driver-popover [driver]="load.currentTrip.driver"></driver-popover>
+      </bd-popover-content>
+      </span>
     <span class="link">|</span>
     <span class="link">TI{{load.currentTrip.trailerNumber}}</span>
     <span class="current-trip">
-      TR{{load.currentTrip.number}}
+      <span [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
+        TR{{load.currentTrip.number}}
+        <bd-popover-content
+          #tripPopover
+          placement="auto"
+          [width]="popupWidth"
+          [horizontalOffset]="40"
+          [closeOnClickOutside]="closeOnClickOutside">
+          <trip-popover [trip]="load.currentTrip"></trip-popover>
+        </bd-popover-content>
+      </span>
     </span>
     <span class="status" [style.background]="loadStatusColor">
         {{loadStatusText}}

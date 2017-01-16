@@ -16,6 +16,8 @@ export enum StopStatuses {
 
 export class Stop {
   private static stopStatusColor = ['#75b3e1', '#85d183', '#ffbe4d', '#fb3a3a'];
+  private static stopStatusText = ['Pending', 'In progress', 'Complete', 'Problem'];
+  private static stopTypeText = ['None', 'Pickup', 'Dropoff'];
 
   id: number;
   address: Address;
@@ -38,6 +40,14 @@ export class Stop {
 
   public static getStatusColor(status): string {
     return Stop.stopStatusColor[status];
+  }
+
+  public static getStatusText(status): string {
+    return Stop.stopStatusText[status];
+  }
+
+  public static getTypeText(type): string {
+    return Stop.stopTypeText[type];
   }
 
 }
