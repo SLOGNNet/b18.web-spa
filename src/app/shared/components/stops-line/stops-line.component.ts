@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Stop, StopTypes } from '../../../models';
 
 @Component({
   selector: 'stops-line',
   templateUrl: './stops-line.component.html',
-  styleUrls: ['./stops-line.component.scss']
+  styleUrls: ['./stops-line.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StopsLineComponent {
   @Input() lineColor: string = 'lightGray';

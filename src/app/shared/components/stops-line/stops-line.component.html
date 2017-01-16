@@ -1,16 +1,25 @@
 <div class="stops-container" *ngIf="stops.length">
-  <hr [style.border-color]="lineColor">
   <div class="stops">
     <div
+      *ngFor="let stop of stops"
       class="stop-icon"
-      aria-hidden="true"
+      [bd-popover]="stopPopover"
+      [popoverOnHover]="true"
       [style.color]="getColor(stop.type)"
       [style.left.px]="stop.left"
       [style.position]="stop.left ? 'absolute' : ''"
       [class.icon-dropoff]="isDropOff(stop.type)"
       [class.icon-pickup]="!isDropOff(stop.type)"
-      (click)="onStopSelect(stop)"
-      *ngFor="let stop of stops">
+      (click)="onStopSelect(stop)">
+      <bd-popover-content
+        #stopPopover
+        placement="auto"
+        [width]="220"
+        [horizontalOffset]="-10"
+        [closeOnClickOutside]="true">
+        <stop-popover [stop]="stop"></stop-popover>
+      </bd-popover-content>
     </div>
   </div>
+  <hr [style.border-color]="lineColor">
 </div>

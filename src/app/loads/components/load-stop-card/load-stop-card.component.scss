@@ -16,6 +16,7 @@
 }
 
 .load-stop-card-section {
+  position: relative;
   height: 100px;
   padding: 17px;
   background: inherit;
@@ -27,7 +28,7 @@
     width: 30%;
     float: left;
 
-    span {
+    & > span {
       display: block;
     }
 
