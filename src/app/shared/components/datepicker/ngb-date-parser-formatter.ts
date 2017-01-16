@@ -1,6 +1,6 @@
 import { NgbDateStruct } from './ngb-date-struct';
 import { isNumber, toInteger, padNumber } from './utils';
-
+import * as moment from 'moment';
 /**
  * Abstract type serving as a DI token for the service parsing and formatting dates for the NgbInputDatepicker
  * directive. A default implementation using the ISO 8601 format is provided, but you can provide another implementation
@@ -12,34 +12,26 @@ export abstract class NgbDateParserFormatter {
    * partial. They must return null if the value can't be parsed.
    * @param value the value to parse
    */
-  abstract parse(value: string): NgbDateStruct;
+  abstract parse(value: string, format: string): NgbDateStruct;
 
   /**
    * Formats the given date to a string. Implementations should return an empty string if the given date is null,
    * and try their best to provide a partial result if the given date is incomplete or invalid.
    * @param date the date to format as a string
    */
-  abstract format(date: NgbDateStruct): string;
+  abstract format(date: NgbDateStruct, format: string): string;
 }
 
 export class NgbDateISOParserFormatter extends NgbDateParserFormatter {
-  parse(value: string): NgbDateStruct {
-    if (value) {
-      const dateParts = value.trim().split('/');
-      if (dateParts.length === 1 && isNumber(dateParts[0])) {
-        return {year: toInteger(dateParts[0]), month: null, day: null};
-      } else if (dateParts.length === 2 && isNumber(dateParts[0]) && isNumber(dateParts[1])) {
-        return {year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: null};
-      } else if (dateParts.length === 3 && isNumber(dateParts[0]) && isNumber(dateParts[1]) && isNumber(dateParts[2])) {
-        return {year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: toInteger(dateParts[2])};
-      }
-    }
-    return null;
+  parse(value: string, format: string): NgbDateStruct {
+    let result = null;
+    const date = moment(value, format, false);
+    return date.isValid() ? {year: date.year(), month: date.month() + 1, day: date.date()} : null;
   }
 
-  format(date: NgbDateStruct): string {
+  format(date: NgbDateStruct, format: string): string {
     return date ?
-        `${date.year}/${isNumber(date.month) ? padNumber(date.month) : ''}/${isNumber(date.day) ? padNumber(date.day) : ''}` :
+        moment([date.year, date.month - 1, date.day]).format(format) :
         '';
   }
 }

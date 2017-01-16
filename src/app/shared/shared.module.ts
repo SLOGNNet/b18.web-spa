@@ -34,7 +34,7 @@ import { BdRemoveButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
-import { BdFormDatePicker } from './components/bd-form-datepicker';
+import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
@@ -77,6 +77,7 @@ import { StopsLineComponent } from './components/stops-line';
     ClickOutsideDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
+    BdDatePicker,
     StopsLineComponent
   ],
   imports: [

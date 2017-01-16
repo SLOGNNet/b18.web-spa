@@ -6,59 +6,29 @@ import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '
 import { Stop, StopTypes, Commodity } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
-import { BaseForm } from '../base-form';
+import { BaseStopForm } from '../base-stop-form';
 import { CommodityStore } from '../../stores';
 
 @Component(Object.assign({
   selector: 'pickup-form',
   styleUrls: ['pickup-form.component.scss'],
   templateUrl: './pickup-form.component.html'
-}, BaseForm.metaData))
-export class PickupFormComponent extends BaseForm implements OnChanges {
-  @Input('group') formGroup: FormGroup;
-  @Input()
-  public stop: Stop;
-  private  stopTypes = StopTypes;
-
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
-    super(elementRef);
+}, BaseStopForm.metaData))
+export class PickupFormComponent extends BaseStopForm implements OnChanges {
+  constructor(formBuilder: FormBuilder, commodityStore: CommodityStore,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, datePipe: DatePipe) {
+    super(elementRef, formBuilder, commodityStore, datePipe);
   }
 
   ngOnChanges(changes: any) {
+    super.ngOnChanges(changes);
     this.commodityStore.getPickupCommodities(this.stop.id).subscribe(items => {
       this.stop.commodities = items;
       this.cdr.markForCheck();
     });
-    this.initForm();
-  }
-
-  onCommodityUpdate(commodity: Commodity) {
-    this.commodityStore.update(commodity);
   }
 
   onCommodityRemove(commodity: Commodity) {
     this.commodityStore.remove(commodity);
-  }
-
-  onCommodityAdd() {
-    const newCommodity = Commodity.create(this.stop);
-    this.commodityStore.add(newCommodity);
-  }
-
-  private initForm() {
-    const date = this.datePipe.transform(this.stop['date'], 'yyyy/MM/dd');
-    this.formGroup.addControl(
-      'date',
-      this.formBuilder.control(date)
-    );
-    this.formGroup.addControl(
-      'commodities',
-      this.formBuilder.array([])
-    );
-    this.formGroup.addControl(
-      'notes',
-      this.formBuilder.control(this.stop['notes'])
-    );
   }
 }
