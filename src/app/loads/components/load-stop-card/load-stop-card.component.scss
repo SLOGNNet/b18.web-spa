@@ -28,7 +28,7 @@
     width: 30%;
     float: left;
 
-    span {
+    & > span {
       display: block;
     }
 
