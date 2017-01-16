@@ -124,7 +124,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             document.removeEventListener('mouseover', this.onDocumentMouseDown);
     }
 
-    updateWidths() {
+    updateWidth() {
         if (this.width !== undefined) {
             this.elWidth = this.width;
         } else if (this.elWidth === undefined) {
@@ -139,7 +139,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement())
             return;
 
-        this.updateWidths();
+        this.updateWidth();
 
         this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
         const position = getElementPosition(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
