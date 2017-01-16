@@ -79,12 +79,12 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
     }
   }
 
-  onMonthsDropdownOpen(event){
-    this.monthsListOpened = event;
+  onMonthsDropdownOpen(isFocused: boolean){
+    this.monthsListOpened = isFocused;
   }
 
-  onYearDropdownOpened(event){
-    this.yearsListOpened = event;
+  onYearDropdownOpened(isFocused: boolean){
+    this.yearsListOpened = isFocused;
   }
 
   triggerMonthClick(item) {
