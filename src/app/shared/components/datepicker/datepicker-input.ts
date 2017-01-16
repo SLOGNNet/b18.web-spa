@@ -234,8 +234,7 @@ export class NgbInputDatepicker {
 
   private _applyPopupStyling(nativeElement: any) {
     this._renderer.setElementClass(nativeElement, 'dropdown-menu', false);
-    this._renderer.setElementStyle(nativeElement, 'display', 'block');
-    this._renderer.setElementStyle(nativeElement, 'padding', '0');
+    this._renderer.setElementClass(nativeElement, 'ngb-datepicker-popup-container', true);
   }
 
   private _subscribeForDatepickerOutputs(datepickerInstance: NgbDatepicker) {
