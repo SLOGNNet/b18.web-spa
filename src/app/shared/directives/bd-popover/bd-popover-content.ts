@@ -4,49 +4,8 @@ import { offsetParent, getElementPosition, getEffectivePlacement } from '../../h
 
 @Component({
     selector: 'bd-popover-content',
-    template: `
-        <div #popoverDiv class="popover {{ effectivePlacement }}"
-            [style.top]="top + 'px'"
-            [style.left]="left + 'px'"
-            [style.width]="width + 'px'"
-            [class.in]="isIn"
-            [class.fade]="animation"
-            style="display: block"
-            role="popover">
-            <div [hidden]="!closeOnMouseOutside" class="virtual-area"></div>
-            <div class="arrow" [style.left]="arrowLeft + 'px'"></div> 
-            <h3 class="popover-title" [hidden]="!title">{{ title }}</h3>
-            <div class="popover-content">
-                <ng-content></ng-content>
-                {{ content }}
-            </div> 
-        </div>
-    `,
-    styles: [`
-        .popover {
-            background: white;
-            box-shadow: 0px 0px 12px 0px #8c8c8c;
-            border: none;
-            max-width: none;
-        }
-        .popover .virtual-area {
-            height: 11px;
-            width: 100%;
-            position: absolute;
-        }
-        .popover.top .virtual-area {
-            bottom: -11px; 
-        }
-        .popover.bottom .virtual-area {
-            top: -11px; 
-        }
-        .popover.left .virtual-area {
-            right: -11px; 
-        }
-        .popover.right .virtual-area {
-            left: -11px; 
-        }
-    `]
+    templateUrl: './bd-popover-content.html',
+    styleUrls: ['./bd-popover-content.scss']
 })
 export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
