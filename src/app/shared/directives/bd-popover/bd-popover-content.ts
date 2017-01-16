@@ -1,5 +1,6 @@
 import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
+import { position, offset, offsetParent, getPositionElements } from '../../helpers/positioning';
 
 @Component({
     selector: 'bd-popover-content',
@@ -120,10 +121,11 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement())
             return;
 
-        const position = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
+        this.effectivePlacement = this.getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
+        const position = getPositionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
         const adjustedPosition = this.adjustHorizontalPositionIfNeeded(
             position,
-            position.effectivePlacement,
+            this.effectivePlacement,
             this.width,
             this.popover.getElement());
 
@@ -150,8 +152,8 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         this.isIn = true;
     }
 
-    protected adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
-        const offsetParent = this.parentOffsetEl(popover);
+    adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
+        const offsetParentEl = offsetParent(popover);
         let result = {
             top: position.top,
             left: position.left,
@@ -159,7 +161,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         };
 
         if (elementWidth && (effectivePlacement === 'bottom' || effectivePlacement === 'top')) {
-            const parentWidth = offsetParent.offsetWidth;
+            const parentWidth = offsetParentEl.offsetWidth;
 
             if (position.left + elementWidth > parentWidth + this.horizontalOffset) {
                 const diff = (position.left + elementWidth) - parentWidth - this.horizontalOffset;
@@ -173,119 +175,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         }
 
         return result;
-    }
-
-    protected positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody: boolean = false) {
-        let positionStrParts = positionStr.split('-');
-        let pos0 = positionStrParts[0];
-        let pos1 = positionStrParts[1] || 'center';
-        let hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
-        let targetElWidth = this.width || targetEl.offsetWidth;
-        let targetElHeight = this.height || targetEl.offsetHeight;
-
-        this.effectivePlacement = pos0 = this.getEffectivePlacement(pos0, hostEl, targetEl);
-
-        let shiftWidth: any = {
-            center: function (): number {
-                return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
-            },
-            left: function (): number {
-                return hostElPos.left;
-            },
-            right: function (): number {
-                return hostElPos.left + hostElPos.width;
-            }
-        };
-
-        let shiftHeight: any = {
-            center: function (): number {
-                return hostElPos.top + hostElPos.height / 2 - targetElHeight / 2;
-            },
-            top: function (): number {
-                return hostElPos.top;
-            },
-            bottom: function (): number {
-                return hostElPos.top + hostElPos.height;
-            }
-        };
-
-        let targetElPos = { top: 0, left: 0, effectivePlacement: this.effectivePlacement };
-
-        switch (pos0) {
-            case 'right':
-                targetElPos.top = shiftHeight[pos1]();
-                targetElPos.left = shiftWidth[pos0]();
-                break;
-
-            case 'left':
-                targetElPos.top = shiftHeight[pos1]();
-                targetElPos.left = hostElPos.left - targetElWidth;
-                break;
-
-            case 'bottom':
-                targetElPos.top = shiftHeight[pos0]();
-                targetElPos.left = shiftWidth[pos1]();
-                break;
-
-            default:
-                targetElPos.top = hostElPos.top - targetElHeight;
-                targetElPos.left = shiftWidth[pos1]();
-                break;
-        }
-
-        return targetElPos;
-    }
-
-    protected position(nativeEl: HTMLElement): { width: number, height: number, top: number, left: number } {
-        let offsetParentBCR = { top: 0, left: 0 };
-        const elBCR = this.offset(nativeEl);
-        const offsetParentEl = this.parentOffsetEl(nativeEl);
-        if (offsetParentEl !== window.document) {
-            offsetParentBCR = this.offset(offsetParentEl);
-            offsetParentBCR.top += offsetParentEl.clientTop - offsetParentEl.scrollTop;
-            offsetParentBCR.left += offsetParentEl.clientLeft - offsetParentEl.scrollLeft;
-        }
-
-        const boundingClientRect = nativeEl.getBoundingClientRect();
-        return {
-            width: boundingClientRect.width || nativeEl.offsetWidth,
-            height: boundingClientRect.height || nativeEl.offsetHeight,
-            top: elBCR.top - offsetParentBCR.top,
-            left: elBCR.left - offsetParentBCR.left
-        };
-    }
-
-    protected offset(nativeEl: any): { width: number, height: number, top: number, left: number } {
-        const boundingClientRect = nativeEl.getBoundingClientRect();
-        return {
-            width: boundingClientRect.width || nativeEl.offsetWidth,
-            height: boundingClientRect.height || nativeEl.offsetHeight,
-            top: boundingClientRect.top + (window.pageYOffset || window.document.documentElement.scrollTop),
-            left: boundingClientRect.left + (window.pageXOffset || window.document.documentElement.scrollLeft)
-        };
-    }
-
-    protected getStyle(nativeEl: HTMLElement, cssProp: string): string {
-        if ((nativeEl as any).currentStyle) // IE
-            return (nativeEl as any).currentStyle[cssProp];
-
-        if (window.getComputedStyle)
-            return (window.getComputedStyle as any)(nativeEl)[cssProp];
-
-        // finally try and get inline style
-        return (nativeEl.style as any)[cssProp];
-    }
-
-    protected isStaticPositioned(nativeEl: HTMLElement): boolean {
-        return (this.getStyle(nativeEl, 'position') || 'static') === 'static';
-    }
-
-    protected parentOffsetEl(nativeEl: HTMLElement): any {
-        let offsetParent: any = nativeEl.offsetParent || window.document;
-        while (offsetParent && offsetParent !== window.document && this.isStaticPositioned(offsetParent)) {
-            offsetParent = offsetParent.offsetParent;
-        }
-        return offsetParent || window.document;
     }
 
     protected getEffectivePlacement(placement: string, hostElement: HTMLElement, targetElement: HTMLElement): string {
