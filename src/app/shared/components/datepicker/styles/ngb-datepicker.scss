@@ -13,7 +13,7 @@
   }
 }
 
-:host(.d-inline-block) {
+:host(.ngb-datepicker-popup-container) {
   position: absolute;
   z-index: $form-control-popup-z-index;
   display: block;
