@@ -1,13 +1,5 @@
 @import '../../../../assets/styles/variables';
 
-/deep/ .bd-form-datepicker-container {
+.bd-form-datepicker-container {
   position: relative;
-
-  .d-inline-block {
-    position: absolute;
-    z-index: $form-control-popup-z-index;
-    display: block;
-    width: 100%;
-    padding: 0;
-  }
 }

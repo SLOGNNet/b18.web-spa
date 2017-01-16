@@ -2,14 +2,21 @@ import { Component, Input, Optional, Output, TemplateRef, EventEmitter,
   HostBinding, HostListener, forwardRef,
   ChangeDetectionStrategy, Renderer, ElementRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isNil } from 'lodash';
 const noop = () => { };
+
+export const BD_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => BdDropdownComponent),
+  multi: true
+};
 
 @Component({
   selector: 'bd-dropdown',
   styleUrls: ['bd-dropdown.component.scss'],
   templateUrl: './bd-dropdown.component.html',
+  providers: [BD_DROPDOWN_CONTROL_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdDropdownComponent implements ControlValueAccessor {
@@ -35,11 +42,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _selectedValue: any;
 
-  constructor(@Optional() ngControl: NgControl,
-    private renderer: Renderer, private elementRef: ElementRef) {
-    if (ngControl) {
-      ngControl.valueAccessor = this;
-    }
+  constructor(private renderer: Renderer, private elementRef: ElementRef) {
   }
 
   get currentDisplayText(){

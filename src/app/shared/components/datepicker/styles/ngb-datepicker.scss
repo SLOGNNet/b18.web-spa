@@ -12,3 +12,11 @@
     }
   }
 }
+
+:host(.d-inline-block) {
+  position: absolute;
+  z-index: $form-control-popup-z-index;
+  display: block;
+  width: 100%;
+  padding: 0;
+}
