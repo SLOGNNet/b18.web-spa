@@ -125,13 +125,7 @@ export class Positioning {
     return targetElPosition;
   }
 
-  private getStyle(element: HTMLElement, prop: string): string { return window.getComputedStyle(element)[prop]; }
-
-  private isStaticPositioned(element: HTMLElement): boolean {
-    return (this.getStyle(element, 'position') || 'static') === 'static';
-  }
-
-  private offsetParent(element: HTMLElement): HTMLElement {
+  offsetParent(element: HTMLElement): HTMLElement {
     let offsetParentEl = <HTMLElement>element.offsetParent || document.documentElement;
 
     while (offsetParentEl && offsetParentEl !== document.documentElement && this.isStaticPositioned(offsetParentEl)) {
@@ -140,6 +134,13 @@ export class Positioning {
 
     return offsetParentEl || document.documentElement;
   }
+
+  private getStyle(element: HTMLElement, prop: string): string { return window.getComputedStyle(element)[prop]; }
+
+  private isStaticPositioned(element: HTMLElement): boolean {
+    return (this.getStyle(element, 'position') || 'static') === 'static';
+  }
+
 }
 
 const positionService = new Positioning();
@@ -151,7 +152,22 @@ export function positionElements(
   targetElement.style.left = `${pos.left}px`;
 }
 
+export function getElementPosition(
+    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean): ClientRect {
+  return positionService.positionElements(hostElement, targetElement, placement, appendToBody);
+}
+
 export function position(element: HTMLElement, round = true): ClientRect {
     const pos = positionService.position(element, round);
     return pos;
+}
+
+export function offsetParent(element: HTMLElement): HTMLElement {
+    const offsetEl = positionService.offsetParent(element);
+    return offsetEl;
+}
+
+export function offset(element: HTMLElement): ClientRect {
+    const elOffset = positionService.offset(element);
+    return elOffset;
 }
