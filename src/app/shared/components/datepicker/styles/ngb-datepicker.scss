@@ -1,0 +1,14 @@
+@import '../../../../../assets/styles/variables';
+
+.datepicker-table {
+  width: 100%;
+  background: $white;
+  border-bottom: $border;
+  //sass-lint:disable no-important
+
+  .month {
+    &:first-child {
+      padding-left: 0 !important;
+    }
+  }
+}
