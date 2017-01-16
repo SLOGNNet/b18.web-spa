@@ -228,6 +228,9 @@ export class NgbInputDatepicker {
     this._renderer.setElementClass(nativeElement, 'dropdown-menu', false);
     this._renderer.setElementStyle(nativeElement, 'display', 'block');
     this._renderer.setElementStyle(nativeElement, 'padding', '0');
+    this._renderer.setElementStyle(nativeElement, 'position', 'absolute');
+    this._renderer.setElementStyle(nativeElement, 'width', '100%');
+    this._renderer.setElementStyle(nativeElement, 'z-index', '100');
   }
 
   private _subscribeForDatepickerOutputs(datepickerInstance: NgbDatepicker) {

@@ -12,7 +12,8 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'bd-form-datepicker',
-  templateUrl: './bd-form-datepicker.component.html'
+  templateUrl: './bd-form-datepicker.component.html',
+  styleUrls: ['bd-form-datepicker.component.scss'],
 })
 export class BdFormDatePicker implements ControlValueAccessor {
   @Input() datePlaceholder: string = '';
