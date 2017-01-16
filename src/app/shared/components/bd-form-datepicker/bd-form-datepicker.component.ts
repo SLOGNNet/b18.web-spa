@@ -17,7 +17,6 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class BdFormDatePicker implements ControlValueAccessor {
-  @Input() datePlaceholder: string = this.dateFormat;
   @Input() dateFormat: string = 'MM/DD/YYYY';
   @ViewChild('datepicker') datepicker: BdDatePicker;
   private dateValue;
@@ -35,7 +34,6 @@ export class BdFormDatePicker implements ControlValueAccessor {
   }
 
   onDateChange(value: string) {
-    debugger;
     if (value !== this.dateValue) {
       const newDate = moment(value, this.dateFormat);
       this.dateValue = value;

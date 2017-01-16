@@ -243,7 +243,6 @@ export class NgbInputDatepicker {
   }
 
   private _writeModelValue(model: NgbDate, shouldUpdateControl: boolean = false) {
-    debugger;
     const value = this._parserFormatter.format(model, this.format);
     if (shouldUpdateControl && this._control) {
       this._control.viewToModelUpdate(value);
