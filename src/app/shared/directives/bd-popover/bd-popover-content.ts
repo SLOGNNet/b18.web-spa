@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, HostListener } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
 import { offsetParent, getElementPosition, getEffectivePlacement } from '../../helpers/positioning';
 
@@ -27,6 +27,7 @@ import { offsetParent, getElementPosition, getEffectivePlacement } from '../../h
             background: white;
             box-shadow: 0px 0px 12px 0px #8c8c8c;
             border: none;
+            max-width: none;
         }
         .popover .virtual-area {
             height: 11px;
@@ -87,6 +88,16 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     displayType: string = 'none';
     effectivePlacement: string;
     arrowLeft: number = undefined;
+    elWidth: number = undefined;
+
+    constructor(protected element: ElementRef,
+        protected cdr: ChangeDetectorRef) {
+    }
+
+    @HostListener('window:resize')
+    onDocumentResize() {
+        this.elWidth = undefined;
+    }
 
     onDocumentMouseDown = (event: any) => {
         const element = this.element.nativeElement;
@@ -94,10 +105,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (element.contains(event.target) || this.popover.getElement().contains(event.target)) return;
         this.hide();
         this.onCloseFromOutside.emit(undefined);
-    }
-
-    constructor(protected element: ElementRef,
-        protected cdr: ChangeDetectorRef) {
     }
 
     ngAfterViewInit(): void {
@@ -117,16 +124,29 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             document.removeEventListener('mouseover', this.onDocumentMouseDown);
     }
 
+    updateWidths() {
+        if (this.width !== undefined) {
+            this.elWidth = this.width;
+        } else if (this.elWidth === undefined) {
+            const offsetParentEl = offsetParent(this.popover.getElement());
+
+            const maxElWidth = offsetParentEl.clientWidth;
+            this.elWidth = Math.min(this.popoverDiv.nativeElement.clientWidth, maxElWidth);
+        }
+    }
+
     show(): void {
         if (!this.popover || !this.popover.getElement())
             return;
+
+        this.updateWidths();
 
         this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
         const position = getElementPosition(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
         const adjustedPosition = this.adjustHorizontalPositionIfNeeded(
             position,
             this.effectivePlacement,
-            this.width,
+            this.elWidth,
             this.popover.getElement());
 
         this.displayType = 'block';
@@ -137,10 +157,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     }
 
     hide(): void {
-        this.top = -10000;
-        this.left = -10000;
-        this.arrowLeft = undefined;
-        this.isIn = true;
+        this.hideFromPopover();
         this.popover.hide();
         this.cdr.detectChanges();
     }

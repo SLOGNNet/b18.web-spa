@@ -10,7 +10,6 @@ export class LoadStopCardComponent {
   @Input() load: Load;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
-  private popupWidth = 220;
   private popoverOnHover = true;
   private closeOnClickOutside = true;
 
