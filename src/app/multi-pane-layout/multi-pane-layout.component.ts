@@ -15,7 +15,7 @@
  * </multi-pane-layout>
  */
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
@@ -26,7 +26,8 @@ import { AppState } from '../app.service';
     templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
         './multi-pane-layout.component.scss'
-    ]
+    ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiPaneLayoutComponent {
 
@@ -34,10 +35,10 @@ export class MultiPaneLayoutComponent {
     private switchStateEnum: any = SwitchState;
 
     private classes = {
-        0: '',
-        1: 'col-sm-12',
-        2: 'col-sm-6',
-        3: 'col-sm-4'
+        0: '0',
+        1: '100',
+        2: '50',
+        3: '33.33333333'
     };
 
     private panesState = [
@@ -68,10 +69,11 @@ export class MultiPaneLayoutComponent {
       this.currentState = state;
     }
 
-    getClass() {
+    getWidth() {
         const columnsCount = this.panesState.filter(value => {
             return !!(value & this.getCurrentState());
         }).length;
+        console.log('fff');
         return this.classes[columnsCount];
     }
 }
