@@ -2,8 +2,6 @@ import { Component, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 
-const URL = 'http://localhost:5000/upload';
-
 @Injectable()
 export class FileUploadService {
 
@@ -22,7 +20,7 @@ export class FileUploadService {
     return this.progress$;
   }
 
-  public upload(file: File) {
+  public upload(url: string, file: File) {
     let formData: FormData = new FormData();
 
     formData.append('filename', file);
@@ -44,7 +42,7 @@ export class FileUploadService {
       this.progressObserver.next(this.progress);
     };
 
-    this.xhr.open('POST', URL, true);
+    this.xhr.open('POST', url, true);
     this.xhr.setRequestHeader('enctype', 'multipart/form-data');
     this.xhr.send(formData);
   }

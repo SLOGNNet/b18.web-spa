@@ -2,7 +2,8 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angu
 import { FileUploadService } from '../..';
 import * as moment from 'moment';
 
-const DEFAULT_ELEMENT_WIDTH = 100;
+const URL = 'http://localhost:5000/upload',
+            DEFAULT_ELEMENT_WIDTH = 100;
 
 @Component({
   selector: 'bd-file-preview',
@@ -36,7 +37,7 @@ export class BdFilePreviewComponent {
             });
 
         try {
-            this.fileUploadService.upload(this.document);
+            this.fileUploadService.upload(URL, this.document);
         } catch (error) {
             console.error(error);
         }
