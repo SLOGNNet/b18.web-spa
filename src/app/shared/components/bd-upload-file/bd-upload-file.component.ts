@@ -15,10 +15,6 @@ export class BdUploadFileComponent {
       private documentIssueDate: string;
       private documentFiles: any[] = [];
 
-      get showProgressBar() {
-        return this.dragging;
-      }
-
       @Input() private documentType: string = '';
 
       @Output() private documentsSelected: EventEmitter<any> = new EventEmitter();
