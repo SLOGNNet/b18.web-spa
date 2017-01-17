@@ -9,7 +9,8 @@ import { NotificationService,
   GoogleService,
   CommodityService,
   ContactService,
-  FormValidationService
+  FormValidationService,
+  FileUploadService,
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,8 @@ import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
+import { BdUploadFileComponent } from './components/bd-upload-file';
+import { BdFilePreviewComponent } from './components/bd-file-preview';
 import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
@@ -59,6 +62,8 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
     BdFormButtonComponent,
     BdTextareaAutosize,
     BdInputComponent,
+    BdUploadFileComponent,
+    BdFilePreviewComponent,
     BdSpinnerComponent,
     BdFormTypeaheadComponent,
     BdFormExpandComponent,
@@ -97,6 +102,8 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
     BdFormButtonComponent,
     BdTextareaAutosize,
     BdInputComponent,
+    BdUploadFileComponent,
+    BdFilePreviewComponent,
     BdSpinnerComponent,
     GoogleMapComponent,
     BdFormTypeaheadComponent,

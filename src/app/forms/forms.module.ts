@@ -8,6 +8,7 @@ import { DropoffFormComponent } from './dropoff-form';
 import { DropoffsFormComponent } from './dropoffs-form';
 import { PickupFormComponent } from './pickup-form';
 import { PickupsFormComponent } from './pickups-form';
+import { LoadDocumentFormComponent } from './load-document-form';
 import { SharedModule } from '../shared/shared.module';
 
 import { BdLoadFormComponent } from './load-form';
@@ -30,7 +31,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     PickupFormComponent,
     PickupsFormComponent,
     PickUpCommodityFormComponent,
-    DropOffCommodityFormComponent
+    DropOffCommodityFormComponent,
+    LoadDocumentFormComponent
   ],
   imports: [
     SharedModule
@@ -38,6 +40,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
   exports: [
     CustomerForm,
     BdLoadFormComponent,
+    LoadDocumentFormComponent
   ]
 })
 export class BdFormsModule {
