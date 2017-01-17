@@ -17,7 +17,7 @@ import { NgbCalendar } from './ngb-calendar';
         [dropdownItemTemplate]="dropdownMonthTemplate"
         (onItemClick)="triggerMonthClick($event)"
         class="datepicker-dropdown"
-        selectedValue="2"
+        [selectedValue]="selectedMonthValue()"
         keyField="id"
         valueField="month"
         (focusChange)="onMonthsDropdownOpen($event)"
@@ -39,7 +39,7 @@ import { NgbCalendar } from './ngb-calendar';
           [dropdownItemTemplate]="dropdownYearTemplate"
           class="datepicker-dropdown"
           keyField="id"
-          selectedValue="2"
+          [selectedValue]="selectedYearValue()"
           (onItemClick)="triggerYearClick($event)"
           valueField="year"
           (focusChange)="onYearDropdownOpened($event)"
@@ -55,7 +55,7 @@ import { NgbCalendar } from './ngb-calendar';
 })
 export class NgbDatepickerNavigationSelect implements OnChanges {
   months: number[];
-  years: Array<Object>;
+  years: Array<{id:string, year: number}>;
   monthsListOpened: boolean = false;
   yearsListOpened: boolean = false;
 
@@ -85,6 +85,21 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
 
   onYearDropdownOpened(isFocused: boolean){
     this.yearsListOpened = isFocused;
+  }
+
+  selectedMonthValue() {
+    return this.date.month + '';
+  }
+
+  selectedYearValue() {
+    let selectedYear = null;
+    for(let i=0; i<this.years.length;i++){
+      if(this.date.year == this.years[i].year){
+        selectedYear = this.years[i].id;
+        break;
+      }
+    }
+    return selectedYear;
   }
 
   triggerMonthClick(item) {
