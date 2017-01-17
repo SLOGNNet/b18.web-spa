@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
@@ -13,16 +13,16 @@ export class LoadDocumentFormComponent extends BaseForm {
 
   private documents: Object[];
 
-  constructor() {
-    super();
+  constructor(element: ElementRef) {
+    super(element);
     this.documents = [];
   }
 
-  documentsOnLoad(event) {
-    event.documents.map(item => this.documents.push({item, documentType:event.type}));
+  onLoadDocuments(event) {
+    event.documents.map(item => this.documents.push({ item, type: event.type }));
   }
 
-  onRemoveFile(event) {
-    this.documents = without(this.documents, event.document);
+  onRemoveFile(document) {
+    this.documents = without(this.documents, document);
   }
 }

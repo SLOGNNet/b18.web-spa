@@ -1,10 +1,10 @@
 <div class="preview-container">
   <bd-file-preview
-     *ngFor="let item of this.documents; let i = index;"
-    [documentType]="item.documentType"
+     *ngFor="let document of this.documents; let i = index;"
+    [documentType]="document.type"
     [itemIndex]="i + 1"
-    [item]="item"
-    (removeFile)="onRemoveFile($event)">
+    [document]="document.item"
+    (removeFile)="onRemoveFile(document)">
   </bd-file-preview>
 </div>
 
@@ -12,11 +12,11 @@
 <div class="upload-container">
   <bd-upload-file
     [documentType]="'Rate Sheet'"
-    (documentsSelected)="documentsOnLoad($event)">
+    (documentsSelected)="onLoadDocuments($event)">
   </bd-upload-file>
 
   <bd-upload-file
     [documentType]="'Bill of Lading'"
-    (documentsSelected)="documentsOnLoad($event)">
+    (documentsSelected)="onLoadDocuments($event)">
   </bd-upload-file>
 </div>
