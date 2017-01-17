@@ -232,6 +232,7 @@ export class NgbDatepicker implements OnChanges,
 
   onNavigateDateSelect(date: NgbDate) {
     this._setViewWithinLimits(date);
+    this.onChange({year: date.year, month: date.month, day: date.day});
     this._updateData();
   }
 
