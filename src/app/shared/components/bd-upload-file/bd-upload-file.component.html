@@ -1,38 +1,15 @@
-<div
-    (dragover)="handleDragEnter($event)"
-    (dragleave)="handleDragLeave($event)"
-    (drop)="handleDrop($event)"
-    class="upload-file-wrapper">
-   <div class="upload-file-container">
-     <div
-       *ngIf="showProgressBar"
-       class="upload-progress"
-       [style.width.%]="progressWidth">
-     </div>
-     <div [ngSwitch]="uploadingProcess">
-       <div
-         *ngSwitchCase="false"
-         class="text-container">
-         <span>Choose a&nbsp;</span>
-         <span
-           class="file-choose">
+<div (dragover)="handleDragEnter($event)" (dragleave)="handleDragLeave($event)" (drop)="handleDrop($event)" class="upload-file-wrapper">
+  <div class="upload-file-container">
+    <div *ngIf="dragging" class="dragover">
+    </div>
+    <div class="text-container">
+      <span>Choose a&nbsp;</span>
+      <span class="file-choose">
              {{documentType}}
          </span>
-         <span>&nbsp;document or drag it here!</span>
-         <i class="icon-upload"></i>
-       </div>
-      <div
-        *ngSwitchCase="true"
-        class="text-container">
-          <span
-              class="file-choose">
-                {{documentType}}
-          </span>
-          <span>&nbsp;document uploading...</span>
-      </div>
-     </div>
-       <input type="file"
-               multiple
-               (change)="handleInputChange($event)">
-   </div>
+      <span>&nbsp;document or drag it here!</span>
+      <i class="icon-upload"></i>
+    </div>
+    <input type="file" multiple (change)="handleInputChange($event)">
+  </div>
 </div>
