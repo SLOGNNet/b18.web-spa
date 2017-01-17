@@ -125,13 +125,7 @@ export class Positioning {
     return targetElPosition;
   }
 
-  private getStyle(element: HTMLElement, prop: string): string { return window.getComputedStyle(element)[prop]; }
-
-  private isStaticPositioned(element: HTMLElement): boolean {
-    return (this.getStyle(element, 'position') || 'static') === 'static';
-  }
-
-  private offsetParent(element: HTMLElement): HTMLElement {
+  offsetParent(element: HTMLElement): HTMLElement {
     let offsetParentEl = <HTMLElement>element.offsetParent || document.documentElement;
 
     while (offsetParentEl && offsetParentEl !== document.documentElement && this.isStaticPositioned(offsetParentEl)) {
@@ -140,6 +134,13 @@ export class Positioning {
 
     return offsetParentEl || document.documentElement;
   }
+
+  private getStyle(element: HTMLElement, prop: string): string { return window.getComputedStyle(element)[prop]; }
+
+  private isStaticPositioned(element: HTMLElement): boolean {
+    return (this.getStyle(element, 'position') || 'static') === 'static';
+  }
+
 }
 
 const positionService = new Positioning();
@@ -151,7 +152,49 @@ export function positionElements(
   targetElement.style.left = `${pos.left}px`;
 }
 
+export function getElementPosition(
+    hostElement: HTMLElement, targetElement: HTMLElement, placement: string, appendToBody?: boolean): ClientRect {
+  return positionService.positionElements(hostElement, targetElement, placement, appendToBody);
+}
+
 export function position(element: HTMLElement, round = true): ClientRect {
     const pos = positionService.position(element, round);
     return pos;
+}
+
+export function offsetParent(element: HTMLElement): HTMLElement {
+    const offsetEl = positionService.offsetParent(element);
+    return offsetEl;
+}
+
+export function offset(element: HTMLElement): ClientRect {
+    const elOffset = positionService.offset(element);
+    return elOffset;
+}
+
+
+export function getEffectivePlacement(placement: string, hostElement: HTMLElement, targetElement: HTMLElement): string {
+    const placementParts = placement.split(' ');
+    if (placementParts[0] !== 'auto') {
+        return placement;
+    }
+
+    const hostElBoundingRect = hostElement.getBoundingClientRect();
+
+    const desiredPlacement = placementParts[1] || 'bottom';
+
+    if (desiredPlacement === 'top' && hostElBoundingRect.top - targetElement.offsetHeight < 0) {
+        return 'bottom';
+    }
+    if (desiredPlacement === 'bottom' && hostElBoundingRect.bottom + targetElement.offsetHeight > window.innerHeight) {
+        return 'top';
+    }
+    if (desiredPlacement === 'left' && hostElBoundingRect.left - targetElement.offsetWidth < 0) {
+        return 'right';
+    }
+    if (desiredPlacement === 'right' && hostElBoundingRect.right + targetElement.offsetWidth > window.innerWidth) {
+        return 'left';
+    }
+
+    return desiredPlacement;
 }

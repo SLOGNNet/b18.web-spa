@@ -1,55 +1,16 @@
-import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, HostListener } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
+import { offsetParent, getElementPosition, getEffectivePlacement } from '../../helpers/positioning';
 
 @Component({
     selector: 'bd-popover-content',
-    template: `
-        <div #popoverDiv class="popover {{ effectivePlacement }}"
-            [style.top]="top + 'px'"
-            [style.left]="left + 'px'"
-            [style.width]="width + 'px'"
-            [class.in]="isIn"
-            [class.fade]="animation"
-            style="display: block"
-            role="popover">
-            <div [hidden]="!closeOnMouseOutside" class="virtual-area"></div>
-            <div class="arrow" [style.left]="arrowLeft + 'px'"></div> 
-            <h3 class="popover-title" [hidden]="!title">{{ title }}</h3>
-            <div class="popover-content">
-                <ng-content></ng-content>
-                {{ content }}
-            </div> 
-        </div>
-    `,
-    styles: [`
-        .popover {
-            background: white;
-            box-shadow: 0px 0px 12px 0px #8c8c8c;
-            border: none;
-        }
-        .popover .virtual-area {
-            height: 11px;
-            width: 100%;
-            position: absolute;
-        }
-        .popover.top .virtual-area {
-            bottom: -11px; 
-        }
-        .popover.bottom .virtual-area {
-            top: -11px; 
-        }
-        .popover.left .virtual-area {
-            right: -11px; 
-        }
-        .popover.right .virtual-area {
-            left: -11px; 
-        }
-    `]
+    templateUrl: './bd-popover-content.html',
+    styleUrls: ['./bd-popover-content.scss']
 })
 export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
     @Input()
-    horizontalOffset: number = 20;
+    horizontalOffset: number = 0;
 
     @Input()
     width: number;
@@ -86,6 +47,16 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     displayType: string = 'none';
     effectivePlacement: string;
     arrowLeft: number = undefined;
+    elWidth: number = undefined;
+
+    constructor(protected element: ElementRef,
+        protected cdr: ChangeDetectorRef) {
+    }
+
+    @HostListener('window:resize')
+    onDocumentResize() {
+        this.elWidth = undefined;
+    }
 
     onDocumentMouseDown = (event: any) => {
         const element = this.element.nativeElement;
@@ -93,10 +64,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (element.contains(event.target) || this.popover.getElement().contains(event.target)) return;
         this.hide();
         this.onCloseFromOutside.emit(undefined);
-    }
-
-    constructor(protected element: ElementRef,
-        protected cdr: ChangeDetectorRef) {
     }
 
     ngAfterViewInit(): void {
@@ -116,15 +83,29 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             document.removeEventListener('mouseover', this.onDocumentMouseDown);
     }
 
+    updateWidth() {
+        if (this.width !== undefined) {
+            this.elWidth = this.width;
+        } else if (this.elWidth === undefined) {
+            const offsetParentEl = offsetParent(this.popover.getElement());
+
+            const maxElWidth = offsetParentEl.clientWidth;
+            this.elWidth = Math.min(this.popoverDiv.nativeElement.clientWidth, maxElWidth);
+        }
+    }
+
     show(): void {
         if (!this.popover || !this.popover.getElement())
             return;
 
-        const position = this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
+        this.updateWidth();
+
+        this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
+        const position = getElementPosition(this.popover.getElement(), this.popoverDiv.nativeElement, this.effectivePlacement);
         const adjustedPosition = this.adjustHorizontalPositionIfNeeded(
             position,
-            position.effectivePlacement,
-            this.width,
+            this.effectivePlacement,
+            this.elWidth,
             this.popover.getElement());
 
         this.displayType = 'block';
@@ -135,10 +116,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     }
 
     hide(): void {
-        this.top = -10000;
-        this.left = -10000;
-        this.arrowLeft = undefined;
-        this.isIn = true;
+        this.hideFromPopover();
         this.popover.hide();
         this.cdr.detectChanges();
     }
@@ -150,8 +128,8 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         this.isIn = true;
     }
 
-    protected adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
-        const offsetParent = this.parentOffsetEl(popover);
+    adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
+        const offsetParentEl = offsetParent(popover);
         let result = {
             top: position.top,
             left: position.left,
@@ -159,7 +137,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         };
 
         if (elementWidth && (effectivePlacement === 'bottom' || effectivePlacement === 'top')) {
-            const parentWidth = offsetParent.offsetWidth;
+            const parentWidth = offsetParentEl.offsetWidth;
 
             if (position.left + elementWidth > parentWidth + this.horizontalOffset) {
                 const diff = (position.left + elementWidth) - parentWidth - this.horizontalOffset;
@@ -175,142 +153,4 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         return result;
     }
 
-    protected positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody: boolean = false) {
-        let positionStrParts = positionStr.split('-');
-        let pos0 = positionStrParts[0];
-        let pos1 = positionStrParts[1] || 'center';
-        let hostElPos = appendToBody ? this.offset(hostEl) : this.position(hostEl);
-        let targetElWidth = this.width || targetEl.offsetWidth;
-        let targetElHeight = this.height || targetEl.offsetHeight;
-
-        this.effectivePlacement = pos0 = this.getEffectivePlacement(pos0, hostEl, targetEl);
-
-        let shiftWidth: any = {
-            center: function (): number {
-                return hostElPos.left + hostElPos.width / 2 - targetElWidth / 2;
-            },
-            left: function (): number {
-                return hostElPos.left;
-            },
-            right: function (): number {
-                return hostElPos.left + hostElPos.width;
-            }
-        };
-
-        let shiftHeight: any = {
-            center: function (): number {
-                return hostElPos.top + hostElPos.height / 2 - targetElHeight / 2;
-            },
-            top: function (): number {
-                return hostElPos.top;
-            },
-            bottom: function (): number {
-                return hostElPos.top + hostElPos.height;
-            }
-        };
-
-        let targetElPos = { top: 0, left: 0, effectivePlacement: this.effectivePlacement };
-
-        switch (pos0) {
-            case 'right':
-                targetElPos.top = shiftHeight[pos1]();
-                targetElPos.left = shiftWidth[pos0]();
-                break;
-
-            case 'left':
-                targetElPos.top = shiftHeight[pos1]();
-                targetElPos.left = hostElPos.left - targetElWidth;
-                break;
-
-            case 'bottom':
-                targetElPos.top = shiftHeight[pos0]();
-                targetElPos.left = shiftWidth[pos1]();
-                break;
-
-            default:
-                targetElPos.top = hostElPos.top - targetElHeight;
-                targetElPos.left = shiftWidth[pos1]();
-                break;
-        }
-
-        return targetElPos;
-    }
-
-    protected position(nativeEl: HTMLElement): { width: number, height: number, top: number, left: number } {
-        let offsetParentBCR = { top: 0, left: 0 };
-        const elBCR = this.offset(nativeEl);
-        const offsetParentEl = this.parentOffsetEl(nativeEl);
-        if (offsetParentEl !== window.document) {
-            offsetParentBCR = this.offset(offsetParentEl);
-            offsetParentBCR.top += offsetParentEl.clientTop - offsetParentEl.scrollTop;
-            offsetParentBCR.left += offsetParentEl.clientLeft - offsetParentEl.scrollLeft;
-        }
-
-        const boundingClientRect = nativeEl.getBoundingClientRect();
-        return {
-            width: boundingClientRect.width || nativeEl.offsetWidth,
-            height: boundingClientRect.height || nativeEl.offsetHeight,
-            top: elBCR.top - offsetParentBCR.top,
-            left: elBCR.left - offsetParentBCR.left
-        };
-    }
-
-    protected offset(nativeEl: any): { width: number, height: number, top: number, left: number } {
-        const boundingClientRect = nativeEl.getBoundingClientRect();
-        return {
-            width: boundingClientRect.width || nativeEl.offsetWidth,
-            height: boundingClientRect.height || nativeEl.offsetHeight,
-            top: boundingClientRect.top + (window.pageYOffset || window.document.documentElement.scrollTop),
-            left: boundingClientRect.left + (window.pageXOffset || window.document.documentElement.scrollLeft)
-        };
-    }
-
-    protected getStyle(nativeEl: HTMLElement, cssProp: string): string {
-        if ((nativeEl as any).currentStyle) // IE
-            return (nativeEl as any).currentStyle[cssProp];
-
-        if (window.getComputedStyle)
-            return (window.getComputedStyle as any)(nativeEl)[cssProp];
-
-        // finally try and get inline style
-        return (nativeEl.style as any)[cssProp];
-    }
-
-    protected isStaticPositioned(nativeEl: HTMLElement): boolean {
-        return (this.getStyle(nativeEl, 'position') || 'static') === 'static';
-    }
-
-    protected parentOffsetEl(nativeEl: HTMLElement): any {
-        let offsetParent: any = nativeEl.offsetParent || window.document;
-        while (offsetParent && offsetParent !== window.document && this.isStaticPositioned(offsetParent)) {
-            offsetParent = offsetParent.offsetParent;
-        }
-        return offsetParent || window.document;
-    }
-
-    protected getEffectivePlacement(placement: string, hostElement: HTMLElement, targetElement: HTMLElement): string {
-        const placementParts = placement.split(' ');
-        if (placementParts[0] !== 'auto') {
-            return placement;
-        }
-
-        const hostElBoundingRect = hostElement.getBoundingClientRect();
-
-        const desiredPlacement = placementParts[1] || 'bottom';
-
-        if (desiredPlacement === 'top' && hostElBoundingRect.top - targetElement.offsetHeight < 0) {
-            return 'bottom';
-        }
-        if (desiredPlacement === 'bottom' && hostElBoundingRect.bottom + targetElement.offsetHeight > window.innerHeight) {
-            return 'top';
-        }
-        if (desiredPlacement === 'left' && hostElBoundingRect.left - targetElement.offsetWidth < 0) {
-            return 'right';
-        }
-        if (desiredPlacement === 'right' && hostElBoundingRect.right + targetElement.offsetWidth > window.innerWidth) {
-            return 'left';
-        }
-
-        return desiredPlacement;
-    }
 }

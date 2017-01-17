@@ -37,7 +37,7 @@ import { BdRemoveButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
-import { BdFormDatePicker } from './components/bd-form-datepicker';
+import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { BdPopoverModule } from './directives/bd-popover/index';
@@ -83,6 +83,7 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
     ClickOutsideDirective,
     FormStickyBottomContainerComponent,
     BdFormDatePicker,
+    BdDatePicker,
     StopsLineComponent,
     StopPopoverComponent
   ],

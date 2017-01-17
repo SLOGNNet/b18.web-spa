@@ -39,9 +39,10 @@ $btn-secondary-color: $black;
 $placeholder-color: $dark-grey;
 
 /* form border */
-$border: 1px solid $grey;
-$active-border: 1px solid $blue;
-$error-border: 1px solid $red;
+$default-border-size: 1px;
+$border: $default-border-size solid $grey;
+$active-border: $default-border-size solid $blue;
+$error-border: $default-border-size solid $red;
 
 /* default border radius */
 $default-border-radius: 3px;
@@ -70,3 +71,4 @@ $default-margin: 17px;
 
 /* zIndexes */
 $sticked-z-index: 100;
+$form-control-popup-z-index: 10;

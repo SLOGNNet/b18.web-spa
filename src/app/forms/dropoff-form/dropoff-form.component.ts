@@ -8,27 +8,23 @@ import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.co
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { CommodityStore } from '../../stores';
+import { BaseStopForm } from '../base-stop-form';
 
 @Component(Object.assign({
   selector: 'dropoff-form',
   styleUrls: ['dropoff-form.component.scss'],
   templateUrl: './dropoff-form.component.html'
 }, BaseForm.metaData))
-export class DropoffFormComponent extends BaseForm implements OnChanges {
-  @Input('group') formGroup: FormGroup;
-  @Input()
-  public stop: Stop;
-
+export class DropoffFormComponent extends BaseStopForm implements OnChanges {
   private availablePickups: Array<Commodity> = new Array<Commodity>();
-  private  stopTypes = StopTypes;
 
-  constructor(private formBuilder: FormBuilder, private commodityStore: CommodityStore,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, private datePipe: DatePipe) {
-    super(elementRef);
+  constructor(formBuilder: FormBuilder, commodityStore: CommodityStore,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, datePipe: DatePipe) {
+    super(elementRef, formBuilder, commodityStore, datePipe);
   }
 
   ngOnChanges(changes: any) {
-    this.initForm();
+    super.ngOnChanges(changes);
     this.commodityStore.getDropoffCommodities(this.stop.id).subscribe(items => {
       this.stop.commodities = items;
       this.cdr.markForCheck();
@@ -40,31 +36,11 @@ export class DropoffFormComponent extends BaseForm implements OnChanges {
     });
   }
 
-  onCommoditySelect(commodity: Commodity) {
-    this.commodityStore.select(commodity, this.stop);
-  }
-
-  onCommodityUpdate(commodity: Commodity) {
-    this.commodityStore.update(commodity);
-  }
-
   onCommodityRemove(commodity: Commodity) {
     this.commodityStore.deselect(commodity);
   }
 
-  private initForm() {
-      const date = this.datePipe.transform(this.stop['date'], 'yyyy/MM/dd');
-      this.formGroup.addControl(
-        'date',
-        this.formBuilder.control(date)
-      );
-      this.formGroup.addControl(
-        'commodities',
-        this.formBuilder.array([])
-      );
-      this.formGroup.addControl(
-        'notes',
-        this.formBuilder.control(this.stop['notes'])
-      );
+  onCommoditySelect(commodity: Commodity) {
+    this.commodityStore.select(commodity, this.stop);
   }
 }

@@ -1,0 +1,22 @@
+@import '../../../../../assets/styles/variables';
+
+.datepicker-table {
+  width: 100%;
+  background: $white;
+  border-bottom: $border;
+  //sass-lint:disable no-important
+
+  .month {
+    &:first-child {
+      padding-left: 0 !important;
+    }
+  }
+}
+
+:host(.ngb-datepicker-popup-container) {
+  position: absolute;
+  z-index: $form-control-popup-z-index;
+  display: block;
+  width: 100%;
+  padding: 0;
+}

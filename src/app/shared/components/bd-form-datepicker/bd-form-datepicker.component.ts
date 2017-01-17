@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, forwardRef, Optional } from '@angular/core';
+import { Component, Input, ViewChild, forwardRef, Optional, ChangeDetectionStrategy } from '@angular/core';
 import { NgbInputDatepicker } from '../datepicker';
+import { BdDatePicker } from './components';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-
+import * as moment from 'moment';
 const noop = () => { };
 
 export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
@@ -12,24 +13,37 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
   selector: 'bd-form-datepicker',
-  templateUrl: './bd-form-datepicker.component.html'
+  templateUrl: './bd-form-datepicker.component.html',
+  styleUrls: ['bd-form-datepicker.component.scss'],
+  providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class BdFormDatePicker implements ControlValueAccessor {
-  @Input() datePlaceholder: string = '';
-  @ViewChild('datepicker') datepicker: NgbInputDatepicker;
-  private model: any;
-  private showDatePicker: boolean = false;
+  @Input() dateFormat: string = 'MM/DD/YYYY';
+  @ViewChild('datepicker') datepicker: BdDatePicker;
+  private dateValue;
+
+  private value: any;
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor(@Optional() ngControl: NgControl) {
-    if (ngControl) {
-      ngControl.valueAccessor = this;
-    }
+  constructor() {
   }
 
   writeValue(value: any) {
-    this.model = value;
+    this.value = value;
+    this.dateValue = moment(value).format(this.dateFormat);
+  }
+
+  onDateChange(value: string) {
+    if (value !== this.dateValue) {
+      const newDate = moment(value, this.dateFormat);
+      this.dateValue = value;
+      this.value = newDate ? moment(this.value)
+        .year(newDate.year())
+        .month(newDate.month())
+        .date(newDate.date()).toDate() : null;
+    }
+
   }
 
   registerOnChange(fn: any) {
@@ -40,11 +54,9 @@ export class BdFormDatePicker implements ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  onFocus() {
-    this.datepicker.open();
-  }
-
   onClickOutside() {
-    this.datepicker.close();
+    setTimeout(() => {
+      this.datepicker.close();
+    }, 0);
   }
 }

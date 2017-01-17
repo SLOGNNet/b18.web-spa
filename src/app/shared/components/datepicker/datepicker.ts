@@ -48,16 +48,7 @@ export interface NgbDatepickerNavigateEvent {
   exportAs: 'ngbDatepicker',
   selector: 'ngb-datepicker',
   host: {'class': 'd-inline-block'},
-  styles: [`
-    .month:first-child {
-      padding-left: 0 !important;
-    }
-    .datepicker-table {
-      width:100%;
-      background: #fff;
-      border-bottom: 1px solid #d7d8db;
-    }
-  `],
+  styleUrls: ['./styles/ngb-datepicker.scss'],
   template: `
     <template #dt let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
        <div ngbDatepickerDayView [date]="date" [currentMonth]="currentMonth" [selected]="selected" [disabled]="disabled"></div>
