@@ -14,7 +14,7 @@ export class FileUploadService {
 
   constructor() {
     this.progress$ = new Observable(observer => {
-      this.progressObserver = observer
+      this.progressObserver = observer;
     });
   }
 
