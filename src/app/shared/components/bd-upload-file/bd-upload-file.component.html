@@ -1,0 +1,15 @@
+<div (dragover)="handleDragEnter($event)" (dragleave)="handleDragLeave($event)" (drop)="handleDrop($event)" class="upload-file-wrapper">
+  <div class="upload-file-container">
+    <div *ngIf="dragging" class="dragover">
+    </div>
+    <div class="text-container">
+      <span>Choose a&nbsp;</span>
+      <span class="file-choose">
+             {{documentType}}
+         </span>
+      <span>&nbsp;document or drag it here!</span>
+      <i class="icon-upload"></i>
+    </div>
+    <input type="file" multiple (change)="handleInputChange($event)">
+  </div>
+</div>

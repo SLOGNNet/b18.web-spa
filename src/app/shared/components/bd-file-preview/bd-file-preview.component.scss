@@ -1,0 +1,58 @@
+@import '../../../../assets/styles/variables';
+
+.loaded-file-container {
+  position: relative;
+  display: flex;
+  background: $white;
+  margin-bottom: 20px;
+  flex-direction: row;
+
+  .upload-progress {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: $light-blue;
+  }
+
+  .file-info-container {
+    z-index: 1;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+
+    .file-type-container {
+      display: flex;
+      height: 50px;
+      padding: 0 17px;
+      border-bottom: $border;
+      align-items: center;
+      justify-content: space-between;
+
+      .file-name {
+        color: $black;
+      }
+
+      button {
+        border: 0;
+        background: none;
+
+        &:focus {
+          outline: 0;
+        }
+
+        i {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  .file-preview {
+    width: 20%;
+    background: $iron;
+    border-top-right-radius: $default-border-radius;
+    border-bottom-right-radius: $default-border-radius;
+  }
+}
