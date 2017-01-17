@@ -55,7 +55,7 @@ import { NgbCalendar } from './ngb-calendar';
 })
 export class NgbDatepickerNavigationSelect implements OnChanges {
   months: number[];
-  years: Array<{id:string, year: number}>;
+  years: Array<{id: string, year: number}>;
   monthsListOpened: boolean = false;
   yearsListOpened: boolean = false;
 
@@ -93,8 +93,8 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
 
   selectedYearValue() {
     let selectedYear = null;
-    for(let i=0; i<this.years.length;i++){
-      if(this.date.year == this.years[i].year){
+    for (let i = 0; i < this.years.length; i++) {
+      if (this.date.year === this.years[i].year) {
         selectedYear = this.years[i].id;
         break;
       }
