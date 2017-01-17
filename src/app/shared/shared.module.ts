@@ -9,7 +9,8 @@ import { NotificationService,
   GoogleService,
   CommodityService,
   ContactService,
-  FormValidationService
+  FormValidationService,
+  FileUploadService,
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
