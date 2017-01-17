@@ -92,14 +92,7 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
   }
 
   selectedYearValue() {
-    let selectedYear = null;
-    for (let i = 0; i < this.years.length; i++) {
-      if (this.date.year === this.years[i].year) {
-        selectedYear = this.years[i].year;
-        break;
-      }
-    }
-    return selectedYear;
+    return this.date.year;
   }
 
   triggerMonthClick(item) {
