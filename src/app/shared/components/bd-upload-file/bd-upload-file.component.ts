@@ -1,9 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { map } from 'lodash';
 
-const URL = 'http://localhost:5000/upload',
-            DEFAULT_WIDTH = 100;
-
 @Component({
   selector: 'bd-upload-file',
   styleUrls: ['bd-upload-file.component.scss'],
