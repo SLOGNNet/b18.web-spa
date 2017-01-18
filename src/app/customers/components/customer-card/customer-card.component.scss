@@ -11,16 +11,18 @@
   border-bottom: $border;
   justify-content: space-between;
 
-  .top {
+  .top,
+  .bottom {
     display: flex;
     justify-content: space-between;
 
     div {
       flex: 1;
     }
+  }
 
+  .top {
     .left {
-
       span {
         display: flex;
         width: 34px;
@@ -38,10 +40,7 @@
       display: flex;
       overflow: hidden;
       align-items: flex-end;
-
-      span {
-        font-weight: bold;
-      }
+      font-weight: bold;
     }
 
     .right {
@@ -69,17 +68,8 @@
   }
 
   .bottom {
-    display: flex;
-    justify-content: space-between;
-
-    div {
-      flex: 1;
-    }
-
     .left {
-
       div {
-
         &:first-child {
           font-weight: bold;
         }
@@ -90,7 +80,6 @@
       overflow: hidden;
 
       div {
-
         &:first-child {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -100,7 +89,6 @@
     }
 
     .right {
-
       span {
         display: flex;
         width: 79px;
