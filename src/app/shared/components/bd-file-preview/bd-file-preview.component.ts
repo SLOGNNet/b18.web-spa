@@ -20,6 +20,7 @@ export class BdFilePreviewComponent {
       @Input() private documentType: string;
       @Input() private itemIndex: number;
       @Input() private document: File;
+      @Input() newDocument: boolean = false;
 
       @Output() private removeFile: EventEmitter<any> = new EventEmitter();
 
@@ -35,12 +36,14 @@ export class BdFilePreviewComponent {
                 this.uploadProgress = DEFAULT_ELEMENT_WIDTH - progress;
                 this._cdr.markForCheck();
             });
-
-        try {
-            this.fileUploadService.upload(URL, this.document);
-        } catch (error) {
-            console.error(error);
+        if(this.newDocument) {
+          try {
+              this.fileUploadService.upload(URL, this.document);
+          } catch (error) {
+              console.error(error);
+          }
         }
+
       }
 
       onRemoveClick(event){
