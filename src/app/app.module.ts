@@ -5,7 +5,8 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
-import { CommodityStore } from './stores';
+import { NgReduxModule } from 'ng2-redux';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -29,6 +30,12 @@ import { LoadsComponent,
   TripPopoverComponent,
   CustomerPopoverComponent,
   DriverPopoverComponent } from './loads';
+import {
+  CommodityActions,
+  LoadActions,
+  AddressActions,
+  CustomerActions
+} from './actions';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Application wide providers
@@ -74,12 +81,16 @@ type StoreType = {
     InfiniteScrollModule,
     BdFormsModule,
     NgxDatatableModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgReduxModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    CommodityStore
+    CommodityActions,
+    LoadActions,
+    AddressActions,
+    CustomerActions
   ]
 })
 export class AppModule {

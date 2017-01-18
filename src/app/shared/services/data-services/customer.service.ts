@@ -19,7 +19,7 @@ export class CustomerService {
     );
   }
 
-  get(id: number): Observable<Customer> {
+  getDetails(id: number): Observable<Customer> {
     return Observable.of(
       MockData.customers.find((customer) => id === customer.id)
     );

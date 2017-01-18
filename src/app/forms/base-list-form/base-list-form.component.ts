@@ -7,7 +7,7 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;
 
   @Input()
-  public items: Array<T>;
+  public items: Array<T>= new Array<T>();
   @Input()
   public formArray: FormArray;
 
@@ -22,6 +22,7 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
 
   ngOnChanges(changes: any) {
     if (changes.items) {
+      this.items = this.items || [];
       this.initForm();
     }
   }

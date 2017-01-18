@@ -4,10 +4,17 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { IAppState, rootReducer } from './store';
 import { SwitchState } from './shared/enums/switchState';
-
+import {
+  applyMiddleware,
+  Store,
+  combineReducers,
+  compose,
+  createStore
+} from 'redux';
 import { AppState } from './app.service';
-
+ import { NgRedux } from 'ng2-redux';
 /*
  * App Component
  * Top Level Component
@@ -38,7 +45,10 @@ export class AppComponent {
     public appState: AppState,
     private route: ActivatedRoute,
     private router: Router,
+    private ngRedux: NgRedux<IAppState>,
     private location: Location) {
+    this.ngRedux.configureStore(
+     rootReducer, {}, []);
   }
 
   ngOnInit() {

@@ -7,7 +7,6 @@ import {
   DriverRequirements, PowerUnitTypes, TrailerTypes,
   Stop, StopTypes, Contact, Commodity,
   LoadType, FreightType, DataAssigneeRequirements } from '../../models';
-import { CommodityStore } from '../../stores';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -40,7 +39,6 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     private customerService: CustomerService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
-    private commodityStore: CommodityStore,
     private contactService: ContactService,
     elementRef: ElementRef) {
     super(elementRef);
@@ -55,7 +53,6 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.splitStops(this.load);
-      this.commodityStore.set(this.pickups, this.dropoffs);
       this.initForm();
       this.initCustomerTypeahead(this.load.customer);
     }

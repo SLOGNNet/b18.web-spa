@@ -1,18 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { Load } from '../models';
-import { IListDataStore } from '../../stores';
+import { IDetailDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import {  ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 export abstract class BaseDetailComponent<T> {
   protected isNew = false;
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
 
-  constructor(private store: IListDataStore<T>,
+  constructor(private actions: IDetailDataActions<T>,
+    private selected$: Observable<T>,
     private route: ActivatedRoute) {
-    store.selectedItem().subscribe(item => {
+    selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });
     this.route.params.subscribe(params => {
@@ -23,8 +25,11 @@ export abstract class BaseDetailComponent<T> {
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);
     this.isNew = id === 0;
-    if (!isNaN(id)) {
-      this.store.select(id);
+    if (this.isNew) {
+      this.actions.createNew();
+    }
+    else if (!isNaN(id)) {
+      this.actions.select(id);
     }
   }
 

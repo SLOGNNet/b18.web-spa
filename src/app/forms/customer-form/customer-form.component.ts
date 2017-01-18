@@ -1,16 +1,18 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Customer, CustomerStatuses, CustomerTypes, Address } from '../../models';
-import { AddressStore } from '../../stores';
+import { AddressActions } from '../../actions';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
   selector: 'customer-form',
   templateUrl: './customer-form.component.html',
   styleUrls: ['./customer-form.component.scss'],
-  providers: [FormValidationService, AddressStore]
+  providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CustomerForm extends BaseForm {
   @Input() public scrollable: boolean = false;
@@ -18,7 +20,7 @@ export class CustomerForm extends BaseForm {
   @Input() public customer: Customer;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
-
+  @select(state => state.addresses.items) addresses$: Observable<Address[]>;
   customerForm: FormGroup;
   customerTypes: Array<any>;
   selectedCustomerType: string;
@@ -26,7 +28,7 @@ export class CustomerForm extends BaseForm {
   selectedCustomerStatus: string;
 
   constructor(private formBuilder: FormBuilder,
-    private addressStore: AddressStore,
+    private addressActions: AddressActions,
     private enumHelperService: EnumHelperService,
     private cdr: ChangeDetectorRef,
     private validationService: FormValidationService,
@@ -37,11 +39,6 @@ export class CustomerForm extends BaseForm {
   }
 
   ngOnChanges(changes: any) {
-    this.addressStore.set(this.customer.addresses);
-    this.addressStore.addresses.subscribe(adr => {
-      this.customer.addresses = adr;
-      this.cdr.markForCheck();
-    });
     this.initForm();
   }
 
@@ -75,15 +72,15 @@ export class CustomerForm extends BaseForm {
   }
 
   onAddressAdd(address: Address) {
-    this.addressStore.add(address);
+    this.addressActions.add(address);
   }
 
   onAddressChange(address: Address) {
-    this.addressStore.update(address);
+    this.addressActions.update(address);
   }
 
   onAddressRemove(address: Address) {
-    this.addressStore.remove(address);
+    this.addressActions.remove(address);
   }
 
   private onExpandChanged(viewMode) {
