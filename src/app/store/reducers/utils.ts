@@ -1,5 +1,5 @@
 export function updateItem(list: any[], updated: any) {
-  return list.map(item => item['id'] === updated['id'] ? Object.assign({}, updated) : item);
+  return list.map(item => item['id'] === updated['id'] ? Object.assign({}, item, updated) : item);
 }
 
 export function removeItem(list: any[], removed: any) {

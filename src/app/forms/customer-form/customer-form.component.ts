@@ -79,6 +79,10 @@ export class CustomerForm extends BaseForm {
     this.addressActions.update(address);
   }
 
+  onAddressPlaceUpdate(data: any) {
+    this.addressActions.updatePlace(data.addressId, data.placeId);
+  }
+
   onAddressRemove(address: Address) {
     this.addressActions.remove(address);
   }
