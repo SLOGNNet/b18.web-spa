@@ -3,7 +3,7 @@
 .customer-card-section {
   position: relative;
   height: 100px;
-  padding: 17px;
+  padding: $default-margin;
   background: $white;
   font-size: $tiny-font-size;
   cursor: pointer;
@@ -15,8 +15,11 @@
     display: flex;
     justify-content: space-between;
 
-    .left {
+    div {
       flex: 1;
+    }
+
+    .left {
 
       span {
         display: flex;
@@ -25,7 +28,7 @@
         background: $black;
         color: $white;
         margin-top: -6px;
-        border-radius: 50px;
+        border-radius: 50%;
         justify-content: center;
         align-items: center;
       }
@@ -34,7 +37,6 @@
     .middle {
       display: flex;
       overflow: hidden;
-      flex: 1;
       align-items: flex-end;
 
       span {
@@ -44,40 +46,22 @@
 
     .right {
       display: flex;
-      flex: 1;
       flex-direction: column;
       align-items: flex-end;
 
-      .first-load-container {
+      .load-container {
         display: flex;
         margin-left: 5px;
 
-        .first-load-circle {
+        .load-circle {
           width: 9px;
           height: 9px;
           background: $black;
           margin-top: 3px;
-          border-radius: 50px;
+          border-radius: 50%;
         }
 
-        .first-load {
-          margin-left: 5px;
-        }
-      }
-
-      .second-load-container {
-        display: flex;
-        margin-left: 5px;
-
-        .second-load-circle {
-          width: 9px;
-          height: 9px;
-          background: $black;
-          margin-top: 3px;
-          border-radius: 50px;
-        }
-
-        .second-load {
+        .load-name {
           margin-left: 5px;
         }
       }
@@ -88,13 +72,15 @@
     display: flex;
     justify-content: space-between;
 
-    .left {
+    div {
       flex: 1;
+    }
 
-      span {
-        display: block;
+    .left {
 
-        &:nth-child(1) {
+      div {
+
+        &:first-child {
           font-weight: bold;
         }
       }
@@ -102,12 +88,10 @@
 
     .middle {
       overflow: hidden;
-      flex: 1;
 
-      span {
-        display: block;
+      div {
 
-        &:nth-child(1) {
+        &:first-child {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -116,7 +100,6 @@
     }
 
     .right {
-      flex: 1;
 
       span {
         display: flex;
@@ -126,9 +109,9 @@
         color: $white;
         float: right;
         align-items: center;
-        border-radius: 3px;
+        border-radius: $default-border-radius;
         justify-content: center;
-        margin-top: 17px;
+        margin-top: $default-margin;
       }
     }
   }
