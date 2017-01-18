@@ -277,7 +277,7 @@ class MockData {
       id: 1,
       type: 'Rate Sheet',
       issueDate: '20/10/2017',
-      url:'',
+      url: '',
       file: null
     }
   ];
