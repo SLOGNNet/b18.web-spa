@@ -1,4 +1,4 @@
-import { Component, ElementRef , ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bd-resize-container',
@@ -7,7 +7,14 @@ import { Component, ElementRef , ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdResizeContainerComponent {
-    constructor(public element: ElementRef) {
-      this.element.nativeElement.style.width = 33.3 + '%';
+  @Input() width: number = 0;
+
+  constructor(public element: ElementRef) {
+  }
+
+  ngOnChanges(changes) {
+    if (changes.width) {
+      this.element.nativeElement.style.width = this.width + '%';
     }
+  }
 }

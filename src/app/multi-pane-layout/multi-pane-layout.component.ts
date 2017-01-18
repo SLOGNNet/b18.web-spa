@@ -15,7 +15,7 @@
  * </multi-pane-layout>
  */
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
@@ -26,19 +26,21 @@ import { AppState } from '../app.service';
     templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
         './multi-pane-layout.component.scss'
-    ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    ]
 })
 export class MultiPaneLayoutComponent {
 
     private currentState: SwitchState = SwitchState.AllPanesVisible;
     private switchStateEnum: any = SwitchState;
+    private resizerWidth = 20;
+    private resizerMin = 320;
+    private resizerDiection = 'horizontal';
 
-    private classes = {
-        0: '0',
-        1: '100',
-        2: '50',
-        3: '33.33333333'
+    private widths = {
+        0: 0,
+        1: 100,
+        2: 50,
+        3: 33.33333333
     };
 
     private panesState = [
@@ -62,6 +64,7 @@ export class MultiPaneLayoutComponent {
     }
 
     isVisible(state: SwitchState) {
+        console.log(state, !!( this.getCurrentState() & state));
         return !!( this.getCurrentState() & state);
     }
 
@@ -73,7 +76,7 @@ export class MultiPaneLayoutComponent {
         const columnsCount = this.panesState.filter(value => {
             return !!(value & this.getCurrentState());
         }).length;
-        console.log('fff');
-        return this.classes[columnsCount];
+
+        return this.widths[columnsCount];
     }
 }

@@ -58,7 +58,7 @@ export class BdResizerComponent {
   @HostListener('window:mousemove', ['$event'])
   onMousemove(e) {
     if (this.start !== undefined) {
-      this.resizeHorizontal(e, this.property);
+      this.resize(e, this.property);
     }
   }
 
@@ -67,7 +67,7 @@ export class BdResizerComponent {
     this.start = undefined;
   }
 
-  private resizeHorizontal(e, property) {
+  private resize(e, property) {
       const offset = this.start - (this.resizer === 'horizontal' ? e.clientX : e.clientY);
       this.start = (this.resizer === 'horizontal' ? e.clientX : e.clientY);
 
@@ -77,6 +77,7 @@ export class BdResizerComponent {
       const newFirstElementSize = parseFloat(this.firstElement.style[property]) - diff;
       const newSecondElementSize = parseFloat(this.secondElement.style[property]) + diff;
 
+console.log(newFirstElementSize, newSecondElementSize, this.minPersentage);
       if (Math.min(newFirstElementSize, newSecondElementSize) > this.minPersentage) {
         this.firstElement.style[property] = newFirstElementSize + '%';
         this.secondElement.style[property] = newSecondElementSize + '%';
