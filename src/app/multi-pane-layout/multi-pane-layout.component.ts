@@ -59,7 +59,7 @@ export class MultiPaneLayoutComponent {
         private cdr: ChangeDetectorRef) {
     }
 
-    ngDoCheck(changes) {
+    ngDoCheck() {
         if (this.currentState !== this.appState.get('switchState')) {
             this.setCurrentState(this.appState.get('switchState'));
             this.resizeSecondPane = this.getSecondPane();
@@ -93,18 +93,8 @@ export class MultiPaneLayoutComponent {
 
     getSecondPane() {
         if (this.bdResizeComponents) {
-            let index;
-
-            if (this.currentState & SwitchState.SecondPaneVisible) {
-                index = 1;
-            } else if (this.currentState & SwitchState.ThirdPaneVisible) {
-                index = 2;
-            }
-
-            if (index) {
-                const result = this.bdResizeComponents.filter((c, i) => i === index);
-                return result[0];
-            }
+            const result = this.bdResizeComponents.filter((c, i) => this.isVisible(this.panesState[i]))[1];
+            return result;
         }
 
         return null;
