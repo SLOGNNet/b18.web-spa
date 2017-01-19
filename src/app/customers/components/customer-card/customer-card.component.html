@@ -9,7 +9,7 @@
     <div class="right">
       <div class="loads-container">
         <div *ngFor="let customer of customer.loads" class="load">
-          <span [style.background]="LoadStatusColor(customer.status)" class="load-circle"></span>
+          <span [style.background]="loadStatusColor(customer.status)" class="load-circle"></span>
           <span class="load-name">LD{{customer.carrierLoadNumber}}</span>
         </div>
       </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="right">
       <div class="first-load-container">
-        <span [style.background]="loadStatusColor" class="status">{{loadStatusText}}</span>
+        <span [style.background]="customerStatusColor" class="status">{{customerStatusText}}</span>
       </div>
     </div>
   </div>

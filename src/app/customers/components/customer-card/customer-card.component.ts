@@ -19,15 +19,15 @@ export class CustomerCardComponent {
      this.croppedCustomerName = this.customerName.substr(0, 3).toUpperCase();
   }
 
-  LoadStatusColor(status) {
+  loadStatusColor(status) {
     return Load.getStatusColor(status);
   }
 
-  get loadStatusText() {
+  get customerStatusText() {
     return Customer.getStatusText(this.customer.status);
   }
 
-  get loadStatusColor() {
+  get customerStatusColor() {
     return Customer.getStatusColor(this.customer.status);
   }
 
