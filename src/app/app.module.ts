@@ -31,6 +31,7 @@ import { LoadsComponent,
   DriverPopoverComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { CustomerCardComponent } from './customers/components/customer-card';
+import { CustomerCardsComponent } from './customers/components/customer-cards';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Application wide providers
 const APP_PROVIDERS = [
@@ -63,6 +64,7 @@ type StoreType = {
      CustomersComponent,
      CustomerDetailComponent,
      CustomerCardComponent,
+     CustomerCardsComponent,
      LoadStopCardComponent,
      LoadStopCardsComponent,
      TripPopoverComponent,

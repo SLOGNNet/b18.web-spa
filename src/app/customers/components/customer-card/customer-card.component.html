@@ -1,35 +1,37 @@
-<div class="customer-card-section">
+<div class="customer-card-section" (click)="onClick()">
   <div class="top">
     <div class="left">
-      <span>CRH</span>
+      <span>{{this.croppedCustomerName}}</span>
     </div>
     <div class="middle">
-      <span>Benjamin von Battenvolken</span>
+      <span>{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
     </div>
     <div class="right">
-      <div class="load-container">
-        <span class="load-circle"></span>
-        <span class="load-name">LD349616</span>
-      </div>
-      <div class="load-container">
-        <span class="load-circle"></span>
-        <span class="load-name">LD349616</span>
+      <div class="loads-container">
+        <div class="load">
+          <span [style.background]="firstLoadStatusColor" class="load-circle"></span>
+          <span class="load-name">LD{{customer.loads[0].carrierLoadNumber}}</span>
+        </div>
+        <div class="load">
+          <span [style.background]="secondLoadStatusColor" class="load-circle"></span>
+          <span class="load-name">LD{{customer.loads[1].carrierLoadNumber}}</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="bottom">
     <div class="left">
-      <div class="customer-name">CH Robinson</div>
-      <div>MC # 23243564</div>
+      <div class="customer-name">{{customer.name}}</div>
+      <div>MC# {{customer.mc}}</div>
     </div>
     <div class="middle">
-      <div class="position">Customer succsess</div>
-      <div>phone +2732618381</div>
+      <div class="position">{{customer.contacts[0].position}}</div>
+      <div>{{customer.addresses[0].phone}}</div>
     </div>
     <div class="right">
       <div class="first-load-container">
-        <span class="status">status</span>
+        <span [style.background]="loadStatusColor" class="status">{{loadStatusText}}</span>
       </div>
     </div>
   </div>

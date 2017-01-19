@@ -1,5 +1,6 @@
 import { Address } from './index';
 import { Contact } from './index';
+import { Load } from './index';
 import { generateNewId } from './utils';
 
 export enum CustomerTypes {
@@ -15,6 +16,17 @@ export enum CustomerStatuses {
   Unavaliable = 2
 }
 
+// Colors
+function createStatusColors() {
+ let result = {};
+  result[CustomerStatuses.Unavaliable] = '#ffbe4d';
+  result[CustomerStatuses.Active] = '#85d183';
+  result[CustomerStatuses.Inactive] = '#fb3a3a';
+  return result;
+};
+
+const statusColors = createStatusColors();
+
 export class Customer {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
 
@@ -27,6 +39,7 @@ export class Customer {
   taxId: string = '';
   addresses: Array<Address>;
   email: string = '';
+  loads: Array<Load>;
 
   static create(): Customer{
     const result = new Customer();
@@ -35,6 +48,11 @@ export class Customer {
     result.type = CustomerTypes.Broker;
     return result;
   }
+
+  public static getStatusColor(status: CustomerStatuses): string {
+    return statusColors[status];
+  }
+
 
   static getStatusText(status) {
     return Customer.statusText[status];
