@@ -7,7 +7,7 @@ import { Stop, StopTypes, Commodity } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseStopForm } from '../base-stop-form';
-import { CommodityStore } from '../../stores';
+import { CommodityActions } from '../../actions';
 
 @Component(Object.assign({
   selector: 'pickup-form',
@@ -15,20 +15,18 @@ import { CommodityStore } from '../../stores';
   templateUrl: './pickup-form.component.html'
 }, BaseStopForm.metaData))
 export class PickupFormComponent extends BaseStopForm implements OnChanges {
-  constructor(formBuilder: FormBuilder, commodityStore: CommodityStore,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, datePipe: DatePipe) {
-    super(elementRef, formBuilder, commodityStore, datePipe);
+  private pickupCommodities$ = this.commodities$.map(list => list.filter(c => c.pickupId === this.stop.id));
+
+  constructor(formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions, datePipe: DatePipe) {
+    super(elementRef, formBuilder, commodityActions, datePipe);
   }
 
   ngOnChanges(changes: any) {
     super.ngOnChanges(changes);
-    this.commodityStore.getPickupCommodities(this.stop.id).subscribe(items => {
-      this.stop.commodities = items;
-      this.cdr.markForCheck();
-    });
   }
 
   onCommodityRemove(commodity: Commodity) {
-    this.commodityStore.remove(commodity);
+    this.commodityActions.remove(commodity);
   }
 }

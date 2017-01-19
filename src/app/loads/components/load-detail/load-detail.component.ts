@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Load } from '../../../models';
-import { LoadStore } from '../../../stores';
+import { LoadActions } from '../../../actions';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Params } from '@angular/router';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
+import { IAppState } from '../../../store';
 
 @Component({
   selector: 'load-detail',
@@ -45,8 +48,9 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }];
 
   constructor(
-    loadStore: LoadStore,
-    route: ActivatedRoute) {
-      super(loadStore, route);
+    loadActions: LoadActions,
+    route: ActivatedRoute,
+    ngRedux: NgRedux<IAppState>) {
+      super(loadActions, ngRedux.select(state => state.loads.selected), route);
   }
 }

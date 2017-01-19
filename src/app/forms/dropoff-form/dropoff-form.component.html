@@ -6,8 +6,8 @@
   </bd-form-datepicker>
   <drop-off-commodity-form
     [formArray]="formGroup.controls.commodities"
-    [items]="stop.commodities"
-    [availablePickups]="availablePickups"
+    [items]="dropoffCommodities$ | async "
+    [availablePickups]="availableCommodities$ | async"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
     (select)="onCommoditySelect($event)"
