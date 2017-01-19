@@ -13,14 +13,14 @@ export class StopActions {
     private ngRedux: NgRedux<IAppState>) {}
 
   add(stop: Stop): void {
-    this.ngRedux.dispatch({ type: AddressActions.ADD_STOP, stop });
+    this.ngRedux.dispatch({ type: StopActions.ADD_STOP, stop });
   }
 
   remove(stop: Stop): void {
-    this.ngRedux.dispatch({ type: AddressActions.REMOVE_STOP, stop });
+    this.ngRedux.dispatch({ type: StopActions.REMOVE_STOP, stop });
   }
 
   update(stop: Stop): void {
-    this.ngRedux.dispatch({ type: AddressActions.UPDATE_STOP, stop });
+    this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP, stop });
   }
 }
