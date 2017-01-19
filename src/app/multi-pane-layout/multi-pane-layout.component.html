@@ -1,17 +1,33 @@
 <div class="main-area">
-    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.FirstPaneVisible)">
-        <div class="panel">
+    <bd-resize-container #firstPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.FirstPaneVisible)">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.FirstPaneVisible)">
             <ng-content select="first-pane"></ng-content>
         </div>
-    </div>
-    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.SecondPaneVisible)">
-        <div class="panel">
+    </bd-resize-container>
+    <bd-resizer
+        *ngIf="isVisible(switchStateEnum.FirstPaneVisible) && resizeSecondPane"
+        [resizer]="resizerDirection"
+  		[resizerWidth]="resizerWidth" 
+  		[resizerFirst]="firstPane" 
+  		[resizerSecond]="resizeSecondPane"
+  		[resizerMin]="resizerMin">
+    </bd-resizer>
+    <bd-resize-container #secondPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.SecondPaneVisible)">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.SecondPaneVisible)">
             <ng-content select="second-pane"></ng-content>
         </div>
-    </div>
-    <div [ngClass]="getClass()" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
-        <div class="panel">
+    </bd-resize-container>
+    <bd-resizer
+        *ngIf="isVisible(switchStateEnum.SecondPaneVisible) && isVisible(switchStateEnum.ThirdPaneVisible)"
+        [resizer]="resizerDirection"
+  		[resizerWidth]="resizerWidth" 
+  		[resizerFirst]="secondPane" 
+  		[resizerSecond]="thirdPane"
+  		[resizerMin]="resizerMin">
+    </bd-resizer>
+    <bd-resize-container #thirdPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.ThirdPaneVisible)">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
             <ng-content select="third-pane"></ng-content>
         </div>
-    </div>
+    </bd-resize-container>
 </div>
