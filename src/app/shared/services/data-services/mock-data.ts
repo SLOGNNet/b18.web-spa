@@ -1,5 +1,5 @@
 import {
-  Load, Customer, Address, CustomerStatuses, CustomerTypes,
+  Load, Document, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
   FreightType, DataAssigneeRequirements, Facility, Trip,
@@ -214,6 +214,16 @@ class MockData {
    addressId: 4
  }
  ];
+
+  public documents: Array<Document> = [
+    {
+      id: 1,
+      type: 'Rate Sheet',
+      issueDate: '20/10/2017',
+      url: '',
+      file: null
+    }
+  ];
 
   public commodities: Array<Commodity> = [{
     id: 1,
@@ -622,7 +632,8 @@ class MockData {
       specialRequirment: '#143',
       trips: this.trips,
       currentTrip: this.trips[0],
-      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]]
+      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
+      documents: [this.documents[0]]
     },
     {
       id: 2,
@@ -643,7 +654,8 @@ class MockData {
       specialRequirment: '#141',
       trips: this.trips,
       currentTrip: this.trips[1],
-      stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]]
+      stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]],
+      documents: [this.documents[0]]
     },
     {
       id: 3,
@@ -664,7 +676,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[2],
-      stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]]
+      stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]],
+      documents: [this.documents[0]]
     },
     {
       id: 4,
@@ -685,7 +698,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[3],
-      stops: [this.pickups[5], this.dropoffs[5]]
+      stops: [this.pickups[5], this.dropoffs[5]],
+      documents: [this.documents[0]]
     },
     {
       id: 5,
@@ -706,7 +720,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[0],
-      stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]]
+      stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]],
+      documents: [this.documents[0]]
     },
     {
       id: 6,
@@ -727,7 +742,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[1],
-      stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]]
+      stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]],
+      documents: [this.documents[0]]
     },
     {
       id: 7,
@@ -748,7 +764,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[2],
-      stops: [this.pickups[10], this.dropoffs[9]]
+      stops: [this.pickups[10], this.dropoffs[9]],
+      documents: [this.documents[0]]
     },
     {
       id: 8,
@@ -769,7 +786,8 @@ class MockData {
       specialRequirment: '#128',
       trips: this.trips,
       currentTrip: this.trips[3],
-      stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]]
+      stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]],
+      documents: [this.documents[0]]
     },
   ];
 

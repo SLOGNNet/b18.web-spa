@@ -1,4 +1,4 @@
-import { Customer, Stop, StopTypes, Trip } from './index';
+import { Customer, Stop, StopTypes, Trip, Document } from './index';
 import { generateNewId } from './utils';
 
 export enum LoadStatuses {
@@ -100,6 +100,7 @@ export class Load {
   trips: Array<Trip>;
   currentTrip: Trip;
   stops: Array<Stop>;
+  documents: Array<Document>;
 
   static create(): Load {
     const result = new Load();
