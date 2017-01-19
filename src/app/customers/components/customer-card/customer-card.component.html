@@ -8,8 +8,8 @@
     </div>
     <div class="right">
       <div class="loads-container">
-        <div *ngFor="let customer of customer.loads" class="load">
-          <span [style.background]="loadStatusColor(customer.status)" class="load-circle"></span>
+        <div *ngFor="let load of customer.loads" class="load">
+          <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
           <span class="load-name">LD{{customer.carrierLoadNumber}}</span>
         </div>
       </div>
