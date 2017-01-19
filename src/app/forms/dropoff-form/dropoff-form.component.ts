@@ -7,8 +7,10 @@ import { Stop, StopTypes, Commodity } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { CommodityStore } from '../../stores';
 import { BaseStopForm } from '../base-stop-form';
+import { CommodityActions } from '../../actions';
+
+
 
 @Component(Object.assign({
   selector: 'dropoff-form',
@@ -17,30 +19,22 @@ import { BaseStopForm } from '../base-stop-form';
 }, BaseForm.metaData))
 export class DropoffFormComponent extends BaseStopForm implements OnChanges {
   private availablePickups: Array<Commodity> = new Array<Commodity>();
-
-  constructor(formBuilder: FormBuilder, commodityStore: CommodityStore,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, datePipe: DatePipe) {
-    super(elementRef, formBuilder, commodityStore, datePipe);
+  private dropoffCommodities$ = this.commodities$.map(list => list.filter(c => c.dropoffId === this.stop.id));
+  private availableCommodities$ = this.commodities$.map(list => list.filter(c => !c.dropoffId));
+  constructor(formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions, datePipe: DatePipe) {
+    super(elementRef, formBuilder, commodityActions, datePipe);
   }
 
   ngOnChanges(changes: any) {
     super.ngOnChanges(changes);
-    this.commodityStore.getDropoffCommodities(this.stop.id).subscribe(items => {
-      this.stop.commodities = items;
-      this.cdr.markForCheck();
-    });
-    this.commodityStore.getAvailableCommodities().subscribe(items => {
-      const test = this.availablePickups;
-      this.availablePickups = items;
-      this.cdr.markForCheck();
-    });
   }
 
   onCommodityRemove(commodity: Commodity) {
-    this.commodityStore.deselect(commodity);
+    this.commodityActions.deselect(commodity);
   }
 
   onCommoditySelect(commodity: Commodity) {
-    this.commodityStore.select(commodity, this.stop);
+    this.commodityActions.select(commodity, this.stop);
   }
 }

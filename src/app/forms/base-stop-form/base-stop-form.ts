@@ -2,15 +2,20 @@ import { Component, Input, Output, EventEmitter, OnChanges, ElementRef } from '@
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { CommodityStore } from '../../stores';
 import { DatePipe } from '@angular/common';
 import { Stop, StopTypes, Commodity } from '../../models';
-
+import { NgRedux, select } from 'ng2-redux';
+import { CommodityActions } from '../../actions';
+import { Observable } from 'rxjs/Observable';
+import {
+  ICommodityState
+} from '../../store';
 @Component(Object.assign({
   inputs: ['viewMode', 'isNestedForm', 'group', 'stop'],
 }, BaseForm.metaData))
 export abstract class BaseStopForm extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;
+  @select(state => state.commodities.items) commodities$: Observable<Commodity[]>;
   @Input('group') formGroup: FormGroup;
   @Input()
   public stop: Stop;
@@ -18,7 +23,7 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
 
 
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
-    protected commodityStore: CommodityStore, protected datePipe: DatePipe) {
+    protected commodityActions: CommodityActions, protected datePipe: DatePipe) {
     super(elementRef);
   }
 
@@ -27,14 +32,14 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
   }
 
   onCommodityUpdate(commodity: Commodity) {
-    this.commodityStore.update(commodity);
+    this.commodityActions.update(commodity);
   }
 
   abstract onCommodityRemove(commodity: Commodity);
 
   onCommodityAdd() {
     const newCommodity = Commodity.create(this.stop);
-    this.commodityStore.add(newCommodity);
+    this.commodityActions.add(newCommodity);
   }
 
   private initForm() {
