@@ -53,7 +53,6 @@ export class Customer {
     return statusColors[status];
   }
 
-
   static getStatusText(status) {
     return Customer.statusText[status];
   }
