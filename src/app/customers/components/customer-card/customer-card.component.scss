@@ -1,0 +1,102 @@
+@import '../../../../assets/styles/variables';
+
+.customer-card-section {
+  position: relative;
+  height: 100px;
+  padding: $default-margin;
+  background: $white;
+  font-size: $tiny-font-size;
+  cursor: pointer;
+  margin-top: 20px;
+  border-bottom: $border;
+  justify-content: space-between;
+
+  .top,
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      flex: 1;
+    }
+  }
+
+  .top {
+    .left {
+      span {
+        display: flex;
+        width: 34px;
+        height: 34px;
+        background: $black;
+        color: $white;
+        margin-top: -6px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .middle {
+      display: flex;
+      overflow: hidden;
+      align-items: flex-end;
+      font-weight: bold;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .load-container {
+        display: flex;
+        margin-left: 5px;
+
+        .load-circle {
+          width: 9px;
+          height: 9px;
+          background: $black;
+          margin-top: 3px;
+          border-radius: 50%;
+        }
+
+        .load-name {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    .left {
+      .customer-name {
+        font-weight: bold;
+      }
+    }
+
+    .middle {
+      overflow: hidden;
+
+      .position {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .right {
+      span {
+        display: flex;
+        width: 79px;
+        height: 20px;
+        background: $black;
+        color: $white;
+        float: right;
+        align-items: center;
+        border-radius: $default-border-radius;
+        justify-content: center;
+        margin-top: $default-margin;
+      }
+    }
+  }
+}
