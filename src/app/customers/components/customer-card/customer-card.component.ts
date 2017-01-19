@@ -19,12 +19,8 @@ export class CustomerCardComponent {
      this.croppedCustomerName = this.customerName.substr(0, 3).toUpperCase();
   }
 
-  get firstLoadStatusColor() {
-    return Load.getStatusColor(this.customer.loads[0].status);
-  }
-
-  get secondLoadStatusColor() {
-    return Load.getStatusColor(this.customer.loads[1].status);
+  LoadStatusColor(status) {
+    return Load.getStatusColor(status);
   }
 
   get loadStatusText() {
