@@ -7,7 +7,7 @@ import { LoadService } from '../shared';
 
 @Injectable()
 export class LoadActions implements IListDataActions<Load>, IDetailDataActions<Load> {
-  static ADD_LOAD: string = 'ADD_ADDRES';
+  static ADD_LOAD: string = 'ADD_LOAD';
   static REMOVE_LOAD: string = 'REMOVE_LOAD';
   static UPDATE_LOAD: string = 'UPDATE_LOAD';
   static SELECT_LOAD: string = 'SELECT_LOAD';

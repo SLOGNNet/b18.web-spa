@@ -5,7 +5,7 @@ import { Stop } from '../models';
 
 @Injectable()
 export class StopActions {
-  static ADD_STOP: string = 'ADD_ADDRES';
+  static ADD_STOP: string = 'ADD_STOP';
   static REMOVE_STOP: string = 'REMOVE_STOP';
   static UPDATE_STOP: string = 'UPDATE_STOP';
 
