@@ -23,4 +23,8 @@ export class DropoffsFormComponent extends BaseListForm<Stop>  {
   label(index) {
     return `Dropoff #${index + 1}`;
   }
+
+  trackBy(index: number, stop: Stop) {
+    return stop.id;
+  }
 }

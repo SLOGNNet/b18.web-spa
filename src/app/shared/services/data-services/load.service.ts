@@ -22,7 +22,7 @@ export class LoadService {
     return Observable.from(MockData.loads)
       .flatMap(
         (load) => this.customerService
-          .get(load.customerId)
+          .getDetails(load.customerId)
           .map(customer => Object.assign(load, { customer }))
     ).toArray();
   }
@@ -31,7 +31,7 @@ export class LoadService {
     return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) =>
         this.customerService
-          .get(load.customerId)
+          .getDetails(load.customerId)
           .map(customer => Object.assign(load, { customer }))
       );
   };

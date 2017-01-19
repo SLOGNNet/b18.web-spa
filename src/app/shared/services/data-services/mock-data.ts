@@ -298,7 +298,7 @@ class MockData {
   {
     id: 2,
     pickupId: 2,
-    dropoffId: 6,
+    dropoffId: 13,
     pickupNumber: 5009,
     dropoffNumber: null,
     po: '',
@@ -311,7 +311,7 @@ class MockData {
   {
     id: 3,
     pickupId: 3,
-    dropoffId: 7,
+    dropoffId: 13,
     pickupNumber: null,
     dropoffNumber: null,
     po: '',
@@ -564,7 +564,7 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[0]],
+    commodities: [this.commodities[1], this.commodities[1]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },

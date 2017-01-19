@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Customer } from '../../models';
-import { CustomerStore } from '../../stores';
 import { BaseDetailComponent } from '../../base';
 import {  ActivatedRoute, Params } from '@angular/router';
+import { CustomerActions } from '../../actions';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
+import { IAppState } from '../../store';
 
 @Component({
   selector: 'customer-detail',
@@ -51,8 +54,9 @@ export class CustomerDetailComponent extends BaseDetailComponent<Customer> {
   }];
 
   constructor(
-    customerStore: CustomerStore,
-    route: ActivatedRoute) {
-      super(customerStore, route);
+    customerActions: CustomerActions,
+    route: ActivatedRoute,
+    ngRedux: NgRedux<IAppState>) {
+      super(customerActions, ngRedux.select(state => state.customers.selected), route);
   }
 }

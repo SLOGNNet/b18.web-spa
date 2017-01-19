@@ -24,4 +24,8 @@ export class PickupsFormComponent extends BaseListForm<Stop>  {
   label(index) {
     return `Pickup #${index + 1}`;
   }
+
+  trackBy(index: number, stop: Stop) {
+    return stop.id;
+  }
 }
