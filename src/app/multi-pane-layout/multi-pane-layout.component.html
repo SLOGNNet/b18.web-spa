@@ -5,10 +5,11 @@
         </div>
     </bd-resize-container>
     <bd-resizer
-        [resizer]="resizerDiection"
+        *ngIf="isVisible(switchStateEnum.FirstPaneVisible)"
+        [resizer]="resizerDirection"
   		[resizerWidth]="resizerWidth" 
   		[resizerFirst]="firstPane" 
-  		[resizerSecond]="secondPane"
+  		[resizerSecond]="resizeSecondPane"
   		[resizerMin]="resizerMin">
     </bd-resizer>
     <bd-resize-container #secondPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.SecondPaneVisible)">
@@ -17,7 +18,8 @@
         </div>
     </bd-resize-container>
     <bd-resizer
-        [resizer]="resizerDiection"
+        *ngIf="isVisible(switchStateEnum.SecondPaneVisible) && isVisible(switchStateEnum.ThirdPaneVisible)"
+        [resizer]="resizerDirection"
   		[resizerWidth]="resizerWidth" 
   		[resizerFirst]="secondPane" 
   		[resizerSecond]="thirdPane"

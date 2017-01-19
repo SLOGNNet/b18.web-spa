@@ -15,10 +15,11 @@
  * </multi-pane-layout>
  */
 
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
+import { BdResizeContainerComponent } from '../shared/components/bd-resizer';
 import { AppState } from '../app.service';
 
 @Component({
@@ -26,7 +27,8 @@ import { AppState } from '../app.service';
     templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
         './multi-pane-layout.component.scss'
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiPaneLayoutComponent {
 
@@ -34,7 +36,8 @@ export class MultiPaneLayoutComponent {
     private switchStateEnum: any = SwitchState;
     private resizerWidth = 20;
     private resizerMin = 320;
-    private resizerDiection = 'horizontal';
+    private resizerDirection = 'horizontal';
+    private resizeSecondPane = null;
 
     private widths = {
         0: 0,
@@ -49,23 +52,29 @@ export class MultiPaneLayoutComponent {
         SwitchState.ThirdPaneVisible
     ];
 
+    @ViewChildren(BdResizeContainerComponent) private bdResizeComponents: QueryList<BdResizeContainerComponent>;
+
     constructor(
         public appState: AppState) {
+    }
+
+    ngDoCheck(changes) {
+        if (this.currentState !== this.appState.get('switchState')) {
+            this.setCurrentState(this.appState.get('switchState'));
+            setTimeout(() => this.resizeSecondPane = this.getSecondPane() , 0);
+        }
     }
 
     ngAfterViewInit() {
         if (isNaN(this.currentState)) {
             this.setCurrentState(this.switchStateEnum.AllPanesVisible);
         }
-    }
 
-    getCurrentState() {
-      return this.appState.get('switchState');
+        this.resizeSecondPane = this.getSecondPane();
     }
 
     isVisible(state: SwitchState) {
-        console.log(state, !!( this.getCurrentState() & state));
-        return !!( this.getCurrentState() & state);
+        return !!( this.currentState & state);
     }
 
     setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
@@ -74,9 +83,18 @@ export class MultiPaneLayoutComponent {
 
     getWidth() {
         const columnsCount = this.panesState.filter(value => {
-            return !!(value & this.getCurrentState());
+            return !!(value & this.currentState);
         }).length;
 
         return this.widths[columnsCount];
+    }
+
+    getSecondPane() {
+        if (this.bdResizeComponents) {
+            const result = this.bdResizeComponents.filter(bdResizeComponent => !bdResizeComponent.element.nativeElement.attributes['hidden']);
+            return result.length ? result[1] : null;
+        }
+
+        return null;
     }
 }

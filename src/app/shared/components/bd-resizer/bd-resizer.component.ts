@@ -38,12 +38,23 @@ export class BdResizerComponent {
 
   ngOnInit() {
     this.property = this.resizer === 'horizontal' ? 'width' : 'height';
-    this.firstElement = this.resizerFirst.element.nativeElement;
-    this.secondElement = this.resizerSecond.element.nativeElement;
+
+    if (this.resizerFirst instanceof BdResizeContainerComponent && this.resizerSecond instanceof BdResizeContainerComponent) {
+      this.firstElement = this.resizerFirst.element.nativeElement;
+      this.secondElement = this.resizerSecond.element.nativeElement;
+    }
+  }
+
+  ngOnChanges(changes) {
+    this.ngOnInit();
   }
 
   @HostListener('mousedown', ['$event'])
   onMousedown(e) {
+    if (!this.firstElement || !this.secondElement) {
+      return;
+    }
+
     if (this.resizer === 'horizontal') {
       this.start = e.clientX;
     } else {
@@ -77,7 +88,6 @@ export class BdResizerComponent {
       const newFirstElementSize = parseFloat(this.firstElement.style[property]) - diff;
       const newSecondElementSize = parseFloat(this.secondElement.style[property]) + diff;
 
-console.log(newFirstElementSize, newSecondElementSize, this.minPersentage);
       if (Math.min(newFirstElementSize, newSecondElementSize) > this.minPersentage) {
         this.firstElement.style[property] = newFirstElementSize + '%';
         this.secondElement.style[property] = newSecondElementSize + '%';
