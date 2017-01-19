@@ -28,8 +28,8 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     id: 'requirements',
     title: 'Requirements'
   }, {
-    id: '',
-    title: 'Link'
+    id: 'documents',
+    title: 'Documents'
   }, {
     id: '',
     title: 'Link'

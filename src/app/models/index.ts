@@ -8,3 +8,4 @@ export * from './trip';
 export * from './facility';
 export * from './equipment';
 export * from './driver';
+export * from './document';

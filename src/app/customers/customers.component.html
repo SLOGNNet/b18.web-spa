@@ -1,30 +1,13 @@
 <multi-pane-layout>
-    <first-pane>
-      <div class="data-panel">
-        <bd-button
-          class="add-button"
-          [color]="'primary'"
-          [text]="'Add'"
-          (click)="onAdd()">
-        </bd-button>
-        <ngx-datatable
-          #datatable
-          class="material striped"
-          [rows]="items"
-          [columns]="columns"
-          [columnMode]="'force'"
-          [headerHeight]="50"
-          [footerHeight]="50"
-          [rowHeight]="'auto'"
-          [selectionType]="'single'"
-          (select)="onSelect($event)"
-          [limit]="10">
-        </ngx-datatable>
-      </div>
-    </first-pane>
-    <second-pane>
-    </second-pane>
-    <third-pane>
-      <router-outlet></router-outlet>
-    </third-pane>
+  <first-pane>
+    <div class="data-panel">
+      <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
+      </bd-button>
+    </div>
+  </first-pane>
+  <second-pane>
+  </second-pane>
+  <third-pane>
+    <router-outlet></router-outlet>
+  </third-pane>
 </multi-pane-layout>

@@ -3,7 +3,7 @@ import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
 import {
-  Load, Customer,
+  Load, Document, Customer,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
   Stop, StopTypes, Contact, Commodity,
   LoadType, FreightType, DataAssigneeRequirements } from '../../models';
@@ -37,7 +37,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
-
+  private documents: Array<Document>;
 
   public constructor(
     private stopActions: StopActions,
