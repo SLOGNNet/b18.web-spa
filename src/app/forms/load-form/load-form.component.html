@@ -85,11 +85,11 @@
     </bd-form-section>
     <navigation-anchor id="pickups"></navigation-anchor>
     <bd-form-section labelText="PICKUPS">
-      <pickups-form [formArray]="loadForm.controls.pickups" [items]="pickups" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
+      <pickups-form [formArray]="loadForm.controls.pickups" (update)="onStopUpdate($event)" (remove)="onStopRemove($event)" (add)="onStopAdd($event)" [items]="pickups$ | async" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
     </bd-form-section>
     <navigation-anchor id="dropoffs"></navigation-anchor>
     <bd-form-section labelText="DROPOFFS">
-      <dropoffs-form [formArray]="loadForm.controls.dropoffs" [items]="dropoffs" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
+      <dropoffs-form [formArray]="loadForm.controls.dropoffs" (update)="onStopUpdate($event)" (remove)="onStopRemove($event)" (add)="onStopAdd($event)" [items]="dropoffs$ | async" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
     </bd-form-section>
     <navigation-anchor id="requirements"></navigation-anchor>
     <bd-form-section labelText="REQUIREMENTS">

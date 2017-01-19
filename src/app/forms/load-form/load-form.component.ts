@@ -10,6 +10,8 @@ import {
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
+import { StopActions } from '../../actions';
+import { NgRedux, select } from 'ng2-redux';
 
 @Component(Object.assign({
   selector: 'load-form',
@@ -26,16 +28,19 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
+  @select(state => state.stops.items) stops$: Observable<Stop[]>;
+  private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Pickup));
+  private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Dropoff));
 
   private customerSource: any[];
   private customerQuery: string = '';
   private customerViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
-  private pickups: Array<Stop>;
-  private dropoffs: Array<Stop>;
+
 
   public constructor(
+    private stopActions: StopActions,
     private customerService: CustomerService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
@@ -52,15 +57,9 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
-      this.splitStops(this.load);
       this.initForm();
       this.initCustomerTypeahead(this.load.customer);
     }
-  }
-
-  splitStops(load) {
-    this.pickups = load.stops.filter(stop => stop.type === StopTypes.Pickup);
-    this.dropoffs = load.stops.filter(stop => stop.type === StopTypes.Dropoff);
   }
 
   onCustomerRemove() {
@@ -123,10 +122,19 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private onLoadSave() {
     if (this.loadForm.valid) {
       let result = this.loadForm.value;
-      result.stops = result.pickups.concat(result.dropoffs);
-      delete result.pickups;
-      delete result.dropoffs;
       this.save.emit(this.loadForm.value);
     }
+  }
+
+  private onStopAdd(stop: Stop) {
+    this.stopActions.add(stop);
+  }
+
+  private onStopUpdate(stop: Stop) {
+    this.stopActions.update(stop);
+  }
+
+  private onStopRemove(stop: Stop) {
+    this.stopActions.remove(stop);
   }
 }

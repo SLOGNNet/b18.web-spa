@@ -17,7 +17,7 @@
 		</bd-form-section>
 		<navigation-anchor id="customer-addresses" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [labelText]="'CUSTOMER > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
-			<addresses-form [formArray]='customerForm.controls.addresses' (update)="onAddressChange($event)" (updatePlace)="onAddressPlaceUpdate($event)" (remove)="onAddressRemove($event)" (add)="onAddressAdd($event)"  [items]='addresses$ | async' [viewMode]="viewMode"></addresses-form>
+			<addresses-form [formArray]='customerForm.controls.addresses' (update)="onAddressUpdate($event)" (updatePlace)="onAddressPlaceUpdate($event)" (remove)="onAddressRemove($event)" (add)="onAddressAdd($event)"  [items]='addresses$ | async' [viewMode]="viewMode"></addresses-form>
 		</bd-form-section>
 		<navigation-anchor id="customer-contacts" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>

@@ -34,7 +34,8 @@ import {
   CommodityActions,
   LoadActions,
   AddressActions,
-  CustomerActions
+  CustomerActions,
+  StopActions
 } from './actions';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -90,7 +91,8 @@ type StoreType = {
     CommodityActions,
     LoadActions,
     AddressActions,
-    CustomerActions
+    CustomerActions,
+    StopActions
   ]
 })
 export class AppModule {

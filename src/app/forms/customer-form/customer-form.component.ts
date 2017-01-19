@@ -75,7 +75,7 @@ export class CustomerForm extends BaseForm {
     this.addressActions.add(address);
   }
 
-  onAddressChange(address: Address) {
+  onAddressUpdate(address: Address) {
     this.addressActions.update(address);
   }
 
