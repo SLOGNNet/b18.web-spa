@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Customer } from '../../../models';
-import { Load } from '../../../models';
+import { Load, LoadStatuses } from '../../../models';
 
 @Component({
   selector: 'customer-card',
@@ -19,15 +19,15 @@ export class CustomerCardComponent {
      this.croppedCustomerName = this.customerName.substr(0, 3).toUpperCase();
   }
 
-  loadStatusColor(status) {
+  loadStatusColor(status: LoadStatuses): string {
     return Load.getStatusColor(status);
   }
 
-  get customerStatusText() {
+  get customerStatusText(): string {
     return Customer.getStatusText(this.customer.status);
   }
 
-  get customerStatusColor() {
+  get customerStatusColor(): string {
     return Customer.getStatusColor(this.customer.status);
   }
 
