@@ -1,11 +1,11 @@
 <div class="main-area">
     <bd-resize-container #firstPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.FirstPaneVisible)">
-        <div class="panel" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.FirstPaneVisible)">
             <ng-content select="first-pane"></ng-content>
         </div>
     </bd-resize-container>
     <bd-resizer
-        *ngIf="isVisible(switchStateEnum.FirstPaneVisible)"
+        *ngIf="isVisible(switchStateEnum.FirstPaneVisible) && resizeSecondPane"
         [resizer]="resizerDirection"
   		[resizerWidth]="resizerWidth" 
   		[resizerFirst]="firstPane" 

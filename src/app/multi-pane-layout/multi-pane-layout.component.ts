@@ -62,8 +62,8 @@ export class MultiPaneLayoutComponent {
     ngDoCheck(changes) {
         if (this.currentState !== this.appState.get('switchState')) {
             this.setCurrentState(this.appState.get('switchState'));
+            this.resizeSecondPane = this.getSecondPane();
             this.cdr.markForCheck();
-            setTimeout(() => this.resizeSecondPane = this.getSecondPane() , 0);
         }
     }
 
@@ -76,11 +76,11 @@ export class MultiPaneLayoutComponent {
     }
 
     isVisible(state: SwitchState) {
-        return !!( this.currentState & state);
+        return !!(this.currentState & state);
     }
 
     setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
-      this.currentState = state;
+        this.currentState = state;
     }
 
     getWidth() {
@@ -93,8 +93,18 @@ export class MultiPaneLayoutComponent {
 
     getSecondPane() {
         if (this.bdResizeComponents) {
-            const result = this.bdResizeComponents.filter(bdResizeComponent => !bdResizeComponent.element.nativeElement.attributes['hidden']);
-            return result.length ? result[1] : null;
+            let index;
+
+            if (this.currentState & SwitchState.SecondPaneVisible) {
+                index = 1;
+            } else if (this.currentState & SwitchState.ThirdPaneVisible) {
+                index = 2;
+            }
+
+            if (index) {
+                const result = this.bdResizeComponents.filter((c, i) => i === index);
+                return result[0];
+            }
         }
 
         return null;
