@@ -15,7 +15,7 @@
  * </multi-pane-layout>
  */
 
-import { Component, ViewChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
@@ -55,12 +55,14 @@ export class MultiPaneLayoutComponent {
     @ViewChildren(BdResizeContainerComponent) private bdResizeComponents: QueryList<BdResizeContainerComponent>;
 
     constructor(
-        public appState: AppState) {
+        public appState: AppState,
+        private cdr: ChangeDetectorRef) {
     }
 
     ngDoCheck(changes) {
         if (this.currentState !== this.appState.get('switchState')) {
             this.setCurrentState(this.appState.get('switchState'));
+            this.cdr.markForCheck();
             setTimeout(() => this.resizeSecondPane = this.getSecondPane() , 0);
         }
     }

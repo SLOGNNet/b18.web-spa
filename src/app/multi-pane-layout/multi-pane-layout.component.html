@@ -1,6 +1,6 @@
 <div class="main-area">
     <bd-resize-container #firstPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.FirstPaneVisible)">
-        <div class="panel">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
             <ng-content select="first-pane"></ng-content>
         </div>
     </bd-resize-container>
@@ -13,7 +13,7 @@
   		[resizerMin]="resizerMin">
     </bd-resizer>
     <bd-resize-container #secondPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.SecondPaneVisible)">
-        <div class="panel">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.SecondPaneVisible)">
             <ng-content select="second-pane"></ng-content>
         </div>
     </bd-resize-container>
@@ -26,7 +26,7 @@
   		[resizerMin]="resizerMin">
     </bd-resizer>
     <bd-resize-container #thirdPane [width]="getWidth()" [hidden]="!isVisible(switchStateEnum.ThirdPaneVisible)">
-        <div class="panel">
+        <div class="panel" *ngIf="isVisible(switchStateEnum.ThirdPaneVisible)">
             <ng-content select="third-pane"></ng-content>
         </div>
     </bd-resize-container>
