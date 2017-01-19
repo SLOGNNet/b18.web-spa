@@ -69,22 +69,18 @@
 
   .bottom {
     .left {
-      div {
-        &:first-child {
-          font-weight: bold;
-        }
+      .customer-name {
+        font-weight: bold;
       }
     }
 
     .middle {
       overflow: hidden;
 
-      div {
-        &:first-child {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
+      .position {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
