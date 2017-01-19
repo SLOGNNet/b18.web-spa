@@ -9,7 +9,6 @@ export class AddressActions {
   static ADD_ADDRESS: string = 'ADD_ADDRES';
   static REMOVE_ADDRESS: string = 'REMOVE_ADDRESS';
   static UPDATE_ADDRESS: string = 'UPDATE_ADDRESS';
-  static UPDATE_PLACE: string = 'UPDATE_PLACE';
 
   constructor (
     private _googleService: GoogleService,
