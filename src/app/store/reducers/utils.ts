@@ -3,9 +3,9 @@ export function updateItem(list: any[], updated: any) {
 }
 
 export function removeItem(list: any[], removed: any) {
-    return list.filter(item => item.id !== removed.removed.id);
+  return list.filter(item => item.id !== removed.id);
 }
 
 export function addItem(list: any[], added: any) {
-    return [...list, added];
+  return [...list, added];
 }

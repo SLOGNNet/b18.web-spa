@@ -4,9 +4,9 @@ import { Stop, Load } from './models';
 import { addItem, updateItem, removeItem } from './utils';
 
 export interface IStopState {
-    stops: Stop[];
+    items: Stop[];
 }
-const INITIAL_STATE: IStopState = { stops: [] };
+const INITIAL_STATE: IStopState = { items: [] };
 
 export const stopReducer = createReducer(INITIAL_STATE, {
   [StopActions.ADD_STOP](state, action) {
