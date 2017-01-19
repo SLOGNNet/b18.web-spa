@@ -3,7 +3,8 @@
      *ngFor="let document of this.documents; let i = index;"
     [documentType]="document.type"
     [itemIndex]="i + 1"
-    [document]="document.item"
+    [newDocument]="document.newDocument"
+    [document]="document.file"
     (removeFile)="onRemoveFile(document)">
   </bd-file-preview>
 </div>

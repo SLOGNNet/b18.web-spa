@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef }
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
+import { Document } from '../../models';
 import { BaseForm } from '../base-form';
 import { without } from 'lodash';
 
@@ -11,15 +12,23 @@ import { without } from 'lodash';
 }, BaseForm.metaData))
 export class LoadDocumentFormComponent extends BaseForm {
 
+  @Input() items: Array<Document> = new Array<Document>();
   private documents: Object[];
 
   constructor(element: ElementRef) {
     super(element);
-    this.documents = [];
+  }
+
+  ngOnInit(){
+    this.documents = this.items;
+  }
+
+  ngOnChanges(){
+    this.documents = this.items;
   }
 
   onLoadDocuments(event) {
-    event.documents.map(item => this.documents.push({ item, type: event.type }));
+    event.documents.map(item => this.documents.push({ file: item, type: event.type, url: '', issueDate: '', newDocument: event.newDocument }));
   }
 
   onRemoveFile(document) {
