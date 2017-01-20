@@ -46,6 +46,8 @@ export class MultiPaneLayoutComponent {
         3: 33.33333333
     };
 
+    private panesWidth = [33, 33, 33];
+
     private panesState = [
         SwitchState.FirstPaneVisible,
         SwitchState.SecondPaneVisible,
@@ -62,6 +64,7 @@ export class MultiPaneLayoutComponent {
     ngDoCheck() {
         if (this.currentState !== this.appState.get('switchState')) {
             this.setCurrentState(this.appState.get('switchState'));
+            this.setPanesWidth(this.appState.getPanesWidth(this.currentState));
             this.resizeSecondPane = this.getSecondPane();
             this.cdr.markForCheck();
         }
@@ -73,6 +76,12 @@ export class MultiPaneLayoutComponent {
         }
 
         this.resizeSecondPane = this.getSecondPane();
+        this.setPanesWidth(this.appState.getPanesWidth(this.currentState));
+    }
+
+    onResizerChange() {
+        this.panesWidth = this.bdResizeComponents.map(e => e.getWidth()).map(w => parseFloat(w));
+        this.appState.setPanesWidth(this.currentState, this.panesWidth);
     }
 
     isVisible(state: SwitchState) {
@@ -81,6 +90,22 @@ export class MultiPaneLayoutComponent {
 
     setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
         this.currentState = state;
+    }
+
+    setPanesWidth(widths?: Array<number>) {
+        if (!this.bdResizeComponents) {
+            return;
+        }
+
+        if (widths) {
+            this.panesWidth = widths;
+        } else {
+            const paneWidth = this.getWidth();
+            this.panesWidth = Array(3).fill(paneWidth);
+            this.appState.setPanesWidth(this.currentState, this.panesWidth);
+        }
+
+        this.cdr.markForCheck();
     }
 
     getWidth() {

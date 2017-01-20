@@ -17,4 +17,8 @@ export class BdResizeContainerComponent {
       this.element.nativeElement.style.width = this.width + '%';
     }
   }
+
+  public getWidth() {
+    return this.element.nativeElement.style.width;
+  }
 }

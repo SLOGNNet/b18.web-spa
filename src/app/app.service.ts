@@ -6,7 +6,8 @@ export type InternalStateType = {
 
 @Injectable()
 export class AppState {
-  _state: InternalStateType = { };
+  _state: InternalStateType = {};
+  private _panesWidth = {};
 
   constructor() {
 
@@ -33,9 +34,30 @@ export class AppState {
     return this._state[prop] = value;
   }
 
+  setPanesWidth(switchState, states: Array<number>): void {
+    this._panesWidth[switchState] = states;
+    sessionStorage.setItem('panesWidth', JSON.stringify(this._panesWidth));
+  }
+
+  getPanesWidth(switchState): Array<number> {
+    let widths = sessionStorage.getItem('panesWidth');
+
+    if (widths) {
+      try {
+        this._panesWidth = JSON.parse(widths);
+      } catch (e) {
+        this._panesWidth = {};
+      }
+    } else {
+      this._panesWidth = {};
+    }
+
+    return this._panesWidth[switchState];
+  }
+
 
   private _clone(object: InternalStateType) {
     // simple object clone
-    return JSON.parse(JSON.stringify( object ));
+    return JSON.parse(JSON.stringify(object));
   }
 }
