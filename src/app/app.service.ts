@@ -34,8 +34,8 @@ export class AppState {
     return this._state[prop] = value;
   }
 
-  setPanesWidth(switchState, states: Array<number>): void {
-    this._panesWidth[switchState] = states;
+  setPanesWidth(switchState, widths: Array<number>): void {
+    this._panesWidth[switchState] = widths;
     sessionStorage.setItem('panesWidth', JSON.stringify(this._panesWidth));
   }
 
