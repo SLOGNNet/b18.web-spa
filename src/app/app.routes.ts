@@ -11,6 +11,7 @@ import { CustomersComponent, CustomerDetailComponent } from './customers';
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/loads', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
+  { path: 'drivers/:id', component: DriversComponent },
   { path: 'loads', component: LoadsComponent, children: [{
         path: ':id',
         component: LoadDetailComponent

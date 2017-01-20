@@ -10,8 +10,10 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
+    "build:publicdev": "cross-env NODE_ENV=publicdev webpack --config config/webpack.js --progress --profile --bail",
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack.js --progress --profile --bail",
-    "build:sandbox": "cross-env NODE_ENV=sandbox webpack --config config/webpack.js --progress --profile --bail",
+    "build:qa": "cross-env NODE_ENV=qa webpack --config config/webpack.js --progress --profile --bail",
+    "build:stage": "cross-env NODE_ENV=stage webpack --config config/webpack.js --progress --profile --bail",
     "build:demo:layout": "webpack --config layout/webpack.config.js  --progress --profile",
     "build": "npm run build:dev",
     "build:hybrid:dev": "cross-env NODE_ENV=development webpack --config config/webpack.hybrid.js --progress --profile",
