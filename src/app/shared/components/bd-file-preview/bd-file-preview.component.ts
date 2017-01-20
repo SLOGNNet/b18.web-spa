@@ -15,7 +15,6 @@ export class BdFilePreviewComponent {
       private uploadProgress: number = 0;
       @Input() private document: File;
       @Input() private documentType: string;
-      @Input() private newDocument: boolean = false;
       @Input() private itemIndex: number;
       @Input() private progress: any;
 
@@ -30,7 +29,7 @@ export class BdFilePreviewComponent {
       }
 
       ngOnChanges(){
-        if (this.newDocument) {
+        if (this.progress) {
           this.uploadProgress = DEFAULT_ELEMENT_WIDTH - this.progress;
           this._cdr.markForCheck();
         }

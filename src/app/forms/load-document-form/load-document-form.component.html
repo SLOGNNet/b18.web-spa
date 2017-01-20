@@ -3,7 +3,6 @@
      *ngFor="let document of this.documents; let i = index;"
     [documentType]="document.type"
     [itemIndex]="i + 1"
-    [newDocument]="document.newDocument"
     [document]="document.file"
     [progress]="document.progress | async"
     (removeFile)="onRemoveFile(document)">

@@ -35,7 +35,6 @@ export class LoadDocumentFormComponent extends BaseForm {
         type: event.type,
         url: '',
         issueDate: '',
-        newDocument: event.newDocument,
         progress: this.fileUploadService.upload(URL, item)
       });
     });
