@@ -27,11 +27,12 @@ export class BdFilePreviewComponent {
       ngOnInit(){
         this.titleText = this.documentType + ' (' + this.itemIndex + ')';
         this.documentIssueDate = moment(new Date()).format(DATE_FORMAT);
-        this.uploadProgress = DEFAULT_ELEMENT_WIDTH - this.progress;
       }
 
       ngOnChanges(){
-        switch(this.progress){
+        switch (this.progress) {
+          case undefined:
+            break;
           case null:
             break;
           case -1:
