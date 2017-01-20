@@ -6,15 +6,17 @@ import { Customer } from '../models';
 import { CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
-import { CustomerStore } from '../stores';
+import { CustomerActions } from '../actions';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { BaseListComponent } from '../base';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
+import { IAppState } from '../store';
 
 @Component({
   selector: 'customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
-  providers: [CustomerStore]
 })
 export class CustomersComponent extends BaseListComponent<Customer> {
   private columns = [
@@ -23,10 +25,11 @@ export class CustomersComponent extends BaseListComponent<Customer> {
     { prop: 'status', name: 'Status' }
   ];
     constructor(
-      customerStore: CustomerStore,
+      customerActions: CustomerActions,
       router: Router,
-      route: ActivatedRoute) {
-      super(customerStore, router, route);
+      route: ActivatedRoute,
+      private ngRedux: NgRedux<IAppState>) {
+      super(customerActions, ngRedux.select(state => state.customers.items), router, route);
   }
 
   protected routePath(): string {

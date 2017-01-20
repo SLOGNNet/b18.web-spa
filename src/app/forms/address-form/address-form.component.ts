@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Address } from '../../models';
 import { ViewMode } from '../../shared/enums';
-import { BdFormGroup, BdFormBuilder, GoogleService } from '../../shared';
+import { GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 @Component(Object.assign({
   selector: 'address-form',
@@ -14,8 +14,9 @@ export class AddressForm extends BaseForm {
   @Input()
   public address: Address;
   @Input('group')
-  public addressForm: BdFormGroup;
+  public addressForm: FormGroup;
   @Output() update = new EventEmitter();
+  @Output() updatePlace = new EventEmitter();
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {
@@ -42,7 +43,7 @@ export class AddressForm extends BaseForm {
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _formBuilder: BdFormBuilder,
+    private _formBuilder: FormBuilder,
     private _googleService: GoogleService,
     element: ElementRef
     ) {
@@ -94,15 +95,7 @@ export class AddressForm extends BaseForm {
 
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
-      this._googleService.getDetails(place.place_id)
-        .subscribe(detail => {
-          if (detail) {
-            this._placeQuery = detail.streetAddress;
-            this._updateMap(detail.location, detail.streetAddress);
-            this.addressForm.setValue(Object.assign({}, this.addressForm.value, detail));
-            this._cdr.markForCheck();
-          }
-        });
+      this.updatePlace.emit({addressId: this.address.id, placeId: place.place_id});
     }
   }
 

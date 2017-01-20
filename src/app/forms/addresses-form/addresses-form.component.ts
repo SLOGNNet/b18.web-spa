@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, Input, Output, ChangeDetectorRef, ElementRef, EventEmitter } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Address } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -9,6 +9,8 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class AddressesForm extends BaseListForm<Address>  {
+
+  @Output() updatePlace = new EventEmitter();
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
     super(formBuilder, elementRef);
@@ -24,5 +26,9 @@ export class AddressesForm extends BaseListForm<Address>  {
 
   trackBy(index: number, address: Address) {
     return address.id;
+  }
+
+  onUpdatePlace(data: any) {
+    this.updatePlace.emit(data);
   }
 }

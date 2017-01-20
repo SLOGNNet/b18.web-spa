@@ -31,6 +31,7 @@ export class Stop {
   static create(type: StopTypes): Stop{
     const result = new Stop();
     result.id = generateNewId();
+    result.date = new Date();
     result.type = type;
     result.address = Address.create();
     result.commodities = new Array<Commodity>();

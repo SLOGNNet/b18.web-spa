@@ -43,6 +43,7 @@ import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from '
 import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
+import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 
 @NgModule({
   providers: [
@@ -85,7 +86,9 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
     BdFormDatePicker,
     BdDatePicker,
     StopsLineComponent,
-    StopPopoverComponent
+    StopPopoverComponent,
+    BdResizerComponent,
+    BdResizeContainerComponent
   ],
   imports: [
     CommonModule,
@@ -132,7 +135,9 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
     StopsLineComponent,
     StopPopoverComponent,
     HttpModule,
-    BdPopoverModule
+    BdPopoverModule,
+    BdResizerComponent,
+    BdResizeContainerComponent
   ]
 })
 export class SharedModule {

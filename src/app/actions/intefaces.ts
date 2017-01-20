@@ -1,11 +1,13 @@
 import { Observable } from 'rxjs/Observable';
 
-export interface IListDataStore<T> {
+export interface IDetailDataActions<T> {
+  select(id: number);
+  createNew();
+}
+
+export interface IListDataActions<T> {
   remove(removed: T);
   add(added: T);
   update(updated: T);
-  items(): Observable<Array<T>>;
-  selectedItem(): Observable<T>;
   getAll(): void;
-  select(id: any);
 }

@@ -15,10 +15,11 @@
  * </multi-pane-layout>
  */
 
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../shared/enums/switchState';
+import { BdResizeContainerComponent } from '../shared/components/bd-resizer';
 import { AppState } from '../app.service';
 
 @Component({
@@ -26,18 +27,23 @@ import { AppState } from '../app.service';
     templateUrl: './multi-pane-layout.component.html',
     styleUrls: [
         './multi-pane-layout.component.scss'
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiPaneLayoutComponent {
 
     private currentState: SwitchState = SwitchState.AllPanesVisible;
     private switchStateEnum: any = SwitchState;
+    private resizerWidth = 20;
+    private resizerMin = 320;
+    private resizerDirection = 'horizontal';
+    private resizeSecondPane = null;
 
-    private classes = {
-        0: '',
-        1: 'col-sm-12',
-        2: 'col-sm-6',
-        3: 'col-sm-4'
+    private widths = {
+        0: 0,
+        1: 100,
+        2: 50,
+        3: 33.33333333
     };
 
     private panesState = [
@@ -46,32 +52,51 @@ export class MultiPaneLayoutComponent {
         SwitchState.ThirdPaneVisible
     ];
 
+    @ViewChildren(BdResizeContainerComponent) private bdResizeComponents: QueryList<BdResizeContainerComponent>;
+
     constructor(
-        public appState: AppState) {
+        public appState: AppState,
+        private cdr: ChangeDetectorRef) {
+    }
+
+    ngDoCheck() {
+        if (this.currentState !== this.appState.get('switchState')) {
+            this.setCurrentState(this.appState.get('switchState'));
+            this.resizeSecondPane = this.getSecondPane();
+            this.cdr.markForCheck();
+        }
     }
 
     ngAfterViewInit() {
         if (isNaN(this.currentState)) {
             this.setCurrentState(this.switchStateEnum.AllPanesVisible);
         }
-    }
 
-    getCurrentState() {
-      return this.appState.get('switchState');
+        this.resizeSecondPane = this.getSecondPane();
     }
 
     isVisible(state: SwitchState) {
-        return !!( this.getCurrentState() & state);
+        return !!(this.currentState & state);
     }
 
     setCurrentState(state: SwitchState = SwitchState.AllPanesVisible) {
-      this.currentState = state;
+        this.currentState = state;
     }
 
-    getClass() {
+    getWidth() {
         const columnsCount = this.panesState.filter(value => {
-            return !!(value & this.getCurrentState());
+            return !!(value & this.currentState);
         }).length;
-        return this.classes[columnsCount];
+
+        return this.widths[columnsCount];
+    }
+
+    getSecondPane() {
+        if (this.bdResizeComponents) {
+            const result = this.bdResizeComponents.filter((c, i) => this.isVisible(this.panesState[i]))[1];
+            return result;
+        }
+
+        return null;
     }
 }

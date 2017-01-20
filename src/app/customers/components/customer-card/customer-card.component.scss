@@ -1,18 +1,32 @@
 @import '../../../../assets/styles/variables';
 
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .customer-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}
+
 .customer-card-section {
   position: relative;
   height: 100px;
   padding: $default-margin;
-  background: $white;
+  background: inherit;
   font-size: $tiny-font-size;
   cursor: pointer;
-  margin-top: 20px;
   border-bottom: $border;
   justify-content: space-between;
 
-  .top,
-  .bottom {
+  .bottom,
+  .top {
     display: flex;
     justify-content: space-between;
 
@@ -41,6 +55,7 @@
       overflow: hidden;
       align-items: flex-end;
       font-weight: bold;
+      padding-left: $default-margin;
     }
 
     .right {
@@ -48,20 +63,22 @@
       flex-direction: column;
       align-items: flex-end;
 
-      .load-container {
-        display: flex;
-        margin-left: 5px;
-
-        .load-circle {
-          width: 9px;
-          height: 9px;
-          background: $black;
-          margin-top: 3px;
-          border-radius: 50%;
-        }
-
-        .load-name {
+      .loads-container {
+        .load {
+          display: flex;
           margin-left: 5px;
+
+          .load-circle {
+            width: 9px;
+            height: 9px;
+            background: $black;
+            margin-top: 3px;
+            border-radius: 50%;
+          }
+
+          .load-name {
+            margin-left: 5px;
+          }
         }
       }
     }
@@ -69,13 +86,19 @@
 
   .bottom {
     .left {
+      overflow: hidden;
+
       .customer-name {
+        overflow: hidden;
         font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
     .middle {
       overflow: hidden;
+      padding-left: $default-margin;
 
       .position {
         overflow: hidden;
@@ -85,7 +108,7 @@
     }
 
     .right {
-      span {
+      .status {
         display: flex;
         width: 79px;
         height: 20px;

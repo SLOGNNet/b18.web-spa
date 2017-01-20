@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Load } from '../models';
-import { IListDataStore } from '../../stores';
+import { IListDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
-
+import { Observable } from 'rxjs/Observable';
 export abstract class BaseListComponent<T> {
   protected items: T[] = new Array<T>();
 
@@ -12,13 +12,13 @@ export abstract class BaseListComponent<T> {
   private childRoute: any;
   private selected = [];
 
-  constructor(private store: IListDataStore<T>,
+  constructor(private actions: IListDataActions<T>, protected items$: Observable<Array<T>>,
     protected router: Router, protected route: ActivatedRoute) {
-    store.getAll();
+    actions.getAll();
   }
 
   ngAfterViewInit() {
-    this.store.items().subscribe((items) => {
+    this.items$.subscribe((items) => {
       this.items = items;
       this.subscribeToDetailsChildRoute();
     });
