@@ -5,50 +5,36 @@ import 'rxjs/add/operator/share';
 @Injectable()
 export class FileUploadService {
 
-  private progress$: Observable<number>;
-  private progress: number = 0;
-  private progressObserver: any;
-  private xhr: XMLHttpRequest = new XMLHttpRequest();
+  public upload(url: string, file: File): Observable<any> {
+    return new Observable(progressSubject => {
+      let xhr: XMLHttpRequest = new XMLHttpRequest(),
+        formData: FormData = new FormData();
 
-  constructor() {
-    this.progress$ = new Observable(observer => {
-      this.progressObserver = observer;
-    });
-  }
+      formData.append('filename', file);
 
-  public getObserver(): Observable<number> {
-    return this.progress$;
-  }
-
-  public upload(url: string, file: File) {
-    let formData: FormData = new FormData();
-
-    formData.append('filename', file);
-
-    this.xhr.onreadystatechange = () => {
-      if (this.xhr.readyState === 4) {
-        if (this.xhr.status === 200) {
-          console.log('successfully loaded)');
-        } else {
-          console.log('something went wrong(');
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            progressSubject.next(100);
+          } else {
+            progressSubject.next(-1);
+          }
         }
-      }
-    };
+      };
 
-    this.setUploadUpdateInterval(500);
+      this.setUploadUpdateInterval(500);
 
-    this.xhr.upload.onprogress = (event) => {
-      this.progress = Math.round(event.loaded / event.total * 100);
-      this.progressObserver.next(this.progress);
-    };
+      xhr.upload.onprogress = (event) => {
+        const progress = Math.round(event.loaded / event.total * 100);
+        progressSubject.next(progress);
+      };
 
-    this.xhr.open('POST', url, true);
-    this.xhr.setRequestHeader('enctype', 'multipart/form-data');
-    this.xhr.send(formData);
-  }
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('enctype', 'multipart/form-data');
+      xhr.send(formData);
 
-  public abort(){
-    this.xhr.abort();
+      return () => xhr.abort();
+    });
   }
 
   public setUploadUpdateInterval(interval: number): void {
