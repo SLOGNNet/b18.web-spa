@@ -3,7 +3,9 @@ const config = require('./env/config').getConfig(env);
 config.env = env;
 switch (process.env.NODE_ENV) {
   case 'production':
-  case 'sandbox':
+  case 'stage':
+  case 'qa':
+  case 'publicdev':
     module.exports = require('./webpack.prod')(config);
     break;
   case 'testing':
