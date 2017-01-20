@@ -43,7 +43,7 @@ export class LoadDocumentFormComponent extends BaseForm {
 
   onRemoveFile(document) {
     let itemIndexToDelete = this.documents.indexOf(document);
-    if(this.documents[itemIndexToDelete].progress) {
+    if (this.documents[itemIndexToDelete].progress) {
           this.documents[itemIndexToDelete].progress.subscribe().unsubscribe();
     }
     this.documents = without(this.documents, document);
