@@ -22,8 +22,6 @@ export class FileUploadService {
         }
       };
 
-      this.setUploadUpdateInterval(500);
-
       xhr.upload.onprogress = (event) => {
         const progress = Math.round(event.loaded / event.total * 100);
         progressSubject.next(progress);
@@ -37,7 +35,4 @@ export class FileUploadService {
     });
   }
 
-  public setUploadUpdateInterval(interval: number): void {
-    setInterval(() => { }, interval);
-  }
 }
