@@ -5,6 +5,7 @@
     [itemIndex]="i + 1"
     [newDocument]="document.newDocument"
     [document]="document.file"
+    [progress]="document.progress | async"
     (removeFile)="onRemoveFile(document)">
   </bd-file-preview>
 </div>
