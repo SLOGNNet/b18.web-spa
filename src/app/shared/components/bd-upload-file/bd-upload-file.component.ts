@@ -40,7 +40,6 @@ export class BdUploadFileComponent {
           this.documentsSelected.emit({
             documents: this.documentFiles,
             type: this.documentType,
-            newDocument: true
           });
       }
 }
