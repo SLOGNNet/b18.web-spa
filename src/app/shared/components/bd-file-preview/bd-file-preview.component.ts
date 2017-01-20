@@ -13,6 +13,7 @@ export class BdFilePreviewComponent {
       private documentIssueDate: string;
       private titleText: string;
       private uploadProgress: number = 0;
+      private uploadFailed: boolean = false;
       @Input() private document: File;
       @Input() private documentType: string;
       @Input() private itemIndex: number;
@@ -26,13 +27,20 @@ export class BdFilePreviewComponent {
       ngOnInit(){
         this.titleText = this.documentType + ' (' + this.itemIndex + ')';
         this.documentIssueDate = moment(new Date()).format(DATE_FORMAT);
+        this.uploadProgress = DEFAULT_ELEMENT_WIDTH - this.progress;
       }
 
       ngOnChanges(){
-        if (this.progress) {
-          this.uploadProgress = DEFAULT_ELEMENT_WIDTH - this.progress;
-          this._cdr.markForCheck();
+        switch(this.progress){
+          case null:
+            break;
+          case -1:
+            this.uploadFailed = true;
+            break;
+          default:
+            this.uploadProgress = DEFAULT_ELEMENT_WIDTH - this.progress;
         }
+        this._cdr.markForCheck();
       }
 
       onRemoveClick(event){
