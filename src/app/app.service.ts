@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SwitchState } from './shared/enums/switchState';
 
 export type InternalStateType = {
   [key: string]: any
@@ -8,6 +9,17 @@ export type InternalStateType = {
 export class AppState {
   _state: InternalStateType = {};
   private _panesWidth = {};
+  private panesState = [
+    SwitchState.FirstPaneVisible,
+    SwitchState.SecondPaneVisible,
+    SwitchState.ThirdPaneVisible
+  ];
+  private _defaultPaneWidths = {
+    0: 0,
+    1: 100,
+    2: 50,
+    3: 33.33333333
+  };
 
   constructor() {
 
@@ -48,11 +60,22 @@ export class AppState {
       } catch (e) {
         this._panesWidth = {};
       }
-    } else {
-      this._panesWidth = {};
+    }
+
+    if (!this._panesWidth[switchState]) {
+      this._panesWidth[switchState] = Array(3).fill(this._getDefaultPaneWidths(switchState));
+      sessionStorage.setItem('panesWidth', JSON.stringify(this._panesWidth));
     }
 
     return this._panesWidth[switchState];
+  }
+
+  private _getDefaultPaneWidths(state) {
+    const columnsCount = this.panesState.filter(value => {
+      return !!(value & state);
+    }).length;
+
+    return this._defaultPaneWidths[columnsCount];
   }
 
 

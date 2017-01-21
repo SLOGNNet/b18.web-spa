@@ -38,15 +38,7 @@ export class MultiPaneLayoutComponent {
     private resizerMin = 320;
     private resizerDirection = 'horizontal';
     private resizeSecondPane = null;
-
-    private widths = {
-        0: 0,
-        1: 100,
-        2: 50,
-        3: 33.33333333
-    };
-
-    private panesWidth = [33, 33, 33];
+    private panesWidth = [];
 
     private panesState = [
         SwitchState.FirstPaneVisible,
@@ -92,28 +84,13 @@ export class MultiPaneLayoutComponent {
         this.currentState = state;
     }
 
-    setPanesWidth(widths?: Array<number>) {
+    setPanesWidth(widths: Array<number>) {
         if (!this.bdResizeComponents) {
             return;
         }
 
-        if (widths) {
-            this.panesWidth = widths;
-        } else {
-            const paneWidth = this.getWidth();
-            this.panesWidth = Array(3).fill(paneWidth);
-            this.appState.setPanesWidth(this.currentState, this.panesWidth);
-        }
-
+        this.panesWidth = widths;
         this.cdr.markForCheck();
-    }
-
-    getWidth() {
-        const columnsCount = this.panesState.filter(value => {
-            return !!(value & this.currentState);
-        }).length;
-
-        return this.widths[columnsCount];
     }
 
     getSecondPane() {
