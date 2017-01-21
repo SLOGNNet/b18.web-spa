@@ -4,9 +4,9 @@ import { Address } from './models';
 import { addItem, updateItem, removeItem } from './utils';
 
 export interface IAddressState {
-    addresses: Address[];
+    items: Address[];
 }
-const INITIAL_STATE: IAddressState = { addresses: [] };
+const INITIAL_STATE: IAddressState = { items: [] };
 
 export const addressReducer = createReducer(INITIAL_STATE, {
   [AddressActions.ADD_ADDRESS](state, action) {
