@@ -31,13 +31,25 @@ export class GoogleMapComponent implements OnChanges {
 
 
     ngOnChanges(changes) {
-        this.update(this.location, this.info);
+        if (!this._isInitialized) {
+            this.init();
+        } else {
+            this.update(this.location, this.info);
+        }
     }
 
     ngOnInit() {
+        this.init();
+    }
+
+    init() {
         setTimeout(() => {
             this._mapTag = document.getElementById(this.mapId);
             this._infoLabel = document.getElementById(`${this.mapId}-info`);
+
+            if (!this._mapTag || !this._infoLabel) {
+                return;
+            }
 
             const top = (this._mapTag.clientHeight / 2);
             this._infoLabel.style.top = `${top}px`;
