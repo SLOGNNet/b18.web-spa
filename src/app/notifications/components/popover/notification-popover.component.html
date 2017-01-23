@@ -1,29 +1,24 @@
 <div class="notifications-container">
-
   <div class="notifications-header">
-    <div class="header-container">
-      <span class="title">
-        Latest things
-      </span>
-      <span class="new-items-info">
+    <span class="title">
+      {{headerTitleText}}
+    </span>
+    <div *ngIf="newItemsCount > 0"
+        class="new-items-info" >
         <span class="new-items-count">
-          One New Thing
+          {{newItemsCount}} new items -
         </span>
-        <button class="btn-refresh">
+        <button class="btn-refresh" (click)="onRefreshClick($event)">
           Refresh
         </button>
-      </span>
     </div>
   </div>
-
   <div class="notifications-body">
-
+    some content
   </div>
-
   <div class="notifications-footer">
     <button class="btn-show-all">
       Show All
     </button>
   </div>
-
 </div>
