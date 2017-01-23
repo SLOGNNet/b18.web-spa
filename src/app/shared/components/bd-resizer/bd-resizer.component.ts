@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { BdResizeContainerComponent } from './components';
 
 @Component({
@@ -28,6 +28,9 @@ export class BdResizerComponent {
 
   @Input()
   resizerMin: number = 0;
+
+  @Output()
+  change: EventEmitter<any> = new EventEmitter();
 
   private start: number = undefined;
   private percentageDiff: number = undefined;
@@ -75,6 +78,10 @@ export class BdResizerComponent {
 
   @HostListener('window:mouseup')
   onMouseup(e) {
+    if (this.start !== undefined) {
+      this.change.emit([this.firstElement.style[this.property], this.secondElement.style[this.property]]);
+    }
+
     this.start = undefined;
   }
 

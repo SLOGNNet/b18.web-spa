@@ -38,13 +38,7 @@ export class MultiPaneLayoutComponent {
     private resizerMin = 320;
     private resizerDirection = 'horizontal';
     private resizeSecondPane = null;
-
-    private widths = {
-        0: 0,
-        1: 100,
-        2: 50,
-        3: 33.33333333
-    };
+    private panesWidth = [];
 
     private panesState = [
         SwitchState.FirstPaneVisible,
@@ -62,6 +56,7 @@ export class MultiPaneLayoutComponent {
     ngDoCheck() {
         if (this.currentState !== this.appState.get('switchState')) {
             this.setCurrentState(this.appState.get('switchState'));
+            this.setPanesWidth(this.appState.getPanesWidth(this.currentState));
             this.resizeSecondPane = this.getSecondPane();
             this.cdr.markForCheck();
         }
@@ -73,6 +68,12 @@ export class MultiPaneLayoutComponent {
         }
 
         this.resizeSecondPane = this.getSecondPane();
+        this.setPanesWidth(this.appState.getPanesWidth(this.currentState));
+    }
+
+    onResizerChange() {
+        this.panesWidth = this.bdResizeComponents.map(e => e.getWidth()).map(w => parseFloat(w));
+        this.appState.setPanesWidth(this.currentState, this.panesWidth);
     }
 
     isVisible(state: SwitchState) {
@@ -83,12 +84,13 @@ export class MultiPaneLayoutComponent {
         this.currentState = state;
     }
 
-    getWidth() {
-        const columnsCount = this.panesState.filter(value => {
-            return !!(value & this.currentState);
-        }).length;
+    setPanesWidth(widths: Array<number>) {
+        if (!this.bdResizeComponents) {
+            return;
+        }
 
-        return this.widths[columnsCount];
+        this.panesWidth = widths;
+        this.cdr.markForCheck();
     }
 
     getSecondPane() {
