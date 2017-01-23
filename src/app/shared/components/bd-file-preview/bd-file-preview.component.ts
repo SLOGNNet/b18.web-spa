@@ -32,7 +32,6 @@ export class BdFilePreviewComponent {
       ngOnChanges(){
         switch (this.progress) {
           case undefined:
-            break;
           case null:
             break;
           case -1:
