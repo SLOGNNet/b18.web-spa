@@ -33,7 +33,7 @@ import { NgRedux } from 'ng2-redux';
 
       <main>
       <top-panel></top-panel>
-        <div style="height: calc(100% - 50px);">
+        <div class="main-content">
           <router-outlet></router-outlet>
         </div>
       </main>
