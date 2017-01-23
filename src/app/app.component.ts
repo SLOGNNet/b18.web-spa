@@ -33,9 +33,9 @@ import { NgRedux } from 'ng2-redux';
 
       <main>
       <top-panel></top-panel>
-        <div>
-        <router-outlet></router-outlet>
-          </div>
+        <div style="height: calc(100% - 50px);">
+          <router-outlet></router-outlet>
+        </div>
       </main>
     `
 })
