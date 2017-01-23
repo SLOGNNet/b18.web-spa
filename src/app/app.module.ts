@@ -6,7 +6,6 @@ import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
-import { NotificationModule } from './notifications/notification.module';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -89,8 +88,7 @@ type StoreType = {
     BdFormsModule,
     NgxDatatableModule,
     RouterModule.forRoot(ROUTES),
-    NgReduxModule,
-    NotificationModule
+    NgReduxModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

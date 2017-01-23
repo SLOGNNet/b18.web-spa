@@ -1,1 +1,1 @@
-export { NotificationsPopoverComponent } from './components';
+export * from './notification-popover.component';

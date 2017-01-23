@@ -1,0 +1,43 @@
+@import '../../../../assets/styles/variables';
+
+
+
+.notifications-container {
+  width: 400px;
+
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $blue;
+  }
+
+  .notifications-header {
+    display: flex;
+    width: calc(100% + #{$popover-margin * 2});
+    padding: $popover-margin;
+    justify-content: space-between;
+    border-bottom: $border;
+    margin-left: -$popover-margin;
+
+    .new-items-info {
+      .new-items-count {
+        color: $dark-grey;
+      }
+    }
+  }
+
+  .notifications-body {
+    position: relative;
+  }
+
+  .notifications-footer {
+    display: flex;
+    width: calc(100% + #{$popover-margin * 2});
+    padding: 0 $popover-margin;
+    justify-content: center;
+    border-top: $border;
+    margin-left: -$popover-margin;
+  }
+
+}

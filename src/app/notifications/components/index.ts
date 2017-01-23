@@ -1,1 +1,0 @@
-export { NotificationsPopoverComponent } from './popover';

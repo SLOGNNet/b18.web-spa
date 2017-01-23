@@ -7,11 +7,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NotificationsPopoverComponent {
 
-
   @Input() headerTitleText: string;
   @Input() newItemsCount: number = 0;
-
-
 
   ngOnInit() {
     console.log("NotificationsPopoverComponent init");

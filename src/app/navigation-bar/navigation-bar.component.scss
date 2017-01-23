@@ -42,11 +42,20 @@ layout-switch {
   position: absolute;
   bottom: 0;
 }
+
 .parent-test{
-  position:relative;
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
   width: calc(100vw - 130px);
-  top: 0; right: 0; height:40px; background:green;
+  top: 0;
+  right: 0;
+  height:40px;
+  background:green;
   .test {
-    position: fixed; right:55px; top:5px; background: red; height:30px; width:30px;
+     margin-right:55px;
+     background: red;
+     height:30px;
+     width:30px;
   }
 }
