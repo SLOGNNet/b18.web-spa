@@ -6,5 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./top-panel.component.scss']
 })
 export class TopPanelComponent {
-  
 }
