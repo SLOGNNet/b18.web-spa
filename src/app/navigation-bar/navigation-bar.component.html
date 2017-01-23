@@ -8,3 +8,18 @@
 
     <layout-switch [switchState]="switchState" (switchStateChange)="onSwitchStateChange($event)"></layout-switch>
 </div>
+<div class="parent-test" >
+  <span [bd-popover]="notifyPopover"
+        [popoverOnHover]="true"
+        class="test"
+        >
+    testetstetstest
+    <bd-popover-content
+      #notifyPopover
+      placement="auto"
+      [width]="220"
+      [closeOnClickOutside]="false">
+      test
+    </bd-popover-content>
+  </span>
+</div>

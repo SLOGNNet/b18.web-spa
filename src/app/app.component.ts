@@ -31,7 +31,7 @@ import { AppState } from './app.service';
         (switchStateChange)="updateSwitchState($event)">
       </navigation-bar>
 
-      <main>
+      <main style="margin-top:50px">
         <router-outlet></router-outlet>
       </main>
     `

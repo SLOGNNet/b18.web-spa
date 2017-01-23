@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
+import { NotificationModule } from './notifications/notification.module';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -41,6 +42,7 @@ import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { CustomerCardComponent } from './customers/components/customer-card';
 import { CustomerCardsComponent } from './customers/components/customer-cards';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -87,7 +89,8 @@ type StoreType = {
     BdFormsModule,
     NgxDatatableModule,
     RouterModule.forRoot(ROUTES),
-    NgReduxModule
+    NgReduxModule,
+    NotificationModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -1,0 +1,21 @@
+@import '../../../../assets/styles/variables';
+
+.notifications-container {
+
+  .notifications-header {
+
+  }
+
+  .notifications-body {
+
+  }
+
+  .notifications-footer {
+    button {
+      &.btn-show-all {
+        background: transparent;
+        color: $blue;
+      }
+    }
+  }
+}
