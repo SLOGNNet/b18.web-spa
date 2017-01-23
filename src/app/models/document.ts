@@ -1,3 +1,4 @@
+import { generateNewId } from './utils';
 export class Document {
   id: number = 0;
   type: string = '';
@@ -7,6 +8,7 @@ export class Document {
 
   static create(): Document{
     const result = new Document();
+    result.id = generateNewId();
     return result;
   }
 
