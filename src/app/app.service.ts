@@ -9,7 +9,7 @@ export type InternalStateType = {
 export class AppState {
   _state: InternalStateType = {};
   private _panesWidth = {};
-  private panesState = [
+  private _panesState = [
     SwitchState.FirstPaneVisible,
     SwitchState.SecondPaneVisible,
     SwitchState.ThirdPaneVisible
@@ -20,10 +20,6 @@ export class AppState {
     2: 50,
     3: 33.33333333
   };
-
-  constructor() {
-
-  }
 
   // already return a clone of the current state
   get state() {
@@ -71,7 +67,7 @@ export class AppState {
   }
 
   private _getDefaultPaneWidths(state) {
-    const columnsCount = this.panesState.filter(value => {
+    const columnsCount = this._panesState.filter(value => {
       return !!(value & state);
     }).length;
 
