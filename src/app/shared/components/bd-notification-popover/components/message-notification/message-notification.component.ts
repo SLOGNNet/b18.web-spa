@@ -9,9 +9,16 @@ import * as moment from 'moment';
 })
 export class MessageNotificationComponent {
 
-  @Input() message: string = '';
-  @Input() user: Contact;
 
-  @Input() date: string = moment(new Date()).format('MM/DD/YYYY');
+  @Input() private message: string = '';
+  @Input() private user: Contact;
+  @Input() private date: string = moment(new Date()).format('MM/DD/YYYY');
+  private firstName: string;
+  private lastName: string;
+
+  ngOnChanges(){
+    this.firstName  = this.user.firstName;
+    this.lastName  = this.user.lastName;
+  }
 
 }
