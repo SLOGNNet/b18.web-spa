@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angu
 import { SwitchState } from '../shared/enums/switchState';
 import { BdNotificationPopoverComponent } from '../shared/components/bd-notification-popover';
 
-
 @Component({
     selector: 'navigation-bar',
     templateUrl: './navigation-bar.component.html',
