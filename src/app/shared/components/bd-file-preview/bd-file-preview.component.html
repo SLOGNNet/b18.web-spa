@@ -10,7 +10,7 @@
         </span>
         <button class="btn-delete"
                 (click)="onRemoveClick($event)">
-          <i class="fa fa-minus-circle"></i>
+          <i class="icon-minus"></i>
         </button>
     </div>
       <bd-input
@@ -20,5 +20,10 @@
       </bd-input>
   </div>
   <div class="file-preview">
+  </div>
+  <div *ngIf="uploadFailed"
+    class="error">
+    <i class="icon-warning"></i>
+    <span>Error! File upload failed!</span>
   </div>
 </div>

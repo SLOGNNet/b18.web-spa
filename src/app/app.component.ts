@@ -15,7 +15,7 @@ import {
   createStore
 } from 'redux';
 import { AppState } from './app.service';
- import { NgRedux } from 'ng2-redux';
+import { NgRedux } from 'ng2-redux';
 /*
  * App Component
  * Top Level Component
@@ -33,7 +33,10 @@ import { AppState } from './app.service';
       </navigation-bar>
 
       <main>
-        <router-outlet></router-outlet>
+      <top-panel></top-panel>
+        <div class="main-content">
+          <router-outlet></router-outlet>
+        </div>
       </main>
     `
 })
@@ -52,7 +55,7 @@ export class AppComponent {
     notificationService.get().subscribe(notif => {
     });
     this.ngRedux.configureStore(
-     rootReducer, {}, []);
+      rootReducer, {}, []);
   }
 
   ngOnInit() {
