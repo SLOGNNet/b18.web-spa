@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
+import { TopPanelComponent } from './top-panel';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
 
@@ -77,7 +78,8 @@ type StoreType = {
      LoadStopCardsComponent,
      TripPopoverComponent,
      CustomerPopoverComponent,
-     DriverPopoverComponent
+     DriverPopoverComponent,
+     TopPanelComponent
   ],
   imports: [
     SharedModule,
