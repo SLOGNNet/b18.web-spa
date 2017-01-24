@@ -22,7 +22,7 @@ export class MessageService {
         let list: List<any> = List();
         const messagesObserver = this.socketService
             .getSocketObservable('/drivers', driverId)
-            .map((message: any) => list = list.push(message.item));
+            .map((message: any) => list = list.push(message));
         return messagesObserver;
     }
 
