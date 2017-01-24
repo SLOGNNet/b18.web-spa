@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
 
 $popover-item-size: 40px;
 
@@ -7,6 +8,7 @@ $popover-item-size: 40px;
     /deep/ .popover {
       padding: 0;
       box-shadow: 0 3px 12px 0 $grey;
+      margin-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
 
@@ -17,7 +19,6 @@ $popover-item-size: 40px;
   }
 
   .notifications-container {
-
     button {
       padding: 0;
       border: 0;

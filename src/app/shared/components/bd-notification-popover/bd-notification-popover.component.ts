@@ -8,9 +8,17 @@ import { BdPopoverContent } from './directives/bd-popover';
 })
 export class BdNotificationPopoverComponent {
 
-  @Input() headerTitleText: string;
-  @Input() newItemsCount: number = 0;
+  @Input() itemsCount: number = 0;
   @Input() width: number;
+  @Input() set notificationType(val: string) {
+    this._iconClass = 'icon-' + val;
+    this._titleText = 'Latest '+ val;
+  }
+
+  private _iconClass: string;
+  private _titleText: string;
+  private _topIconActive: boolean = false;
+
 
   @Output() refresh: EventEmitter<any> = new EventEmitter();
   @Output() showAll: EventEmitter<any> = new EventEmitter();
@@ -25,6 +33,14 @@ export class BdNotificationPopoverComponent {
     this.showAll.emit({
       action: 'showAll'
     });
+  }
+
+  onMouseMove(){
+    this._topIconActive = true;
+  }
+
+  onMouseLeave(){
+    this._topIconActive = false;
   }
 
 }

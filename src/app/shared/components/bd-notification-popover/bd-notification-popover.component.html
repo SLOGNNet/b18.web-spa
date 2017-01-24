@@ -2,23 +2,26 @@
   <div [bd-popover]="notifyPopover"
        [popoverOnHover]="true"
         class="popover-target">
-        <i class="fa fa-arrow-down"></i>
+          <icon-with-count-indicator [count]="itemsCount" [class]="_iconClass" [isActive]="_topIconActive">
+          </icon-with-count-indicator>
     <bd-popover-content
       #notifyPopover
       placement="auto"
       [horizontalOffset]="-10"
       [closeOnClickOutside]="false"
       [width]="width"
+      (mousemove)="onMouseMove()"
+      (mouseleave)="onMouseLeave()"
       class="bd-popover-content">
           <div class="notifications-container">
             <div class="notifications-header">
               <span class="title">
-                {{headerTitleText}}
+                {{_titleText}}
               </span>
-              <div *ngIf="newItemsCount > 0"
+              <div *ngIf="itemsCount > 0"
                   class="new-items-info" >
                   <span class="new-items-count">
-                    {{newItemsCount}} new items -
+                    {{itemsCount}} new items -
                   </span>
                   <button class="btn-refresh" (click)="onRefreshClick($event)">
                     Refresh
@@ -31,7 +34,7 @@
             <div class="notifications-footer">
               <button class="btn-show-all"
                 (click)="onShowAllClick()">
-                Show All
+                  Show All
               </button>
             </div>
           </div>
