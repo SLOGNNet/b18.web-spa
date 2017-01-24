@@ -4,15 +4,20 @@
 <input type="text" placeholder="Search for anything by number, name, date or amount. You can also type action you would like to perform...">
 <div class="right">
   <span>
-    <i class="icon-tasks"></i>
+    <icon-with-count-indicator [count]="1111" [class]="'icon-tasks'">
+    </icon-with-count-indicator>
   </span>
   <span>
-    <i class="icon-messages"></i>
+    <icon-with-count-indicator [count]="1" [class]="'icon-messages'">
+    </icon-with-count-indicator>
   </span>
   <span>
-    <i class="icon-notifications"></i>
+    <icon-with-count-indicator [count]="0" [class]="'icon-notifications'">
+    </icon-with-count-indicator>
   </span>
   <span>
+    <div>
     <i class="icon-user"></i>
+  </div>
   </span>
 </div>
