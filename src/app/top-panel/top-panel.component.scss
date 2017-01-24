@@ -27,6 +27,7 @@ input {
   span {
     position: relative;
     display: flex;
+    overflow: hidden;
     width: 57px;
     height: $form-control-height;
     cursor: pointer;

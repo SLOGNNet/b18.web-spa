@@ -8,17 +8,26 @@ import { Component, Input } from '@angular/core';
 export class IconWithCountIndicatorComponent {
   @Input() class: string;
   @Input() count: number;
-  defineClass: string;
+  @Input() maxValue: number = 999;
+
 
   ngOnInit() {
+    this.updateCount();
+  }
+
+  updateCount() {
     if (this.count > 0) {
-      if (this.count >= 1000) {
-        this.count = 999;
+      if (this.count > this.maxValue) {
+        this.count = this.maxValue;
       }
-      this.defineClass = 'digit-number-' + this.count.toString().length;
     } else {
-      this.defineClass = '';
       this.count = null;
+    }
+  }
+
+  ngOnChanges(changes) {
+    if (changes.count) {
+      this.updateCount();
     }
   }
 }
