@@ -1,8 +1,9 @@
 <div class="message-container">
-  <div class="img-container">
-    <div class="circle">
-      {{userInitials}}
-    </div>
+  <div class="circle-container">
+    <bd-initials-circle
+      [firstName]="user.firstName"
+      [lastName]="user.lastName">
+    </bd-initials-circle>
   </div>
   <div class="content-container">
     <div class="message-sender">{{user.firstName}} {{user.lastName}}</div>

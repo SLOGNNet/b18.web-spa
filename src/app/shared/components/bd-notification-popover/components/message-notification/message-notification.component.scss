@@ -7,20 +7,8 @@
   font-size: $tiny-font-size;
   border-bottom: $border;
 
-  .img-container {
+  .circle-container {
     width: 20%;
-
-    .circle {
-      display: flex;
-      width: 34px;
-      height: 34px;
-      background: $black;
-      color: $white;
-      border-radius: 50%;
-      text-transform: uppercase;
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   .content-container {

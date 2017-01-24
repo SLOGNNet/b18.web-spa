@@ -14,8 +14,4 @@ export class MessageNotificationComponent {
 
   @Input() date: string = moment(new Date()).format('MM/DD/YYYY');
 
-  get userInitials(){
-    return this.user.firstName.charAt(0) + this.user.lastName.charAt(0);
-  }
-
 }

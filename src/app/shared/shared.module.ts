@@ -44,6 +44,7 @@ import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
+import { BdInitialsCircleComponent } from './components/bd-initials-circle';
 import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
 
 @NgModule({
@@ -90,6 +91,7 @@ import { BdNotificationPopoverComponent, MessageNotificationComponent } from './
     StopPopoverComponent,
     BdResizerComponent,
     BdResizeContainerComponent,
+    BdInitialsCircleComponent,
     BdNotificationPopoverComponent,
     MessageNotificationComponent
   ],
@@ -141,6 +143,7 @@ import { BdNotificationPopoverComponent, MessageNotificationComponent } from './
     BdPopoverModule,
     BdResizerComponent,
     BdResizeContainerComponent,
+    BdInitialsCircleComponent,
     BdNotificationPopoverComponent,
     MessageNotificationComponent
   ]
