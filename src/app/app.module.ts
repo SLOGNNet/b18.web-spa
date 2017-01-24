@@ -41,7 +41,6 @@ import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { CustomerCardComponent } from './customers/components/customer-card';
 import { CustomerCardsComponent } from './customers/components/customer-cards';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
