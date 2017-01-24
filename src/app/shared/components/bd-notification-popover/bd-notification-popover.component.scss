@@ -1,43 +1,58 @@
 @import '../../../../assets/styles/variables';
 
+$popover-item-size: 40px;
 
+.notification-container {
+  .popover-target {
+    /deep/ .popover {
+      padding: 0;
+      box-shadow: 0 3px 12px 0 $grey;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
 
-.notifications-container {
-  width: 400px;
-
-  button {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: $blue;
-  }
-
-  .notifications-header {
-    display: flex;
-    width: calc(100% + #{$popover-margin * 2});
-    padding: $popover-margin;
-    justify-content: space-between;
-    border-bottom: $border;
-    margin-left: -$popover-margin;
-
-    .new-items-info {
-      .new-items-count {
-        color: $dark-grey;
+      .popover-content {
+        padding: 0;
       }
     }
   }
 
-  .notifications-body {
-    position: relative;
-  }
+  .notifications-container {
 
-  .notifications-footer {
-    display: flex;
-    width: calc(100% + #{$popover-margin * 2});
-    padding: 0 $popover-margin;
-    justify-content: center;
-    border-top: $border;
-    margin-left: -$popover-margin;
-  }
+    button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: $blue;
+    }
 
+    .notifications-header {
+      display: flex;
+      width: 100%;
+      height: $popover-item-size;
+      padding: 0 $popover-margin;
+      border-bottom: $border;
+      align-items: center;
+      justify-content: space-between;
+
+
+      .new-items-info {
+        .new-items-count {
+          color: $dark-grey;
+        }
+      }
+    }
+
+    .notifications-body {
+      position: relative;
+    }
+
+    .notifications-footer {
+      display: flex;
+      width: 100%;
+      height: $popover-item-size;
+      padding: 0 $popover-margin;
+      justify-content: center;
+    }
+
+  }
 }

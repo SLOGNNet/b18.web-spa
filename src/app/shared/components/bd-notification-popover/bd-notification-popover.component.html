@@ -1,24 +1,40 @@
-<div class="notifications-container">
-  <div class="notifications-header">
-    <span class="title">
-      {{headerTitleText}}
-    </span>
-    <div *ngIf="newItemsCount > 0"
-        class="new-items-info" >
-        <span class="new-items-count">
-          {{newItemsCount}} new items -
-        </span>
-        <button class="btn-refresh" (click)="onRefreshClick($event)">
-          Refresh
-        </button>
-    </div>
-  </div>
-  <div class="notifications-body">
-    some content
-  </div>
-  <div class="notifications-footer">
-    <button class="btn-show-all">
-      Show All
-    </button>
+<div class="notification-container">
+  <div [bd-popover]="notifyPopover"
+       [popoverOnHover]="true"
+        class="popover-target">
+        <i class="fa fa-arrow-down"></i>
+    <bd-popover-content
+      #notifyPopover
+      placement="auto"
+      [horizontalOffset]="-10"
+      [closeOnClickOutside]="false"
+      [width]="width"
+      class="bd-popover-content">
+          <div class="notifications-container">
+            <div class="notifications-header">
+              <span class="title">
+                {{headerTitleText}}
+              </span>
+              <div *ngIf="newItemsCount > 0"
+                  class="new-items-info" >
+                  <span class="new-items-count">
+                    {{newItemsCount}} new items -
+                  </span>
+                  <button class="btn-refresh" (click)="onRefreshClick($event)">
+                    Refresh
+                  </button>
+              </div>
+            </div>
+            <div class="notifications-body">
+              <ng-content></ng-content>
+            </div>
+            <div class="notifications-footer">
+              <button class="btn-show-all"
+                (click)="onShowAllClick()">
+                Show All
+              </button>
+            </div>
+          </div>
+    </bd-popover-content>
   </div>
 </div>
