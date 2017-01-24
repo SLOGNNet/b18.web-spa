@@ -1,0 +1,51 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/font-icons';
+
+.search-icon {
+  display: flex;
+  padding-left: 20px;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 19px;
+  }
+}
+
+input {
+  width: 100%;
+  border: 0;
+  font-size: $base-font-size;
+  margin-left: 20px;
+  outline-width: 0;
+}
+
+.right {
+  display: flex;
+  height: 100%;
+
+  span {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 57px;
+    height: $form-control-height;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: $grey;
+
+      /deep/ icon-with-count-indicator {
+        span {
+          border-color: $grey;
+        }
+      }
+    }
+
+    i {
+      font-size: 19px;
+    }
+  }
+}
