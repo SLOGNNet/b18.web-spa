@@ -9,19 +9,9 @@
     <layout-switch [switchState]="switchState" (switchStateChange)="onSwitchStateChange($event)"></layout-switch>
 </div>
 <div class="parent-test">
-  <span [bd-popover]="notifyPopover"
-        [popoverOnHover]="true"
-        class="test">
-    <i class="icon-down-arrow"></i>
-    <bd-popover-content
-      #notifyPopover
-      placement="auto"
-      [horizontalOffset]="-10"
-      [closeOnClickOutside]="false">
-      <bd-notification-popover
-        [headerTitleText]="'Latest notifications'"
-        [newItemsCount]="4">
-      </bd-notification-popover>
-    </bd-popover-content>
-  </span>
+  <bd-notification-popover
+    [headerTitleText]="'Latest things'"
+    [newItemsCount]="5"
+    [width]="300"
+  ></bd-notification-popover>
 </div>
