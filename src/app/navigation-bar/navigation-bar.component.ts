@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SwitchState } from '../shared/enums/switchState';
-import { BdNotificationPopoverComponent } from '../shared/components/bd-notification-popover';
+import { BdNotificationPopoverComponent, MessageNotificationComponent } from '../shared/components/bd-notification-popover';
+import { Contact } from '../models';
 
 @Component({
     selector: 'navigation-bar',
@@ -14,6 +15,13 @@ import { BdNotificationPopoverComponent } from '../shared/components/bd-notifica
 export class NavigationBarComponent {
     @Input() switchState: SwitchState;
     @Output() switchStateChange: EventEmitter<any> = new EventEmitter();
+
+    private testUser: Contact = new Contact();
+
+    ngOnInit(){
+      this.testUser.firstName = 'Ihor';
+      this.testUser.lastName = 'Pidruchny';
+    }
 
     private items = [
     //   {
