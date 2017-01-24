@@ -12,18 +12,18 @@ export class BdNotificationPopoverComponent {
   @Input() newItemsCount: number = 0;
   @Input() width: number;
 
-  @Output() refresh:EventEmitter<any> = new EventEmitter();
-  @Output() showAll:EventEmitter<any> = new EventEmitter();
+  @Output() refresh: EventEmitter<any> = new EventEmitter();
+  @Output() showAll: EventEmitter<any> = new EventEmitter();
 
 
   onRefreshClick(event) {
     this.refresh.emit({
-      action: "refresh"
+      action: 'refresh'
     });
   }
   onShowAllClick(){
     this.showAll.emit({
-      action: "showAll"
+      action: 'showAll'
     });
   }
 

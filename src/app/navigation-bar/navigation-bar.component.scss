@@ -43,14 +43,14 @@ layout-switch {
   bottom: 0;
 }
 
-.parent-test{
+.parent-test {
   position: fixed;
-  display: flex;
-  justify-content: flex-end;
-  width: calc(100vw - 130px);
   top: 0;
   right: 0;
-  height:40px;
-  background:green;
+  display: flex;
+  width: calc(100vw - 130px);
+  height: 40px;
+  background: $horizon;
+  justify-content: flex-end;
   padding-right: 40px;
 }
