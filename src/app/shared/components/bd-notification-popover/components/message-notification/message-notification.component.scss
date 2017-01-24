@@ -1,0 +1,43 @@
+@import '../../../../../../assets/styles/variables';
+
+.message-container {
+  display: flex;
+  padding: $popover-margin;
+  background: $light-blue;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+
+  .img-container {
+    width: 20%;
+
+    .circle {
+      display: flex;
+      width: 34px;
+      height: 34px;
+      background: $black;
+      color: $white;
+      border-radius: 50%;
+      text-transform: uppercase;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .content-container {
+    width: 80%;
+
+    .message-sender {
+      font-weight: bold;
+    }
+
+    .message-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .message-date {
+      color: $dark-grey;
+    }
+  }
+}
