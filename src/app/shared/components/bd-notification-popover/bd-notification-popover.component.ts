@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { BdPopoverContent } from './directives/bd-popover';
 
 @Component({
     selector: 'bd-notification-popover',
@@ -9,13 +10,21 @@ export class BdNotificationPopoverComponent {
 
   @Input() headerTitleText: string;
   @Input() newItemsCount: number = 0;
+  @Input() width: number;
 
-  ngOnInit() {
-    console.log("NotificationsPopoverComponent init");
-  }
+  @Output() refresh:EventEmitter<any> = new EventEmitter();
+  @Output() showAll:EventEmitter<any> = new EventEmitter();
+
 
   onRefreshClick(event) {
-    console.log("refresh button clicked");
+    this.refresh.emit({
+      action: "refresh"
+    });
+  }
+  onShowAllClick(){
+    this.showAll.emit({
+      action: "showAll"
+    });
   }
 
 }
