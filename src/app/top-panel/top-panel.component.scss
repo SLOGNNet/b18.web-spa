@@ -27,7 +27,7 @@ input {
   span {
     position: relative;
     display: flex;
-    width: 50px;
+    width: 57px;
     height: 50px;
     cursor: pointer;
     justify-content: center;
@@ -35,6 +35,12 @@ input {
 
     &:hover {
       background: $grey;
+
+      /deep/ icon-with-count-indicator {
+        span {
+          border-color: $grey;
+        }
+      }
     }
 
     i {
