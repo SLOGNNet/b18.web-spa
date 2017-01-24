@@ -45,20 +45,8 @@ export class IconWithCountIndicatorComponent {
 
   @HostListener('window:click')
   onWindowClick(): void {
-      if(this._eref.nativeElement.contains(event.target)) return;
+      if (this._eref.nativeElement.contains(event.target)) return;
       this.isActive = false;
   }
-
-  @HostListener('mousemleave')
-  onMouseLeave(): void {
-      console.log("leaved");
-  }
-
-  @HostListener('window:mousemove',['$event'])
-  onWindowMouseMove(event): void {
-      //console.log("moved ", event.target);
-  }
-
-
 
 }

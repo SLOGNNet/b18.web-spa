@@ -12,16 +12,15 @@ export class BdNotificationPopoverComponent {
   @Input() width: number;
   @Input() set notificationType(val: string) {
     this._iconClass = 'icon-' + val;
-    this._titleText = 'Latest '+ val;
+    this._titleText = 'Latest ' + val;
   }
+
+  @Output() refresh: EventEmitter<any> = new EventEmitter();
+  @Output() showAll: EventEmitter<any> = new EventEmitter();
 
   private _iconClass: string;
   private _titleText: string;
   private _topIconActive: boolean = false;
-
-
-  @Output() refresh: EventEmitter<any> = new EventEmitter();
-  @Output() showAll: EventEmitter<any> = new EventEmitter();
 
 
   onRefreshClick(event) {

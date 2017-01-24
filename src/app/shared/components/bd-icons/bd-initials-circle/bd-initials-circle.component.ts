@@ -13,7 +13,7 @@ export class BdInitialsCircleComponent {
       @Input() private lastName: string;
 
       get userInitials(){
-        if(!this.firstName && !this.lastName) return defaultInitials;
+        if (!this.firstName && !this.lastName) return defaultInitials;
         return this.firstName.charAt(0) + this.lastName.charAt(0);
       }
 }
