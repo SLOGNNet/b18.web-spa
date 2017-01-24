@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SwitchState } from '../shared/enums/switchState';
-import { BdNotificationPopoverComponent, MessageNotificationComponent } from '../shared/components/bd-notification-popover';
 
 @Component({
     selector: 'navigation-bar',
