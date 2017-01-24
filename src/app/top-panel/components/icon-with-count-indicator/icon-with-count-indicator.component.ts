@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class IconWithCountIndicatorComponent {
   @Input() class: string;
-  @Input() count: any;
+  @Input() count: number;
   defineClass: string;
 
   ngOnInit() {
