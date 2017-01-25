@@ -48,7 +48,7 @@ top-panel {
 }
 
 .main-content {
-  height: calc(100% - $form-control-height);
+  height: calc(100% - #{$form-control-height});
 }
 
 main {
