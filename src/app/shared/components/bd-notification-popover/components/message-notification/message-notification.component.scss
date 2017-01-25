@@ -8,11 +8,12 @@
   border-bottom: $border;
 
   .circle-container {
-    width: 20%;
+    width: auto;
+    margin-right: $popover-margin;
   }
 
   .content-container {
-    width: 80%;
+    flex-grow: 1;
 
     .message-sender {
       font-weight: bold;
