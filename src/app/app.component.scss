@@ -21,7 +21,7 @@ app {
 /*page layout start*/
 navigation-bar {
   position: relative;
-  z-index: $high-level-z-index;
+  z-index: $navbar-z-index;
   display: inline-block;
   width: 160px;
   height: 100vh;
@@ -53,7 +53,7 @@ top-panel {
 }
 
 main {
-  z-index: $low-level-z-index;
+  z-index: $main-z-index;
   width: 100%;
   height: 100vh;
   margin-left: -20px;
