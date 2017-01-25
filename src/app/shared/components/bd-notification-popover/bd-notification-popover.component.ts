@@ -32,18 +32,19 @@ export class BdNotificationPopoverComponent {
       action: 'refresh'
     });
   }
+
   onShowAllClick(){
     this.showAll.emit({
       action: 'showAll'
     });
   }
 
-  onMouseMove(){
-    this._topIconActive = true;
+  handleOnShownEvent(event){
+    this._topIconActive = event.visible;
   }
 
-  onMouseLeave(){
-    this._topIconActive = false;
+  handleOnHiddenEvent(event){
+    this._topIconActive = event.visible;
   }
 
 }
