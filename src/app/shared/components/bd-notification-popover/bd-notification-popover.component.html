@@ -1,6 +1,8 @@
 <div class="base-notification-container">
   <div [bd-popover]="notifyPopover"
        [popoverOnHover]="true"
+       (onShown)="handleOnShownEvent($event)"
+       (onHidden)="handleOnHiddenEvent($event)"
         class="popover-target">
           <icon-with-count-indicator [count]="itemsCount" [class]="_iconClass" [isActive]="_topIconActive">
           </icon-with-count-indicator>
@@ -10,8 +12,6 @@
       [horizontalOffset]="-10"
       [closeOnClickOutside]="false"
       [width]="width"
-      (mousemove)="onMouseMove()"
-      (mouseleave)="onMouseLeave()"
       class="bd-popover-content">
           <div class="notifications-container">
             <div class="notifications-header">
