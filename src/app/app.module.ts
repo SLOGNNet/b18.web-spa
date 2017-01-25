@@ -5,7 +5,6 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { TopPanelComponent } from './top-panel';
-import { IconWithCountIndicatorComponent } from './top-panel/components/icon-with-count-indicator';
 import { TaskNotificationCard } from './task-notification-card';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
@@ -82,7 +81,6 @@ type StoreType = {
      CustomerPopoverComponent,
      DriverPopoverComponent,
      TopPanelComponent,
-     IconWithCountIndicatorComponent,
      TaskNotificationCard
   ],
   imports: [

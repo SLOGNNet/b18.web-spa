@@ -1,0 +1,31 @@
+@import '../../../../../../assets/styles/variables';
+
+.message-container {
+  display: flex;
+  padding: $popover-margin;
+  background: $light-blue;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+
+  .circle-container {
+    width: 20%;
+  }
+
+  .content-container {
+    width: 80%;
+
+    .message-sender {
+      font-weight: bold;
+    }
+
+    .message-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .message-date {
+      color: $dark-grey;
+    }
+  }
+}

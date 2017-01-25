@@ -3,21 +3,41 @@
 </span>
 <input type="text" placeholder="Search for anything by number, name, date or amount. You can also type action you would like to perform...">
 <div class="right">
-  <span>
-    <icon-with-count-indicator [count]="1111" [class]="'icon-tasks'">
-    </icon-with-count-indicator>
-  </span>
-  <span>
-    <icon-with-count-indicator [count]="1" [class]="'icon-messages'">
-    </icon-with-count-indicator>
-  </span>
-  <span>
-    <icon-with-count-indicator [count]="0" [class]="'icon-notifications'">
-    </icon-with-count-indicator>
-  </span>
+
+<bd-notification-popover
+    [itemsCount]="5888"
+    [width]="400"
+    [notificationType]="'tasks'">
+      <task-notification-card [message]="'my message 1'" [priority]="0" [date]="'current date 1'" [eventType]="1" [name]="'Add Load Commodity name 1'"></task-notification-card>
+      <task-notification-card [message]="'my message 2'" [priority]="1" [date]="'current date 2'" [eventType]="2" [name]="'Add Load Commodity name 2'"></task-notification-card>
+      <task-notification-card [message]="'my message 3'" [priority]="2" [date]="'current date 3'" [eventType]="3" [name]="'Add Load Commodity name 3'"></task-notification-card>
+      <task-notification-card [message]="'my message 4'" [priority]="1" [date]="'current date 4'" [eventType]="4" [name]="'Add Load Commodity name 4'"></task-notification-card>
+      <task-notification-card [message]="'my message 5'" [priority]="0" [date]="'current date 5'" [eventType]="1" [name]="'Add Load Commodity name 5'"></task-notification-card>
+</bd-notification-popover>
+<bd-notification-popover
+    [itemsCount]="1"
+    [width]="400"
+    [notificationType]="'messages'">
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+</bd-notification-popover>
+<bd-notification-popover
+    [itemsCount]="5"
+    [width]="400"
+    [notificationType]="'notifications'">
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+</bd-notification-popover>
+
   <span>
     <div>
-    <i class="icon-user"></i>
-  </div>
+      <i class="icon-user"></i>
+    </div>
   </span>
 </div>

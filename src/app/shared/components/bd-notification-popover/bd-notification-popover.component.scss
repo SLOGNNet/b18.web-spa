@@ -1,0 +1,59 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
+
+$popover-item-size: 40px;
+
+.base-notification-container {
+  .popover-target {
+    /deep/ .popover {
+      padding: 0;
+      box-shadow: 0 3px 12px 0 $grey;
+      margin-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+
+      .popover-content {
+        padding: 0;
+      }
+    }
+  }
+
+  .notifications-container {
+    button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: $blue;
+    }
+
+    .notifications-header {
+      display: flex;
+      width: 100%;
+      height: $popover-item-size;
+      padding: 0 $popover-margin;
+      border-bottom: $border;
+      align-items: center;
+      justify-content: space-between;
+
+
+      .new-items-info {
+        .new-items-count {
+          color: $dark-grey;
+        }
+      }
+    }
+
+    .notifications-body {
+      position: relative;
+    }
+
+    .notifications-footer {
+      display: flex;
+      width: 100%;
+      height: $popover-item-size;
+      padding: 0 $popover-margin;
+      justify-content: center;
+    }
+
+  }
+}
