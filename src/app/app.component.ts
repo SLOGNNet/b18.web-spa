@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { NotificationService } from './shared';
 import { IAppState, rootReducer } from './store';
 import { SwitchState } from './shared/enums/switchState';
 import { Notification, NotificationType } from './models';
@@ -33,8 +34,11 @@ import { NgRedux } from 'ng2-redux';
       </navigation-bar>
 
       <main>
-        <router-outlet></router-outlet>
+      <top-panel></top-panel>
+        <div class="main-content">
+          <router-outlet></router-outlet>
         <bd-toast-manager [notifications]="notif"></bd-toast-manager>
+        </div>
       </main>
     `
 })
@@ -75,7 +79,10 @@ export class AppComponent {
     private route: ActivatedRoute,
     private router: Router,
     private ngRedux: NgRedux<IAppState>,
+    private notificationService: NotificationService,
     private location: Location) {
+    notificationService.get().subscribe(notif => {
+    });
     this.ngRedux.configureStore(
       rootReducer, {}, []);
   }

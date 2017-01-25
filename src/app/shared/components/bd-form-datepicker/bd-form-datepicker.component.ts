@@ -15,7 +15,8 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'bd-form-datepicker',
   templateUrl: './bd-form-datepicker.component.html',
   styleUrls: ['bd-form-datepicker.component.scss'],
-  providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
+  providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdFormDatePicker implements ControlValueAccessor {
   @Input() dateFormat: string = 'MM/DD/YYYY';
@@ -43,7 +44,6 @@ export class BdFormDatePicker implements ControlValueAccessor {
         .month(newDate.month())
         .date(newDate.date()).toDate() : null;
     }
-
   }
 
   registerOnChange(fn: any) {

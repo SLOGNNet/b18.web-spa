@@ -18,16 +18,16 @@ config = {
     socketIoHost: 'http://localhost:5000'
   },
   publicdev: {
-    socketIoHost: 'https://dev.bridge18.com/notifications'
+    socketIoHost: 'https://dev.bridge18.com'
   },
   testing: {
 
   },
   qa: {
-    socketIoHost: 'https://qa.bridge18.com/notifications'
+    socketIoHost: 'https://qa.bridge18.com'
   },
   stage: {
-    socketIoHost: 'https://stage.bridge18.com/notifications'
+    socketIoHost: 'https://stage.bridge18.com'
   },
   production: {
   }

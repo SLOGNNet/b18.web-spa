@@ -20,6 +20,7 @@ export class SocketService {
     private createSocket(namespace: string, room: string) {
         const socketUrl = this.config.socketIoHost + namespace;
         this.socket = io.connect(socketUrl,  {
+          'path': '/socket/socket.io',
           'query': `roomId=${room}`,
           'reconnection': true,
           'reconnectionDelay': 1000,
@@ -30,9 +31,9 @@ export class SocketService {
         this.socket.on('disconnect', () => this.disconnect( namespace, room));
         this.socket.on('error', (error: string) => this.error( namespace, room, error));
         return Observable.create((observer: any) => {
-            this.socket.on('message', (item: any) => {
+            this.socket.on('message', (message: any) => {
                 console.log('message received');
-                observer.next({ item: item });
+                observer.next(message);
             });
             return () => this.socket.close();
         });
