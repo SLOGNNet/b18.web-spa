@@ -6,7 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { TopPanelComponent } from './top-panel';
 import { IconWithCountIndicatorComponent } from './top-panel/components/icon-with-count-indicator';
-import { NotificationItemComponent } from './notification-item';
+import { TaskNotificationCard } from './task-notification-card';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
 
@@ -83,7 +83,7 @@ type StoreType = {
      DriverPopoverComponent,
      TopPanelComponent,
      IconWithCountIndicatorComponent,
-     NotificationItemComponent
+     TaskNotificationCard
   ],
   imports: [
     SharedModule,

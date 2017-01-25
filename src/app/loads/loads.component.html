@@ -1,6 +1,7 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
+      <task-notification-card [message]="'my message'" [priority]="0" [date]="'current date'" [eventType]="3" [name]="'Add Load Commodity name'"></task-notification-card>
       <div class="btn-group">
         <button type="button" (click)="onTabClick(1)" class="btn btn-primary">List</button>
         <button type="button" (click)="onTabClick(2)" class="btn btn-primary">Datatable</button>

@@ -2,7 +2,7 @@ export * from './customer';
 export * from './address';
 export * from './load';
 export * from './contact';
-export * from './notification-item';
+export * from './notification';
 export * from './stop';
 export * from './commodity';
 export * from './trip';
