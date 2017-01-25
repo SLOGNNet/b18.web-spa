@@ -1,0 +1,11 @@
+<span *ngIf="isToday">
+  {{ eventDate | amTimeAgo }}, at {{eventTime}}
+</span>
+
+<span *ngIf="isYesterday">
+  Yesterday at {{eventTime}}
+</span>
+
+<span *ngIf="isEarlierThanYesterday">
+  {{ eventDate | amDateFormat:'LL' }} at {{eventTime}}
+</span>

@@ -46,6 +46,8 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent } from './components/bd-icons';
 import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
+import { MomentModule } from 'angular2-moment';
+import { BdTimeAgoComponent } from './components/bd-time-ago';
 
 @NgModule({
   providers: [
@@ -94,7 +96,8 @@ import { BdNotificationPopoverComponent, MessageNotificationComponent } from './
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent
+    MessageNotificationComponent,
+    BdTimeAgoComponent
   ],
   imports: [
     CommonModule,
@@ -105,7 +108,8 @@ import { BdNotificationPopoverComponent, MessageNotificationComponent } from './
     PerfectScrollbarModule,
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
-    BdPopoverModule
+    BdPopoverModule,
+    MomentModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -147,7 +151,8 @@ import { BdNotificationPopoverComponent, MessageNotificationComponent } from './
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent
+    MessageNotificationComponent,
+    BdTimeAgoComponent
   ]
 })
 export class SharedModule {

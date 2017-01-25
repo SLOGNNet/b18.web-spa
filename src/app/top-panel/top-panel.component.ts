@@ -8,10 +8,21 @@ import { Contact } from '../models';
 })
 export class TopPanelComponent {
   private testUser: Contact = new Contact();
+  private date1: Date = new Date();
+  private date2: Date = new Date();
+  private date3: Date = new Date();
 
-  ngOnInit(){
+
+constructor(){
+  this.date2.setDate(this.date1.getDate() - 1);
+  this.date3.setDate(this.date1.getDate() - 3);
+}
+
+  ngOnChanges(){
     this.testUser.firstName = 'Ihor';
     this.testUser.lastName = 'Pidruchny';
+    this.date2.setDate(this.date1.getDate() - 1);
+    this.date3.setDate(this.date1.getDate() - 3);
   }
 
 }
