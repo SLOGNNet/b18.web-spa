@@ -1,8 +1,5 @@
 <div class="task-notification-container">
-  <div [style.background]="getEventTypeColor" class="notification-icon">
-    <div class="icon-tasks"></div>
-    <p class="priority">{{priorityText}}</p>
-  </div>
+  <notification-icon [priority]="priority" [eventType]="eventType"></notification-icon>
   <div class="notification-content">
     <p class="name">{{name}}</p>
     <p class="message">{{message}}</p>

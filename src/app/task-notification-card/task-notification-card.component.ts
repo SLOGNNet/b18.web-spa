@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Notification } from '../models';
 
 @Component({
   selector: 'task-notification-card',
@@ -12,13 +11,4 @@ export class TaskNotificationCard {
   @Input() message: string;
   @Input() priority: number;
   @Input() date: string;
-
-  get priorityText(): string {
-    return Notification.getPriorityText(this.priority);
-  }
-
-  get getEventTypeColor(): string {
-    return Notification.getEventTypeColor(this.eventType);
-  }
-
 }
