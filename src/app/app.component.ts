@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { NotificationService } from './shared';
 import { IAppState, rootReducer } from './store';
 import { SwitchState } from './shared/enums/switchState';
 import {
@@ -49,7 +50,10 @@ export class AppComponent {
     private route: ActivatedRoute,
     private router: Router,
     private ngRedux: NgRedux<IAppState>,
+    private notificationService: NotificationService,
     private location: Location) {
+    notificationService.get().subscribe(notif => {
+    });
     this.ngRedux.configureStore(
       rootReducer, {}, []);
   }

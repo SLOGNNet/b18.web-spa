@@ -4,7 +4,6 @@ import * as serveStatic from 'serve-static';
 import * as path from 'path';
 import * as socketIo from 'socket.io';
 import { logger, setup as loggerSetup } from './logger';
-import { MessagesSocket } from './socket';
 import crossHeaders from '../middleware/cross';
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -38,7 +37,6 @@ class Server {
     this.configureLogging();
     this.routes();
     this.server = http.createServer(this.app);
-    this.sockets();
     this.listen();
   }
 
@@ -68,26 +66,13 @@ class Server {
         }
         if (err) {
           res.send('File upload error.');
-        }
-        else {
+        } else {
           res.send('File uploaded.');
         }
       });
     });
 
     this.app.use('/', router);
-  }
-
-  private sockets(): void {
-    const redis = require('redis');
-    const redisAdapter = require('socket.io-redis');
-    const sub = redis.createClient(6379, 'localhost', { return_buffers: true });
-    const adapter = redisAdapter({ subClient: sub });
-    this.io = socketIo(this.server, {
-      adapter: adapter
-    });
-    new MessagesSocket(this.io, '/notifications');
-    new MessagesSocket(this.io, '/drivers');
   }
 
   private listen(): void {
