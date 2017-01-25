@@ -83,9 +83,10 @@ type StoreType = {
      CustomerPopoverComponent,
      DriverPopoverComponent,
      TopPanelComponent,
-     IconWithCountIndicatorComponent
-    BdToastComponent,
-    BdToastManagerComponent
+     IconWithCountIndicatorComponent,
+     BdToastComponent,
+     BdToastManagerComponent
+  ],
   imports: [
     SharedModule,
     NavigationBarModule,
