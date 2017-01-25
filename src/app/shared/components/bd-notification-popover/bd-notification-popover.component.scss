@@ -24,6 +24,10 @@ $popover-item-size: 40px;
       border: 0;
       background: transparent;
       color: $blue;
+
+      &:focus {
+        outline: 0;
+      }
     }
 
     .notifications-header {
