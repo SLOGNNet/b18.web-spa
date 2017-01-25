@@ -1,7 +1,7 @@
 export enum NotificationPriority {
-  high = 0,
-  middle = 1,
-  low = 2,
+  High = 0,
+  Middle = 1,
+  Low = 2,
 }
 
 export enum eventType {
