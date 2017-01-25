@@ -9,7 +9,7 @@ import { TaskNotification } from '../models';
 })
 export class TopPanelComponent {
   private testUser: Contact = new Contact();
-  public notifications: Array<TaskNotification> = [{
+  private notifications: Array<TaskNotification> = [{
     name: 'Add Load Commodity name 1',
     eventType: 1,
     message: 'message',
@@ -26,7 +26,7 @@ export class TopPanelComponent {
   {
     name: 'Add Load Commodity name 3',
     eventType: 3,
-    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     priority: 2,
     date: 'date 3'
   },
@@ -45,7 +45,7 @@ export class TopPanelComponent {
     date: 'date 5'
   }
   ];
-  
+
   ngOnInit(){
     this.testUser.firstName = 'Ihor';
     this.testUser.lastName = 'Pidruchny';
