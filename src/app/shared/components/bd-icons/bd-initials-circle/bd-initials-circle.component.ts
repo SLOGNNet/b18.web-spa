@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-const defaultInitials = 'B18';
+const DEFAULT_INITIALS = 'B18';
 
 @Component({
   selector: 'bd-initials-circle',
@@ -13,7 +13,7 @@ export class BdInitialsCircleComponent {
       @Input() private lastName: string;
 
       get userInitials(){
-        if (!this.firstName && !this.lastName) return defaultInitials;
+        if (!this.firstName && !this.lastName) return DEFAULT_INITIALS;
         return this.firstName.charAt(0) + this.lastName.charAt(0);
       }
 }
