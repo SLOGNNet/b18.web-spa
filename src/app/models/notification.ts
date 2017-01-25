@@ -4,7 +4,7 @@ export enum NotificationPriority {
   Low = 2,
 }
 
-export enum eventType {
+export enum EventType {
   New = 1,
   InProgress = 2,
   Done = 3,
@@ -16,10 +16,10 @@ const eventStatusColors = createEventStatusColors();
 // Colors
 function createEventStatusColors() {
  let result = {};
-  result[eventType.New] = '#75b3e1';
-  result[eventType.InProgress] = '#ffbe4d';
-  result[eventType.Done] = '#85d183';
-  result[eventType.Error] = '#fb3a3a';
+  result[EventType.New] = '#75b3e1';
+  result[EventType.InProgress] = '#ffbe4d';
+  result[EventType.Done] = '#85d183';
+  result[EventType.Error] = '#fb3a3a';
 
   return result;
 };
@@ -31,7 +31,7 @@ export class Notification {
     return Notification.statusText[priority];
   }
 
-  public static getEventTypeColor(eventType: eventType): string {
+  public static getEventTypeColor(eventType: EventType): string {
     return eventStatusColors[eventType];
   }
 }
