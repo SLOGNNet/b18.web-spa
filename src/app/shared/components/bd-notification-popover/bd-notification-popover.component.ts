@@ -13,7 +13,7 @@ export class BdNotificationPopoverComponent {
   @Input() set notificationType(val: string) {
     this._iconClass = 'icon-' + val;
     this._titleText = 'Latest ' + val;
-    if(this.itemsCount < 2) this._itemsName = val.slice(0, val.length - 1);
+    if (this.itemsCount < 2) this._itemsName = val.slice(0, val.length - 1);
     else this._itemsName = val;
 
   }
