@@ -8,7 +8,7 @@
     class="toast"
     [ngClass]="notification.class"
     [ngSwitch]="notification.type">
-    {{startTimeOut(notification)}}
+    {{onStartNotificationTimeOut(notification)}}
     <bd-toast *ngSwitchCase="_notificationType.Error" [notification]="notification"></bd-toast>
   </div>
 </div>

@@ -14,6 +14,7 @@ export class BdToastManagerComponent {
   private _maxStack: number = 5;
   private _notificationType = NotificationType;
   private _notifications: Array<Notification> = [];
+  private _isMouseEntered = false;
 
   constructor(private _cdr: ChangeDetectorRef) {
 
@@ -27,37 +28,53 @@ export class BdToastManagerComponent {
     }
   }
 
-  startTimeOut(notification) {
-    if (!notification.timer) {
+  onStartNotificationTimeOut(notification: Notification): void {
+    if (!notification['timer']) {
       notification['class'] = 'add';
-      notification['delay'] = this._delay;
-      notification['date'] = new Date().getTime();
-      notification['timer'] = setTimeout(() => this.removeNotification(notification), this._delay);
+
+      if (!this._isMouseEntered) {
+        this.runNotificationTimeout(notification);
+      }
+
       setTimeout(() => this._cdr.markForCheck(), 0);
     }
   }
 
+  runNotificationTimeout(notification: Notification): void {
+    notification['startDate'] = new Date().getTime();
+    notification['delay'] = notification['delay'] ? notification['delay'] : this._delay;
+    notification['timer'] = setTimeout(() => this.removeNotification(notification), notification['delay']);
+  }
+
+  stopNotificationTimeout(notification: Notification): void {
+    const currentDate = new Date().getTime();
+
+    clearTimeout(notification['timer']);
+    notification['delay'] = notification['delay'] - (currentDate - notification['startDate']);
+  }
+
+  removeNotificationTimeout(notification: Notification): void {
+    notification['class'] = 'remove';
+    setTimeout(() => this._cdr.markForCheck(), 0);
+  }
+
   onEnter(): void {
-    const currentTime = new Date().getTime();
+    this._isMouseEntered = true;
     this._notifications.forEach(n => {
-      clearTimeout(n['timer']);
-      n['delay'] = n['delay'] - (currentTime - n['date']);
+      this.stopNotificationTimeout(n);
     });
   }
 
   onLeave(): void {
-    const currentTime = new Date().getTime();
+    this._isMouseEntered = false;
     this._notifications.forEach(n => {
-      if (n['delay']) {
-        n['timer'] = setTimeout(() => this.removeNotification(n), n['delay']);
-        n['date'] = currentTime;
-      }
+      this.runNotificationTimeout(n);
     });
   }
 
-  removeNotification(notification) {
-    notification['class'] = 'remove';
-    setTimeout(() => this._cdr.markForCheck(), 0);
+  removeNotification(notification: Notification): void {
+    this.removeNotificationTimeout(notification);
+
     setTimeout(() => {
       this._notifications = this._notifications.filter(n => n.id !== notification.id);
       this._cdr.markForCheck();
