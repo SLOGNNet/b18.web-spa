@@ -1,5 +1,7 @@
 import { Component, Input, HostListener, ElementRef } from '@angular/core';
 
+const MAX_NOTIFICATIONS_COUNT = 999;
+
 @Component({
   selector: 'icon-with-count-indicator',
   templateUrl: './icon-with-count-indicator.component.html',
@@ -8,7 +10,7 @@ import { Component, Input, HostListener, ElementRef } from '@angular/core';
 export class IconWithCountIndicatorComponent {
   @Input() class: string;
   @Input() count: number;
-  @Input() maxValue: number = 999;
+  @Input() maxValue: number = MAX_NOTIFICATIONS_COUNT;
 
   @Input() private isActive: boolean = false;
 
