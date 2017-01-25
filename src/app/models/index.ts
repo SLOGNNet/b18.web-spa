@@ -9,3 +9,4 @@ export * from './facility';
 export * from './equipment';
 export * from './driver';
 export * from './document';
+export * from './notification';

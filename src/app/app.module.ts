@@ -41,6 +41,8 @@ import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { CustomerCardComponent } from './customers/components/customer-card';
 import { CustomerCardsComponent } from './customers/components/customer-cards';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { BdToastComponent } from './bd-toast/bd-toast.component';
+import { BdToastManagerComponent } from './bd-toast-manager/bd-toast-manager.component';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -77,8 +79,10 @@ type StoreType = {
      LoadStopCardsComponent,
      TripPopoverComponent,
      CustomerPopoverComponent,
-     DriverPopoverComponent
-  ],
+     DriverPopoverComponent,
+    BdToastComponent,
+    BdToastManagerComponent
+],
   imports: [
     SharedModule,
     NavigationBarModule,

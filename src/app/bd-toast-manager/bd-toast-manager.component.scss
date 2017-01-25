@@ -1,0 +1,24 @@
+.bd-toast-manager-wrapper {
+  overflow: hidden;
+
+  .toast {
+    position: relative;
+    display: block;
+    opacity: 0;
+    margin-top: 20px;
+    transition: all .6s;
+    transform: translateY(-50%);
+    bottom: 0;
+
+    &.add {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &.remove {
+      transform: translateY(0);
+      opacity: 0;
+      margin-bottom: -120px;
+    }
+  }
+}
