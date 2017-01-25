@@ -13,6 +13,9 @@ export class BdNotificationPopoverComponent {
   @Input() set notificationType(val: string) {
     this._iconClass = 'icon-' + val;
     this._titleText = 'Latest ' + val;
+    if(this.itemsCount < 2) this._itemsName = val.slice(0, val.length - 1);
+    else this._itemsName = val;
+
   }
 
   @Output() refresh: EventEmitter<any> = new EventEmitter();
@@ -21,6 +24,7 @@ export class BdNotificationPopoverComponent {
   private _iconClass: string;
   private _titleText: string;
   private _topIconActive: boolean = false;
+  private _itemsName: string = '';
 
 
   onRefreshClick(event) {

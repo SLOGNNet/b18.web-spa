@@ -21,7 +21,7 @@
               <div *ngIf="itemsCount > 0"
                   class="new-items-info" >
                   <span class="new-items-count">
-                    {{itemsCount}} new items -
+                    {{itemsCount}} new {{_itemsName}} -
                   </span>
                   <button class="btn-refresh" (click)="onRefreshClick($event)">
                     Refresh

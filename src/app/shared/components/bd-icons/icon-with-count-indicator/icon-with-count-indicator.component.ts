@@ -40,14 +40,9 @@ export class IconWithCountIndicatorComponent {
     this.isActive = !this.isActive;
   }
 
-  @HostListener('click', ['$event'])
-  onClick(event): void {
-      this.toggleActive();
-  }
-
-  @HostListener('window:click')
-  onWindowClick(): void {
-      if (this._eref.nativeElement.contains(event.target)) return;
+  @HostListener('window:click', ['$event'])
+  onWindowClick(event): void {
+      if (this._eref.nativeElement.contains(event.target)) this.toggleActive();
       this.isActive = false;
   }
 
