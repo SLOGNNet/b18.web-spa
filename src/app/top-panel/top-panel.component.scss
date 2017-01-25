@@ -36,16 +36,6 @@ input {
 
     &:hover {
       background: $grey;
-
-      /deep/ icon-with-count-indicator {
-        span {
-          border-color: $grey;
-        }
-      }
-    }
-
-    i {
-      font-size: 19px;
     }
   }
 }
