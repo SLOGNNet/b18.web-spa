@@ -44,6 +44,8 @@ import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
+import { BdInitialsCircleComponent, IconWithCountIndicatorComponent } from './components/bd-icons';
+import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
 
 @NgModule({
   providers: [
@@ -88,7 +90,11 @@ import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-
     StopsLineComponent,
     StopPopoverComponent,
     BdResizerComponent,
-    BdResizeContainerComponent
+    BdResizeContainerComponent,
+    BdInitialsCircleComponent,
+    IconWithCountIndicatorComponent,
+    BdNotificationPopoverComponent,
+    MessageNotificationComponent
   ],
   imports: [
     CommonModule,
@@ -137,7 +143,11 @@ import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-
     HttpModule,
     BdPopoverModule,
     BdResizerComponent,
-    BdResizeContainerComponent
+    BdResizeContainerComponent,
+    BdInitialsCircleComponent,
+    IconWithCountIndicatorComponent,
+    BdNotificationPopoverComponent,
+    MessageNotificationComponent
   ]
 })
 export class SharedModule {

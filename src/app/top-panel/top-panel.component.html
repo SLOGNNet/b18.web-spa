@@ -3,21 +3,41 @@
 </span>
 <input type="text" placeholder="Search for anything by number, name, date or amount. You can also type action you would like to perform...">
 <div class="right">
-  <span>
-    <icon-with-count-indicator [count]="1111" [class]="'icon-tasks'">
-    </icon-with-count-indicator>
-  </span>
-  <span>
-    <icon-with-count-indicator [count]="1" [class]="'icon-messages'">
-    </icon-with-count-indicator>
-  </span>
-  <span>
-    <icon-with-count-indicator [count]="0" [class]="'icon-notifications'">
-    </icon-with-count-indicator>
-  </span>
+
+<bd-notification-popover
+    [itemsCount]="5888"
+    [width]="400"
+    [notificationType]="'tasks'">
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+</bd-notification-popover>
+<bd-notification-popover
+    [itemsCount]="1"
+    [width]="400"
+    [notificationType]="'messages'">
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+</bd-notification-popover>
+<bd-notification-popover
+    [itemsCount]="5"
+    [width]="400"
+    [notificationType]="'notifications'">
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+</bd-notification-popover>
+
   <span>
     <div>
-    <i class="icon-user"></i>
-  </div>
+      <i class="icon-user"></i>
+    </div>
   </span>
 </div>

@@ -1,0 +1,15 @@
+@import '../../../../../assets/styles/variables';
+
+$circle-diameter: 34px;
+
+.circle {
+  display: flex;
+  width: $circle-diameter;
+  height: $circle-diameter;
+  background: $black;
+  color: $white;
+  border-radius: 50%;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+}

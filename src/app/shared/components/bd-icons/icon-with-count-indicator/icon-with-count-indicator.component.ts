@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener, ElementRef } from '@angular/core';
+
+const MAX_NOTIFICATIONS_COUNT = 999;
 
 @Component({
   selector: 'icon-with-count-indicator',
@@ -8,8 +10,11 @@ import { Component, Input } from '@angular/core';
 export class IconWithCountIndicatorComponent {
   @Input() class: string;
   @Input() count: number;
-  @Input() maxValue: number = 999;
+  @Input() maxValue: number = MAX_NOTIFICATIONS_COUNT;
 
+  @Input() private isActive: boolean = false;
+
+  constructor(private _eref: ElementRef){}
 
   ngOnInit() {
     this.updateCount();
@@ -30,4 +35,15 @@ export class IconWithCountIndicatorComponent {
       this.updateCount();
     }
   }
+
+  toggleActive(){
+    this.isActive = !this.isActive;
+  }
+
+  @HostListener('window:click', ['$event'])
+  onWindowClick(event): void {
+      if (this._eref.nativeElement.contains(event.target)) this.toggleActive();
+      this.isActive = false;
+  }
+
 }
