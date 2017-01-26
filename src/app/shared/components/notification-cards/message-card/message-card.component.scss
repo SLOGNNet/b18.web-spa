@@ -1,0 +1,68 @@
+@import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/font-icons';
+
+.message-card-container {
+  background: $light-blue;
+
+  .title-container {
+    display: none;
+  }
+
+  .message-container {
+    display: flex;
+    padding: $popover-margin;
+    font-size: $tiny-font-size;
+    border-bottom: $border;
+
+    .circle-container {
+      width: auto;
+      margin-right: $popover-margin;
+    }
+
+    .content-container {
+      flex-grow: 1;
+
+      .message-sender {
+        font-weight: bold;
+      }
+
+      .message-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .message-date {
+        color: $dark-grey;
+      }
+    }
+  }
+
+  &.closable {
+
+    .title-container {
+      display: flex;
+      padding: $popover-margin $popover-margin 0;
+      justify-content: space-between;
+
+      .title-text {
+        color: $horizon;
+      }
+
+      button {
+        border: 0;
+        background: 0;
+        color: $black;
+      }
+    }
+
+    .message-container {
+      .content-container {
+        .message-date {
+          display: none;
+        }
+      }
+    }
+
+  }
+}

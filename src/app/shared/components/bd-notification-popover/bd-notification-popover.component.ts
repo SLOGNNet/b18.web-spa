@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { BdMessageCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 
 @Component({

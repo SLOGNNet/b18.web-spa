@@ -1,0 +1,27 @@
+<div class="message-card-container"
+     [class.closable]="isClosable">
+  <div class="title-container">
+    <span class="title-text">New Message</span>
+    <button
+      class="btn-close icon-close"
+      (click)="onCloseClick($event)">
+    </button>
+  </div>
+  <div class="message-container">
+    <div class="circle-container">
+      <bd-initials-circle
+        [firstName]="firstName"
+        [lastName]="lastName">
+      </bd-initials-circle>
+    </div>
+    <div class="content-container">
+      <div class="message-sender">{{firstName}} {{lastName}}</div>
+      <div class="message-text">
+        {{message}}
+      </div>
+      <div class="message-date">
+        {{date}}
+      </div>
+    </div>
+  </div>
+</div>

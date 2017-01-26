@@ -29,7 +29,11 @@
               </div>
             </div>
             <div class="notifications-body">
-              <ng-content></ng-content>
+
+              <message-card [message]="'testtesttest'" [isClosable]="true"></message-card>
+              <message-card [message]="'testtesttest'"></message-card>
+              <message-card [message]="'testtesttest'"></message-card>
+
             </div>
             <div class="notifications-footer">
               <button class="btn-show-all"
