@@ -22,7 +22,7 @@ export class NotificationCard {
   message: string;
   date: string;
 
-  public static getEventTypeColor(type: EventType): string {
-    return typeColors[type];
+  public static getEventTypeColor(eventType: EventType): string {
+    return typeColors[eventType];
   }
 }
