@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform, NgZone } from '@angular/core';
 import * as moment from 'moment';
 
-const TODAY = moment().clone(),
-  YESTERDAY = moment().clone().subtract(1, 'day');
-
 @Pipe({
   name: 'bdTimeAgo',
   pure: false
@@ -29,11 +26,11 @@ export class BdTimeAgoPipe implements PipeTransform {
   }
 
   isToday(val: Date): boolean {
-    return moment(val).isSame(TODAY, 'd');
+    return moment(val).isSame(moment().clone().startOf('day'), 'd');
   }
 
   isYesterday(val: Date): boolean {
-    return moment(val).isSame(YESTERDAY, 'd');
+    return moment(val).isSame(moment().clone().subtract(1, 'days').startOf('day'), 'd');
   }
 
 }
