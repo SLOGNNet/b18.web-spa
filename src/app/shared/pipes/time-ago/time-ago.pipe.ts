@@ -1,4 +1,4 @@
-import { Pipe, ChangeDetectorRef, PipeTransform, EventEmitter, OnDestroy, NgZone } from '@angular/core';
+import { Pipe, ChangeDetectorRef, PipeTransform, NgZone } from '@angular/core';
 import * as moment from 'moment';
 
 const TODAY = moment().clone(),
