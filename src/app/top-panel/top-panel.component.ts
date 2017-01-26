@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../models';
-import { TaskNotification } from '../models';
 import { Notification, NotificationType } from '../models';
 
 @Component({
