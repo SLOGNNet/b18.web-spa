@@ -40,7 +40,7 @@ export class TopPanelComponent {
     message: 'message 5',
     date: 'date 5'
 }];
-  private notifications: Array<TaskNotification> = [{
+  private taskNotifications: Array<TaskNotification> = [{
     name: 'Add Load Commodity name 1',
     eventType: 1,
     message: 'message',

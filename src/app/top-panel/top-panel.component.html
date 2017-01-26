@@ -9,7 +9,7 @@
     [width]="400"
     [notificationType]="'tasks'">
       <task-notification-card
-      *ngFor="let notification of this.notifications"
+      *ngFor="let notification of this.taskNotifications"
       [notification]="notification">
     </task-notification-card>
 </bd-notification-popover>
