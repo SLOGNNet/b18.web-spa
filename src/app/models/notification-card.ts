@@ -1,4 +1,4 @@
-export enum Type {
+export enum EventType {
   New = 1,
   Add = 2,
   Error = 3
@@ -9,20 +9,20 @@ const typeColors = createEventTypeColors();
 // Colors
 function createEventTypeColors() {
  let result = {};
-  result[Type.New] = '#ffbe4d';
-  result[Type.Add] = '#85d183';
-  result[Type.Error] = '#fb3a3a';
+  result[EventType.New] = '#ffbe4d';
+  result[EventType.Add] = '#85d183';
+  result[EventType.Error] = '#fb3a3a';
 
   return result;
 };
 
 export class NotificationCard {
   name: string;
-  type: number;
+  eventType: number;
   message: string;
   date: string;
 
-  public static getTypeColor(type: Type): string {
+  public static getEventTypeColor(type: EventType): string {
     return typeColors[type];
   }
 }

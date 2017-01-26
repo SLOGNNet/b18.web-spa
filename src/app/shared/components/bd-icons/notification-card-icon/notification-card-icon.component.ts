@@ -7,7 +7,7 @@ import { NotificationCard } from '../../../../models';
   templateUrl: './notification-card-icon.component.html'
 })
 export class NotificationCardIcon {
-  @Input() type: number;
+  @Input() eventType: number;
   private iconClass: boolean;
 
 
@@ -16,7 +16,7 @@ export class NotificationCardIcon {
   }
 
   updateType() {
-    if (this.type === 3) {
+    if (this.eventType === 3) {
       this.iconClass = true;
     } else {
       this.iconClass = false;
@@ -29,7 +29,7 @@ export class NotificationCardIcon {
     }
   }
 
-  get getTypeColor(): string {
-    return NotificationCard.getTypeColor(this.type);
+  get getEventTypeColor(): string {
+    return NotificationCard.getEventTypeColor(this.eventType);
   }
 }
