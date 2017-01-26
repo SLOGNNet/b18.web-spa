@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Notification } from '../../../../models';
+import { TaskNotification } from '../../../../models';
 
 @Component({
   selector: 'notification-icon',
@@ -11,10 +11,10 @@ export class NotificationIcon {
   @Input() eventType: number;
 
   get priorityText(): string {
-    return Notification.getPriorityText(this.priority);
+    return TaskNotification.getPriorityText(this.priority);
   }
 
   get getEventTypeColor(): string {
-    return Notification.getEventTypeColor(this.eventType);
+    return TaskNotification.getEventTypeColor(this.eventType);
   }
 }

@@ -89,6 +89,12 @@
   }
 }
 
+.icon-success {
+  &:before {
+    content: '\e912';
+  }
+}
+
 .icon-pickup-dropoff {
   &:before {
     content: '\e90b';
