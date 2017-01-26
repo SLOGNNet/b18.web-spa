@@ -4,21 +4,6 @@ import * as moment from 'moment';
 const TODAY = moment().clone(),
   YESTERDAY = moment().clone().subtract(1, 'day');
 
-moment.updateLocale('en', {
-  longDateFormat: {
-    LT: 'h:mm',
-    LTS: 'h:mm:ss A',
-    L: 'MM/DD/YYYY',
-    l: 'M/D/YYYY',
-    LL: 'MMMM Do YYYY',
-    ll: 'MMM D YYYY',
-    LLL: 'MMMM Do YYYY LT',
-    lll: 'MMM D YYYY LT',
-    LLLL: 'dddd, MMMM Do YYYY LT',
-    llll: 'ddd, MMM D YYYY LT'
-  }
-});
-
 @Pipe({
   name: 'bdTimeAgo',
   pure: false
@@ -33,9 +18,9 @@ export class BdTimeAgoPipe implements PipeTransform {
     let result: string;
 
     if (this.isToday(value)) {
-      result = moment(value).fromNow() + ', at ' + this.getTime(value);
+      result = moment(value).fromNow() + ', at ' + moment(value).format('HH:mm');
     } else if (this.isYesterday(value)) {
-      result = moment(value).calendar();
+      result = 'Yesterday at ' + moment(value).format('HH:mm');
     } else {
       result = moment().format('MMM D YYYY');
     }
@@ -49,10 +34,6 @@ export class BdTimeAgoPipe implements PipeTransform {
 
   isYesterday(val: Date): boolean {
     return moment(val).isSame(YESTERDAY, 'd');
-  }
-
-  getTime(val: Date): string {
-    return val.getHours() + ':' + (val.getMinutes() < 10 ? '0' : '') + val.getMinutes();
   }
 
 }
