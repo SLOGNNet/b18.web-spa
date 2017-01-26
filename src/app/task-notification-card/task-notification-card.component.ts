@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TaskNotification } from '../models';
 
 @Component({
   selector: 'task-notification-card',
@@ -6,9 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./task-notification-card.component.scss']
 })
 export class TaskNotificationCard {
-  @Input() name: string;
-  @Input() eventType: any;
-  @Input() message: string;
-  @Input() priority: number;
-  @Input() date: string;
+  @Input() notification: TaskNotification;
 }

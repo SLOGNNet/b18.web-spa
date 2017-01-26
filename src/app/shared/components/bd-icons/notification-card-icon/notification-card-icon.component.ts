@@ -16,7 +16,7 @@ export class NotificationCardIcon {
   }
 
   updateType() {
-    if(this.type == 3){
+    if (this.type === 3) {
       this.iconClass = true;
     } else {
       this.iconClass = false;

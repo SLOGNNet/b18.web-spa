@@ -4,6 +4,7 @@ export * from './load';
 export * from './contact';
 export * from './notification';
 export * from './notification-card';
+export * from './task-notification';
 export * from './stop';
 export * from './commodity';
 export * from './trip';
