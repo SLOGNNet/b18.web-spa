@@ -10,6 +10,10 @@ import { TaskNotification } from '../models';
 })
 export class TopPanelComponent {
   private testUser: Contact = new Contact();
+  private date1: Date = new Date();
+  private date2: Date = new Date();
+  private date3: Date = new Date();
+
   private latestNotifications: Array<NotificationCard> = [{
     name: 'Create New Event',
     eventType: 1,
@@ -40,6 +44,7 @@ export class TopPanelComponent {
     message: 'message 5',
     date: 'date 5'
 }];
+
   private taskNotifications: Array<TaskNotification> = [{
     name: 'Add Load Commodity name 1',
     eventType: 1,
@@ -77,7 +82,13 @@ export class TopPanelComponent {
   }
   ];
 
-  ngOnInit(){
+
+constructor(){
+  this.date2.setDate(this.date1.getDate() - 1);
+  this.date3.setDate(this.date1.getDate() - 3);
+}
+
+  ngOnChanges(){
     this.testUser.firstName = 'Ihor';
     this.testUser.lastName = 'Pidruchny';
   }
