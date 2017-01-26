@@ -1,0 +1,20 @@
+@import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/font-icons';
+
+.notification-icon {
+  width: 35px;
+  height: 35px;
+  color: $white;
+  text-align: center;
+  border-radius: 3px;
+
+  .icon-tasks {
+    font-size: 15px;
+    padding-top: 4px;
+  }
+
+  .priority {
+    font-size: $mini-font-size;
+    font-weight: bold;
+  }
+}

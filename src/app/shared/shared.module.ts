@@ -44,7 +44,7 @@ import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
-import { BdInitialsCircleComponent, IconWithCountIndicatorComponent } from './components/bd-icons';
+import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon } from './components/bd-icons';
 import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
 import { MomentModule } from 'angular2-moment';
 import { BdPipesModule } from './pipes';
@@ -96,7 +96,8 @@ import { BdPipesModule } from './pipes';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent
+    MessageNotificationComponent,
+    NotificationIcon
   ],
   imports: [
     CommonModule,
@@ -152,7 +153,8 @@ import { BdPipesModule } from './pipes';
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     MessageNotificationComponent,
-    BdPipesModule
+    BdPipesModule,
+    NotificationIcon
   ]
 })
 export class SharedModule {

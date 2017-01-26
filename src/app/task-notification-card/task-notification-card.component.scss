@@ -1,0 +1,52 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+@import '../../assets/styles/font-icons';
+
+
+.task-notification-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 10px 15px;
+  background: $white;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+
+  .notification-content {
+    width: 100%;
+    margin: 5px 0 0 15px;
+    word-wrap: break-word;
+
+    p {
+      margin: 0;
+      line-height: 1;
+    }
+
+    .message {
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .date {
+      color: $grey;
+      margin-top: 12px;
+    }
+  }
+
+  &:hover {
+    background: $light-blue;
+
+    .notification-content {
+      .message {
+        background: $light-blue;
+
+        &:after {
+          background: $light-blue;
+        }
+      }
+    }
+  }
+}
