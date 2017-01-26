@@ -25,13 +25,12 @@ function createEventStatusColors() {
 };
 
 export class TaskNotification {
+  public static statusText = ['HI', 'LO', 'ME'];
   name: string;
   eventType: EventType;
   message: string;
   priority: NotificationPriority;
   date: string;
-
-  private static statusText = ['HI', 'LO', 'ME'];
 
   public static getPriorityText(priority: NotificationPriority): string {
     return TaskNotification.statusText[priority];
