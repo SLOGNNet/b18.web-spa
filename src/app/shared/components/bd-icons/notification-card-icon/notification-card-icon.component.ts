@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NotificationCard } from '../../../../models';
+import { NotificationCard, Type } from '../../../../models';
 
 @Component({
   selector: 'notification-card-icon',
@@ -8,7 +8,7 @@ import { NotificationCard } from '../../../../models';
 })
 export class NotificationCardIcon {
   @Input() eventType: number;
-  private iconClass: boolean;
+  private isSuccess: boolean;
 
 
   ngOnInit() {
@@ -16,10 +16,10 @@ export class NotificationCardIcon {
   }
 
   updateType() {
-    if (this.eventType === 3) {
-      this.iconClass = true;
+    if (this.eventType === Type.Error) {
+      this.isSuccess = false;
     } else {
-      this.iconClass = false;
+      this.isSuccess = true;
     }
   }
 
