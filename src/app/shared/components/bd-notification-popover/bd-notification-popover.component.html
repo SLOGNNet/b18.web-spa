@@ -37,9 +37,21 @@
                   [sender]="item.sender">
                 </message-card>
               </div>
+
+              <div *ngSwitchCase="'task'">
                 <task-card
-                  *ngSwitchCase="task">
+                  *ngFor="let item of items"
+                  [notification]="item"
+                  >
                 </task-card>
+              </div>
+
+              <div *ngSwitchCase="'notification'">
+                <notification-card
+                  *ngFor="let item of items"
+                  [notification]="item">
+                </notification-card>
+              </div>
 
             </div>
             <div class="notifications-footer">

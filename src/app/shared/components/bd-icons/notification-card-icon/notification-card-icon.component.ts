@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NotificationCard, Type } from '../../../../models';
+import { Notification, NotificationStatus } from '../../../../models';
 
 @Component({
   selector: 'notification-card-icon',
@@ -12,11 +12,11 @@ export class NotificationCardIcon {
 
 
   ngOnInit() {
-    this.updateType();
+    this.updateNotificationStatus();
   }
 
-  updateType() {
-    if (this.eventType === Type.Error) {
+  updateNotificationStatus() {
+    if (this.eventType === NotificationStatus.Error) {
       this.isSuccess = false;
     } else {
       this.isSuccess = true;
@@ -25,11 +25,11 @@ export class NotificationCardIcon {
 
   ngOnChanges(changes) {
     if (changes.type) {
-      this.updateType();
+      this.updateNotificationStatus();
     }
   }
 
-  get eventTypeColor(): string {
-    return NotificationCard.eventTypeColor(this.eventType);
+  get notificationStatusColor(): string {
+    return Notification.notificationStatusColor(this.eventType);
   }
 }

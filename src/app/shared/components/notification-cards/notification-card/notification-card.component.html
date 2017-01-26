@@ -1,7 +1,7 @@
 <div class="notification-card-container">
-  <notification-card-icon [eventType]="notification.eventType"></notification-card-icon>
+  <notification-card-icon [eventType]="notification.notificationStatus"></notification-card-icon>
   <div class="notification-content">
-    <p class="name">{{notification.name}}</p>
+    <p class="name">{{notification.title}}</p>
     <p class="message">{{notification.message}}</p>
     <p class="date">{{notification.date}}</p>
   </div>

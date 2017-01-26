@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskNotification } from '../../../../models';
+import { Notification } from '../../../../models';
 
 @Component({
   selector: 'task-card',
@@ -7,5 +8,5 @@ import { TaskNotification } from '../../../../models';
   styleUrls: ['./task-card.component.scss']
 })
 export class BdTaskCardComponent {
-  @Input() notification: TaskNotification;
+  @Input() notification: Notification;
 }

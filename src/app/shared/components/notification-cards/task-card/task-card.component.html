@@ -1,7 +1,7 @@
 <div class="task-notification-container">
-  <notification-icon [priority]="notification.priority" [eventType]="notification.eventType"></notification-icon>
+  <notification-icon [priority]="notification.priority" [taskType]="notification.taskType"></notification-icon>
   <div class="notification-content">
-    <p class="name">{{notification.name}}</p>
+    <p class="name">{{notification.title}}</p>
     <p class="message">{{notification.message}}</p>
     <p class="date">{{notification.date}}</p>
   </div>
