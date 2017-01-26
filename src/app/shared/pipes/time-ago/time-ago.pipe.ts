@@ -1,5 +1,4 @@
 import { Pipe, ChangeDetectorRef, PipeTransform, EventEmitter, OnDestroy, NgZone } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
 
 const TODAY = moment().clone(),

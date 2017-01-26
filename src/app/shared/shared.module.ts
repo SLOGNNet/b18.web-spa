@@ -46,7 +46,6 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon } from './components/bd-icons';
 import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
-import { MomentModule } from 'angular2-moment';
 import { BdPipesModule } from './pipes';
 
 @NgModule({
@@ -109,7 +108,6 @@ import { BdPipesModule } from './pipes';
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
     BdPopoverModule,
-    MomentModule,
     BdPipesModule
   ],
   exports: [
