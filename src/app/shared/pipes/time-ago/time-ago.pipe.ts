@@ -1,4 +1,4 @@
-import { Pipe, ChangeDetectorRef, PipeTransform, NgZone } from '@angular/core';
+import { Pipe, PipeTransform, NgZone } from '@angular/core';
 import * as moment from 'moment';
 
 const TODAY = moment().clone(),
@@ -27,7 +27,7 @@ export class BdTimeAgoPipe implements PipeTransform {
 
   value: Date;
 
-  constructor(private _cdr: ChangeDetectorRef, private ngZone: NgZone) { }
+  constructor(private ngZone: NgZone) { }
 
   transform(value: Date): string {
     let result: string;
