@@ -46,7 +46,7 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon } from './components/bd-icons';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
-import { BdMessageCardComponent } from './components/notification-cards';
+import { BdMessageCardComponent, BdTaskCardComponent } from './components/notification-cards';
 import { BdPipesModule } from './pipes';
 
 
@@ -98,7 +98,8 @@ import { BdPipesModule } from './pipes';
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     NotificationIcon,
-    BdMessageCardComponent
+    BdMessageCardComponent,
+    BdTaskCardComponent
   ],
   imports: [
     CommonModule,
@@ -153,6 +154,7 @@ import { BdPipesModule } from './pipes';
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     BdMessageCardComponent,
+    BdTaskCardComponent,
     BdPipesModule,
     NotificationIcon
   ]

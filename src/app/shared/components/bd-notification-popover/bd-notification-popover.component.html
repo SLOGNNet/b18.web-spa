@@ -28,11 +28,18 @@
                   </button>
               </div>
             </div>
-            <div class="notifications-body">
-
-              <message-card [message]="'testtesttest'" [isClosable]="true"></message-card>
-              <message-card [message]="'testtesttest'"></message-card>
-              <message-card [message]="'testtesttest'"></message-card>
+            <div class="notifications-body" [ngSwitch]="_notificationType">
+              <div *ngSwitchCase="'message'">
+                <message-card
+                  *ngFor="let item of items"
+                  [message]="item.message"
+                  [date]="item.date"
+                  [sender]="item.sender">
+                </message-card>
+              </div>
+                <task-card
+                  *ngSwitchCase="task">
+                </task-card>
 
             </div>
             <div class="notifications-footer">

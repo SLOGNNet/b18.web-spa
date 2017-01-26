@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Contact } from '../../../../../../models';
-
+import { Notification, Contact } from '../../../../models';
 
 @Component({
     selector: 'message-card',
@@ -12,6 +11,7 @@ export class BdMessageCardComponent {
   @Input() private message: string = '';
   @Input() private date: Date = new Date();
   @Input() private isClosable: boolean = false;
+  @Input() private sender: Contact = new Contact();
   private firstName: string = 'test name';
   private lastName: string = 'test lastname';
 

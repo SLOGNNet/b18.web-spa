@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../models';
 import { TaskNotification } from '../models';
+import { Notification, NotificationType } from '../models';
 
 @Component({
   selector: 'top-panel',
@@ -47,6 +48,39 @@ export class TopPanelComponent {
     priority: 0,
     date: 'date 5'
   }
+  ];
+
+  private testNotifications: Array<Notification> = [
+    {
+      id: 1,
+      content: "test content",
+      type: NotificationType.message,
+      date: new Date(),
+      message: "Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+      sender: this.testUser
+    },
+    {
+      id: 2,
+      content: "test content",
+      type: NotificationType.message,
+      date: new Date(),
+      message: "Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+      sender: this.testUser
+    },{
+      id: 3,
+      content: "test content",
+      type: NotificationType.message,
+      date: new Date(),
+      message: "Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+      sender: this.testUser
+    },{
+      id: 1,
+      content: "test content",
+      type: NotificationType.message,
+      date: new Date(),
+      message: "Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+      sender: this.testUser
+    }
   ];
 
 

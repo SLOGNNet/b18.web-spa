@@ -1,37 +1,27 @@
-export enum NotificationPriority {
-  High = 0,
-  Middle = 1,
-  Low = 2,
-}
+import { Commodity, Address, Driver, Contact } from './index';
+import { generateNewId } from './utils';
 
-export enum EventType {
-  New = 1,
-  InProgress = 2,
-  Done = 3,
-  Error = 4
-}
-
-const eventStatusColors = createEventStatusColors();
-
-// Colors
-function createEventStatusColors() {
- let result = {};
-  result[EventType.New] = '#75b3e1';
-  result[EventType.InProgress] = '#ffbe4d';
-  result[EventType.Done] = '#85d183';
-  result[EventType.Error] = '#fb3a3a';
-
-  return result;
+export enum NotificationType {
+  notification = 1,
+  message = 2,
+  event = 3
 };
 
 export class Notification {
-  private static statusText = ['HI', 'LO', 'ME'];
+  id: number;
+  content: string;
+  type: NotificationType;
+  date: Date;
+  message: string;
+  sender: Contact;
 
-  public static getPriorityText(priority: NotificationPriority): string {
-    return Notification.statusText[priority];
+
+  static create(): Notification {
+    const result = new Notification();
+    result.id = generateNewId();
+    result.type = NotificationType.message;
+    result.date = new Date()
+    return result;
   }
 
-  public static getEventTypeColor(eventType: EventType): string {
-    return eventStatusColors[eventType];
-  }
 }

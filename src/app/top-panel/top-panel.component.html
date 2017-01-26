@@ -7,24 +7,22 @@
 <bd-notification-popover
     [itemsCount]="5888"
     [width]="400"
-    [notificationType]="'tasks'">
-      <!-- <task-notification-card
-      *ngFor="let notification of this.notifications"
-      [notification]="notification">
-    </task-notification-card> -->
-
+    [notificationType]="'task'"
+    [items]="testNotifications">
 </bd-notification-popover>
+
 <bd-notification-popover
     [itemsCount]="1"
     [width]="400"
-    [notificationType]="'messages'">
-
+    [notificationType]="'message'"
+    [items]="testNotifications">
 </bd-notification-popover>
+
 <bd-notification-popover
     [itemsCount]="5"
     [width]="400"
-    [notificationType]="'notifications'">
-
+    [notificationType]="'notification'"
+    [items]="testNotifications">
 </bd-notification-popover>
 
   <span>
