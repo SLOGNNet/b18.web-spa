@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../models';
+import { NotificationCard } from '../models';
 import { TaskNotification } from '../models';
 import { Notification, NotificationType } from '../models';
 
@@ -13,7 +14,39 @@ export class TopPanelComponent {
   private date1: Date = new Date();
   private date2: Date = new Date();
   private date3: Date = new Date();
-  private notifications: Array<TaskNotification> = [{
+
+  private latestNotifications: Array<NotificationCard> = [{
+    name: 'Create New Event',
+    eventType: 1,
+    message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    date: 'date 1'
+  },
+  {
+    name: 'Load Commodity Added',
+    eventType: 2,
+    message: 'message 2',
+    date: 'date 2'
+  },
+  {
+    name: 'Load Commodity not Added',
+    eventType: 3,
+    message: 'message 3',
+    date: 'date 3'
+  },
+  {
+    name: 'Load commodity Added',
+    eventType: 2,
+    message: 'message 4',
+    date: 'date 4'
+  },
+  {
+    name: 'Load commodity Added',
+    eventType: 2,
+    message: 'message 5',
+    date: 'date 5'
+}];
+
+  private taskNotifications: Array<TaskNotification> = [{
     name: 'Add Load Commodity name 1',
     eventType: 1,
     message: 'message',

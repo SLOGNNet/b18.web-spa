@@ -44,9 +44,9 @@ import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
-import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon } from './components/bd-icons';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
 import { BdMessageCardComponent, BdTaskCardComponent } from './components/notification-cards';
+import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 
 
@@ -99,7 +99,9 @@ import { BdPipesModule } from './pipes';
     BdNotificationPopoverComponent,
     NotificationIcon,
     BdMessageCardComponent,
-    BdTaskCardComponent
+    BdTaskCardComponent,
+    NotificationIcon,
+    NotificationCardIcon
   ],
   imports: [
     CommonModule,
@@ -155,8 +157,10 @@ import { BdPipesModule } from './pipes';
     BdNotificationPopoverComponent,
     BdMessageCardComponent,
     BdTaskCardComponent,
-    BdPipesModule,
-    NotificationIcon
+    NotificationIcon,
+    NotificationIcon,
+    NotificationCardIcon,
+    BdPipesModule
   ]
 })
 export class SharedModule {
