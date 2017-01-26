@@ -47,6 +47,8 @@ import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon } from './components/bd-icons';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
 import { BdMessageCardComponent } from './components/notification-cards';
+import { BdPipesModule } from './pipes';
+
 
 @NgModule({
   providers: [
@@ -107,7 +109,8 @@ import { BdMessageCardComponent } from './components/notification-cards';
     PerfectScrollbarModule,
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
-    BdPopoverModule
+    BdPopoverModule,
+    BdPipesModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -149,8 +152,9 @@ import { BdMessageCardComponent } from './components/notification-cards';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    NotificationIcon,
-    BdMessageCardComponent
+    BdMessageCardComponent,
+    BdPipesModule,
+    NotificationIcon
   ]
 })
 export class SharedModule {
