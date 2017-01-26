@@ -8,11 +8,10 @@
     [itemsCount]="5888"
     [width]="400"
     [notificationType]="'tasks'">
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <task-notification-card
+      *ngFor="let notification of this.notifications"
+      [notification]="notification">
+    </task-notification-card>
 </bd-notification-popover>
 <bd-notification-popover
     [itemsCount]="1"

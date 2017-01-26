@@ -2,6 +2,8 @@ export * from './customer';
 export * from './address';
 export * from './load';
 export * from './contact';
+export * from './notification';
+export * from './task-notification';
 export * from './stop';
 export * from './commodity';
 export * from './trip';
