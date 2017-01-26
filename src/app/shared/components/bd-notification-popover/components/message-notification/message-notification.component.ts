@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from '../../../../../models';
-import { BdTimeAgoComponent } from '../../../bd-time-ago';
+import { BdTimeAgoPipe } from '../../../../pipes';
+
 
 @Component({
     selector: 'message-notification',
@@ -8,7 +9,6 @@ import { BdTimeAgoComponent } from '../../../bd-time-ago';
     styleUrls: ['./message-notification.component.scss']
 })
 export class MessageNotificationComponent {
-
 
   @Input() private message: string = '';
   @Input() private user: Contact;

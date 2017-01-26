@@ -47,7 +47,7 @@ import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent } from './components/bd-icons';
 import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
 import { MomentModule } from 'angular2-moment';
-import { BdTimeAgoComponent } from './components/bd-time-ago';
+import { BdPipesModule } from './pipes';
 
 @NgModule({
   providers: [
@@ -96,8 +96,7 @@ import { BdTimeAgoComponent } from './components/bd-time-ago';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent,
-    BdTimeAgoComponent
+    MessageNotificationComponent
   ],
   imports: [
     CommonModule,
@@ -109,7 +108,8 @@ import { BdTimeAgoComponent } from './components/bd-time-ago';
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
     BdPopoverModule,
-    MomentModule
+    MomentModule,
+    BdPipesModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -152,7 +152,7 @@ import { BdTimeAgoComponent } from './components/bd-time-ago';
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     MessageNotificationComponent,
-    BdTimeAgoComponent
+    BdPipesModule
   ]
 })
 export class SharedModule {
