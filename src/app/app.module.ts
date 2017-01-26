@@ -5,7 +5,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SharedModule } from './shared/shared.module';
 import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { TopPanelComponent } from './top-panel';
-import { NotificationCard } from './notification-card';
+import { NotificationCardComponent } from './notification-card';
 import { TaskNotificationCard } from './task-notification-card';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
@@ -83,7 +83,7 @@ type StoreType = {
      DriverPopoverComponent,
      TopPanelComponent,
      TaskNotificationCard,
-     NotificationCard
+     NotificationCardComponent
   ],
   imports: [
     SharedModule,

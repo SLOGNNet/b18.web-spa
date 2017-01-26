@@ -28,11 +28,10 @@
     [itemsCount]="5"
     [width]="400"
     [notificationType]="'notifications'">
-      <notification-card></notification-card>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
-      <message-notification [user]="testUser" [message]="'test message'"></message-notification>
+      <notification-card
+      *ngFor="let notification of this.latestNotifications"
+       [notification]="notification">
+     </notification-card>
 </bd-notification-popover>
 
   <span>
