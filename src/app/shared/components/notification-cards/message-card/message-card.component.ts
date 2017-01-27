@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
-import { Notification, Contact } from '../../../../models';
+import { Notification } from '../../../../models';
 
 @Component({
     selector: 'message-card',
@@ -8,12 +8,7 @@ import { Notification, Contact } from '../../../../models';
 })
 export class BdMessageCardComponent {
 
-  @Input() private message: string = '';
-  @Input() private date: Date = new Date();
-  @Input() private isClosable: boolean = false;
-  @Input() private sender: Contact = new Contact();
-  private firstName: string = 'test name';
-  private lastName: string = 'test lastname';
+  @Input() private notification: Notification;
 
   @Output() private closeClicked: EventEmitter<any> = new EventEmitter();
 

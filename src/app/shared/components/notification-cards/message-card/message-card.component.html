@@ -10,17 +10,17 @@
   <div class="message-container">
     <div class="circle-container">
       <bd-initials-circle
-        [firstName]="firstName"
-        [lastName]="lastName">
+        [firstName]="notification.sender.firstName"
+        [lastName]="notification.sender.lastName">
       </bd-initials-circle>
     </div>
     <div class="content-container">
-      <div class="message-sender">{{firstName}} {{lastName}}</div>
+      <div class="message-sender">{{notification.sender.firstName}} {{notification.sender.lastName}}</div>
       <div class="message-text">
-        {{message}}
+        {{notification.message}}
       </div>
       <div class="message-date">
-        {{date | bdTimeAgo}}
+        {{notification.date | bdTimeAgo}}
       </div>
     </div>
   </div>
