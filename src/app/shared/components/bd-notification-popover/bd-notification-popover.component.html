@@ -29,27 +29,27 @@
               </div>
             </div>
             <div class="notifications-body" [ngSwitch]="_notificationType">
-              <div *ngSwitchCase="'message'">
+              <div *ngSwitchCase="notificationTypeEnum.Message">
                 <message-card
                   *ngFor="let item of items"
-                  [isClosable]="true"
+                  [isClosable]="false"
                   [notification]="item">
                 </message-card>
               </div>
 
-              <div *ngSwitchCase="'task'">
+              <div *ngSwitchCase="notificationTypeEnum.Task">
                 <task-card
                   *ngFor="let item of items"
-                  [isClosable]="true"
+                  [isClosable]="false"
                   [notification]="item"
                   >
                 </task-card>
               </div>
 
-              <div *ngSwitchCase="'notification'">
+              <div *ngSwitchCase="notificationTypeEnum.Notification">
                 <notification-card
                   *ngFor="let item of items"
-                  [isClosable]="true"
+                  [isClosable]="false"
                   [notification]="item">
                 </notification-card>
               </div>

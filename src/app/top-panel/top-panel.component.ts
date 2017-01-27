@@ -13,10 +13,12 @@ export class TopPanelComponent {
   private date2: Date = new Date();
   private date3: Date = new Date();
 
+  private notificationTypeEnum = NotificationType;
+
   private testNotifications: Array<Notification> = [
     {
       id: 1,
-      type: NotificationType.Message,
+      type: NotificationType.Task,
       title: 'test title',
       date: new Date(),
       message: 'Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
@@ -38,7 +40,7 @@ export class TopPanelComponent {
     },
     {
       id: 3,
-      type: NotificationType.Message,
+      type: NotificationType.Notification,
       date: new Date(),
       title: 'test title',
       message: 'Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat',

@@ -9,9 +9,9 @@ export enum NotificationStatus {
 };
 
 export enum NotificationType {
-  Notification = 1,
-  Message = 2,
-  Event = 3
+  Notification = 0,
+  Message = 1,
+  Task = 2
 };
 
 export enum NotificationPriority {
@@ -54,6 +54,7 @@ function createNotificationsTaskTypeColors() {
 
 export class Notification {
 
+  public static notificationTypeText = ['notification', 'message', 'task'];
   public static notificationPriorityText = ['HI', 'LO', 'ME'];
 
   id: number;
@@ -81,6 +82,10 @@ export class Notification {
 
   public static getPriorityText(priority: NotificationPriority): string {
     return Notification.notificationPriorityText[priority];
+  }
+
+  public static getTypeText(type: NotificationType): string {
+    return Notification.notificationTypeText[type];
   }
 
   public static getEventTypeColor(taskType: TaskType): string {

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
-import { Notification } from '../../../models';
+import { Notification, NotificationType } from '../../../models';
 
 @Component({
     selector: 'bd-notification-popover',
@@ -16,18 +16,18 @@ export class BdNotificationPopoverComponent {
   @Input() itemsCount: number = 0;
   @Input() width: number;
   @Input() items: Array<Notification> = [];
-  @Input() set notificationType(val: string) {
-    this.topIconClassName = val;
-    this.titleText = val;
-    this._itemsName = val;
-    this._notificationType = val;
+  @Input() set notificationType(type: NotificationType) {
+    const typeText = Notification.getTypeText(type);
+    this.topIconClassName = this._itemsName = this.titleText = typeText;
+    this._notificationType = type;
   }
 
+  private notificationTypeEnum = NotificationType;
   private _iconClass: string;
   private _titleText: string;
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
-  private _notificationType: string;
+  private _notificationType: NotificationType;
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
