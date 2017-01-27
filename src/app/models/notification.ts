@@ -54,7 +54,7 @@ function createNotificationsTaskTypeColors() {
 
 export class Notification {
 
-  public static taskStatusText = ['HI', 'LO', 'ME'];
+  public static notificationPriorityText = ['HI', 'LO', 'ME'];
 
   id: number;
   title: string;
@@ -80,7 +80,7 @@ export class Notification {
   }
 
   public static getPriorityText(priority: NotificationPriority): string {
-    return Notification.taskStatusText[priority];
+    return Notification.notificationPriorityText[priority];
   }
 
   public static getEventTypeColor(taskType: TaskType): string {
