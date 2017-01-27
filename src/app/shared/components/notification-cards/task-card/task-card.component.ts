@@ -10,9 +10,9 @@ export class BdTaskCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
 
-  @Output() private closeClicked: EventEmitter<any> = new EventEmitter();
+  @Output() private close: EventEmitter<any> = new EventEmitter();
 
   onCloseClick(event) {
-    this.closeClicked.emit(event);
+    this.close.emit(event);
   }
 }
