@@ -6,9 +6,9 @@
   <div
     *ngFor="let notification of _visibleNotifications"
     class="toast"
-    [ngClass]="notification.class"
+    [class.remove]="isNotificationRemoved(notification)"
     [ngSwitch]="notification.type">
     {{onStartNotificationTimeOut(notification)}}
-    <bd-toast *ngSwitchCase="_notificationType.Error" [notification]="notification"></bd-toast>
+    <!--notification components will be here-->
   </div>
 </div>

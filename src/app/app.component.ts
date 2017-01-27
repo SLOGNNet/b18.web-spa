@@ -67,7 +67,7 @@ export class AppComponent {
   addToast() {
     this.notification = this.getNotification();
   }
-    private getNotification() {
+    private getNotification(): Notification {
     const notification: Notification = {
       id: new Date().getTime(),
       content: 'Lorem ipsum ' + this.counter++,

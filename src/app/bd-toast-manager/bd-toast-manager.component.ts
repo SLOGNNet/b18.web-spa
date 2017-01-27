@@ -10,10 +10,11 @@ import { last } from 'lodash';
 })
 export class BdToastManagerComponent {
   @Input() set notification(notification: Notification) {
-      this.attachNotification(notification);
+    this.attachNotification(notification);
   }
   private _delay: number = 10000;
-  private _maxStack: number = 3;
+  private _maxStack: number = 5;
+  private _maxVisibleStack: number = 3;
   private _notificationType = NotificationType;
   private _notificationsQueue: Array<Notification> = [];
   private _visibleNotifications: Array<Notification> = [];
@@ -23,45 +24,79 @@ export class BdToastManagerComponent {
 
   }
 
+  get toastConfig() {
+    return {
+      timer: null,
+      delay: this._delay,
+      isRemoved: false,
+      startDate: new Date().getTime(),
+      updateDelay() {
+        const newStatrDate = new Date().getTime();
+        this.delay = this.delay - (newStatrDate - this.startDate);
+        this.startDate = newStatrDate;
+      },
+      runTimeOut(callback: Function) {
+        this.startDate = new Date().getTime();
+        this.timer = setTimeout(() => callback(), this.delay);
+      }
+    };
+  }
+
+  getNotificationConfig(notification) {
+    return notification['toastConfig'];
+  }
+
+  setNotificationConfig(notification) {
+    notification['toastConfig'] = this.toastConfig;
+  }
+
   attachNotification(notification) {
-    if (notification) {
+    if (notification && typeof notification === 'object') {
+      this.setNotificationConfig(notification);
       this._notificationsQueue.push(notification);
       this._notificationsQueue = this._notificationsQueue.slice(-this._maxStack);
 
       if (!this._isMouseEntered) {
-        if (this._visibleNotifications.length < this._maxStack) {
+        if (this._visibleNotifications.length < this._maxVisibleStack) {
           this.updateVisibleNotifications();
         } else {
-          this.removeNotification(last(this._visibleNotifications));
+          this.removeNotification(last(this._visibleNotifications), true);
         }
       }
     }
   }
 
   onStartNotificationTimeOut(notification: Notification): void {
-    if (!notification['timer']) {
-      if (!this._isMouseEntered) {
-        this.runNotificationTimeout(notification);
-      }
+    const config = this.getNotificationConfig(notification);
+
+    if (!config.timer && !this._isMouseEntered) {
+      this.runNotificationTimeout(notification);
     }
   }
 
+  isNotificationRemoved(notification) {
+    const config = this.getNotificationConfig(notification);
+
+    return config.isRemoved;
+  }
+
   runNotificationTimeout(notification: Notification): void {
-    notification['startDate'] = new Date().getTime();
-    notification['delay'] = notification['delay'] ? notification['delay'] : this._delay;
-    notification['timer'] = setTimeout(() => this.removeNotification(notification), notification['delay']);
+    let config = this.getNotificationConfig(notification);
+    config.runTimeOut(() => this.removeNotification(notification));
   }
 
   stopNotificationTimeout(notification: Notification): void {
-    const currentDate = new Date().getTime();
+    let config = this.getNotificationConfig(notification);
 
-    clearTimeout(notification['timer']);
-    notification['delay'] = notification['delay'] - (currentDate - notification['startDate']);
+    clearTimeout(config.timer);
+    config.updateDelay();
   }
 
   removeNotificationTimeout(notification: Notification): void {
-    notification['class'] = 'remove';
-    clearTimeout(notification['timer']);
+    let config = this.getNotificationConfig(notification);
+
+    config.isRemoved = true;
+    clearTimeout(config.timer);
     this._cdr.markForCheck();
   }
 
@@ -79,18 +114,18 @@ export class BdToastManagerComponent {
     });
   }
 
-  removeNotification(notification: Notification): void {
+  removeNotification(notification: Notification, force: boolean = false): void {
     this.removeNotificationTimeout(notification);
 
     setTimeout(() => {
       this._visibleNotifications.splice(this._visibleNotifications.indexOf(notification), 1);
       this.updateVisibleNotifications();
-    }, 500);
+    }, force ? 0 : 500);
   }
 
   updateVisibleNotifications() {
     this._visibleNotifications = this._notificationsQueue
-      .splice(0, this._maxStack - this._visibleNotifications.length)
+      .splice(0, this._maxVisibleStack - this._visibleNotifications.length)
       .concat(this._visibleNotifications);
 
     this._cdr.markForCheck();
