@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
 import { URLSearchParams } from '@angular/http';
 import { SocketService } from './socket.service';
-import { Notification, NotificationType } from '../../models';
+import { Notification, NotificationType, TaskType, NotificationPriority, NotificationStatus, Contact } from '../../models';
 
 @Injectable()
 export class NotificationService {
@@ -53,8 +53,14 @@ export class NotificationService {
   private getNotification() {
     const notification: Notification = {
       id: new Date().getTime(),
-      content: 'Lorem ipsum ' + new Date().getMinutes() + ':' + new Date().getSeconds(),
-      type: NotificationType.Error
+      title: 'Lorem ipsum',
+      type: this.getRandomNotificationType(),
+      date: new Date(),
+      message: new Date().getMinutes() + ':' + new Date().getSeconds(),
+      sender: Contact.create(),
+      taskType: TaskType.New,
+      priority: NotificationPriority.Middle,
+      notificationStatus: NotificationStatus.New
     };
 
     return notification;
@@ -64,5 +70,9 @@ export class NotificationService {
     if (this.timeoutPosition >= this.timeouts.length) this.timeoutPosition = 0;
 
     return this.timeouts[this.timeoutPosition++];
+  }
+
+  private getRandomNotificationType() {
+    return Math.floor(Math.random() * 3);
   }
 }

@@ -9,6 +9,26 @@
     [class.remove]="isNotificationRemoved(notification)"
     [ngSwitch]="notification.type">
     {{onStartNotificationTimeOut(notification)}}
-    <!--notification components will be here-->
+
+      <message-card
+        *ngSwitchCase="_notificationType.Message"
+        (close)="removeNotification(notification, true)"
+        [isClosable]="true"
+        [notification]="notification">
+      </message-card>
+
+      <task-card
+        *ngSwitchCase="_notificationType.Task"
+        (close)="removeNotification(notification, true)"
+        [isClosable]="true"
+        [notification]="notification">
+      </task-card>
+
+      <notification-card
+        *ngSwitchCase="_notificationType.Notification"
+        (close)="removeNotification(notification, true)"
+        [isClosable]="true"
+        [notification]="notification">
+      </notification-card>
   </div>
 </div>

@@ -37,7 +37,7 @@ import { NgRedux } from 'ng2-redux';
       <top-panel></top-panel>
         <div class="main-content">
           <router-outlet></router-outlet>
-        <bd-toast-manager [notification]="notification"></bd-toast-manager>
+          <bd-toast-manager [notification]="notification"></bd-toast-manager>
         </div>
       </main>
     `
