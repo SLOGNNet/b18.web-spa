@@ -8,6 +8,8 @@ import { Notification, NotificationType } from '../../models';
 @Injectable()
 export class NotificationService {
   private notificationObservable: Observable<any>;
+  private timeoutPosition = 0;
+  private timeouts = [1000, 2000, 5000, 9000, 1000, 1000, 1000, 10000, 90000, 500000];
 
   constructor(private socketService: SocketService) {
 
@@ -59,7 +61,8 @@ export class NotificationService {
   }
 
   private getRandomTimeout() {
-    const rand = Math.random() * (30000 - 2000) + 2000;
-    return 2000;
+    if (this.timeoutPosition >= this.timeouts.length) this.timeoutPosition = 0;
+
+    return this.timeouts[this.timeoutPosition++];
   }
 }

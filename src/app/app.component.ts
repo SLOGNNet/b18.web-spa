@@ -34,7 +34,6 @@ import { NgRedux } from 'ng2-redux';
       </navigation-bar>
 
       <main>
-      <button (click)="addToast()">add toast</button>
       <top-panel></top-panel>
         <div class="main-content">
           <router-outlet></router-outlet>
@@ -48,7 +47,6 @@ export class AppComponent {
   private switchStateEnum: any = SwitchState;
   private queryParams: any;
   private notification;
-  private counter = 0;
 
   constructor(
     public appState: AppState,
@@ -58,23 +56,10 @@ export class AppComponent {
     private notificationService: NotificationService,
     private location: Location) {
     notificationService.get().subscribe(notif => {
-      // this.notification = notif;
+      this.notification = notif;
     });
     this.ngRedux.configureStore(
       rootReducer, {}, []);
-  }
-
-  addToast() {
-    this.notification = this.getNotification();
-  }
-    private getNotification(): Notification {
-    const notification: Notification = {
-      id: new Date().getTime(),
-      content: 'Lorem ipsum ' + this.counter++,
-      type: NotificationType.Error
-    };
-
-    return notification;
   }
 
   ngOnInit() {
