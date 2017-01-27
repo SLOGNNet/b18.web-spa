@@ -32,9 +32,7 @@
               <div *ngSwitchCase="'message'">
                 <message-card
                   *ngFor="let item of items"
-                  [message]="item.message"
-                  [date]="item.date"
-                  [sender]="item.sender">
+                  [notification]="item">
                 </message-card>
               </div>
 
