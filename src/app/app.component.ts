@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { NotificationService } from './shared';
 import { IAppState, rootReducer } from './store';
 import { SwitchState } from './shared/enums/switchState';
+import { Notification, NotificationType } from './models';
 import {
   applyMiddleware,
   Store,
@@ -36,6 +37,7 @@ import { NgRedux } from 'ng2-redux';
       <top-panel></top-panel>
         <div class="main-content">
           <router-outlet></router-outlet>
+        <bd-toast-manager [notification]="notification"></bd-toast-manager>
         </div>
       </main>
     `
@@ -44,6 +46,7 @@ export class AppComponent {
   private switchState: number = SwitchState.All;
   private switchStateEnum: any = SwitchState;
   private queryParams: any;
+  private notification;
 
   constructor(
     public appState: AppState,
@@ -53,6 +56,7 @@ export class AppComponent {
     private notificationService: NotificationService,
     private location: Location) {
     notificationService.get().subscribe(notif => {
+      this.notification = notif;
     });
     this.ngRedux.configureStore(
       rootReducer, {}, []);

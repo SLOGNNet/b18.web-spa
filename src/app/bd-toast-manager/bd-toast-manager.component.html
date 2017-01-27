@@ -1,0 +1,14 @@
+<div
+  class="bd-toast-manager-wrapper"
+  [ngClass]="position"
+  (mouseenter)="onEnter()"
+  (mouseleave)="onLeave()">
+  <div
+    *ngFor="let notification of _visibleNotifications"
+    class="toast"
+    [class.remove]="isNotificationRemoved(notification)"
+    [ngSwitch]="notification.type">
+    {{onStartNotificationTimeOut(notification)}}
+    <!--notification components will be here-->
+  </div>
+</div>
