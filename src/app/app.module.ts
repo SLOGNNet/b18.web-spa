@@ -81,7 +81,7 @@ type StoreType = {
      TripPopoverComponent,
      CustomerPopoverComponent,
      DriverPopoverComponent,
-     TopPanelComponent
+     TopPanelComponent,
      BdToastComponent,
      BdToastManagerComponent
   ],

@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Notification, NotificationType } from '../models';
+import { last } from 'lodash';
 
 @Component({
   selector: 'bd-toast-manager',
@@ -8,35 +9,40 @@ import { Notification, NotificationType } from '../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdToastManagerComponent {
-  @Input() notifications: Array<Notification>;
-
+  @Input() set notification(notification: Notification) {
+      this.attachNotification(notification);
+  }
   private _delay: number = 10000;
-  private _maxStack: number = 5;
+  private _maxStack: number = 3;
   private _notificationType = NotificationType;
-  private _notifications: Array<Notification> = [];
+  private _notificationsQueue: Array<Notification> = [];
+  private _visibleNotifications: Array<Notification> = [];
   private _isMouseEntered = false;
 
   constructor(private _cdr: ChangeDetectorRef) {
 
   }
 
-  ngOnChanges(changes) {
-    if (changes.notifications) {
-      this._notifications = this.notifications
-                                .concat(this._notifications)
-                                .slice(0, this._maxStack);
+  attachNotification(notification) {
+    if (notification) {
+      this._notificationsQueue.push(notification);
+      this._notificationsQueue = this._notificationsQueue.slice(-this._maxStack);
+
+      if (!this._isMouseEntered) {
+        if (this._visibleNotifications.length < this._maxStack) {
+          this.updateVisibleNotifications();
+        } else {
+          this.removeNotification(last(this._visibleNotifications));
+        }
+      }
     }
   }
 
   onStartNotificationTimeOut(notification: Notification): void {
     if (!notification['timer']) {
-      notification['class'] = 'add';
-
       if (!this._isMouseEntered) {
         this.runNotificationTimeout(notification);
       }
-
-      setTimeout(() => this._cdr.markForCheck(), 0);
     }
   }
 
@@ -55,19 +61,20 @@ export class BdToastManagerComponent {
 
   removeNotificationTimeout(notification: Notification): void {
     notification['class'] = 'remove';
-    setTimeout(() => this._cdr.markForCheck(), 0);
+    clearTimeout(notification['timer']);
+    this._cdr.markForCheck();
   }
 
   onEnter(): void {
     this._isMouseEntered = true;
-    this._notifications.forEach(n => {
+    this._visibleNotifications.forEach(n => {
       this.stopNotificationTimeout(n);
     });
   }
 
   onLeave(): void {
     this._isMouseEntered = false;
-    this._notifications.forEach(n => {
+    this._visibleNotifications.forEach(n => {
       this.runNotificationTimeout(n);
     });
   }
@@ -76,9 +83,17 @@ export class BdToastManagerComponent {
     this.removeNotificationTimeout(notification);
 
     setTimeout(() => {
-      this._notifications = this._notifications.filter(n => n.id !== notification.id);
-      this._cdr.markForCheck();
-    }, 600);
+      this._visibleNotifications.splice(this._visibleNotifications.indexOf(notification), 1);
+      this.updateVisibleNotifications();
+    }, 500);
+  }
+
+  updateVisibleNotifications() {
+    this._visibleNotifications = this._notificationsQueue
+      .splice(0, this._maxStack - this._visibleNotifications.length)
+      .concat(this._visibleNotifications);
+
+    this._cdr.markForCheck();
   }
 
 }

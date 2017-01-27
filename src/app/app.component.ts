@@ -34,10 +34,11 @@ import { NgRedux } from 'ng2-redux';
       </navigation-bar>
 
       <main>
+      <button (click)="addToast()">add toast</button>
       <top-panel></top-panel>
         <div class="main-content">
           <router-outlet></router-outlet>
-        <bd-toast-manager [notifications]="notif"></bd-toast-manager>
+        <bd-toast-manager [notification]="notification"></bd-toast-manager>
         </div>
       </main>
     `
@@ -46,33 +47,8 @@ export class AppComponent {
   private switchState: number = SwitchState.All;
   private switchStateEnum: any = SwitchState;
   private queryParams: any;
-  private notif = [];
-  private _notifications: Array<Notification> = [{
-    id: 1,
-    content: '1',
-    type: NotificationType.Error
-  }, {
-    id: 2,
-    content: '2',
-    type: NotificationType.Error
-  }, {
-    id: 3,
-    content: '3',
-    type: NotificationType.Error
-  }];
-  private _notifications1: Array<Notification> = [{
-    id: 4,
-    content: '4',
-    type: NotificationType.Error
-  }, {
-    id: 5,
-    content: '5',
-    type: NotificationType.Error
-  }, {
-    id: 6,
-    content: '6',
-    type: NotificationType.Error
-  }];
+  private notification;
+  private counter = 0;
 
   constructor(
     public appState: AppState,
@@ -82,9 +58,23 @@ export class AppComponent {
     private notificationService: NotificationService,
     private location: Location) {
     notificationService.get().subscribe(notif => {
+      // this.notification = notif;
     });
     this.ngRedux.configureStore(
       rootReducer, {}, []);
+  }
+
+  addToast() {
+    this.notification = this.getNotification();
+  }
+    private getNotification() {
+    const notification: Notification = {
+      id: new Date().getTime(),
+      content: 'Lorem ipsum ' + this.counter++,
+      type: NotificationType.Error
+    };
+
+    return notification;
   }
 
   ngOnInit() {
@@ -95,36 +85,6 @@ export class AppComponent {
         this.queryParams = params;
         this.updateSwitchState(params['switchState']);
       });
-
-    setTimeout(() => this.notif = [{
-      id: 1,
-      content: '1',
-      type: NotificationType.Error
-    }], 3000);
-
-    setTimeout(() => this.notif = [{
-      id: 2,
-      content: '2',
-      type: NotificationType.Error
-    }], 7000);
-
-    setTimeout(() => this.notif = [{
-      id: 3,
-      content: '3',
-      type: NotificationType.Error
-    }], 8000);
-
-    setTimeout(() => this.notif = [{
-      id: 4,
-      content: '4',
-      type: NotificationType.Error
-    }], 11000);
-
-    setTimeout(() => this.notif = [{
-      id: 5,
-      content: '5',
-      type: NotificationType.Error
-    }], 13000);
   }
 
   isSlided() {

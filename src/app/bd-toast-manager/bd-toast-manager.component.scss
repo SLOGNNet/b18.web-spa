@@ -1,24 +1,30 @@
+@keyframes show_toast_animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: .9;
+    transform: translateY(0);
+  }
+}
+
 .bd-toast-manager-wrapper {
   overflow: hidden;
 
   .toast {
     position: relative;
     display: block;
-    opacity: 0;
-    margin-top: 20px;
-    transition: all .6s;
-    transform: translateY(-50%);
+    animation: show_toast_animation 500ms;
+    margin-bottom: 10px;
+    margin-left: 10px;
     bottom: 0;
 
-    &.add {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     &.remove {
-      transform: translateY(0);
+      transition: all .5s;
       opacity: 0;
-      margin-bottom: -120px;
+      margin-bottom: -100px;
     }
   }
 }

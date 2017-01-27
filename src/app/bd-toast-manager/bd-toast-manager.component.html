@@ -1,10 +1,10 @@
 <div
   class="bd-toast-manager-wrapper"
   [ngClass]="position"
-  (mouseenter)="onEnter(notification)"
-  (mouseleave)="onLeave(notification)">
+  (mouseenter)="onEnter()"
+  (mouseleave)="onLeave()">
   <div
-    *ngFor="let notification of _notifications"
+    *ngFor="let notification of _visibleNotifications"
     class="toast"
     [ngClass]="notification.class"
     [ngSwitch]="notification.type">
