@@ -44,9 +44,11 @@ import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
+import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
+import { BdMessageCardComponent, BdTaskCardComponent, BdNotificationCardComponent } from './components/notification-cards';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
-import { BdNotificationPopoverComponent, MessageNotificationComponent } from './components/bd-notification-popover';
 import { BdPipesModule } from './pipes';
+
 
 @NgModule({
   providers: [
@@ -95,7 +97,10 @@ import { BdPipesModule } from './pipes';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent,
+    NotificationIcon,
+    BdMessageCardComponent,
+    BdTaskCardComponent,
+    BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon
   ],
@@ -151,7 +156,9 @@ import { BdPipesModule } from './pipes';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    MessageNotificationComponent,
+    BdMessageCardComponent,
+    BdTaskCardComponent,
+    BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon,
     BdPipesModule

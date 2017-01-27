@@ -7,31 +7,22 @@
 <bd-notification-popover
     [itemsCount]="5888"
     [width]="400"
-    [notificationType]="'tasks'">
-      <task-notification-card
-      *ngFor="let notification of this.taskNotifications"
-      [notification]="notification">
-    </task-notification-card>
-
+    [notificationType]="notificationTypeEnum.Task"
+    [items]="testNotifications">
 </bd-notification-popover>
+
 <bd-notification-popover
     [itemsCount]="1"
     [width]="400"
-    [notificationType]="'messages'">
-    <message-notification [user]="testUser" [message]="'test message'" [date]="date1"></message-notification>
-    <message-notification [user]="testUser" [message]="'test message'" [date]="date2"></message-notification>
-    <message-notification [user]="testUser" [message]="'test message'" [date]="date3"></message-notification>
-    <message-notification [user]="testUser" [message]="'test message'" [date]="date1"></message-notification>
-    <message-notification [user]="testUser" [message]="'test message'" [date]="date1"></message-notification>
+    [notificationType]="notificationTypeEnum.Message"
+    [items]="testNotifications">
 </bd-notification-popover>
+
 <bd-notification-popover
     [itemsCount]="5"
     [width]="400"
-    [notificationType]="'notifications'">
-      <notification-card
-      *ngFor="let notification of this.latestNotifications"
-       [notification]="notification">
-     </notification-card>
+    [notificationType]="notificationTypeEnum.Notification"
+    [items]="testNotifications">
 </bd-notification-popover>
 
   <span>

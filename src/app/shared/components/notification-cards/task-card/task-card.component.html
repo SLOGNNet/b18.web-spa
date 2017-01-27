@@ -1,0 +1,22 @@
+<div class="task-notification-container"
+     [class.closable]="isClosable">
+  <div class="title-container">
+    <span class="title-text">{{notification.title}}</span>
+    <button
+      class="btn-close icon-close"
+      (click)="onClose($event)">
+    </button>
+  </div>
+  <div class="notification-container">
+    <notification-icon [priority]="notification.priority" [taskType]="notification.taskType"></notification-icon>
+    <div class="content-container">
+      <p class="notification-title">{{notification.title}}</p>
+      <div class="notification-message">
+      {{notification.message}}
+      </div>
+      <div class="date">
+      {{notification.date | bdTimeAgo}}
+      </div>
+    </div>
+  </div>
+</div>
