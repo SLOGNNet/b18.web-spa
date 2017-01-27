@@ -41,6 +41,7 @@
               <div *ngSwitchCase="'task'">
                 <task-card
                   *ngFor="let item of items"
+                  [isClosable]="true"
                   [notification]="item"
                   >
                 </task-card>

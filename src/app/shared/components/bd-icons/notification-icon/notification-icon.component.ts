@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { TaskNotification } from '../../../../models';
 import { Notification } from '../../../../models';
 
 @Component({
