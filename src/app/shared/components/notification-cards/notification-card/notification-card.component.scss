@@ -2,49 +2,81 @@
 @import '../../../../../assets/styles/font-icons';
 @import '../../../../../assets/styles/mixins';
 
-
 .notification-card-container {
-  display: flex;
-  width: 100%;
-  height: auto;
-  padding: 10px 15px;
   background: $white;
-  font-size: $tiny-font-size;
-  border-bottom: $border;
 
-  .notification-content {
-    width: 100%;
-    margin: 5px 0 0 15px;
-    word-wrap: break-word;
+  .title-container {
+    display: none;
+  }
 
-    p {
-      margin: 0;
-      line-height: 1;
+  .notification-container {
+    display: flex;
+    padding: 10px 15px;
+    font-size: $tiny-font-size;
+    border-bottom: $border;
+
+    .content-container {
+      margin: 5px 0 0 15px;
+      flex-grow: 1;
+
+      .notification-title {
+        font-weight: bold;
+      }
+
+      .notification-message {
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+      }
+
+      .date {
+        color: $grey;
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &.closable {
+    .title-container {
+      display: flex;
+      padding: $popover-margin $popover-margin 0;
+      justify-content: space-between;
+
+      .title-text {
+        color: $horizon;
+      }
+
+      button {
+        border: 0;
+        background: 0;
+        color: $black;
+      }
     }
 
-    .message {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
-    }
+    .notification-container {
+      .content-container {
+        .date,
+        .notification-title {
+          display: none;
+        }
 
-    .name {
-      font-weight: bold;
-    }
-
-    .date {
-      color: $grey;
-      margin-top: 12px;
+        .notification-message {
+          @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
+          margin-top: -4px;
+        }
+      }
     }
   }
 
   &:hover {
     background: $light-blue;
 
-    .notification-content {
-      .message {
-        background: $light-blue;
-
-        &:after {
+    .notification-container {
+      .content-container {
+        .notification-message {
           background: $light-blue;
+
+          &:after {
+            background: $light-blue;
+          }
         }
       }
     }
