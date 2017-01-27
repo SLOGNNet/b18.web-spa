@@ -16,10 +16,12 @@
 
     .circle-container {
       width: auto;
+      max-width: 15%;
       margin-right: $popover-margin;
     }
 
     .content-container {
+      width: 85%;
       flex-grow: 1;
 
       .message-sender {
