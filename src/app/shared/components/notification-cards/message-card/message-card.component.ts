@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Notification, Contact } from '../../../../models';
 
 @Component({
@@ -16,6 +16,8 @@ export class BdMessageCardComponent {
   private lastName: string = 'test lastname';
 
   @Output() private closeClicked: EventEmitter<any> = new EventEmitter();
+
+  constructor(private ngZone: NgZone){}
 
   onCloseClick(event) {
     this.closeClicked.emit(event);
