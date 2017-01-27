@@ -16,7 +16,7 @@ export class TopPanelComponent {
   private testNotifications: Array<Notification> = [
     {
       id: 1,
-      type: NotificationType.message,
+      type: NotificationType.Message,
       title: 'test title',
       date: new Date(),
       message: 'Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
@@ -27,7 +27,7 @@ export class TopPanelComponent {
     },
     {
       id: 2,
-      type: NotificationType.message,
+      type: NotificationType.Message,
       title: 'test title',
       date: new Date(),
       message: 'Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
@@ -38,7 +38,7 @@ export class TopPanelComponent {
     },
     {
       id: 3,
-      type: NotificationType.message,
+      type: NotificationType.Message,
       date: new Date(),
       title: 'test title',
       message: 'Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
@@ -49,7 +49,7 @@ export class TopPanelComponent {
     },
     {
       id: 4,
-      type: NotificationType.message,
+      type: NotificationType.Message,
       date: new Date(),
       title: 'test title',
       message: 'message 4',

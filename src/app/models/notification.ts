@@ -9,9 +9,9 @@ export enum NotificationStatus {
 };
 
 export enum NotificationType {
-  notification = 1,
-  message = 2,
-  event = 3
+  Notification = 1,
+  Message = 2,
+  Event = 3
 };
 
 export enum NotificationPriority {
@@ -70,7 +70,7 @@ export class Notification {
   static create(): Notification {
     const result = new Notification();
     result.id = generateNewId();
-    result.type = NotificationType.message;
+    result.type = NotificationType.Message;
     result.date = new Date();
     return result;
   }
