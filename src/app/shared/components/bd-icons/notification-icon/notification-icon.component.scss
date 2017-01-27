@@ -8,13 +8,13 @@
   text-align: center;
   border-radius: 3px;
 
-  .icon-tasks {
-    font-size: 15px;
-    padding-top: 4px;
+  .icon-task-succes-icon {
+    font-size: 25px;
   }
 
   .priority {
-    font-size: $mini-font-size;
+    font-size: $default-font-size/2;
     font-weight: bold;
+    margin-top: -2px;
   }
 }
