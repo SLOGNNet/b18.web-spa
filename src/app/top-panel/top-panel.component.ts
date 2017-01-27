@@ -52,7 +52,7 @@ export class TopPanelComponent {
       type: NotificationType.message,
       date: new Date(),
       title:"test title",
-      message: "Lorem ipsum dolor sit  ut labore estrud in reprehenderit in voluptate velit esse cillum dolore eu fugiat",
+      message: "message 4",
       sender: this.testUser,
       priority: 2,
       taskType: 4,

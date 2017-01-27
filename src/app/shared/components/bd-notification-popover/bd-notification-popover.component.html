@@ -49,6 +49,7 @@
               <div *ngSwitchCase="'notification'">
                 <notification-card
                   *ngFor="let item of items"
+                  [isClosable]="false"
                   [notification]="item">
                 </notification-card>
               </div>
