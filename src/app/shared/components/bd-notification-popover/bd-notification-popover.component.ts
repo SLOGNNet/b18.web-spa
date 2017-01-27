@@ -29,13 +29,6 @@ export class BdNotificationPopoverComponent {
   private _itemsName: string = '';
   private _notificationType: string;
 
-  ngOnInit(){
-    console.group('Notifications collection');
-    console.log(this._notificationType);
-    console.log(this.items);
-    console.groupEnd();
-  }
-
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
   }

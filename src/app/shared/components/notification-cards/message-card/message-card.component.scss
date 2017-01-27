@@ -44,6 +44,9 @@
   }
 
   &.closable {
+    background: $shark;
+    opacity: .9;
+    border-radius: 3px;
 
     .title-container {
       display: flex;
@@ -57,11 +60,17 @@
       button {
         border: 0;
         background: 0;
-        color: $black;
+        color: $grey;
+
+        &:hover {
+          color: $white;
+        }
       }
     }
 
     .message-container {
+      border-bottom: 0;
+
       .content-container {
         margin-top: -4px;
 
@@ -75,8 +84,30 @@
 
         .message-text {
           @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+          background: $shark;
+          color: $white;
           white-space: normal;
           margin-top: 0;
+
+          &:after {
+            background: $shark;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background: $shark;
+
+      .message-container {
+        .content-container {
+          .message-text {
+            background: $shark;
+
+            &:after {
+              background: $shark;
+            }
+          }
         }
       }
     }
