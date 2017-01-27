@@ -32,6 +32,7 @@
               <div *ngSwitchCase="'message'">
                 <message-card
                   *ngFor="let item of items"
+                  [isClosable]="false"
                   [notification]="item">
                 </message-card>
               </div>
@@ -39,7 +40,7 @@
               <div *ngSwitchCase="'task'">
                 <task-card
                   *ngFor="let item of items"
-                  [isClosable]="true"
+                  [isClosable]="false"
                   [notification]="item"
                   >
                 </task-card>

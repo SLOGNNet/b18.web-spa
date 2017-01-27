@@ -9,6 +9,7 @@ import { Notification } from '../../../../models';
 export class BdMessageCardComponent {
 
   @Input() private notification: Notification;
+  @Input() private isClosable: boolean = false;
 
   @Output() private closeClicked: EventEmitter<any> = new EventEmitter();
 

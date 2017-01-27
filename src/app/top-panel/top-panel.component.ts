@@ -71,4 +71,9 @@ constructor(){
     this.testUser.lastName = 'Pidruchny';
   }
 
+  ngOnInit() {
+    this.testUser.firstName = 'Ihor';
+    this.testUser.lastName = 'Pidruchny';
+  }
+
 }

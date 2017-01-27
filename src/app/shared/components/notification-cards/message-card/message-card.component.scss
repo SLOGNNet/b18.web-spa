@@ -1,8 +1,9 @@
 @import '../../../../../assets/styles/variables';
 @import '../../../../../assets/styles/font-icons';
+@import '../../../../../assets/styles/mixins';
 
 .message-card-container {
-  background: $light-blue;
+  background: $white;
 
   .title-container {
     display: none;
@@ -32,10 +33,12 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        margin-top: 12px;
       }
 
       .message-date {
         color: $dark-grey;
+        margin-top: 12px;
       }
     }
   }
@@ -60,11 +63,39 @@
 
     .message-container {
       .content-container {
+        margin-top: -4px;
+
         .message-date {
           display: none;
+        }
+
+        .message-sender {
+          color: $horizon;
+        }
+
+        .message-text {
+          @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+          white-space: normal;
+          margin-top: 0;
         }
       }
     }
 
+  }
+
+  &:hover {
+    background: $light-blue;
+
+    .message-container {
+      .content-container {
+        .message-text {
+          background: $light-blue;
+
+          &:after {
+            background: $light-blue;
+          }
+        }
+      }
+    }
   }
 }
