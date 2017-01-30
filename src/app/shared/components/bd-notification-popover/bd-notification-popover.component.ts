@@ -2,8 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
+import { forEach } from 'lodash';
 
-const POPOVER_LIMIT = 8;
+const POPOVER_LIMIT = 3;
 
 class ViewedNotification {
    notification: Notification;
@@ -24,12 +25,7 @@ export class BdNotificationPopoverComponent {
 
   @Input() itemsCount: number = 0;
   @Input() width: number;
-  @Input() set items(notifications: Array<Notification>) {
-    this._items = notifications;
-    notifications.map(item => {
-      console.log(item);
-    });
-  }
+  @Input() items: Array<Notification> = [];
 
   @Input() set notificationType(type: NotificationType) {
     const typeText = Notification.getTypeText(type);
@@ -38,13 +34,12 @@ export class BdNotificationPopoverComponent {
   }
 
   private notificationTypeEnum = NotificationType;
-  private _items: Array<Notification> = new Array<Notification>(POPOVER_LIMIT);
+  private _items: Array<ViewedNotification> = [];
   private _iconClass: string;
   private _titleText: string;
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
   private _notificationType: NotificationType;
-  private _hadSeenNotification: boolean = false;
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
@@ -59,15 +54,24 @@ export class BdNotificationPopoverComponent {
     else this._itemsName = val;
   }
 
-  ngOnInit(){
-    console.log(this._items);
+  ngOnChanges(){
+    this.items.map(item => {
+      this._items.unshift(this.createViewedNotification(item, false));
+    });
+    this._items = this._items.slice(0, POPOVER_LIMIT);
   }
 
-  createSeenNotification(notification, viewed): ViewedNotification {
-    let result: ViewedNotification;
+  createViewedNotification(notification: Notification, viewed: boolean): ViewedNotification {
+    let result: ViewedNotification = new ViewedNotification();
     result.notification = notification;
     result.viewed = viewed;
     return result;
+  }
+
+  setNotificationsAsViewed(): Array<ViewedNotification> {
+    return forEach(this._items, (item) => {
+      item.viewed = true
+    });
   }
 
   onRefreshClick(event) {
@@ -88,7 +92,7 @@ export class BdNotificationPopoverComponent {
 
   handleOnHiddenEvent(event){
     this._topIconActive = event.visible;
-    this._hadSeenNotification = true;
+    this._items = this.setNotificationsAsViewed();
   }
 
 }

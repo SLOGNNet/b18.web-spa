@@ -33,8 +33,8 @@
                 <message-card
                   *ngFor="let item of _items"
                   [isClosable]="false"
-                  [hadSeenNotification]="_hadSeenNotification"
-                  [notification]="item">
+                  [notification]="item.notification"
+                  [viewed]="item.viewed">
                 </message-card>
               </div>
 
@@ -42,8 +42,8 @@
                 <task-card
                   *ngFor="let item of _items"
                   [isClosable]="false"
-                  [hadSeenNotification]="_hadSeenNotification"
-                  [notification]="item"
+                  [notification]="item.notification"
+                  [viewed]="item.viewed"
                   >
                 </task-card>
               </div>
@@ -51,9 +51,9 @@
               <div *ngSwitchCase="notificationTypeEnum.Notification">
                 <notification-card
                   *ngFor="let item of _items"
-                  [hadSeenNotification]="_hadSeenNotification"
                   [isClosable]="false"
-                  [notification]="item">
+                  [notification]="item.notification"
+                  [viewed]="item.viewed">
                 </notification-card>
               </div>
 

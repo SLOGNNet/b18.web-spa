@@ -3,7 +3,7 @@
 @import '../../../../../assets/styles/mixins';
 
 .notification-card-container {
-  background: $light-blue;
+  background: $white;
 
   .title-container {
     display: none;
@@ -16,7 +16,6 @@
     border-bottom: $border;
 
     .notification-card-icon-container {
-      background: $white;
       border-radius: $form-control-height;
       margin-top: 4px;
     }
@@ -40,8 +39,8 @@
     }
   }
 
-  &.had-seen-notification {
-    background: $white;
+  &.new-notification {
+    background: $light-blue;
   }
 
   &.closable {
@@ -71,6 +70,10 @@
 
     .notification-container {
       border-bottom: 0;
+
+      .notification-card-icon-container {
+        background: $white;
+      }
 
       .content-container {
         .date,

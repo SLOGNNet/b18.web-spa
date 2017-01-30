@@ -3,7 +3,7 @@
 @import '../../../../../assets/styles/mixins';
 
 .message-card-container {
-  background: $light-blue;
+  background: $white;
 
   .title-container {
     display: none;
@@ -43,8 +43,8 @@
     }
   }
 
-  &.had-seen-notification {
-    background: $white;
+  &.new-notification {
+    background: $light-blue;
   }
 
   &.closable {
