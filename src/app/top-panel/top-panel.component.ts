@@ -1,11 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Contact } from '../models';
 import { Notification, NotificationType } from '../models';
+import { NotificationService } from '../shared';
 
 @Component({
   selector: 'top-panel',
   templateUrl: './top-panel.component.html',
-  styleUrls: ['./top-panel.component.scss']
+  styleUrls: ['./top-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopPanelComponent {
   private testUser: Contact = new Contact();
@@ -63,14 +65,15 @@ export class TopPanelComponent {
   ];
 
 
-constructor(){
-  this.date2.setDate(this.date1.getDate() - 1);
-  this.date3.setDate(this.date1.getDate() - 3);
-}
-
-  ngOnChanges(){
-    this.testUser.firstName = 'Ihor';
-    this.testUser.lastName = 'Pidruchny';
+  constructor(private notificationService: NotificationService, private cdr: ChangeDetectorRef) {
+    notificationService.get().subscribe(notif => {
+      console.log(notif);
+      this.testNotifications.push(notif);
+      this.testNotifications = this.testNotifications.slice();
+      this.cdr.markForCheck();
+    });
+    this.date2.setDate(this.date1.getDate() - 1);
+    this.date3.setDate(this.date1.getDate() - 3);
   }
 
   ngOnInit() {

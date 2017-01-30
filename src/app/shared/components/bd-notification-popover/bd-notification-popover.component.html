@@ -30,7 +30,7 @@
             </div>
             <div class="notifications-body">
               <bd-notification-card
-                *ngFor="let item of items"
+                  *ngFor="let item of _notifications"
                 [isClosable]="false"
                 [notification]="item">
               </bd-notification-card>
