@@ -4,7 +4,7 @@
        (onShown)="handleOnShownEvent($event)"
        (onHidden)="handleOnHiddenEvent($event)"
         class="popover-target">
-          <icon-with-count-indicator [count]="itemsCount" [class]="_iconClass" [isActive]="_topIconActive">
+          <icon-with-count-indicator [count]="_itemsCount" [class]="_iconClass" [isActive]="_topIconActive">
           </icon-with-count-indicator>
     <bd-popover-content
       #notifyPopover
@@ -18,10 +18,10 @@
               <span class="title">
                 {{_titleText}}
               </span>
-              <div *ngIf="itemsCount > 0"
-                  class="new-items-info" >
+              <div *ngIf="_notifications.length > 0"
+                  class="new-items-info">
                   <span class="new-items-count">
-                    {{itemsCount}} new {{_itemsName}} -
+                    {{_notifications.length}} new {{_itemsName}} -
                   </span>
                   <button class="btn-refresh" (click)="onRefreshClick($event)">
                     Refresh

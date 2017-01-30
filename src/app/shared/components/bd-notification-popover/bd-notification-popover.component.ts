@@ -24,14 +24,11 @@ export class BdNotificationPopoverComponent {
   @Output() refresh: EventEmitter<any> = new EventEmitter();
   @Output() showAll: EventEmitter<any> = new EventEmitter();
 
-  @Input() itemsCount: number = 0;
   @Input() width: number;
   @Input() items: Array<Notification> = [];
 
   @Input() set notificationType(type: NotificationType) {
-    const typeText = Notification.getTypeText(type);
-    this.topIconClassName = this._itemsName = this.titleText = typeText;
-    this._notificationType = type;
+    this.setNotificationsVariables(type);
   }
 
   private notificationTypeEnum = NotificationType;
@@ -42,6 +39,7 @@ export class BdNotificationPopoverComponent {
   private _itemsName: string = '';
   private _notificationType: NotificationType;
   private _notifications: Array<ViewedNotification> = [];
+  private _itemsCount: number = 0;
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
@@ -52,11 +50,14 @@ export class BdNotificationPopoverComponent {
   }
 
   set itemsName(val: string) {
-    if (this.itemsCount > 1) this._itemsName = val + 's';
+    if (this._itemsCount > 1) this._itemsName = val + 's';
     else this._itemsName = val;
   }
 
   ngOnChanges(changes){
+    //refresh variables
+    this.setNotificationsVariables(this._notificationType);
+
     this.items.map(item => {
       this._items.unshift(this.createViewedNotification(item, false));
     });
@@ -65,6 +66,7 @@ export class BdNotificationPopoverComponent {
     if (changes.items) {
       this._notifications = this._items.filter(n => n.notification.type === this._notificationType);
     }
+    this._itemsCount = this._notifications.length;
   }
 
   createViewedNotification(notification: Notification, viewed: boolean): ViewedNotification {
@@ -80,6 +82,12 @@ export class BdNotificationPopoverComponent {
     });
   }
 
+  setNotificationsVariables(val: NotificationType) {
+    const typeText = Notification.getTypeText(val);
+    this.topIconClassName = this._itemsName = this.titleText = typeText;
+    this._notificationType = val;
+  }
+
   onRefreshClick(event) {
     this.refresh.emit({
       action: 'refresh'
@@ -93,7 +101,7 @@ export class BdNotificationPopoverComponent {
   }
 
   resetNewNotificationsCount() {
-    this.itemsCount = 0;
+    this._itemsCount = 0;
   }
 
   handleOnShownEvent(event){
