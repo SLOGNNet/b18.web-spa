@@ -55,7 +55,6 @@ export class BdNotificationPopoverComponent {
   }
 
   ngOnChanges(changes){
-    //refresh variables
     this.setNotificationsVariables(this._notificationType);
 
     this.items.map(item => {
