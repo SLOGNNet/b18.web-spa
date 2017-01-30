@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, NgZone } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Notification } from '../../../../models';
 
 @Component({
@@ -12,8 +12,6 @@ export class BdNotificationCardComponent {
   @Input() private hadSeenNotification: boolean;
 
   @Output() private close: EventEmitter<any> = new EventEmitter();
-
-  constructor(private ngZone: NgZone){}
 
   onClose(event) {
     this.close.emit(event);

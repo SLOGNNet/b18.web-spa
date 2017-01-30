@@ -15,6 +15,12 @@
     font-size: $tiny-font-size;
     border-bottom: $border;
 
+    .notification-card-icon-container {
+      background: $white;
+      border-radius: $form-control-height;
+      margin-top: 4px;
+    }
+
     .content-container {
       margin: 5px 0 0 15px;
       flex-grow: 1;
@@ -65,12 +71,6 @@
 
     .notification-container {
       border-bottom: 0;
-
-      .notification-card-icon-container {
-        background: $white;
-        border-radius: $form-control-height;
-        margin-top: 4px;
-      }
 
       .content-container {
         .date,
