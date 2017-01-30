@@ -57,7 +57,14 @@ export class NotificationService {
       type: this.getRandomNotificationType(),
       date: new Date(),
       message: new Date().getMinutes() + ':' + new Date().getSeconds(),
-      sender: Contact.create(),
+      sender: {
+        id: 1,
+        firstName: 'Jason',
+        lastName: 'Chang',
+        personalEmail: 'CHANJAS@chrobinson.com',
+        position: 'sales',
+        addressId: 1
+      },
       taskType: TaskType.New,
       priority: NotificationPriority.Middle,
       notificationStatus: NotificationStatus.New

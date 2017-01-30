@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
@@ -6,7 +6,8 @@ import { Notification, NotificationType } from '../../../models';
 @Component({
     selector: 'bd-notification-popover',
     templateUrl: './bd-notification-popover.component.html',
-    styleUrls: ['./bd-notification-popover.component.scss']
+    styleUrls: ['./bd-notification-popover.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdNotificationPopoverComponent {
 
@@ -28,6 +29,7 @@ export class BdNotificationPopoverComponent {
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
   private _notificationType: NotificationType;
+  private _notifications: Array<Notification> = [];
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
@@ -40,6 +42,12 @@ export class BdNotificationPopoverComponent {
   set itemsName(val: string) {
     if (this.itemsCount > 1) this._itemsName = val + 's';
     else this._itemsName = val;
+  }
+
+  ngOnChanges(changes) {
+    if (changes.items) {
+      this._notifications = this.items.filter(n => n.type === this._notificationType);
+    }
   }
 
   onRefreshClick(event) {
