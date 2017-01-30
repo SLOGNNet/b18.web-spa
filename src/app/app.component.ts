@@ -55,7 +55,7 @@ export class AppComponent {
     private ngRedux: NgRedux<IAppState>,
     private notificationService: NotificationService,
     private location: Location) {
-    notificationService.get().subscribe(notif => {
+    notificationService.notification.subscribe(notif => {
       this.notification = notif;
     });
     this.ngRedux.configureStore(
