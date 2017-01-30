@@ -70,7 +70,7 @@ export class BdNotificationPopoverComponent {
 
   setNotificationsAsViewed(): Array<ViewedNotification> {
     return forEach(this._items, (item) => {
-      item.viewed = true
+      item.viewed = true;
     });
   }
 
