@@ -98,6 +98,7 @@ export class BdNotificationPopoverComponent {
 
   handleOnShownEvent(event){
     this._topIconActive = event.visible;
+    this.resetNewNotificationsCount();
   }
 
   handleOnHiddenEvent(event){
