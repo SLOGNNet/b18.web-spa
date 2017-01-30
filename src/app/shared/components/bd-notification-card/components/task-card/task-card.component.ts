@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter, NgZone } from '@angular/core';
-import { Notification } from '../../../../models';
+import { Notification } from '../../../../../models';
 
 @Component({
-  selector: 'notification-card',
-  templateUrl: './notification-card.component.html',
-  styleUrls: ['./notification-card.component.scss']
+  selector: 'task-card',
+  templateUrl: './task-card.component.html',
+  styleUrls: ['../base-notification/base-notification.component.scss']
 })
-export class BdNotificationCardComponent {
+export class TaskCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
 
@@ -14,7 +14,7 @@ export class BdNotificationCardComponent {
 
   constructor(private ngZone: NgZone){}
 
-  onClose(event) {
+  onCloseClick(event) {
     this.close.emit(event);
   }
 }

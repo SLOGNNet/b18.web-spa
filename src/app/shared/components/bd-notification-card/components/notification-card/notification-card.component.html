@@ -1,0 +1,22 @@
+<div class="notification-container"
+     [class.closable]="isClosable">
+  <div class="top" *ngIf="isClosable">
+    <span class="title">{{notification.title}}</span>
+    <button
+      class="btn-close icon-close"
+      (click)="onClose($event)">
+    </button>
+  </div>
+  <div class="bottom">
+    <notification-card-icon [eventType]="notification.notificationStatus"></notification-card-icon>
+    <div class="right">
+      <div class="title" *ngIf="!isClosable">{{notification.title}}</div>
+      <div class="message">
+        {{notification.message}}
+      </div>
+      <div class="date" *ngIf="!isClosable">
+        {{notification.date | bdTimeAgo}}
+      </div>
+    </div>
+  </div>
+</div>
