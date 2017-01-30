@@ -4,7 +4,10 @@ import { Notification } from '../../../../../models';
 @Component({
     selector: 'message-card',
     templateUrl: './message-card.component.html',
-    styleUrls: ['./message-card.component.scss']
+    styleUrls: [
+      '../base-notification/base-notification.component.scss',
+      './message-card.component.scss'
+    ]
 })
 export class MessageCardComponent {
 

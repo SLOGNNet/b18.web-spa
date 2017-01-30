@@ -1,25 +1,23 @@
-<div class="message-card-container"
+<div class="notification-container"
      [class.closable]="isClosable">
-  <div class="title-container">
-    <span class="title-text">New Message</span>
+  <div class="top" *ngIf="isClosable">
+    <span class="title">New Message</span>
     <button
       class="btn-close icon-close"
       (click)="onClose($event)">
     </button>
   </div>
-  <div class="message-container">
-    <div class="circle-container">
-      <bd-initials-circle
-        [firstName]="notification.sender.firstName"
-        [lastName]="notification.sender.lastName">
-      </bd-initials-circle>
-    </div>
-    <div class="content-container">
-      <div class="message-sender">{{notification.sender.firstName}} {{notification.sender.lastName}}</div>
-      <div class="message-text">
+  <div class="bottom">
+    <bd-initials-circle
+      [firstName]="notification.sender.firstName"
+      [lastName]="notification.sender.lastName">
+    </bd-initials-circle>
+    <div class="right">
+      <div class="title">{{notification.sender.firstName}} sdsdfsdf {{notification.sender.lastName}}</div>
+      <div class="message">
         {{notification.message}}
       </div>
-      <div class="message-date">
+      <div class="date" *ngIf="!isClosable">
         {{notification.date | bdTimeAgo}}
       </div>
     </div>

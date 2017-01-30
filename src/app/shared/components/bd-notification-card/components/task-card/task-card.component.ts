@@ -4,7 +4,7 @@ import { Notification } from '../../../../../models';
 @Component({
   selector: 'task-card',
   templateUrl: './task-card.component.html',
-  styleUrls: ['./task-card.component.scss']
+  styleUrls: ['../base-notification/base-notification.component.scss']
 })
 export class TaskCardComponent {
   @Input() notification: Notification;

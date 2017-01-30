@@ -1,21 +1,21 @@
-<div class="task-notification-container"
+<div class="notification-container"
      [class.closable]="isClosable">
-  <div class="title-container">
-    <span class="title-text">{{notification.title}}</span>
+  <div class="top" *ngIf="isClosable">
+    <span class="title">{{notification.title}}</span>
     <button
       class="btn-close icon-close"
       (click)="onClose($event)">
     </button>
   </div>
-  <div class="notification-container">
+  <div class="bottom">
     <notification-icon [priority]="notification.priority" [taskType]="notification.taskType"></notification-icon>
-    <div class="content-container">
-      <p class="notification-title">{{notification.title}}</p>
-      <div class="notification-message">
-      {{notification.message}}
+    <div class="right">
+      <div class="title" *ngIf="!isClosable">{{notification.title}}</div>
+      <div class="message">
+        {{notification.message}}
       </div>
-      <div class="date">
-      {{notification.date | bdTimeAgo}}
+      <div class="date" *ngIf="!isClosable">
+        {{notification.date | bdTimeAgo}}
       </div>
     </div>
   </div>
