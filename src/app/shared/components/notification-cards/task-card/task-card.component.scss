@@ -40,6 +40,10 @@
     }
   }
 
+  &.had-seen-notification {
+    background: $white;
+  }
+
   &.closable {
     background: $shark;
     opacity: .9;
@@ -102,10 +106,6 @@
         }
       }
     }
-  }
-
-  &.had-seen-notification {
-    background: $white;
   }
 
   &:hover {

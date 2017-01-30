@@ -34,6 +34,10 @@
     }
   }
 
+  &.had-seen-notification {
+    background: $white;
+  }
+
   &.closable {
     background: $shark;
     opacity: .9;
@@ -61,6 +65,12 @@
 
     .notification-container {
       border-bottom: 0;
+
+      .notification-card-icon-container {
+        background: $white;
+        border-radius: $form-control-height;
+        margin-top: 4px;
+      }
 
       .content-container {
         .date,
@@ -96,10 +106,6 @@
         }
       }
     }
-  }
-
-  &.had-seen-notification {
-    background: $white;
   }
 
   &:hover {
