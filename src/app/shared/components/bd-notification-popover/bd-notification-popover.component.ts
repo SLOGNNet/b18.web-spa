@@ -74,6 +74,10 @@ export class BdNotificationPopoverComponent {
     });
   }
 
+  resetNewNotificationsCount() {
+    this.itemsCount = 0;
+  }
+
   onRefreshClick(event) {
     this.refresh.emit({
       action: 'refresh'
