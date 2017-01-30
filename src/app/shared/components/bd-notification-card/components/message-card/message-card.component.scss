@@ -1,40 +1,43 @@
-@import '../../../../../assets/styles/variables';
-@import '../../../../../assets/styles/font-icons';
-@import '../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/mixins';
 
-
-.task-notification-container {
+.message-card-container {
   background: $white;
 
   .title-container {
     display: none;
   }
 
-  .notification-container {
+  .message-container {
     display: flex;
-    padding: 10px 15px;
+    padding: $popover-margin;
     font-size: $tiny-font-size;
     border-bottom: $border;
 
-    p {
-      margin: 0;
-      line-height: 1;
+    .circle-container {
+      width: auto;
+      max-width: 15%;
+      margin-right: $popover-margin;
     }
 
     .content-container {
-      margin: 5px 0 0 15px;
+      width: 85%;
       flex-grow: 1;
 
-      .notification-title {
+      .message-sender {
         font-weight: bold;
       }
 
-      .notification-message {
-        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+      .message-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 12px;
       }
 
-      .date {
-        color: $grey;
+      .message-date {
+        color: $dark-grey;
         margin-top: 12px;
       }
     }
@@ -65,20 +68,26 @@
       }
     }
 
-    .notification-container {
+    .message-container {
       border-bottom: 0;
 
       .content-container {
-        .date,
-        .notification-title {
+        margin-top: -4px;
+
+        .message-date {
           display: none;
         }
 
-        .notification-message {
-          @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
+        .message-sender {
+          color: $horizon;
+        }
+
+        .message-text {
+          @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
           background: $shark;
           color: $white;
-          margin-top: -9px;
+          white-space: normal;
+          margin-top: 0;
 
           &:after {
             background: $shark;
@@ -90,9 +99,9 @@
     &:hover {
       background: $shark;
 
-      .notification-container {
+      .message-container {
         .content-container {
-          .notification-message {
+          .message-text {
             background: $shark;
 
             &:after {
@@ -102,14 +111,15 @@
         }
       }
     }
+
   }
 
   &:hover {
     background: $light-blue;
 
-    .notification-container {
+    .message-container {
       .content-container {
-        .notification-message {
+        .message-text {
           background: $light-blue;
 
           &:after {

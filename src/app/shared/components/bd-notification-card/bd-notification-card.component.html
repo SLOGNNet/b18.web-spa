@@ -1,0 +1,19 @@
+<div [ngSwitch]="notification.type">
+    <message-card
+      *ngSwitchCase="notificationTypeEnum.Message"
+      [isClosable]="isClosable"
+      [notification]="notification">
+    </message-card>
+
+    <task-card
+      *ngSwitchCase="notificationTypeEnum.Task"
+      [isClosable]="isClosable"
+      [notification]="notification">
+    </task-card>
+
+    <notification-card
+      *ngSwitchCase="notificationTypeEnum.Notification"
+      [isClosable]="isClosable"
+      [notification]="notification">
+    </notification-card>
+</div>

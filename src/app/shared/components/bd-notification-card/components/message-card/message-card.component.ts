@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter, NgZone } from '@angular/core';
-import { Notification } from '../../../../models';
+import { Notification } from '../../../../../models';
 
 @Component({
     selector: 'message-card',
     templateUrl: './message-card.component.html',
     styleUrls: ['./message-card.component.scss']
 })
-export class BdMessageCardComponent {
+export class MessageCardComponent {
 
   @Input() private notification: Notification;
   @Input() private isClosable: boolean = false;

@@ -1,8 +1,9 @@
-@import '../../../../../assets/styles/variables';
-@import '../../../../../assets/styles/font-icons';
-@import '../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/mixins';
 
-.notification-card-container {
+
+.task-notification-container {
   background: $white;
 
   .title-container {
@@ -14,6 +15,11 @@
     padding: 10px 15px;
     font-size: $tiny-font-size;
     border-bottom: $border;
+
+    p {
+      margin: 0;
+      line-height: 1;
+    }
 
     .content-container {
       margin: 5px 0 0 15px;
@@ -72,7 +78,7 @@
           @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
           background: $shark;
           color: $white;
-          margin-top: -4px;
+          margin-top: -9px;
 
           &:after {
             background: $shark;
