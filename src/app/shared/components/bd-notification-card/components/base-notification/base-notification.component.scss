@@ -1,0 +1,97 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/mixins';
+
+.notification-container {
+  background: $white;
+  font-size: $tiny-font-size;
+
+  &:hover {
+    background: $light-blue;
+
+    .message {
+      background: $light-blue; 
+
+      &:after {
+        background: $light-blue;
+      } 
+    }
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .message {
+    @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+  }
+
+  .date {
+    color: $grey;
+    margin-top: 4px;
+  }
+
+  .top {
+    display: flex;
+    padding: $popover-margin $popover-margin 0;
+    justify-content: space-between;
+
+    button {
+      border: 0;
+      background: 0;
+      color: $grey;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    padding: 10px 15px;
+    font-size: $tiny-font-size;
+    border-bottom: $border;
+
+    .right {
+      margin-left: 15px;
+      flex-grow: 1;
+    }
+  }
+
+  &.closable {
+    background: $shark;
+    opacity: .9;
+    border-radius: 3px;
+
+    &:hover {
+      background: $shark;
+
+      .message {
+        background: $shark; 
+
+        &:after { 
+          background: $shark; 
+        } 
+      }
+    }
+
+    .title {
+      color: $horizon;
+    }
+
+    .message {
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 3); 
+      background: $shark; 
+      color: $white;
+
+      &:after { 
+        background: $shark; 
+      } 
+    }
+
+    .bottom {
+      border-bottom: 0;
+    }
+  }
+}

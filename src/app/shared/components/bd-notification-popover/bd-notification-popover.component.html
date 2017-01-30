@@ -28,32 +28,12 @@
                   </button>
               </div>
             </div>
-            <div class="notifications-body" [ngSwitch]="_notificationType">
-              <div *ngSwitchCase="notificationTypeEnum.Message">
-                <message-card
-                  *ngFor="let item of items"
-                  [isClosable]="false"
-                  [notification]="item">
-                </message-card>
-              </div>
-
-              <div *ngSwitchCase="notificationTypeEnum.Task">
-                <task-card
-                  *ngFor="let item of items"
-                  [isClosable]="false"
-                  [notification]="item"
-                  >
-                </task-card>
-              </div>
-
-              <div *ngSwitchCase="notificationTypeEnum.Notification">
-                <notification-card
-                  *ngFor="let item of items"
-                  [isClosable]="false"
-                  [notification]="item">
-                </notification-card>
-              </div>
-
+            <div class="notifications-body">
+              <bd-notification-card
+                *ngFor="let item of items"
+                [isClosable]="false"
+                [notification]="item">
+              </bd-notification-card>
             </div>
             <div class="notifications-footer">
               <button class="btn-show-all"

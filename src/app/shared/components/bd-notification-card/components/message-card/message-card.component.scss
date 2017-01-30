@@ -1,0 +1,25 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/mixins';
+
+.notification-container {
+  .right {
+    max-width: calc(100% - 50px);
+  }
+
+  .message {
+    @include multi-line-ellipsis($line-height: 18px, $line-count: 1);
+  }
+
+  &.closable {
+    .message {
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+      background: $shark;
+      color: $white;
+
+      &:after { 
+        background: $shark; 
+      } 
+    }
+  }
+}

@@ -45,7 +45,7 @@ import { FormStickyBottomContainerComponent } from './components/form-sticky-bot
 import { StopsLineComponent, StopPopoverComponent } from './components/stops-line';
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
-import { BdMessageCardComponent, BdTaskCardComponent, BdNotificationCardComponent } from './components/notification-cards';
+import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdNotificationCardComponent } from './components/bd-notification-card';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 
@@ -98,8 +98,9 @@ import { BdPipesModule } from './pipes';
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     NotificationIcon,
-    BdMessageCardComponent,
-    BdTaskCardComponent,
+    MessageCardComponent,
+    TaskCardComponent,
+    NotificationCardComponent,
     BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon
@@ -156,8 +157,9 @@ import { BdPipesModule } from './pipes';
     BdInitialsCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
-    BdMessageCardComponent,
-    BdTaskCardComponent,
+    MessageCardComponent,
+    TaskCardComponent,
+    NotificationCardComponent,
     BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon,
