@@ -1,19 +1,19 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Notification } from '../../../../models';
+import { Notification } from '../../../../../models';
 
 @Component({
-  selector: 'notification-card',
-  templateUrl: './notification-card.component.html',
-  styleUrls: ['./notification-card.component.scss']
+  selector: 'task-card',
+  templateUrl: './task-card.component.html',
+  styleUrls: ['../base-notification/base-notification.component.scss']
 })
-export class BdNotificationCardComponent {
+export class TaskCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
   @Input() private viewed: boolean;
 
   @Output() private close: EventEmitter<any> = new EventEmitter();
 
-  onClose(event) {
+  onCloseClick(event) {
     this.close.emit(event);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
@@ -16,7 +16,8 @@ class ViewedNotification {
 @Component({
     selector: 'bd-notification-popover',
     templateUrl: './bd-notification-popover.component.html',
-    styleUrls: ['./bd-notification-popover.component.scss']
+    styleUrls: ['./bd-notification-popover.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdNotificationPopoverComponent {
 
@@ -40,6 +41,7 @@ export class BdNotificationPopoverComponent {
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
   private _notificationType: NotificationType;
+  private _notifications: Array<ViewedNotification> = [];
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
@@ -54,11 +56,15 @@ export class BdNotificationPopoverComponent {
     else this._itemsName = val;
   }
 
-  ngOnChanges(){
+  ngOnChanges(changes){
     this.items.map(item => {
       this._items.unshift(this.createViewedNotification(item, false));
     });
     this._items = this._items.slice(0, POPOVER_LIMIT);
+
+    if (changes.items) {
+      this._notifications = this._items.filter(n => n.notification.type === this._notificationType);
+    }
   }
 
   createViewedNotification(notification: Notification, viewed: boolean): ViewedNotification {
@@ -74,10 +80,6 @@ export class BdNotificationPopoverComponent {
     });
   }
 
-  resetNewNotificationsCount() {
-    this.itemsCount = 0;
-  }
-
   onRefreshClick(event) {
     this.refresh.emit({
       action: 'refresh'
@@ -88,6 +90,10 @@ export class BdNotificationPopoverComponent {
     this.showAll.emit({
       action: 'showAll'
     });
+  }
+
+  resetNewNotificationsCount() {
+    this.itemsCount = 0;
   }
 
   handleOnShownEvent(event){
