@@ -148,7 +148,7 @@ module.exports = function (config) {
         poll: 1000
       },
       contentBase: "/app/hybrid",
-      outputPath: helpers.root('dist-hybrid')
+      publicPath: config.baseUrl
     },
 
     /*
