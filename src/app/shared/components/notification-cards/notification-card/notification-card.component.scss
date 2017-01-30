@@ -16,7 +16,7 @@
     border-bottom: $border;
 
     .notification-card-icon-container {
-      background: $white;
+      background: $light-blue;
       border-radius: $form-control-height;
       margin-top: 4px;
     }
@@ -42,6 +42,12 @@
 
   &.had-seen-notification {
     background: $white;
+
+    .notification-container {
+      .notification-card-icon-container {
+        background: $white;
+      }
+    }
   }
 
   &.closable {
