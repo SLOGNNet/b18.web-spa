@@ -9,6 +9,7 @@ import { Notification } from '../../../../models';
 export class BdTaskCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
+  @Input() private hadSeenNotification: boolean;
 
   @Output() private close: EventEmitter<any> = new EventEmitter();
 

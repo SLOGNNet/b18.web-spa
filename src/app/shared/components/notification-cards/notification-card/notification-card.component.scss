@@ -3,7 +3,7 @@
 @import '../../../../../assets/styles/mixins';
 
 .notification-card-container {
-  background: $white;
+  background: $light-blue;
 
   .title-container {
     display: none;
@@ -96,6 +96,10 @@
         }
       }
     }
+  }
+
+  &.had-seen-notification {
+    background: $white;
   }
 
   &:hover {

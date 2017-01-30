@@ -28,6 +28,7 @@ export class BdNotificationPopoverComponent {
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
   private _notificationType: NotificationType;
+  private _hadSeenNotification: boolean = false;
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
@@ -60,6 +61,7 @@ export class BdNotificationPopoverComponent {
 
   handleOnHiddenEvent(event){
     this._topIconActive = event.visible;
+    this._hadSeenNotification = true;
   }
 
 }
