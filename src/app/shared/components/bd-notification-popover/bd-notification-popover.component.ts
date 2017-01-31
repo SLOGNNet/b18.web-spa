@@ -56,7 +56,7 @@ export class BdNotificationPopoverComponent {
         this._items.unshift(item);
       });
       this._notifications = this._items.filter(n => n.type === this._notificationType);
-      this._itemsCount += this._notifications.length;
+      this._itemsCount = this._notifications.length;
       this._notifications = this._notifications.slice(0, this._maxStack);
       this.setNotificationsVariables(this._notificationType);
     }
