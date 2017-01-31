@@ -12,7 +12,7 @@ export class TaskCardComponent {
 
   @Output() private close: EventEmitter<any> = new EventEmitter();
 
-  onCloseClick(event) {
+  onClose(event) {
     this.close.emit(event);
   }
 }
