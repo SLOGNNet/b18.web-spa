@@ -32,7 +32,6 @@ export class BdNotificationPopoverComponent {
   private _notificationType: NotificationType;
   private _notifications: Array<Notification> = [];
   private _itemsCount: number = 0;
-  private _newItemsCount: number = 0;
 
   set topIconClassName(val: string) {
     this._iconClass = 'icon-' + val + 's';
