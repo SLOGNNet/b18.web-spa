@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import * as io from 'socket.io-client';
 import { URLSearchParams } from '@angular/http';
 import { SocketService } from './socket.service';
@@ -7,21 +7,17 @@ import { Notification, NotificationType, TaskType, NotificationPriority, Notific
 
 @Injectable()
 export class NotificationService {
-  private notificationObservable: Observable<any>;
   private timeoutPosition = 0;
   private timeouts = [1000, 2000, 5000, 9000, 1000, 1000, 1000, 10000, 90000, 500000];
+  private _notification: BehaviorSubject<Notification>;
 
   constructor(private socketService: SocketService) {
-
+    this._notification = <BehaviorSubject<Notification>>new BehaviorSubject(this.getNotification());
+    this.generateNotification();
   }
 
-  get(): Observable<any> {
-    if (!this.notificationObservable) {
-      const roomId = this.getUserRoomId();
-      this.notificationObservable = this.socketService.getSocketObservable('/notifications', roomId);
-      this.notificationObservable = this.generateNotification();
-    };
-    return this.notificationObservable;
+  get notification() {
+    return this._notification.asObservable();
   }
 
   private getUserRoomId(): string {
@@ -31,23 +27,16 @@ export class NotificationService {
     return userId;
   }
 
-  private generateNotification(): Observable<Notification> {
+  private generateNotification() {
+    const me = this;
+    function generate() {
+      setTimeout(() => {
+        generate();
+        me._notification.next(me.getNotification());
+      }, me.getRandomTimeout());
+    }
 
-
-    return Observable.create((observer: any) => {
-      const me = this;
-
-      function generate() {
-        setTimeout(() => {
-          generate();
-          observer.next(me.getNotification());
-        }, me.getRandomTimeout());
-      }
-
-      generate();
-
-      observer.next(this.getNotification());
-    });
+    generate();
   }
 
   private getNotification() {

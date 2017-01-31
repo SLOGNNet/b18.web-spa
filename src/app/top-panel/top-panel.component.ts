@@ -66,8 +66,7 @@ export class TopPanelComponent {
 
 
   constructor(private notificationService: NotificationService, private cdr: ChangeDetectorRef) {
-    notificationService.get().subscribe(notif => {
-      console.log(notif);
+    notificationService.notification.subscribe(notif => {
       this.testNotifications.push(notif);
       this.testNotifications = this.testNotifications.slice();
       this.cdr.markForCheck();
