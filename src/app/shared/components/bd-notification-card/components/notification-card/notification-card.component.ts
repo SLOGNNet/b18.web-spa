@@ -9,8 +9,6 @@ import { Notification } from '../../../../../models';
 export class NotificationCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
-  @Input() private viewed: boolean;
-
   @Output() private close: EventEmitter<any> = new EventEmitter();
 
   onClose(event) {

@@ -9,7 +9,6 @@ import { Notification } from '../../../../../models';
 export class TaskCardComponent {
   @Input() notification: Notification;
   @Input() private isClosable: boolean = false;
-  @Input() private viewed: boolean;
 
   @Output() private close: EventEmitter<any> = new EventEmitter();
 

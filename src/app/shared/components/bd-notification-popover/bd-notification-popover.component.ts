@@ -1,23 +1,14 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
-import { forEach } from 'lodash';
-
-const POPOVER_LIMIT = 3;
-
-class ViewedNotification {
-   notification: Notification;
-   viewed: boolean;
-
-   constructor(){}
-}
+import { forEach, includes } from 'lodash';
 
 @Component({
-    selector: 'bd-notification-popover',
-    templateUrl: './bd-notification-popover.component.html',
-    styleUrls: ['./bd-notification-popover.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'bd-notification-popover',
+  templateUrl: './bd-notification-popover.component.html',
+  styleUrls: ['./bd-notification-popover.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdNotificationPopoverComponent {
 
@@ -30,15 +21,16 @@ export class BdNotificationPopoverComponent {
   @Input() set notificationType(type: NotificationType) {
     this.setNotificationsVariables(type);
   }
+  @Input() private _maxStack: number = 5;
 
   private notificationTypeEnum = NotificationType;
-  private _items: Array<ViewedNotification> = [];
+  private _items: Array<Notification> = [];
   private _iconClass: string;
   private _titleText: string;
   private _topIconActive: boolean = false;
   private _itemsName: string = '';
   private _notificationType: NotificationType;
-  private _notifications: Array<ViewedNotification> = [];
+  private _notifications: Array<Notification> = [];
   private _itemsCount: number = 0;
 
   set topIconClassName(val: string) {
@@ -52,65 +44,60 @@ export class BdNotificationPopoverComponent {
   set itemsName(val: string) {
     if (this._itemsCount > 1) this._itemsName = val + 's';
     else this._itemsName = val;
+    this._cdr.markForCheck();
   }
 
-  ngOnChanges(changes){
-    this.setNotificationsVariables(this._notificationType);
+  constructor(private _cdr: ChangeDetectorRef) {}
 
-    this.items.map(item => {
-      this._items.unshift(this.createViewedNotification(item, false));
-    });
-    this._items = this._items.slice(0, POPOVER_LIMIT);
-
+  ngOnChanges(changes) {
     if (changes.items) {
-      this._notifications = this._items.filter(n => n.notification.type === this._notificationType);
+      this.items.map(item => {
+        if (includes(this._items, item)) return;
+        this._items.unshift(item);
+      });
+      this._notifications = this._items.filter(n => n.type === this._notificationType);
+      this._itemsCount += this._notifications.length;
+      this._notifications = this._notifications.slice(0, this._maxStack);
+      this.setNotificationsVariables(this._notificationType);
     }
-    this._itemsCount = this._notifications.length;
-  }
+}
 
-  createViewedNotification(notification: Notification, viewed: boolean): ViewedNotification {
-    let result: ViewedNotification = new ViewedNotification();
-    result.notification = notification;
-    result.viewed = viewed;
-    return result;
-  }
+setNotificationsAsViewed(): Array <Notification> {
+  return forEach(this._notifications, (item) => {
+    item.isViewed = true;
+  });
+}
 
-  setNotificationsAsViewed(): Array<ViewedNotification> {
-    return forEach(this._items, (item) => {
-      item.viewed = true;
-    });
-  }
+setNotificationsVariables(val: NotificationType) {
+  const typeText = Notification.getTypeText(val);
+  this.topIconClassName = this.itemsName = this.titleText = typeText;
+  this._notificationType = val;
+}
 
-  setNotificationsVariables(val: NotificationType) {
-    const typeText = Notification.getTypeText(val);
-    this.topIconClassName = this._itemsName = this.titleText = typeText;
-    this._notificationType = val;
-  }
+onRefreshClick(event) {
+  this.refresh.emit({
+    action: 'refresh'
+  });
+}
 
-  onRefreshClick(event) {
-    this.refresh.emit({
-      action: 'refresh'
-    });
-  }
+onShowAllClick(){
+  this.showAll.emit({
+    action: 'showAll'
+  });
+}
 
-  onShowAllClick(){
-    this.showAll.emit({
-      action: 'showAll'
-    });
-  }
+resetNewNotificationsCount() {
+  this._itemsCount = 0;
+}
 
-  resetNewNotificationsCount() {
-    this._itemsCount = 0;
-  }
+handleOnShownEvent(event){
+  this._topIconActive = event.visible;
+  this.resetNewNotificationsCount();
+}
 
-  handleOnShownEvent(event){
-    this._topIconActive = event.visible;
-    this.resetNewNotificationsCount();
-  }
-
-  handleOnHiddenEvent(event){
-    this._topIconActive = event.visible;
-    this._items = this.setNotificationsAsViewed();
-  }
+handleOnHiddenEvent(event){
+  this._topIconActive = event.visible;
+  this.setNotificationsAsViewed();
+}
 
 }

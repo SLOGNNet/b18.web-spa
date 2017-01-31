@@ -56,7 +56,8 @@ export class NotificationService {
       },
       taskType: TaskType.New,
       priority: NotificationPriority.Middle,
-      notificationStatus: NotificationStatus.New
+      notificationStatus: NotificationStatus.New,
+      isViewed: false
     };
 
     return notification;

@@ -66,6 +66,7 @@ export class Notification {
   taskType: TaskType;
   priority: NotificationPriority;
   notificationStatus: NotificationStatus;
+  isViewed: boolean;
 
 
   static create(): Notification {
