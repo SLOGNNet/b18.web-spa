@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, Change
 import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
 import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
-import { forEach, includes } from 'lodash';
+import { forEach, difference } from 'lodash';
 
 @Component({
   selector: 'bd-notification-popover',
@@ -12,7 +12,6 @@ import { forEach, includes } from 'lodash';
 })
 export class BdNotificationPopoverComponent {
 
-  @Output() refresh: EventEmitter<any> = new EventEmitter();
   @Output() showAll: EventEmitter<any> = new EventEmitter();
 
   @Input() width: number;
@@ -51,13 +50,11 @@ export class BdNotificationPopoverComponent {
 
   ngOnChanges(changes) {
     if (changes.items) {
-      this.items.map(item => {
-        if (includes(this._items, item)) return;
+      let newNotifications = difference(this.items, this._items);
+      newNotifications.map(item => {
         this._items.unshift(item);
       });
-      this._notifications = this._items.filter(n => n.type === this._notificationType);
-      this._itemsCount = this._notifications.length;
-      this._notifications = this._notifications.slice(0, this._maxStack);
+      this._itemsCount += newNotifications.filter(n => n.type === this._notificationType).length;
       this.setNotificationsVariables(this._notificationType);
     }
 }
@@ -75,9 +72,12 @@ setNotificationsVariables(val: NotificationType) {
 }
 
 onRefreshClick(event) {
-  this.refresh.emit({
-    action: 'refresh'
-  });
+  this.showNewNotifications();
+}
+
+showNewNotifications(){
+  this._notifications = this._items.filter(n => n.type === this._notificationType).slice(0, this._maxStack);
+  this.setNotificationsVariables(this._notificationType);
 }
 
 onShowAllClick(){
@@ -92,6 +92,7 @@ resetNewNotificationsCount() {
 
 handleOnShownEvent(event){
   this._topIconActive = event.visible;
+  this.showNewNotifications();
   this.resetNewNotificationsCount();
 }
 
