@@ -6,6 +6,7 @@
   background: $white;
   font-size: $tiny-font-size;
 
+  &.active,
   &:hover {
     background: $light-blue;
 
@@ -16,10 +17,6 @@
         background: $light-blue;
       }
     }
-  }
-
-  &.new-notification {
-    background: $light-blue;
   }
 
   .title {
@@ -82,6 +79,12 @@
 
     .title {
       color: $horizon;
+    }
+
+    button {
+      &:focus {
+        outline: 0;
+      }
     }
 
     .message {

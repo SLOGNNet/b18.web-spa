@@ -18,10 +18,11 @@
               <span class="title">
                 {{_titleText}}
               </span>
-              <div *ngIf="_notifications.length > 0"
+              <div
                   class="new-items-info">
-                  <span class="new-items-count">
-                    {{_notifications.length}} new {{_itemsName}} -
+                  <span *ngIf="_itemsCount > 0"
+                        class="new-items-count">
+                    {{_itemsCount}} new {{_itemsName}} -
                   </span>
                   <button class="btn-refresh" (click)="onRefreshClick($event)">
                     Refresh
@@ -32,8 +33,7 @@
               <bd-notification-card
                   *ngFor="let item of _notifications"
                 [isClosable]="false"
-                [notification]="item.notification"
-                [viewed]="item.viewed">
+                [notification]="item">
               </bd-notification-card>
             </div>
             <div class="notifications-footer">

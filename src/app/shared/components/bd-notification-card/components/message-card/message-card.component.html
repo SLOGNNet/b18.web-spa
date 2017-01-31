@@ -1,5 +1,5 @@
 <div class="notification-container"
-     [class.new-notification]="!viewed"
+     [class.active]="!notification.isViewed"
      [class.closable]="isClosable">
   <div class="top" *ngIf="isClosable">
     <span class="title">New Message</span>

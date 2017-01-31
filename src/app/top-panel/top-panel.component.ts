@@ -27,7 +27,8 @@ export class TopPanelComponent {
       sender: this.testUser,
       priority: 0,
       taskType: 1,
-      notificationStatus: 2
+      notificationStatus: 2,
+      isViewed: false
     },
     {
       id: 2,
@@ -38,7 +39,8 @@ export class TopPanelComponent {
       sender: this.testUser,
       priority: 1,
       taskType: 2,
-      notificationStatus: 3
+      notificationStatus: 3,
+      isViewed: false
     },
     {
       id: 3,
@@ -49,7 +51,8 @@ export class TopPanelComponent {
       sender: this.testUser,
       priority: 2,
       taskType: 3,
-      notificationStatus: 1
+      notificationStatus: 1,
+      isViewed: false
     },
     {
       id: 4,
@@ -60,7 +63,8 @@ export class TopPanelComponent {
       sender: this.testUser,
       priority: 2,
       taskType: 4,
-      notificationStatus: 1
+      notificationStatus: 1,
+      isViewed: false
     }
   ];
 
