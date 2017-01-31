@@ -34,11 +34,6 @@ export class LoadsComponent extends BaseListComponent<Load>{
     super(loadActions, ngRedux.select(state => state.loads.items), router, route);
   }
 
-  onTabClick(tabNumber) {
-    this.selectedTab = tabNumber;
-    this.router.navigate([this.routePath()]);
-  }
-
   protected routePath(): string {
     return 'loads/';
   }
