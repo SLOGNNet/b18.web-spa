@@ -1,7 +1,15 @@
 @import '../../../../../assets/styles/variables';
 @import '../../../../../assets/styles/font-icons';
 
+$icon-size: 35px;
+
 .icons {
-  font-size: 35px;
-  margin-top: 4px;
+  display: flex;
+  width: $icon-size - 5px;
+  height: $icon-size - 5px;
+  background: $white;
+  font-size: $icon-size;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,15 +6,16 @@
   background: $white;
   font-size: $tiny-font-size;
 
+  &.active,
   &:hover {
     background: $light-blue;
 
     .message {
-      background: $light-blue; 
+      background: $light-blue;
 
       &:after {
         background: $light-blue;
-      } 
+      }
     }
   }
 
@@ -68,11 +69,11 @@
       background: $shark;
 
       .message {
-        background: $shark; 
+        background: $shark;
 
-        &:after { 
-          background: $shark; 
-        } 
+        &:after {
+          background: $shark;
+        }
       }
     }
 
@@ -80,14 +81,20 @@
       color: $horizon;
     }
 
+    button {
+      &:focus {
+        outline: 0;
+      }
+    }
+
     .message {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 3); 
-      background: $shark; 
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
+      background: $shark;
       color: $white;
 
-      &:after { 
-        background: $shark; 
-      } 
+      &:after {
+        background: $shark;
+      }
     }
 
     .bottom {
