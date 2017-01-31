@@ -12,7 +12,6 @@ import { forEach, difference } from 'lodash';
 })
 export class BdNotificationPopoverComponent {
 
-  @Output() refresh: EventEmitter<any> = new EventEmitter();
   @Output() showAll: EventEmitter<any> = new EventEmitter();
 
   @Input() width: number;
