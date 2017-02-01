@@ -8,11 +8,9 @@ import { BaseFilter } from './components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterContainer {
-  @Input() filters: Array<BaseFilter>;
 
-  constructor() {
+  @Input() filters: Array<BaseFilter> = [];
 
-  }
 
   public addFilter(filter: BaseFilter) {
     this.filters.push(filter);

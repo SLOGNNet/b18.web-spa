@@ -4,7 +4,7 @@ import { FilterContainer } from '../../filter-container.component';
 
 @Component({
   templateUrl: './autocomplete-filter.component.html',
-  styleUrls: ['../base-filter.component.scss', './autocomplete-filter.component.scss'],
+  styleUrls: ['../base-filter/base-filter.component.scss', './autocomplete-filter.component.scss'],
 })
 export class AutocompleteFilter extends BaseFilter{
   public constructor(filterContainer: FilterContainer) {
