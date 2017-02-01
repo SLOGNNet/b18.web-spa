@@ -48,6 +48,7 @@ import { BdNotificationPopoverComponent } from './components/bd-notification-pop
 import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdNotificationCardComponent } from './components/bd-notification-card';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
+import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { BdPipesModule } from './pipes';
     NotificationCardComponent,
     BdNotificationCardComponent,
     NotificationIcon,
-    NotificationCardIcon
+    NotificationCardIcon,
+    BdPerfectScrollbarComponent
   ],
   imports: [
     CommonModule,
@@ -163,7 +165,8 @@ import { BdPipesModule } from './pipes';
     BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon,
-    BdPipesModule
+    BdPipesModule,
+    BdPerfectScrollbarComponent
   ]
 })
 export class SharedModule {

@@ -1,53 +1,6 @@
 import { Customer, Stop, StopTypes, Trip, Document } from './index';
 import { generateNewId } from './utils';
-
-export enum LoadStatuses {
-  Booked = 1,
-  Assigned = 2,
-  Pending = 3,
-  Scheduled = 4,
-  EnRoute = 5,
-  InTransit = 6,
-  Delivered = 7,
-  Completed = 8,
-  Canceled = 9,
-}
-
-export enum DriverRequirements {
-  Solo = 1
-};
-
-export enum DataAssigneeRequirements {
-  MelMel1 = 1,
-  MelMel2 = 2
-};
-
-export enum LoadType {
-  FTL = 1,
-  LTL = 2
-};
-
-export enum FreightType {
-  Dry = 1,
-  Reefer = 2
-}
-
-export enum PowerUnitTypes {
-  Tractor = 1,
-  StraightTruck25 = 2,
-  StraightTruckFlatbed = 3,
-  Bus = 4,
-  Other = 5
-};
-
-export enum TrailerTypes {
-  DryVan53 = 1,
-  Reefer = 2,
-  DryVan48 = 3,
-  Reefer48 = 4,
-  FlatBed53 = 5,
-  Other = 6,
-};
+import { LoadStatuses, DriverRequirements, DataAssigneeRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
 
 // Colors
 function createStatusColors() {
