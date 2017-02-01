@@ -48,6 +48,7 @@ import { BdNotificationPopoverComponent } from './components/bd-notification-pop
 import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdNotificationCardComponent } from './components/bd-notification-card';
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
+import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer } from './components/filter-container';
 
 @NgModule({
@@ -104,6 +105,7 @@ import { FilterContainer } from './components/filter-container';
     BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon,
+    BdPerfectScrollbarComponent,
     FilterContainer
   ],
   imports: [
@@ -165,6 +167,7 @@ import { FilterContainer } from './components/filter-container';
     NotificationIcon,
     NotificationCardIcon,
     BdPipesModule,
+    BdPerfectScrollbarComponent,
     FilterContainer
   ]
 })

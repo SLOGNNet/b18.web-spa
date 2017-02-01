@@ -19,12 +19,6 @@ import { IAppState } from '../store';
   styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent extends BaseListComponent<Load>{
-  selectedTab: number = 1;
-  columns = [
-    { prop: 'id', name: 'Load #' },
-    { prop: 'customer.name', name: 'Customer' },
-    { prop: 'status', name: 'Status' }
-  ];
 
   constructor(private loadService: LoadService,
     loadActions: LoadActions,
