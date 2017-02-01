@@ -1,5 +1,5 @@
 import { Address, Contact, Equipment } from './index';
-import { DriverTypes, DriverStatuses, DriverPaymentOptions} from './enums';
+import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 
 export class Driver {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
