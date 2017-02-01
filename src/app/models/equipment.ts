@@ -1,25 +1,5 @@
 import { Address, Contact, PowerUnitTypes, TrailerTypes } from './index';
-
-
-export enum EquipmentTypes {
-  Trailer = 0,
-  PowerUnit = 1
-};
-
-export enum EquipmentModes {
-  Company = 0
-};
-
-export enum EquipmentStatuses {
-  Inactive = 0,
-  Active = 1,
-  NotAvaliable = 2
-}
-
-export enum EquipmentVehicleOperatings {
-  InterState = 0,
-  IntraState = 1
-}
+import { EquipmentTypes, EquipmentModes, EquipmentStatuses, EquipmentVehicleOperatings } from './enums';
 
 export class Equipment {
   private static statusText = ['Inactive', 'Active', 'NotAvaliable'];

@@ -1,21 +1,5 @@
 import { Address, Contact, Equipment } from './index';
-
-export enum DriverTypes {
-  Company = 0
-};
-
-export enum DriverStatuses {
-  Inactive = 0,
-  Active = 1,
-  Unavaliable = 2
-}
-
-export enum DriverPaymentOptions {
-  PerMile = 0,
-  Percentage = 1,
-  Hourly = 2,
-  Flat = 3
-}
+import { DriverTypes, DriverStatuses, DriverPaymentOptions} from './enums';
 
 export class Driver {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];

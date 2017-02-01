@@ -1,18 +1,6 @@
 import { Commodity, Address, Facility } from './index';
 import { generateNewId } from './utils';
-
-export enum StopTypes {
-  None = 0,
-  Pickup = 1,
-  Dropoff = 2
-};
-
-export enum StopStatuses {
-  Pending = 0,
-  InProgress = 1,
-  Completed = 2,
-  Problem = 3
-};
+import { StopTypes, StopStatuses } from './enums';
 
 export class Stop {
   private static stopStatusColor = ['#75b3e1', '#85d183', '#ffbe4d', '#fb3a3a'];

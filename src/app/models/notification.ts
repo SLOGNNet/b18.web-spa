@@ -1,31 +1,6 @@
 import { Commodity, Address, Driver, Contact } from './index';
 import { generateNewId } from './utils';
-
-
-export enum NotificationStatus {
-  New = 1,
-  Add = 2,
-  Error = 3
-};
-
-export enum NotificationType {
-  Notification = 0,
-  Message = 1,
-  Task = 2
-};
-
-export enum NotificationPriority {
-  High = 0,
-  Middle = 1,
-  Low = 2,
-};
-
-export enum TaskType {
-  New = 1,
-  InProgress = 2,
-  Done = 3,
-  Error = 4
-}
+import { NotificationStatus, NotificationType, NotificationPriority, TaskType } from './enums';
 
 const notificationsTaskTypeColors = createNotificationsTaskTypeColors();
 const notificationsStatusColors = createNotificationsStatusColors();
