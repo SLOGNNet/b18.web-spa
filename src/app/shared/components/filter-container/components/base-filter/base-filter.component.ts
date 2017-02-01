@@ -11,7 +11,7 @@ export class BaseFilter {
   @Input() set selectedItems(items: any) {
     this._selectedItems = items;
   }
-  get selecteItems() {
+  get selectedItems() {
     return this._selectedItems;
   }
   protected _active: boolean;

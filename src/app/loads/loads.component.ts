@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
+import { FilterContainer } from './components/filter-container/filter-container.component';
 import { Load } from '../models';
 import { LoadActions } from '../actions';
 import { LoadService } from '../shared';
@@ -19,12 +20,6 @@ import { IAppState } from '../store';
   styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent extends BaseListComponent<Load>{
-  selectedTab: number = 1;
-  columns = [
-    { prop: 'id', name: 'Load #' },
-    { prop: 'customer.name', name: 'Customer' },
-    { prop: 'status', name: 'Status' }
-  ];
 
   constructor(private loadService: LoadService,
     loadActions: LoadActions,
