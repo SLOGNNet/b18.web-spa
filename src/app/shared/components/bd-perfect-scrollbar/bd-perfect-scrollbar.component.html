@@ -1,0 +1,10 @@
+<perfect-scrollbar class="container">
+  <div class="content">
+    <span
+      *ngFor="let item of items; let i = index"
+      [class.active]="_activeItem === i"
+      (click)="onItemClick(item.id, i)">
+      {{item.title}}
+    </span>
+  </div>
+</perfect-scrollbar>

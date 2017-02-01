@@ -94,7 +94,9 @@ export class FormNavigationComponent implements OnChanges {
     }
   }
 
-  private _scrollTo(id, index) {
+  private _scrollTo(event) {
+    let id = event.id, index = event.index;
+
     if (id && id.length && id.trim().length) {
       let targetAnchor = this._anchorList[index];
 
