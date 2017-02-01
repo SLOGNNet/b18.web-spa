@@ -2,19 +2,7 @@ import { Address } from './index';
 import { Contact } from './index';
 import { Load } from './index';
 import { generateNewId } from './utils';
-
-export enum CustomerTypes {
-  Broker = 1,
-  FreightForwarder = 2,
-  Shipper = 3,
-  Carrier = 4
-};
-
-export enum CustomerStatuses {
-  Inactive = 0,
-  Active = 1,
-  Unavaliable = 2
-}
+import { CustomerTypes, CustomerStatuses } from './enums';
 
 // Colors
 function createStatusColors() {

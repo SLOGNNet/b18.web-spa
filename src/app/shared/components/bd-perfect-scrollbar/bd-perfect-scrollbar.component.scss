@@ -1,0 +1,38 @@
+@import '../../../../assets/styles/variables';
+
+bd-perfect-scrollbar {
+
+  //sass-lint:disable no-important
+  .ps-active-x {
+    &.ps-in-scrolling {
+      .ps-scrollbar-x-rail {
+        .ps-scrollbar-x {
+          height: 5px !important;
+          bottom: -2px !important;
+        }
+      }
+    }
+
+    & > .ps-scrollbar-x-rail {
+      display: flex !important;
+      height: 1px !important;
+      opacity: 1 !important;
+      background-color: $grey !important;
+      align-items: center;
+      bottom: 11px !important;
+
+      .ps-scrollbar-x {
+        height: 3px !important;
+        background-color: $blue !important;
+        bottom: -1px !important;
+        transition: none !important;
+
+        &:hover {
+          height: 5px !important;
+          bottom: -2px !important;
+        }
+      }
+    }
+  }
+  //sass-lint:enable no-important
+}
