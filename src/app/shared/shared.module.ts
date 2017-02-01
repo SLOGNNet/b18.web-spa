@@ -49,7 +49,7 @@ import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdN
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
-import { FilterContainer } from './components/filter-container';
+import { FilterContainer, AutocompleteFilter } from './components/filter-container';
 
 @NgModule({
   providers: [
@@ -106,7 +106,8 @@ import { FilterContainer } from './components/filter-container';
     NotificationIcon,
     NotificationCardIcon,
     BdPerfectScrollbarComponent,
-    FilterContainer
+    FilterContainer,
+    AutocompleteFilter
   ],
   imports: [
     CommonModule,
@@ -168,7 +169,8 @@ import { FilterContainer } from './components/filter-container';
     NotificationCardIcon,
     BdPipesModule,
     BdPerfectScrollbarComponent,
-    FilterContainer
+    FilterContainer,
+    AutocompleteFilter
   ]
 })
 export class SharedModule {

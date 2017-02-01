@@ -1,7 +1,9 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
-        <filter-container></filter-container>
+        <filter-container>
+          <autocomplete-filter defaultLabel="Customers" valueField="value" [selectedItems]="[{value: 'test1'} , {value: 'test2'}]"></autocomplete-filter>
+        </filter-container>
         <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)'></load-stop-cards>
     </div>
   </first-pane>
