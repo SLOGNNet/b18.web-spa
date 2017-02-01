@@ -1,4 +1,4 @@
-@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2) {
+@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2, $bg-color: $black) {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -7,11 +7,12 @@
   max-height: $line-height * $line-count;
   margin-top: 4px;
   word-break: break-word;
+  opacity: 1;
 
   &:before {
     position: absolute;
     right: 0;
-    background: inherit;
+    background: $bg-color;
     content: '...';
     bottom: 0;
   }
@@ -21,7 +22,7 @@
     right: 0;
     width: 1em;
     height: 1em;
-    background: $white;
+    background: $bg-color;
     content: '';
     margin-top: .2em;
   }

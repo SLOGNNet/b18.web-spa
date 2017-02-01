@@ -7,7 +7,7 @@ import { Notification, NotificationType } from '../../../models';
 })
 export class BdNotificationCardComponent {
   @Input() notification: Notification;
-  @Input() isClosable: boolean = false;
+  @Input() isClosable: boolean;
 
   @Output() close: EventEmitter<any> = new EventEmitter();
 
