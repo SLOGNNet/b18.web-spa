@@ -113,6 +113,7 @@ export class Load {
     result.trips = [Trip.create()];
     result.currentTrip = Trip.create();
     result.stops = [Stop.create(StopTypes.Dropoff)];
+    result.documents = [];
 
     return result;
   }
