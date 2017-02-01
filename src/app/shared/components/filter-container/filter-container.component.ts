@@ -17,4 +17,8 @@ export class FilterContainer {
   public addFilter(filter: BaseFilter) {
     this.filters.push(filter);
   }
+
+  private _showFilter(filter: BaseFilter) {
+    filter.active = true;
+  }
 }
