@@ -1,0 +1,10 @@
+<div class="content">
+  <span
+    *ngFor="let filter of filters; let i = index"
+    (click)="_showFilter(filter, i)">
+    {{filter.tagValue}} {{filter.count}}
+  </span>
+  <div class="filter-content">
+     <ng-content></ng-content>
+   </div>
+</div>
