@@ -47,6 +47,18 @@
   }
 }
 
+.icon-tasks {
+  &:before {
+    content: '\e911';
+  }
+}
+
+.icon-search {
+  &:before {
+    content: '\e915';
+  }
+}
+
 .icon-calendar {
   &:before {
     content: '\e904';
@@ -128,12 +140,6 @@
 .icon-messages {
   &:before {
     content: '\e910';
-  }
-}
-
-.icon-tasks {
-  &:before {
-    content: '\e911';
   }
 }
 
