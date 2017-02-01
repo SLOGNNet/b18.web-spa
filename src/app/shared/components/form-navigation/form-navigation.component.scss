@@ -26,5 +26,33 @@ form-navigation {
       height: $container-height;
       padding: 0;
     }
+
+    .content {
+      white-space: nowrap;
+
+      span {
+        margin: 0 5px;
+        color: $dark-grey;
+        font-size: $small-font-size;
+        cursor: default;
+
+        &:hover {
+          color: $black;
+        }
+
+        &.active {
+          color: $black;
+          font-weight: bold;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }

@@ -1,35 +1,6 @@
 @import '../../../../assets/styles/variables';
 
 bd-perfect-scrollbar {
-  .container {
-    .content {
-      white-space: nowrap;
-
-      span {
-        margin: 0 5px;
-        color: $dark-grey;
-        font-size: $small-font-size;
-        cursor: default;
-
-        &:hover {
-          color: $black;
-        }
-
-        &.active {
-          color: $black;
-          font-weight: bold;
-        }
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-  }
 
   //sass-lint:disable no-important
   .ps-active-x {
