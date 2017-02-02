@@ -47,6 +47,7 @@ $filter-header-max-width: 85px;
 
         span {
           margin: 0;
+          font-size: $tiny-font-size;
 
           &.item-name {
             overflow: hidden;
@@ -71,6 +72,7 @@ $filter-header-max-width: 85px;
 
 .filter-content {
   position: absolute;
+  z-index: $form-control-popup-z-index;
   display: none;
   width: 100%;
   background: $white;
