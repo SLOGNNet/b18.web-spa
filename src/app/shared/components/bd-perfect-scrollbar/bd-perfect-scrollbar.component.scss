@@ -1,11 +1,16 @@
 @import '../../../../assets/styles/variables';
 
 bd-perfect-scrollbar {
-  .container {
+
+  .scroll-container {
     position: relative;
     width: 100%;
-    height: 43px;
+    height: $horizontal-scroll-container-height;
     padding: 0;
+  }
+
+  /deep/ .content {
+    white-space: nowrap;
   }
 
   //sass-lint:disable no-important
