@@ -1,41 +1,76 @@
 @import '../../../../assets/styles/variables';
-
 $filter-header-max-width: 85px;
 
-.content {
-
+.filter-container {
+  position: relative;
   display: flex;
+  height: 58px;
+  padding: 0 $default-margin;
+  background: $white;
+  align-items: center;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
 
-  span {
-    margin: 0 5px;
+  /deep/ .filter-scrollbar {
+    width: 100%;
 
-    &.filter-item {
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      cursor: pointer;
-      max-width: $filter-header-max-width;
-      white-space: nowrap;
-      flex: 0 0 $filter-header-max-width;
+    //sass-lint:disable no-important
+    .scroll-container {
+      display: flex !important;
+      align-items: center;
+    }
 
-      &.active {
-        color: $active-color;
-      }
+    .ps-active-x > .ps-scrollbar-x-rail {
+      bottom: 1px !important;
+    }
+    //sass-lint:enable no-important
+  }
 
-      span {
-        margin: 0;
+  .content {
+    display: flex;
 
-        &.filter-name {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          flex-grow: 1;
+    span {
+      margin: 0 5px;
+
+      &.filter-item {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        cursor: pointer;
+        max-width: $filter-header-max-width;
+        white-space: nowrap;
+        flex: 1 1 $filter-header-max-width;
+
+        &.active {
+          color: $active-color;
         }
 
-        &.filter-count {
-          width: auto;
+        span {
+          margin: 0;
+
+          &.item-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+          }
+
+          &.item-count {
+            width: auto;
+          }
         }
       }
+    }
+  }
+}
 
+.filter-content {
+  position: absolute;
+
+  /deep/ autocomplete-filter {
+    display: none;
+
+    &.active {
+      display: block;
     }
   }
 }
