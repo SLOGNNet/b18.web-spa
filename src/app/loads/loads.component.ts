@@ -6,7 +6,7 @@ import { BdPerfectScrollbarComponent } from './common/bd-perfect-scrollbar/bd-pe
 import { FilterContainer } from './components/filter-container/filter-container.component';
 import { Load } from '../models';
 import { LoadActions } from '../actions';
-import { LoadService } from '../shared';
+import { LoadService, CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -25,11 +25,17 @@ export class LoadsComponent extends BaseListComponent<Load>{
 
 public testFilters: Array<any> = [{value: 'test1'}, {value: 'test2'}, {value: 'test1'}, {value: 'test1'}, {value: 'test1'} ];
   constructor(private loadService: LoadService,
+    private customerService: CustomerService,
     loadActions: LoadActions,
     router: Router,
     route: ActivatedRoute,
     private ngRedux: NgRedux<IAppState>) {
     super(loadActions, ngRedux.select(state => state.loads.items), router, route);
+    this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
+  }
+
+  autocompleteSearchSource(query: string) {
+    return this.customerService.search(query);
   }
 
   protected routePath(): string {

@@ -3,6 +3,7 @@
     <div class="data-panel">
       <div class="bd-filter-container">
           <filter-container>
+              <autocomplete-filter defaultLabel="Customers" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
               <autocomplete-filter defaultLabel="Company" valueField="value" [selectedItems]="testFilters"></autocomplete-filter>
               <autocomplete-filter defaultLabel="Status" valueField="value" [selectedItems]="testFilters"></autocomplete-filter>
               <autocomplete-filter defaultLabel="Drivers" valueField="value" [selectedItems]="[]"></autocomplete-filter>

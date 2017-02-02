@@ -21,15 +21,15 @@ export class FilterContainer {
     return this.filters.filter(f => f.active === true).length > 0;
   }
 
+  deactivateFilters(withoutFilter: BaseFilter) {
+    this.filters.forEach(f => {
+      if (f === withoutFilter) return;
+      f.active = false;
+    });
+  }
+
   private _toggleFilter(filter: BaseFilter) {
     filter.active = !filter.active;
     this.deactivateFilters(filter);
-  }
-
-  deactivateFilters(withoutFilter: BaseFilter) {
-    this.filters.forEach(f => {
-      if(f === withoutFilter) return;
-      f.active = false;
-    });
   }
 }
