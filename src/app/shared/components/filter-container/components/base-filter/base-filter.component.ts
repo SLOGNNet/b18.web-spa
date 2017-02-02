@@ -15,13 +15,13 @@ export class BaseFilter {
   @Input() valueField: string;
   public filterContainer: FilterContainer;
   @Input() set selectedItems(items: any) {
-    this._selectedItems = items;
+    this._selectedItems = items || [];
   }
   get selectedItems() {
     return this._selectedItems;
   }
   protected _active: boolean;
-  private _selectedItems: Array<Object>;
+  private _selectedItems: Array<Object> = [];
 
   constructor() {
 

@@ -1,3 +1,9 @@
-<ul>
-  {{defaultLabel}}
-</ul>
+<div>
+  <bd-input
+      (valueChange)="onAutocompleteChange($event)"
+      placeholder="Enter data">
+  </bd-input>
+  <div *ngFor="let item of searchedItems; let i = index;">
+    {{getItemValue(item)}}
+  </div>
+</div>
