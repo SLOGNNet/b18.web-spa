@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList, ChangeDetectorRef } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
@@ -9,16 +9,11 @@ import { BaseFilter, AutocompleteFilter } from './components';
 })
 export class FilterContainer {
 
-@ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
+  @ContentChildren(BaseFilter) filters: QueryList<AutocompleteFilter>;
 
 
-  ngAfterContentInit() {
-    if (this.filters[0]) {
-      this.filters[0].active = true;
-    }
-  }
   private _showFilter(filter: BaseFilter) {
-
-    filter.active = true;
+    // todo remove active fromothers
+   filter.active = true;
   }
 }
