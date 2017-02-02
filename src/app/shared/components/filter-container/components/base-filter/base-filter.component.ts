@@ -20,7 +20,7 @@ export class BaseFilter {
   get selectedItems() {
     return this._selectedItems;
   }
-  protected _active: boolean;
+  protected _active: boolean = false;
   private _selectedItems: Array<Object>;
 
   constructor() {

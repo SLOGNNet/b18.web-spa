@@ -1,9 +1,20 @@
-<div class="content">
-  <span
-    *ngFor="let filter of filters; let i = index"
-    (click)="_showFilter(filter, i)">
-    {{filter.tagValue}} {{filter.count}}
-  </span>
+<div class="filter-container">
+  <bd-perfect-scrollbar class="container">
+    <div class="content">
+      <span
+        *ngFor="let filter of filters; let i = index"
+        (click)="_showFilter(filter, i)"
+        class="filter-item"
+        >
+        <span class="filter-name">
+          {{filter.tagValue}}
+        </span>
+        <span class="filter-count" *ngIf="filter.count > 1">
+          +{{filter.count - 1}}
+        </span>
+      </span>
+    </div>
+  </bd-perfect-scrollbar>
   <div class="filter-content">
      <ng-content></ng-content>
    </div>

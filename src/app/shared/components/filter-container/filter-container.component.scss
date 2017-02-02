@@ -1,5 +1,36 @@
 @import '../../../../assets/styles/variables';
 
+$filter-header-max-width: 85px;
+
 .content {
-  margin: 10px 0;
+
+  display: flex;
+
+  span {
+    margin: 0 5px;
+
+    &.filter-item {
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      max-width: $filter-header-max-width;
+      white-space: nowrap;
+      flex: 0 0 $filter-header-max-width;
+
+      span {
+        margin: 0;
+
+        &.filter-name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex-grow: 1;
+        }
+
+        &.filter-count {
+          width: auto;
+        }
+      }
+
+    }
+  }
 }
