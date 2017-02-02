@@ -9,6 +9,8 @@ $dirty-grey: #b7bcc1;
 $iron: #cccecf;
 $gray-chateau: #9fa3a6;
 $blue: #75b3e2;
+$closable-card-bg: rgba($shark, .9);
+$closable-card-ellipsis: #393d42;
 $horizon: #597c97;
 $mako: #485158;
 $light-blue: #f5fefe;
@@ -56,6 +58,7 @@ $mini-font-size: .625rem;
 $tiny-font-size: .75rem;
 $small-font-size: .875rem;
 $large-font-size: 1.25rem;
+$top-panel-icon: 19px;
 
 @font-face {
   font-family: 'SFUIText-Regular';

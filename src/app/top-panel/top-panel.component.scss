@@ -30,7 +30,7 @@ input {
     overflow: hidden;
     width: 57px;
     height: $form-control-height;
-    font-size: 19px;
+    font-size: $top-panel-icon;
     cursor: pointer;
     justify-content: center;
     align-items: center;

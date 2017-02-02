@@ -19,11 +19,6 @@ import { IAppState } from '../store';
   styleUrls: ['./customers.component.scss'],
 })
 export class CustomersComponent extends BaseListComponent<Customer> {
-  private columns = [
-    { prop: 'id', name: 'Customer #' },
-    { prop: 'name', name: 'Name' },
-    { prop: 'status', name: 'Status' }
-  ];
     constructor(
       customerActions: CustomerActions,
       router: Router,
