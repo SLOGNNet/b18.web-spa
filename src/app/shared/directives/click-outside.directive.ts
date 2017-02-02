@@ -10,7 +10,7 @@ export class ClickOutsideDirective {
     constructor(private _elementRef: ElementRef) {
     }
 
-    @HostListener('document:tap', ['$event', '$event.target'])
+    @HostListener('document:click', ['$event', '$event.target'])
     public onClick(event: MouseEvent, targetElement: HTMLElement): void {
         if (!targetElement) {
             return;

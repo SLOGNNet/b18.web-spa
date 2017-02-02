@@ -61,7 +61,7 @@
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
     "build:datatable": "cd libs/angular2-data-table && npm i && npm run package",
-    "build:libs": "npm run build:datatable && npm install ./libs/angular2-data-table --force"
+    "build:libs": " "
   },
   "dependencies": {
     "@angular/common": "~2.4.1",
