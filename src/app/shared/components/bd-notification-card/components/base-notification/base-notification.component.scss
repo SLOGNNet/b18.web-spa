@@ -21,11 +21,18 @@
 
   .message {
     @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
+    margin-top: 4px;
   }
 
   .date {
     color: $grey;
     margin-top: 4px;
+  }
+
+  .right {
+    .title {
+      margin-top: -4px;
+    }
   }
 
   .top {
