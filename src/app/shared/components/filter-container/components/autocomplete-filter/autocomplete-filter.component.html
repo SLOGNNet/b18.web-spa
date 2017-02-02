@@ -3,6 +3,9 @@
       (valueChange)="onAutocompleteChange($event)"
       placeholder="Enter data">
   </bd-input>
+  <div *ngIf="isLoading">
+    Loading
+  </div>
   <div *ngFor="let item of searchedItems; let i = index;">
     {{getItemValue(item)}}
   </div>
