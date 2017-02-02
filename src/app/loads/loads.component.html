@@ -2,7 +2,12 @@
   <first-pane>
     <div class="data-panel">
       <filter-container>
-        <autocomplete-filter defaultLabel="Customers" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
+        <autocomplete-filter
+          defaultLabel="Customers"
+          valueField="name"
+          [autocompleteSearchSource]="autocompleteSearchSource"
+          [allSource]="allSource">
+        </autocomplete-filter>
       </filter-container>
       <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
       </bd-button>

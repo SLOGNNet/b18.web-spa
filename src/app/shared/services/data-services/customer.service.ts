@@ -47,4 +47,10 @@ export class CustomerService {
         return queryRegex.test(customer.name);
       }));
   }
+
+  getPage(from: number = 0, to: number = 10): Observable<Customer[]> {
+    return Observable.of(
+      MockData.customers.slice(from, to)
+    );
+  }
 }
