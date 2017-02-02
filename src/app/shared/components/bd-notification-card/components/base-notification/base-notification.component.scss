@@ -58,6 +58,7 @@
 
   &.closable {
     position: relative;
+    height: 98px;
     background: $closable-card-bg;
     border-radius: 3px;
 
@@ -71,10 +72,17 @@
       }
     }
 
+    .right {
+      .title {
+        margin-top: -4px;
+      }
+    }
+
     .message {
       @include multi-line-ellipsis($line-height: 18px, $line-count: 3, $bg-color: $closable-card-ellipsis);
       background: inherit;
       color: $white;
+      margin-top: -4px;
     }
 
     .bottom {
