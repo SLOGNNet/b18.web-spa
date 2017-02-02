@@ -6,6 +6,10 @@
   background: $white;
   font-size: $tiny-font-size;
 
+  .icon-close {
+    font-size: 10px;
+  }
+
   &.active,
   &:hover {
     background: $light-blue;
@@ -17,20 +21,21 @@
 
   .title {
     font-weight: bold;
+    margin-bottom: 4px;
   }
 
   .message {
     @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
+    margin-bottom: 4px;
   }
 
   .date {
     color: $grey;
-    margin-top: 4px;
   }
 
   .top {
     display: flex;
-    padding: $popover-margin $popover-margin 0;
+    padding: 13px 12px 0;
     justify-content: space-between;
 
     button {
@@ -46,7 +51,7 @@
 
   .bottom {
     display: flex;
-    padding: 10px 15px;
+    padding: 8px 15px;
     font-size: $tiny-font-size;
     border-bottom: $border;
 
@@ -58,8 +63,13 @@
 
   &.closable {
     position: relative;
+    height: 98px;
     background: $closable-card-bg;
     border-radius: 3px;
+
+    .right {
+      margin-top: -5px;
+    }
 
     .title {
       color: $horizon;
@@ -75,6 +85,7 @@
       @include multi-line-ellipsis($line-height: 18px, $line-count: 3, $bg-color: $closable-card-ellipsis);
       background: inherit;
       color: $white;
+      margin-bottom: 4px;
     }
 
     .bottom {
