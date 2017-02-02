@@ -17,7 +17,7 @@
       @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $closable-card-ellipsis);
       background: inherit;
       color: $white;
-      margin-top: 1px;
+      margin-top: -4px;
     }
   }
 }
