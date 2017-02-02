@@ -11,11 +11,7 @@
     background: $light-blue;
 
     .message {
-      background: $light-blue;
-
-      &:after {
-        background: $light-blue;
-      }
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $light-blue);
     }
   }
 
@@ -24,7 +20,7 @@
   }
 
   .message {
-    @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+    @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
   }
 
   .date {
@@ -61,21 +57,9 @@
   }
 
   &.closable {
-    background: $shark;
-    opacity: .9;
+    position: relative;
+    background: $closable-card-bg;
     border-radius: 3px;
-
-    &:hover {
-      background: $shark;
-
-      .message {
-        background: $shark;
-
-        &:after {
-          background: $shark;
-        }
-      }
-    }
 
     .title {
       color: $horizon;
@@ -88,13 +72,9 @@
     }
 
     .message {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
-      background: $shark;
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 3, $bg-color: $closable-card-ellipsis);
+      background: inherit;
       color: $white;
-
-      &:after {
-        background: $shark;
-      }
     }
 
     .bottom {

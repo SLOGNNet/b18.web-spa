@@ -1,9 +1,11 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
-        <filter-container>
-          <autocomplete-filter defaultLabel="Customers" valueField="value" [selectedItems]="[{value: 'test1'} , {value: 'test2'}]"></autocomplete-filter>
-        </filter-container>
+      <filter-container>
+        <autocomplete-filter defaultLabel="Customers" valueField="value" [selectedItems]="[{value: 'test1'} , {value: 'test2'}]"></autocomplete-filter>
+      </filter-container>
+      <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
+      </bd-button>
         <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)'></load-stop-cards>
     </div>
   </first-pane>
