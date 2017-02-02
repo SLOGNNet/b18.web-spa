@@ -18,11 +18,14 @@ export class FilterContainer {
   }
 
   private _toggleFilter(filter: BaseFilter) {
-    this.deactivateAllFilters();
-    filter.active = true;
+    filter.active = !filter.active;
+    this.deactivateFilters(filter);
   }
 
-  deactivateAllFilters() {
-    this.filters.forEach(f => f.active = false);
+  deactivateFilters(withoutFilter: BaseFilter) {
+    this.filters.forEach(f => {
+      if(f === withoutFilter) return;
+      f.active = false;
+    });
   }
 }
