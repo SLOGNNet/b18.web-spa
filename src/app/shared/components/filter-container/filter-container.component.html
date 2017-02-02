@@ -3,9 +3,9 @@
     <div class="content">
       <span
         *ngFor="let filter of filters; let i = index"
-        (click)="_showFilter(filter, i)"
+        (click)="_toggleFilter(filter, i)"
         class="filter-item"
-        >
+        [class.active]="filter.active">
         <span class="filter-name">
           {{filter.tagValue}}
         </span>

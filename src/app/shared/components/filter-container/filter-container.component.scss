@@ -13,9 +13,14 @@ $filter-header-max-width: 85px;
       position: relative;
       display: flex;
       overflow: hidden;
+      cursor: pointer;
       max-width: $filter-header-max-width;
       white-space: nowrap;
       flex: 0 0 $filter-header-max-width;
+
+      &.active {
+        color: $active-color;
+      }
 
       span {
         margin: 0;

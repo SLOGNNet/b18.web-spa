@@ -20,10 +20,11 @@ $light-red: #ffebeb;
 
 /*  */
 $text-color: $black;
+$active-color: $blue;
 
 /* labels */
 $label-default-color: $dark-grey;
-$label-active-color: $blue;
+$label-active-color: $active-color;
 $label-warning-color: $red;
 
 /* buttons */
