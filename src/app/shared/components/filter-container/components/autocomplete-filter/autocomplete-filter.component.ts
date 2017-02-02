@@ -3,6 +3,7 @@ import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
+import { InfiniteScroll } from 'angular2-infinite-scroll';
 
 @Component({
   selector: 'autocomplete-filter',

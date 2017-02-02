@@ -50,6 +50,7 @@ import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, Notificatio
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter } from './components/filter-container';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 @NgModule({
   providers: [
@@ -119,6 +120,7 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
     BdPopoverModule,
+    InfiniteScrollModule,
     BdPipesModule
   ],
   exports: [
@@ -138,6 +140,7 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
     BdFormExpandComponent,
     BdButtonComponent,
     BdRemoveButtonComponent,
