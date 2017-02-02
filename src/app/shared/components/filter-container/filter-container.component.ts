@@ -1,5 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { BaseFilter } from './components';
+import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
   selector: 'filter-container',
@@ -9,10 +9,16 @@ import { BaseFilter } from './components';
 })
 export class FilterContainer {
 
-  @Input() filters: Array<BaseFilter> = [];
+@ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
 
-  public addFilter(filter: BaseFilter) {
-    this.filters.push(filter);
+  ngAfterContentInit() {
+    if (this.filters[0]) {
+      this.filters[0].active = true;
+    }
+  }
+  private _showFilter(filter: BaseFilter) {
+
+    filter.active = true;
   }
 }
