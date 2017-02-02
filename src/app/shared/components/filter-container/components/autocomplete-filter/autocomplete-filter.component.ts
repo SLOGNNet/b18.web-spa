@@ -40,6 +40,7 @@ export class AutocompleteFilter extends BaseFilter{
 
     $searchRequest.subscribe(() => {
       this.isLoading = true;
+      this.searchedItems = [];
       this.cdr.markForCheck();
     });
     $searchResponse.subscribe((matches: any[]) => {
