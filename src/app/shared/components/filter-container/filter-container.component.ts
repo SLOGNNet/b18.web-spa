@@ -9,12 +9,16 @@ import { BaseFilter, AutocompleteFilter } from './components';
 })
 export class FilterContainer {
 
-@ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
+  @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
   ngAfterContentInit() {
     if (this.filters[0]) {
       this.filters[0].active = true;
     }
+  }
+
+  get opened() {
+    return this.filters.filter(f => f.active === true).length > 0;
   }
 
   private _toggleFilter(filter: BaseFilter) {

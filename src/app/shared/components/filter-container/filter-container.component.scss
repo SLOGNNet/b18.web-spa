@@ -61,10 +61,22 @@ $filter-header-max-width: 85px;
       }
     }
   }
+
+  &.opened {
+    & + .filter-content {
+      display: block;
+    }
+  }
 }
 
 .filter-content {
   position: absolute;
+  display: none;
+  width: 100%;
+  background: $white;
+  margin-top: 10px;
+  border-radius: $default-border-radius;
+  min-height: $form-control-height;
 
   /deep/ autocomplete-filter {
     display: none;
