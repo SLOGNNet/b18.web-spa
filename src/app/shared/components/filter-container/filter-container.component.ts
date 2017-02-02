@@ -13,7 +13,7 @@ export class FilterContainer {
 
 
   private _showFilter(filter: BaseFilter) {
-    //todo remove active fromothers
+    // todo remove active fromothers
    filter.active = true;
   }
 }
