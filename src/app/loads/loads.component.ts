@@ -22,6 +22,8 @@ import { IAppState } from '../store';
 })
 export class LoadsComponent extends BaseListComponent<Load>{
 
+
+public testFilters: Array<any> = [{value: 'test1'}, {value: 'test2'}, {value: 'test1'}, {value: 'test1'}, {value: 'test1'} ];
   constructor(private loadService: LoadService,
     loadActions: LoadActions,
     router: Router,
