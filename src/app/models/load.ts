@@ -1,6 +1,10 @@
-import { Customer, Stop, StopTypes, Trip, Document } from './index';
+import { Stop } from './stop';
+import { Customer } from './customer';
+import { Trip } from './trip';
+import { Document } from './document';
+import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
-import { LoadStatuses, DriverRequirements, DataAssigneeRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
+import { LoadStatuses, StopTypes, DriverRequirements, DataAssigneeRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
 
 // Colors
 function createStatusColors() {
@@ -33,26 +37,47 @@ function createStatusTexts() {
 
 const statusTexts = createStatusTexts();
 
+@JsonObject
 export class Load {
+  @JsonMember
   id: number;
+  @JsonMember
   customerId: number;
+  @JsonMember
   addressId: number;
+  @JsonMember
   carrierLoadNumber: number;
+  @JsonMember
   brokerLoadNumber: number;
+  @JsonMember
   loadType: LoadType;
+  @JsonMember
   freightType: FreightType;
+  @JsonMember
   dataAssignee: DataAssigneeRequirements;
+  @JsonMember
   billingAddressId: number;
+  @JsonMember
   contactId: number;
+  @JsonMember
   status: LoadStatuses;
+  @JsonMember({ elements: Customer })
   customer: Customer;
+  @JsonMember
   driverRequirment: DriverRequirements;
+  @JsonMember
   powerUnitType: PowerUnitTypes;
+  @JsonMember
   trailerType: TrailerTypes;
+  @JsonMember
   specialRequirment: string;
+  @JsonMember({ elements: Trip })
   trips: Array<Trip>;
+  @JsonMember({ elements: Trip })
   currentTrip: Trip;
+  @JsonMember({ elements: Stop })
   stops: Array<Stop>;
+  @JsonMember({ elements: Document })
   documents: Array<Document>;
 
   static create(): Load {
