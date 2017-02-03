@@ -1,16 +1,14 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { FilterContainer } from '../../filter-container.component';
-import { pick } from 'lodash';
 
-@Component({
-  inputs: ['defaultLabel', 'valueField', 'selectedItems'],
-  host: {
-    '[class.active]': 'active',
-    'class': 'filter'
-  },
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
 export class BaseFilter {
+
+  public static filterMetaData = {
+    inputs: ['defaultLabel', 'valueField', 'selectedItems'],
+    host: {'class': 'filter'},
+    changeDetection: ChangeDetectionStrategy.OnPush
+  };
+
   @Input() defaultLabel: string;
   @Input() valueField: string;
   public filterContainer: FilterContainer;
@@ -20,7 +18,8 @@ export class BaseFilter {
   get selectedItems() {
     return this._selectedItems;
   }
-  protected _active: boolean;
+
+  protected _active: boolean = false;
   private _selectedItems: Array<Object> = [];
 
   constructor() {

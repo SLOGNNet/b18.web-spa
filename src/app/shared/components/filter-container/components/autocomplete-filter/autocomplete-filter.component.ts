@@ -4,13 +4,13 @@ import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
 
-@Component({
+@Component(Object.assign({
   selector: 'autocomplete-filter',
   templateUrl: './autocomplete-filter.component.html',
   styleUrls: ['../base-filter/base-filter.component.scss', './autocomplete-filter.component.scss'],
   providers: [{provide: BaseFilter, useExisting: forwardRef(() => AutocompleteFilter) }],
   changeDetection: ChangeDetectionStrategy.OnPush
-})
+}, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter{
   @Input() companyItemTemplate: TemplateRef<any>;
   @Input() statusItemTemplate: TemplateRef<any>;
@@ -25,6 +25,7 @@ export class AutocompleteFilter extends BaseFilter{
 
   public ngOnInit() {
     this.setupAutocomplete();
+      console.log(this.companyItemTemplate, this.statusItemTemplate );
   }
 
   public onAutocompleteChange(value: string) {

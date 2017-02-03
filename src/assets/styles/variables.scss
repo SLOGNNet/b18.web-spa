@@ -20,10 +20,11 @@ $light-red: #ffebeb;
 
 /*  */
 $text-color: $black;
+$active-color: $blue;
 
 /* labels */
 $label-default-color: $dark-grey;
-$label-active-color: $blue;
+$label-active-color: $active-color;
 $label-warning-color: $red;
 
 /* buttons */
@@ -66,6 +67,7 @@ $top-panel-icon-size: 19px;
 }
 /* default input height */
 $form-control-height: 50px;
+$horizontal-scroll-container-height: 43px;
 
 /* form navigation */
 $form-navigation-height: 91px;
