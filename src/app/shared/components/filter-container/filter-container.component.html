@@ -1,6 +1,7 @@
 <div
     class="filter-container"
-    [class.opened]="opened">
+    [class.opened]="opened"
+    (clickOutside)="deactivateFilters()">
   <bd-perfect-scrollbar class="filter-scrollbar">
     <div class="content">
       <span
