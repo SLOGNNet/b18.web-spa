@@ -12,25 +12,23 @@
   }
 }
 
-.filter-item-container {
+.filter-item-content {
   display: flex;
-  height: $form-control-height;
-  padding: 0 17px;
-  border-bottom: $border;
+  width: 100%;
   align-items: center;
+  padding-left: 15px;
 
   .left {
     display: flex;
     overflow: hidden;
-    align-items: center;
-    margin-right: 30px;
+    width: 0;
     flex: 1;
+    padding-right: 30px;
 
     .item-name {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      margin-left: 15px;
     }
   }
 
