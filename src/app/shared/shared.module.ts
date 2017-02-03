@@ -11,6 +11,7 @@ import { NotificationService,
   ContactService,
   FormValidationService,
   FileUploadService,
+  HttpService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -64,7 +65,8 @@ import { FilterContainer, AutocompleteFilter, FilterItem } from './components/fi
     CommodityService,
     BdFormBuilder,
     FormValidationService,
-    DatePipe
+    DatePipe,
+    HttpService
   ],
   declarations: [
     BdFormButtonComponent,
