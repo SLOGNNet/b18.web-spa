@@ -2,88 +2,90 @@
 $filter-header-max-width: 85px;
 
 .filter-container {
-  position: relative;
-  display: flex;
-  height: 58px;
-  padding: 0 $default-margin;
-  background: $white;
-  align-items: center;
-  border-bottom: $border;
-  border-radius: $default-border-radius;
-
-  /deep/ .filter-scrollbar {
-    width: 100%;
-
-    //sass-lint:disable no-important
-    .scroll-container {
-      display: flex !important;
-      align-items: center;
-    }
-
-    .ps-active-x > .ps-scrollbar-x-rail {
-      bottom: 1px !important;
-    }
-    //sass-lint:enable no-important
-  }
-
-  .content {
+  .filter-header {
+    position: relative;
     display: flex;
+    height: 58px;
+    padding: 0 $default-margin;
+    background: $white;
+    align-items: center;
+    border-bottom: $border;
+    border-radius: $default-border-radius;
 
-    span {
-      margin: 0 5px;
+    /deep/ .filter-scrollbar {
+      width: 100%;
 
-      &.filter-item {
-        position: relative;
-        display: flex;
-        overflow: hidden;
-        cursor: pointer;
-        max-width: $filter-header-max-width;
-        white-space: nowrap;
+      //sass-lint:disable no-important
+      .scroll-container {
+        display: flex !important;
+        align-items: center;
+      }
 
-        &.active {
-          color: $active-color;
-        }
+      .ps-active-x > .ps-scrollbar-x-rail {
+        bottom: 1px !important;
+      }
+      //sass-lint:enable no-important
+    }
 
-        span {
-          margin: 0;
-          font-size: $tiny-font-size;
+    .content {
+      display: flex;
 
-          &.item-name {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            flex-grow: 1;
+      span {
+        margin: 0 5px;
+
+        &.filter-item {
+          position: relative;
+          display: flex;
+          overflow: hidden;
+          cursor: pointer;
+          max-width: $filter-header-max-width;
+          white-space: nowrap;
+
+          &.active {
+            color: $active-color;
           }
 
-          &.item-count {
-            width: auto;
+          span {
+            margin: 0;
+            font-size: $tiny-font-size;
+
+            &.item-name {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              flex-grow: 1;
+            }
+
+            &.item-count {
+              width: auto;
+            }
           }
         }
       }
     }
-  }
 
-  &.opened {
-    & + .filter-content {
-      display: block;
+    &.opened {
+      & + .filter-content {
+        display: block;
+      }
     }
   }
-}
 
-.filter-content {
-  position: absolute;
-  z-index: $form-control-popup-z-index;
-  display: none;
-  width: 100%;
-  background: $white;
-  margin-top: 10px;
-  border-radius: $default-border-radius;
-  min-height: $form-control-height;
-
-  /deep/ .filter {
+  .filter-content {
+    position: absolute;
+    z-index: $form-control-popup-z-index;
     display: none;
+    width: 100%;
+    background: $white;
+    margin-top: 10px;
+    border-radius: $default-border-radius;
+    min-height: $form-control-height;
 
-    &.active {
-      display: block;
+    /deep/ .filter {
+      display: none;
+
+      &.active {
+        display: block;
+      }
     }
   }
 }
