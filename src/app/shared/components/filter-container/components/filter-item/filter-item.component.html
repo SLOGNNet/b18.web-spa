@@ -1,4 +1,5 @@
-<div (click)="onClick($event)">
+<div class="filter-item-container" (click)="onClick($event)">
+  <bd-checkbox></bd-checkbox>
   <template
   *ngIf="itemTemplate"
   [ngOutletContext]="{item: item}"
