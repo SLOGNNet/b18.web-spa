@@ -2,6 +2,17 @@
 
 bd-perfect-scrollbar {
 
+  .scroll-container {
+    position: relative;
+    width: 100%;
+    height: $horizontal-scroll-container-height;
+    padding: 0;
+  }
+
+  /deep/ .content {
+    white-space: nowrap;
+  }
+
   //sass-lint:disable no-important
   .ps-active-x {
     &.ps-in-scrolling {

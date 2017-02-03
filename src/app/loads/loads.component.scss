@@ -11,3 +11,22 @@
     margin-bottom: 17px;
   }
 }
+
+.left {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  margin-right: 30px;
+  flex: 1;
+
+  .item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 15px;
+  }
+}
+
+.right {
+  color: $grey;
+}

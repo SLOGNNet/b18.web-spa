@@ -1,17 +1,15 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
-      <filter-container>
-        <autocomplete-filter
-          defaultLabel="Customers"
-          valueField="name"
-          [autocompleteSearchSource]="autocompleteSearchSource"
-          [allSource]="allSource">
-        </autocomplete-filter>
-      </filter-container>
+      <div class="bd-filter-container">
+          <filter-container>
+              <autocomplete-filter  [itemTemplate]="companyItemTemplate" defaultLabel="Company" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
+              <autocomplete-filter defaultLabel="Drivers" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
+          </filter-container>
+      </div>
       <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
       </bd-button>
-            <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)'></load-stop-cards>
+      <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)'></load-stop-cards>
     </div>
   </first-pane>
 
@@ -22,3 +20,12 @@
     <router-outlet></router-outlet>
   </third-pane>
   </multi-pane-layout>
+
+  <template #companyItemTemplate let-item="item">
+      <div class="left">
+    <span class="item-name">{{item.name}}</span>
+  </div>
+  <div class="right">
+    MC#: {{item.mc}}
+  </div>
+  </template>

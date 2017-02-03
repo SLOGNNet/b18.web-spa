@@ -1,0 +1,9 @@
+@import '../../../../../../assets/styles/variables';
+
+.filter-item-container {
+  display: flex;
+  height: $form-control-height;
+  padding: 0 17px;
+  border-bottom: $border;
+  align-items: center;
+}

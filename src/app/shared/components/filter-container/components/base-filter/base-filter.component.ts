@@ -1,16 +1,14 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { FilterContainer } from '../../filter-container.component';
-import { pick } from 'lodash';
-
-@Component({
-  inputs: ['defaultLabel', 'valueField', 'selectedItems'],
-  host: {
-    '[class.active]': 'active',
-    'class': 'filter'
-  },
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
+import { includes } from 'lodash';
 export class BaseFilter {
+
+  public static filterMetaData = {
+    inputs: ['defaultLabel', 'valueField', 'selectedItems'],
+    host: {'class': 'filter'},
+    changeDetection: ChangeDetectionStrategy.OnPush
+  };
+
   @Input() defaultLabel: string;
   @Input() valueField: string;
   public filterContainer: FilterContainer;
@@ -20,7 +18,8 @@ export class BaseFilter {
   get selectedItems() {
     return this._selectedItems;
   }
-  protected _active: boolean;
+
+  protected _active: boolean = false;
   private _selectedItems: Array<Object> = [];
 
   constructor() {
@@ -28,11 +27,25 @@ export class BaseFilter {
   }
 
   public get tagValue() {
-    return this.selectedItems.length > 0 ? this._selectedItems.map(s => this.getItemValue(s)).join(', ') : this.defaultLabel;
+    return this.selectedItems.length > 0 ? this._selectedItems.map(item => this.getItemValue(item)).join(', ') : this.defaultLabel;
+  }
+
+  public getSelectedItemsValues() {
+    this.selectedItems.map(item => this.getItemValue(item));
   }
 
   protected getItemValue(item: Object) {
     return item[this.valueField];
+  }
+
+  protected isSelected(item: Object) {
+    return includes(this.selectedItems, item);
+  }
+
+  protected onSelect(item: Object) {
+    if (!this.isSelected(item)) {
+      this.selectedItems.push(item);
+    }
   }
 
   public get count() {

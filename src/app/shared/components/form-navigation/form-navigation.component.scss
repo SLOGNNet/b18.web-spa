@@ -1,6 +1,6 @@
 @import '../../../../assets/styles/variables';
 
-$container-height: 43px;
+$container-height: $horizontal-scroll-container-height;
 
 form-navigation {
   position: absolute;

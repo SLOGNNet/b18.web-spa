@@ -1,18 +1,19 @@
-import { Component, Input, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 
-@Component({
+@Component(Object.assign({
   selector: 'autocomplete-filter',
   templateUrl: './autocomplete-filter.component.html',
   styleUrls: ['../base-filter/base-filter.component.scss', './autocomplete-filter.component.scss'],
   providers: [{ provide: BaseFilter, useExisting: forwardRef(() => AutocompleteFilter) }],
   changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class AutocompleteFilter extends BaseFilter {
+}, BaseFilter.filterMetaData))
+export class AutocompleteFilter extends BaseFilter{
+  @Input() itemTemplate: TemplateRef<any>;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<{ from: number, to: number }> = new EventEmitter();
   private searchedItems = [];
@@ -37,7 +38,18 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   public onAutocompleteChange(value: string) {
-    this.keyUpEventEmitter.emit(value);
+    if (value.length === 0) {
+      this.isLoading = false;
+      this.searchedItems = [];
+      this.cdr.markForCheck();
+    }
+    else {
+      this.keyUpEventEmitter.emit(value);
+    }
+  }
+
+  private get isSearchBoxShown() {
+    return this.searchedItems.length > 0 || this.isLoading;
   }
 
   public onScrolledDown() {
@@ -46,7 +58,7 @@ export class AutocompleteFilter extends BaseFilter {
     this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + 5 });
   }
 
-  setupAutocomplete() {
+  private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
       .distinctUntilChanged();
