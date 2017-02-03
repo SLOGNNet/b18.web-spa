@@ -39,7 +39,6 @@ $filter-header-max-width: 85px;
         cursor: pointer;
         max-width: $filter-header-max-width;
         white-space: nowrap;
-        flex: 1 1 $filter-header-max-width;
 
         &.active {
           color: $active-color;
