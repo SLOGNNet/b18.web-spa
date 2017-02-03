@@ -12,13 +12,22 @@ import { CustomerService } from '../../../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutocompleteFilter extends BaseFilter{
+<<<<<<< HEAD
   @Input() companyItemTemplate: TemplateRef<any>;
   @Input() statusItemTemplate: TemplateRef<any>;
   @Input() public autocompleteSearchSource: Observable<any>;
+=======
+>>>>>>> FSPA-274-company-filter-story
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private searchedItems = [];
+  private isLoading = false;
+  @Input() autocompleteSearchSource: (query: string) => Observable<any[]> = () => Observable.empty();
+
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
+  }
+
+  public ngOnInit() {
     this.setupAutocomplete();
   }
 
@@ -41,13 +50,23 @@ export class AutocompleteFilter extends BaseFilter{
   ];
 
   setupAutocomplete() {
-    this.keyUpEventEmitter
+    const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
-      .distinctUntilChanged()
-      .switchMap((value) => this.customerService.search(value))
-      .subscribe((matches: any[]) => {
-         this.searchedItems = matches;
-         this.cdr.markForCheck();
-      });
+      .distinctUntilChanged();
+
+    const $searchResponse = $searchRequest
+      .delay(1000)
+      .switchMap(this.autocompleteSearchSource);
+
+    $searchRequest.subscribe(() => {
+      this.isLoading = true;
+      this.searchedItems = [];
+      this.cdr.markForCheck();
+    });
+    $searchResponse.subscribe((matches: any[]) => {
+       this.isLoading = false;
+       this.searchedItems = matches;
+       this.cdr.markForCheck();
+    });
    }
 }
