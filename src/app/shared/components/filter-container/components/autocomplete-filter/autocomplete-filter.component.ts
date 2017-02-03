@@ -25,7 +25,6 @@ export class AutocompleteFilter extends BaseFilter{
 
   public ngOnInit() {
     this.setupAutocomplete();
-      console.log(this.companyItemTemplate, this.statusItemTemplate );
   }
 
   public onAutocompleteChange(value: string) {
