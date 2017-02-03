@@ -12,12 +12,8 @@ import { CustomerService } from '../../../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutocompleteFilter extends BaseFilter{
-<<<<<<< HEAD
   @Input() companyItemTemplate: TemplateRef<any>;
   @Input() statusItemTemplate: TemplateRef<any>;
-  @Input() public autocompleteSearchSource: Observable<any>;
-=======
->>>>>>> FSPA-274-company-filter-story
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private searchedItems = [];
   private isLoading = false;
