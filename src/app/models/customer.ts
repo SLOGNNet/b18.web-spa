@@ -1,9 +1,9 @@
-import { Address } from './index';
-import { Contact } from './index';
-import { Load } from './index';
+import { Address } from './address';
+import { Contact } from './contact';
+import { Load } from './load';
 import { generateNewId } from './utils';
 import { CustomerTypes, CustomerStatuses } from './enums';
-
+import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 // Colors
 function createStatusColors() {
  let result = {};
@@ -14,18 +14,26 @@ function createStatusColors() {
 };
 
 const statusColors = createStatusColors();
-
+@JsonObject()
 export class Customer {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
 
   id: number;
+
   name: string = '';
-  contacts: Array<Contact>;
+  @JsonMember({ elements: Contact })
+  contacts: Contact[];
+  @JsonMember
   status: CustomerStatuses;
+  @JsonMember
   type: CustomerTypes;
+  @JsonMember
   mc: string = '';
+  @JsonMember
   taxId: string = '';
+  @JsonMember({ elements: Address })
   addresses: Array<Address>;
+  @JsonMember
   email: string = '';
   loads: Array<Load>;
 

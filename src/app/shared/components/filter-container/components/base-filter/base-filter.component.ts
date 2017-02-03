@@ -27,7 +27,11 @@ export class BaseFilter {
   }
 
   public get tagValue() {
-    return this.selectedItems.length > 0 ? this._selectedItems.map(s => this.getItemValue(s)).join(', ') : this.defaultLabel;
+    return this.selectedItems.length > 0 ? this._selectedItems.map(item => this.getItemValue(item)).join(', ') : this.defaultLabel;
+  }
+
+  public getSelectedItemsValues() {
+    this.selectedItems.map(item => this.getItemValue(item));
   }
 
   protected getItemValue(item: Object) {

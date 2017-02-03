@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
@@ -12,6 +12,7 @@ import { CustomerService } from '../../../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter{
+  @Input() itemTemplate: TemplateRef<any>;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private searchedItems = [];
   private isLoading = false;

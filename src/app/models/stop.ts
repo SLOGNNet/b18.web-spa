@@ -1,19 +1,31 @@
-import { Commodity, Address, Facility } from './index';
+import { Commodity } from './commodity';
+import { Address } from './address';
+import { Facility } from './facility';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
+import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
+@JsonObject
 export class Stop {
   private static stopStatusColor = ['#75b3e1', '#85d183', '#ffbe4d', '#fb3a3a'];
   private static stopStatusText = ['Pending', 'In progress', 'Complete', 'Problem'];
   private static stopTypeText = ['None', 'Pickup', 'Dropoff'];
 
+  @JsonMember
   id: number;
+  @JsonMember({ elements: Address })
   address: Address;
+  @JsonMember({ elements: Commodity })
   commodities: Array<Commodity>;
+  @JsonMember
   date: Date = null;
+  @JsonMember
   notes: string = '';
+  @JsonMember
   type: StopTypes = StopTypes.None;
+  @JsonMember({ elements: Facility })
   facility: Facility;
+  @JsonMember
   status: StopStatuses.InProgress;
 
   static create(type: StopTypes): Stop{

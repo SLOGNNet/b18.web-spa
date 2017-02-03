@@ -11,11 +11,13 @@ import { NotificationService,
   ContactService,
   FormValidationService,
   FileUploadService,
+  HttpService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
+import { BdCheckbox } from '././components/bd-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
@@ -49,7 +51,7 @@ import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdN
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
-import { FilterContainer, AutocompleteFilter } from './components/filter-container';
+import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
 
 @NgModule({
   providers: [
@@ -63,7 +65,8 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     CommodityService,
     BdFormBuilder,
     FormValidationService,
-    DatePipe
+    DatePipe,
+    HttpService
   ],
   declarations: [
     BdFormButtonComponent,
@@ -79,6 +82,7 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     BdAddButtonComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
+    BdCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
@@ -107,7 +111,8 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     NotificationCardIcon,
     BdPerfectScrollbarComponent,
     FilterContainer,
-    AutocompleteFilter
+    AutocompleteFilter,
+    FilterItem
   ],
   imports: [
     CommonModule,
@@ -132,6 +137,7 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
+    BdCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
@@ -170,7 +176,8 @@ import { FilterContainer, AutocompleteFilter } from './components/filter-contain
     BdPipesModule,
     BdPerfectScrollbarComponent,
     FilterContainer,
-    AutocompleteFilter
+    AutocompleteFilter,
+    FilterItem
   ]
 })
 export class SharedModule {
