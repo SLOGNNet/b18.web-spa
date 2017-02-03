@@ -12,26 +12,18 @@
         {{getItemValue(item)}}
       </div>
     </div>
-    <div *ngIf="!searchedItems.length">
-      <div
+    <div *ngIf="!searchedItems.length"
       class="infinite-scroll"
       infinite-scroll
       [debounce]="debounce" 
       [infiniteScrollDistance]="infiniteScrollDistance" 
       [scrollWindow]="scrollWindow"
       (scrolled)="onScrolledDown($event)">
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-      adsf fdasdfafsdfdsaf asdfsdfsdf  sfasdfasdf sadfdsafdssaf
-        <div *ngFor="let item of allItems; let i = index;">
-          {{getItemValue(item)}}
-        </div>
+      <div *ngFor="let item of allItems; let i = index;">
+        {{getItemValue(item)}}
+      </div>
+      <div class="allItemsSpinner" *ngIf="isAllItemsLoading">
+        Loading
       </div>
     </div>
   </div>

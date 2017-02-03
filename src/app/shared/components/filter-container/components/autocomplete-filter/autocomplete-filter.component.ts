@@ -9,20 +9,22 @@ import { InfiniteScroll } from 'angular2-infinite-scroll';
   selector: 'autocomplete-filter',
   templateUrl: './autocomplete-filter.component.html',
   styleUrls: ['../base-filter/base-filter.component.scss', './autocomplete-filter.component.scss'],
-  providers: [{provide: BaseFilter, useExisting: forwardRef(() => AutocompleteFilter) }],
+  providers: [{ provide: BaseFilter, useExisting: forwardRef(() => AutocompleteFilter) }],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AutocompleteFilter extends BaseFilter{
+export class AutocompleteFilter extends BaseFilter {
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
-  private scrolledDownEventEmitter: EventEmitter<{ from: number, to: number}> = new EventEmitter();
+  private scrolledDownEventEmitter: EventEmitter<{ from: number, to: number }> = new EventEmitter();
   private searchedItems = [];
   private allItems = [];
+  private allItemsLoaded = false;
+  private isAllItemsLoading = false;
   private isLoading = false;
   private scrollWindow = false;
   private debounce = true;
   private infiniteScrollDistance = 1.1;
   @Input() autocompleteSearchSource: (query: string) => Observable<any[]> = () => Observable.empty();
-  @Input() allSource: (query: { from: number, to: number}) => Observable<any[]> = () => Observable.empty();
+  @Input() allSource: (query: { from: number, to: number }) => Observable<any[]> = () => Observable.empty();
 
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
@@ -31,6 +33,7 @@ export class AutocompleteFilter extends BaseFilter{
   public ngOnInit() {
     this.setupAutocomplete();
     this.setupAllItems();
+    this.onScrolledDown();
   }
 
   public onAutocompleteChange(value: string) {
@@ -38,8 +41,9 @@ export class AutocompleteFilter extends BaseFilter{
   }
 
   public onScrolledDown() {
-    console.log('adsf');
-    this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + 1 });
+    if (this.allItemsLoaded) return;
+
+    this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + 5 });
   }
 
   setupAutocomplete() {
@@ -57,28 +61,33 @@ export class AutocompleteFilter extends BaseFilter{
       this.cdr.markForCheck();
     });
     $searchResponse.subscribe((matches: any[]) => {
-       this.isLoading = false;
-       this.searchedItems = matches;
-       this.cdr.markForCheck();
+      this.isLoading = false;
+      this.searchedItems = matches;
+      this.cdr.markForCheck();
     });
-   }
+  }
 
   setupAllItems() {
-    const $allItemsRequest = this.scrolledDownEventEmitter
-      .distinctUntilChanged();
+    const $allItemsRequest = this.scrolledDownEventEmitter;
 
     const $allItemsResponse = $allItemsRequest
-      .delay(1000)
+      .delay(5000)
       .switchMap(this.allSource);
 
     $allItemsRequest.subscribe(() => {
-      this.isLoading = true;
+      this.isAllItemsLoading = true;
       this.cdr.markForCheck();
     });
     $allItemsResponse.subscribe((items: any[]) => {
-       this.isLoading = false;
-       this.allItems = this.allItems.concat(items);
-       this.cdr.markForCheck();
+      this.isAllItemsLoading = false;
+
+      if (items.length) {
+        this.allItems = this.allItems.concat(items);
+      } else {
+        this.allItemsLoaded = true;
+      }
+
+      this.cdr.markForCheck();
     });
-   }
+  }
 }
