@@ -79,7 +79,7 @@ $filter-header-max-width: 85px;
   border-radius: $default-border-radius;
   min-height: $form-control-height;
 
-  /deep/ autocomplete-filter {
+  /deep/ .filter {
     display: none;
 
     &.active {
