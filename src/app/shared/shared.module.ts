@@ -11,6 +11,7 @@ import { NotificationService,
   ContactService,
   FormValidationService,
   FileUploadService,
+  HttpService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -63,7 +64,8 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     CommodityService,
     BdFormBuilder,
     FormValidationService,
-    DatePipe
+    DatePipe,
+    HttpService
   ],
   declarations: [
     BdFormButtonComponent,
