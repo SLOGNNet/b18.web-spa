@@ -1,7 +1,8 @@
-<div
-    class="filter-container"
-    [class.opened]="opened"
+<div class="filter-container"
     (clickOutside)="deactivateFilters()">
+<div
+    class="filter-header"
+    [class.opened]="opened">
   <bd-perfect-scrollbar class="filter-scrollbar">
     <div class="content">
       <span
@@ -21,4 +22,5 @@
 </div>
 <div class="filter-content">
    <ng-content></ng-content>
+</div>
 </div>
