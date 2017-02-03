@@ -39,7 +39,6 @@ export class BaseFilter {
   }
 
   protected isSelected(item: Object) {
-    debugger;
     return includes(this.selectedItems, item);
   }
 
