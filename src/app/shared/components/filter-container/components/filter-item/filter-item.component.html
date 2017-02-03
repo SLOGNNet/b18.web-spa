@@ -1,13 +1,18 @@
-<div [ngClass]="{'template-item': dropdownItemTemplate}" class="filter-item-container">
+<div class="filter-item-container">
   <div class="left">
     <bd-checkbox></bd-checkbox>
+    <div
+    *ngIf="statusItemTemplate"
+    class="status-item"
+    >
+    </div>
   <template
   *ngIf="companyItemTemplate"
   [ngOutletContext]="{item: item}"
   [ngTemplateOutlet]="companyItemTemplate">
 </template>
 <template
-*ngIf="companyItemTemplate"
+*ngIf="statusItemTemplate"
 [ngOutletContext]="{item: item}"
 [ngTemplateOutlet]="statusItemTemplate">
 </template>
@@ -16,13 +21,3 @@
     MC# : 33333
   </div>
 </div>
-
-<!-- <div *ngFor="let item of items" [ngClass]="{'template-item': dropdownItemTemplate}" class="filter-item-container">
-  <div class="left">
-    <bd-checkbox></bd-checkbox>
-
-  </div>
-  <div class="right">
-    MC# 77777
-  </div>
-</div> -->

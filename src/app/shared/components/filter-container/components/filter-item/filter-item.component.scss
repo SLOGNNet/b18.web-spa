@@ -11,6 +11,14 @@
     display: flex;
     align-items: center;
     flex: 1;
+
+    .status-item {
+      width: 16px;
+      height: 16px;
+      background: $black;
+      border-radius: 3px;
+      margin-left: 15px;
+    }
   }
 
   .right {
