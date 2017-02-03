@@ -1,23 +1,13 @@
-<div *ngIf="companyItemTemplate || statusItemTemplate" class="filter-item-container">
+<div (click)="onClick($event)" class="filter-item-container">
   <div class="left">
     <bd-checkbox></bd-checkbox>
-    <div
-    *ngIf="statusItemTemplate"
-    class="status-item"
-    >
-    </div>
   <template
-  *ngIf="companyItemTemplate"
+  *ngIf="itemTemplate"
   [ngOutletContext]="{item: item}"
-  [ngTemplateOutlet]="companyItemTemplate">
-</template>
-<template
-*ngIf="statusItemTemplate"
-[ngOutletContext]="{item: item}"
-[ngTemplateOutlet]="statusItemTemplate">
+  [ngTemplateOutlet]="itemTemplate">
 </template>
   </div>
-  <div *ngIf="companyItemTemplate" class="right">
+  <div *ngIf="itemTemplate" class="right">
     MC# : 33333
   </div>
 </div>

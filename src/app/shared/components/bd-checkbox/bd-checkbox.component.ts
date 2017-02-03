@@ -6,9 +6,11 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
   templateUrl: './bd-checkbox.component.html'
 })
 export class BdCheckbox  {
+  @Output() checked = new EventEmitter();
   private isChecked: boolean = false;
 
   onClick() {
     this.isChecked = !this.isChecked;
+    this.checked.emit(this.isChecked);
   }
 }

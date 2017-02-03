@@ -6,15 +6,9 @@
   <div *ngIf="isLoading">
     Loading
   </div>
-  <div *ngFor="let item of cars; let i = index;">
-    {{getItemValue(item)}}
+  <div *ngFor="let item of searchedItems; let i = index;">
     <filter-item
-    [companyItemTemplate]="companyItemTemplate"
-    [item]="item"
-    >
-    </filter-item>
-    <filter-item
-    [statusItemTemplate]="statusItemTemplate"
+    [itemTemplate]="itemTemplate"
     [item]="item"
     >
     </filter-item>

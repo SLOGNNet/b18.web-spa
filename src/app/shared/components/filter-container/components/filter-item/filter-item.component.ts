@@ -6,13 +6,12 @@ import { Component, Input, Output, EventEmitter, OnChanges, TemplateRef } from '
   templateUrl: './filter-item.component.html'
 })
 export class FilterItem  {
-  @Input() companyItemTemplate: TemplateRef<any>;
-  @Input() statusItemTemplate: TemplateRef<any>;
+  @Input() itemTemplate: TemplateRef<any>;
   @Input() item: Object;
+  @Output() itemClick = new EventEmitter();
 
 
-
-  ngOnInit() {
-    console.log(this.item, 'this items inside filter');
+  onClick(event) {
+    this.itemClick.emit(event);
   }
 }

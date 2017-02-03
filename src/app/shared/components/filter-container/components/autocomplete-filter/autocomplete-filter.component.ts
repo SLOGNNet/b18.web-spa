@@ -12,8 +12,7 @@ import { CustomerService } from '../../../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter{
-  @Input() companyItemTemplate: TemplateRef<any>;
-  @Input() statusItemTemplate: TemplateRef<any>;
+  @Input() itemTemplate: TemplateRef<any>;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private searchedItems = [];
   private isLoading = false;
@@ -30,20 +29,6 @@ export class AutocompleteFilter extends BaseFilter{
   public onAutocompleteChange(value: string) {
     this.keyUpEventEmitter.emit(value);
   }
-
-  public cars: Array<Object> = [
-    { model: "volvo", color: "blue" },
-    { model: "saab", color: "yellow" },
-    { model: "ford", color: "green" },
-    { model: "vw", color: "orange" }
-  ];
-
-  public status: Array<Object> = [
-    { status: "volvo", color: "blue" },
-    { status: "saab", color: "yellow" },
-    { status: "ford", color: "green" },
-    { status: "vw", color: "orange" }
-  ];
 
   setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
