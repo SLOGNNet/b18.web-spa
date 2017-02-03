@@ -12,21 +12,27 @@
   }
 }
 
-.left {
+.filter-item-content {
   display: flex;
-  overflow: hidden;
+  width: 100%;
   align-items: center;
-  margin-right: 30px;
-  flex: 1;
+  padding-left: 15px;
 
-  .item-name {
+  .left {
+    display: flex;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-left: 15px;
-  }
-}
+    width: 0;
+    flex: 1;
+    padding-right: 30px;
 
-.right {
-  color: $grey;
+    .item-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .right {
+    color: $grey;
+  }
 }
