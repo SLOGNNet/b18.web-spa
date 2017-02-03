@@ -3,7 +3,17 @@
       (valueChange)="onAutocompleteChange($event)"
       placeholder="Enter data">
   </bd-input>
-  <div *ngFor="let item of searchedItems; let i = index;">
+  <div *ngFor="let item of cars; let i = index;">
     {{getItemValue(item)}}
+    <filter-item
+    [companyItemTemplate]="companyItemTemplate"
+    [item]="item"
+    >
+    </filter-item>
+    <filter-item
+    [statusItemTemplate]="statusItemTemplate"
+    [item]="item"
+    >
+    </filter-item>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'filter-item',
@@ -6,5 +6,13 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
   templateUrl: './filter-item.component.html'
 })
 export class FilterItem  {
+  @Input() companyItemTemplate: TemplateRef<any>;
+  @Input() statusItemTemplate: TemplateRef<any>;
+  @Input() item: Object;
 
+
+
+  ngOnInit() {
+    console.log(this.item, 'this items inside filter');
+  }
 }

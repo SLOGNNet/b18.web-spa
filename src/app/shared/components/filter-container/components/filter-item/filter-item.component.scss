@@ -1,0 +1,19 @@
+@import '../../../../../../assets/styles/variables';
+
+.filter-item-container {
+  display: flex;
+  height: 50px;
+  padding: 0 17px;
+  border-bottom: $border;
+  align-items: center;
+
+  .left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .right {
+    color: $grey;
+  }
+}
