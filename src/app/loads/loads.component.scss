@@ -12,29 +12,21 @@
   }
 }
 
-.filter-item-container {
+.left {
   display: flex;
-  height: $form-control-height;
-  padding: 0 17px;
-  border-bottom: $border;
+  overflow: hidden;
   align-items: center;
+  margin-right: 30px;
+  flex: 1;
 
-  .left {
-    display: flex;
+  .item-name {
     overflow: hidden;
-    align-items: center;
-    margin-right: 30px;
-    flex: 1;
-
-    .item-name {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-left: 15px;
-    }
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 15px;
   }
+}
 
-  .right {
-    color: $grey;
-  }
+.right {
+  color: $grey;
 }
