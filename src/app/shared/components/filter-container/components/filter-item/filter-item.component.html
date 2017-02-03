@@ -1,0 +1,7 @@
+<div (click)="onClick($event)">
+  <template
+  *ngIf="itemTemplate"
+  [ngOutletContext]="{item: item}"
+  [ngTemplateOutlet]="itemTemplate">
+</template>
+</div>

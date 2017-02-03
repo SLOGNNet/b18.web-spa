@@ -11,3 +11,25 @@
     margin-bottom: 17px;
   }
 }
+
+.filter-item-container {
+  display: flex;
+  height: $form-control-height;
+  padding: 0 17px;
+  border-bottom: $border;
+  align-items: center;
+
+  .left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    .item-name {
+      margin-left: 15px;
+    }
+  }
+
+  .right {
+    color: $grey;
+  }
+}
