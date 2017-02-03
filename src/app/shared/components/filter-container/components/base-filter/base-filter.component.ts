@@ -7,7 +7,7 @@ export class BaseFilter {
     inputs: ['defaultLabel', 'valueField', 'selectedItems'],
     host: {'class': 'filter'},
     changeDetection: ChangeDetectionStrategy.OnPush
-  }
+  };
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
