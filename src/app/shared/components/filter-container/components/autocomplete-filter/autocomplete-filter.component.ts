@@ -27,10 +27,21 @@ export class AutocompleteFilter extends BaseFilter{
   }
 
   public onAutocompleteChange(value: string) {
-    this.keyUpEventEmitter.emit(value);
+    if (value.length === 0) {
+      this.isLoading = false;
+      this.searchedItems = [];
+      this.cdr.markForCheck();
+    }
+    else {
+      this.keyUpEventEmitter.emit(value);
+    }
   }
 
-  setupAutocomplete() {
+  private get isSearchBoxShown() {
+    return this.searchedItems.length > 0 || this.isLoading;
+  }
+
+  private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
       .distinctUntilChanged();
