@@ -1,24 +1,42 @@
-import { Address, Contact, Equipment } from './index';
+import { Equipment } from './equipment';
+import { Contact } from './contact';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
+import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
+@JsonObject
 export class Driver {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
   private static typeText = ['Company'];
 
+  @JsonMember
   id: number = 0;
+  @JsonMember
   firstName: string = '';
+  @JsonMember
   lastName: string = '';
+  @JsonMember
   dateOfBirth: Date = null;
+  @JsonMember
   snn: string = '';
+  @JsonMember({ elements: Equipment })
   powerUnitAssigned: Equipment;
+  @JsonMember({ elements: Equipment })
   trailerAssigned: Equipment;
+  @JsonMember
   paymentOption: DriverPaymentOptions;
+  @JsonMember
   rate: number;
+  @JsonMember({ elements: Contact })
   contact: Contact;
+  @JsonMember
   type: DriverTypes;
+  @JsonMember
   hireDate: Date = null;
+  @JsonMember
   terminationDate: Date = null;
+  @JsonMember
   status: DriverStatuses;
+  @JsonMember
   notes: string = '';
 
   static create(): Driver {

@@ -1,21 +1,31 @@
-import { Address, Contact, PowerUnitTypes, TrailerTypes } from './index';
-import { EquipmentTypes, EquipmentModes, EquipmentStatuses, EquipmentVehicleOperatings } from './enums';
+import { PowerUnitTypes, TrailerTypes, EquipmentTypes, EquipmentModes, EquipmentStatuses, EquipmentVehicleOperatings } from './enums';
+import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 export class Equipment {
   private static statusText = ['Inactive', 'Active', 'NotAvaliable'];
   private static typeText = ['Trailer', 'PowerUnit'];
   private static modeText = ['Company'];
-
+  @JsonMember
   id: number = 0;
+  @JsonMember
   make: string = '';
+  @JsonMember
   model: string = '';
+  @JsonMember
   number: string = '';
+  @JsonMember
   vin: string = '';
+  @JsonMember
   notes: string = '';
+  @JsonMember
   status: EquipmentStatuses;
+  @JsonMember
   type: EquipmentTypes;
+  @JsonMember
   subType: PowerUnitTypes | TrailerTypes;
+  @JsonMember
   mode: EquipmentModes;
+  @JsonMember
   vehicleOperating: EquipmentVehicleOperatings;
 
   static create(): Equipment{
