@@ -10,7 +10,6 @@ export class FilterItem  {
   @Input() item: Object;
   @Output() itemClick = new EventEmitter();
 
-
   onClick(event) {
     this.itemClick.emit(event);
   }

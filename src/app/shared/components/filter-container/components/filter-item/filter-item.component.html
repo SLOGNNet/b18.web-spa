@@ -1,13 +1,7 @@
-<div (click)="onClick($event)" class="filter-item-container">
-  <div class="left">
-    <bd-checkbox></bd-checkbox>
+<div (click)="onClick($event)">
   <template
   *ngIf="itemTemplate"
   [ngOutletContext]="{item: item}"
   [ngTemplateOutlet]="itemTemplate">
 </template>
-  </div>
-  <div *ngIf="itemTemplate" class="right">
-    MC# : 33333
-  </div>
 </div>

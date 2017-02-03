@@ -15,3 +15,21 @@
 .filter-item {
   padding-left: 15px;
 }
+
+.filter-item-container {
+  display: flex;
+  height: $form-control-height;
+  padding: 0 17px;
+  border-bottom: $border;
+  align-items: center;
+
+  .left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .right {
+    color: $grey;
+  }
+}
