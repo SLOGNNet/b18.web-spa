@@ -1,9 +1,10 @@
-import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'form-sticky-bottom-container',
   templateUrl: './form-sticky-bottom-container.component.html',
-  styleUrls: ['./form-sticky-bottom-container.component.scss']
+  styleUrls: ['./form-sticky-bottom-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormStickyBottomContainerComponent implements AfterViewInit {
   public height: string;
@@ -30,7 +31,7 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
     if (this.height !== height) {
       this.height = height;
       this.elementRef.nativeElement.style.height = height + 'px';
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     }
   }
 }

@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
   selector: 'load-stop-card',
   templateUrl: './load-stop-card.component.html',
-  styleUrls: ['./load-stop-card.component.scss']
+  styleUrls: ['./load-stop-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadStopCardComponent {
   @Input() load: Load;

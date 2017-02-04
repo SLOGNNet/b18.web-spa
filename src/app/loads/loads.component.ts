@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
@@ -16,7 +16,8 @@ import { IAppState } from '../store';
 @Component({
   selector: 'loads',
   templateUrl: './loads.component.html',
-  styleUrls: ['./loads.component.scss']
+  styleUrls: ['./loads.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadsComponent extends BaseListComponent<Load>{
 
@@ -24,8 +25,9 @@ export class LoadsComponent extends BaseListComponent<Load>{
     loadActions: LoadActions,
     router: Router,
     route: ActivatedRoute,
-    private ngRedux: NgRedux<IAppState>) {
-    super(loadActions, ngRedux.select(state => state.loads.items), router, route);
+    private ngRedux: NgRedux<IAppState>,
+    cdr: ChangeDetectorRef) {
+    super(loadActions, ngRedux.select(state => state.loads.items), router, route, cdr);
   }
 
   protected routePath(): string {

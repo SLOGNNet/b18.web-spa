@@ -1,10 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Load } from '../models';
 import { IListDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
 export abstract class BaseListComponent<T> {
   protected items: T[] = new Array<T>();
 
@@ -13,7 +17,7 @@ export abstract class BaseListComponent<T> {
   private selected = [];
 
   constructor(private actions: IListDataActions<T>, protected items$: Observable<Array<T>>,
-    protected router: Router, protected route: ActivatedRoute) {
+    protected router: Router, protected route: ActivatedRoute, private cdr: ChangeDetectorRef) {
     actions.getAll();
   }
 
@@ -21,6 +25,7 @@ export abstract class BaseListComponent<T> {
     this.items$.subscribe((items) => {
       this.items = items;
       this.subscribeToDetailsChildRoute();
+      this.cdr.markForCheck();
     });
   }
 
@@ -42,10 +47,12 @@ export abstract class BaseListComponent<T> {
 
   private deselectRow() {
     this.selected = [];
+    this.cdr.markForCheck();
   }
 
   private selectRow(id: number) {
     this.selected = this.items.filter(item => item['id'] === id);
+    this.cdr.markForCheck();
   }
 
 
