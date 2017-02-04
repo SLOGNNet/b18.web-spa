@@ -3,7 +3,6 @@
       (valueChange)="onAutocompleteChange($event)"
       placeholder="Enter data">
   </bd-input>
-
   <div *ngIf="isSearchBoxShown">
     <div *ngFor="let item of searchedItems; let i = index;">
       <filter-item
@@ -13,7 +12,7 @@
       </filter-item>
     </div>
     <div *ngIf="isLoading">
-      Loading
+      <bd-spinner></bd-spinner>
     </div>
   </div>
   <div *ngIf="!isSearchBoxShown">
