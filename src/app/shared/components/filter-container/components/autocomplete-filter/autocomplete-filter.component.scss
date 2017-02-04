@@ -1,13 +1,20 @@
-.infinite-scroll {
-  position: relative;
-  max-height: 100px;
-  overflow-y: scroll;
-}
+@import '../../../../../../assets/styles/variables';
 
-.allItemsSpinner {
-  position: absolute;
-  width: 100%;
-  background: black;
-  color: white;
-  bottom: -10px;
+.autocomplete-filter {
+  position: relative;
+
+  .infinite-scroll {
+    overflow-y: scroll;
+    max-height: $form-control-height * 6 - 1;
+    padding-top: 50px;
+  }
+
+  bd-input {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    display: block;
+    width: 100%;
+    background: $white;
+  }
 }

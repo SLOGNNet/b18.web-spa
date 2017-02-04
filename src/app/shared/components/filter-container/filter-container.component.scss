@@ -71,7 +71,6 @@ $filter-header-max-width: 85px;
   }
 
   .filter-content {
-    position: absolute;
     z-index: $form-control-popup-z-index;
     display: none;
     width: 100%;

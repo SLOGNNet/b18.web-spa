@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { FilterContainer } from '../../filter-container.component';
-import { includes } from 'lodash';
+import { includes, pull } from 'lodash';
 export class BaseFilter {
 
   public static filterMetaData = {
@@ -45,7 +45,13 @@ export class BaseFilter {
   protected onSelect(item: Object) {
     if (!this.isSelected(item)) {
       this.selectedItems.push(item);
+    } else {
+      pull(this.selectedItems, item);
     }
+  }
+
+  protected onActiveChanged() {
+
   }
 
   public get count() {
@@ -59,5 +65,6 @@ export class BaseFilter {
 
   public set active(active: boolean) {
     this._active = active;
+    this.onActiveChanged();
   }
 }

@@ -17,6 +17,7 @@ export class AutocompleteFilter extends BaseFilter{
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<{ from: number, to: number }> = new EventEmitter();
   private searchedItems = [];
+  private allItemsVisible = [];
   private allItems = [];
   private allItemsLoaded = false;
   private isAllItemsLoading = false;
@@ -24,6 +25,7 @@ export class AutocompleteFilter extends BaseFilter{
   private scrollWindow = false;
   private debounce = true;
   private infiniteScrollDistance = 1.1;
+  private pageSize = 5;
   @Input() autocompleteSearchSource: (query: string) => Observable<any[]> = () => Observable.empty();
   @Input() allSource: (query: { from: number, to: number }) => Observable<any[]> = () => Observable.empty();
 
@@ -35,6 +37,15 @@ export class AutocompleteFilter extends BaseFilter{
     this.setupAutocomplete();
     this.setupAllItems();
     this.onScrolledDown();
+  }
+
+  public onActiveChanged() {
+    this.updateAllItemsVisible();
+  }
+
+  public updateAllItemsVisible() {
+    this.allItemsVisible = this.allItems.filter(i => !this.isSelected(i));
+    this.cdr.markForCheck();
   }
 
   public onAutocompleteChange(value: string) {
@@ -53,9 +64,9 @@ export class AutocompleteFilter extends BaseFilter{
   }
 
   public onScrolledDown() {
-    if (this.allItemsLoaded) return;
+    if (this.allItemsLoaded || this.isAllItemsLoading || this.isSearchBoxShown) return;
 
-    this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + 5 });
+    this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + this.pageSize });
   }
 
   private setupAutocomplete() {
@@ -79,7 +90,7 @@ export class AutocompleteFilter extends BaseFilter{
     });
   }
 
-  setupAllItems() {
+  private setupAllItems() {
     const $allItemsRequest = this.scrolledDownEventEmitter;
 
     const $allItemsResponse = $allItemsRequest
@@ -93,10 +104,13 @@ export class AutocompleteFilter extends BaseFilter{
     $allItemsResponse.subscribe((items: any[]) => {
       this.isAllItemsLoading = false;
 
+      if (items.length < this.pageSize) {
+        this.allItemsLoaded = true;
+      }
+
       if (items.length) {
         this.allItems = this.allItems.concat(items);
-      } else {
-        this.allItemsLoaded = true;
+        this.updateAllItemsVisible();
       }
 
       this.cdr.markForCheck();

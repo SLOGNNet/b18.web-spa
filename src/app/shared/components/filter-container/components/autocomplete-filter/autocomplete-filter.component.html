@@ -1,32 +1,45 @@
-<div>
-  <bd-input
+<div class="autocomplete-filter">
+  <div
+    class="infinite-scroll"
+    infinite-scroll
+    [debounce]="debounce" 
+    [infiniteScrollDistance]="infiniteScrollDistance" 
+    [scrollWindow]="scrollWindow"
+    (scrolled)="onScrolledDown($event)">
+    <bd-input
+      sticky
       (valueChange)="onAutocompleteChange($event)"
       placeholder="Enter data">
-  </bd-input>
+    </bd-input>
 
-  <div *ngIf="isSearchBoxShown">
-    <div *ngFor="let item of searchedItems; let i = index;">
+    <div *ngIf="isSearchBoxShown">
       <filter-item
-      [itemTemplate]="itemTemplate"
-      (selectedChange)="onSelect($event)"
-      [item]="item">
+        *ngFor="let item of searchedItems; let i = index;"
+        [itemTemplate]="itemTemplate"
+        (selectedChange)="onSelect($event)"
+        [item]="item">
       </filter-item>
+      <bd-spinner *ngIf="isLoading"></bd-spinner>
     </div>
-    <div *ngIf="isLoading">
-      Loading
+    <div *ngIf="!isSearchBoxShown">
+      <filter-item
+        *ngFor="let item of selectedItems; let i = index;"
+        [selected]="'true'"
+        [itemTemplate]="itemTemplate"
+        (selectedChange)="onSelect($event)"
+        [item]="item">
+      </filter-item>
+
+      <div *ngIf="allItemsVisible.length">
+        <span>ALL ITEMS</span>
+        <filter-item
+          *ngFor="let item of allItemsVisible; let i = index;"
+          [itemTemplate]="itemTemplate"
+          (selectedChange)="onSelect($event)"
+          [item]="item">
+        </filter-item>
+      </div>
+      <bd-spinner *ngIf="isAllItemsLoading"></bd-spinner>
     </div>
-  </div>
-  <div *ngFor="let item of searchedItems; let i = index;">
-    {{getItemValue(item)}}
   </div>
 </div>
-
-  <div *ngIf="!isSearchBoxShown">
-    <div *ngFor="let item of selectedItems; let i = index;">
-      <filter-item
-      [selected]="'true'"
-      [itemTemplate]="itemTemplate"
-      (selectedChange)="onSelect($event)"
-      [item]="item">
-      </filter-item>
-    </div>
