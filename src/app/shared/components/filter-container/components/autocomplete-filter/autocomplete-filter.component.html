@@ -1,3 +1,33 @@
+<div>
+  <bd-input
+      (valueChange)="onAutocompleteChange($event)"
+      placeholder="Enter data">
+  </bd-input>
+
+  <div *ngIf="isSearchBoxShown">
+    <div *ngFor="let item of searchedItems; let i = index;">
+      <filter-item
+      [itemTemplate]="itemTemplate"
+      (selectedChange)="onSelect($event)"
+      [item]="item">
+      </filter-item>
+    </div>
+    <div *ngIf="isLoading">
+      Loading
+    </div>
+  </div>
+  <div *ngIf="!isSearchBoxShown">
+    <div *ngFor="let item of selectedItems; let i = index;">
+      <filter-item
+      [selected]="'true'"
+      [itemTemplate]="itemTemplate"
+      (selectedChange)="onSelect($event)"
+      [item]="item">
+      </filter-item>
+    </div>
+  </div>
+</div>
+
 <div class="autocomplete-filter">
   <div
     class="infinite-scroll"
@@ -42,4 +72,3 @@
       <bd-spinner *ngIf="isAllItemsLoading"></bd-spinner>
     </div>
   </div>
-</div>
