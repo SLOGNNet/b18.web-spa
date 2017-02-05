@@ -7,6 +7,7 @@ import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { TopPanelComponent } from './top-panel';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
+import { AuthModule } from './auth/auth.module';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -89,7 +90,8 @@ type StoreType = {
     InfiniteScrollModule,
     BdFormsModule,
     RouterModule.forRoot(ROUTES),
-    NgReduxModule
+    NgReduxModule,
+    AuthModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

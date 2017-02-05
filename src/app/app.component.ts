@@ -17,6 +17,7 @@ import {
 } from 'redux';
 import { AppState } from './app.service';
 import { NgRedux } from 'ng2-redux';
+import { AuthenticationService } from './auth';
 /*
  * App Component
  * Top Level Component
@@ -29,20 +30,21 @@ import { NgRedux } from 'ng2-redux';
   ],
   template: `
       <navigation-bar [class.slide]="isSlided()"
-        [switchState]="switchState"
-        (switchStateChange)="updateSwitchState($event)">
+                      *ngIf="isLoggedIn"
+                      [switchState]="switchState"
+                      (switchStateChange)="updateSwitchState($event)">
       </navigation-bar>
-
-      <main>
-      <top-panel></top-panel>
+      <main [ngClass]="{'auth-content': !isLoggedIn}">
+        <top-panel *ngIf="isLoggedIn"></top-panel>
         <div class="main-content">
           <router-outlet></router-outlet>
-          <bd-toast-manager [notification]="notification"></bd-toast-manager>
+          <bd-toast-manager [notification]="notification" *ngIf="isLoggedIn"></bd-toast-manager>
         </div>
       </main>
     `
 })
 export class AppComponent {
+  isLoggedIn: boolean;
   private switchState: number = SwitchState.All;
   private switchStateEnum: any = SwitchState;
   private queryParams: any;
@@ -54,6 +56,7 @@ export class AppComponent {
     private router: Router,
     private ngRedux: NgRedux<IAppState>,
     private notificationService: NotificationService,
+    private authenticationService: AuthenticationService,
     private location: Location) {
     notificationService.notification.subscribe(notif => {
       this.notification = notif;
@@ -70,6 +73,7 @@ export class AppComponent {
         this.queryParams = params;
         this.updateSwitchState(params['switchState']);
       });
+    this.isLoggedIn = this.authenticationService.isLoggedIn();
   }
 
   isSlided() {
