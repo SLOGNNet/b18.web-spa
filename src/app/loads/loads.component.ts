@@ -16,8 +16,7 @@ import { IAppState } from '../store';
 @Component({
   selector: 'loads',
   templateUrl: './loads.component.html',
-  styleUrls: ['./loads.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent extends BaseListComponent<Load>{
 

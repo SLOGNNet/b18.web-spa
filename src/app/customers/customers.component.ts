@@ -16,8 +16,7 @@ import { IAppState } from '../store';
 @Component({
   selector: 'customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent extends BaseListComponent<Customer> {
     constructor(
