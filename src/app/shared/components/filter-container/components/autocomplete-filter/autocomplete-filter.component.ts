@@ -33,6 +33,7 @@ export class AutocompleteFilter extends BaseFilter{
   private query = '';
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
+
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
   }
@@ -56,9 +57,21 @@ export class AutocompleteFilter extends BaseFilter{
     this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page++, count: this.countPerPage });
   }
 
+  public clearField(event) {
+    this.query = '';
+    this.onAutocompleteChange(this.query);
+  }
+
+  public clearSelectedItems(event) {
+    event.stopPropagation();
+    this.clearSelection();
+    this.onAutocompleteChange(this.query);
+  }
+
   private get availableItems() {
     return this.loadedItems.filter(item => !this.isSelected(item));
   }
+
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
