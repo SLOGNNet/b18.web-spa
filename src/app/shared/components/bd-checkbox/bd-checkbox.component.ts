@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bd-checkbox',
   styleUrls: ['./bd-checkbox.component.scss'],
-  templateUrl: './bd-checkbox.component.html'
+  templateUrl: './bd-checkbox.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdCheckbox  {
   @Input() checked: boolean = false;
