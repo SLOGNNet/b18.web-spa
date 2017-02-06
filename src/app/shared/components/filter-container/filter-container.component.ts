@@ -7,7 +7,7 @@ import { BaseFilter, AutocompleteFilter } from './components';
   styleUrls: ['./filter-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterContainer  {
+export class FilterContainer {
 
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
