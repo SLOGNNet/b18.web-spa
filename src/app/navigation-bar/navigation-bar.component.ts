@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { SwitchState } from '../shared/enums/switchState';
 
 @Component({
@@ -7,7 +7,8 @@ import { SwitchState } from '../shared/enums/switchState';
     styleUrls: [
         './navigation-bar.component.scss'
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class NavigationBarComponent {
