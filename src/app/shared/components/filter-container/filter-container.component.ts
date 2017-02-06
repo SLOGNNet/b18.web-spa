@@ -1,6 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
-import {  difference } from 'lodash';
 
 @Component({
   selector: 'filter-container',
