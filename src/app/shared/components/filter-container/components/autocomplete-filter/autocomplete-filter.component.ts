@@ -5,6 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 
+class PageQuery {
+  page: number;
+  query: string;
+  count: number;
+}
+
 @Component(Object.assign({
   selector: 'autocomplete-filter',
   templateUrl: './autocomplete-filter.component.html',
@@ -15,19 +21,17 @@ import { InfiniteScroll } from 'angular2-infinite-scroll';
 export class AutocompleteFilter extends BaseFilter{
   @Input() itemTemplate: TemplateRef<any>;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
-  private scrolledDownEventEmitter: EventEmitter<{ from: number, to: number }> = new EventEmitter();
-  private searchedItems = [];
-  private allItemsVisible = [];
-  private allItems = [];
-  private allItemsLoaded = false;
-  private isAllItemsLoading = false;
+  private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
+  private loadedItems = [];
+  private isAllLoaded = false;
   private isLoading = false;
   private scrollWindow = false;
   private debounce = true;
   private infiniteScrollDistance = 1.1;
-  private pageSize = 5;
-  @Input() autocompleteSearchSource: (query: string) => Observable<any[]> = () => Observable.empty();
-  @Input() allSource: (query: { from: number, to: number }) => Observable<any[]> = () => Observable.empty();
+  private page = 0;
+  private countPerPage: number = 5;
+  private query = '';
+  @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
@@ -35,84 +39,51 @@ export class AutocompleteFilter extends BaseFilter{
 
   public ngOnInit() {
     this.setupAutocomplete();
-    this.setupAllItems();
-    this.onScrolledDown();
-  }
-
-  public onActiveChanged() {
-    this.updateAllItemsVisible();
-  }
-
-  public updateAllItemsVisible() {
-    this.allItemsVisible = this.allItems.filter(i => !this.isSelected(i));
-    this.cdr.markForCheck();
+    this.keyUpEventEmitter.emit('');
   }
 
   public onAutocompleteChange(value: string) {
-    if (value.length === 0) {
-      this.isLoading = false;
-      this.searchedItems = [];
-      this.cdr.markForCheck();
-    }
-    else {
-      this.keyUpEventEmitter.emit(value);
-    }
+    this.query = value;
+    this.keyUpEventEmitter.emit(value);
   }
 
-  private get isSearchBoxShown() {
-    return this.searchedItems.length > 0 || this.isLoading;
+  private get isSearchMode() {
+    return this.query.length > 0;
   }
 
   public onScrolledDown() {
-    if (this.allItemsLoaded || this.isAllItemsLoading || this.isSearchBoxShown) return;
-
-    this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + this.pageSize });
+    if (this.isAllLoaded || this.isLoading) return;
+    this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page++, count: this.countPerPage });
   }
 
+  private get availableItems() {
+    return this.loadedItems.filter(item => !this.isSelected(item));
+  }
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
       .distinctUntilChanged();
 
-    const $searchResponse = $searchRequest
-      .delay(1000)
-      .switchMap(this.autocompleteSearchSource);
-
+    const $request = Observable.combineLatest(
+      $searchRequest,
+      this.scrolledDownEventEmitter.startWith({query: '', page: 0, count: this.countPerPage}),
+      (query: string, pageQuery: PageQuery) => { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : 0}; });
     $searchRequest.subscribe(() => {
+      this.loadedItems = [];
+    });
+    $request.subscribe((pageQuery: PageQuery) => {
       this.isLoading = true;
-      this.searchedItems = [];
+      this.page = pageQuery.page;
       this.cdr.markForCheck();
     });
-    $searchResponse.subscribe((matches: any[]) => {
+    const $response = $request
+      .switchMap((pageQuery: PageQuery) => { return this.autocompleteSearchSource(pageQuery.query, pageQuery.page, pageQuery.count); });
+
+    $response.subscribe((matches: any[]) => {
       this.isLoading = false;
-      this.searchedItems = matches;
-      this.cdr.markForCheck();
-    });
-  }
-
-  private setupAllItems() {
-    const $allItemsRequest = this.scrolledDownEventEmitter;
-
-    const $allItemsResponse = $allItemsRequest
-      .delay(5000)
-      .switchMap(this.allSource);
-
-    $allItemsRequest.subscribe(() => {
-      this.isAllItemsLoading = true;
-      this.cdr.markForCheck();
-    });
-    $allItemsResponse.subscribe((items: any[]) => {
-      this.isAllItemsLoading = false;
-
-      if (items.length < this.pageSize) {
-        this.allItemsLoaded = true;
-      }
-
-      if (items.length) {
-        this.allItems = this.allItems.concat(items);
-        this.updateAllItemsVisible();
-      }
-
+      this.isAllLoaded = matches.length !== this.countPerPage;
+      this.selectedItems = this.selectedItems.filter(item => matches.find(m => m['id'] === item['id']) || item);
+      this.loadedItems = this.loadedItems.concat(matches);
       this.cdr.markForCheck();
     });
   }
