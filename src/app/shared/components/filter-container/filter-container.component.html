@@ -9,15 +9,20 @@
           *ngFor="let filter of filters; let i = index"
           (click)="_toggleFilter(filter, i)"
           class="filter-item"
-          [bd-popover]="customerPopover"
+          [bd-popover]="filterItemPopover"
           [popoverOnHover]="true"
           [class.active]="filter.active">
           <bd-popover-content
-            #customerPopover
+            #filterItemPopover
             placement="bottom"
-            [width]="200"
+            [width]="220"
+            [closeOnClickOutside]="true"
             [horizontalOffset]="-10">
-            <span *ngFor="let newSelectedItem of newSelectedItems;">{{newSelectedItem.name}}</span>
+            <div class="selected-item">
+                <p *ngFor="let item of filter.selectedItems">
+                {{item.name}}
+              </p>
+            </div>
           </bd-popover-content>
           <span class="item-name">
             {{filter.tagValue}}
