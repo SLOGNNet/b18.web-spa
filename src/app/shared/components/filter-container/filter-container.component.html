@@ -19,7 +19,7 @@
             [closeOnClickOutside]="true"
             [horizontalOffset]="-10">
             <div class="selected-item">
-                <p *ngFor="let item of filter.selectedItems">
+                <p class="selected-item" *ngFor="let item of filter.selectedItems">
                 {{item.name}}
               </p>
             </div>
