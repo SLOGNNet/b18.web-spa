@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { FilterContainer } from '../../filter-container.component';
-import { includes, pull } from 'lodash';
+import { includes, without, some } from 'lodash';
 export class BaseFilter {
 
   public static filterMetaData = {
@@ -11,19 +11,20 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
-  public filterContainer: FilterContainer;
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
-  }
-  get selectedItems() {
-    return this._selectedItems;
   }
 
   protected _active: boolean = false;
   private _selectedItems: Array<Object> = [];
+  @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
 
   constructor() {
 
+  }
+
+  get selectedItems() {
+    return this._selectedItems;
   }
 
   public get tagValue() {
@@ -38,15 +39,19 @@ export class BaseFilter {
     return item[this.valueField];
   }
 
-  protected isSelected(item: Object) {
-    return includes(this.selectedItems, item);
+  protected clearSelection() {
+    this.selectedItems = [];
   }
 
-  protected onSelect(item: Object) {
-    if (!this.isSelected(item)) {
-      this.selectedItems.push(item);
+  protected isSelected(checkItem: Object) {
+    return includes(this.selectedItems, checkItem);
+  }
+
+  protected onSelect(changed: Object) {
+    if (!this.isSelected(changed)) {
+      this.selectedItems.push(changed);
     } else {
-      pull(this.selectedItems, item);
+      this.selectedItems = without(this.selectedItems, changed);
     }
   }
 

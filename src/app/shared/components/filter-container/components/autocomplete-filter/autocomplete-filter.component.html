@@ -9,39 +9,38 @@
     <bd-input
       sticky
       (valueChange)="onAutocompleteChange($event)"
-      [value]="_searchString"
+      [value]="query"
       placeholder="Enter data">
         <i bd-suffix (click)="clearField($event)" class="icon-minus"></i>
     </bd-input>
-
-    <div *ngIf="isSearchBoxShown">
+    <div *ngIf="isSearchMode">
       <filter-item
-        *ngFor="let item of searchedItems; let i = index;"
+        *ngFor="let item of loadedItems; let i = index;"
         [itemTemplate]="itemTemplate"
+        [selected]="isSelected(item)"
         (selectedChange)="onSelect($event)"
         [item]="item">
       </filter-item>
-      <bd-spinner *ngIf="isLoading"></bd-spinner>
     </div>
-    <div *ngIf="!isSearchBoxShown">
+    <div *ngIf="!isSearchMode">
       <filter-item
         *ngFor="let item of selectedItems; let i = index;"
-        [selected]="'true'"
+        [selected]="isSelected(item)"
         [itemTemplate]="itemTemplate"
         (selectedChange)="onSelect($event)"
         [item]="item">
       </filter-item>
-
-      <div *ngIf="allItemsVisible.length">
+      <div *ngIf="availableItems.length">
         <span>ALL VALUES</span>
         <filter-item
-          *ngFor="let item of allItemsVisible; let i = index;"
+          *ngFor="let item of availableItems; let i = index;"
           [itemTemplate]="itemTemplate"
+          [selected]="isSelected(item)"
           (selectedChange)="onSelect($event)"
           [item]="item">
         </filter-item>
       </div>
-      <bd-spinner *ngIf="isAllItemsLoading"></bd-spinner>
     </div>
+    <bd-spinner *ngIf="isLoading"></bd-spinner>
   </div>
 </div>
