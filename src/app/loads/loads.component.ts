@@ -31,10 +31,15 @@ export class LoadsComponent extends BaseListComponent<Load>{
     private ngRedux: NgRedux<IAppState>) {
     super(loadActions, ngRedux.select(state => state.loads.items), router, route);
     this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
+    this.allSource = this.allSource.bind(this);
   }
 
   autocompleteSearchSource(query: string) {
     return this.customerService.search(query);
+  }
+
+  allSource(query: {from: number, to: number}) {
+    return this.customerService.getPage(query.from, query.to);
   }
 
   protected routePath(): string {

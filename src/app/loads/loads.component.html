@@ -1,9 +1,15 @@
 <multi-pane-layout>
   <first-pane>
     <div class="data-panel">
-      <div class="bd-filter-container">
+      <div sticky class="bd-filter-container">
           <filter-container>
-              <autocomplete-filter  [itemTemplate]="companyItemTemplate" defaultLabel="Company" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
+              <autocomplete-filter
+                [itemTemplate]="companyItemTemplate"
+                defaultLabel="Company"
+                valueField="name"
+                [allSource]="allSource"
+                [autocompleteSearchSource]="autocompleteSearchSource">
+              </autocomplete-filter>
               <autocomplete-filter defaultLabel="Drivers" valueField="name" [autocompleteSearchSource]="autocompleteSearchSource"></autocomplete-filter>
           </filter-container>
       </div>
