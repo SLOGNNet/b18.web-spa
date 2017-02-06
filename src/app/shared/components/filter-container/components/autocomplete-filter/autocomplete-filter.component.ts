@@ -31,7 +31,9 @@ export class AutocompleteFilter extends BaseFilter{
   private page = 0;
   private countPerPage: number = 5;
   private query = '';
+  @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
+
 
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
@@ -53,12 +55,25 @@ export class AutocompleteFilter extends BaseFilter{
 
   public onScrolledDown() {
     if (this.isAllLoaded || this.isLoading) return;
-    this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page++, count: this.countPerPage });
+    this.page = this.page + 1;
+    this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page, count: this.countPerPage });
+  }
+
+  public clearField(event) {
+    this.query = '';
+    this.onAutocompleteChange(this.query);
+  }
+
+  public clearSelectedItems(event) {
+    event.stopPropagation();
+    this.clearSelection();
+    this.onAutocompleteChange(this.query);
   }
 
   private get availableItems() {
     return this.loadedItems.filter(item => !this.isSelected(item));
   }
+
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
       .debounceTime(200)
@@ -82,7 +97,7 @@ export class AutocompleteFilter extends BaseFilter{
     $response.subscribe((matches: any[]) => {
       this.isLoading = false;
       this.isAllLoaded = matches.length !== this.countPerPage;
-      this.selectedItems = this.selectedItems.filter(item => matches.find(m => m['id'] === item['id']) || item);
+      this.selectedItems = this.selectedItems.filter(item => matches.find(m => this.comparer(m, item)) || item);
       this.loadedItems = this.loadedItems.concat(matches);
       this.cdr.markForCheck();
     });

@@ -17,7 +17,6 @@ export class BaseFilter {
 
   protected _active: boolean = false;
   private _selectedItems: Array<Object> = [];
-  @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
 
   constructor() {
 
@@ -55,7 +54,7 @@ export class BaseFilter {
     }
   }
 
-  protected onActiveChanged() {
+  protected onActiveChanged(active: boolean) {
 
   }
 
@@ -70,6 +69,6 @@ export class BaseFilter {
 
   public set active(active: boolean) {
     this._active = active;
-    this.onActiveChanged();
+    this.onActiveChanged(active);
   }
 }
