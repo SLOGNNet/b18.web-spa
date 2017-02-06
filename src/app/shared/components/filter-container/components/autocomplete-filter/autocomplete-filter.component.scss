@@ -1,0 +1,20 @@
+@import '../../../../../../assets/styles/variables';
+
+.autocomplete-filter {
+  position: relative;
+
+  .infinite-scroll {
+    overflow-y: scroll;
+    max-height: $form-control-height * 6 - 1;
+    padding-top: 50px;
+  }
+
+  bd-input {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    display: block;
+    width: 100%;
+    background: $white;
+  }
+}

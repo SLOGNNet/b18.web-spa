@@ -9,7 +9,10 @@ export class BdCheckbox  {
   @Input() checked: boolean = false;
   @Output() checkedChange = new EventEmitter();
 
-  onClick() {
+  onClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
     this.checked = !this.checked;
     this.checkedChange.emit(this.checked);
   }

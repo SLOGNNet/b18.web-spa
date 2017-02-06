@@ -33,8 +33,8 @@ export class LoadsComponent extends BaseListComponent<Load>{
     this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
   }
 
-  autocompleteSearchSource(query: string) {
-    return this.customerService.search(query);
+  autocompleteSearchSource(query: string, page: number, count: number) {
+    return this.customerService.getPaginatedSearch(query, page, count);
   }
 
   protected routePath(): string {
