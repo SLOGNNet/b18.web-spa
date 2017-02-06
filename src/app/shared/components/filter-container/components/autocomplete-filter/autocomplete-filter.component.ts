@@ -26,6 +26,7 @@ export class AutocompleteFilter extends BaseFilter{
   private debounce = true;
   private infiniteScrollDistance = 1.1;
   private pageSize = 5;
+  private _searchString: string;
   @Input() autocompleteSearchSource: (query: string) => Observable<any[]> = () => Observable.empty();
   @Input() allSource: (query: { from: number, to: number }) => Observable<any[]> = () => Observable.empty();
 
@@ -67,6 +68,11 @@ export class AutocompleteFilter extends BaseFilter{
     if (this.allItemsLoaded || this.isAllItemsLoading || this.isSearchBoxShown) return;
 
     this.scrolledDownEventEmitter.emit({ from: this.allItems.length, to: this.allItems.length + this.pageSize });
+  }
+
+  public clearField(event) {
+    this._searchString = '';
+    this.onAutocompleteChange(this._searchString);
   }
 
   private setupAutocomplete() {

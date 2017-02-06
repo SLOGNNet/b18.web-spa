@@ -2,14 +2,16 @@
   <div
     class="infinite-scroll"
     infinite-scroll
-    [debounce]="debounce" 
-    [infiniteScrollDistance]="infiniteScrollDistance" 
+    [debounce]="debounce"
+    [infiniteScrollDistance]="infiniteScrollDistance"
     [scrollWindow]="scrollWindow"
     (scrolled)="onScrolledDown($event)">
     <bd-input
       sticky
       (valueChange)="onAutocompleteChange($event)"
+      [value]="_searchString"
       placeholder="Enter data">
+        <i bd-suffix (click)="clearField($event)" class="icon-minus"></i>
     </bd-input>
 
     <div *ngIf="isSearchBoxShown">
