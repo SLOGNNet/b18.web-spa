@@ -46,7 +46,6 @@ export class AutocompleteFilter extends BaseFilter{
   public onAutocompleteChange(value: string) {
     this.query = value;
     this.keyUpEventEmitter.emit(value);
-    this.cdr.markForCheck();
   }
 
   private get isSearchMode() {
