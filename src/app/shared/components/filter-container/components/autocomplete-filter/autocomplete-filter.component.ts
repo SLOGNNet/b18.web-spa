@@ -46,6 +46,7 @@ export class AutocompleteFilter extends BaseFilter{
   public onAutocompleteChange(value: string) {
     this.query = value;
     this.keyUpEventEmitter.emit(value);
+    this.cdr.markForCheck();
   }
 
   private get isSearchMode() {
@@ -59,6 +60,12 @@ export class AutocompleteFilter extends BaseFilter{
 
   public clearField(event) {
     this.query = '';
+    this.onAutocompleteChange(this.query);
+  }
+
+  public clearSelectedItems(event) {
+    event.stopPropagation();
+    this.clearSelection();
     this.onAutocompleteChange(this.query);
   }
 

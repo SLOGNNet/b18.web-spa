@@ -18,4 +18,27 @@
     width: 100%;
     background: $white;
   }
+
+  .autocomplete-section-header {
+    display: flex;
+    height: $form-control-height;
+    padding: 0 $default-margin;
+    color: $grey;
+    font-size: $tiny-font-size;
+    border-bottom: $border;
+    align-items: center;
+    letter-spacing: 1px;
+
+    button {
+      border: 0;
+      background: 0;
+      color: $active-color;
+      font-size: $default-font-size;
+      text-transform: capitalize;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
 }
