@@ -11,6 +11,7 @@
           class="filter-item"
           [bd-popover]="filterItemPopover"
           [popoverOnHover]="true"
+          [popoverDisabled]="!filter.selectedItems.length"
           [class.active]="filter.active">
           <bd-popover-content
             #filterItemPopover
