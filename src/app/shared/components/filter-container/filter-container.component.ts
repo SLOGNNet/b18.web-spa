@@ -1,5 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
+import {  difference } from 'lodash';
 
 @Component({
   selector: 'filter-container',
@@ -7,7 +8,9 @@ import { BaseFilter, AutocompleteFilter } from './components';
   styleUrls: ['./filter-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterContainer {
+export class FilterContainer  {
+
+  private selectedItems: Array<string> = [];
 
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
@@ -27,8 +30,32 @@ export class FilterContainer {
     });
   }
 
+  ngOnChanges(changes) {
+    this.getSelectedItem();
+  }
+
+  getSelectedItem() {
+    this.filters.forEach(f => {
+      console.log(f.selectedItems, 'f.selectedItems');
+      console.log(this.selectedItems, 'this.selectedItems');
+      let newSelectedItems = difference(this.selectedItems, f.selectedItems);
+      console.log(newSelectedItems, 'newSelectedItems');
+      this.selectedItems = f.selectedItems;
+      // f.selectedItems.forEach(a => {
+      //   this.selectedItems.push(a.name);
+      //   console.log(this.selectedItems, 'this.selectedItem');
+      // });
+    });
+  }
+
+  // ngOnChanges(changes) {
+  //   console.log(changes, 'changes');
+  //   this.getSelectedItem();
+  // }
+
   private _toggleFilter(filter: BaseFilter) {
     let currentActiveState = filter.active;
+    this.getSelectedItem();
     this.deactivateFilters();
     filter.active = !currentActiveState;
   }

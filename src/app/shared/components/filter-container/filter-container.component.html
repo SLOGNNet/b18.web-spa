@@ -9,14 +9,24 @@
         *ngFor="let filter of filters; let i = index"
         (click)="_toggleFilter(filter, i)"
         class="filter-item"
+        [bd-popover]="customerPopover"
+        [popoverOnHover]="true"
         [class.active]="filter.active">
+        <bd-popover-content
+          #customerPopover
+          placement="bottom"
+          [width]="200"
+          [horizontalOffset]="-10">
+          <span *ngFor="let newSelectedItem of newSelectedItems;">{{newSelectedItem.name}}</span>
+        </bd-popover-content>
+
         <span class="item-name">
           {{filter.tagValue}}
         </span>
         <span class="item-count" *ngIf="filter.count > 1">
           +{{filter.count - 1}}
         </span>
-      </span>
+  </span>
     </div>
   </bd-perfect-scrollbar>
 </div>
