@@ -27,13 +27,13 @@ export class Address {
   lat: number;
   lng: number;
 
-  static create(): Address{
+  static create(): Address {
     const result = new Address();
     return result;
   }
 
   constructor() {
     this.lat = 0;
-    this.lng = 0; 
+    this.lng = 0;
   }
 }
