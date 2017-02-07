@@ -39,7 +39,6 @@ export const commodityReducer = createReducer(INITIAL_STATE, {
     const commodities = chain(load.commodities)
       .uniqBy(commodity => commodity.id)
       .value();
-      console.log(commodities, 'commodities');
     return Object.assign({}, state, { items: commodities});
   },
 });
