@@ -4,6 +4,7 @@ import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
+import { difference } from 'lodash';
 
 class PageQuery {
   page: number;
@@ -23,6 +24,7 @@ export class AutocompleteFilter extends BaseFilter{
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
+  private selectedItemsCache = [];
   private isAllLoaded = false;
   private isLoading = false;
   private scrollWindow = false;
@@ -34,14 +36,13 @@ export class AutocompleteFilter extends BaseFilter{
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
-
   constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
     super();
   }
 
   public ngOnInit() {
     this.setupAutocomplete();
-    this.keyUpEventEmitter.emit('');
+    this.onAutocompleteChange('');
   }
 
   public onAutocompleteChange(value: string) {
@@ -49,15 +50,15 @@ export class AutocompleteFilter extends BaseFilter{
     this.keyUpEventEmitter.emit(value);
   }
 
-  protected onActiveChanged(active: boolean) {
-    if (!active) {
-      this.selectedItems = this.loadedItems.filter(i => i['checked']);
-      this.cdr.markForCheck();
-    }
+  private get isSearchMode(): boolean {
+    return this.query.length > 0;
   }
 
-  private get isSearchMode() {
-    return this.query.length > 0;
+  protected onActiveChanged(isActive: boolean) {
+    if (isActive) {
+      this.selectedItemsCache = this.selectedItems.slice();
+      this.cdr.markForCheck();
+    }
   }
 
   public onScrolledDown() {
@@ -77,8 +78,8 @@ export class AutocompleteFilter extends BaseFilter{
     this.onAutocompleteChange(this.query);
   }
 
-  private get availableItems() {
-    return this.loadedItems.filter(item => !this.isSelected(item));
+  private get loadedItemsCache() {
+    return difference(this.loadedItems, this.selectedItemsCache);
   }
 
   private setupAutocomplete() {
@@ -89,7 +90,8 @@ export class AutocompleteFilter extends BaseFilter{
     const $request = Observable.combineLatest(
       $searchRequest,
       this.scrolledDownEventEmitter.startWith({query: '', page: 0, count: this.countPerPage}),
-      (query: string, pageQuery: PageQuery) => { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : 0}; });
+      (query: string, pageQuery: PageQuery) =>
+      { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : 0}; });
     $searchRequest.subscribe(() => {
       this.loadedItems = [];
     });
@@ -104,9 +106,14 @@ export class AutocompleteFilter extends BaseFilter{
     $response.subscribe((matches: any[]) => {
       this.isLoading = false;
       this.isAllLoaded = matches.length !== this.countPerPage;
-      this.selectedItems = this.selectedItems.filter(item => matches.find(m => this.comparer(m, item)) || item);
+      this.selectedItems = this.merge(this.selectedItems, matches);
+      this.selectedItemsCache = this.merge(this.selectedItems, matches);
       this.loadedItems = this.loadedItems.concat(matches);
       this.cdr.markForCheck();
     });
+  }
+
+  private merge(source1: any[], source2: any[]) {
+     return source1.filter(item => source2.find(mergeItem => this.comparer(mergeItem, item)) || item);
   }
 }

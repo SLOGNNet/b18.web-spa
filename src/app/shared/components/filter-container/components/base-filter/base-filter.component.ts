@@ -15,12 +15,20 @@ export class BaseFilter {
     this._selectedItems = items || [];
   }
 
-  protected _active: boolean = false;
-  private _selectedItems: Array<Object> = [];
-
-  constructor() {
-
+  @HostBinding('class.active')
+  @Input()
+  public set active(newValue: boolean) {
+    const oldValue = this._active;
+    this._active = newValue;
+    if (oldValue !== newValue) {
+      this.onActiveChanged(newValue);
+    }
   }
+  public get active() {
+    return this._active;
+  }
+  private _active: boolean = false;
+  private _selectedItems: Array<Object> = [];
 
   get selectedItems() {
     return this._selectedItems;
@@ -39,7 +47,7 @@ export class BaseFilter {
   }
 
   protected clearSelection() {
-    this.selectedItems.forEach(i => i['checked'] = false);
+    this.selectedItems = [];
   }
 
   protected isSelected(checkItem: Object) {
@@ -47,7 +55,11 @@ export class BaseFilter {
   }
 
   protected onSelect(changed: Object) {
-    changed['checked'] = !changed['checked'];
+    if (!this.isSelected(changed)) {
+      this.selectedItems.push(changed);
+    } else {
+      this.selectedItems = without(this.selectedItems, changed);
+    }
   }
 
   protected onActiveChanged(active: boolean) {
@@ -58,13 +70,4 @@ export class BaseFilter {
     return this.selectedItems.length;
   }
 
-  @HostBinding('class.active')
-  public get active(): boolean {
-    return this._active;
-  }
-
-  public set active(active: boolean) {
-    this._active = active;
-    this.onActiveChanged(active);
-  }
 }
