@@ -1,10 +1,11 @@
 import { Stop } from './stop';
 import { Customer } from './customer';
+import { Commodity } from './commodity';
 import { Trip } from './trip';
 import { Document } from './document';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
-import { LoadStatuses, StopTypes, DriverRequirements, DataAssigneeRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
+import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
 
 // Colors
 function createStatusColors() {
@@ -46,17 +47,17 @@ export class Load {
   @JsonMember
   addressId: number;
   @JsonMember
-  carrierLoadNumber: number;
+  systemLoadNumber: number;
   @JsonMember
-  brokerLoadNumber: number;
+  customerLoadNumber: number;
   @JsonMember
   loadType: LoadType;
   @JsonMember
   freightType: FreightType;
   @JsonMember
-  dataAssignee: DataAssigneeRequirements;
-  @JsonMember
   billingAddressId: number;
+  @JsonMember({ elements: Commodity })
+  commodities: Array<Commodity>;
   @JsonMember
   contactId: number;
   @JsonMember
@@ -92,6 +93,7 @@ export class Load {
     result.currentTrip = Trip.create();
     result.stops = [Stop.create(StopTypes.Dropoff)];
     result.documents = [];
+    result.commodities = new Array<Commodity>();
 
     return result;
   }
