@@ -22,7 +22,7 @@
       <filter-item
         *ngFor="let item of loadedItems; let i = index;"
         [itemTemplate]="itemTemplate"
-        [selected]="isSelected(item)"
+        [selected]="item['checked']"
         (selectedChange)="onSelect($event)"
         [item]="item">
       </filter-item>
@@ -38,7 +38,7 @@
       </div>
       <filter-item
         *ngFor="let item of selectedItems; let i = index;"
-        [selected]="isSelected(item)"
+        [selected]="item['checked']"
         [itemTemplate]="itemTemplate"
         (selectedChange)="onSelect($event)"
         [item]="item">
@@ -50,7 +50,7 @@
         <filter-item
           *ngFor="let item of availableItems; let i = index;"
           [itemTemplate]="itemTemplate"
-          [selected]="isSelected(item)"
+          [selected]="item['checked']"
           (selectedChange)="onSelect($event)"
           [item]="item">
         </filter-item>

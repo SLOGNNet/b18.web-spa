@@ -49,6 +49,13 @@ export class AutocompleteFilter extends BaseFilter{
     this.keyUpEventEmitter.emit(value);
   }
 
+  protected onActiveChanged(active: boolean) {
+    if (!active) {
+      this.selectedItems = this.loadedItems.filter(i => i['checked']);
+      this.cdr.markForCheck();
+    }
+  }
+
   private get isSearchMode() {
     return this.query.length > 0;
   }

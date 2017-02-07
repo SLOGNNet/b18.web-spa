@@ -39,7 +39,7 @@ export class BaseFilter {
   }
 
   protected clearSelection() {
-    this.selectedItems = [];
+    this.selectedItems.forEach(i => i['checked'] = false);
   }
 
   protected isSelected(checkItem: Object) {
@@ -47,11 +47,7 @@ export class BaseFilter {
   }
 
   protected onSelect(changed: Object) {
-    if (!this.isSelected(changed)) {
-      this.selectedItems.push(changed);
-    } else {
-      this.selectedItems = without(this.selectedItems, changed);
-    }
+    changed['checked'] = !changed['checked'];
   }
 
   protected onActiveChanged(active: boolean) {
