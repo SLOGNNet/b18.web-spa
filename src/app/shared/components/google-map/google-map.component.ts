@@ -12,7 +12,6 @@ let nextUniqueId = 0;
 export class GoogleMapComponent implements OnChanges {
 
     @Input() id: string = `google-${nextUniqueId++}`;
-    // @Input() location = { lat: 0, lng: 0 };
     @Input() lng: number = 0;
     @Input() lat: number = 0;
     @Input() info = '';
