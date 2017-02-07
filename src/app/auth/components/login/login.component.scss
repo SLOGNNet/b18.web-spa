@@ -1,0 +1,53 @@
+@import '../../../../assets/styles/variables';
+
+.auth-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .auth-logo {
+    position: absolute;
+    top: 65px;
+    left: 65px;
+  }
+
+  .login-form-wrapper {
+    min-width: 480px;
+
+    bd-label {
+      font-size: 10px;
+    }
+
+    h3 {
+      color: $blue;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+
+  .links-wrapper {
+    a {
+      color: $dark-grey;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:before {
+        position: relative;
+        top: 5px;
+        margin: 0 5px;
+        font-size: 2rem;
+        content: '\00b7';
+      }
+
+      &:first-child {
+        &:before {
+          content: '';
+        }
+      }
+    }
+  }
+}

@@ -1,19 +1,11 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Login</h2>
-  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-      <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+<div class="auth-container">
+  <img class="auth-logo" src="assets/img/auth-logo.png">
+  <div class="login-form-wrapper">
+    <h3 class="text-center">Log In</h3>
+    <bd-login-form [viewMode]="viewMode"></bd-login-form>
+    <div class="links-wrapper text-center">
+      <a href="#">Register</a>
+      <a href="#">Forgot Password</a>
     </div>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary">Login</button>
-      <!--<a [routerLink]="['/register']" class="btn btn-link">Register</a>-->
-    </div>
-  </form>
+  </div>
 </div>
