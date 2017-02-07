@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
 import { FilterContainer } from '../../filter-container.component';
-import { includes, pull } from 'lodash';
+import { includes, without, some } from 'lodash';
 export class BaseFilter {
 
   public static filterMetaData = {
@@ -11,12 +11,8 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
-  public filterContainer: FilterContainer;
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
-  }
-  get selectedItems() {
-    return this._selectedItems;
   }
 
   protected _active: boolean = false;
@@ -24,6 +20,10 @@ export class BaseFilter {
 
   constructor() {
 
+  }
+
+  get selectedItems() {
+    return this._selectedItems;
   }
 
   public get tagValue() {
@@ -38,19 +38,19 @@ export class BaseFilter {
     return item[this.valueField];
   }
 
-  protected isSelected(item: Object) {
-    return includes(this.selectedItems, item);
+  protected clearSelection() {
+    this.selectedItems.forEach(i => i['checked'] = false);
   }
 
-  protected onSelect(item: Object) {
-    if (!this.isSelected(item)) {
-      this.selectedItems.push(item);
-    } else {
-      pull(this.selectedItems, item);
-    }
+  protected isSelected(checkItem: Object) {
+    return includes(this.selectedItems, checkItem);
   }
 
-  protected onActiveChanged() {
+  protected onSelect(changed: Object) {
+    changed['checked'] = !changed['checked'];
+  }
+
+  protected onActiveChanged(active: boolean) {
 
   }
 
@@ -65,6 +65,6 @@ export class BaseFilter {
 
   public set active(active: boolean) {
     this._active = active;
-    this.onActiveChanged();
+    this.onActiveChanged(active);
   }
 }
