@@ -355,7 +355,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[0],
     date: this.startDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -365,7 +364,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[1],
     date: this.startDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -375,7 +373,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -385,7 +382,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -395,7 +391,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -405,7 +400,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -414,7 +408,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[0],
     date: this.startDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -424,7 +417,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[1],
     date: this.startDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -434,7 +426,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -444,7 +435,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -454,7 +444,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -464,7 +453,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -474,7 +462,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }];
@@ -487,7 +474,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[1], this.commodities[1]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -497,7 +483,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -507,7 +492,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -517,7 +501,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -527,7 +510,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -537,7 +519,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -546,7 +527,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -556,7 +536,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -566,7 +545,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -576,7 +554,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -586,7 +563,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   }];
@@ -612,7 +588,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[0],
       stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[0], this.commodities[1]]
     },
     {
       id: 2,
@@ -633,7 +610,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[1],
       stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 3,
@@ -654,7 +632,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[2],
       stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 4,
@@ -675,7 +654,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[3],
       stops: [this.pickups[5], this.dropoffs[5]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[3]]
     },
     {
       id: 5,
@@ -696,7 +676,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[0],
       stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 6,
@@ -717,7 +698,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[1],
       stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[3]]
     },
     {
       id: 7,
@@ -738,7 +720,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[2],
       stops: [this.pickups[10], this.dropoffs[9]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[0]]
     },
     {
       id: 8,
@@ -759,7 +742,8 @@ class MockData {
       trips: this.trips,
       currentTrip: this.trips[3],
       stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[1]]
     },
   ];
 
