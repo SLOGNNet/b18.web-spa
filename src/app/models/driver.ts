@@ -17,7 +17,7 @@ export class Driver {
   @JsonMember
   dateOfBirth: Date = null;
   @JsonMember
-  snn: string = '';
+  ssn: string = '';
   @JsonMember({ elements: Equipment })
   powerUnitAssigned: Equipment;
   @JsonMember({ elements: Equipment })

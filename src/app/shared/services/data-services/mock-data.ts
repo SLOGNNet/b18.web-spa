@@ -2,7 +2,7 @@ import {
   Load, Document, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
-  FreightType, DataAssigneeRequirements, Facility, Trip,
+  FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions,
   DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
   EquipmentModes, EquipmentVehicleOperatings } from './models';
@@ -19,10 +19,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 2,
@@ -36,10 +34,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 3,
@@ -53,10 +49,8 @@ class MockData {
     fax: '(602)-256-0631',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 4,
@@ -70,10 +64,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 5,
@@ -87,10 +79,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   }
   ];
 
@@ -106,10 +96,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 4,
@@ -123,10 +111,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 5,
@@ -140,10 +126,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 6,
@@ -157,10 +141,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 7,
@@ -174,10 +156,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   ];
 
@@ -328,7 +308,7 @@ class MockData {
     firstName: 'Goving',
     lastName: 'Bhatti',
     dateOfBirth: null,
-    snn: '123144241241242',
+    ssn: '123144241241242',
     powerUnitAssigned: this.equipments[0],
     trailerAssigned: this.equipments[1],
     paymentOption: DriverPaymentOptions.PerMile,
@@ -618,11 +598,10 @@ class MockData {
       customerId: 1,
       customer: null,
       addressId: 1,
-      brokerLoadNumber: 726457361,
-      carrierLoadNumber: 209282402,
+      customerLoadNumber: 726457361,
+      systemLoadNumber: 209282402,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       contactId: 1,
       billingAddressId: 3,
       status: LoadStatuses.Completed,
@@ -640,11 +619,10 @@ class MockData {
       customerId: 2,
       customer: null,
       addressId: 2,
-      brokerLoadNumber: 234457361,
-      carrierLoadNumber: 7367707,
+      customerLoadNumber: 234457361,
+      systemLoadNumber: 7367707,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel2,
       billingAddressId: 4,
       contactId: 2,
       status: LoadStatuses.InTransit,
@@ -662,11 +640,10 @@ class MockData {
       customerId: 3,
       customer: null,
       addressId: 3,
-      brokerLoadNumber: 111557361,
-      carrierLoadNumber: 104579538,
+      customerLoadNumber: 111557361,
+      systemLoadNumber: 104579538,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 5,
       contactId: 3,
       status: LoadStatuses.InTransit,
@@ -684,11 +661,10 @@ class MockData {
       customerId: 4,
       customer: null,
       addressId: 4,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
@@ -706,11 +682,10 @@ class MockData {
       customerId: 1,
       customer: null,
       addressId: 1,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.InTransit,
@@ -728,11 +703,10 @@ class MockData {
       customerId: 2,
       customer: null,
       addressId: 2,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
@@ -750,11 +724,10 @@ class MockData {
       customerId: 3,
       customer: null,
       addressId: 3,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
@@ -772,11 +745,10 @@ class MockData {
       customerId: 4,
       customer: null,
       addressId: 4,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
