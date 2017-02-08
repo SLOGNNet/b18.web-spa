@@ -6,7 +6,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./bd-infinite-scroll.component.scss']
 })
 export class BdInfiniteScrollComponent {
+  @Output() scrolledUp: EventEmitter<any> = new EventEmitter();
   @Output() scrolledDown: EventEmitter<any> = new EventEmitter();
+
+  onScrolledUp(e) {
+    this.scrolledUp.emit();
+  }
 
   onScrolledDown(e) {
     this.scrolledDown.emit();

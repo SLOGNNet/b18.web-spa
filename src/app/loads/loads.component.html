@@ -1,12 +1,12 @@
 <multi-pane-layout>
   <first-pane>
-    <bd-infinite-scroll (scrolledDown)="onScrolledDown()">
+    <bd-infinite-scroll (scrolledDown)="onScrolledDown()" (scrolledUp)="onScrolledUp()">
       <div class="data-panel">
         <div sticky class="bd-filter-container">
           <filter-container (stateChange)="onStateChange($event)">
             <autocomplete-filter
               [itemTemplate]="companyItemTemplate"
-              [(loadNextPage)]="loadNextPage"
+              [scrolledDown]="scrolledDown"
               defaultLabel="Company"
               valueField="name"
               [autocompleteSearchSource]="autocompleteSearchSource">

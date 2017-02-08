@@ -1,4 +1,4 @@
-import { Component, Input, Output, forwardRef,
+import { Component, Input, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
@@ -22,8 +22,7 @@ class PageQuery {
 }, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter {
   @Input() itemTemplate: TemplateRef<any>;
-  @Input() loadNextPage: boolean = false;
-  @Output() loadNextPageChange: EventEmitter<any> = new EventEmitter();
+  @Input() scrolledDown: boolean = false;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
@@ -48,11 +47,11 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   public ngOnChanges(changes) {
-    if (changes.loadNextPage && this.loadNextPage) {
+    if (changes.scrolledDown && this.scrolledDown) {
       this.onScrolledDown();
-      setTimeout(() => this.loadNextPageChange.emit(false), 0);
     }
   }
+
   public onAutocompleteChange(value: string) {
     this.query = value;
     this.keyUpEventEmitter.emit(value);
@@ -70,7 +69,7 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   public onScrolledDown() {
-    if (this.isAllLoaded || this.isLoading) return;
+    if (this.active || this.isAllLoaded || this.isLoading) return;
     this.page = this.page + 1;
     this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page, count: this.countPerPage });
   }

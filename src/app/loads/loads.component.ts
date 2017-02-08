@@ -22,7 +22,7 @@ import { IAppState } from '../store';
 })
 export class LoadsComponent extends BaseListComponent<Load>{
   private isFilterActive = false;
-  private loadNextPage = false;
+  private scrolledDown = false;
 
   constructor(private loadService: LoadService,
     private customerService: CustomerService,
@@ -42,10 +42,12 @@ export class LoadsComponent extends BaseListComponent<Load>{
     this.isFilterActive = isActive;
   }
 
+  onScrolledUp() {
+    this.scrolledDown = false;
+  }
+
   onScrolledDown() {
-    if (this.isFilterActive) {
-      this.loadNextPage = true;
-    }
+    this.scrolledDown = true;
   }
 
   protected routePath(): string {
