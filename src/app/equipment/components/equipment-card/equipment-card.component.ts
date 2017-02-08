@@ -21,7 +21,7 @@ export class EquipmentCardComponent {
       return Equipment.getDriverText(this.equipment.driverType);
     }
 
-    get equipmentShortTypeText():string {
+    get equipmentShortTypeText(): string {
       return Equipment.getShortTypeText(this.equipment.type);
     }
 }

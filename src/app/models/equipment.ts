@@ -1,5 +1,11 @@
 import { Driver } from './driver';
-import { PowerUnitTypes, TrailerTypes, EquipmentTypes, EquipmentModes, EquipmentStatuses, EquipmentDriverType, EquipmentVehicleOperatings } from './enums';
+import { PowerUnitTypes,
+  TrailerTypes,
+  EquipmentTypes,
+  EquipmentModes,
+  EquipmentStatuses,
+  EquipmentDriverType,
+  EquipmentVehicleOperatings } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 // Colors
