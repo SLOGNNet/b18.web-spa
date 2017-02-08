@@ -1,4 +1,6 @@
-import { Component, Input, Output, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
+import { Component, Input, Output, forwardRef,
+  EventEmitter, ChangeDetectionStrategy,
+  ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
@@ -29,7 +31,7 @@ export class AutocompleteFilter extends BaseFilter {
   private isAllLoaded = false;
   private isLoading = false;
   private page = 0;
-  private countPerPage: number = 5;
+  private countPerPage: number = 20;
   private query = '';
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
@@ -48,7 +50,7 @@ export class AutocompleteFilter extends BaseFilter {
   public ngOnChanges(changes) {
     if (changes.loadNextPage && this.loadNextPage) {
       this.onScrolledDown();
-      this.loadNextPageChange.emit(false);
+      setTimeout(() => this.loadNextPageChange.emit(false), 0);
     }
   }
   public onAutocompleteChange(value: string) {
