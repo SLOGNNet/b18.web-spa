@@ -7,6 +7,7 @@ import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { DataResolver } from './app.resolver';
 import { LoadsComponent, LoadDetailComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
+import { EquipmentComponent } from './equipment';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/loads', pathMatch: 'full' },
@@ -24,5 +25,6 @@ export const ROUTES: Routes = [
       }
     ]
   },
+  { path: 'equipment', component: EquipmentComponent },
   { path: '**',    component: NoContentComponent }
 ];

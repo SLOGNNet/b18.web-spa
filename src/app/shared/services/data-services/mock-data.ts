@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions,
   DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings } from './models';
+  EquipmentModes, EquipmentVehicleOperatings, EquipmentDriverType } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -288,7 +288,9 @@ class MockData {
     type: EquipmentTypes.PowerUnit,
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
-    vehicleOperating: EquipmentVehicleOperatings.InterState
+    vehicleOperating: EquipmentVehicleOperatings.InterState,
+    driverType: EquipmentDriverType.CompanyDriver,
+    lastTripNumber: 349611
   }, {
     id: 1,
     make: 'Wabash',
@@ -300,7 +302,9 @@ class MockData {
     type: EquipmentTypes.Trailer,
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
-    vehicleOperating: EquipmentVehicleOperatings.InterState
+    vehicleOperating: EquipmentVehicleOperatings.InterState,
+    driverType: EquipmentDriverType.OwnerOperator,
+    lastTripNumber: 349616
   }];
 
   public drivers: Array<Driver> = [{

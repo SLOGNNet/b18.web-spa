@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import { loadReducer, ILoadState, customerReducer, ICustomerState,
-  commodityReducer, ICommodityState, addressReducer, IAddressState, stopReducer, IStopState } from './reducers';
-export { ILoadState, ICustomerState, ICommodityState, IAddressState, IStopState } from './reducers';
+  commodityReducer, ICommodityState, addressReducer, IAddressState, stopReducer, IStopState, IEquipmentState, equipmentReducer } from './reducers';
+export { ILoadState, ICustomerState, IEquipmentState, ICommodityState, IAddressState, IStopState } from './reducers';
 export class IAppState {
   loads?: ILoadState;
   customers?: ICustomerState;
   commodities?: ICommodityState;
   addresses?: IAddressState;
   stops?: IStopState;
+  equipments?: IEquipmentState;
 };
 
 export const rootReducer = combineReducers<IAppState>({
@@ -15,7 +16,8 @@ export const rootReducer = combineReducers<IAppState>({
   customers: customerReducer,
   commodities: commodityReducer,
   addresses: addressReducer,
-  stops: stopReducer
+  stops: stopReducer,
+  equipments: equipmentReducer
 });
 
 export const enhancers = [

@@ -36,12 +36,14 @@ import {
   LoadActions,
   AddressActions,
   CustomerActions,
+  EquipmentActions,
   StopActions
 } from './actions';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { CustomerCardComponent } from './customers/components/customer-card';
 import { CustomerCardsComponent } from './customers/components/customer-cards';
 import { BdToastManagerComponent } from './bd-toast-manager/bd-toast-manager.component';
+import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from './equipment';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -80,7 +82,10 @@ type StoreType = {
      CustomerPopoverComponent,
      DriverPopoverComponent,
      TopPanelComponent,
-     BdToastManagerComponent
+     BdToastManagerComponent,
+     EquipmentComponent,
+     EquipmentCardComponent,
+     EquipmentCardsComponent
   ],
   imports: [
     SharedModule,
@@ -98,6 +103,7 @@ type StoreType = {
     LoadActions,
     AddressActions,
     CustomerActions,
+    EquipmentActions,
     StopActions
   ]
 })

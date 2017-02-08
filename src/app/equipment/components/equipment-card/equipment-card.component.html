@@ -1,0 +1,38 @@
+<div class="equipment-card-section">
+  <div class="top">
+    <div class="left">
+      <span>{{equipmentShortTypeText}}</span>
+    </div>
+    <div class="middle">
+      <span>driver</span>
+    </div>
+    <div class="right">
+      <div class="last-tr-city-container">
+        <div class="tr-city">
+          <span style="background: green" class="tr-city-circle"></span>
+          <span class="tr-city-name">TR{{equipment.lastTripNumber}}</span>
+        </div>
+      </div>
+      <div class="last-tr-city-container">
+        <div class="tr-city">
+          <span style="background: red" class="tr-city-circle"></span>
+          <span class="tr-city-name">last city</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="left">
+      <div class="equipment-make">{{equipment.make}}</div>
+      <div>{{equipment.number}}</div>
+    </div>
+    <div class="middle">
+      <div class="driver-type">{{driverType}}</div>
+      <div>fluids change</div>
+    </div>
+    <div class="right">
+        <span [style.background]="equipmentStatusColor" class="status">{{equipmentStatusText}}</span>
+    </div>
+  </div>
+</div>

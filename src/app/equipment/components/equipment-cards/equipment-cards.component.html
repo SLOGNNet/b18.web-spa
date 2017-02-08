@@ -1,0 +1,5 @@
+<equipment-card
+  *ngFor="let equipment of this.equipments"
+  [equipment]="equipment"
+  (select)="onCardSelect($event)">
+</equipment-card>
