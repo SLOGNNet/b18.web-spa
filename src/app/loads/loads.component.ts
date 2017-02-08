@@ -38,8 +38,8 @@ export class LoadsComponent extends BaseListComponent<Load>{
     return this.customerService.getPaginatedSearch(query, page, count);
   }
 
-  onStateChange(isActive) {
-    this.isFilterActive = isActive;
+  onFilterVisibilityChange(isVisible) {
+    this.isFilterActive = isVisible;
   }
 
   onScrolledUp() {
@@ -48,6 +48,7 @@ export class LoadsComponent extends BaseListComponent<Load>{
 
   onScrolledDown() {
     this.scrolledDown = true;
+    console.log('handle');
   }
 
   protected routePath(): string {

@@ -48,7 +48,7 @@ export class AutocompleteFilter extends BaseFilter {
 
   public ngOnChanges(changes) {
     if (changes.scrolledDown && this.scrolledDown) {
-      this.onScrolledDown();
+      this.loadNextPage();
     }
   }
 
@@ -68,7 +68,7 @@ export class AutocompleteFilter extends BaseFilter {
     }
   }
 
-  public onScrolledDown() {
+  public loadNextPage() {
     if (this.active || this.isAllLoaded || this.isLoading) return;
     this.page = this.page + 1;
     this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page, count: this.countPerPage });

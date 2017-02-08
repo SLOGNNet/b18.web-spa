@@ -8,7 +8,7 @@ import { BaseFilter, AutocompleteFilter } from './components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterContainer {
-  @Output() stateChange: EventEmitter<any> = new EventEmitter();
+  @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
   ngAfterContentInit() {
@@ -26,13 +26,13 @@ export class FilterContainer {
       f.active = false;
     });
 
-    this.stateChange.emit(false);
+    this.visibilityChange.emit(false);
   }
 
   private _toggleFilter(filter: BaseFilter) {
     let currentActiveState = filter.active;
     this.deactivateFilters();
     filter.active = !currentActiveState;
-    this.stateChange.emit(filter.active);
+    this.visibilityChange.emit(filter.active);
   }
 }
