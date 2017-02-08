@@ -28,15 +28,15 @@ export class NotificationService {
   }
 
   private generateNotification() {
-    const me = this;
-    function generate() {
-      setTimeout(() => {
-        generate();
-        me._notification.next(me.getNotification());
-      }, me.getRandomTimeout());
-    }
+    // const me = this;
+    // function generate() {
+    //   setTimeout(() => {
+    //     generate();
+    //     me._notification.next(me.getNotification());
+    //   }, me.getRandomTimeout());
+    // }
 
-    generate();
+    // generate();
   }
 
   private getNotification() {

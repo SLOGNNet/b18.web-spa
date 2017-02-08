@@ -1,0 +1,9 @@
+<div
+  class="bd-infinite-scroll"
+  infinite-scroll 
+  [debounce]="true" 
+  [infiniteScrollDistance]="1" 
+  [scrollWindow]="false" 
+  (scrolled)="onScrolledDown($event)">
+  <ng-content #child></ng-content>
+</div>

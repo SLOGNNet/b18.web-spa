@@ -21,7 +21,8 @@ import { IAppState } from '../store';
   styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent extends BaseListComponent<Load>{
-
+  private isFilterActive = false;
+  private loadNextPage = false;
 
   constructor(private loadService: LoadService,
     private customerService: CustomerService,
@@ -35,6 +36,16 @@ export class LoadsComponent extends BaseListComponent<Load>{
 
   autocompleteSearchSource(query: string, page: number, count: number) {
     return this.customerService.getPaginatedSearch(query, page, count);
+  }
+
+  onStateChange(isActive) {
+    this.isFilterActive = isActive;
+  }
+
+  onScrolledDown() {
+    if (this.isFilterActive) {
+      this.loadNextPage = true;
+    }
   }
 
   protected routePath(): string {

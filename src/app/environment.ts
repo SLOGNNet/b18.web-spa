@@ -14,7 +14,7 @@ let PROVIDERS: any[] = [
 let _decorateModuleRef = function identity<T>(value: T): T { return value; };
 console.log('environment');
 console.log(ENV);
-if ('development' !== ENV) {
+if ('development' === ENV) {
   // Production
   console.log('dev tools disabled');
   disableDebugTools();

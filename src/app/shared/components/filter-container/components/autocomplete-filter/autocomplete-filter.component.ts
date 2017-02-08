@@ -1,9 +1,8 @@
-import { Component, Input, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
+import { Component, Input, Output, forwardRef, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
-import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { difference } from 'lodash';
 
 class PageQuery {
@@ -19,24 +18,25 @@ class PageQuery {
   providers: [{ provide: BaseFilter, useExisting: forwardRef(() => AutocompleteFilter) }],
   changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseFilter.filterMetaData))
-export class AutocompleteFilter extends BaseFilter{
+export class AutocompleteFilter extends BaseFilter {
   @Input() itemTemplate: TemplateRef<any>;
+  @Input() loadNextPage: boolean = false;
+  @Output() loadNextPageChange: EventEmitter<any> = new EventEmitter();
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
   private selectedItemsCache = [];
   private isAllLoaded = false;
   private isLoading = false;
-  private scrollWindow = false;
-  private debounce = true;
-  private infiniteScrollDistance = 1.1;
   private page = 0;
   private countPerPage: number = 5;
   private query = '';
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
-  constructor(private customerService: CustomerService, private cdr: ChangeDetectorRef) {
+  constructor(private customerService: CustomerService,
+              private cdr: ChangeDetectorRef,
+              private elRef: ElementRef) {
     super();
   }
 
@@ -45,6 +45,12 @@ export class AutocompleteFilter extends BaseFilter{
     this.onAutocompleteChange('');
   }
 
+  public ngOnChanges(changes) {
+    if (changes.loadNextPage && this.loadNextPage) {
+      this.onScrolledDown();
+      this.loadNextPageChange.emit(false);
+    }
+  }
   public onAutocompleteChange(value: string) {
     this.query = value;
     this.keyUpEventEmitter.emit(value);
@@ -100,7 +106,7 @@ export class AutocompleteFilter extends BaseFilter{
       this.page = pageQuery.page;
       this.cdr.markForCheck();
     });
-    const $response = $request
+    const $response = $request.delay(3000)
       .switchMap((pageQuery: PageQuery) => { return this.autocompleteSearchSource(pageQuery.query, pageQuery.page, pageQuery.count); });
 
     $response.subscribe((matches: any[]) => {

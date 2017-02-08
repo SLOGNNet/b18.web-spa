@@ -1,11 +1,6 @@
 <div class="autocomplete-filter">
   <div
-    class="infinite-scroll"
-    infinite-scroll
-    [debounce]="debounce"
-    [infiniteScrollDistance]="infiniteScrollDistance"
-    [scrollWindow]="scrollWindow"
-    (scrolled)="onScrolledDown($event)">
+    class="infinite-scroll">
     <bd-input
       sticky
       (valueChange)="onAutocompleteChange($event)"

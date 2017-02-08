@@ -53,6 +53,7 @@ import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 
 @NgModule({
   providers: [
@@ -113,7 +114,8 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
     BdPerfectScrollbarComponent,
     FilterContainer,
     AutocompleteFilter,
-    FilterItem
+    FilterItem,
+    BdInfiniteScrollComponent
   ],
   imports: [
     CommonModule,
@@ -180,7 +182,8 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
     BdPerfectScrollbarComponent,
     FilterContainer,
     AutocompleteFilter,
-    FilterItem
+    FilterItem,
+    BdInfiniteScrollComponent
   ]
 })
 export class SharedModule {

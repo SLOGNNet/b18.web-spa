@@ -1,5 +1,4 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
-import { FilterContainer } from '../../filter-container.component';
 import { includes, without, some } from 'lodash';
 export class BaseFilter {
 
