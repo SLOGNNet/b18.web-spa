@@ -2,12 +2,12 @@
 $filter-header-max-width: 85px;
 
 .filter-container {
-  z-index: 999;
+  z-index: $sticked-z-index;
   padding-top: 70px;
 
   .filter-header {
     position: absolute;
-    z-index: 999;
+    z-index: $sticked-z-index;
     top: 0;
     display: flex;
     width: 100%;
