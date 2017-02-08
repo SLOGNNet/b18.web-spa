@@ -4,7 +4,7 @@ import {
   Load, Customer, LoadStatuses,
   DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, Commodity,
-  LoadType, FreightType, DataAssigneeRequirements } from './models';
+  LoadType, FreightType } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';

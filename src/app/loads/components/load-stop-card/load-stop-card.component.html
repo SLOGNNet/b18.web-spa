@@ -1,6 +1,6 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
-    <span class="load-number">LD{{load.carrierLoadNumber}}</span>
+    <span class="load-number">LD{{load.systemLoadNumber}}</span>
     <span class="customer-name">
       <span [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
         {{load.customer.name}}
@@ -14,7 +14,7 @@
         </bd-popover-content>
       </span>
     </span>
-    <span>{{load.brokerLoadNumber}}</span>
+    <span>{{load.customerLoadNumber}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length > 1">
     <div class="distance-wrapper">

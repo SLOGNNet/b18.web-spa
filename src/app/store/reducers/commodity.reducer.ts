@@ -36,8 +36,7 @@ export const commodityReducer = createReducer(INITIAL_STATE, {
   },
   [LoadActions.SELECT_LOAD](state, action) {
     const load: Load = action.load;
-    const commodities = chain(load.stops)
-      .flatMap(stop => stop.commodities)
+    const commodities = chain(load.commodities)
       .uniqBy(commodity => commodity.id)
       .value();
     return Object.assign({}, state, { items: commodities});

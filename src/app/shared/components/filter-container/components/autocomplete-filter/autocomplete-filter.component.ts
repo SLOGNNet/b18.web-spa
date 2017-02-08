@@ -113,7 +113,7 @@ export class AutocompleteFilter extends BaseFilter {
       this.isLoading = false;
       this.isAllLoaded = matches.length !== this.countPerPage;
       this.selectedItems = this.merge(this.selectedItems, matches);
-      this.selectedItemsCache = this.merge(this.selectedItems, matches);
+      this.selectedItemsCache = this.merge(this.selectedItemsCache, matches);
       this.loadedItems = this.loadedItems.concat(matches);
       this.cdr.markForCheck();
     });
