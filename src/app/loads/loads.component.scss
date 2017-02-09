@@ -1,7 +1,7 @@
 @import '../../assets/styles/variables';
 
 .bd-filter-container {
-  z-index: 999;
+  z-index: $sticked-z-index;
   display: block;
   width: 100%;
 }

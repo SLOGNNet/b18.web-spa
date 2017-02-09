@@ -14,7 +14,6 @@ export class BdInfiniteScrollComponent {
   }
 
   onScrolledDown(e) {
-    console.log('emmit');
     this.scrolledDown.emit();
   }
 
