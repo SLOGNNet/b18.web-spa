@@ -69,7 +69,7 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   public loadNextPage() {
-    if (this.active || this.isAllLoaded || this.isLoading) return;
+    if (!this.active || this.isAllLoaded || this.isLoading) return;
     this.page = this.page + 1;
     this.scrolledDownEventEmitter.emit({ query: this.query, page: this.page, count: this.countPerPage });
   }
