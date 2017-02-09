@@ -286,6 +286,8 @@ class MockData {
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
+    driverFirstName: 'Goving',
+    driverLastName: 'Bhatti',
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
@@ -300,6 +302,8 @@ class MockData {
     notes: '',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
+    driverFirstName: 'Goving',
+    driverLastName: 'Bhatti',
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
@@ -323,7 +327,24 @@ class MockData {
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes'
-  }];
+  },
+  {
+    id: 1,
+    firstName: 'Goving',
+    lastName: 'Bhatti',
+    dateOfBirth: null,
+    ssn: '123144241241242',
+    powerUnitAssigned: null,
+    trailerAssigned: null,
+    paymentOption: DriverPaymentOptions.PerMile,
+    rate: 1.2,
+    contact: this.contacts[0],
+    type: DriverTypes.Company,
+    hireDate: null,
+    terminationDate: null,
+    status: DriverStatuses.Active,
+    notes: 'notes'
+  },];
 
   public trips: Array<Trip> = [{
     id: 1,

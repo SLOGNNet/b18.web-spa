@@ -40,6 +40,10 @@ export class Equipment {
   @JsonMember
   notes: string = '';
   @JsonMember
+  driverFirstName: string = '';
+  @JsonMember
+  driverLastName: string = '';
+  @JsonMember
   status: EquipmentStatuses;
   @JsonMember
   driverType: EquipmentDriverType;
