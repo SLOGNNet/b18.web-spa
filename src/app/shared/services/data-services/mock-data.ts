@@ -344,7 +344,7 @@ class MockData {
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes'
-  },];
+  }];
 
   public trips: Array<Trip> = [{
     id: 1,
