@@ -14,7 +14,7 @@ export class FilterContainer {
   constructor(private cdr: ChangeDetectorRef) {
 
   }
-  
+
   ngAfterContentInit() {
     if (this.filters) {
       this.filters.forEach((fitlerItem: BaseFilter) => {
