@@ -24,17 +24,16 @@ export class Address {
   phoneExtension: string = '';
   @JsonMember
   faxExtension: string = '';
-  location: {
-    lat: number;
-    lng: number;
-  };
+  lat: number;
+  lng: number;
 
-  static create(): Address{
+  static create(): Address {
     const result = new Address();
     return result;
   }
 
   constructor() {
-    this.location = { lat: 0, lng: 0 };
+    this.lat = 0;
+    this.lng = 0;
   }
 }

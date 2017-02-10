@@ -65,10 +65,8 @@ export class GoogleService {
       zip: details.postal_code,
       streetAddress: streetAddress,
       state: details.administrative_area_level_1,
-      location: {
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
-      }
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
     };
   }
 }

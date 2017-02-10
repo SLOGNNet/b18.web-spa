@@ -1,61 +1,53 @@
 <div class="autocomplete-filter">
-  <div
-    class="infinite-scroll"
-    infinite-scroll
-    [debounce]="debounce"
-    [infiniteScrollDistance]="infiniteScrollDistance"
-    [scrollWindow]="scrollWindow"
-    (scrolled)="onScrolledDown($event)">
-    <bd-input
-      sticky
-      (valueChange)="onAutocompleteChange($event)"
-      [value]="query"
-      placeholder="Enter data">
-        <i
-          bd-suffix
-          (click)="clearField($event)"
-          class="icon-minus"
-          aria-hidden="true">
-        </i>
-      </bd-input>
-    <div *ngIf="isSearchMode">
-      <filter-item
-        *ngFor="let item of loadedItems; let i = index;"
-        [itemTemplate]="itemTemplate"
-        [selected]="isSelected(item)"
-        (selectedChange)="onSelect($event)"
-        [item]="item">
-      </filter-item>
-    </div>
-    <div *ngIf="!isSearchMode">
-      <div
-          *ngIf="selectedItems.length"
-          class="autocomplete-section-header">
-        <button
-          (click)="clearSelectedItems($event)">
-          Clear selected items
-        </button>
-      </div>
-      <filter-item
-        *ngFor="let item of selectedItems; let i = index;"
-        [selected]="isSelected(item)"
-        [itemTemplate]="itemTemplate"
-        (selectedChange)="onSelect($event)"
-        [item]="item">
-      </filter-item>
-      <div *ngIf="availableItems.length">
-        <div class="autocomplete-section-header">
-          ALL VALUES
-        </div>
-        <filter-item
-          *ngFor="let item of availableItems; let i = index;"
-          [itemTemplate]="itemTemplate"
-          [selected]="isSelected(item)"
-          (selectedChange)="onSelect($event)"
-          [item]="item">
-        </filter-item>
-      </div>
-    </div>
-    <bd-spinner *ngIf="isLoading"></bd-spinner>
+  <bd-input
+    sticky
+    (valueChange)="onAutocompleteChange($event)"
+    [value]="query"
+    placeholder="Enter data">
+      <i
+        bd-suffix
+        (click)="clearField($event)"
+        class="icon-minus"
+        aria-hidden="true">
+      </i>
+  </bd-input>
+  <div *ngIf="isSearchMode">
+    <filter-item
+      *ngFor="let item of loadedItems; let i = index;"
+      [itemTemplate]="itemTemplate"
+      [selected]="isSelected(item)"
+      (selectedChange)="onSelect($event)"
+      [item]="item">
+    </filter-item>
   </div>
+  <div *ngIf="!isSearchMode">
+    <div
+      *ngIf="selectedItems.length > 1"
+      class="autocomplete-section-header">
+      <button
+        (click)="clearSelectedItems($event)">
+        Clear selected items
+      </button>
+    </div>
+    <filter-item
+      *ngFor="let item of selectedItemsCache; let i = index;"
+      [selected]="isSelected(item)"
+      [itemTemplate]="itemTemplate"
+      (selectedChange)="onSelect($event)"
+      [item]="item">
+    </filter-item>
+    <div class="autocomplete-section-header" *ngIf="loadedItemsCache.length && selectedItemsCache.length">
+      ALL VALUES
+    </div>
+    <div *ngIf="loadedItemsCache.length">
+      <filter-item
+        *ngFor="let item of loadedItemsCache; let i = index;"
+        [itemTemplate]="itemTemplate"
+        [selected]="isSelected(item)"
+        (selectedChange)="onSelect($event)"
+        [item]="item">
+      </filter-item>
+    </div>
+  </div>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
 </div>

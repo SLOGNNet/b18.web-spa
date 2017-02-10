@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
@@ -8,7 +8,7 @@ import { BaseFilter, AutocompleteFilter } from './components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterContainer {
-
+  @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
   ngAfterContentInit() {
@@ -25,11 +25,14 @@ export class FilterContainer {
     this.filters.forEach(f => {
       f.active = false;
     });
+
+    this.visibilityChange.emit(false);
   }
 
   private _toggleFilter(filter: BaseFilter) {
     let currentActiveState = filter.active;
     this.deactivateFilters();
     filter.active = !currentActiveState;
+    this.visibilityChange.emit(filter.active);
   }
 }

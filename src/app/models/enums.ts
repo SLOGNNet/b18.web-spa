@@ -68,11 +68,6 @@ export enum DriverRequirements {
   Solo = 1
 };
 
-export enum DataAssigneeRequirements {
-  MelMel1 = 1,
-  MelMel2 = 2
-};
-
 export enum LoadType {
   FTL = 1,
   LTL = 2

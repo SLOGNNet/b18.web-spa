@@ -1,4 +1,3 @@
-import { Commodity } from './commodity';
 import { Address } from './address';
 import { Facility } from './facility';
 import { generateNewId } from './utils';
@@ -15,8 +14,6 @@ export class Stop {
   id: number;
   @JsonMember({ elements: Address })
   address: Address;
-  @JsonMember({ elements: Commodity })
-  commodities: Array<Commodity>;
   @JsonMember
   date: Date = null;
   @JsonMember
@@ -34,7 +31,6 @@ export class Stop {
     result.date = new Date();
     result.type = type;
     result.address = Address.create();
-    result.commodities = new Array<Commodity>();
     result.facility = Facility.create();
     return result;
   }

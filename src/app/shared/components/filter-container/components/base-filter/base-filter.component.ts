@@ -1,5 +1,4 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
-import { FilterContainer } from '../../filter-container.component';
 import { includes, without, some } from 'lodash';
 export class BaseFilter {
 
@@ -15,12 +14,20 @@ export class BaseFilter {
     this._selectedItems = items || [];
   }
 
-  protected _active: boolean = false;
-  private _selectedItems: Array<Object> = [];
-
-  constructor() {
-
+  @HostBinding('class.active')
+  @Input()
+  public set active(newValue: boolean) {
+    const oldValue = this._active;
+    this._active = newValue;
+    if (oldValue !== newValue) {
+      this.onActiveChanged(newValue);
+    }
   }
+  public get active() {
+    return this._active;
+  }
+  private _active: boolean = false;
+  private _selectedItems: Array<Object> = [];
 
   get selectedItems() {
     return this._selectedItems;
@@ -62,13 +69,4 @@ export class BaseFilter {
     return this.selectedItems.length;
   }
 
-  @HostBinding('class.active')
-  public get active(): boolean {
-    return this._active;
-  }
-
-  public set active(active: boolean) {
-    this._active = active;
-    this.onActiveChanged(active);
-  }
 }
