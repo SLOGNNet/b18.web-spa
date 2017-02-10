@@ -3,16 +3,43 @@
 
 .autocomplete-filter {
   position: relative;
-  padding-top: 50px;
 
-  bd-input {
-    position: absolute;
-    z-index: $sticked-z-index;
-    top: 0;
-    display: block;
-    width: 100%;
-    background: $white;
+  .autocomplete-title {
+    display: flex;
+    padding: 0 $default-margin;
+    border-bottom: $border;
+
+    button {
+      padding: 0;
+      border: 0;
+      background: 0;
+      color: $active-color;
+      font-size: $default-font-size;
+      text-transform: capitalize;
+      flex: 1;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &.hide {
+        color: transparent;
+        pointer-events: none;
+      }
+    }
+
+    bd-input {
+      max-width: 50%;
+      flex: 1;
+
+      /deep/ .bd-input-wrapper {
+        padding: 0;
+        border: 0;
+      }
+    }
   }
+
+
 
   .autocomplete-section-header {
     display: flex;
@@ -23,17 +50,5 @@
     border-bottom: $border;
     align-items: center;
     letter-spacing: 1px;
-
-    button {
-      border: 0;
-      background: 0;
-      color: $active-color;
-      font-size: $default-font-size;
-      text-transform: capitalize;
-
-      &:focus {
-        outline: 0;
-      }
-    }
   }
 }

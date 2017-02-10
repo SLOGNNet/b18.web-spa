@@ -1,16 +1,25 @@
 <div class="autocomplete-filter">
-  <bd-input
+  <div
     sticky
-    (valueChange)="onAutocompleteChange($event)"
-    [value]="query"
-    placeholder="Enter data">
-      <i
-        bd-suffix
-        (click)="clearField($event)"
-        class="icon-minus"
-        aria-hidden="true">
-      </i>
-  </bd-input>
+    class="autocomplete-title">
+    <bd-input
+      (valueChange)="onAutocompleteChange($event)"
+      [value]="query"
+      placeholder="Enter data">
+        <i
+          bd-suffix
+          (click)="clearField($event)"
+          class="icon-minus"
+          aria-hidden="true">
+        </i>
+    </bd-input>
+    <button
+      [class.hide]="selectedItems.length <= 1"
+      (click)="clearSelectedItems($event)">
+      Clear selected items
+    </button>
+  </div>
+
   <div *ngIf="isSearchMode">
     <filter-item
       *ngFor="let item of loadedItems; let i = index;"
@@ -21,14 +30,6 @@
     </filter-item>
   </div>
   <div *ngIf="!isSearchMode">
-    <div
-      *ngIf="selectedItems.length > 1"
-      class="autocomplete-section-header">
-      <button
-        (click)="clearSelectedItems($event)">
-        Clear selected items
-      </button>
-    </div>
     <filter-item
       *ngFor="let item of selectedItemsCache; let i = index;"
       [selected]="isSelected(item)"
