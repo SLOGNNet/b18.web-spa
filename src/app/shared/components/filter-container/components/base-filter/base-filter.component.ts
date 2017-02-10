@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { includes, without, some } from 'lodash';
 export class BaseFilter {
 
@@ -10,6 +10,7 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
+  @Output() selectionChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
@@ -47,6 +48,7 @@ export class BaseFilter {
 
   protected clearSelection() {
     this.selectedItems = [];
+    this.selectionChanged.emit(this.selectedItems);
   }
 
   protected isSelected(checkItem: Object) {
@@ -59,6 +61,7 @@ export class BaseFilter {
     } else {
       this.selectedItems = without(this.selectedItems, changed);
     }
+    this.selectionChanged.emit(this.selectedItems);
   }
 
   protected onActiveChanged(active: boolean) {
