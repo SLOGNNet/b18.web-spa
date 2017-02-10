@@ -1,0 +1,96 @@
+@import '../../../../assets/styles/variables';
+$filter-header-max-width: 85px;
+
+.filter-container {
+  z-index: $sticked-z-index;
+  padding-top: 70px;
+
+  .filter-header {
+    position: absolute;
+    z-index: $sticked-z-index;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 58px;
+    padding: 0 $default-margin;
+    background: $white;
+    align-items: center;
+    border-bottom: $border;
+    border-radius: $default-border-radius;
+
+    /deep/ .filter-scrollbar {
+      width: 100%;
+
+      //sass-lint:disable no-important
+      .scroll-container {
+        display: flex !important;
+        align-items: center;
+      }
+
+      .ps-active-x > .ps-scrollbar-x-rail {
+        bottom: 1px !important;
+      }
+      //sass-lint:enable no-important
+    }
+
+    .content {
+      display: flex;
+
+      span {
+        margin: 0 5px;
+
+        &.filter-item {
+          position: relative;
+          display: flex;
+          overflow: hidden;
+          cursor: pointer;
+          max-width: $filter-header-max-width;
+          white-space: nowrap;
+
+          &.active {
+            color: $active-color;
+          }
+
+          span {
+            margin: 0;
+            font-size: $tiny-font-size;
+
+            &.item-name {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              flex-grow: 1;
+            }
+
+            &.item-count {
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+
+    &.opened {
+      & + .filter-content {
+        display: block;
+      }
+    }
+  }
+
+  .filter-content {
+    z-index: $form-control-popup-z-index;
+    display: none;
+    width: 100%;
+    background: $white;
+    margin-top: 10px;
+    border-radius: $default-border-radius;
+    min-height: $form-control-height;
+
+    /deep/ .filter {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
