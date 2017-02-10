@@ -18,6 +18,7 @@ import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
+import { BdCheckbox } from '././components/bd-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
@@ -51,7 +52,9 @@ import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdN
 import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
-
+import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 
 @NgModule({
   providers: [
@@ -83,6 +86,7 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     BdAddButtonComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
+    BdCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
@@ -109,7 +113,11 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     BdNotificationCardComponent,
     NotificationIcon,
     NotificationCardIcon,
-    BdPerfectScrollbarComponent
+    BdPerfectScrollbarComponent,
+    FilterContainer,
+    AutocompleteFilter,
+    FilterItem,
+    BdInfiniteScrollComponent
   ],
   imports: [
     CommonModule,
@@ -121,6 +129,7 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     NgbDatepickerModule.forRoot(),
     BdDropdownModule,
     BdPopoverModule,
+    InfiniteScrollModule,
     BdPipesModule
   ],
   exports: [
@@ -134,12 +143,14 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
+    BdCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
     BdFormExpandComponent,
     BdButtonComponent,
     BdRemoveButtonComponent,
@@ -170,7 +181,11 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     NotificationIcon,
     NotificationCardIcon,
     BdPipesModule,
-    BdPerfectScrollbarComponent
+    BdPerfectScrollbarComponent,
+    FilterContainer,
+    AutocompleteFilter,
+    FilterItem,
+    BdInfiniteScrollComponent
   ]
 })
 export class SharedModule {

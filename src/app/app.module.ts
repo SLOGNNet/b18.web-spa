@@ -16,7 +16,6 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
 import { DriversComponent, DriverCardsComponent, DriverCardComponent } from './drivers';
 import { MultiPaneLayoutComponent } from './multi-pane-layout';
@@ -89,7 +88,6 @@ type StoreType = {
     SharedModule,
     NavigationBarModule,
     BrowserModule,
-    InfiniteScrollModule,
     BdFormsModule,
     RouterModule.forRoot(ROUTES),
     NgReduxModule
