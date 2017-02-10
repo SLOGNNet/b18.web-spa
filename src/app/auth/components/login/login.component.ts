@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { AuthenticationService } from '../../services';
+import { Component, OnInit } from '@angular/core';
+import { ViewMode } from '../../../shared/enums';
 
 @Component({
-  selector: 'br-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss']
+  selector: 'bd-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  model: any = {};
+export class LoginComponent implements OnInit{
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {
+  loginViewMode: ViewMode;
+
+  ngOnInit() {
+    this.loginViewMode = ViewMode.Edit;
   }
 
-  login() {
-    this.authenticationService.login(this.model);
-    this.router.navigate(['/login']);
-  }
 }
 
