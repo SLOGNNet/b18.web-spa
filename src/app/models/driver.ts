@@ -3,6 +3,18 @@ import { Contact } from './contact';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
+// Colors
+function createStatusColors() {
+ let result = {};
+  result[DriverStatuses.Unavaliable] = '#ffbe4d';
+  result[DriverStatuses.Active] = '#85d183';
+  result[DriverStatuses.Inactive] = '#fb3a3a';
+
+  return result;
+};
+
+const statusColors = createStatusColors();
+
 @JsonObject
 export class Driver {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
@@ -62,6 +74,10 @@ export class Driver {
 
   public static getStatusText(status): string {
     return Driver.statusText[status];
+  }
+
+  public static getStatusColor(status: DriverStatuses): string {
+    return statusColors[status];
   }
 
   public static getTypeText(type): string {

@@ -11,6 +11,10 @@ export class DriverCardComponent {
     croppedDriverFirstName: string;
     croppedDriverLastName: string;
 
+    get driverStatusColor(): string {
+      return Driver.getStatusColor(this.driver.status);
+    }
+
     get driverTypeText(): string {
       return Driver.getTypeText(this.driver.type);
     }
