@@ -7,6 +7,7 @@ import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { DataResolver } from './app.resolver';
 import { LoadsComponent, LoadDetailComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
+import { AuthGuard, LoginComponent } from './auth';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/loads', pathMatch: 'full' },
@@ -16,7 +17,8 @@ export const ROUTES: Routes = [
         path: ':id',
         component: LoadDetailComponent
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   { path: 'customers', component: CustomersComponent, children: [{
         path: ':id',
@@ -24,5 +26,6 @@ export const ROUTES: Routes = [
       }
     ]
   },
+  { path: 'login', component: LoginComponent },
   { path: '**',    component: NoContentComponent }
 ];
