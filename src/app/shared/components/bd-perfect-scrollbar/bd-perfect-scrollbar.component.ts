@@ -7,5 +7,7 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
   encapsulation: ViewEncapsulation.None
 })
 export class BdPerfectScrollbarComponent {
-
+  private config = {
+    suppressScrollY: true
+  };
 }

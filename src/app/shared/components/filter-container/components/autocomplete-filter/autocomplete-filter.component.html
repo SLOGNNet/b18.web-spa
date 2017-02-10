@@ -1,15 +1,14 @@
 <div class="autocomplete-filter">
   <bd-input
-    sticky
     (valueChange)="onAutocompleteChange($event)"
     [value]="query"
     placeholder="Enter data">
-      <i
-        bd-suffix
-        (click)="clearField($event)"
-        class="icon-minus"
-        aria-hidden="true">
-      </i>
+    <i
+      bd-suffix
+      (click)="clearField($event)"
+      class="icon-minus"
+      aria-hidden="true">
+    </i>
   </bd-input>
   <div *ngIf="isSearchMode">
     <filter-item
