@@ -57,6 +57,8 @@ export class Equipment {
   vehicleOperating: EquipmentVehicleOperatings;
   @JsonMember
   lastTripNumber: number;
+  @JsonMember
+  lastAddress: string = '';
 
 
 

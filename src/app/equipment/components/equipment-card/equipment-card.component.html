@@ -24,8 +24,14 @@
       </div>
       <div class="tr-city">
         <span style="background: red" class="tr-city-circle"></span>
-        <span class="tr-city-name">last city</span>
+        <span class="tr-city-name">{{equipment.lastAddress}}</span>
   </div>
-      <span [style.background]="equipmentStatusColor" class="status"></span>
+      <span
+      [style.background]="equipmentStatusColor"
+      class="status"
+      [bd-popover]="equipmentStatusText"
+      [popoverPlacement]="'left'"
+      [popoverOnHover]="true">
+      </span>
   </div>
 </div>

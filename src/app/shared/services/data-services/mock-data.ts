@@ -292,7 +292,8 @@ class MockData {
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: EquipmentDriverType.CompanyDriver,
-    lastTripNumber: 349611
+    lastTripNumber: 349611,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }, {
     id: 1,
     make: 'Wabash',
@@ -308,7 +309,8 @@ class MockData {
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: EquipmentDriverType.OwnerOperator,
-    lastTripNumber: 349616
+    lastTripNumber: 349616,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }];
 
   public drivers: Array<Driver> = [{
