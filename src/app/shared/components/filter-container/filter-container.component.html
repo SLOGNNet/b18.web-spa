@@ -1,31 +1,21 @@
-<div class="filter-container"
+<div class="filter-container" 
     (clickOutside)="deactivateFilters()">
   <div
-      sticky
-      class="filter-header"
-      [class.opened]="opened">
+    sticky
+    #popoverParent
+    class="filter-header"
+    [class.opened]="opened">
     <bd-perfect-scrollbar class="filter-scrollbar">
-      <div class="content">
+      <div class="content" >
         <span
           *ngFor="let filter of filters; let i = index"
           (click)="_toggleFilter(filter, i)"
+          (mouseover)="onFilterItemHover(filter)"
           class="filter-item"
           [bd-popover]="filterItemPopover"
           [popoverOnHover]="true"
           [popoverDisabled]="!filter.selectedItems.length"
           [class.active]="filter.active">
-          <bd-popover-content
-            #filterItemPopover
-            placement="bottom"
-            [width]="220"
-            [closeOnClickOutside]="true"
-            [horizontalOffset]="-10">
-            <div class="selected-item">
-                <p class="selected-item" *ngFor="let item of filter.selectedItems">
-                {{item.name}}
-              </p>
-            </div>
-          </bd-popover-content>
           <span class="item-name">
             {{filter.tagValue}}
           </span>
@@ -40,3 +30,17 @@
     <ng-content></ng-content>
   </div>
 </div>
+
+<bd-popover-content
+  #filterItemPopover
+  placement="bottom"
+  [width]="220"
+  [offsetParent]="popoverParent"
+  [closeOnMouseOutside]="true"
+  [horizontalOffset]="-5">
+  <div class="selected-item" *ngIf="_hoveredFilter">
+    <p class="selected-item" *ngFor="let item of _hoveredFilter.selectedItems">
+      {{item.name}}
+    </p>
+  </div>
+</bd-popover-content>

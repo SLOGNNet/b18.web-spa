@@ -11,6 +11,8 @@ export class FilterContainer {
   @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
+  private _hoveredFilter = null;
+
   ngAfterContentInit() {
     if (this.filters[0]) {
       this.filters[0].active = true;
@@ -19,6 +21,10 @@ export class FilterContainer {
 
   get opened() {
     return this.filters.filter(f => f.active === true).length > 0;
+  }
+
+  onFilterItemHover(filter) {
+    this._hoveredFilter = filter;
   }
 
   deactivateFilters() {

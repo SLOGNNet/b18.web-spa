@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, HostListener, ComponentRef } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
 import { offsetParent, getElementPosition, getEffectivePlacement } from '../../helpers/positioning';
 
@@ -8,6 +8,9 @@ import { offsetParent, getElementPosition, getEffectivePlacement } from '../../h
     styleUrls: ['./bd-popover-content.scss']
 })
 export class BdPopoverContent implements AfterViewInit, OnDestroy {
+
+    @Input()
+    offsetParent: HTMLElement;
 
     @Input()
     horizontalOffset: number = 0;
@@ -48,6 +51,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     effectivePlacement: string;
     arrowLeft: number = undefined;
     elWidth: number = undefined;
+    horizontalArrowOffset: number = 20;
 
     constructor(protected element: ElementRef,
         protected cdr: ChangeDetectorRef) {
@@ -129,11 +133,12 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
     }
 
     adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
-        const offsetParentEl = offsetParent(popover);
+        const offsetParentEl = this.offsetParent || offsetParent(popover);
+
         let result = {
             top: position.top,
             left: position.left,
-            arrowLeft: undefined
+            arrowLeft: elementWidth / 2
         };
 
         if (elementWidth && (effectivePlacement === 'bottom' || effectivePlacement === 'top')) {
@@ -142,11 +147,11 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
             if (position.left + elementWidth > parentWidth + this.horizontalOffset) {
                 const diff = (position.left + elementWidth) - parentWidth - this.horizontalOffset;
                 result.left = position.left - diff;
-                result.arrowLeft = elementWidth / 2 + diff;
+                result.arrowLeft = Math.min(elementWidth / 2 + diff, elementWidth - this.horizontalArrowOffset);
             } else if (position.left < -this.horizontalOffset) {
                 const diff = position.left - -this.horizontalOffset;
                 result.left = position.left - diff;
-                result.arrowLeft = elementWidth / 2 + diff;
+                result.arrowLeft = Math.max(elementWidth / 2 + diff, this.horizontalArrowOffset);
             }
         }
 
