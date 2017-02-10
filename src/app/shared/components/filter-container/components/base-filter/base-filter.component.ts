@@ -1,5 +1,6 @@
 import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { includes, without, some } from 'lodash';
+
 export class BaseFilter {
 
   public static filterMetaData = {
@@ -11,6 +12,7 @@ export class BaseFilter {
   @Input() defaultLabel: string;
   @Input() valueField: string;
   @Output() selectionChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() itemClicked: EventEmitter<any> = new EventEmitter<any>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
@@ -62,6 +64,11 @@ export class BaseFilter {
       this.selectedItems = without(this.selectedItems, changed);
     }
     this.selectionChanged.emit(this.selectedItems);
+  }
+
+  protected onClick(item: Object) {
+    this.onSelect(item);
+    this.itemClicked.emit(true);
   }
 
   protected onActiveChanged(active: boolean) {

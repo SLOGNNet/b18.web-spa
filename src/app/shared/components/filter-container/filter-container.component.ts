@@ -17,9 +17,14 @@ export class FilterContainer {
 
   ngAfterContentInit() {
     if (this.filters) {
-      this.filters.forEach((fitlerItem: BaseFilter) => {
-        fitlerItem.selectionChanged.subscribe(() => {
+      this.filters.forEach((filterItem: BaseFilter) => {
+        filterItem.selectionChanged.subscribe(() => {
           this.cdr.markForCheck();
+        });
+
+        filterItem.itemClicked.subscribe((clickEvent) => {
+          if (!clickEvent) return;
+          this.deactivateFilters();
         });
       });
     }
