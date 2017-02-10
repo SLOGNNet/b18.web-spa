@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
   CustomerService,
+  DriverService,
   SocketService,
   LoadService,
   GoogleService,
@@ -58,6 +59,7 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
     LoadService,
     SocketService,
     CustomerService,
+    DriverService,
     ContactService,
     EnumHelperService,
     GoogleService,

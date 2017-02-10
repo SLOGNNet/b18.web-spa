@@ -6,7 +6,7 @@ import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 @JsonObject
 export class Driver {
   private static statusText = ['Inactive', 'Active', 'Unavaliable'];
-  private static typeText = ['Company'];
+  private static typeText = ['Company driver', 'Owner operator'];
 
   @JsonMember
   id: number = 0;
@@ -38,6 +38,13 @@ export class Driver {
   status: DriverStatuses;
   @JsonMember
   notes: string = '';
+  @JsonMember
+  phone: string = '';
+  @JsonMember
+  lastTripNumber: number;
+  @JsonMember
+  lastAddress: string = '';
+
 
   static create(): Driver {
     const result = new Driver();
@@ -48,7 +55,7 @@ export class Driver {
     result.trailerAssigned = Equipment.create();
     result.paymentOption = DriverPaymentOptions.PerMile;
     result.contact = Contact.create();
-    result.type = DriverTypes.Company;
+    result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
     return result;
   }

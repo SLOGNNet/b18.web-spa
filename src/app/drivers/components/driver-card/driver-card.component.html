@@ -1,0 +1,36 @@
+<div class="driver-card-section">
+  <div class="left">
+    <div class="driver-crooped-container">
+      <span>{{this.croppedDriverFirstName}}{{this.croppedDriverLastName}}</span>
+    </div>
+    <div class="driver-full-name">
+      <span>{{driver.firstName}} {{driver.lastName}}</span>
+    </div>
+    <div>{{driverTypeText}}</div>
+  </div>
+  <div class="middle">
+    <div class="tr-city">
+      <span style="background: rgb(133, 209, 131)" class="tr-city-circle"></span>
+      <span class="tr-city-name">TR{{driver.lastTripNumber}}</span>
+    </div>
+    <div class="tr-city">
+      <span style="background: red" class="tr-city-circle"></span>
+      <span class="tr-city-name">{{driver.lastAddress}}</span>
+</div>
+  </div>
+  <div class="right">
+    <div class="driver-phone">
+    <span>{{driver.phone}}</span>
+  </div>
+  <div class="send-message">
+    <span>Send Message</span>
+  </div>
+      <span
+      style="background: rgb(133, 209, 131)"
+      class="status"
+      [bd-popover]="driverStatusText"
+      [popoverPlacement]="'left'"
+      [popoverOnHover]="true">
+    </span>
+  </div>
+</div>
