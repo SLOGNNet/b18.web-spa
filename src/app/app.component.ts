@@ -45,6 +45,8 @@ import { AuthenticationService } from './auth';
 })
 export class AppComponent {
   isLoggedIn: boolean;
+  subscription: any;
+
   private switchState: number = SwitchState.All;
   private switchStateEnum: any = SwitchState;
   private queryParams: any;
@@ -74,6 +76,9 @@ export class AppComponent {
         this.updateSwitchState(params['switchState']);
       });
     this.isLoggedIn = this.authenticationService.isLoggedIn();
+    this.subscription = this.authenticationService.loggedStateWasChanged.subscribe((value) => {
+      this.isLoggedIn = value;
+    });
   }
 
   isSlided() {

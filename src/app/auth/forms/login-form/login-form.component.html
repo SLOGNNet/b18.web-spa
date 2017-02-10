@@ -1,4 +1,11 @@
 <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm)" class="login-form edit">
+  <div class="general-error-message" *ngIf="isLoginFailed && loginForm.pristine">
+    <div class="error-message">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      Unable to login.<br/>
+      Please check that you have entered your Login and Password correctly.
+    </div>
+  </div>
   <bd-validator [component]="loginForm.controls.login" [errorDefs]="{required: 'This field is required'}">
     <bd-input
       class="bd-form-control"

@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
-import { ViewMode } from '../../../shared/enums';
 import { AuthenticationService } from '../../services';
 
 @Component(Object.assign({
@@ -12,8 +11,8 @@ import { AuthenticationService } from '../../services';
 }, BaseForm.metaData))
 export class LoginFormComponent extends BaseForm implements OnInit {
 
+  isLoginFailed: boolean;
   loginForm: FormGroup;
-  loginViewMode: ViewMode;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -22,7 +21,7 @@ export class LoginFormComponent extends BaseForm implements OnInit {
   }
 
   ngOnInit() {
-    this.loginViewMode = ViewMode.Edit;
+    this.isLoginFailed = false;
     this.loginForm = new FormGroup({
       login: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
@@ -30,7 +29,14 @@ export class LoginFormComponent extends BaseForm implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.authenticationService.login(form.value);
+    this.authenticationService.login(form.value).subscribe(
+      response => {
+        if (!response) {
+          this.isLoginFailed = true;
+          this.loginForm.markAsPristine();
+        }
+      }
+    );
   }
 
 }
