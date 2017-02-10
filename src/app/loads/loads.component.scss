@@ -1,13 +1,43 @@
 @import '../../assets/styles/variables';
 
+.bd-filter-container {
+  z-index: $sticked-z-index;
+  display: block;
+  width: 100%;
+}
+
 .data-panel {
   height: 100%;
-  overflow-y: auto;
 
   .add-button {
     display: block;
     width: 70px;
     margin-top: 20px;
     margin-bottom: 17px;
+  }
+}
+
+.filter-item-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-left: 15px;
+
+  .left {
+    display: flex;
+    overflow: hidden;
+    width: 0;
+    flex: 1;
+    padding-right: 30px;
+
+    .item-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .right {
+    color: $grey;
   }
 }

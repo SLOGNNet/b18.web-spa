@@ -1,0 +1,31 @@
+@import '../../../../assets/styles/variables';
+
+.checkbox-container {
+  position: relative;
+  overflow: hidden;
+  width: 16px;
+  height: 16px;
+  border: $border;
+  border-radius: 3px;
+
+  .arrow {
+    display: none;
+  }
+
+  &.checked {
+    border: 0;
+    background: $blue;
+
+    .arrow {
+      position: absolute;
+      right: 0;
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 2px solid $white;
+      transform: rotate(45deg);
+      bottom: 8px;
+      left: -12px;
+    }
+  }
+}
