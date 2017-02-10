@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
@@ -13,9 +13,17 @@ export class FilterContainer {
 
   private _hoveredFilter = null;
 
+  constructor(private cdr: ChangeDetectorRef) {
+
+  }
+
   ngAfterContentInit() {
-    if (this.filters[0]) {
-      this.filters[0].active = true;
+    if (this.filters) {
+      this.filters.forEach((fitlerItem: BaseFilter) => {
+        fitlerItem.selectionChanged.subscribe(() => {
+          this.cdr.markForCheck();
+        });
+      });
     }
   }
 
