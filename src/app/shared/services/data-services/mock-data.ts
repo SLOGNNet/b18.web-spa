@@ -586,7 +586,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#143',
       trips: this.trips,
-      currentTrip: this.trips[0],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
@@ -608,7 +608,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#141',
       trips: this.trips,
-      currentTrip: this.trips[1],
+      currentTrip: [this.trips[1], this.trips[2]],
       stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
@@ -630,7 +630,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[2],
+      currentTrip: [this.trips[2], this.trips[3]],
       stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
@@ -652,7 +652,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
+      currentTrip: [this.trips[3], this.trips[0]],
       stops: [this.pickups[5], this.dropoffs[5]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
@@ -674,7 +674,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[0],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
@@ -696,7 +696,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[1],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
@@ -718,7 +718,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[2],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[10], this.dropoffs[9]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0]]
@@ -740,7 +740,7 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]],
       documents: [this.documents[0]],
       commodities: [this.commodities[1]]

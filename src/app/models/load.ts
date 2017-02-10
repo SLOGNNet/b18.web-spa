@@ -75,7 +75,7 @@ export class Load {
   @JsonMember({ elements: Trip })
   trips: Array<Trip>;
   @JsonMember({ elements: Trip })
-  currentTrip: Trip;
+  currentTrip: Array<Trip>;
   @JsonMember({ elements: Stop })
   stops: Array<Stop>;
   @JsonMember({ elements: Document })
@@ -90,7 +90,7 @@ export class Load {
     result.powerUnitType = PowerUnitTypes.Tractor;
     result.trailerType = TrailerTypes.DryVan53;
     result.trips = [Trip.create()];
-    result.currentTrip = Trip.create();
+    result.currentTrip = [Trip.create()];
     result.stops = [Stop.create(StopTypes.Dropoff)];
     result.documents = [];
     result.commodities = new Array<Commodity>();
