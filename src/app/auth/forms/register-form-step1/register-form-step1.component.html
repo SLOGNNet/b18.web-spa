@@ -1,0 +1,86 @@
+<form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" class="register-form edit">
+  <!-- <div class="general-error-message" *ngIf="isLoginFailed && loginForm.pristine">
+    <div class="error-message">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      Unable to login.<br/>
+      Please check that you have entered your Login and Password correctly.
+    </div>
+  </div> -->
+  <div class="section">
+    <bd-input
+      class="bd-form-control section-control"
+      placeholder="First Name"
+      formControlName="firstName">
+    </bd-input>
+    <bd-input
+      class="bd-form-control section-control"
+      placeholder="Middle Name"
+      formControlName="middleName">
+    </bd-input>
+    <bd-input
+      class="bd-form-control section-control"
+      placeholder="Last Name"
+      formControlName="lastName">
+    </bd-input>
+  </div>
+  <bd-form-switch class="bd-form-control"
+                  formControlName="registerType"
+                  [hideLabel]="true"
+                  [enableButtonSwitch]="true"
+                  [items]="registerTypes">
+  </bd-form-switch>
+  <div *ngIf="registerForm.controls.registerType.value === 'email'">
+    <bd-validator [component]="registerForm.controls.email" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Email'"
+        formControlName="email">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.password" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Password'"
+        formControlName="password">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.retryPassword" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Retry Password'"
+        formControlName="retryPassword">
+      </bd-input>
+    </bd-validator>
+  </div>
+  <div *ngIf="registerForm.controls.registerType.value === 'phone'">
+    <bd-validator [component]="registerForm.controls.phone" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Phone'"
+        formControlName="phone">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.password" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Password'"
+        formControlName="password">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.retryPassword" [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [labelText]="'Retry Password'"
+        formControlName="retryPassword">
+      </bd-input>
+    </bd-validator>
+  </div>
+  <div class="divider"></div>
+  <bd-button
+    type="submit"
+    color="primary"
+    class="button"
+    [(disabled)]="!registerForm.valid"
+    [text]="'Next'">
+  </bd-button>
+</form>

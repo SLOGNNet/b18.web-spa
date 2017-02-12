@@ -1,52 +1,38 @@
 @import '../../../../assets/styles/variables';
 
-.auth-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
+.login-form-wrapper {
+  width: 480px;
 
-  .auth-logo {
-    position: absolute;
-    top: 65px;
-    left: 65px;
+  bd-label {
+    font-size: 10px;
   }
 
-  .login-form-wrapper {
-    width: 480px;
-
-    bd-label {
-      font-size: 10px;
-    }
-
-    h3 {
-      color: $blue;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
+  h3 {
+    color: $blue;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
+}
 
-  .links-wrapper {
-    a {
-      color: $dark-grey;
+.links-wrapper {
+  a {
+    color: $dark-grey;
 
-      &:hover {
-        text-decoration: none;
-      }
+    &:hover {
+      text-decoration: none;
+    }
 
+    &:before {
+      position: relative;
+      top: 5px;
+      margin: 0 5px;
+      font-size: 2rem;
+      content: '\00b7';
+    }
+
+    &:first-child {
       &:before {
-        position: relative;
-        top: 5px;
-        margin: 0 5px;
-        font-size: 2rem;
-        content: '\00b7';
-      }
-
-      &:first-child {
-        &:before {
-          content: '';
-        }
+        content: '';
       }
     }
   }

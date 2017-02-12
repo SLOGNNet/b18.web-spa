@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class AuthenticationService {
 
   constructor(private router: Router) {
     this.loggedIn = !!localStorage.getItem('currentUser');
+    this.loggedStateWasChanged.next(this.loggedIn);
   }
 
   login(model) {
