@@ -12,6 +12,7 @@ export class AuthenticationService {
 
   constructor(private router: Router) {
     this.loggedIn = !!localStorage.getItem('currentUser');
+    this.loggedStateWasChanged.next(this.loggedIn);
   }
 
   login(model) {
