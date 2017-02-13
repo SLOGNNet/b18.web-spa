@@ -11,7 +11,7 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
-  @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectionChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
