@@ -23,9 +23,8 @@ export class CustomersComponent extends BaseListComponent<Customer> {
       customerActions: CustomerActions,
       router: Router,
       route: ActivatedRoute,
-      private ngRedux: NgRedux<IAppState>,
-      cdr: ChangeDetectorRef) {
-      super(customerActions, ngRedux.select(state => state.customers.items), router, route, cdr);
+      private ngRedux: NgRedux<IAppState>) {
+      super(customerActions, ngRedux.select(state => state.customers.items), router, route);
   }
 
   protected routePath(): string {

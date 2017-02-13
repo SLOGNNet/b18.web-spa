@@ -29,8 +29,8 @@ export class LoadsComponent extends BaseListComponent<Load>{
     loadActions: LoadActions,
     router: Router,
     route: ActivatedRoute,
-    private ngRedux: NgRedux<IAppState>, cdr: ChangeDetectorRef) {
-    super(loadActions, ngRedux.select(state => state.loads.items), router, route, cdr);
+    private ngRedux: NgRedux<IAppState>) {
+    super(loadActions, ngRedux.select(state => state.loads.items), router, route);
     this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
   }
 
