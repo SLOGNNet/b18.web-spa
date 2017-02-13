@@ -1,8 +1,9 @@
 <div class="equipment-card-section">
   <div class="left">
-    <div class="equipment-type-container">
-      <span>{{equipmentShortTypeText}}</span>
-    </div>
+    <bd-initials-circle
+      [firstName]="firstLetter"
+      [lastName]="lastLetter">
+    </bd-initials-circle>
     <div class="equipment-make">
       <span>{{equipment.make}}</span>
     </div>

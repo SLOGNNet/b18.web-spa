@@ -16,20 +16,6 @@
   .left {
     flex: 1;
 
-    .equipment-type-container {
-      span {
-        display: flex;
-        width: 34px;
-        height: 34px;
-        background: $black;
-        color: $white;
-        margin-top: -6px;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
     .equipment-make {
       overflow: hidden;
       padding-top: 6px;
