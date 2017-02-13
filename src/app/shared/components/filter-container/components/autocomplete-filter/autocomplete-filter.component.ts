@@ -77,7 +77,7 @@ export class AutocompleteFilter extends BaseFilter {
     }
     this.selectionChanged.emit(this.selectedItems);
 
-    if(this.selectedItems.length > 1) this._btnClearDisabledState = false;
+    if (this.selectedItems.length > 1) this._btnClearDisabledState = false;
   }
 
   public loadNextPage() {
