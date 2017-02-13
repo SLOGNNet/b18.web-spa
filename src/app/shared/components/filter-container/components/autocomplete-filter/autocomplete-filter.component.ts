@@ -5,7 +5,7 @@ import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
 import { CustomerService } from '../../../../services';
-import { difference } from 'lodash';
+import { difference, without } from 'lodash';
 
 class PageQuery {
   page: number;
@@ -32,6 +32,7 @@ export class AutocompleteFilter extends BaseFilter {
   private page = 0;
   private countPerPage: number = 20;
   private query = '';
+  private _btnClearDisabledState: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
@@ -68,6 +69,17 @@ export class AutocompleteFilter extends BaseFilter {
     }
   }
 
+  protected onSelect(changed: Object) {
+    if (!this.isSelected(changed)) {
+      this.selectedItems.push(changed);
+    } else {
+      this.selectedItems = without(this.selectedItems, changed);
+    }
+    this.selectionChanged.emit(this.selectedItems);
+
+    if(this.selectedItems.length > 1) this._btnClearDisabledState = false;
+  }
+
   public loadNextPage() {
     if (!this.active || this.isAllLoaded || this.isLoading) return;
     this.page = this.page + 1;
@@ -81,6 +93,7 @@ export class AutocompleteFilter extends BaseFilter {
 
   public clearSelectedItems(event) {
     event.stopPropagation();
+    this._btnClearDisabledState = true;
     this.clearSelection();
     this.onAutocompleteChange(this.query);
   }
