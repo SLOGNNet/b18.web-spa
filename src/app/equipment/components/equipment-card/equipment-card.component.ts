@@ -10,8 +10,8 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
 })
 export class EquipmentCardComponent {
     @Input() equipment: Equipment;
-    public firstLetter:string;
-    public lastLetter:string;
+    public firstLetter: string;
+    public lastLetter: string;
 
     get equipmentStatusColor(): string {
       return Equipment.getStatusColor(this.equipment.status);
