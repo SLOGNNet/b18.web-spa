@@ -3,8 +3,7 @@ import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetect
 @Component({
   selector: 'form-sticky-bottom-container',
   templateUrl: './form-sticky-bottom-container.component.html',
-  styleUrls: ['./form-sticky-bottom-container.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./form-sticky-bottom-container.component.scss']
 })
 export class FormStickyBottomContainerComponent implements AfterViewInit {
   public height: string;
@@ -14,7 +13,7 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
     setTimeout(() => this.update(), 0);
   }
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
+  constructor(private elementRef: ElementRef) {
   }
 
   @HostListener('window:resize')
@@ -31,7 +30,6 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
     if (this.height !== height) {
       this.height = height;
       this.elementRef.nativeElement.style.height = height + 'px';
-      this.cdr.markForCheck();
     }
   }
 }
