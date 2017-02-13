@@ -61,7 +61,7 @@
     .right {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
 
       .loads-container {
         .load {
@@ -108,17 +108,15 @@
     }
 
     .right {
+      position: relative;
+
       .status {
-        display: flex;
-        width: 79px;
-        height: 20px;
-        background: $black;
-        color: $white;
-        float: right;
-        align-items: center;
-        border-radius: $default-border-radius;
-        justify-content: center;
-        margin-top: $default-margin;
+        position: absolute;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        bottom: -5px;
+        border-radius: $form-control-height;
       }
     }
   }
