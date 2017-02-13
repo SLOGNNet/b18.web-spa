@@ -324,28 +324,33 @@ class MockData {
     paymentOption: DriverPaymentOptions.PerMile,
     rate: 1.2,
     contact: this.contacts[0],
-    type: DriverTypes.Company,
+    type: DriverTypes.CompanyDriver,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
-    notes: 'notes'
-  },
-  {
+    notes: 'notes',
+    phone: '+1-650-4603122',
+    lastTripNumber: 349611,
+    lastAddress: '2229 San Pedro Rd, North Sacramento'
+  }, {
     id: 1,
-    firstName: 'Goving',
-    lastName: 'Bhatti',
+    firstName: 'Emma',
+    lastName: 'Watson',
     dateOfBirth: null,
-    ssn: '123144241241242',
-    powerUnitAssigned: null,
-    trailerAssigned: null,
+    ssn: '123144241241777',
+    powerUnitAssigned: this.equipments[0],
+    trailerAssigned: this.equipments[1],
     paymentOption: DriverPaymentOptions.PerMile,
     rate: 1.2,
-    contact: this.contacts[0],
-    type: DriverTypes.Company,
+    contact: this.contacts[1],
+    type: DriverTypes.OwnerOperator,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
-    notes: 'notes'
+    notes: 'notes',
+    phone: '+1-650-4603122',
+    lastTripNumber: 349777,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }];
 
   public trips: Array<Trip> = [{
