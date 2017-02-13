@@ -16,20 +16,6 @@
   .left {
     flex: 1;
 
-    .driver-crooped-container {
-      span {
-        display: flex;
-        width: 34px;
-        height: 34px;
-        background: $black;
-        color: $white;
-        margin-top: -6px;
-        border-radius: 50%;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-
     .driver-full-name {
       overflow: hidden;
       padding-top: 6px;
@@ -77,9 +63,7 @@
     padding-left: $default-margin;
 
     .driver-phone {
-      display: flex;
       overflow: hidden;
-      align-items: flex-end;
     }
 
     .send-message {
@@ -96,10 +80,8 @@
       width: 12px;
       height: 12px;
       background: $black;
-      color: $white;
       bottom: -5px;
       border-radius: $form-control-height;
-      justify-content: center;
     }
   }
 }
