@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { loadReducer, ILoadState, customerReducer, ICustomerState,
-  commodityReducer, ICommodityState, addressReducer, IAddressState, stopReducer, IStopState, 
+  commodityReducer, ICommodityState, addressReducer, IAddressState, stopReducer, IStopState,
   driverReducer, IDriverState, IEquipmentState, equipmentReducer } from './reducers';
 export { ILoadState, ICustomerState, ICommodityState, IAddressState, IStopState, IDriverState, IEquipmentState } from './reducers';
 

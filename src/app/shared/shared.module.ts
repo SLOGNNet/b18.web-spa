@@ -63,13 +63,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     LoadService,
     SocketService,
     CustomerService,
-<<<<<<< HEAD
-<<<<<<< HEAD
     EquipmentService,
-=======
->>>>>>> f023aa225a21a409f76d23ef7c0c78cc61b881f3
-=======
->>>>>>> f023aa225a21a409f76d23ef7c0c78cc61b881f3
     DriverService,
     ContactService,
     EnumHelperService,
