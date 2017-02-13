@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
@@ -16,7 +16,7 @@ import { IAppState } from '../store';
 @Component({
   selector: 'customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
+  styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent extends BaseListComponent<Customer> {
     constructor(
@@ -29,5 +29,9 @@ export class CustomersComponent extends BaseListComponent<Customer> {
 
   protected routePath(): string {
     return 'customers/';
+  }
+
+  private trackBy(index: number, customer: Customer) {
+    return customer.id;
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Customer } from '../../models';
 import { BaseDetailComponent } from '../../base';
 import {  ActivatedRoute, Params } from '@angular/router';
@@ -9,7 +9,8 @@ import { IAppState } from '../../store';
 
 @Component({
   selector: 'customer-detail',
-  templateUrl: './customer-detail.component.html'
+  templateUrl: './customer-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerDetailComponent extends BaseDetailComponent<Customer> {
   private anchors = [{

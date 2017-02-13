@@ -1,0 +1,112 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.driver-card-section {
+  position: relative;
+  display: flex;
+  height: 100px;
+  padding: $default-margin;
+  background: inherit;
+  font-size: $tiny-font-size;
+  line-height: 18px;
+  cursor: pointer;
+  border-bottom: $border;
+  justify-content: space-between;
+
+  .left {
+    flex: 1;
+
+    .driver-full-name {
+      overflow: hidden;
+      padding-top: 6px;
+
+      span {
+        overflow: hidden;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .middle {
+    overflow: hidden;
+    flex: 1;
+    padding-left: $default-margin;
+    padding-top: 18px;
+
+    .tr-city {
+      display: flex;
+
+      .tr-city-circle {
+        width: 9px;
+        height: 9px;
+        background: $black;
+        margin-top: 3px;
+        border-radius: 50%;
+      }
+
+      .tr-city-name {
+        @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
+        width: 90%;
+        text-align: left;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+    line-height: 17px;
+    flex-direction: column;
+    flex: 1;
+    padding-left: $default-margin;
+
+    .driver-phone {
+      overflow: hidden;
+    }
+
+    .send-message {
+      overflow: hidden;
+      color: $blue;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: $black;
+      bottom: -5px;
+      border-radius: $form-control-height;
+    }
+  }
+}
+
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+
+    .middle {
+      .tr-city {
+        .tr-city-name {
+          @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $light-blue);
+          width: 90%;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &.active {
+    .equipment-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}

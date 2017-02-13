@@ -26,7 +26,13 @@
       <div>{{customer.addresses[0].phone}}</div>
     </div>
     <div class="right">
-        <span [style.background]="customerStatusColor" class="status">{{customerStatusText}}</span>
+        <span
+        [style.background]="customerStatusColor"
+        [bd-popover]="customerStatusText"
+        [popoverPlacement]="'left'"
+        [popoverOnHover]="true"
+        class="status">
+      </span>
     </div>
   </div>
 </div>
