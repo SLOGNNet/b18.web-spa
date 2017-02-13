@@ -31,11 +31,11 @@ export class NavigationBarComponent {
     //         link: './home',
     //     }]
     // },
-    // {
-    //     label: 'Drivers',
-    //     icon: 'icon',
-    //     link: './drivers/1'
-    // },
+    {
+        label: 'Drivers',
+        icon: 'icon',
+        link: './drivers/1'
+    },
     {
         label: 'Loads',
         icon: 'icon',

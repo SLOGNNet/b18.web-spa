@@ -10,13 +10,10 @@ import { Load, LoadStatuses } from '../../../models';
 export class CustomerCardComponent {
   @Input() customer: Customer;
   @Output() select: EventEmitter<any> = new EventEmitter();
-  customerName: string;
   croppedCustomerName: string;
 
   ngOnInit() {
-     this.customerName = this.customer.name;
-     this.customerName = this.customerName.replace(/ /g, '');
-     this.croppedCustomerName = this.customerName.substr(0, 3).toUpperCase();
+     this.croppedCustomerName = this.customer.name.replace(/ /g, '').substr(0, 3).toUpperCase();
   }
 
   loadStatusColor(status: LoadStatuses): string {

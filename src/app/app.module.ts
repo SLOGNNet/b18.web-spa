@@ -7,6 +7,7 @@ import { NavigationBarModule } from './navigation-bar/navigation-bar.module';
 import { TopPanelComponent } from './top-panel';
 import { BdFormsModule } from './forms/forms.module';
 import { NgReduxModule } from 'ng2-redux';
+import { AuthModule } from './auth/auth.module';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -16,9 +17,8 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { AppState, InternalStateType } from './app.service';
-import { DriversComponent } from './drivers';
+import { DriversComponent, DriverCardsComponent, DriverCardComponent } from './drivers';
 import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
@@ -36,6 +36,7 @@ import {
   LoadActions,
   AddressActions,
   CustomerActions,
+  DriverActions,
   StopActions
 } from './actions';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
@@ -65,6 +66,8 @@ type StoreType = {
      MultiPaneLayoutComponent,
      HomeComponent,
      DriversComponent,
+     DriverCardsComponent,
+     DriverCardComponent,
      NoContentComponent,
      MessagesComponent,
      MessageComponent,
@@ -86,10 +89,10 @@ type StoreType = {
     SharedModule,
     NavigationBarModule,
     BrowserModule,
-    InfiniteScrollModule,
     BdFormsModule,
     RouterModule.forRoot(ROUTES),
-    NgReduxModule
+    NgReduxModule,
+    AuthModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -98,6 +101,7 @@ type StoreType = {
     LoadActions,
     AddressActions,
     CustomerActions,
+    DriverActions,
     StopActions
   ]
 })

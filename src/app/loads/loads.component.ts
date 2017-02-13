@@ -2,9 +2,11 @@ import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
+import { BdPerfectScrollbarComponent } from './common/bd-perfect-scrollbar/bd-perfect-scrollbar.component';
+import { FilterContainer } from './components/filter-container/filter-container.component';
 import { Load } from '../models';
 import { LoadActions } from '../actions';
-import { LoadService } from '../shared';
+import { LoadService, CustomerService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -19,14 +21,34 @@ import { IAppState } from '../store';
   styleUrls: ['./loads.component.scss']
 })
 export class LoadsComponent extends BaseListComponent<Load>{
+  private isFilterActive = false;
+  private scrolledDown = false;
 
   constructor(private loadService: LoadService,
+    private customerService: CustomerService,
     loadActions: LoadActions,
     router: Router,
     route: ActivatedRoute,
-    private ngRedux: NgRedux<IAppState>,
-    cdr: ChangeDetectorRef) {
+    private ngRedux: NgRedux<IAppState>, cdr: ChangeDetectorRef) {
     super(loadActions, ngRedux.select(state => state.loads.items), router, route, cdr);
+    this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
+  }
+
+  autocompleteSearchSource(query: string, page: number, count: number) {
+    return this.customerService.getPaginatedSearch(query, page, count);
+  }
+
+  onFilterVisibilityChange(isVisible) {
+    this.isFilterActive = isVisible;
+  }
+
+  onScrolledUp() {
+    this.scrolledDown = false;
+  }
+
+  onScrolledDown() {
+    this.scrolledDown = true;
+    console.log('handle');
   }
 
   protected routePath(): string {

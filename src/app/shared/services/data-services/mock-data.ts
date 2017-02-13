@@ -2,7 +2,7 @@ import {
   Load, Document, Customer, Address, CustomerStatuses, CustomerTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
-  FreightType, DataAssigneeRequirements, Facility, Trip,
+  FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions,
   DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
   EquipmentModes, EquipmentVehicleOperatings } from './models';
@@ -19,10 +19,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 2,
@@ -36,10 +34,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 3,
@@ -53,10 +49,8 @@ class MockData {
     fax: '(602)-256-0631',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 4,
@@ -70,10 +64,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   },
   {
     id: 5,
@@ -87,10 +79,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 40.795675,
-      lng: -73.93600099999998
-    }
+    lat: 40.795675,
+    lng: -73.93600099999998
   }
   ];
 
@@ -106,10 +96,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 4,
@@ -123,10 +111,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 5,
@@ -140,10 +126,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 6,
@@ -157,10 +141,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   {
     id: 7,
@@ -174,10 +156,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    location: {
-      lat: 0,
-      lng: 0
-    }
+    lat: 0,
+    lng: 0
   },
   ];
 
@@ -328,17 +308,39 @@ class MockData {
     firstName: 'Goving',
     lastName: 'Bhatti',
     dateOfBirth: null,
-    snn: '123144241241242',
+    ssn: '123144241241242',
     powerUnitAssigned: this.equipments[0],
     trailerAssigned: this.equipments[1],
     paymentOption: DriverPaymentOptions.PerMile,
     rate: 1.2,
     contact: this.contacts[0],
-    type: DriverTypes.Company,
+    type: DriverTypes.CompanyDriver,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
-    notes: 'notes'
+    notes: 'notes',
+    phone: '+1-650-4603122',
+    lastTripNumber: 349611,
+    lastAddress: '2229 San Pedro Rd, North Sacramento'
+  }, {
+    id: 1,
+    firstName: 'Emma',
+    lastName: 'Watson',
+    dateOfBirth: null,
+    ssn: '123144241241777',
+    powerUnitAssigned: this.equipments[0],
+    trailerAssigned: this.equipments[1],
+    paymentOption: DriverPaymentOptions.PerMile,
+    rate: 1.2,
+    contact: this.contacts[1],
+    type: DriverTypes.OwnerOperator,
+    hireDate: null,
+    terminationDate: null,
+    status: DriverStatuses.Active,
+    notes: 'notes',
+    phone: '+1-650-4603122',
+    lastTripNumber: 349777,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }];
 
   public trips: Array<Trip> = [{
@@ -375,7 +377,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[0],
     date: this.startDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -385,7 +386,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[1],
     date: this.startDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -395,7 +395,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -405,7 +404,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -415,7 +413,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -425,7 +422,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -434,7 +430,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[0],
     date: this.startDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -444,7 +439,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[1],
     date: this.startDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -454,7 +448,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -464,7 +457,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -474,7 +466,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[2],
     date: this.startDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -484,7 +475,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -494,7 +484,6 @@ class MockData {
     type: StopTypes.Pickup,
     address: this.addresses[3],
     date: this.startDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }];
@@ -507,7 +496,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[1], this.commodities[1]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -517,7 +505,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -527,7 +514,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -537,7 +523,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -547,7 +532,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -557,7 +541,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -566,7 +549,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[0]],
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -576,7 +558,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[1]],
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -586,7 +567,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[0],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -596,7 +576,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[1],
     date: this.endDate,
-    commodities: [this.commodities[3]],
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -606,7 +585,6 @@ class MockData {
     type: StopTypes.Dropoff,
     address: this.addresses[2],
     date: this.endDate,
-    commodities: [this.commodities[2]],
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   }];
@@ -618,11 +596,10 @@ class MockData {
       customerId: 1,
       customer: null,
       addressId: 1,
-      brokerLoadNumber: 726457361,
-      carrierLoadNumber: 209282402,
+      customerLoadNumber: 726457361,
+      systemLoadNumber: 209282402,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       contactId: 1,
       billingAddressId: 3,
       status: LoadStatuses.Completed,
@@ -631,20 +608,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#143',
       trips: this.trips,
-      currentTrip: this.trips[0],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[0], this.commodities[1]]
     },
     {
       id: 2,
       customerId: 2,
       customer: null,
       addressId: 2,
-      brokerLoadNumber: 234457361,
-      carrierLoadNumber: 7367707,
+      customerLoadNumber: 234457361,
+      systemLoadNumber: 7367707,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel2,
       billingAddressId: 4,
       contactId: 2,
       status: LoadStatuses.InTransit,
@@ -653,20 +630,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#141',
       trips: this.trips,
-      currentTrip: this.trips[1],
+      currentTrip: [this.trips[1], this.trips[2]],
       stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 3,
       customerId: 3,
       customer: null,
       addressId: 3,
-      brokerLoadNumber: 111557361,
-      carrierLoadNumber: 104579538,
+      customerLoadNumber: 111557361,
+      systemLoadNumber: 104579538,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 5,
       contactId: 3,
       status: LoadStatuses.InTransit,
@@ -675,20 +652,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[2],
+      currentTrip: [this.trips[2], this.trips[3]],
       stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 4,
       customerId: 4,
       customer: null,
       addressId: 4,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
@@ -697,20 +674,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
+      currentTrip: [this.trips[3], this.trips[0]],
       stops: [this.pickups[5], this.dropoffs[5]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[3]]
     },
     {
       id: 5,
       customerId: 1,
       customer: null,
       addressId: 1,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.InTransit,
@@ -719,20 +696,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[0],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[2]]
     },
     {
       id: 6,
       customerId: 2,
       customer: null,
       addressId: 2,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
@@ -741,20 +718,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[1],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[3]]
     },
     {
       id: 7,
       customerId: 3,
       customer: null,
       addressId: 3,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
@@ -763,20 +740,20 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[2],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[10], this.dropoffs[9]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[0]]
     },
     {
       id: 8,
       customerId: 4,
       customer: null,
       addressId: 4,
-      brokerLoadNumber: 827461356,
-      carrierLoadNumber: 104605109,
+      customerLoadNumber: 827461356,
+      systemLoadNumber: 104605109,
       loadType: LoadType.FTL,
       freightType: FreightType.Dry,
-      dataAssignee: DataAssigneeRequirements.MelMel1,
       billingAddressId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
@@ -785,9 +762,10 @@ class MockData {
       trailerType: TrailerTypes.DryVan53,
       specialRequirment: '#128',
       trips: this.trips,
-      currentTrip: this.trips[3],
+      currentTrip: [this.trips[0], this.trips[1]],
       stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]],
-      documents: [this.documents[0]]
+      documents: [this.documents[0]],
+      commodities: [this.commodities[1]]
     },
   ];
 
@@ -841,6 +819,242 @@ class MockData {
     },
     {
       id: 5,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 6,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: [this.contacts[0]],
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 7,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: [this.contacts[1]],
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '392137',
+      loads: [this.loads[2], this.loads[3]]
+    },
+    {
+      id: 8,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: [this.contacts[2]],
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '',
+      loads: [this.loads[4], this.loads[5]]
+    },
+    {
+      id: 9,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: [this.contacts[3]],
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655',
+      loads: [this.loads[6], this.loads[7]]
+    },
+    {
+      id: 10,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 11,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: [this.contacts[0]],
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 12,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: [this.contacts[1]],
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '392137',
+      loads: [this.loads[2], this.loads[3]]
+    },
+    {
+      id: 13,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: [this.contacts[2]],
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '',
+      loads: [this.loads[4], this.loads[5]]
+    },
+    {
+      id: 14,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: [this.contacts[3]],
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655',
+      loads: [this.loads[6], this.loads[7]]
+    },
+    {
+      id: 15,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 16,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: [this.contacts[0]],
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 17,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: [this.contacts[1]],
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '392137',
+      loads: [this.loads[2], this.loads[3]]
+    },
+    {
+      id: 18,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: [this.contacts[2]],
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '',
+      loads: [this.loads[4], this.loads[5]]
+    },
+    {
+      id: 19,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: [this.contacts[3]],
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655',
+      loads: [this.loads[6], this.loads[7]]
+    },
+    {
+      id: 20,
+      name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
+      addresses: [this.addresses[4], this.billingAddresses[4]],
+      contacts: this.contacts,
+      email: 'havetoadd@rrdonelley.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '283221',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 21,
+      name: 'CH ROBINSON COMPANY INC',
+      addresses: [this.addresses[0], this.billingAddresses[0]],
+      contacts: [this.contacts[0]],
+      email: 'carrier.services@chrobinson.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '384859',
+      loads: [this.loads[0], this.loads[1]]
+    },
+    {
+      id: 22,
+      name: 'M W LOGISTICS LLC',
+      addresses: [this.addresses[1], this.billingAddresses[1]],
+      contacts: [this.contacts[1]],
+      email: 'HAVETO ADD@mwlogistics.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '392137',
+      loads: [this.loads[2], this.loads[3]]
+    },
+    {
+      id: 23,
+      name: 'United Freight Service UFS',
+      addresses: [this.addresses[2], this.billingAddresses[2]],
+      contacts: [this.contacts[2]],
+      email: 'albert@ufs.net',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '',
+      mc: '',
+      loads: [this.loads[4], this.loads[5]]
+    },
+    {
+      id: 24,
+      name: 'SCHNEIDER NATIONAL CARRIERS INC',
+      addresses: [this.addresses[3], this.billingAddresses[3]],
+      contacts: [this.contacts[3]],
+      email: 'stmcarrier@schneider.com',
+      status: CustomerStatuses.Active,
+      type: CustomerTypes.Broker,
+      taxId: '', mc: '133655',
+      loads: [this.loads[6], this.loads[7]]
+    },
+    {
+      id: 25,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       addresses: [this.addresses[4], this.billingAddresses[4]],
       contacts: this.contacts,

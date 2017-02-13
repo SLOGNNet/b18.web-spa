@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'bd-perfect-scrollbar',
@@ -7,5 +7,16 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
   encapsulation: ViewEncapsulation.None
 })
 export class BdPerfectScrollbarComponent {
+  private config = {
+    suppressScrollY: true
+  };
 
+  constructor(private _cdr: ChangeDetectorRef) {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this._cdr.markForCheck();
+    }, 0);
+  }
 }

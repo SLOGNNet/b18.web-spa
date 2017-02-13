@@ -13,16 +13,14 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info">
-    <bd-input class="bd-form-control" [labelText]="'Carrier Load Number'" [disabled]="true" formControlName="carrierLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNumber">
     </bd-input>
-    <bd-input class="bd-form-control" [labelText]="'Broker Load Number'" formControlName="brokerLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNumber">
     </bd-input>
     <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
     </bd-form-switch>
     <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
     </bd-form-switch>
-    <bd-dropdown class="bd-form-control" [labelText]="'Data Assignee'" formControlName="dataAssignee" [items]="dataAssigneeNames">
-    </bd-dropdown>
   </bd-form-section>
   <navigation-anchor id="customer"></navigation-anchor>
   <bd-form-section labelText="Customer">
