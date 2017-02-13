@@ -18,7 +18,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { DriversComponent } from './drivers';
+import { DriversComponent, DriverCardsComponent, DriverCardComponent } from './drivers';
 import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
@@ -36,6 +36,7 @@ import {
   LoadActions,
   AddressActions,
   CustomerActions,
+  DriverActions,
   StopActions
 } from './actions';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
@@ -65,6 +66,8 @@ type StoreType = {
      MultiPaneLayoutComponent,
      HomeComponent,
      DriversComponent,
+     DriverCardsComponent,
+     DriverCardComponent,
      NoContentComponent,
      MessagesComponent,
      MessageComponent,
@@ -98,6 +101,7 @@ type StoreType = {
     LoadActions,
     AddressActions,
     CustomerActions,
+    DriverActions,
     StopActions
   ]
 })

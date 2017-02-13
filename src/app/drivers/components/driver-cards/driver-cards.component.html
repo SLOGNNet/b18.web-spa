@@ -1,0 +1,6 @@
+<driver-card
+*ngFor="let driver of this.drivers"
+[driver]="driver"
+(select)="onCardSelect($event)"
+>
+</driver-card>

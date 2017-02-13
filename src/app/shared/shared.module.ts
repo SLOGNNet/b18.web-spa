@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
   CustomerService,
+  DriverService,
   SocketService,
   LoadService,
   GoogleService,
@@ -61,6 +62,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     LoadService,
     SocketService,
     CustomerService,
+    DriverService,
     ContactService,
     EnumHelperService,
     GoogleService,
