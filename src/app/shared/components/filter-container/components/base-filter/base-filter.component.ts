@@ -11,8 +11,7 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
-  @Output() selectionChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
-  @Output() itemClicked: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
@@ -68,7 +67,7 @@ export class BaseFilter {
 
   protected onClick(item: Object) {
     this.onSelect(item);
-    this.itemClicked.emit(true);
+    this.active = false;
   }
 
   protected onActiveChanged(active: boolean) {

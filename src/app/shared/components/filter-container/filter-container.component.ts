@@ -21,11 +21,6 @@ export class FilterContainer {
         filterItem.selectionChanged.subscribe(() => {
           this.cdr.markForCheck();
         });
-
-        filterItem.itemClicked.subscribe((clickEvent) => {
-          if (!clickEvent) return;
-          this.deactivateFilters();
-        });
       });
     }
   }

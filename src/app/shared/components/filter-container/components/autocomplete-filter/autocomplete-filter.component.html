@@ -26,6 +26,7 @@
       [itemTemplate]="itemTemplate"
       [selected]="isSelected(item)"
       (selectedChange)="onSelect($event)"
+      (itemClick)="onClick($event)"
       [item]="item">
     </filter-item>
   </div>
@@ -35,6 +36,7 @@
       [selected]="isSelected(item)"
       [itemTemplate]="itemTemplate"
       (selectedChange)="onSelect($event)"
+      (itemClick)="onClick($event)"
       [item]="item">
     </filter-item>
     <div class="autocomplete-section-header" *ngIf="loadedItemsCache.length && selectedItemsCache.length">
@@ -46,6 +48,7 @@
         [itemTemplate]="itemTemplate"
         [selected]="isSelected(item)"
         (selectedChange)="onSelect($event)"
+        (itemClick)="onClick($event)"
         [item]="item">
       </filter-item>
     </div>
