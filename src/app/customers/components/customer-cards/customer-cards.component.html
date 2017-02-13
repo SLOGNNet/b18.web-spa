@@ -1,5 +1,5 @@
 <customer-card
-  *ngFor="let customer of this.customers"
+  *ngFor="let customer of this.customers; trackBy:trackBy"
   [customer]="customer"
   [class.active]="isActive(customer.id)"
   (select)="onCardSelect($event)">
