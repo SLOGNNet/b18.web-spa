@@ -1,16 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Driver } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
   selector: 'driver-card',
   templateUrl: './driver-card.component.html',
-  styleUrls: ['./driver-card.component.scss']
+  styleUrls: ['./driver-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardComponent {
     @Input() driver: Driver;
-    croppedDriverFirstName: string;
-    croppedDriverLastName: string;
 
     get driverStatusColor(): string {
       return Driver.getStatusColor(this.driver.status);

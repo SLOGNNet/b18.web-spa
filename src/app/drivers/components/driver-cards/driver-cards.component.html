@@ -1,5 +1,5 @@
 <driver-card
-*ngFor="let driver of this.drivers"
+*ngFor="let driver of this.drivers; trackBy: trackBy;"
 [driver]="driver"
 (select)="onCardSelect($event)"
 >
