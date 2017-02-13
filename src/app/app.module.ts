@@ -106,7 +106,10 @@ type StoreType = {
     LoadActions,
     AddressActions,
     CustomerActions,
+<<<<<<< HEAD
     EquipmentActions,
+=======
+>>>>>>> f023aa225a21a409f76d23ef7c0c78cc61b881f3
     DriverActions,
     StopActions
   ]
