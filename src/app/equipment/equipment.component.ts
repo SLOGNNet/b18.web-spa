@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Equipment } from '../models';
 import { EquipmentActions } from '../actions';
 import { EquipmentService } from '../shared';
@@ -13,6 +13,7 @@ import { IAppState } from '../store';
   selector: 'equipment',
   templateUrl: './equipment.component.html',
   styleUrls: ['./equipment.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentComponent extends BaseListComponent<Equipment> {
 
@@ -26,5 +27,9 @@ export class EquipmentComponent extends BaseListComponent<Equipment> {
 
   protected routePath(): string {
     return 'equipment/';
+  }
+
+  private trackBy(index: number, equipment: Equipment) {
+    return equipment.id;
   }
 }
