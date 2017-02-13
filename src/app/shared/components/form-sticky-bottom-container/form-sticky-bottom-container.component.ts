@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'form-sticky-bottom-container',
@@ -13,7 +13,7 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
     setTimeout(() => this.update(), 0);
   }
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
   @HostListener('window:resize')
@@ -30,6 +30,7 @@ export class FormStickyBottomContainerComponent implements AfterViewInit {
     if (this.height !== height) {
       this.height = height;
       this.elementRef.nativeElement.style.height = height + 'px';
+      this.cdr.detectChanges();
     }
   }
 }
