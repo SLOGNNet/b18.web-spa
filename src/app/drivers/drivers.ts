@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Driver } from '../models';
 import { DriverActions } from '../actions';
 import { DriverService } from '../shared';
@@ -27,5 +27,9 @@ export class DriversComponent extends BaseListComponent<Driver> {
 
   protected routePath(): string {
     return 'drivers/';
+  }
+
+  private trackBy(index: number, driver: Driver) {
+    return driver.id;
   }
 }
