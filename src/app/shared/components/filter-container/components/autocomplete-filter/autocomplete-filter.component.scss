@@ -1,44 +1,30 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
 
-.autocomplete-filter {
-  position: relative;
-  padding-top: 50px;
+.autocomplete-section-header {
+  display: flex;
+  height: $form-control-height;
+  padding: 0 $default-margin;
+  color: $grey;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  align-items: center;
+  letter-spacing: 1px;
 
-  bd-input {
-    position: absolute;
-    z-index: $sticked-z-index;
-    top: 0;
-    display: block;
-    width: 100%;
-    background: $white;
-  }
+  button {
+    border: 0;
+    background: 0;
+    color: $active-color;
+    font-size: $default-font-size;
+    text-transform: capitalize;
 
-  .autocomplete-section-header {
-    display: flex;
-    height: $form-control-height;
-    padding: 0 $default-margin;
-    color: $grey;
-    font-size: $tiny-font-size;
-    border-bottom: $border;
-    align-items: center;
-    letter-spacing: 1px;
+    &:disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed;
+    }
 
-    button {
-      border: 0;
-      background: 0;
-      color: $active-color;
-      font-size: $default-font-size;
-      text-transform: capitalize;
-
-      &:disabled {
-        color: $disabled-text-color;
-        cursor: not-allowed;
-      }
-
-      &:focus {
-        outline: 0;
-      }
+    &:focus {
+      outline: 0;
     }
   }
 }

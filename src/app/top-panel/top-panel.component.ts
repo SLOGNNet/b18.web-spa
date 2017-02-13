@@ -2,6 +2,7 @@ import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@a
 import { Contact } from '../models';
 import { Notification, NotificationType } from '../models';
 import { NotificationService } from '../shared';
+import { AuthenticationService } from '../auth';
 
 @Component({
   selector: 'top-panel',
@@ -69,7 +70,9 @@ export class TopPanelComponent {
   ];
 
 
-  constructor(private notificationService: NotificationService, private cdr: ChangeDetectorRef) {
+  constructor(private notificationService: NotificationService,
+              private cdr: ChangeDetectorRef,
+              private authenticationService: AuthenticationService) {
     notificationService.notification.subscribe(notif => {
       this.testNotifications.push(notif);
       this.testNotifications = this.testNotifications.slice();
@@ -82,6 +85,10 @@ export class TopPanelComponent {
   ngOnInit() {
     this.testUser.firstName = 'Ihor';
     this.testUser.lastName = 'Pidruchny';
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

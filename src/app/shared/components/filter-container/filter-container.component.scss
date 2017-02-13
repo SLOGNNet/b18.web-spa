@@ -40,12 +40,17 @@ $filter-header-max-width: 85px;
         margin: 0 5px;
 
         &.filter-item {
-          position: relative;
           display: flex;
           overflow: hidden;
           cursor: pointer;
           max-width: $filter-header-max-width;
           white-space: nowrap;
+
+          .selected-item {
+            margin: 0;
+            color: $black;
+            font-size: $tiny-font-size;
+          }
 
           &.active {
             color: $active-color;
@@ -77,7 +82,6 @@ $filter-header-max-width: 85px;
   }
 
   .filter-content {
-    z-index: $form-control-popup-z-index;
     display: none;
     width: 100%;
     background: $white;
