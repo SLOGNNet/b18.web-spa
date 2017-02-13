@@ -1,5 +1,5 @@
 <load-stop-card
-  *ngFor="let load of this.loads"
+  *ngFor="let load of this.loads; trackBy:trackBy"
   [load]="load"
   [class.active]="isActive(load.id)"
   (select)="onCardSelect($event)">

@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Customer } from '../../../models';
 
 @Component({
     selector: 'customer-cards',
     templateUrl: './customer-cards.component.html',
-    styleUrls: ['./customer-cards.component.scss']
+    styleUrls: ['./customer-cards.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomerCardsComponent {
   @Input() customers: Array<Customer>;

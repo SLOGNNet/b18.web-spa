@@ -1,7 +1,10 @@
 <div class="driver-card-section">
   <div class="left">
-    <div class="driver-crooped-container">
-      <span>{{this.croppedDriverFirstName}}{{this.croppedDriverLastName}}</span>
+    <div>
+      <bd-initials-circle
+        [firstName]="driver.firstName"
+        [lastName]="driver.lastName">
+      </bd-initials-circle>
     </div>
     <div class="driver-full-name">
       <span>{{driver.firstName}} {{driver.lastName}}</span>
