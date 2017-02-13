@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Driver } from '../../../models';
+import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
   selector: 'driver-card',
@@ -22,10 +23,4 @@ export class DriverCardComponent {
     get driverStatusText(): string {
       return Driver.getStatusText(this.driver.status);
     }
-
-    ngOnInit() {
-       this.croppedDriverFirstName = this.driver.firstName.replace(/ /g, '').substr(0, 1).toUpperCase();
-       this.croppedDriverLastName = this.driver.lastName.replace(/ /g, '').substr(0, 1).toUpperCase();
-    }
-
 }
