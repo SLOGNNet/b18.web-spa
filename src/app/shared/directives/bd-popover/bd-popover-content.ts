@@ -139,12 +139,12 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         let result = {
             top: position.top,
             left: position.left,
-            arrowLeft: elementWidth / 2
+            arrowLeft: undefined,
         };
 
         if (elementWidth && (effectivePlacement === 'bottom' || effectivePlacement === 'top')) {
             const parentWidth = offsetParentEl.offsetWidth;
-
+            result.arrowLeft = elementWidth / 2;
             if (position.left + elementWidth > parentWidth + this.horizontalOffset) {
                 const diff = (position.left + elementWidth) - parentWidth - this.horizontalOffset;
                 result.left = position.left - diff;

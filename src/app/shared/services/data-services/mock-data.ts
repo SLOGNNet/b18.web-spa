@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions,
   DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings } from './models';
+  EquipmentModes, EquipmentVehicleOperatings, EquipmentDriverType } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -286,9 +286,14 @@ class MockData {
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
+    driverFirstName: 'Goving',
+    driverLastName: 'Bhatti',
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
-    vehicleOperating: EquipmentVehicleOperatings.InterState
+    vehicleOperating: EquipmentVehicleOperatings.InterState,
+    driverType: EquipmentDriverType.CompanyDriver,
+    lastTripNumber: 349611,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }, {
     id: 1,
     make: 'Wabash',
@@ -298,9 +303,14 @@ class MockData {
     notes: '',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
+    driverFirstName: 'Goving',
+    driverLastName: 'Bhatti',
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
-    vehicleOperating: EquipmentVehicleOperatings.InterState
+    vehicleOperating: EquipmentVehicleOperatings.InterState,
+    driverType: EquipmentDriverType.OwnerOperator,
+    lastTripNumber: 349616,
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
   }];
 
   public drivers: Array<Driver> = [{
