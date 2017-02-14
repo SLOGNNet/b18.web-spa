@@ -46,12 +46,6 @@ $filter-header-max-width: 85px;
           max-width: $filter-header-max-width;
           white-space: nowrap;
 
-          .selected-item {
-            margin: 0;
-            color: $black;
-            font-size: $tiny-font-size;
-          }
-
           &.active {
             color: $active-color;
           }
@@ -68,6 +62,7 @@ $filter-header-max-width: 85px;
 
             &.item-count {
               width: auto;
+              color: $active-color;
             }
           }
         }
@@ -96,5 +91,14 @@ $filter-header-max-width: 85px;
         display: block;
       }
     }
+  }
+}
+
+.selected-items {
+  margin: 0;
+
+  .selected-item {
+    color: $black;
+    font-size: $tiny-font-size;
   }
 }
