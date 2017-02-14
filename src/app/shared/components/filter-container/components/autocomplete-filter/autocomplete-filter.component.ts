@@ -69,15 +69,18 @@ export class AutocompleteFilter extends BaseFilter {
     }
   }
 
-  protected onSelectedChange(changed: Object) {
-    super.onSelectedChange(changed);
+  protected onSelectedChange(changed) {
+    changed.event.preventDefault();
+    changed.event.stopPropagation();
+
+    super.onSelectedChange(changed.item);
 
     if (this.selectedItems.length > 1) this.isClearButtonDisabled = false;
   }
 
   public onItemClick(item) {
     this.active = false;
-    this.onSelectedChange(item);
+    super.onSelectedChange(item);
   }
 
   public loadNextPage() {
