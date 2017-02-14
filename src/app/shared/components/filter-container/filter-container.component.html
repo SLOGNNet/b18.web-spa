@@ -22,6 +22,7 @@
           <span class="item-count" *ngIf="filter.count > 1">
             +{{filter.count - 1}}
           </span>
+
         </span>
       </div>
     </bd-perfect-scrollbar>
@@ -38,7 +39,7 @@
   [offsetParent]="popoverParent"
   [closeOnMouseOutside]="true"
   [horizontalOffset]="-5">
-  <div class="selected-item" *ngIf="_hoveredFilter">
+  <div class="selected-items" *ngIf="_hoveredFilter">
     <p class="selected-item" *ngFor="let item of _hoveredFilter.selectedItems">
       {{item.name}}
     </p>
