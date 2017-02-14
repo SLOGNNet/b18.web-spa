@@ -1,5 +1,5 @@
 <div class="filter-item-container">
-  <bd-checkbox [checked]="checked" (checkedChange)="onCheckedChange($event)"></bd-checkbox>
+  <bd-form-checkbox [checked]="checked" (checkedChange)="onCheckedChange($event)"></bd-form-checkbox>
     <template
       *ngIf="itemTemplate"
       [ngOutletContext]="{item: item}"
