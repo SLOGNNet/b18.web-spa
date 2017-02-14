@@ -3,7 +3,11 @@
 .filter-item-container {
   display: flex;
   height: $form-control-height;
-  padding: 0 17px;
+  padding: 0 $default-margin;
   border-bottom: $border;
   align-items: center;
+
+  &:hover {
+    background: $light-blue;
+  }
 }
