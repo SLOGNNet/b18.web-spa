@@ -14,7 +14,7 @@
           class="filter-item"
           [bd-popover]="filterItemPopover"
           [popoverOnHover]="true"
-          [popoverDisabled]="!filter.selectedItems.length"
+          [popoverDisabled]="!filter.selectedItems.length || opened"
           [class.active]="filter.active">
           <span class="item-name">
             {{filter.tagValue}}
