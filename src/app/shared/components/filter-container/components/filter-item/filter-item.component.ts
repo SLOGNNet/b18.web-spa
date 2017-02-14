@@ -11,8 +11,11 @@ export class FilterItem {
   @Input() checked: boolean = false;
   @Output() checkedChange: EventEmitter<any> = new EventEmitter();
 
-  onCheckedChange(checked) {
-    this.checked = checked;
+  onCheckedChange(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.checked = !this.checked;
     this.checkedChange.emit(this.item);
   }
 }

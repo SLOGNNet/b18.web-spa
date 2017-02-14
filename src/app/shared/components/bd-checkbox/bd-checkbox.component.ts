@@ -12,10 +12,7 @@ export class BdCheckbox  {
 
   @HostListener('click', ['$event'])
   onClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
     this.checked = !this.checked;
-    this.checkedChange.emit(this.checked);
+    this.checkedChange.emit(e);
   }
 }

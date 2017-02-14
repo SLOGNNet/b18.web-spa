@@ -11,15 +11,8 @@ export class BdFormCheckbox  {
   @Output() checkedChange = new EventEmitter();
 
   @HostListener('click', ['$event'])
-  onClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    this.checked = !this.checked;
-    this.checkedChange.emit(this.checked);
-  }
-
   onCheckedChange(e) {
-    this.checkedChange.emit(this.checked);
+    this.checked = !this.checked;
+    this.checkedChange.emit(e);
   }
 }
