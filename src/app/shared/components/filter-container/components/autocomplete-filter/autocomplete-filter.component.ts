@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
-  ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
+  ChangeDetectorRef, TemplateRef, ElementRef, ViewChild } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
@@ -35,6 +35,8 @@ export class AutocompleteFilter extends BaseFilter {
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
+  @ViewChild('bdInput') bdInput;
+
   constructor(private customerService: CustomerService,
               private cdr: ChangeDetectorRef,
               private elRef: ElementRef) {
@@ -65,6 +67,7 @@ export class AutocompleteFilter extends BaseFilter {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
       this.cdr.markForCheck();
+      setTimeout(() => this.bdInput.focus(new Event('focus')), 0);
     }
   }
 
