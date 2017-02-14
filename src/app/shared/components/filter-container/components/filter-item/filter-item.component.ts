@@ -8,16 +8,11 @@ import { Component, Input, Output, EventEmitter, OnChanges, TemplateRef } from '
 export class FilterItem {
   @Input() itemTemplate: TemplateRef<any>;
   @Input() item: Object;
-  @Input() selected: boolean = false;
-  @Output() selectedChange: EventEmitter<any> = new EventEmitter();
-  @Output() itemClick: EventEmitter<any> = new EventEmitter();
+  @Input() checked: boolean = false;
+  @Output() checkedChange: EventEmitter<any> = new EventEmitter();
 
   onCheckedChange(checked) {
-    this.selected = checked;
-    this.selectedChange.emit(this.item);
-  }
-
-  onItemClick() {
-    this.itemClick.emit(this.item);
+    this.checked = checked;
+    this.checkedChange.emit(this.item);
   }
 }

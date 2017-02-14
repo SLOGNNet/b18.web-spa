@@ -1,4 +1,4 @@
-import { Component, Input, Output, forwardRef,
+import { Component, Input, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
@@ -23,7 +23,6 @@ class PageQuery {
 export class AutocompleteFilter extends BaseFilter {
   @Input() itemTemplate: TemplateRef<any>;
   @Input() scrolledDown: boolean = false;
-  @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
@@ -33,7 +32,7 @@ export class AutocompleteFilter extends BaseFilter {
   private page = 0;
   private countPerPage: number = 20;
   private query = '';
-  private _btnClearDisabledState: boolean = false;
+  private isClearButtonDisabled: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
@@ -67,20 +66,18 @@ export class AutocompleteFilter extends BaseFilter {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
       this.cdr.markForCheck();
-    } else {
-      this.visibilityChange.emit(false);
     }
   }
 
-  protected onSelect(changed: Object) {
-    if (!this.isSelected(changed)) {
-      this.selectedItems.push(changed);
-    } else {
-      this.selectedItems = without(this.selectedItems, changed);
-    }
-    this.selectionChanged.emit(this.selectedItems);
+  protected onSelectedChange(changed: Object) {
+    super.onSelectedChange(changed);
 
-    if (this.selectedItems.length > 1) this._btnClearDisabledState = false;
+    if (this.selectedItems.length > 1) this.isClearButtonDisabled = false;
+  }
+
+  public onItemClick(item) {
+    this.active = false;
+    this.onSelectedChange(item);
   }
 
   public loadNextPage() {
@@ -94,10 +91,10 @@ export class AutocompleteFilter extends BaseFilter {
     this.onAutocompleteChange(this.query);
   }
 
-  public clearSelectedItems(event) {
+  protected clearSelectedItems(event) {
     event.stopPropagation();
-    this._btnClearDisabledState = true;
-    this.clearSelection();
+    this.isClearButtonDisabled = true;
+    super.clearSelectedItems(event);
     this.onAutocompleteChange(this.query);
   }
 

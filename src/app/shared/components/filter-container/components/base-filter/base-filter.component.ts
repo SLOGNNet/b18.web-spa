@@ -11,7 +11,7 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
-  @Output() selectionChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() selectedChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
@@ -47,27 +47,22 @@ export class BaseFilter {
     return item[this.valueField];
   }
 
-  protected clearSelection() {
+  protected clearSelectedItems(event) {
     this.selectedItems = [];
-    this.selectionChanged.emit(this.selectedItems);
+    this.selectedChanged.emit(this.selectedItems);
   }
 
-  protected isSelected(checkItem: Object) {
-    return includes(this.selectedItems, checkItem);
+  protected isSelected(selectItem: Object) {
+    return includes(this.selectedItems, selectItem);
   }
 
-  protected onSelect(changed: Object) {
+  protected onSelectedChange(changed: Object) {
     if (!this.isSelected(changed)) {
       this.selectedItems.push(changed);
     } else {
       this.selectedItems = without(this.selectedItems, changed);
     }
-    this.selectionChanged.emit(this.selectedItems);
-  }
-
-  protected onClick(item: Object) {
-    this.onSelect(item);
-    this.active = false;
+    this.selectedChanged.emit(this.selectedItems);
   }
 
   protected onActiveChanged(active: boolean) {

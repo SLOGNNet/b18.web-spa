@@ -16,7 +16,7 @@
     <button
       *ngIf="selectedItemsCache.length > 1 || selectedItems.length > 1"
       (click)="clearSelectedItems($event)"
-      [disabled]="_btnClearDisabledState">
+      [disabled]="isClearButtonDisabled">
       Clear selected items
     </button>
   </div>
@@ -24,19 +24,19 @@
     <filter-item
       *ngFor="let item of loadedItems; let i = index;"
       [itemTemplate]="itemTemplate"
-      [selected]="isSelected(item)"
-      (selectedChange)="onSelect($event)"
-      (itemClick)="onClick($event)"
+      [checked]="isSelected(item)"
+      (checkedChange)="onSelectedChange($event)"
+      (click)="onItemClick(item)"
       [item]="item">
     </filter-item>
   </div>
   <div *ngIf="!isSearchMode">
     <filter-item
       *ngFor="let item of selectedItemsCache; let i = index;"
-      [selected]="isSelected(item)"
+      [checked]="isSelected(item)"
       [itemTemplate]="itemTemplate"
-      (selectedChange)="onSelect($event)"
-      (itemClick)="onClick($event)"
+      (checkedChange)="onSelectedChange($event)"
+      (click)="onItemClick(item)"
       [item]="item">
     </filter-item>
     <div class="autocomplete-section-header" *ngIf="loadedItemsCache.length && selectedItemsCache.length">
@@ -46,9 +46,9 @@
       <filter-item
         *ngFor="let item of loadedItemsCache; let i = index;"
         [itemTemplate]="itemTemplate"
-        [selected]="isSelected(item)"
-        (selectedChange)="onSelect($event)"
-        (itemClick)="onClick($event)"
+        [checked]="isSelected(item)"
+        (checkedChange)="onSelectedChange($event)"
+        (click)="onItemClick(item)"
         [item]="item">
       </filter-item>
     </div>

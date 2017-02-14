@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, HostListener, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bd-checkbox',
@@ -10,6 +10,7 @@ export class BdCheckbox  {
   @Input() checked: boolean = false;
   @Output() checkedChange = new EventEmitter();
 
+  @HostListener('click', ['$event'])
   onClick(e) {
     e.preventDefault();
     e.stopPropagation();
