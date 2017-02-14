@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef,
+import { Component, Input, Output, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
 import { BaseFilter } from '../base-filter';
@@ -23,6 +23,7 @@ class PageQuery {
 export class AutocompleteFilter extends BaseFilter {
   @Input() itemTemplate: TemplateRef<any>;
   @Input() scrolledDown: boolean = false;
+  @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
@@ -66,6 +67,8 @@ export class AutocompleteFilter extends BaseFilter {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
       this.cdr.markForCheck();
+    } else {
+      this.visibilityChange.emit(false);
     }
   }
 
