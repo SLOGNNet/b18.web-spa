@@ -26,11 +26,11 @@
       <div>{{customer.addresses[0].phone}}</div>
     </div>
     <div class="right">
+      <span *ngIf="statusText" [style.color]="customerStatusColor" class="status-text">{{customerStatusText}}</span>
         <span
         [style.background]="customerStatusColor"
-        [bd-popover]="customerStatusText"
-        [popoverPlacement]="'left'"
-        [popoverOnHover]="true"
+        (mouseover)="onEnter()"
+        (mouseleave)="onLeave()"
         class="status">
       </span>
     </div>

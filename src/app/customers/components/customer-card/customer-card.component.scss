@@ -69,8 +69,8 @@
           margin-left: 5px;
 
           .load-circle {
-            width: 9px;
-            height: 9px;
+            width: 10px;
+            height: 10px;
             background: $black;
             margin-top: 3px;
             border-radius: 50%;
@@ -109,6 +109,12 @@
 
     .right {
       position: relative;
+
+      .status-text {
+        position: absolute;
+        right: 17px;
+        bottom: -8px;
+      }
 
       .status {
         position: absolute;

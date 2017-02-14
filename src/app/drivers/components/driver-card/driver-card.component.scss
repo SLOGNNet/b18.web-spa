@@ -14,7 +14,13 @@
   justify-content: space-between;
 
   .left {
-    flex: 1;
+    width: 30%;
+
+    .initials-circle {
+      /deep/ .circle {
+        margin-top: -6px;
+      }
+    }
 
     .driver-full-name {
       overflow: hidden;
@@ -27,43 +33,24 @@
         white-space: nowrap;
       }
     }
-  }
 
-  .middle {
-    overflow: hidden;
-    flex: 1;
-    padding-left: $default-margin;
-    padding-top: 18px;
-
-    .tr-city {
-      display: flex;
-
-      .tr-city-circle {
-        width: 9px;
-        height: 9px;
-        background: $black;
-        margin-top: 3px;
-        border-radius: 50%;
-      }
-
-      .tr-city-name {
-        @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
-        width: 90%;
-        text-align: left;
-        margin-left: 5px;
-      }
+    .driver-type {
+      white-space: nowrap;
     }
   }
 
-  .right {
-    position: relative;
-    line-height: 17px;
-    flex-direction: column;
-    flex: 1;
+  .middle {
+    display: flex;
+    width: 30%;
+    height: 70px;
     padding-left: $default-margin;
+    flex-direction: column;
+    justify-content: flex-end;
 
     .driver-phone {
       overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .send-message {
@@ -72,6 +59,41 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       font-weight: bold;
+    }
+  }
+
+  .right {
+    position: relative;
+    width: 40%;
+    line-height: 17px;
+    flex-direction: column;
+    padding-left: $default-margin;
+    padding-top: 1px;
+
+    .tr-city {
+      display: flex;
+
+      .tr-city-circle {
+        width: 10px;
+        height: 10px;
+        background: $black;
+        margin-top: 3px;
+        border-radius: 50%;
+      }
+
+      .tr-city-name {
+        @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
+        width: 80%;
+        text-align: left;
+        margin-left: 5px;
+      }
+    }
+
+    .status-text {
+      position: absolute;
+      right: 17px;
+      bottom: -8px;
+      justify-content: center;
     }
 
     .status {
@@ -93,11 +115,11 @@
   &:hover {
     background: $light-blue;
 
-    .middle {
+    .right {
       .tr-city {
         .tr-city-name {
           @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $light-blue);
-          width: 90%;
+          width: 80%;
           text-align: left;
         }
       }

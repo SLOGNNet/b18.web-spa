@@ -1,6 +1,7 @@
 <div class="equipment-card-section">
   <div class="left">
     <bd-initials-circle
+      class="initials-circle"
       [firstName]="firstLetter"
       [lastName]="lastLetter">
     </bd-initials-circle>
@@ -27,12 +28,12 @@
         <span style="background: red" class="tr-city-circle"></span>
         <span class="tr-city-name">{{equipment.lastAddress}}</span>
   </div>
+      <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
       <span
       [style.background]="equipmentStatusColor"
-      class="status"
-      [bd-popover]="equipmentStatusText"
-      [popoverPlacement]="'left'"
-      [popoverOnHover]="true">
+      (mouseover)="onEnter()"
+      (mouseleave)="onLeave()"
+      class="status">
       </span>
   </div>
 </div>
