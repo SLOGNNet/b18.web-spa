@@ -21,6 +21,7 @@ class PageQuery {
   changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter {
+  @ViewChild('bdInput') bdInput;
   @Input() itemTemplate: TemplateRef<any>;
   @Input() scrolledDown: boolean = false;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
@@ -34,8 +35,6 @@ export class AutocompleteFilter extends BaseFilter {
   private query = '';
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
-
-  @ViewChild('bdInput') bdInput;
 
   constructor(private customerService: CustomerService,
               private cdr: ChangeDetectorRef,
