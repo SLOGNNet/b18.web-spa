@@ -4,7 +4,8 @@
       <div class="content">
         <span *ngFor="let filter of filters; let i = index" (click)="_toggleFilter(filter, i)" (mouseover)="onFilterItemHover(filter)"
           class="filter-item" [bd-popover]="filterItemPopover" [popoverOnHover]="true" [popoverDisabled]="!filter.selectedItems.length || opened"
-          [class.active]="filter.active">
+          [class.active]="filter.active"
+          [class.not-empty]="filter.selectedItems.length">
           <span class="item-name">
             {{filter.tagValue}}
           </span>

@@ -38,6 +38,7 @@ $filter-header-max-width: 85px;
 
       span {
         margin: 0 5px;
+        color: $dark-grey;
 
         &:first-of-type {
           margin-left: 0;
@@ -53,6 +54,12 @@ $filter-header-max-width: 85px;
           cursor: pointer;
           max-width: $filter-header-max-width;
           white-space: nowrap;
+
+          &.not-empty {
+            span {
+              color: $black;
+            }
+          }
 
           &.active {
             color: $active-color;
