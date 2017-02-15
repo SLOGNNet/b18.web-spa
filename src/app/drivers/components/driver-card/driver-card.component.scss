@@ -16,12 +16,6 @@
   .left {
     width: 30%;
 
-    .initials-circle {
-      /deep/ .circle {
-        margin-top: -6px;
-      }
-    }
-
     .driver-full-name {
       overflow: hidden;
       padding-top: 6px;
@@ -91,8 +85,8 @@
 
     .status-text {
       position: absolute;
-      right: 17px;
-      bottom: -8px;
+      right: 22px;
+      bottom: -5px;
       justify-content: center;
     }
 
@@ -102,7 +96,7 @@
       width: 12px;
       height: 12px;
       background: $black;
-      bottom: -5px;
+      bottom: -2px;
       border-radius: $form-control-height;
     }
   }

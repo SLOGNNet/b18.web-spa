@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions,
   DriverTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings, EquipmentDriverType } from './models';
+  EquipmentModes, EquipmentVehicleOperatings, EquipmentDriverType, EquipmentNotification } from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -166,7 +166,7 @@ class MockData {
    firstName: 'Jason',
    lastName: 'Chang',
    personalEmail: 'CHANJAS@chrobinson.com',
-   position: 'sales',
+   position: 'Sales manager',
    addressId: 1
  },
  {
@@ -174,7 +174,7 @@ class MockData {
    firstName: 'Scott',
    lastName: 'Spearow',
    personalEmail: 'sspearow@TQL.com',
-   position: 'sales',
+   position: 'Sales manager',
    addressId: 2
  },
  {
@@ -182,7 +182,7 @@ class MockData {
    firstName: 'Emma',
    lastName: 'Watson',
    personalEmail: 'Emma@TQL.com',
-   position: 'sales',
+   position: 'Sales manager',
    addressId: 3
  },
  {
@@ -190,7 +190,7 @@ class MockData {
    firstName: 'Johnny',
    lastName: 'Depp',
    personalEmail: 'Johnny@TQL.com',
-   position: 'sales',
+   position: 'Sales manager',
    addressId: 4
  }
  ];

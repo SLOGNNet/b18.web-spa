@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../../../models';
+import { isNil } from 'lodash';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
@@ -36,6 +37,10 @@ export class EquipmentCardComponent {
 
     onLeave() {
       this.statusText = false;
+    }
+
+    get equipmentNotificationDate() {
+      return !isNil(this.equipment.equipmentNotification) ? this.equipment.equipmentNotification.date : '';
     }
 
     ngOnInit() {

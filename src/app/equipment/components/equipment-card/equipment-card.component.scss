@@ -16,15 +16,9 @@
   .left {
     width: 30%;
 
-    .initials-circle {
-      /deep/ .circle {
-        margin-top: -6px;
-      }
-    }
-
     .equipment-make {
       overflow: hidden;
-      padding-top: 6px;
+      padding-top: 7px;
 
       span {
         overflow: hidden;
@@ -41,12 +35,11 @@
     height: 70px;
     padding-left: 17px;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     .driver-name {
       display: flex;
       overflow: hidden;
-      height: 33px;
       align-items: flex-end;
       font-weight: bold;
     }
@@ -59,7 +52,6 @@
 
     .changes {
       overflow: hidden;
-      font-size: $mini-font-size;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -84,7 +76,7 @@
       }
 
       .tr-city-name {
-        @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
         width: 80%;
         text-align: left;
         margin-left: 5px;
@@ -93,8 +85,8 @@
 
     .status-text {
       position: absolute;
-      right: 17px;
-      bottom: -8px;
+      right: 22px;
+      bottom: -5px;
     }
 
     .status {
@@ -104,7 +96,7 @@
       height: 12px;
       background: $black;
       color: $white;
-      bottom: -5px;
+      bottom: -2px;
       border-radius: $form-control-height;
     }
   }
@@ -120,7 +112,7 @@
     .right {
       .tr-city {
         .tr-city-name {
-          @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $light-blue);
+          @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $light-blue);
           width: 80%;
           text-align: left;
         }
