@@ -39,6 +39,14 @@ $filter-header-max-width: 85px;
       span {
         margin: 0 5px;
 
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
         &.filter-item {
           display: flex;
           overflow: hidden;
