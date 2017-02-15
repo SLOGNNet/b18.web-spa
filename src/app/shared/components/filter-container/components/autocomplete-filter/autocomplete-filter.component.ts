@@ -81,7 +81,7 @@ export class AutocompleteFilter extends BaseFilter {
 
     super.onSelectedChange(changed.item);
 
-    if (this.selectedItems.length > 1) this.isClearButtonDisabled = false;
+    this.selectedItems.length ? this.isClearButtonDisabled = false : this.isClearButtonDisabled = true;
   }
 
   public onItemClick(item) {
