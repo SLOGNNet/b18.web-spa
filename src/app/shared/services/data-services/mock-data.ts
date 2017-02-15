@@ -277,6 +277,8 @@ class MockData {
     address: this.addresses[3]
   }];
 
+  equipmentNotification: Array<EquipmentNotification> = [];
+
   public equipments: Array<Equipment> = [{
     id: 0,
     make: 'Kenworth',
@@ -293,7 +295,8 @@ class MockData {
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: EquipmentDriverType.CompanyDriver,
     lastTripNumber: 349611,
-    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California',
+    equipmentNotification: this.equipmentNotification[0]
   }, {
     id: 1,
     make: 'Wabash',
@@ -310,7 +313,8 @@ class MockData {
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: EquipmentDriverType.OwnerOperator,
     lastTripNumber: 349616,
-    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California',
+    equipmentNotification: this.equipmentNotification[0]
   }];
 
   public drivers: Array<Driver> = [{

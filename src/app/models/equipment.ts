@@ -66,6 +66,9 @@ export class Equipment {
   lastTripNumber: number;
   @JsonMember
   lastAddress: string = '';
+  @JsonMember
+  equipmentNotification: EquipmentNotification;
+
 
 
 
