@@ -1,17 +1,17 @@
 import { Component, Input, Output, HostListener, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'bd-checkbox',
-  styleUrls: ['./bd-checkbox.component.scss'],
-  templateUrl: './bd-checkbox.component.html',
+  selector: 'bd-form-checkbox',
+  styleUrls: ['./bd-form-checkbox.component.scss'],
+  templateUrl: './bd-form-checkbox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BdCheckbox  {
+export class BdFormCheckbox  {
   @Input() checked: boolean = false;
   @Output() checkedChange = new EventEmitter();
 
   @HostListener('click', ['$event'])
-  onClick(e) {
+  onCheckedChange(e) {
     this.checked = !this.checked;
     this.checkedChange.emit(e);
   }

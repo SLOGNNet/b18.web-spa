@@ -19,6 +19,11 @@
     font-size: $default-font-size;
     text-transform: capitalize;
 
+    &:disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed;
+    }
+
     &:focus {
       outline: 0;
     }
