@@ -48,7 +48,6 @@ export class LoadsComponent extends BaseListComponent<Load>{
 
   onScrolledDown() {
     this.scrolledDown = true;
-    console.log('handle');
   }
 
   protected routePath(): string {

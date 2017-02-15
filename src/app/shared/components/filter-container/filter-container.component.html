@@ -1,20 +1,9 @@
-<div class="filter-container"
-  (clickOutside)="deactivateFilters()">
-  <div
-    sticky
-    #popoverParent
-    class="filter-header"
-    [class.opened]="opened">
+<div class="filter-container" (clickOutside)="deactivateFilters()">
+  <div sticky #popoverParent class="filter-header" [class.opened]="opened">
     <bd-perfect-scrollbar class="filter-scrollbar">
-      <div class="content" >
-        <span
-          *ngFor="let filter of filters; let i = index"
-          (click)="_toggleFilter(filter, i)"
-          (mouseover)="onFilterItemHover(filter)"
-          class="filter-item"
-          [bd-popover]="filterItemPopover"
-          [popoverOnHover]="true"
-          [popoverDisabled]="!filter.selectedItems.length || opened"
+      <div class="content">
+        <span *ngFor="let filter of filters; let i = index" (click)="_toggleFilter(filter, i)" (mouseover)="onFilterItemHover(filter)"
+          class="filter-item" [bd-popover]="filterItemPopover" [popoverOnHover]="true" [popoverDisabled]="!filter.selectedItems.length || opened"
           [class.active]="filter.active">
           <span class="item-name">
             {{filter.tagValue}}
@@ -22,26 +11,24 @@
           <span class="item-count" *ngIf="filter.count > 1">
             +{{filter.count - 1}}
           </span>
-
         </span>
       </div>
     </bd-perfect-scrollbar>
+    <bd-popover-content 
+      #filterItemPopover
+      placement="bottom"
+      [width]="220"
+      [offsetParent]="popoverParent"
+      [closeOnMouseOutside]="true"
+      [horizontalOffset]="-5">
+      <div class="selected-items" *ngIf="_hoveredFilter">
+        <p class="selected-item" *ngFor="let item of _hoveredFilter.selectedItems">
+          {{item.name}}
+        </p>
+      </div>
+    </bd-popover-content>
   </div>
   <div class="filter-content">
     <ng-content></ng-content>
   </div>
 </div>
-
-<bd-popover-content
-  #filterItemPopover
-  placement="bottom"
-  [width]="220"
-  [offsetParent]="popoverParent"
-  [closeOnMouseOutside]="true"
-  [horizontalOffset]="-5">
-  <div class="selected-items" *ngIf="_hoveredFilter">
-    <p class="selected-item" *ngFor="let item of _hoveredFilter.selectedItems">
-      {{item.name}}
-    </p>
-  </div>
-</bd-popover-content>
