@@ -33,7 +33,6 @@ export class AutocompleteFilter extends BaseFilter {
   private page = 0;
   private countPerPage: number = 20;
   private query = '';
-  private isClearButtonDisabled: boolean = false;
   private isSearchFieldFocused: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
@@ -84,7 +83,6 @@ export class AutocompleteFilter extends BaseFilter {
     changed.event.preventDefault();
     changed.event.stopPropagation();
     super.onSelectedChange(changed.item);
-    this.selectedItems.length ? this.isClearButtonDisabled = false : this.isClearButtonDisabled = true;
   }
 
   public onItemClick(item) {
@@ -103,9 +101,13 @@ export class AutocompleteFilter extends BaseFilter {
     this.onAutocompleteChange(this.query);
   }
 
+  get isClearButtonDisabled() {
+    return !this.selectedItems.length;
+  }
+
   protected clearSelectedItems(event) {
     event.stopPropagation();
-    this.isClearButtonDisabled = true;
+
     super.clearSelectedItems(event);
     this.onAutocompleteChange(this.query);
   }
