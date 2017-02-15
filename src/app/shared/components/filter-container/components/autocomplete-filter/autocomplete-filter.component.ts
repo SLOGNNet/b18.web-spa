@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
-  ChangeDetectorRef, TemplateRef, ElementRef } from '@angular/core';
+  ChangeDetectorRef, TemplateRef, ElementRef, ViewChild } from '@angular/core';
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
@@ -21,6 +21,7 @@ class PageQuery {
   changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseFilter.filterMetaData))
 export class AutocompleteFilter extends BaseFilter {
+  @ViewChild('bdInput') bdInput;
   @Input() itemTemplate: TemplateRef<any>;
   @Input() scrolledDown: boolean = false;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
@@ -66,6 +67,7 @@ export class AutocompleteFilter extends BaseFilter {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
       this.cdr.markForCheck();
+      setTimeout(() => this.bdInput.focus(new Event('focus')), 0);
     }
   }
 
