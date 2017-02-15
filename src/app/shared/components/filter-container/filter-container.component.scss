@@ -62,7 +62,9 @@ $filter-header-max-width: 85px;
           }
 
           &.active {
-            color: $active-color;
+            span {
+              color: $active-color;
+            }
           }
 
           span {
