@@ -78,9 +78,7 @@ export class AutocompleteFilter extends BaseFilter {
   protected onSelectedChange(changed) {
     changed.event.preventDefault();
     changed.event.stopPropagation();
-
     super.onSelectedChange(changed.item);
-
     this.selectedItems.length ? this.isClearButtonDisabled = false : this.isClearButtonDisabled = true;
   }
 
