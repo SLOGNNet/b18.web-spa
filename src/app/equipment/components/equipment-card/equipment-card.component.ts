@@ -39,10 +39,6 @@ export class EquipmentCardComponent {
       this.statusText = false;
     }
 
-    get equipmentNotificationDate() {
-      return !isNil(this.equipment.equipmentNotification) ? this.equipment.equipmentNotification.date : '';
-    }
-
     ngOnInit() {
       this.firstLetter = this.equipmentShortTypeText.charAt(0);
       this.lastLetter = this.equipmentShortTypeText.charAt(1);
