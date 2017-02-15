@@ -6,6 +6,7 @@
     placeholder="Enter data">
     <i
       bd-suffix
+      [hidden]="!isSearchMode"
       (click)="clearField($event)"
       class="icon-minus"
       aria-hidden="true">
