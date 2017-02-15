@@ -14,7 +14,8 @@ export enum CustomerStatuses {
 
 // driver enums
 export enum DriverTypes {
-  Company = 0
+  CompanyDriver = 0,
+  OwnerOperator = 1
 };
 
 export enum DriverStatuses {
@@ -39,6 +40,11 @@ export enum EquipmentTypes {
 export enum EquipmentModes {
   Company = 0
 };
+
+export enum EquipmentDriverType {
+  CompanyDriver = 0,
+  OwnerOperator = 1
+}
 
 export enum EquipmentStatuses {
   Inactive = 0,

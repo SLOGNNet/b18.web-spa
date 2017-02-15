@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
     selector: 'load-stop-cards',
     templateUrl: './load-stop-cards.component.html',
-    styleUrls: ['./load-stop-cards.component.scss']
+    styleUrls: ['./load-stop-cards.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadStopCardsComponent {
   @Input()loads: Array<Load>;
@@ -22,5 +23,9 @@ export class LoadStopCardsComponent {
     });
 
     return selected;
+  }
+
+  private trackBy(index: number, load: Load) {
+    return load.id;
   }
 }

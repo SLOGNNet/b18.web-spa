@@ -1,0 +1,117 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.equipment-card-section {
+  position: relative;
+  display: flex;
+  height: 100px;
+  padding: $default-margin;
+  background: inherit;
+  font-size: $tiny-font-size;
+  line-height: 18px;
+  cursor: pointer;
+  border-bottom: $border;
+  justify-content: space-between;
+
+  .left {
+    flex: 1;
+
+    .equipment-make {
+      overflow: hidden;
+      padding-top: 6px;
+
+      span {
+        overflow: hidden;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .middle {
+    overflow: hidden;
+    flex: 1;
+    padding-left: $default-margin;
+
+    .driver-name {
+      display: flex;
+      overflow: hidden;
+      height: 33px;
+      align-items: flex-end;
+      font-weight: bold;
+    }
+
+    .driver-type {
+      overflow: hidden;
+      color: $grey;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .changes {
+      font-size: $mini-font-size;
+    }
+  }
+
+  .right {
+    position: relative;
+    flex-direction: column;
+    flex: 1;
+    padding-left: $default-margin;
+
+    .tr-city {
+      display: flex;
+
+      .tr-city-circle {
+        width: 10px;
+        height: 10px;
+        background: $black;
+        margin-top: 3px;
+        border-radius: 50%;
+      }
+
+      .tr-city-name {
+        @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
+        width: 90%;
+        margin-left: 5px;
+      }
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: $black;
+      color: $white;
+      bottom: -5px;
+      border-radius: $form-control-height;
+      justify-content: center;
+    }
+  }
+}
+
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+
+    .right {
+      .tr-city {
+        .tr-city-name {
+          @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $light-blue);
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  &.active {
+    .equipment-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}

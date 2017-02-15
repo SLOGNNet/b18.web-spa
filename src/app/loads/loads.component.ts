@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BdInputComponent } from './common/bd-input/bd-input.component';
 import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
@@ -48,7 +48,6 @@ export class LoadsComponent extends BaseListComponent<Load>{
 
   onScrolledDown() {
     this.scrolledDown = true;
-    console.log('handle');
   }
 
   protected routePath(): string {

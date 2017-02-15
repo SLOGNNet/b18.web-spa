@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
   CustomerService,
+  EquipmentService,
+  DriverService,
   SocketService,
   LoadService,
   GoogleService,
@@ -18,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdCheckbox } from '././components/bd-checkbox';
+import { BdFormCheckbox } from './components/bd-form-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
@@ -61,6 +64,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     LoadService,
     SocketService,
     CustomerService,
+    EquipmentService,
+    DriverService,
     ContactService,
     EnumHelperService,
     GoogleService,
@@ -85,6 +90,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
@@ -142,6 +148,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
