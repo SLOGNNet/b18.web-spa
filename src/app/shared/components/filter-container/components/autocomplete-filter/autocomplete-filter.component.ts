@@ -34,12 +34,13 @@ export class AutocompleteFilter extends BaseFilter {
   private countPerPage: number = 20;
   private query = '';
   private isClearButtonDisabled: boolean = false;
+  private isSearchFieldFocused: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
   constructor(private customerService: CustomerService,
-              private cdr: ChangeDetectorRef,
-              private elRef: ElementRef) {
+    private cdr: ChangeDetectorRef,
+    private elRef: ElementRef) {
     super();
   }
 
@@ -55,8 +56,11 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   ngAfterViewChecked() {
-    this.bdInput.focus(new Event('focus'));
-    this.cdr.detectChanges();
+    if (!this.isSearchFieldFocused) {
+      this.isSearchFieldFocused = true;
+      this.bdInput.focus(new Event('focus'));
+      this.cdr.detectChanges();
+    }
   }
 
   public onAutocompleteChange(value: string) {
@@ -71,6 +75,7 @@ export class AutocompleteFilter extends BaseFilter {
   protected onActiveChanged(isActive: boolean) {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
+      this.isSearchFieldFocused = false;
       this.cdr.markForCheck();
     }
   }
