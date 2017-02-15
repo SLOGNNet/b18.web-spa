@@ -1,4 +1,7 @@
-<div class="driver-card-section">
+<div
+class="driver-card-section"
+(mouseover)="onEnter()"
+(mouseleave)="onLeave()">
   <div class="left">
     <div>
       <bd-initials-circle
@@ -32,8 +35,6 @@
       <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
       <span
       [style.background]="driverStatusColor"
-      (mouseover)="onEnter()"
-      (mouseleave)="onLeave()"
       class="status">
     </span>
   </div>

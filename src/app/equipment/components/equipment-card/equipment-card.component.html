@@ -1,4 +1,7 @@
-<div class="equipment-card-section">
+<div
+class="equipment-card-section"
+(mouseover)="onEnter()"
+(mouseleave)="onLeave()">
   <div class="left">
     <bd-initials-circle
       class="initials-circle"
@@ -31,8 +34,6 @@
       <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
       <span
       [style.background]="equipmentStatusColor"
-      (mouseover)="onEnter()"
-      (mouseleave)="onLeave()"
       class="status">
       </span>
   </div>

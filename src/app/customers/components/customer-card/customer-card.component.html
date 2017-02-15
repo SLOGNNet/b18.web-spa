@@ -1,4 +1,8 @@
-<div class="customer-card-section" (click)="onClick()">
+<div
+class="customer-card-section"
+(mouseover)="onEnter()"
+(mouseleave)="onLeave()"
+(click)="onClick()">
   <div class="top">
     <div class="left">
       <span>{{this.croppedCustomerName}}</span>
@@ -29,8 +33,6 @@
       <span *ngIf="statusText" [style.color]="customerStatusColor" class="status-text">{{customerStatusText}}</span>
         <span
         [style.background]="customerStatusColor"
-        (mouseover)="onEnter()"
-        (mouseleave)="onLeave()"
         class="status">
       </span>
     </div>
