@@ -54,6 +54,11 @@ export class AutocompleteFilter extends BaseFilter {
     }
   }
 
+  ngAfterViewChecked() {
+    this.bdInput.focus(new Event('focus'));
+    this.cdr.detectChanges();
+  }
+
   public onAutocompleteChange(value: string) {
     this.query = value;
     this.keyUpEventEmitter.emit(value);
@@ -67,7 +72,6 @@ export class AutocompleteFilter extends BaseFilter {
     if (isActive) {
       this.selectedItemsCache = this.selectedItems.slice();
       this.cdr.markForCheck();
-      setTimeout(() => this.bdInput.focus(new Event('focus')), 0);
     }
   }
 
