@@ -13,10 +13,19 @@ function createStatusColors() {
   return result;
 };
 
+function createStatusText() {
+ let result = {};
+  result[CustomerStatuses.Unavaliable] = 'Unavaliable';
+  result[CustomerStatuses.Active] = 'Active';
+  result[CustomerStatuses.Inactive] = 'Inactive';
+  return result;
+};
+
 const statusColors = createStatusColors();
+const statusText = createStatusText();
+
 @JsonObject()
 export class Customer {
-  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
 
   id: number;
 
@@ -49,8 +58,8 @@ export class Customer {
     return statusColors[status];
   }
 
-  static getStatusText(status) {
-    return Customer.statusText[status];
+  static getStatusText(status: CustomerStatuses) {
+    return statusText[status];
   }
 
   constructor() {

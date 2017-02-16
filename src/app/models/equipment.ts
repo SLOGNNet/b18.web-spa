@@ -18,15 +18,60 @@ function createStatusColors() {
   return result;
 };
 
+// Status Text
+function createStatusText() {
+ let result = {};
+  result[EquipmentStatuses.NotAvaliable] = 'Not Avaliable';
+  result[EquipmentStatuses.Active] = 'Active';
+  result[EquipmentStatuses.Inactive] = 'Inactive';
+
+  return result;
+};
+
+// Driver Text
+function createEquipmentDriverText() {
+ let result = {};
+  result[EquipmentDriverType.CompanyDriver] = 'Company Driver';
+  result[EquipmentDriverType.OwnerOperator] = 'Owner Operator';
+
+  return result;
+};
+
+// Type Text
+function createTypeText() {
+ let result = {};
+  result[EquipmentTypes.Trailer] = 'Trailer';
+  result[EquipmentTypes.PowerUnit] = 'PowerUnit';
+
+  return result;
+};
+
+// Short Type Text
+function createShortTypeText() {
+ let result = {};
+  result[EquipmentTypes.Trailer] = 'TL';
+  result[EquipmentTypes.PowerUnit] = 'TK';
+
+  return result;
+};
+
+// Mode Text
+function createModeText() {
+ let result = {};
+  result[EquipmentModes.Company] = 'Company';
+
+  return result;
+};
+
 const statusColors = createStatusColors();
+const statusText = createStatusText();
+const equipmentDriverText = createEquipmentDriverText();
+const typeText = createTypeText();
+const shortTypeText = createShortTypeText();
+const modeText = createModeText();
 
 @JsonObject
 export class Equipment {
-  private static statusText = ['Inactive', 'Active', 'NotAvaliable'];
-  private static typeText = ['Trailer', 'PowerUnit'];
-  private static shortTypeText = ['TL', 'TK'];
-  private static modeText = ['Company'];
-  private static equipmentDriverText = ['Company Driver', 'Owner Operator'];
   @JsonMember
   id: number = 0;
   @JsonMember
@@ -76,27 +121,27 @@ export class Equipment {
   }
 
 
-  public static getStatusText(status): string {
-    return Equipment.statusText[status];
+  public static getStatusText(status: EquipmentStatuses): string {
+    return statusText[status];
   }
 
   public static getDriverText(driverType: EquipmentDriverType): string {
-    return Equipment.equipmentDriverText[driverType];
+    return equipmentDriverText[driverType];
   }
 
   public static getStatusColor(status: EquipmentStatuses): string {
     return statusColors[status];
   }
 
-  public static getShortTypeText(type): string {
-    return Equipment.shortTypeText[type];
+  public static getShortTypeText(type: EquipmentTypes): string {
+    return shortTypeText[type];
   }
 
-  public static getTypeText(type): string {
-    return Equipment.typeText[type];
+  public static getTypeText(type: EquipmentTypes): string {
+    return typeText[type];
   }
 
-  public static getModeText(type): string {
-    return Equipment.modeText[type];
+  public static getModeText(type: EquipmentModes): string {
+    return modeText[type];
   }
 };

@@ -13,12 +13,31 @@ function createStatusColors() {
   return result;
 };
 
+// Status Text
+function createStatusText() {
+ let result = {};
+  result[DriverStatuses.Unavaliable] = 'Unavaliable';
+  result[DriverStatuses.Active] = 'Active';
+  result[DriverStatuses.Inactive] = 'Inactive';
+
+  return result;
+};
+
+// Type Text
+function createTypeText() {
+ let result = {};
+  result[DriverTypes.CompanyDriver] = 'Company driver';
+  result[DriverTypes.OwnerOperator] = 'Owner operator';
+
+  return result;
+};
+
 const statusColors = createStatusColors();
+const statusText = createStatusText();
+const typeText = createTypeText();
 
 @JsonObject
 export class Driver {
-  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
-  private static typeText = ['Company driver', 'Owner operator'];
 
   @JsonMember
   id: number = 0;
@@ -72,15 +91,15 @@ export class Driver {
     return result;
   }
 
-  public static getStatusText(status): string {
-    return Driver.statusText[status];
+  public static getStatusText(status: DriverStatuses): string {
+    return statusText[status];
   }
 
   public static getStatusColor(status: DriverStatuses): string {
     return statusColors[status];
   }
 
-  public static getTypeText(type): string {
-    return Driver.typeText[type];
+  public static getTypeText(type: DriverTypes): string {
+    return typeText[type];
   }
 };
