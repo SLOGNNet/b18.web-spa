@@ -90,12 +90,12 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       driverRequirement: [this.load.driverRequirment],
       powerUnitType: [this.load.powerUnitType],
       trailerType: [this.load.trailerType],
-      specialRequirment: [this.load.specialRequirment],
+      specialRequirments: [this.load.specialRequirments],
       pickups: this.formBuilder.array([]),
       dropoffs: this.formBuilder.array([]),
       systemLoadNumber: [this.load.systemLoadNumber],
       customerLoadNumber: [this.load.customerLoadNumber],
-      loadType: [this.load.loadType],
+      type: [this.load.type],
       freightType: [this.load.freightType]
     });
   }

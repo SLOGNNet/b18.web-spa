@@ -17,7 +17,7 @@
     </bd-input>
     <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNumber">
     </bd-input>
-    <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
+    <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
     <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
     </bd-form-switch>
@@ -99,7 +99,7 @@
       </bd-dropdown>
       <bd-textarea
         class="bd-form-control"
-        formControlName="specialRequirment"
+        formControlName="specialRequirments"
       [labelText]="'Special Requirements'">
       </bd-textarea>
     </bd-form-section>

@@ -51,7 +51,7 @@ export class Load {
   @JsonMember
   customerLoadNumber: number;
   @JsonMember
-  loadType: LoadType;
+  type: LoadType;
   @JsonMember
   freightType: FreightType;
   @JsonMember
@@ -71,7 +71,7 @@ export class Load {
   @JsonMember
   trailerType: TrailerTypes;
   @JsonMember
-  specialRequirment: string;
+  specialRequirments: string;
   @JsonMember({ elements: Trip })
   trips: Array<Trip>;
   @JsonMember({ elements: Trip })
