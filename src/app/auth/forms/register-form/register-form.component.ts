@@ -5,11 +5,11 @@ import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';
 
 @Component(Object.assign({
-  selector: 'bd-register-form-step1',
-  templateUrl: './register-form-step1.component.html',
-  styleUrls: ['./register-form-step1.component.scss']
+  selector: 'bd-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.scss']
 }, BaseForm.metaData))
-export class RegisterFormStep1Component extends BaseForm implements OnInit {
+export class RegisterFormComponent extends BaseForm implements OnInit {
 
   registerForm: FormGroup;
   registerTypes: Array<any>;

@@ -1,2 +1,3 @@
 export { LoginFormComponent } from './login-form';
-export { RegisterFormStep1Component } from './register-form-step1';
+export { RegisterFormComponent } from './register-form';
+export { PhoneConfirmationFormComponent } from './phone-confirmation-form';
