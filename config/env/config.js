@@ -20,7 +20,7 @@ config = {
   publicdev: {
     socketIoHost: 'https://dev.bridge18.com'
   },
-  testing: {
+  test: {
 
   },
   qa: {
