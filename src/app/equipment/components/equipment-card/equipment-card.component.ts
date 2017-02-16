@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../../../models';
-import { isNil } from 'lodash';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
