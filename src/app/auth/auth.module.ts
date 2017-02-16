@@ -3,8 +3,17 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { BdFormsModule } from '../forms/forms.module';
 
-import { AuthWrapperComponent, LoginComponent, RegisterComponent, RegisterStep1Component } from './components';
-import { LoginFormComponent, RegisterFormStep1Component } from './forms';
+import {
+  AuthWrapperComponent,
+  LoginComponent,
+  RegisterComponent,
+  PhoneConfirmationComponent
+ } from './components';
+import {
+  LoginFormComponent,
+  RegisterFormComponent,
+  PhoneConfirmationFormComponent
+} from './forms';
 import { AuthGuard } from './guards';
 import { AuthenticationService } from './services';
 
@@ -18,9 +27,10 @@ import { AuthenticationService } from './services';
     AuthWrapperComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterStep1Component,
     LoginFormComponent,
-    RegisterFormStep1Component
+    RegisterFormComponent,
+    PhoneConfirmationComponent,
+    PhoneConfirmationFormComponent
   ],
   providers: [
     AuthGuard,

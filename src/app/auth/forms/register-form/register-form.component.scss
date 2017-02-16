@@ -16,7 +16,9 @@
     min-height: 20px;
   }
 
-  .bd-switch-container .bd-switch-label {
-    display: none;
+  .bd-switch-container {
+    .bd-switch-label {
+      display: none;
+    }
   }
 }
