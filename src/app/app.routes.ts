@@ -9,11 +9,12 @@ import { LoadsComponent, LoadDetailComponent } from './loads';
 import { CustomersComponent, CustomerDetailComponent } from './customers';
 import { EquipmentComponent } from './equipment';
 import { AuthGuard, LoginComponent } from './auth';
-
+import { MessagesComponent } from './drivers/messages';
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/loads', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'drivers/:id', component: DriversComponent },
+  { path: 'drivers/:id/messages', component: MessagesComponent },
   { path: 'loads', component: LoadsComponent, children: [{
         path: ':id',
         component: LoadDetailComponent
