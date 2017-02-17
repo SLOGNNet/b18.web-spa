@@ -1,38 +1,38 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import {
-  Load, Customer, LoadStatuses,
+  Load, Company, LoadStatuses,
   DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, Commodity,
   LoadType, FreightType } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
-import { CustomerService } from  './index';
+import { CompanyService } from  './index';
 import MockData from './mock-data';
 
 @Injectable()
 export class LoadService {
 
-  constructor(private http: Http, private customerService: CustomerService) {
+  constructor(private http: Http, private companyService: CompanyService) {
 
   }
 
   getAll(): Observable<Load[]> {
     return Observable.from(MockData.loads)
       .flatMap(
-        (load) => this.customerService
-          .getDetails(load.customerId)
-          .map(customer => Object.assign(load, { customer }))
+        (load) => this.companyService
+          .getDetails(load.companyId)
+          .map(company => Object.assign(load, { company }))
     ).toArray();
   }
 
   getDetails(loadId: number): Observable<Load> {
     return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) =>
-        this.customerService
-          .getDetails(load.customerId)
-          .map(customer => Object.assign(load, { customer }))
+        this.companyService
+          .getDetails(load.companyId)
+          .map(company => Object.assign(load, { company }))
       );
   };
 

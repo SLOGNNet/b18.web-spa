@@ -1,20 +1,20 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.systemLoadNumber}}</span>
-    <span class="customer-name">
-      <span [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
-        {{load.customer.name}}
+    <span class="company-name">
+      <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
+        {{load.company.name}}
         <bd-popover-content
-          #customerPopover
+          #companyPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="-10"
           [closeOnClickOutside]="closeOnClickOutside">
-          <customer-popover [customer]="load.customer"></customer-popover>
+          <company-popover [company]="load.company"></company-popover>
         </bd-popover-content>
       </span>
     </span>
-    <span>{{load.customerLoadNumber}}</span>
+    <span>{{load.companyLoadNumber}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length > 1">
     <div class="distance-wrapper">
@@ -37,7 +37,7 @@
     <span class="link">{{currentTrip.driver.firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
-      Tk{{currentTrip.truckNumber}}
+      Tk{{currentTrip.truckEquipment.number}}
       <bd-popover-content
         #driverPopover
         placement="auto"
@@ -48,7 +48,7 @@
       </bd-popover-content>
       </span>
     <span class="link">|</span>
-    <span class="link">TI{{currentTrip.trailerNumber}}</span>
+    <span class="link">TI{{currentTrip.trailerEquipment.number}}</span>
     <span class="current-trip">
       <span [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
         TR{{currentTrip.number}}

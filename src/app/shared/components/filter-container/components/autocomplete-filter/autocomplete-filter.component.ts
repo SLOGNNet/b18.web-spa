@@ -4,7 +4,7 @@ import { Component, Input, forwardRef,
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService } from '../../../../services';
+import { CompanyService } from '../../../../services';
 import { difference, without } from 'lodash';
 
 class PageQuery {
@@ -37,7 +37,7 @@ export class AutocompleteFilter extends BaseFilter {
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
-  constructor(private customerService: CustomerService,
+  constructor(private companyService: CompanyService,
               private cdr: ChangeDetectorRef,
               private elRef: ElementRef) {
     super();

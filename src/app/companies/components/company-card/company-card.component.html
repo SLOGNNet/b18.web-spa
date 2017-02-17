@@ -1,14 +1,14 @@
-<div class="customer-card-section" (click)="onClick()">
+<div class="company-card-section" (click)="onClick()">
   <div class="top">
     <div class="left">
-      <span>{{this.croppedCustomerName}}</span>
+      <span>{{this.croppedCompanyName}}</span>
     </div>
     <div class="middle">
-      <span>{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
+      <span>{{company.contacts[0].firstName}} {{company.contacts[0].lastName}}</span>
     </div>
     <div class="right">
       <div class="loads-container">
-        <div *ngFor="let load of customer.loads" class="load">
+        <div *ngFor="let load of company.loads" class="load">
           <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
           <span class="load-name">LD{{load.systemLoadNumber}}</span>
         </div>
@@ -18,17 +18,17 @@
 
   <div class="bottom">
     <div class="left">
-      <div class="customer-name">{{customer.name}}</div>
-      <div>MC# {{customer.mc}}</div>
+      <div class="company-name">{{company.name}}</div>
+      <div>MC# {{company.mc}}</div>
     </div>
     <div class="middle">
-      <div class="position">{{customer.contacts[0].position}}</div>
-      <div>{{customer.addresses[0].phone}}</div>
+      <div class="position">{{company.contacts[0].position}}</div>
+      <div>{{company.addresses[0].phone}}</div>
     </div>
     <div class="right">
         <span
-        [style.background]="customerStatusColor"
-        [bd-popover]="customerStatusText"
+        [style.background]="companyStatusColor"
+        [bd-popover]="companyStatusText"
         [popoverPlacement]="'left'"
         [popoverOnHover]="true"
         class="status">

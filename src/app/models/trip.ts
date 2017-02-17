@@ -1,4 +1,5 @@
 import { Driver } from './driver';
+import { Equipment } from './equipment';
 import { generateNewId } from './utils';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
@@ -9,9 +10,9 @@ export class Trip {
   @JsonMember
   number: number = 0;
   @JsonMember
-  truckNumber: number = 0;
+  truckEquipment: Equipment;
   @JsonMember
-  trailerNumber: number = 0;
+  trailerEquipment: Equipment;
   @JsonMember({ elements: Driver })
   driver: Driver;
 

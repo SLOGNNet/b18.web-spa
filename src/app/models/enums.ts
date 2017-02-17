@@ -1,12 +1,12 @@
-// customer enums
-export enum CustomerTypes {
+// company enums
+export enum CompanyTypes {
   Broker = 1,
   FreightForwarder = 2,
   Shipper = 3,
   Carrier = 4
 };
 
-export enum CustomerStatuses {
+export enum CompanyStatuses {
   Inactive = 1,
   Active = 2,
   Unavaliable = 3

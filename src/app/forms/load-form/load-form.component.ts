@@ -1,9 +1,9 @@
 import { Component, Input, Output, OnChanges, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
+import { CompanyService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
 import {
-  Load, Document, Customer,
+  Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
   Stop, StopTypes, Contact, Commodity,
   LoadType, FreightType } from '../../models';
@@ -31,16 +31,16 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Pickup));
   private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Dropoff));
 
-  private customerSource: any[];
-  private customerQuery: string = '';
-  private customerViewMode: ViewMode = ViewMode.None;
+  private companySource: any[];
+  private companyQuery: string = '';
+  private companyViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
   private documents: Array<Document>;
 
   public constructor(
     private stopActions: StopActions,
-    private customerService: CustomerService,
+    private companyService: CompanyService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
     private contactService: ContactService,
@@ -56,34 +56,34 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.initForm();
-      this.initCustomerTypeahead(this.load.customer);
+      this.initCompanyTypeahead(this.load.company);
     }
   }
 
-  onCustomerRemove() {
-    this.load.customer = null;
+  onCompanyRemove() {
+    this.load.company = null;
   }
 
-  onAddNewCustomer() {
-    this.load.customer = Customer.create();
-    this.customerViewMode = ViewMode.Edit;
+  onAddNewCompany() {
+    this.load.company = Company.create();
+    this.companyViewMode = ViewMode.Edit;
   }
 
-  onCustomerSave(customer: Customer) {
-    this.load.customer = customer;
-    this.customerService.create(customer);
-    this.customerViewMode = ViewMode.View;
-    this.initCustomerTypeahead(customer);
+  onCompanySave(company: Company) {
+    this.load.company = company;
+    this.companyService.create(company);
+    this.companyViewMode = ViewMode.View;
+    this.initCompanyTypeahead(company);
   }
 
-  onCustomerEditCancel() {
-    this.load.customer = this.load.customer;
+  onCompanyEditCancel() {
+    this.load.company = this.load.company;
   }
 
   public initForm() {
-    this.customerViewMode = ViewMode.ViewCollapsed;
+    this.companyViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
-      customer: [this.load.customer, Validators.required],
+      company: [this.load.company, Validators.required],
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
       contactId: [this.load.contactId],
@@ -94,22 +94,22 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       pickups: this.formBuilder.array([]),
       dropoffs: this.formBuilder.array([]),
       systemLoadNumber: [this.load.systemLoadNumber],
-      customerLoadNumber: [this.load.customerLoadNumber],
+      companyLoadNumber: [this.load.companyLoadNumber],
       type: [this.load.type],
       freightType: [this.load.freightType]
     });
   }
 
-  public onCustomerSelect(customer: Customer) {
-   this.load.customer = customer;
-   this.customerViewMode = ViewMode.ViewCollapsed;
+  public onCompanySelect(company: Company) {
+   this.load.company = company;
+   this.companyViewMode = ViewMode.ViewCollapsed;
   }
 
-  private initCustomerTypeahead(customer) {
-    this.customerQuery = customer && customer.name;
-    this.customerSource = Observable.create((observer: any) => {
-      observer.next(this.customerQuery);
-    }).mergeMap((token: string) => this.customerService.search(token));
+  private initCompanyTypeahead(company) {
+    this.companyQuery = company && company.name;
+    this.companySource = Observable.create((observer: any) => {
+      observer.next(this.companyQuery);
+    }).mergeMap((token: string) => this.companyService.search(token));
   }
 
   private onLoadCancel() {

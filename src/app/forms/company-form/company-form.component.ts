@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Customer, CustomerStatuses, CustomerTypes, Address } from '../../models';
+import { Company, CompanyStatuses, CompanyTypes, Address } from '../../models';
 import { AddressActions } from '../../actions';
 import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { ViewMode } from '../../shared/enums';
@@ -9,23 +9,23 @@ import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
-  selector: 'customer-form',
-  templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss'],
+  selector: 'company-form',
+  templateUrl: './company-form.component.html',
+  styleUrls: ['./company-form.component.scss'],
   providers: [FormValidationService]
 }, BaseForm.metaData))
-export class CustomerForm extends BaseForm {
+export class CompanyForm extends BaseForm {
   @Input() public scrollable: boolean = false;
   @Input() public submitButtonText: string = 'Save';
-  @Input() public customer: Customer;
+  @Input() public company: Company;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @select(state => state.addresses.items) addresses$: Observable<Address[]>;
-  customerForm: FormGroup;
-  customerTypes: Array<any>;
-  selectedCustomerType: string;
-  customerStatuses: Array<any>;
-  selectedCustomerStatus: string;
+  companyForm: FormGroup;
+  companyTypes: Array<any>;
+  selectedCompanyType: string;
+  companyStatuses: Array<any>;
+  selectedCompanyStatus: string;
 
   constructor(private formBuilder: FormBuilder,
     private addressActions: AddressActions,
@@ -34,40 +34,40 @@ export class CustomerForm extends BaseForm {
     private validationService: FormValidationService,
     elementRef: ElementRef) {
     super(elementRef);
-    this.customerTypes = enumHelperService.getDropdownKeyValues(CustomerTypes);
-    this.customerStatuses = enumHelperService.getDropdownKeyValues(CustomerStatuses);
+    this.companyTypes = enumHelperService.getDropdownKeyValues(CompanyTypes);
+    this.companyStatuses = enumHelperService.getDropdownKeyValues(CompanyStatuses);
   }
 
   ngOnChanges(changes: any) {
     this.initForm();
   }
 
-  submit(customer: Customer, isValid: boolean) {
+  submit(company: Company, isValid: boolean) {
     if (!isValid) {
       this.validationService.show();
     }
 
-    if (customer && isValid) {
-      this.save.emit(customer);
+    if (company && isValid) {
+      this.save.emit(company);
     }
   }
 
   onCancel() {
-    this.customerForm.reset();
+    this.companyForm.reset();
     this.cancel.emit();
   }
 
   initForm() {
-    this.customerForm = this.formBuilder.group({
-      id: [this.customer.id],
-      name: [this.customer.name],
-      type: [this.customer.type],
-      status: [this.customer.status, Validators.required],
-      mc: [this.customer.mc, Validators.required],
-      taxId: [this.customer.taxId],
+    this.companyForm = this.formBuilder.group({
+      id: [this.company.id],
+      name: [this.company.name],
+      type: [this.company.type],
+      status: [this.company.status, Validators.required],
+      mc: [this.company.mc, Validators.required],
+      taxId: [this.company.taxId],
       contacts: this.formBuilder.array([]),
       addresses: this.formBuilder.array([]),
-      email: [this.customer.email]
+      email: [this.company.email]
     });
   }
 

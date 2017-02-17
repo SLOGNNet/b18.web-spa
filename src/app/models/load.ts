@@ -1,5 +1,5 @@
 import { Stop } from './stop';
-import { Customer } from './customer';
+import { Company } from './company';
 import { Commodity } from './commodity';
 import { Trip } from './trip';
 import { Document } from './document';
@@ -43,13 +43,13 @@ export class Load {
   @JsonMember
   id: number;
   @JsonMember
-  customerId: number;
+  companyId: number;
   @JsonMember
   addressId: number;
   @JsonMember
   systemLoadNumber: number;
   @JsonMember
-  customerLoadNumber: number;
+  companyLoadNumber: number;
   @JsonMember
   type: LoadType;
   @JsonMember
@@ -62,8 +62,8 @@ export class Load {
   contactId: number;
   @JsonMember
   status: LoadStatuses;
-  @JsonMember({ elements: Customer })
-  customer: Customer;
+  @JsonMember({ elements: Company })
+  company: Company;
   @JsonMember
   driverRequirment: DriverRequirements;
   @JsonMember
@@ -85,7 +85,7 @@ export class Load {
     const result = new Load();
     result.id = generateNewId();
     result.status = LoadStatuses.Booked;
-    result.customer = Customer.create();
+    result.company = Company.create();
     result.driverRequirment = DriverRequirements.Solo;
     result.powerUnitType = PowerUnitTypes.Tractor;
     result.trailerType = TrailerTypes.DryVan53;
