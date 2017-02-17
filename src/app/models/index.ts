@@ -1,4 +1,5 @@
 export * from './company';
+export * from './driverTeam';
 export * from './address';
 export * from './load';
 export * from './contact';

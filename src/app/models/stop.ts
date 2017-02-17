@@ -48,8 +48,6 @@ export class Stop {
   @JsonMember({ elements: Address })
   address: Address;
   @JsonMember
-  date: Date = null;
-  @JsonMember
   notes: string = '';
   @JsonMember
   type: StopTypes = StopTypes.None;
@@ -57,11 +55,22 @@ export class Stop {
   facility: Facility;
   @JsonMember
   status: StopStatuses.InProgress;
+  @JsonMember
+  arrivedAt: Date = null;
+  @JsonMember
+  departedAt: Date = null;
+  @JsonMember
+  plannedArrivalAt: Date = null;
+  @JsonMember
+  plannedDepartureAt: Date = null;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();
     result.id = generateNewId();
-    result.date = new Date();
+    result.arrivedAt = new Date();
+    result.departedAt = new Date();
+    result.plannedArrivalAt = new Date();
+    result.plannedDepartureAt = new Date();
     result.type = type;
     result.address = Address.create();
     result.facility = Facility.create();

@@ -23,18 +23,18 @@
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
-        {{firstStop.date | date:'MM/dd'}}
+        {{firstStop.plannedArrivalAt | date:'MM/dd'}}
       </div>
       <div class="schedule">
         <stops-line [stops]="load.stops"></stops-line>
       </div>
       <div class="end-date">
-        {{lastStop.date | date:'MM/dd'}}
+        {{lastStop.plannedArrivalAt | date:'MM/dd'}}
       </div>
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{currentTrip.driver.firstName}}</span>
+    <span class="link">{{currentTrip.driverTeam.drivers[0].firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrip.truckEquipment.number}}
@@ -44,7 +44,7 @@
         [width]="popupWidth"
         [horizontalOffset]="-10"
         [closeOnClickOutside]="closeOnClickOutside">
-        <driver-popover [driver]="currentTrip.driver"></driver-popover>
+        <driver-popover [driver]="currentTrip.driverTeam.drivers[0]"></driver-popover>
       </bd-popover-content>
       </span>
     <span class="link">|</span>

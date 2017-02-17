@@ -357,35 +357,39 @@ class MockData {
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driver: this.drivers[0]
+    driverTeam: {id: 1, drivers: [this.drivers[0]]}
   }, {
     id: 2,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driver: this.drivers[1]
+    driverTeam: {id: 2, drivers: [this.drivers[0]]}
   }, {
     id: 3,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driver: this.drivers[0]
+    driverTeam: {id: 3, drivers: [this.drivers[0]]}
   }, {
     id: 4,
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driver: this.drivers[0]
+    driverTeam: {id: 4, drivers: [this.drivers[0]]}
   }];
 
   public startDate = new Date(2017, 0, 9);
+  public endDate = new Date(2017, 0, 22);
 
   public pickups: Array<Stop> = [{
     id: 1,
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -394,7 +398,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -403,7 +410,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -412,7 +422,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -421,7 +434,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -430,7 +446,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -438,7 +457,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[0],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -447,7 +469,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[1],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -456,7 +481,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -465,7 +493,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -474,7 +505,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[2],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -483,7 +517,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -492,19 +529,23 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Pickup,
     address: this.addresses[3],
-    date: this.startDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }];
-
-  public endDate = new Date(2017, 0, 22);
 
   public dropoffs: Array<Stop> = [{
     id: 13,
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[1],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -513,7 +554,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[0],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -522,7 +566,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[0],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -531,7 +578,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[1],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -540,7 +590,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -549,7 +602,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   }, {
@@ -557,7 +613,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[1],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress
   },
@@ -566,7 +625,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[0],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[1],
     status: StopStatuses.InProgress
   },
@@ -575,7 +637,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[0],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   },
@@ -584,7 +649,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[1],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[3],
     status: StopStatuses.InProgress
   },
@@ -593,7 +661,10 @@ class MockData {
     notes: 'notes',
     type: StopTypes.Dropoff,
     address: this.addresses[2],
-    date: this.endDate,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
     facility: this.facilities[2],
     status: StopStatuses.InProgress
   }];
