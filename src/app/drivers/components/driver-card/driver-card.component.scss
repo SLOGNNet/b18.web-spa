@@ -70,8 +70,8 @@
       .tr-city-circle {
         width: 10px;
         height: 10px;
+        margin: 3px 5px 0 0;
         background: $black;
-        margin-top: 3px;
         border-radius: 50%;
       }
 
@@ -79,7 +79,6 @@
         @include multi-line-ellipsis($line-height: 17px, $line-count: 2, $bg-color: $white);
         width: 80%;
         text-align: left;
-        margin-left: 5px;
       }
     }
 

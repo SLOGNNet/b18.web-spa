@@ -66,18 +66,13 @@
       .loads-container {
         .load {
           display: flex;
-          margin-left: 5px;
 
           .load-circle {
             width: 10px;
             height: 10px;
+            margin: 3px 5px 0 5px;
             background: $black;
-            margin-top: 3px;
             border-radius: 50%;
-          }
-
-          .load-name {
-            margin-left: 5px;
           }
         }
       }
@@ -109,19 +104,19 @@
 
     .right {
       position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
 
       .status-text {
-        position: absolute;
-        right: 22px;
+        margin-right: 5px;
         bottom: 0;
       }
 
       .status {
-        position: absolute;
-        right: 0;
         width: 12px;
         height: 12px;
-        bottom: 3px;
+        margin-bottom: 3px;
         border-radius: $form-control-height;
       }
     }
