@@ -25,6 +25,7 @@
   border-bottom: $border;
 
   .left {
+    overflow: hidden;
     width: 30%;
     float: left;
 
@@ -41,6 +42,7 @@
       color: $blue;
       margin-right: 20px;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

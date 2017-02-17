@@ -11,6 +11,7 @@ export class CustomerCardComponent {
   @Input() customer: Customer;
   @Output() select: EventEmitter<any> = new EventEmitter();
   croppedCustomerName: string;
+  public statusText: boolean = false;
 
   ngOnInit() {
      this.croppedCustomerName = this.customer.name.replace(/ /g, '').substr(0, 3).toUpperCase();
@@ -30,6 +31,14 @@ export class CustomerCardComponent {
 
   onClick() {
     this.select.emit(this.customer);
+  }
+
+  onEnter() {
+    this.statusText = true;
+  }
+
+  onLeave() {
+    this.statusText = false;
   }
 
 }
