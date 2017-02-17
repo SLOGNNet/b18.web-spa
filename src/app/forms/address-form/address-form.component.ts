@@ -21,8 +21,8 @@ export class AddressForm extends BaseForm {
   private _placeQuery: string = '';
   private _map = {
     labelText: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   };
   private fields = [
     { name: 'id', validators: [] },
@@ -36,8 +36,8 @@ export class AddressForm extends BaseForm {
     { name: 'streetAddress', validators: [Validators.required] },
     { name: 'secondStreetAddress', validators: [] },
     { name: 'city', validators: [] },
-    { name: 'lat', validators: [] },
-    { name: 'lng', validators: [] }
+    { name: 'latitude', validators: [] },
+    { name: 'longitude', validators: [] }
   ];
 
   constructor(
@@ -52,7 +52,7 @@ export class AddressForm extends BaseForm {
   ngOnChanges(changes: any) {
     this.initForm();
     this._initPlaceTypeahead();
-    this._updateMap(this.address.lat, this.address.lng, this.address.streetAddress);
+    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress);
   }
 
   initForm() {
@@ -82,8 +82,8 @@ export class AddressForm extends BaseForm {
         state: '',
         zip: '',
         secondStreetAddress: '',
-        lat: 0,
-        lng: 0
+        latitude: 0,
+        longitude: 0
       }
     ));
 
@@ -104,10 +104,10 @@ export class AddressForm extends BaseForm {
     }).mergeMap((token: string) => this._googleService.getPredictions(token));
   }
 
-  private _updateMap(lat = 0, lng = 0, labelText = ''): void {
+  private _updateMap(latitude = 0, longitude = 0, labelText = ''): void {
     this._map = {
-      lat,
-      lng,
+      latitude,
+      longitude,
       labelText
     };
   }

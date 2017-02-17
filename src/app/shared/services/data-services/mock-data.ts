@@ -18,8 +18,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 40.795675,
-    lng: -73.93600099999998
+    latitude: 40.795675,
+    longitude: -73.93600099999998
   },
   {
     id: 2,
@@ -33,8 +33,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 40.795675,
-    lng: -73.93600099999998
+    latitude: 40.795675,
+    longitude: -73.93600099999998
   },
   {
     id: 3,
@@ -48,8 +48,8 @@ class MockData {
     fax: '(602)-256-0631',
     phoneExtension: '',
     faxExtension: '',
-    lat: 40.795675,
-    lng: -73.93600099999998
+    latitude: 40.795675,
+    longitude: -73.93600099999998
   },
   {
     id: 4,
@@ -63,8 +63,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 40.795675,
-    lng: -73.93600099999998
+    latitude: 40.795675,
+    longitude: -73.93600099999998
   },
   {
     id: 5,
@@ -78,8 +78,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 40.795675,
-    lng: -73.93600099999998
+    latitude: 40.795675,
+    longitude: -73.93600099999998
   }
   ];
 
@@ -95,8 +95,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   },
   {
     id: 4,
@@ -110,8 +110,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   },
   {
     id: 5,
@@ -125,8 +125,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   },
   {
     id: 6,
@@ -140,8 +140,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   },
   {
     id: 7,
@@ -155,8 +155,8 @@ class MockData {
     fax: '',
     phoneExtension: '',
     faxExtension: '',
-    lat: 0,
-    lng: 0
+    latitude: 0,
+    longitude: 0
   },
   ];
 
@@ -357,25 +357,25 @@ class MockData {
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driverTeam: {id: 1, drivers: [this.drivers[0]]}
+    driverTeams: {id: 1, drivers: [this.drivers[0]]}
   }, {
     id: 2,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driverTeam: {id: 2, drivers: [this.drivers[0]]}
+    driverTeams: {id: 2, drivers: [this.drivers[0]]}
   }, {
     id: 3,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driverTeam: {id: 3, drivers: [this.drivers[0]]}
+    driverTeams: {id: 3, drivers: [this.drivers[0]]}
   }, {
     id: 4,
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driverTeam: {id: 4, drivers: [this.drivers[0]]}
+    driverTeams: {id: 4, drivers: [this.drivers[0]]}
   }];
 
   public startDate = new Date(2017, 0, 9);

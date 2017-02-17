@@ -24,8 +24,8 @@ export class Address {
   phoneExtension: string = '';
   @JsonMember
   faxExtension: string = '';
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
 
   static create(): Address {
     const result = new Address();
@@ -33,7 +33,7 @@ export class Address {
   }
 
   constructor() {
-    this.lat = 0;
-    this.lng = 0;
+    this.latitude = 0;
+    this.longitude = 0;
   }
 }

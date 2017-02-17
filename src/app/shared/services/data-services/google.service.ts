@@ -65,8 +65,8 @@ export class GoogleService {
       zip: details.postal_code,
       streetAddress: streetAddress,
       state: details.administrative_area_level_1,
-      lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
+      latitude: place.geometry.location.latitude(),
+      longitude: place.geometry.location.longitude()
     };
   }
 }
