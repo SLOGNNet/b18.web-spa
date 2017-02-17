@@ -357,25 +357,25 @@ class MockData {
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driverTeams: {id: 1, drivers: [this.drivers[0]]}
+    driverTeams: [{id: 1, drivers: [this.drivers[0]]}]
   }, {
     id: 2,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driverTeams: {id: 2, drivers: [this.drivers[0]]}
+    driverTeams: [{id: 2, drivers: [this.drivers[0]]}]
   }, {
     id: 3,
     number: 345351,
     truckEquipment: this.equipments[1],
     trailerEquipment: this.equipments[0],
-    driverTeams: {id: 3, drivers: [this.drivers[0]]}
+    driverTeams: [{id: 3, drivers: [this.drivers[0]]}]
   }, {
     id: 4,
     number: 345351,
     truckEquipment: this.equipments[0],
     trailerEquipment: this.equipments[0],
-    driverTeams: {id: 4, drivers: [this.drivers[0]]}
+    driverTeams: [{id: 4, drivers: [this.drivers[0]]}]
   }];
 
   public startDate = new Date(2017, 0, 9);

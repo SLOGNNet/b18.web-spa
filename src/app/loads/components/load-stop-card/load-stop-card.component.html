@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{currentTrip.driverTeams.drivers[0].firstName}}</span>
+    <span class="link">{{currentTrip.driverTeams[0].drivers[0].firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrip.truckEquipment.number}}
@@ -44,7 +44,7 @@
         [width]="popupWidth"
         [horizontalOffset]="-10"
         [closeOnClickOutside]="closeOnClickOutside">
-        <driver-popover [driver]="currentTrip.driverTeams.drivers[0]"></driver-popover>
+        <driver-popover [driver]="currentTrip.driverTeams[0].drivers[0]"></driver-popover>
       </bd-popover-content>
       </span>
     <span class="link">|</span>

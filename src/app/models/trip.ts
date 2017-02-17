@@ -14,8 +14,8 @@ export class Trip {
   truckEquipment: Equipment;
   @JsonMember
   trailerEquipment: Equipment;
-  @JsonMember
-  driverTeams: DriverTeam;
+  @JsonMember({ elements: DriverTeam })
+  driverTeams: Array<DriverTeam>;
 
   static create(): Trip{
     const result = new Trip();
