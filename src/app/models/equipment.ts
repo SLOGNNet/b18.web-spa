@@ -71,6 +71,13 @@ const shortTypeText = createShortTypeText();
 const modeText = createModeText();
 
 @JsonObject
+export class EquipmentNotification {
+  @JsonMember
+  message: string = '';
+  date: Date;
+}
+
+@JsonObject
 export class Equipment {
   @JsonMember
   id: number = 0;
@@ -104,6 +111,9 @@ export class Equipment {
   lastTripNumber: number;
   @JsonMember
   lastAddress: string = '';
+  @JsonMember
+  equipmentNotification: EquipmentNotification;
+
 
 
 
