@@ -47,9 +47,9 @@ export class Load {
   @JsonMember
   addressId: number;
   @JsonMember
-  systemLoadNumber: number;
+  systemLoadNo: number;
   @JsonMember
-  companyLoadNumber: number;
+  customerLoadNo: number;
   @JsonMember
   type: LoadType;
   @JsonMember
@@ -67,9 +67,9 @@ export class Load {
   @JsonMember
   driverRequirment: DriverRequirements;
   @JsonMember
-  powerUnitType: PowerUnitTypes;
+  requiredPowerUnitType: PowerUnitTypes;
   @JsonMember
-  trailerType: TrailerTypes;
+  requiredTrailerType: TrailerTypes;
   @JsonMember
   specialRequirments: string;
   @JsonMember({ elements: Trip })
@@ -87,8 +87,8 @@ export class Load {
     result.status = LoadStatuses.Booked;
     result.company = Company.create();
     result.driverRequirment = DriverRequirements.Solo;
-    result.powerUnitType = PowerUnitTypes.Tractor;
-    result.trailerType = TrailerTypes.DryVan53;
+    result.requiredPowerUnitType = PowerUnitTypes.Tractor;
+    result.requiredTrailerType = TrailerTypes.DryVan53;
     result.trips = [Trip.create()];
     result.currentTrip = [Trip.create()];
     result.stops = [Stop.create(StopTypes.Dropoff)];

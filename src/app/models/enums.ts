@@ -41,11 +41,6 @@ export enum EquipmentModes {
   Company = 1
 };
 
-export enum EquipmentDriverType {
-  CompanyDriver = 1,
-  OwnerOperator = 2
-}
-
 export enum EquipmentStatuses {
   Inactive = 1,
   Active = 2,

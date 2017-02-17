@@ -4,7 +4,7 @@ import { PowerUnitTypes,
   EquipmentTypes,
   EquipmentModes,
   EquipmentStatuses,
-  EquipmentDriverType,
+  DriverTypes,
   EquipmentVehicleOperatings } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
@@ -31,8 +31,8 @@ function createStatusText() {
 // Driver Text
 function createEquipmentDriverText() {
  let result = {};
-  result[EquipmentDriverType.CompanyDriver] = 'Company Driver';
-  result[EquipmentDriverType.OwnerOperator] = 'Owner Operator';
+  result[DriverTypes.CompanyDriver] = 'Company Driver';
+  result[DriverTypes.OwnerOperator] = 'Owner Operator';
 
   return result;
 };
@@ -91,7 +91,7 @@ export class Equipment {
   @JsonMember
   status: EquipmentStatuses;
   @JsonMember
-  driverType: EquipmentDriverType;
+  driverType: DriverTypes;
   @JsonMember
   type: EquipmentTypes;
   @JsonMember
@@ -116,7 +116,7 @@ export class Equipment {
     result.subType = TrailerTypes.DryVan53;
     result.mode = EquipmentModes.Company;
     result.vehicleOperating = EquipmentVehicleOperatings.InterState;
-    result.driverType = EquipmentDriverType.CompanyDriver;
+    result.driverType = DriverTypes.CompanyDriver;
     return result;
   }
 
@@ -125,7 +125,7 @@ export class Equipment {
     return statusText[status];
   }
 
-  public static getDriverText(driverType: EquipmentDriverType): string {
+  public static getDriverText(driverType: DriverTypes): string {
     return equipmentDriverText[driverType];
   }
 

@@ -20,8 +20,8 @@ import { NgRedux, select } from 'ng2-redux';
 }, BaseForm.metaData))
 export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirementsNames: Array<any>;
-  powerUnitTypesNames: Array<any>;
-  trailerTypesNames: Array<any>;
+  requiredPowerUnitTypesNames: Array<any>;
+  requiredTrailerTypesNames: Array<any>;
   loadTypesNames: Array<any>;
   freightTypesNames: Array<any>;
   @Input() load: Load;
@@ -47,8 +47,8 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     elementRef: ElementRef) {
     super(elementRef);
     this.driverRequirementsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirements);
-    this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
-    this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
+    this.requiredPowerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
+    this.requiredTrailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
     this.loadTypesNames = this.enumHelperService.getDropdownKeyValues(LoadType);
     this.freightTypesNames = this.enumHelperService.getDropdownKeyValues(FreightType);
   }
@@ -88,13 +88,13 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
       billingAddressId: [this.load.billingAddressId],
       contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
-      powerUnitType: [this.load.powerUnitType],
-      trailerType: [this.load.trailerType],
+      requiredPowerUnitType: [this.load.requiredPowerUnitType],
+      requiredTrailerType: [this.load.requiredTrailerType],
       specialRequirments: [this.load.specialRequirments],
       pickups: this.formBuilder.array([]),
       dropoffs: this.formBuilder.array([]),
-      systemLoadNumber: [this.load.systemLoadNumber],
-      companyLoadNumber: [this.load.companyLoadNumber],
+      systemLoadNo: [this.load.systemLoadNo],
+      customerLoadNo: [this.load.customerLoadNo],
       type: [this.load.type],
       freightType: [this.load.freightType]
     });

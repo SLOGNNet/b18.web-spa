@@ -13,9 +13,9 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info">
-    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNo">
     </bd-input>
-    <bd-input class="bd-form-control" [labelText]="'Company Load Number'" formControlName="companyLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'Company Load Number'" formControlName="customerLoadNo">
     </bd-input>
     <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
@@ -93,9 +93,9 @@
     <bd-form-section labelText="REQUIREMENTS">
       <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirement" [items]="driverRequirementsNames">
       </bd-form-switch>
-      <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+      <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="requiredPowerUnitType" [items]="requiredPowerUnitTypesNames">
       </bd-dropdown>
-      <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+      <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="requiredTrailerType" [items]="requiredTrailerTypesNames">
       </bd-dropdown>
       <bd-textarea
         class="bd-form-control"
