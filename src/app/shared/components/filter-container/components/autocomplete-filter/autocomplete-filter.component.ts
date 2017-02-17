@@ -30,7 +30,7 @@ export class AutocompleteFilter extends BaseFilter {
   private selectedItemsCache = [];
   private isAllLoaded = false;
   private isLoading = false;
-  private page = 0;
+  private page = 1;
   private countPerPage: number = 20;
   private query = '';
   private isSearchFieldFocused: boolean = false;
