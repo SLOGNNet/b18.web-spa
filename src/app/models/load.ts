@@ -63,7 +63,7 @@ export class Load {
   @JsonMember
   status: LoadStatuses;
   @JsonMember({ elements: Company })
-  company: Company;
+  customer: Company;
   @JsonMember
   driverRequirment: DriverRequirements;
   @JsonMember
@@ -85,7 +85,7 @@ export class Load {
     const result = new Load();
     result.id = generateNewId();
     result.status = LoadStatuses.Booked;
-    result.company = Company.create();
+    result.customer = Company.create();
     result.driverRequirment = DriverRequirements.Solo;
     result.requiredPowerUnitType = PowerUnitTypes.Tractor;
     result.requiredTrailerType = TrailerTypes.DryVan53;

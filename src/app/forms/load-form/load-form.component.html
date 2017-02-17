@@ -15,7 +15,7 @@
   <bd-form-section labelText="Info">
     <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNo">
     </bd-input>
-    <bd-input class="bd-form-control" [labelText]="'Company Load Number'" formControlName="customerLoadNo">
+    <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNo">
     </bd-input>
     <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
@@ -23,11 +23,11 @@
     </bd-form-switch>
   </bd-form-section>
   <navigation-anchor id="company"></navigation-anchor>
-  <bd-form-section labelText="Company">
-    <bd-validator [component]="loadForm.controls.company" [errorDefs]="{required: 'Company is required'}">
+  <bd-form-section labelText="Customer">
+    <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
       <bd-typeahead
         class="bd-form-control"
-        formControlName="company"
+        formControlName="customer"
         [labelText]="'Name or MC#'"
         [footerButtonText]="'Add New Company'"
         [source]="companySource"
@@ -39,44 +39,44 @@
         [optionField]="'name'">
       </bd-typeahead>
     </bd-validator>
-    <company-form *ngIf='load.company' [isNestedForm]="true" [submitButtonText]="'Add Company'" [company]='load.company' (save)="onCompanySave($event)" (cancel)="onCompanyEditCancel()" [viewMode]="companyViewMode"> </company-form>
+    <company-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [company]='load.customer' (save)="onCompanySave($event)" (cancel)="onCompanyEditCancel()" [viewMode]="companyViewMode"> </company-form>
     <bd-form-section>
       <bd-dropdown
-        *ngIf='load.company'
+        *ngIf='load.customer'
         class="bd-form-control"
         labelText='Address'
         clearLabel='Leave Empty'
         formControlName="addressId"
         defaultTitleText="Select address"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.company.addresses"
+        [items]="load.customer.addresses"
         keyField="id"
         valueField="name">
       </bd-dropdown>
     </bd-form-section>
     <bd-form-section>
       <bd-dropdown
-        *ngIf='load.company'
+        *ngIf='load.customer'
         clearLabel='Leave Empty'
         class="bd-form-control"
         labelText='Billing Address'
         formControlName="billingAddressId"
         defaultTitleText="Select Billing Address"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.company.addresses"
+        [items]="load.customer.addresses"
         keyField="id"
         valueField="name">
       </bd-dropdown>
     </bd-form-section>
     <bd-form-section>
       <bd-dropdown
-        *ngIf='load.company'
+        *ngIf='load.customer'
         clearLabel='Leave Empty'
         class="bd-form-control"
         labelText='Contact'
         defaultTitleText="Select Contact"
         formControlName="contactId"
-        [items]="load.company.contacts"
+        [items]="load.customer.contacts"
         keyField="id"
         valueField="firstName">
       </bd-dropdown>

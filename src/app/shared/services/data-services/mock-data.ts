@@ -9,8 +9,8 @@ class MockData {
   public addresses: Array<Address> = [{
     id: 1,
     name: 'Main Office',
-    streetAddress: '14701 Charlson Road, United States',
-    secondStreetAddress: '',
+    streetAddress1: '14701 Charlson Road, United States',
+    streetAddress2: '',
     city: 'Eden Prairie',
     phone: '(925) 937-8500',
     state: 'MN',
@@ -24,8 +24,8 @@ class MockData {
   {
     id: 2,
     name: 'Main Office',
-    streetAddress: '5429 Lyndon B Johnson Freeway',
-    secondStreetAddress: 'SUITE 550',
+    streetAddress1: '5429 Lyndon B Johnson Freeway',
+    streetAddress2: 'SUITE 550',
     city: 'Dallas',
     phone: '(972) 669-4259',
     state: 'TX',
@@ -39,8 +39,8 @@ class MockData {
   {
     id: 3,
     name: 'Main Office',
-    streetAddress: '641 East Watkins Street',
-    secondStreetAddress: '',
+    streetAddress1: '641 East Watkins Street',
+    streetAddress2: '',
     city: 'Phoenix',
     phone: '(602) 256-9470',
     state: 'AZ',
@@ -54,8 +54,8 @@ class MockData {
   {
     id: 4,
     name: 'Main Office',
-    streetAddress: '3101 Packerland Drive, Green Bay, WI, United States',
-    secondStreetAddress: '',
+    streetAddress1: '3101 Packerland Drive, Green Bay, WI, United States',
+    streetAddress2: '',
     city: 'Green Bay',
     phone: '(800) 558-6767',
     state: 'WI',
@@ -69,8 +69,8 @@ class MockData {
   {
     id: 5,
     name: 'Main Office',
-    streetAddress: '1000 WYNDHAM PKWY',
-    secondStreetAddress: '',
+    streetAddress1: '1000 WYNDHAM PKWY',
+    streetAddress2: '',
     city: 'BOLINGBROOK',
     phone: '(312) 326-8000',
     state: 'IL',
@@ -86,8 +86,8 @@ class MockData {
   public billingAddresses: Array<Address> = [{
     id: 3,
     name: 'Billing Address',
-    streetAddress: '14701 Charlson Road, United States',
-    secondStreetAddress: 'SUITE 550',
+    streetAddress1: '14701 Charlson Road, United States',
+    streetAddress2: 'SUITE 550',
     city: 'Dallas',
     phone: '(972) 669-4259',
     state: 'MN',
@@ -101,8 +101,8 @@ class MockData {
   {
     id: 4,
     name: 'Billing Address',
-    streetAddress: '5429 Lyndon B Johnson Freeway',
-    secondStreetAddress: 'SUITE 550',
+    streetAddress1: '5429 Lyndon B Johnson Freeway',
+    streetAddress2: 'SUITE 550',
     city: 'Dallas',
     phone: '(972) 669-4259',
     state: 'TX',
@@ -116,8 +116,8 @@ class MockData {
   {
     id: 5,
     name: 'Billing Address',
-    streetAddress: 'BROKER_BILLING_ADDRESS',
-    secondStreetAddress: 'SUITE 550',
+    streetAddress1: 'BROKER_BILLING_ADDRESS',
+    streetAddress2: 'SUITE 550',
     city: 'Dallas',
     phone: '(972) 669-4259',
     state: 'TX',
@@ -131,8 +131,8 @@ class MockData {
   {
     id: 6,
     name: 'Billing Address',
-    streetAddress: 'PO BOX 2545',
-    secondStreetAddress: '',
+    streetAddress1: 'PO BOX 2545',
+    streetAddress2: '',
     city: 'Green Bay',
     phone: '(920)-592-6867',
     state: 'WI',
@@ -146,8 +146,8 @@ class MockData {
   {
     id: 7,
     name: 'Billing Address',
-    streetAddress: '1000 WYNDHAM PKWY',
-    secondStreetAddress: '',
+    streetAddress1: '1000 WYNDHAM PKWY',
+    streetAddress2: '',
     city: 'BOLINGBROOK',
     phone: '(312) 326-8000',
     state: 'IL',
@@ -674,7 +674,7 @@ class MockData {
     {
       id: 1,
       companyId: 1,
-      company: null,
+      customer: null,
       addressId: 1,
       customerLoadNo: 726457361,
       systemLoadNo: 209282402,
@@ -696,7 +696,7 @@ class MockData {
     {
       id: 2,
       companyId: 2,
-      company: null,
+      customer: null,
       addressId: 2,
       customerLoadNo: 234457361,
       systemLoadNo: 7367707,
@@ -718,7 +718,7 @@ class MockData {
     {
       id: 3,
       companyId: 3,
-      company: null,
+      customer: null,
       addressId: 3,
       customerLoadNo: 111557361,
       systemLoadNo: 104579538,
@@ -740,7 +740,7 @@ class MockData {
     {
       id: 4,
       companyId: 4,
-      company: null,
+      customer: null,
       addressId: 4,
       customerLoadNo: 827461356,
       systemLoadNo: 104605109,
@@ -762,7 +762,7 @@ class MockData {
     {
       id: 5,
       companyId: 1,
-      company: null,
+      customer: null,
       addressId: 1,
       customerLoadNo: 827461356,
       systemLoadNo: 104605109,
@@ -784,7 +784,7 @@ class MockData {
     {
       id: 6,
       companyId: 2,
-      company: null,
+      customer: null,
       addressId: 2,
       customerLoadNo: 827461356,
       systemLoadNo: 104605109,
@@ -806,7 +806,7 @@ class MockData {
     {
       id: 7,
       companyId: 3,
-      company: null,
+      customer: null,
       addressId: 3,
       customerLoadNo: 827461356,
       systemLoadNo: 104605109,
@@ -828,7 +828,7 @@ class MockData {
     {
       id: 8,
       companyId: 4,
-      company: null,
+      customer: null,
       addressId: 4,
       customerLoadNo: 827461356,
       systemLoadNo: 104605109,

@@ -56,34 +56,34 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.load) {
       this.initForm();
-      this.initCompanyTypeahead(this.load.company);
+      this.initCustomerTypeahead(this.load.customer);
     }
   }
 
   onCompanyRemove() {
-    this.load.company = null;
+    this.load.customer = null;
   }
 
-  onAddNewCompany() {
-    this.load.company = Company.create();
+  onAddNewCustomer() {
+    this.load.customer = Company.create();
     this.companyViewMode = ViewMode.Edit;
   }
 
-  onCompanySave(company: Company) {
-    this.load.company = company;
-    this.companyService.create(company);
+  onCustomerSave(customer: Company) {
+    this.load.customer = customer;
+    this.companyService.create(customer);
     this.companyViewMode = ViewMode.View;
-    this.initCompanyTypeahead(company);
+    this.initCustomerTypeahead(customer);
   }
 
   onCompanyEditCancel() {
-    this.load.company = this.load.company;
+    this.load.customer = this.load.customer;
   }
 
   public initForm() {
     this.companyViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
-      company: [this.load.company, Validators.required],
+      customer: [this.load.customer, Validators.required],
       addressId: [this.load.addressId],
       billingAddressId: [this.load.billingAddressId],
       contactId: [this.load.contactId],
@@ -100,13 +100,13 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     });
   }
 
-  public onCompanySelect(company: Company) {
-   this.load.company = company;
+  public onCustomerSelect(company: Company) {
+   this.load.customer = company;
    this.companyViewMode = ViewMode.ViewCollapsed;
   }
 
-  private initCompanyTypeahead(company) {
-    this.companyQuery = company && company.name;
+  private initCustomerTypeahead(customer) {
+    this.companyQuery = customer && customer.name;
     this.companySource = Observable.create((observer: any) => {
       observer.next(this.companyQuery);
     }).mergeMap((token: string) => this.companyService.search(token));

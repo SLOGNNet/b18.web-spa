@@ -33,8 +33,8 @@ export class AddressForm extends BaseForm {
     { name: 'zip', validators: [] },
     { name: 'phoneExtension', validators: [] },
     { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress', validators: [Validators.required] },
-    { name: 'secondStreetAddress', validators: [] },
+    { name: 'streetAddress1', validators: [Validators.required] },
+    { name: 'streetAddress2', validators: [] },
     { name: 'city', validators: [] },
     { name: 'latitude', validators: [] },
     { name: 'longitude', validators: [] }
@@ -52,7 +52,7 @@ export class AddressForm extends BaseForm {
   ngOnChanges(changes: any) {
     this.initForm();
     this._initPlaceTypeahead();
-    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress);
+    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress1);
   }
 
   initForm() {
@@ -81,7 +81,7 @@ export class AddressForm extends BaseForm {
         city: '',
         state: '',
         zip: '',
-        secondStreetAddress: '',
+        streetAddress2: '',
         latitude: 0,
         longitude: 0
       }
@@ -97,7 +97,7 @@ export class AddressForm extends BaseForm {
   }
 
   private _initPlaceTypeahead() {
-    this._placeQuery = this.address.streetAddress;
+    this._placeQuery = this.address.streetAddress1;
 
     this._placeSource = Observable.create((observer: any) => {
       observer.next(this._placeQuery);

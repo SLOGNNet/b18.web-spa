@@ -7,9 +7,9 @@ export class Address {
   @JsonMember
   name: string = '';
   @JsonMember
-  streetAddress: string = '';
+  streetAddress1: string = '';
   @JsonMember
-  secondStreetAddress: string = '';
+  streetAddress2: string = '';
   @JsonMember
   city: string = '';
   @JsonMember

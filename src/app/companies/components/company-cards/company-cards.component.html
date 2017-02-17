@@ -1,6 +1,6 @@
 <company-card
   *ngFor="let company of this.companies; trackBy:trackBy"
-  [company]="company"
+    [company]="company"
   [class.active]="isActive(company.id)"
   (select)="onCardSelect($event)">
 </company-card>
