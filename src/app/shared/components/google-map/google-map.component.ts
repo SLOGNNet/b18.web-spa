@@ -98,7 +98,7 @@ export class GoogleMapComponent implements OnChanges {
     }
 
     private _updateMap(longitude: number, latitude: number): void {
-        this._map.setCenter({longitude, latitude});
+        this._map.setCenter({lng: longitude, lat: latitude});
     }
 
     private _updateMarker(longitude: number, latitude: number): void {
@@ -107,7 +107,7 @@ export class GoogleMapComponent implements OnChanges {
             scaledSize: new google.maps.Size(this.markerSize, this.markerSize),
             origin: new google.maps.Point(0, 0)
         });
-        this._marker.setPosition({longitude, latitude});
+        this._marker.setPosition({lng: longitude, lat: latitude});
         this._marker.setVisible(true);
     }
 
