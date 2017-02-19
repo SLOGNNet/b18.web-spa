@@ -1,5 +1,12 @@
 <form [formGroup]="phoneForm" novalidate (ngSubmit)="onSubmit(phoneForm)" class="edit">
-  <div class="general-help-message">
+  <div class="general-error-message" *ngIf="isConfirmationFailed && phoneForm.pristine">
+    <div class="error-message">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      Incorrect number.<br/>
+      Please enter the code that you just got.
+    </div>
+  </div>
+  <div class="general-help-message" *ngIf="!isConfirmationFailed">
     A 5-digit Activation Code will be texted to your phone within a few minutes.<br/>
     Code example: 35746
   </div>

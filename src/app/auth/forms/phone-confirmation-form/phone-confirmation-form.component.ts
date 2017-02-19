@@ -11,6 +11,7 @@ import { AuthenticationService } from '../../services';
 }, BaseForm.metaData))
 export class PhoneConfirmationFormComponent extends BaseForm implements OnInit {
 
+  isConfirmationFailed: boolean;
   phoneForm: FormGroup;
 
   constructor(
@@ -26,6 +27,14 @@ export class PhoneConfirmationFormComponent extends BaseForm implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
+    this.authenticationService.confirmPhone(form.value).subscribe(
+      response => {
+        if (!response) {
+          this.isConfirmationFailed = true;
+          this.phoneForm.markAsPristine();
+        }
+      }
+    );
   }
 
 }
