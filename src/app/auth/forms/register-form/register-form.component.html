@@ -31,7 +31,7 @@
   </bd-form-switch>
   <bd-validator *ngIf="registerForm.controls.registerType.value === 'email'"
                 [component]="registerForm.controls.email"
-                [errorDefs]="{required: 'This field is required'}">
+                [errorDefs]="{required: 'This field is required', isValidMailFormat: 'Email entered not correct.'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Email'"
@@ -50,14 +50,19 @@
   <bd-validator [component]="registerForm.controls.password" [errorDefs]="{required: 'This field is required'}">
     <bd-input
       class="bd-form-control"
+      [type]="'password'"
       [labelText]="'Password'"
       formControlName="password">
     </bd-input>
   </bd-validator>
+  <bd-complexity-password-messenger *ngIf="registerForm.controls.password.value"
+                                    [component]="registerForm.controls.password">
+  </bd-complexity-password-messenger>
   <bd-validator [component]="registerForm.controls.retryPassword"
                 [errorDefs]="{required: 'This field is required', passwordsNotMatch: 'Passwords do not match'}">
     <bd-input
       class="bd-form-control"
+      [type]="'password'"
       [labelText]="'Retry Password'"
       formControlName="retryPassword">
     </bd-input>
@@ -67,7 +72,7 @@
     type="submit"
     color="primary"
     class="button"
-    [(disabled)]="!registerForm.valid"
+  
     [text]="'Next'">
   </bd-button>
 </form>

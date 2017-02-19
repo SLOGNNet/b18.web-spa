@@ -54,6 +54,8 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
+import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
+import { EmailValidator } from './validators';
 
 @NgModule({
   providers: [
@@ -68,7 +70,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormBuilder,
     FormValidationService,
     DatePipe,
-    HttpService
+    HttpService,
+    EmailValidator
   ],
   declarations: [
     BdFormButtonComponent,
@@ -115,7 +118,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     FilterContainer,
     AutocompleteFilter,
     FilterItem,
-    BdInfiniteScrollComponent
+    BdInfiniteScrollComponent,
+    ComplexityPasswordMessengerComponent
   ],
   imports: [
     CommonModule,
@@ -183,7 +187,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     FilterContainer,
     AutocompleteFilter,
     FilterItem,
-    BdInfiniteScrollComponent
+    BdInfiniteScrollComponent,
+    ComplexityPasswordMessengerComponent
   ]
 })
 export class SharedModule {

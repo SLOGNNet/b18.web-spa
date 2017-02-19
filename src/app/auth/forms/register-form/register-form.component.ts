@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';
+import { EmailValidator } from '../../../shared/validators';
 
 @Component(Object.assign({
   selector: 'bd-register-form',
@@ -36,7 +37,7 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
       middleName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       registerType: new FormControl('email', [Validators.required]),
-      email: new FormControl('',  [Validators.required]),
+      email: new FormControl('',  [Validators.required, EmailValidator.isValidMailFormat]),
       phone: new FormControl(''),
       password: new FormControl('',  [Validators.required]),
       retryPassword: new FormControl('',  [Validators.required, this.isEqualPassword.bind(this)])
@@ -45,13 +46,14 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.authenticationService.signUp(form.value).subscribe(
-      response => {
-        if (!response) {
-          console.log('error');
-        }
-      }
-    );
+console.log(form);
+    // this.authenticationService.signUp(form.value).subscribe(
+    //   response => {
+    //     if (!response) {
+    //       console.log('error');
+    //     }
+    //   }
+    // );
   }
 
   subscribeTypeChanges() {
@@ -61,7 +63,7 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
     const changes$ = typeCtrl.valueChanges;
     changes$.subscribe(type => {
       if (type === 'email') {
-        emailCtrl.setValidators([Validators.required]);
+        emailCtrl.setValidators([Validators.required, EmailValidator.isValidMailFormat]);
         phoneCtrl.setValidators(null);
       } else {
         emailCtrl.setValidators(null);
