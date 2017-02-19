@@ -140,7 +140,7 @@ module.exports = function (config) {
          */
         {
           test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader'],
+          loaders: ['to-string-loader', 'css-loader', 'postcss-loader'],
           exclude: [helpers.root('src/index.html')]
         },
 
@@ -237,7 +237,7 @@ module.exports = function (config) {
             failOnHint: false,
             resourcePath: 'src'
           },
-
+          postcss: {}
         }
       }),
 
