@@ -28,6 +28,26 @@ export class AuthenticationService {
     });
   }
 
+  signUp(model) {
+    return Observable.create((observer) => {
+      if (Object.keys(model).length)  {
+        this.router.navigate(['phone-confirmation']);
+      } else {
+        observer.next(false);
+      }
+    });
+  }
+
+  confirmPhone(model) {
+    return Observable.create((observer) => {
+      if (Object.keys(model).length)  {
+        this.router.navigate(['login']);
+      } else {
+        observer.next(false);
+      }
+    });
+  }
+
   logout() {
     this.loggedIn = false;
     this.loggedStateWasChanged.next(this.loggedIn);
