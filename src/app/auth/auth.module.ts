@@ -7,7 +7,8 @@ import {
   AuthWrapperComponent,
   LoginComponent,
   RegisterComponent,
-  PhoneConfirmationComponent
+  PhoneConfirmationComponent,
+  EmailConfirmationComponent
  } from './components';
 import {
   LoginFormComponent,
@@ -30,7 +31,8 @@ import { AuthenticationService } from './services';
     LoginFormComponent,
     RegisterFormComponent,
     PhoneConfirmationComponent,
-    PhoneConfirmationFormComponent
+    PhoneConfirmationFormComponent,
+    EmailConfirmationComponent
   ],
   providers: [
     AuthGuard,
