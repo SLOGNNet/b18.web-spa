@@ -12,6 +12,7 @@ export class EquipmentCardComponent {
     @Input() equipment: Equipment;
     public firstLetter: string;
     public lastLetter: string;
+    public statusText: boolean = false;
 
     get equipmentStatusColor(): string {
       return Equipment.getStatusColor(this.equipment.status);
@@ -29,8 +30,17 @@ export class EquipmentCardComponent {
       return Equipment.getShortTypeText(this.equipment.type);
     }
 
+    onEnter() {
+      this.statusText = true;
+    }
+
+    onLeave() {
+      this.statusText = false;
+    }
+
     ngOnInit() {
       this.firstLetter = this.equipmentShortTypeText.charAt(0);
       this.lastLetter = this.equipmentShortTypeText.charAt(1);
     }
+
 }

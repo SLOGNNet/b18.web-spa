@@ -1,6 +1,10 @@
-<div class="equipment-card-section">
+<div
+class="equipment-card-section"
+(mouseover)="onEnter()"
+(mouseleave)="onLeave()">
   <div class="left">
     <bd-initials-circle
+      class="initials-circle"
       [firstName]="firstLetter"
       [lastName]="lastLetter">
     </bd-initials-circle>
@@ -16,7 +20,7 @@
   <div class="driver-type">
     <span>{{driverType}}</span>
   </div>
-  <div class="changes">fluids change</div>
+  <div class="changes">{{this.equipment.equipmentNotification?.date | date:'MM/dd'}}</div>
   </div>
   <div class="right">
       <div class="tr-city">
@@ -27,12 +31,10 @@
         <span style="background: red" class="tr-city-circle"></span>
         <span class="tr-city-name">{{equipment.lastAddress}}</span>
   </div>
+      <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
       <span
       [style.background]="equipmentStatusColor"
-      class="status"
-      [bd-popover]="equipmentStatusText"
-      [popoverPlacement]="'left'"
-      [popoverOnHover]="true">
+      class="status">
       </span>
   </div>
 </div>

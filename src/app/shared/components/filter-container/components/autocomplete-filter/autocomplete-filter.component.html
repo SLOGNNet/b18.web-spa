@@ -6,6 +6,7 @@
     placeholder="Enter data">
     <i
       bd-suffix
+      [hidden]="!isSearchMode"
       (click)="clearField($event)"
       class="icon-minus"
       aria-hidden="true">
@@ -13,9 +14,9 @@
   </bd-input>
   <div
     class="autocomplete-section-header">
-    <span *ngIf="selectedItems.length <= 1 && !selectedItemsCache.length">ALL VALUES</span>
+    <span *ngIf="!selectedItems.length && !selectedItemsCache.length">ALL VALUES</span>
     <button
-      *ngIf="selectedItemsCache.length > 1 || selectedItems.length > 1"
+      *ngIf="selectedItemsCache.length || selectedItems.length"
       (click)="clearSelectedItems($event)"
       [disabled]="isClearButtonDisabled">
       Clear selected items

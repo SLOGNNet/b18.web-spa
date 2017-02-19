@@ -21,6 +21,13 @@ function createStatusColors() {
 const statusColors = createStatusColors();
 
 @JsonObject
+export class EquipmentNotification {
+  @JsonMember
+  message: string = '';
+  date: Date;
+}
+
+@JsonObject
 export class Equipment {
   private static statusText = ['Inactive', 'Active', 'NotAvaliable'];
   private static typeText = ['Trailer', 'PowerUnit'];
@@ -59,6 +66,9 @@ export class Equipment {
   lastTripNumber: number;
   @JsonMember
   lastAddress: string = '';
+  @JsonMember
+  equipmentNotification: EquipmentNotification;
+
 
 
 
