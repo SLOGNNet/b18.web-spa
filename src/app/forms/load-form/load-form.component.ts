@@ -64,12 +64,12 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.load.customer = null;
   }
 
-  onAddNewCustomer() {
+  onAddNewCompany() {
     this.load.customer = Company.create();
     this.companyViewMode = ViewMode.Edit;
   }
 
-  onCustomerSave(customer: Company) {
+  onCompanySave(customer: Company) {
     this.load.customer = customer;
     this.companyService.create(customer);
     this.companyViewMode = ViewMode.View;
@@ -100,7 +100,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     });
   }
 
-  public onCustomerSelect(company: Company) {
+  public onCompanySelect(company: Company) {
    this.load.customer = company;
    this.companyViewMode = ViewMode.ViewCollapsed;
   }

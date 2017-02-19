@@ -32,7 +32,7 @@ export class LoadService {
       .flatMap((load) =>
         this.companyService
           .getDetails(load.companyId)
-          .map(company => Object.assign(load, { company }))
+          .map(company => Object.assign(load, { customer: company }))
       );
   };
 

@@ -1,4 +1,3 @@
-import { Address } from './address';
 import { Facility } from './facility';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
@@ -45,8 +44,6 @@ export class Stop {
 
   @JsonMember
   id: number;
-  @JsonMember({ elements: Address })
-  address: Address;
   @JsonMember
   notes: string = '';
   @JsonMember
@@ -72,7 +69,6 @@ export class Stop {
     result.plannedArrivalAt = new Date();
     result.plannedDepartureAt = new Date();
     result.type = type;
-    result.address = Address.create();
     result.facility = Facility.create();
     return result;
   }
