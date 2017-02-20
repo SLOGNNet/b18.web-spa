@@ -4,7 +4,6 @@ import { Component, Input, forwardRef,
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService } from '../../../../services';
 import { difference, without } from 'lodash';
 
 class PageQuery {
@@ -24,6 +23,8 @@ export class AutocompleteFilter extends BaseFilter {
   @ViewChild('bdInput') bdInput;
   @Input() itemTemplate: TemplateRef<any>;
   @Input() scrolledDown: boolean = false;
+  @Input() countPerPage: number = 20;
+  @Input() debounceTime: number = 200;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
@@ -31,19 +32,18 @@ export class AutocompleteFilter extends BaseFilter {
   private isAllLoaded = false;
   private isLoading = false;
   private page = 1;
-  private countPerPage: number = 20;
   private query = '';
   private isSearchFieldFocused: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
-  constructor(private customerService: CustomerService,
-    private cdr: ChangeDetectorRef,
+  constructor(private cdr: ChangeDetectorRef,
     private elRef: ElementRef) {
     super();
   }
 
   public ngOnInit() {
+    debugger;
     this.setupAutocomplete();
     this.onAutocompleteChange('');
   }
@@ -118,7 +118,7 @@ export class AutocompleteFilter extends BaseFilter {
 
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
-      .debounceTime(200)
+      //.debounceTime(this.debounceTime)
       .distinctUntilChanged();
 
     const $request = Observable.combineLatest(
@@ -131,13 +131,15 @@ export class AutocompleteFilter extends BaseFilter {
     });
     $request.subscribe((pageQuery: PageQuery) => {
       this.isLoading = true;
+      debugger;
       this.page = pageQuery.page;
       this.cdr.markForCheck();
     });
-    const $response = $request.delay(3000)
+    const $response = $request
       .switchMap((pageQuery: PageQuery) => { return this.autocompleteSearchSource(pageQuery.query, pageQuery.page, pageQuery.count); });
 
     $response.subscribe((matches: any[]) => {
+      debugger;
       this.isLoading = false;
       this.isAllLoaded = matches.length !== this.countPerPage;
       this.selectedItems = this.merge(this.selectedItems, matches);
