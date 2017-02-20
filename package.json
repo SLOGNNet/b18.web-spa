@@ -135,6 +135,7 @@
     "karma-remap-coverage": "^0.1.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "2.0.2",
+    "live-server": "^1.2.0",
     "node-sass": "^3.10.1",
     "npm-run-all": "^4.0.1",
     "parse5": "^2.2.2",
