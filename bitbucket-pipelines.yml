@@ -15,3 +15,4 @@ pipelines:
           - npm run ci
           - npm run build:libs
           - npm run build:prod
+          - npm run e2e
