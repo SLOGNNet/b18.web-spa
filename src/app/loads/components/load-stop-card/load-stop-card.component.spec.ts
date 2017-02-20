@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { LoadStopCardComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
+import { TestData } from'../../../shared/test/testdata';
 import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
 import { Load, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
@@ -124,13 +125,13 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('TR1212');
   });
 
-  // it('should display date in right format', () => {
-  //   component.load = testLoad;
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.start-date'));
-  //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('TR1212');
-  // });
+  it('should display date in right format', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.start-date'));
+    expect(element).not.toBeNull();
+    expect(element.nativeElement.textContent).toMatch('01/09');
+  });
 
   // it('should display stops line when stops length is greater than 1', () => {
   //   component.load = testLoad;
@@ -139,22 +140,14 @@ fdescribe('LoadStopCardComponent', () => {
   //   expect(component.load.stops.length).toBeGreaterThan(1);
   // });
 
-
-  // it('should display firstStop as first element of stops collection', () => {
-  //   component.load = testLoad;
-  //   fixture.detectChanges();
-  //   let firstStop = component.load.stops[0];
-  //   expect(firstStop).toMatch(component.firstStop);
-  // });
-
   //
   it('should handle click', () => {
     component.load = testLoad;
-    fixture.detectChanges();
-    spyOn(fixture.componentInstance, 'onClick');
-    let componentContainer = fixture.nativeElement;
-
-    componentContainer.click();
-    expect(fixture.componentInstance.onClick).toHaveBeenCalledWith(testLoad);
-  });
+    spyOn(component, 'onClick');
+    let element = fixture.debugElement.query(By.css('.load-stop-card-section'));
+    element.nativeElement.click();
+    fixture.whenStable().then(() => {
+          expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
+    });
+    });
 });
