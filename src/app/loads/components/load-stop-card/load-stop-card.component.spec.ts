@@ -1,23 +1,19 @@
 import { async, TestBed, ComponentFixture, inject } from '@angular/core/testing';
-import { createGenericTestComponent } from '../../../shared/test/common';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { LoadStopCardComponent } from '.';
-import { StopsLineComponent, StopPopoverComponent } from '../../../shared/components/stops-line';
-import { BdPopover, BdPopoverContent } from '../../../shared/directives/bd-popover';
 import { SharedModule } from '../../../shared/shared.module';
 import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
-import { Load, Customer, Trip, Driver, Address, Equipment } from '../../../models';
+import { Load, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
-// const createTestComponent = (html: string) =>
-//     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
 const mockLoad = new Load(),
 testTrip = new Trip(),
 testDriver = new Driver(),
 testAddress = Address.create(),
-testCustomer = new Customer();
-
+testCustomer = new Customer(),
+testStop = new Stop();
+// test address
 testAddress.id = 1,
 testAddress.name = 'Main Office',
 testAddress.streetAddress = '14701 Charlson Road, United States',
@@ -27,7 +23,7 @@ testAddress.state = 'MN',
 testAddress.zip = '55347',
 testAddress.lat = 40.795675,
 testAddress.lng = -73.93600099999998,
-//
+// test customer
 testCustomer.id = 1,
 testCustomer.mc = '384859',
 testCustomer.addresses = [testAddress, testAddress],
@@ -36,31 +32,37 @@ testCustomer.contacts = [null],
 testCustomer.email = 'carrier.services@chrobinson.com',
 testCustomer.status = null,
 testCustomer.type = null,
-//
+// test driver
 testDriver.id = 1,
 testDriver.firstName = 'John',
 testDriver.lastName = 'Doe',
 testDriver.powerUnitAssigned = Equipment.create(),
 testDriver.trailerAssigned = Equipment.create(),
+// test trip
 testTrip.id = 1,
-testTrip.number = 10,
+testTrip.number = 1212,
 testTrip.truckNumber = 1010,
 testTrip.trailerNumber = 1111,
 testTrip.driver = testDriver,
+// stops
+testStop.id = 1,
+testStop.notes= 'notes',
+testStop.type = StopTypes.Pickup,
+testStop.address = testAddress,
+testStop.date = new Date(2017, 0, 9),
+testStop.facility = Facility.create(),
+testStop.status = StopStatuses.InProgress,
+// test load
 mockLoad.id = 1,
 mockLoad.customer = testCustomer,
 mockLoad.systemLoadNumber = 100500,
-mockLoad.currentTrip = [testTrip];
-mockLoad.stops = [];
+mockLoad.currentTrip = [testTrip],
+mockLoad.stops = [testStop];
 
 fdescribe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
       component: LoadStopCardComponent,
-      testLoad: Load = mockLoad,
-      testTrip: Trip,
-      testDriver: Driver,
-      testCustomer: Customer,
-      testAddress: Address;
+      testLoad: Load;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
@@ -75,8 +77,8 @@ fdescribe('LoadStopCardComponent', () => {
     ]});
     fixture = TestBed.createComponent(LoadStopCardComponent);
     component = fixture.componentInstance;
+    testLoad = mockLoad;
     //
-
   }));
 
   it('should have a component instance', () => {
@@ -90,67 +92,69 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('LD100500');
   });
 
-  //
-  // it('should display trip data', () => {
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.bottom'));
-  //   console.log(element);
-  //   expect(element).not.toBeNull();
-  //   //expect(element.nativeElement.textContent).toMatch('LD100500');
-  // });
-  //
-  // it('should display driver firstname', () => {
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.firstName'));
-  //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('John');
-  // });
-  //
-  // it('should display truck number', () => {
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.truckNumber'));
-  //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('Tk1010');
-  // });
-  //
-  // it('should display trailer number', () => {
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.trailerNumber'));
-  //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('TI1111');
-  // });
-  //
-  // it('should display trip number', () => {
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.tripNumber'));
-  //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('TR2222');
-  // });
-  //
+  it('should display driver firstname', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.firstName'));
+    expect(element).not.toBeNull();
+    expect(element.nativeElement.textContent).toMatch('John');
+  });
+
+  it('should display truck number', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.truckNumber'));
+    expect(element).not.toBeNull();
+    expect(element.nativeElement.textContent).toMatch('Tk1010');
+  });
+
+  it('should display trailer number', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.trailerNumber'));
+    expect(element).not.toBeNull();
+    expect(element.nativeElement.textContent).toMatch('TI1111');
+  });
+
+  it('should display trip number', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.tripNumber'));
+    expect(element).not.toBeNull();
+    expect(element.nativeElement.textContent).toMatch('TR1212');
+  });
+
   // it('should display date in right format', () => {
+  //   component.load = testLoad;
   //   fixture.detectChanges();
   //   let element = fixture.debugElement.query(By.css('.start-date'));
   //   expect(element).not.toBeNull();
-  //   expect(element.nativeElement.textContent).toMatch('TR2222');
+  //   expect(element.nativeElement.textContent).toMatch('TR1212');
   // });
-  //
-  //
-  // it('should handle click', () => {
-  //   const testComponent = createTestComponent(`<load-stop-card (click)="onClick($event)"></load-stop-card>`);
-  //   spyOn(testComponent.componentInstance, 'onClick');
-  //   let componentContainer = testComponent.nativeElement;
-  //
-  //   componentContainer.click();
-  //   expect(testComponent.componentInstance.onClick).toHaveBeenCalledWith(testLoad);
-  //   //let buttonDebugElement = testComponent.debugElement.query(By.css('button'));
-  //    //buttonDebugElement.nativeElement.click();
-  //   //  expect(testComponent.clickCount).toBe(1);
-  //
-  // });
-});
 
-// @Component({selector: 'bd-test', template: ''})
-// class TestComponent {
-//   load = testLoad;
-//   onClick = () => {};
-// }
+  // it('should display stops line when stops length is greater than 1', () => {
+  //   component.load = testLoad;
+  //   fixture.detectChanges();
+  //   let element = fixture.debugElement.query(By.css('.right'));
+  //   expect(component.load.stops.length).toBeGreaterThan(1);
+  // });
+
+
+  // it('should display firstStop as first element of stops collection', () => {
+  //   component.load = testLoad;
+  //   fixture.detectChanges();
+  //   let firstStop = component.load.stops[0];
+  //   expect(firstStop).toMatch(component.firstStop);
+  // });
+
+  //
+  it('should handle click', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    spyOn(fixture.componentInstance, 'onClick');
+    let componentContainer = fixture.nativeElement;
+
+    componentContainer.click();
+    expect(fixture.componentInstance.onClick).toHaveBeenCalledWith(testLoad);
+  });
+});
