@@ -12,12 +12,51 @@ import { Load, Customer, Trip, Driver, Address, Equipment } from '../../../model
 // const createTestComponent = (html: string) =>
 //     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
+const mockLoad = new Load(),
+testTrip = new Trip(),
+testDriver = new Driver(),
+testAddress = Address.create(),
+testCustomer = new Customer();
 
+testAddress.id = 1,
+testAddress.name = 'Main Office',
+testAddress.streetAddress = '14701 Charlson Road, United States',
+testAddress.city = 'Eden Prairie',
+testAddress.phone = '(925) 937-8500',
+testAddress.state = 'MN',
+testAddress.zip = '55347',
+testAddress.lat = 40.795675,
+testAddress.lng = -73.93600099999998,
+//
+testCustomer.id = 1,
+testCustomer.mc = '384859',
+testCustomer.addresses = [testAddress, testAddress],
+testCustomer.name = 'CH ROBINSON COMPANY INC',
+testCustomer.contacts = [null],
+testCustomer.email = 'carrier.services@chrobinson.com',
+testCustomer.status = null,
+testCustomer.type = null,
+//
+testDriver.id = 1,
+testDriver.firstName = 'John',
+testDriver.lastName = 'Doe',
+testDriver.powerUnitAssigned = Equipment.create(),
+testDriver.trailerAssigned = Equipment.create(),
+testTrip.id = 1,
+testTrip.number = 10,
+testTrip.truckNumber = 1010,
+testTrip.trailerNumber = 1111,
+testTrip.driver = testDriver,
+mockLoad.id = 1,
+mockLoad.customer = testCustomer,
+mockLoad.systemLoadNumber = 100500,
+mockLoad.currentTrip = [testTrip];
+mockLoad.stops = [];
 
 fdescribe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
       component: LoadStopCardComponent,
-      testLoad: Load,
+      testLoad: Load = mockLoad,
       testTrip: Trip,
       testDriver: Driver,
       testCustomer: Customer,
@@ -37,46 +76,6 @@ fdescribe('LoadStopCardComponent', () => {
     fixture = TestBed.createComponent(LoadStopCardComponent);
     component = fixture.componentInstance;
     //
-    const testLoad = new Load(),
-    testTrip = new Trip(),
-    testDriver = new Driver(),
-    testAddress = Address.create(),
-    testCustomer = new Customer();
-
-    testAddress.id = 1,
-    testAddress.name = 'Main Office',
-    testAddress.streetAddress = '14701 Charlson Road, United States',
-    testAddress.city = 'Eden Prairie',
-    testAddress.phone = '(925) 937-8500',
-    testAddress.state = 'MN',
-    testAddress.zip = '55347',
-    testAddress.lat = 40.795675,
-    testAddress.lng = -73.93600099999998,
-    //
-    testCustomer.id = 1,
-    testCustomer.mc = '384859',
-    testCustomer.addresses = [testAddress, testAddress],
-    testCustomer.name = 'CH ROBINSON COMPANY INC',
-    testCustomer.contacts = [null],
-    testCustomer.email = 'carrier.services@chrobinson.com',
-    testCustomer.status = null,
-    testCustomer.type = null,
-    //
-    testDriver.id = 1,
-    testDriver.firstName = 'John',
-    testDriver.lastName = 'Doe',
-    testDriver.powerUnitAssigned = Equipment.create(),
-    testDriver.trailerAssigned = Equipment.create(),
-    testTrip.id = 1,
-    testTrip.number = 10,
-    testTrip.truckNumber = 1010,
-    testTrip.trailerNumber = 1111,
-    testTrip.driver = testDriver,
-    testLoad.id = 1,
-    testLoad.customer = testCustomer,
-    testLoad.systemLoadNumber = 100500,
-    testLoad.currentTrip = [testTrip];
-    testLoad.stops = [];
 
   }));
 
