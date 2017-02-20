@@ -17,6 +17,7 @@ fdescribe('autocomplete-filter', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({imports: [SharedModule]});
+    Observable.prototype.debounceTime = function () { return this; };
     fixture = TestBed.createComponent(AutocompleteFilter);
     component = fixture.componentInstance;
     searchService = {
@@ -39,22 +40,16 @@ fdescribe('autocomplete-filter', () => {
       debugger;
       component.autocompleteSearchSource = searchService.searchSource;
       component.countPerPage = countPerPage;
+      component.debounceTime = 0;
       fixture.detectChanges();
     });
 
-    it('should start load data with empty querty', async(() => {
-      fixture.whenStable().then(() => {
-        expect(searchService.searchSource.calls.count()).toBe(1);
-        expect(searchService.searchSource).toHaveBeenCalledWith('', 0, countPerPage);
-      });
+    it('should start load data with empty query', fakeAsync(() => {
+      tick();
+      expect(searchService.searchSource.calls.count()).toBe(1);
+      expect(searchService.searchSource).toHaveBeenCalledWith('', 0, countPerPage);
     }));
 
-    it('should start load data with empty querty', async(() => {
-      fixture.whenStable().then(() => {
-        expect(searchService.searchSource.calls.count()).toBe(1);
-        expect(searchService.searchSource).toHaveBeenCalledWith('', 0, countPerPage);
-      });
-    }));
 
     it('should start load data with query', fakeAsync(() => {
       page.addPageElements();
@@ -62,19 +57,20 @@ fdescribe('autocomplete-filter', () => {
       page.queryInput.value = query;
       fireEvent(page.queryInput, 'keyup');
       fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        expect(searchService.searchSource.calls.count()).toBe(1);
-        expect(searchService.searchSource).toHaveBeenCalledWith(query, 0, countPerPage);
-      });
+      tick();
+      expect(searchService.searchSource.calls.count()).toBe(2);
+      expect(searchService.searchSource).toHaveBeenCalledWith(query, 0, countPerPage);
     }));
 
-    it('should start load next page when event emmitted', async(() => {
+
+    it('should start load next page when event requested', fakeAsync(() => {
+      tick();
       component.scrolledDown = true;
-            fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        expect(searchService.searchSource.calls.count()).toBe(1);
-        expect(searchService.searchSource).toHaveBeenCalledWith('', 1, countPerPage);
-      });
+      console.log('adawda akwdjladjew awdjawjdklja jawdlawjdlkjawl')
+      fixture.detectChanges();
+      tick();
+      expect(searchService.searchSource.calls.count()).toBe(2);
+      expect(searchService.searchSource).toHaveBeenCalledWith('', 1, countPerPage);
     }));
 
     // it('should load next page on request',  fakeAsync(() => {

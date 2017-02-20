@@ -118,7 +118,7 @@ export class AutocompleteFilter extends BaseFilter {
 
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
-      //.debounceTime(this.debounceTime)
+      .debounceTime(this.debounceTime)
       .distinctUntilChanged();
 
     const $request = Observable.combineLatest(
