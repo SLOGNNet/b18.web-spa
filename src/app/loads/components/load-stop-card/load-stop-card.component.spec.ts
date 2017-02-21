@@ -48,14 +48,14 @@ testStop1.id = 1;
 testStop1.notes = 'notes';
 testStop1.type = StopTypes.Pickup;
 testStop1.address = testAddress;
-testStop1.date = null;
+testStop1.date = new Date(2017, 0, 9);
 testStop1.facility = Facility.create();
 testStop1.status = StopStatuses.InProgress;
 testStop2.id = 2;
 testStop2.notes = 'notes';
 testStop2.type = StopTypes.Pickup;
 testStop2.address = testAddress;
-testStop2.date = null;
+testStop2.date = new Date(2017, 1, 10);
 testStop2.facility = Facility.create();
 testStop2.status = StopStatuses.InProgress;
 // test load
