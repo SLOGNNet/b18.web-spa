@@ -1,4 +1,4 @@
-@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2, $bg-color: $black) {
+@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2) {
   //sass-lint:disable no-vendor-prefixes
   display: -webkit-box;
   overflow: hidden;
