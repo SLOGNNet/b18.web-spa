@@ -5,10 +5,10 @@ class="customer-card-section"
 (click)="onClick()">
   <div class="top">
     <div class="left">
-      <span>{{this.croppedCustomerName}}</span>
+      <span class="crooped-customer-name">{{this.croppedCustomerName}}</span>
     </div>
     <div class="middle">
-      <span>{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
+      <span class="customer-contacts-full-name">{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
     </div>
     <div class="right">
       <div class="loads-container">
@@ -27,10 +27,10 @@ class="customer-card-section"
     </div>
     <div class="middle">
       <div class="position">{{customer.contacts[0].position}}</div>
-      <div>{{customer.addresses[0].phone}}</div>
+      <div class="customer-address-phone">{{customer.addresses[0].phone}}</div>
     </div>
     <div class="right">
-      <span *ngIf="statusText" [style.color]="customerStatusColor" class="status-text">{{customerStatusText}}</span>
+      <span [hidden]="!statusText" [style.color]="customerStatusColor" class="status-text">{{customerStatusText}}</span>
         <span
         [style.background]="customerStatusColor"
         class="status">

@@ -10,11 +10,10 @@ import { Load, Customer, Address, Contact, CustomerStatuses, CustomerTypes, Load
 
 const mockCustomer = new Customer(),
   testContact = new Contact(),
-  testCustomer = new Customer(),
   testLoad = new Load(),
   testAddress = new Address();
 
-// test address
+  // test address
   testAddress.phone = '(925) 937-8500',
 
   // test contact
@@ -23,12 +22,11 @@ const mockCustomer = new Customer(),
   testContact.position = 'Sales manager',
   // test load
   testLoad.systemLoadNumber = 209282402,
-  testLoad.status = LoadStatuses.Booked,
+  testLoad.status = LoadStatuses.Completed,
   // test customer
   mockCustomer.name = 'CH ROBINSON COMPANY INC',
   mockCustomer.addresses = [testAddress],
   mockCustomer.contacts = [testContact],
-  mockCustomer.email = 'carrier.services@chrobinson.com',
   mockCustomer.status = CustomerStatuses.Active,
   mockCustomer.mc = '384859',
   mockCustomer.loads = [testLoad];
@@ -50,6 +48,7 @@ fdescribe('CustomerCardComponent', () => {
     });
     fixture = TestBed.createComponent(CustomerCardComponent);
     component = fixture.componentInstance;
+    this.testCustomer = mockCustomer;
     //
 
   }));
@@ -65,11 +64,61 @@ fdescribe('CustomerCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('CH ROBINSON COMPANY INC');
   });
 
+  it('should display customer contacts full name', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.customer-contacts-full-name'));
+    console.log(element, 'element');
+    expect(element.nativeElement.textContent).toMatch('Emma Watson');
+  });
+
   it('should display customer mc', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-mc'));
     expect(element.nativeElement.textContent).toMatch('384859');
+  });
+
+  it('should display right status color', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status'));
+    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+  });
+
+  it('should display right status text color', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status-text'));
+    expect(element.nativeElement.getAttribute('style')).toContain('color: rgb(133, 209, 131)');
+  });
+
+  it('should display right status text', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status-text'));
+    expect(element.nativeElement.textContent).toMatch(Customer.getStatusText(CustomerStatuses.Active));
+  });
+
+  it('should display right address phone', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.customer-address-phone'));
+    expect(element.nativeElement.textContent).toBe('(925) 937-8500');
+  });
+
+  it('should display right crooped customer name', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.crooped-customer-name'));
+    expect(element.nativeElement.textContent).toBe('CHR');
+  });
+
+  it('should display system load number', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.load-name'));
+    expect(element.nativeElement.textContent).toMatch('209282402');
   });
 
   it('should display customer contact position', () => {
