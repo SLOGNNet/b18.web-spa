@@ -15,6 +15,7 @@
 
   .left {
     width: 30%;
+    height: 70px;
 
     .driver-full-name {
       overflow: hidden;
@@ -39,7 +40,7 @@
     height: 70px;
     padding-left: $default-margin;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     .driver-phone {
       overflow: hidden;
@@ -70,7 +71,7 @@
       .tr-city-circle {
         width: 10px;
         height: 10px;
-        margin: 3px 5px 0 0;
+        margin: 2px 5px 0 0;
         background: $black;
         border-radius: 50%;
       }
