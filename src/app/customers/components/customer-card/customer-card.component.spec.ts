@@ -65,6 +65,13 @@ fdescribe('CustomerCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('CH ROBINSON COMPANY INC');
   });
 
+  it('should display customer mc', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.customer-mc'));
+    expect(element.nativeElement.textContent).toMatch('384859');
+  });
+
   it('should display customer contact position', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
@@ -77,7 +84,6 @@ fdescribe('CustomerCardComponent', () => {
     spyOn(component, 'onClick');
 
     let element = fixture.debugElement.query(By.css('.customer-card-section'));
-    console.log(component.customer);
     element.nativeElement.click();
 
     fixture.whenStable().then(() => {
