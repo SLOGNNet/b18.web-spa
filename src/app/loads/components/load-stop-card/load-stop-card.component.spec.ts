@@ -3,9 +3,9 @@ import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { LoadStopCardComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
-import { TestData } from'../../../shared/test/testdata';
+import TestData from'../../../shared/test/testdata';
 import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
-import { Load, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
+import { Load, LoadStatuses, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
 
 const mockLoad = new Load(),
@@ -13,7 +13,8 @@ testTrip = new Trip(),
 testDriver = new Driver(),
 testAddress = Address.create(),
 testCustomer = new Customer(),
-testStop = new Stop();
+testStop1 = Stop.create(StopTypes.Pickup),
+testStop2 = Stop.create(StopTypes.Pickup);
 // test address
 testAddress.id = 1,
 testAddress.name = 'Main Office',
@@ -46,19 +47,29 @@ testTrip.truckNumber = 1010,
 testTrip.trailerNumber = 1111,
 testTrip.driver = testDriver,
 // stops
-testStop.id = 1,
-testStop.notes= 'notes',
-testStop.type = StopTypes.Pickup,
-testStop.address = testAddress,
-testStop.date = new Date(2017, 0, 9),
-testStop.facility = Facility.create(),
-testStop.status = StopStatuses.InProgress,
+testStop1.id = 1,
+testStop1.notes = 'notes',
+testStop1.type = StopTypes.Pickup,
+testStop1.address = testAddress,
+testStop1.date = null,
+testStop1.facility = Facility.create(),
+testStop1.status = StopStatuses.InProgress,
+testStop2.id = 2,
+testStop2.notes = 'notes',
+testStop2.type = StopTypes.Pickup,
+testStop2.address = testAddress,
+testStop2.date = null,
+testStop2.facility = Facility.create(),
+testStop2.status = StopStatuses.InProgress,
 // test load
 mockLoad.id = 1,
 mockLoad.customer = testCustomer,
 mockLoad.systemLoadNumber = 100500,
+mockLoad.customerLoadNumber = 500100,
 mockLoad.currentTrip = [testTrip],
-mockLoad.stops = [testStop];
+mockLoad.status = LoadStatuses.Completed,
+mockLoad.stops = [ testStop1, testStop2 ];
+// mockLoad.stops[0].date = new Date();
 
 fdescribe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
@@ -93,11 +104,18 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('LD100500');
   });
 
+  it('should display customer load number', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.customer-load-number'));
+    expect(element.nativeElement.textContent).toMatch('500100');
+  });
+
+
   it('should display driver firstname', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstName'));
-    expect(element).not.toBeNull();
     expect(element.nativeElement.textContent).toMatch('John');
   });
 
@@ -105,7 +123,6 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.truckNumber'));
-    expect(element).not.toBeNull();
     expect(element.nativeElement.textContent).toMatch('Tk1010');
   });
 
@@ -113,7 +130,6 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.trailerNumber'));
-    expect(element).not.toBeNull();
     expect(element.nativeElement.textContent).toMatch('TI1111');
   });
 
@@ -121,7 +137,6 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.tripNumber'));
-    expect(element).not.toBeNull();
     expect(element.nativeElement.textContent).toMatch('TR1212');
   });
 
@@ -129,16 +144,46 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.start-date'));
-    expect(element).not.toBeNull();
     expect(element.nativeElement.textContent).toMatch('01/09');
   });
 
-  // it('should display stops line when stops length is greater than 1', () => {
-  //   component.load = testLoad;
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.right'));
-  //   expect(component.load.stops.length).toBeGreaterThan(1);
-  // });
+  it('should display right status text', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status'));
+    expect(element.nativeElement.textContent).toMatch(Load.getStatusText(LoadStatuses.Completed));
+  });
+
+   it('should display right status color', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status'));
+    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+  });
+
+
+
+  it('should display stops line when stops length is greater than 1', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.right'));
+    expect(component.load.stops.length).toBeGreaterThan(1);
+  });
+
+
+  it('should display right address of first stop in load', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.firstStopAddress'));
+    expect(element.nativeElement.textContent).toMatch('Eden Prairie, MN');
+  });
+
+  it('should display right address of last stop in load', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.lastStopAddress'));
+    expect(element.nativeElement.textContent).toMatch('Eden Prairie, MN');
+  });
 
   //
   it('should handle click', () => {
@@ -146,8 +191,8 @@ fdescribe('LoadStopCardComponent', () => {
     spyOn(component, 'onClick');
     let element = fixture.debugElement.query(By.css('.load-stop-card-section'));
     element.nativeElement.click();
-    fixture.whenStable().then(() => {
-          expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
-    });
+      fixture.whenStable().then(() => {
+            expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
+      });
     });
 });

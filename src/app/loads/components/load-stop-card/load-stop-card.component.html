@@ -14,12 +14,12 @@
         </bd-popover-content>
       </span>
     </span>
-    <span>{{load.customerLoadNumber}}</span>
+    <span class="customer-load-number">{{load.customerLoadNumber}}</span>
   </div>
   <div class="right" *ngIf="this.load.stops.length > 1">
     <div class="distance-wrapper">
       <span class="firstStopAddress">{{firstStop.address.city}}, {{firstStop.address.state}}</span>
-      <span class="firstStopAddress">{{lastStop.address.city}}, {{lastStop.address.state}}</span>
+      <span class="lastStopAddress">{{lastStop.address.city}}, {{lastStop.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
