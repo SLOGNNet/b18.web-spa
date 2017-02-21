@@ -15,7 +15,7 @@
     background: $light-blue;
 
     .message {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $light-blue);
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
     }
   }
 
@@ -25,7 +25,7 @@
   }
 
   .message {
-    @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
+    @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
     margin-bottom: 4px;
   }
 
@@ -82,7 +82,7 @@
     }
 
     .message {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 3, $bg-color: $closable-card-ellipsis);
+      @include multi-line-ellipsis($line-height: 18px, $line-count: 3);
       background: inherit;
       color: $white;
       margin-bottom: 4px;

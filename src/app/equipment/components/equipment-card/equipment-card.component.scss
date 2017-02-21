@@ -76,7 +76,7 @@
       }
 
       .tr-city-name {
-        @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $white);
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
         width: 80%;
         text-align: left;
         margin-left: 5px;
@@ -112,7 +112,7 @@
     .right {
       .tr-city {
         .tr-city-name {
-          @include multi-line-ellipsis($line-height: 18px, $line-count: 2, $bg-color: $light-blue);
+          @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
           width: 80%;
           text-align: left;
         }
