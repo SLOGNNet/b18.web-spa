@@ -11,9 +11,9 @@ export class Trip {
   @JsonMember
   number: number = 0;
   @JsonMember
-  truckEquipment: Equipment;
+  truck: Equipment;
   @JsonMember
-  trailerEquipment: Equipment;
+  trailer: Equipment;
   @JsonMember({ elements: DriverTeam })
   driverTeams: Array<DriverTeam>;
 

@@ -42,17 +42,13 @@ export class Driver {
   @JsonMember
   id: number = 0;
   @JsonMember
-  firstName: string = '';
-  @JsonMember
-  lastName: string = '';
-  @JsonMember
   dateOfBirth: Date = null;
   @JsonMember
   ssn: string = '';
   @JsonMember({ elements: Equipment })
-  powerUnitAssigned: Equipment;
+  currentTruck: Equipment;
   @JsonMember({ elements: Equipment })
-  trailerAssigned: Equipment;
+  currentTrailer: Equipment;
   @JsonMember
   paymentOption: DriverPaymentOptions;
   @JsonMember
@@ -82,8 +78,8 @@ export class Driver {
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
-    result.powerUnitAssigned = Equipment.create();
-    result.trailerAssigned = Equipment.create();
+    result.currentTruck = Equipment.create();
+    result.currentTrailer = Equipment.create();
     result.paymentOption = DriverPaymentOptions.PerMile;
     result.contact = Contact.create();
     result.type = DriverTypes.CompanyDriver;

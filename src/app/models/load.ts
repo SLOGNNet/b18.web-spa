@@ -47,9 +47,9 @@ export class Load {
   @JsonMember
   addressId: number;
   @JsonMember
-  systemLoadNo: number;
+  systemLoadNo: string;
   @JsonMember
-  customerLoadNo: number;
+  customerLoadNo: string;
   @JsonMember
   type: LoadType;
   @JsonMember
@@ -75,7 +75,7 @@ export class Load {
   @JsonMember({ elements: Trip })
   trips: Array<Trip>;
   @JsonMember({ elements: Trip })
-  currentTrip: Array<Trip>;
+  currentTrips: Array<Trip>;
   @JsonMember({ elements: Stop })
   stops: Array<Stop>;
   @JsonMember({ elements: Document })
@@ -90,7 +90,7 @@ export class Load {
     result.requiredPowerUnitType = PowerUnitTypes.Tractor;
     result.requiredTrailerType = TrailerTypes.DryVan53;
     result.trips = [Trip.create()];
-    result.currentTrip = [Trip.create()];
+    result.currentTrips = [Trip.create()];
     result.stops = [Stop.create(StopTypes.Dropoff)];
     result.documents = [];
     result.commodities = new Array<Commodity>();

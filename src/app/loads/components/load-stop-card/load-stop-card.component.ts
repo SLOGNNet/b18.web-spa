@@ -23,8 +23,8 @@ export class LoadStopCardComponent {
     return Load.getStatusText(this.load.status);
   }
 
-  get currentTrip() {
-    return this.load.currentTrip[0];
+  get currentTrips() {
+    return this.load.currentTrips[0];
   }
 
   get firstStop() {

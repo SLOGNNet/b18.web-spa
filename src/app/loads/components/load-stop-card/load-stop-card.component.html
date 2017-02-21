@@ -34,30 +34,30 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{currentTrip.driverTeams[0].drivers[0].firstName}}</span>
+    <span class="link">{{currentTrips.driverTeams[0].drivers[0].firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
-      Tk{{currentTrip.truckEquipment.number}}
+      Tk{{currentTrips.truck.number}}
       <bd-popover-content
         #driverPopover
         placement="auto"
         [width]="popupWidth"
         [horizontalOffset]="-10"
         [closeOnClickOutside]="closeOnClickOutside">
-        <driver-popover [driver]="currentTrip.driverTeams[0].drivers[0]"></driver-popover>
+        <driver-popover [driver]="currentTrips.driverTeams[0].drivers[0]"></driver-popover>
       </bd-popover-content>
       </span>
     <span class="link">|</span>
-    <span class="link">TI{{currentTrip.trailerEquipment.number}}</span>
+    <span class="link">TI{{currentTrips.trailer.number}}</span>
     <span class="current-trip">
       <span [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
-        TR{{currentTrip.number}}
+        TR{{currentTrips.number}}
         <bd-popover-content
           #tripPopover
           placement="auto"
           [width]="popupWidth"
           [closeOnClickOutside]="closeOnClickOutside">
-          <trip-popover [trip]="currentTrip"></trip-popover>
+          <trip-popover [trip]="currentTrips"></trip-popover>
         </bd-popover-content>
       </span>
     </span>
