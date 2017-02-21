@@ -14,21 +14,21 @@ const mockCustomer = new Customer(),
   testAddress = new Address();
 
   // test address
-  testAddress.phone = '(925) 937-8500',
+  testAddress.phone = '(925) 937-8500';
 
   // test contact
-  testContact.firstName = 'Emma',
-  testContact.lastName = 'Watson',
-  testContact.position = 'Sales manager',
+  testContact.firstName = 'Emma';
+  testContact.lastName = 'Watson';
+  testContact.position = 'Sales manager';
   // test load
-  testLoad.systemLoadNumber = 209282402,
-  testLoad.status = LoadStatuses.Completed,
+  testLoad.systemLoadNumber = 209282402;
+  testLoad.status = LoadStatuses.Completed;
   // test customer
-  mockCustomer.name = 'CH ROBINSON COMPANY INC',
-  mockCustomer.addresses = [testAddress],
-  mockCustomer.contacts = [testContact],
-  mockCustomer.status = CustomerStatuses.Active,
-  mockCustomer.mc = '384859',
+  mockCustomer.name = 'CH ROBINSON COMPANY INC';
+  mockCustomer.addresses = [testAddress];
+  mockCustomer.contacts = [testContact];
+  mockCustomer.status = CustomerStatuses.Active;
+  mockCustomer.mc = '384859';
   mockCustomer.loads = [testLoad];
 
 
@@ -68,8 +68,8 @@ fdescribe('CustomerCardComponent', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-contacts-full-name'));
-    console.log(element, 'element');
-    expect(element.nativeElement.textContent).toMatch('Emma Watson');
+    console.log(element);
+    expect(element.nativeElement.textContent).toBe('Emma Watson');
   });
 
   it('should display customer mc', () => {
@@ -91,6 +91,13 @@ fdescribe('CustomerCardComponent', () => {
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
     expect(element.nativeElement.getAttribute('style')).toContain('color: rgb(133, 209, 131)');
+  });
+
+  it('should display right load color', () => {
+    component.customer = testCustomer;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.load-circle'));
+    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
   });
 
   it('should display right status text', () => {
