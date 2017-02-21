@@ -86,7 +86,6 @@ fdescribe('LoadStopCardComponent', () => {
     fixture = TestBed.createComponent(LoadStopCardComponent);
     component = fixture.componentInstance;
     testLoad = mockLoad;
-    //
   }));
 
   it('should have a component instance', () => {
@@ -135,11 +134,18 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('TR1212');
   });
 
-  it('should display date in right format', () => {
+  it('should display start date in right format', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.start-date'));
     expect(element.nativeElement.textContent).toMatch('01/09');
+  });
+
+  it('should display end date in right format', () => {
+    component.load = testLoad;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.end-date'));
+    expect(element.nativeElement.textContent).toMatch('02/10');
   });
 
   it('should display right status text', () => {
@@ -153,7 +159,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+    expect(element.nativeElement.getAttribute('style')).toContain('background: rgb(133, 209, 131)');
   });
 
   it('should display stops line when stops length is greater than 1', () => {
@@ -177,7 +183,6 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('Eden Prairie, MN');
   });
 
-  //
   it('should handle click', () => {
     component.load = testLoad;
     spyOn(component, 'onClick');
@@ -187,4 +192,5 @@ fdescribe('LoadStopCardComponent', () => {
             expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
       });
     });
+
 });
