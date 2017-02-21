@@ -1,5 +1,4 @@
 @import '../../../../assets/styles/variables';
-@import '../../../../assets/styles/mixins'; 
 
 .customer-card-section {
   position: relative;
@@ -74,6 +73,7 @@
   .right {
     position: relative;
     width: 40%;
+    height: 70px;
     flex-direction: column;
     padding-left: $default-margin;
     padding-top: 1px;
@@ -97,7 +97,7 @@
     .status-text {
       position: absolute;
       right: 22px;
-      bottom: -5px;
+      bottom: -3px;
     }
 
     .status {
@@ -107,7 +107,7 @@
       height: 12px;
       background: $black;
       color: $white;
-      bottom: -2px;
+      bottom: 0;
       border-radius: $form-control-height;
     }
   }
