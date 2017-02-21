@@ -87,7 +87,7 @@
     .status-text {
       position: absolute;
       right: 22px;
-      bottom: -3px;
+      bottom: 0;
       justify-content: center;
     }
 
@@ -97,7 +97,7 @@
       width: 12px;
       height: 12px;
       background: $black;
-      bottom: 0;
+      bottom: 3px;
       border-radius: $form-control-height;
     }
   }

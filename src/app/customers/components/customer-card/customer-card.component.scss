@@ -97,7 +97,7 @@
     .status-text {
       position: absolute;
       right: 22px;
-      bottom: -3px;
+      bottom: 0;
     }
 
     .status {
@@ -107,7 +107,7 @@
       height: 12px;
       background: $black;
       color: $white;
-      bottom: 0;
+      bottom: 3px;
       border-radius: $form-control-height;
     }
   }
