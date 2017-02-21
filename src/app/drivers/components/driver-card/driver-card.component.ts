@@ -10,6 +10,7 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
 })
 export class DriverCardComponent {
     @Input() driver: Driver;
+    public statusText: boolean = false;
 
     get driverStatusColor(): string {
       return Driver.getStatusColor(this.driver.status);
@@ -21,5 +22,13 @@ export class DriverCardComponent {
 
     get driverStatusText(): string {
       return Driver.getStatusText(this.driver.status);
+    }
+
+    onEnter() {
+      this.statusText = true;
+    }
+
+    onLeave() {
+      this.statusText = false;
     }
 }

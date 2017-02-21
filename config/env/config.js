@@ -2,7 +2,7 @@ const helpers = require('../helpers');
 
 config = {
   base: {
-    title: 'Bridge18',
+    title: 'Bridge 18',
     port: 3000,
     host: '',
     port: '',
