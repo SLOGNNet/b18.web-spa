@@ -15,6 +15,7 @@ function createStatusColors() {
 
 function createStatusText() {
  let result = {};
+  result[CompanyStatuses.None] = 'None';
   result[CompanyStatuses.Unavaliable] = 'Unavaliable';
   result[CompanyStatuses.Active] = 'Active';
   result[CompanyStatuses.Inactive] = 'Inactive';
@@ -59,7 +60,7 @@ export class Company {
   }
 
   static getStatusText(status: CompanyStatuses) {
-    return statusText[status] || 'None';
+    return statusText[status];
   }
 
   constructor() {

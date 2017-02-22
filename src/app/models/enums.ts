@@ -7,6 +7,7 @@ export enum CompanyTypes {
 };
 
 export enum CompanyStatuses {
+  None = 0,
   Inactive = 1,
   Active = 2,
   Unavaliable = 3
@@ -14,11 +15,13 @@ export enum CompanyStatuses {
 
 // driver enums
 export enum DriverTypes {
+  None = 0,
   CompanyDriver = 1,
   OwnerOperator = 2
 };
 
 export enum DriverStatuses {
+  None = 0,
   Inactive = 1,
   Active = 2,
   Unavaliable = 3
@@ -33,15 +36,18 @@ export enum DriverPaymentOptions {
 
 // equipment enums
 export enum EquipmentTypes {
+  None = 0,
   Trailer = 1,
   PowerUnit = 2
 };
 
 export enum EquipmentModes {
+  None = 0,
   Company = 1
 };
 
 export enum EquipmentStatuses {
+  None = 0,
   Inactive = 1,
   Active = 2,
   NotAvaliable = 3

@@ -21,6 +21,7 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
  let result = {};
+  result[EquipmentStatuses.None] = 'None';
   result[EquipmentStatuses.NotAvaliable] = 'Not Avaliable';
   result[EquipmentStatuses.Active] = 'Active';
   result[EquipmentStatuses.Inactive] = 'Inactive';
@@ -31,6 +32,7 @@ function createStatusText() {
 // Driver Text
 function createEquipmentDriverText() {
  let result = {};
+  result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company Driver';
   result[DriverTypes.OwnerOperator] = 'Owner Operator';
 
@@ -40,6 +42,7 @@ function createEquipmentDriverText() {
 // Type Text
 function createTypeText() {
  let result = {};
+  result[EquipmentTypes.None] = 'None';
   result[EquipmentTypes.Trailer] = 'Trailer';
   result[EquipmentTypes.PowerUnit] = 'PowerUnit';
 
@@ -49,6 +52,7 @@ function createTypeText() {
 // Short Type Text
 function createShortTypeText() {
  let result = {};
+  result[EquipmentTypes.None] = 'None';
   result[EquipmentTypes.Trailer] = 'TL';
   result[EquipmentTypes.PowerUnit] = 'TK';
 
@@ -58,6 +62,7 @@ function createShortTypeText() {
 // Mode Text
 function createModeText() {
  let result = {};
+  result[EquipmentModes.None] = 'None';
   result[EquipmentModes.Company] = 'Company';
 
   return result;
@@ -126,11 +131,11 @@ export class Equipment {
   }
 
   public static getStatusText(status: EquipmentStatuses): string {
-    return statusText[status] || 'None';
+    return statusText[status];
   }
 
   public static getDriverText(driverType: DriverTypes): string {
-    return equipmentDriverText[driverType] || 'None';
+    return equipmentDriverText[driverType];
   }
 
   public static getStatusColor(status: EquipmentStatuses): string {
@@ -138,14 +143,14 @@ export class Equipment {
   }
 
   public static getShortTypeText(type: EquipmentTypes): string {
-    return shortTypeText[type] || 'None';
+    return shortTypeText[type];
   }
 
   public static getTypeText(type: EquipmentTypes): string {
-    return typeText[type] || 'None';
+    return typeText[type];
   }
 
   public static getModeText(type: EquipmentModes): string {
-    return modeText[type] || 'None';
+    return modeText[type];
   }
 };

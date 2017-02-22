@@ -16,6 +16,7 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
  let result = {};
+  result[DriverStatuses.None] = 'None';
   result[DriverStatuses.Unavaliable] = 'Unavaliable';
   result[DriverStatuses.Active] = 'Active';
   result[DriverStatuses.Inactive] = 'Inactive';
@@ -26,6 +27,7 @@ function createStatusText() {
 // Type Text
 function createTypeText() {
  let result = {};
+  result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company driver';
   result[DriverTypes.OwnerOperator] = 'Owner operator';
 
@@ -87,7 +89,7 @@ export class Driver {
   }
 
   public static getStatusText(status: DriverStatuses): string {
-    return statusText[status] || 'None';
+    return statusText[status];
   }
 
   public static getStatusColor(status: DriverStatuses): string {
@@ -95,6 +97,6 @@ export class Driver {
   }
 
   public static getTypeText(type: DriverTypes): string {
-    return typeText[type] || 'None';
+    return typeText[type];
   }
 };
