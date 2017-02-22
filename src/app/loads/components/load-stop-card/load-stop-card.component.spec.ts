@@ -90,7 +90,7 @@ fdescribe('LoadStopCardComponent', () => {
   }));
 
   it('should have a component instance', () => {
-    console.log(testLoad);
+    console.log('prprpprpr');
     expect(component).toBeTruthy();
   });
 
@@ -113,47 +113,57 @@ fdescribe('LoadStopCardComponent', () => {
   });
 
   it('should display driver firstname', () => {
-    let testTripData = new Trip();
+    let testDriverName = 'Isaak';
     component.load = testLoad;
+    component.load.currentTrip[0].driver.firstName = testDriverName;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstName'));
-    expect(element.nativeElement.textContent).toMatch('John');
+    expect(element.nativeElement.textContent).toMatch(testDriverName);
   });
 
   it('should display truck number', () => {
+    let testTruckNumber = 2017;
     component.load = testLoad;
+    component.load.currentTrip[0].truckNumber = testTruckNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.truckNumber'));
-    expect(element.nativeElement.textContent).toMatch('Tk1010');
+    expect(element.nativeElement.textContent).toMatch('Tk' + testTruckNumber);
   });
 
   it('should display trailer number', () => {
+    let testTrailerNumber = 7102;
     component.load = testLoad;
+    component.load.currentTrip[0].trailerNumber = testTrailerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.trailerNumber'));
-    expect(element.nativeElement.textContent).toMatch('TI1111');
+    expect(element.nativeElement.textContent).toMatch('TI' + testTrailerNumber);
   });
 
   it('should display trip number', () => {
+    let testTripNumber = 4038;
     component.load = testLoad;
-
+    component.load.currentTrip[0].number = testTripNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.tripNumber'));
-    expect(element.nativeElement.textContent).toMatch('TR1212');
+    expect(element.nativeElement.textContent).toMatch('TR' + testTripNumber);
   });
 
   it('should display start date in right format', () => {
+    let testDate = new Date(2017, 10, 10);
     component.load = testLoad;
+    component.load.stops[0].date = testDate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.start-date'));
-    expect(element.nativeElement.textContent).toMatch('01/09');
+    expect(element.nativeElement.textContent).toMatch('10/10');
   });
 
   it('should display end date in right format', () => {
+    let testDate = new Date(2017, 11, 11);
     component.load = testLoad;
+    component.load.stops[1].date = testDate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.end-date'));
-    expect(element.nativeElement.textContent).toMatch('02/10');
+    expect(element.nativeElement.textContent).toMatch('11/11');
   });
 
   it('should display right status text', () => {
@@ -185,17 +195,23 @@ fdescribe('LoadStopCardComponent', () => {
   });
 
   it('should display right address of first stop in load', () => {
+    let testCity = 'New York', testState = 'AL';
     component.load = testLoad;
+    component.load.stops[0].address.city = testCity;
+    component.load.stops[0].address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstStopAddress'));
-    expect(element.nativeElement.textContent).toMatch('Eden Prairie, MN');
+    expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
   });
 
   it('should display right address of last stop in load', () => {
+    let testCity = 'Eden Prairie', testState = 'AL';
     component.load = testLoad;
+    component.load.stops[1].address.city = testCity;
+    component.load.stops[1].address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.lastStopAddress'));
-    expect(element.nativeElement.textContent).toMatch(testLoad.stops[1].address.city + ', ' + testLoad.stops[1].address.state);
+    expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
   });
 
   it('should handle click', () => {
@@ -228,7 +244,7 @@ fdescribe('LoadStopCardComponent', () => {
           customerData.type = null;
 
       component.load = testLoad;
-      component
+      component.load.customer = customerData;
       fixture.detectChanges();
       let element = fixture.debugElement.query(By.directive(CustomerPopoverComponent)).componentInstance;
       expect(element.customer).toEqual(customerData);
