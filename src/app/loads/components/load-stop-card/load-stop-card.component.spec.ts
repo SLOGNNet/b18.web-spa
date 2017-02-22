@@ -67,7 +67,7 @@ mockLoad.currentTrip = [testTrip];
 mockLoad.status = LoadStatuses.Completed;
 mockLoad.stops = [ testStop1, testStop2 ];
 
-fdescribe('LoadStopCardComponent', () => {
+describe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
       component: LoadStopCardComponent,
       testLoad: Load;
@@ -190,6 +190,75 @@ fdescribe('LoadStopCardComponent', () => {
     element.nativeElement.click();
       fixture.whenStable().then(() => {
             expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
+      });
+    });
+
+    it('should send accurate data to CUSTOMER popover', () => {
+      let addressData = new Address(),
+          customerData = new Customer();
+      addressData.id = 1;
+      addressData.name = 'Main Office';
+      addressData.streetAddress = '14701 Charlson Road, United States';
+      addressData.city = 'Eden Prairie';
+      addressData.phone = '(925) 937-8500';
+      addressData.state = 'MN';
+      addressData.zip = '55347';
+      addressData.lat = 40.795675;
+      addressData.lng = -73.93600099999998;
+
+      customerData.id = 1;
+      customerData.mc = '384859';
+      customerData.addresses = [addressData, addressData];
+      customerData.name = 'CH ROBINSON COMPANY INC';
+      customerData.contacts = [null];
+      customerData.email = 'carrier.services@chrobinson.com';
+      customerData.status = null;
+      customerData.type = null;
+
+      component.load = testLoad;
+      fixture.detectChanges();
+      let element = fixture.debugElement.query(By.directive(CustomerPopoverComponent)).componentInstance;
+
+      fixture.whenStable().then(() => {
+          expect(element.customer).toEqual(customerData);
+      });
+    });
+
+    it('should send accurate data to DRIVER popover', () => {
+      let driverData = new Driver();
+      driverData.id = 1;
+      driverData.firstName = 'John';
+      driverData.lastName = 'Doe';
+      driverData.powerUnitAssigned = Equipment.create();
+      driverData.trailerAssigned = Equipment.create();
+
+      component.load = testLoad;
+      fixture.detectChanges();
+      let element = fixture.debugElement.query(By.directive(DriverPopoverComponent)).componentInstance;
+      fixture.whenStable().then(() => {
+          expect(element.driver).toEqual(driverData);
+      });
+    });
+
+
+    it('should send accurate data to TRIP popover', () => {
+      let tripData = new Trip();
+      tripData.id = 1;
+      tripData.number = 1212;
+      tripData.truckNumber = 1010;
+      tripData.trailerNumber = 1111;
+      tripData.driver = new Driver();
+      tripData.driver.id = 1;
+      tripData.driver.firstName = 'John';
+      tripData.driver.lastName = 'Doe';
+      tripData.driver.powerUnitAssigned = Equipment.create();
+      tripData.driver.trailerAssigned = Equipment.create();
+
+      component.load = testLoad;
+      fixture.detectChanges();
+      let element = fixture.debugElement.query(By.directive(TripPopoverComponent)).componentInstance;
+      fixture.whenStable().then(() => {
+          expect(element.trip).toEqual(tripData);
       });
     });
 
