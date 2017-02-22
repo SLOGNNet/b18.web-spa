@@ -130,6 +130,7 @@ export enum StopTypes {
 };
 
 export enum StopStatuses {
+  None = 0,
   Pending = 1,
   InProgress = 2,
   Completed = 3,

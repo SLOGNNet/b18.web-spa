@@ -20,6 +20,7 @@ function createStopTypeText() {
 // Stop status text
 function createStopStatusText() {
  let result = {};
+  result[StopStatuses.None] = 'None';
   result[StopStatuses.Completed] = 'Complete';
   result[StopStatuses.InProgress] = 'In progress';
   result[StopStatuses.Problem] = 'Problem';
@@ -77,11 +78,11 @@ export class Stop {
   }
 
   public static getStatusText(status: StopStatuses): string {
-    return stopStatusText[status] || 'None';
+    return stopStatusText[status];
   }
 
   public static getTypeText(type: StopTypes): string {
-    return stopTypeText[type] || 'None';
+    return stopTypeText[type];
   }
 
 }
