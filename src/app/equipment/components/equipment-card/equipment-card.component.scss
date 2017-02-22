@@ -27,7 +27,6 @@
   .middle {
     display: flex;
     width: 30%;
-    height: 70px;
     padding-left: 17px;
     flex-direction: column;
     justify-content: flex-start;
@@ -55,7 +54,6 @@
   .right {
     position: relative;
     width: 40%;
-    height: 70px;
     flex-direction: column;
     padding-left: $default-margin;
 
