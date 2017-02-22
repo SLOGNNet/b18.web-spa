@@ -187,11 +187,12 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element).toBeDefined();
   });
 
-  it('should not display stops line when stops length is less than 1', () => {
+  fit('should not display stops line when stops length is less than 1', () => {
+    //testLoad.stops = [];
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.stops-container'));
-    expect(element).toBeUndefined();
+    expect(element).toBeNull();
   });
 
   it('should display right address of first stop in load', () => {
