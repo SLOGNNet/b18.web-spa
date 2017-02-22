@@ -26,6 +26,7 @@ const statusText = createStatusText();
 
 @JsonObject()
 export class Company {
+  @JsonMember
   id: number;
   @JsonMember
   name: string = '';

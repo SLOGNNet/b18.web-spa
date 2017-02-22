@@ -38,7 +38,6 @@ const typeText = createTypeText();
 
 @JsonObject
 export class Driver {
-
   @JsonMember
   id: number = 0;
   @JsonMember

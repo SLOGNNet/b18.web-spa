@@ -24,7 +24,9 @@ export class Address {
   phoneExtension: string = '';
   @JsonMember
   faxExtension: string = '';
+  @JsonMember
   latitude: number;
+  @JsonMember
   longitude: number;
 
   static create(): Address {

@@ -41,7 +41,6 @@ function createStopStatusColors() {
 
 @JsonObject
 export class Stop {
-
   @JsonMember
   id: number;
   @JsonMember
