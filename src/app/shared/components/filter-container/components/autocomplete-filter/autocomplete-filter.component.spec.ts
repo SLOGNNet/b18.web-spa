@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement, Input, Output, EventEmitter, Directive, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { getPaginated } from '../../../../helpers';
-import { isEqual } from 'lodash';
+import { isEqualWith } from 'lodash';
 
 import { SharedModule } from '../../../../shared.module';
 describe('autocomplete-filter', () => {
@@ -15,6 +15,8 @@ describe('autocomplete-filter', () => {
   let fixture: ComponentFixture<AutocompleteFilter>;
   let de:      DebugElement;
   let page: Page;
+  const comparer = (val, otherVal) => val['id'] === otherVal['id'];
+
   const testData = [{ id: 1, name: 'test'}, { id: 2, name: 'test1'}, { id: 3, name: 'test2'},
     {id: 4, name: 'test3'}, {id: 5, name: 'test4'}];
 
@@ -29,7 +31,6 @@ describe('autocomplete-filter', () => {
     searchService = {
       searchSource: (query: string, pageNumber: number, count: number) =>
         {
-
           return Observable.of(getPaginated(testData, pageNumber, count));
         }
     };
@@ -46,7 +47,6 @@ describe('autocomplete-filter', () => {
       component.autocompleteSearchSource = searchService.searchSource;
       component.debounceTime = 0;
       fixture.detectChanges();
-      page.addPageElements();
     });
 
     it('should load initial data on init', fakeAsync(() => {
@@ -55,14 +55,6 @@ describe('autocomplete-filter', () => {
       expect(searchService.searchSource).toHaveBeenCalledWith('', 1, testCountPerPage);
       expectItems([], testData.slice(0, 2), []);
     }));
-
-    describe('selection', () => {
-      it('should select items', fakeAsync(() => {
-        tick();
-        expect(searchService.searchSource.calls.count()).toBe(1);
-        expect(searchService.searchSource).toHaveBeenCalledWith('', 1, testCountPerPage);
-      }));
-    });
 
     describe('search', () => {
         // async rxjs calls need to be fixed first
@@ -148,6 +140,116 @@ describe('autocomplete-filter', () => {
         expectItems([], testData.slice(0, 4), []);
       }));
     });
+
+    describe('selection', () => {
+      it('should select items', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        expectedSelected([testData[selectIndex]]);
+      }));
+
+      it('should deselect items on second selection', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        page.selectItem(selectIndex);
+        expectedSelected([]);
+      }));
+
+      it('should not move items to selected immediatley', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        expectItems([], testData.slice(0, 2), []);
+      }));
+
+      it('should move items to selected section after reopening', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        page.reopenFilter();
+        fixture.detectChanges();
+        expectItems([testData[0]], [testData[1]], []);
+      }));
+
+      it('should not remove items from selected section immedialtey', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        page.reopenFilter();
+
+        page.selectItem(selectIndex);
+        expectItems([testData[0]], [testData[1]], []);
+      }));
+
+      it('should not move items to selected immediatley on search', fakeAsync(() => {
+        const query = 'testquery';
+        page.searchQuery(query);
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        expectItems([], [], testData.slice(0, 2));
+        expectedSelected([testData[selectIndex]]);
+      }));
+
+      it('should not move items to selected after reopen on search', fakeAsync(() => {
+        const query = 'testquery';
+        page.searchQuery(query);
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        page.reopenFilter();
+
+        expectItems([], [], testData.slice(0, 2));
+        expectedSelected([testData[selectIndex]]);
+      }));
+    });
+
+    describe('headers', () => {
+      it('should show all-header-section on open', fakeAsync(() => {
+        debugger;
+        expect(page.allHeaderSection).toBeDefined()
+        expect(page.selectedHeaderSection).toBeNull();
+      }));
+
+      it('should not show selected header immediatley', fakeAsync(() => {
+        page.selectItem(1);
+        expect(page.allHeaderSection).toBeDefined();
+        expect(page.selectedHeaderSection).toBeNull();
+      }));
+
+     it('should show selected header with enabled deselect button after reopen', fakeAsync(() => {
+        page.selectItem(1);
+        page.reopenFilter();
+        fixture.detectChanges();
+        expect(page.allHeaderSection).toBeDefined();
+        expect(page.selectedHeaderSection).toBeDefined();
+        expect(page.unselectButton.disabled).toBe(false);
+      }));
+
+      it('should disable selected button when deselected', fakeAsync(() => {
+        page.selectItem(1);
+        page.reopenFilter();
+        page.selectItem(1);
+        fixture.detectChanges();
+        debugger;
+        expect(page.allHeaderSection).toBeDefined();
+        expect(page.selectedHeaderSection).toBeDefined();
+        expect(page.unselectButton.disabled).toBe(true);
+      }));
+
+      it('should not show headers on search', fakeAsync(() => {
+        page.searchQuery('query');
+        page.selectItem(1);
+        fixture.detectChanges();
+        expect(page.allHeaderSection).toBeNull();
+        expect(page.selectedHeaderSection).toBeNull();
+      }));
+
+      it('should not show headers on search with after reopen', fakeAsync(() => {
+        page.searchQuery('query');
+        page.selectItem(1);
+        page.reopenFilter();
+        fixture.detectChanges();
+        expect(page.allHeaderSection).toBeNull();
+        expect(page.selectedHeaderSection).toBeNull();
+      }));
+    });
+
    });
 
    function expectItems(selected, all, search) {
@@ -169,21 +271,50 @@ describe('autocomplete-filter', () => {
      const container = fixture.debugElement.query(By.css(containerClass));
      const actualNodes = container ? container.queryAll(By.directive(FilterItem)) : [];
      const actualItems = actualNodes.map(n => n.componentInstance.item);
-     expect(isEqual(actualItems, expectedItems)).toBe(true);
+     expect(isEqualWith(actualItems, expectedItems, comparer)).toBe(true);
+   }
+
+   function expectedSelected(expectedSelectedItems) {
+     const actualSelectedItems = component.selectedItems;
+     expect(isEqualWith(actualSelectedItems, expectedSelectedItems, comparer)).toBe(true);
    }
    class Page {
-     queryInput:    HTMLInputElement;
 
-     constructor() {
+     reopenFilter() {
+       component.active = false;
+       component.active = true;
      }
 
-     searchQuery(query: string) {
+     searchQuery(query: string): void{
        this.queryInput.value = query;
        fireEvent(page.queryInput, 'keyup');
      }
-     /** Add page elements after hero arrives */
-     addPageElements() {
-         this.queryInput = fixture.debugElement.query(By.css('input')).nativeElement;
+
+     selectItem(index): void {
+       const filterItemInstance = fixture.debugElement.queryAll(By.directive(FilterItem))
+        .map(n => n.componentInstance)[index];
+        debugger;
+      filterItemInstance.checkedChange.emit(filterItemInstance.item);
+     }
+
+     get queryInput(): HTMLInputElement {
+       const element = fixture.debugElement.query(By.css('input'));
+      return element && element.nativeElement;
+     }
+
+     get allHeaderSection(): HTMLElement {
+       const element = fixture.debugElement.query(By.css('.all-section-header'));
+       return element && element.nativeElement;
+     }
+
+     get selectedHeaderSection(): HTMLElement {
+       const element = fixture.debugElement.query(By.css('.selected-section-header'));
+       return element && element.nativeElement;
+     }
+
+     get unselectButton(): HTMLButtonElement {
+       const element = fixture.debugElement.query(By.css('.clear-selected-button'));
+      return element && element.nativeElement;
      }
    }
 

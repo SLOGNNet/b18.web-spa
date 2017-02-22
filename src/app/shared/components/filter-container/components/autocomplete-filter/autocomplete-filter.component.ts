@@ -84,9 +84,7 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   protected onSelectedChange(changed) {
-    changed.event.preventDefault();
-    changed.event.stopPropagation();
-    super.onSelectedChange(changed.item);
+    super.onSelectedChange(changed);
   }
 
   public onItemClick(item) {
