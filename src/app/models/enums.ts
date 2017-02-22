@@ -124,9 +124,9 @@ export enum TaskType {
 
 // stop enums
 export enum StopTypes {
-  None = 1,
-  Pickup = 2,
-  Dropoff = 3
+  None = 0,
+  Pickup = 1,
+  Dropoff = 2
 };
 
 export enum StopStatuses {

@@ -85,7 +85,7 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
       addressId: [this.load.addressId],
-      billingAddressId: [this.load.billingAddressId],
+      customerBillingAddressId: [this.load.customerBillingAddressId],
       contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],

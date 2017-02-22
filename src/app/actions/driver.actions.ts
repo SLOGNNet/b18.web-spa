@@ -37,7 +37,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   }
 
   createNew(): void {
-    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, company: Driver.create() });
+    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, driver: Driver.create() });
   }
 
   getAll(): void {

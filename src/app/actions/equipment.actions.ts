@@ -37,7 +37,7 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
   }
 
   createNew(): void {
-    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, company: Equipment.create() });
+    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, equipment: Equipment.create() });
   }
 
   getAll(): void {

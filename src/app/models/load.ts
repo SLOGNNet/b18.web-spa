@@ -56,11 +56,11 @@ export class Load {
   @JsonMember
   freightType: FreightType;
   @JsonMember
-  billingAddressId: number;
+  customerBillingAddressId: number;
   @JsonMember({ elements: Address })
   customerAddress: Address;
   @JsonMember({ elements: Address })
-  billingAddress: Address;
+  customerBillingAddress: Address;
   @JsonMember({ elements: Commodity })
   commodities: Array<Commodity>;
   @JsonMember
