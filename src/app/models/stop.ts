@@ -6,7 +6,7 @@ import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 @JsonObject
 export class Stop {
-  private static stopStatusColor = ['#75b3e1', '#85d183', '#ffbe4d', '#fb3a3a'];
+  private static stopStatusColor = ['rgb(117, 179, 225)', 'rgb(133, 209, 131)', 'rgb(255, 190, 77)', 'rgb(251, 58, 58)'];
   private static stopStatusText = ['Pending', 'In progress', 'Complete', 'Problem'];
   private static stopTypeText = ['None', 'Pickup', 'Dropoff'];
 
