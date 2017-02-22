@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
 import { slice, take } from 'lodash';
+import { getPaginated } from '../../helpers';
+
 @Injectable()
 export class CustomerService {
 
@@ -45,7 +47,7 @@ export class CustomerService {
   }
 
   getPaginatedSearch(query, page: number = 0, count: number = 2) {
-    return Observable.of(this._getPaginated(this._search(query), page, count));
+    return Observable.of(getPaginated(this._search(query), page, count));
   }
 
   private _search(query: string) {
@@ -53,11 +55,5 @@ export class CustomerService {
     return MockData.customers.filter((customer: Customer) => {
         return queryRegex.test(customer.name);
     });
-  }
-
-  private _getPaginated(items: Array<any>, page: number = 0, count: number = 2) {
-    const offset = (page - 1) * count;
-    const paginatedItems = take(slice(items, offset), count);
-    return paginatedItems;
   }
 }

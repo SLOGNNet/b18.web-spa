@@ -1,98 +1,189 @@
-import { AutocompleteFilter } from '../index';
+import { AutocompleteFilter, FilterItem } from '../index';
 import { TestBed, ComponentFixture, fakeAsync, tick, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement, Input, Output, EventEmitter, Directive, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+import { getPaginated } from '../../../../helpers';
+import { isEqual } from 'lodash';
 
 import { SharedModule } from '../../../../shared.module';
-fdescribe('autocomplete-filter', () => {
+describe('autocomplete-filter', () => {
 
   let component:    AutocompleteFilter;
   let searchService;
+  let testCountPerPage = 2;
   let fixture: ComponentFixture<AutocompleteFilter>;
   let de:      DebugElement;
   let page: Page;
-  const searchData = [{name: 'test'}, {name: 'test1'}, {name: 'test2'}];
+  const testData = [{ id: 1, name: 'test'}, { id: 2, name: 'test1'}, { id: 3, name: 'test2'},
+    {id: 4, name: 'test3'}, {id: 5, name: 'test4'}];
 
   beforeEach(() => {
     TestBed.configureTestingModule({imports: [SharedModule]});
+   // rxjs async issue, can't use delay https://github.com/angular/angular/issues/10127
     Observable.prototype.debounceTime = function () { return this; };
     fixture = TestBed.createComponent(AutocompleteFilter);
     component = fixture.componentInstance;
+    component.active = true;
+    component.countPerPage = testCountPerPage;
     searchService = {
-      searchSource: (query: string, pageNumber: number, count: number) => { console.log('called'); return Observable.of(searchData) }
+      searchSource: (query: string, pageNumber: number, count: number) =>
+        {
+
+          return Observable.of(getPaginated(testData, pageNumber, count));
+        }
     };
-    debugger;
     spyOn(searchService, 'searchSource').and.callThrough();
-//    fixture.detectChanges();
     page = new Page();
-//    page.addPageElements();
   });
 
   it('should be defined', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('ngOnInit', () => {
-    const countPerPage = 10
+  fdescribe('data loading', () => {
     beforeEach(() => {
-      debugger;
       component.autocompleteSearchSource = searchService.searchSource;
-      component.countPerPage = countPerPage;
       component.debounceTime = 0;
       fixture.detectChanges();
+      page.addPageElements();
     });
 
-    it('should start load data with empty query', fakeAsync(() => {
-      tick();
+    it('should load initial data on init', fakeAsync(() => {
+      fixture.detectChanges();
       expect(searchService.searchSource.calls.count()).toBe(1);
-      expect(searchService.searchSource).toHaveBeenCalledWith('', 0, countPerPage);
+      expect(searchService.searchSource).toHaveBeenCalledWith('', 1, testCountPerPage);
+      expectItems([], testData.slice(0, 2), []);
     }));
 
+    describe('selection', () => {
+      it('should select items', fakeAsync(() => {
+        tick();
+        expect(searchService.searchSource.calls.count()).toBe(1);
+        expect(searchService.searchSource).toHaveBeenCalledWith('', 1, testCountPerPage);
+      }));
+    });
 
-    it('should start load data with query', fakeAsync(() => {
-      page.addPageElements();
-      const query = 'testquery';
-      page.queryInput.value = query;
-      fireEvent(page.queryInput, 'keyup');
-      fixture.detectChanges();
-      tick();
-      expect(searchService.searchSource.calls.count()).toBe(2);
-      expect(searchService.searchSource).toHaveBeenCalledWith(query, 0, countPerPage);
-    }));
+    describe('search', () => {
+        // async rxjs calls need to be fixed first
+        xit('should clear data on start search', fakeAsync(() => {
+          const query = 'testquery';
+          page.searchQuery(query);
+          fixture.detectChanges();
+          expectItems([], [], []);
+        }));
 
+        it('should start load data with query', fakeAsync(() => {
+          const query = 'testquery';
+          page.searchQuery(query);
+          fixture.detectChanges();
+          tick();
+          expect(searchService.searchSource.calls.count()).toBe(2);
+          expect(searchService.searchSource).toHaveBeenCalledWith(query, 1, testCountPerPage);
+        }));
 
-    it('should start load next page when event requested', fakeAsync(() => {
-      tick();
-      component.scrolledDown = true;
-      console.log('adawda akwdjladjew awdjawjdklja jawdlawjdlkjawl')
-      fixture.detectChanges();
-      tick();
-      expect(searchService.searchSource.calls.count()).toBe(2);
-      expect(searchService.searchSource).toHaveBeenCalledWith('', 1, countPerPage);
-    }));
+        it('should render new items after search', fakeAsync(() => {
+          const searchedData = [testData[2], testData[3]];
+          searchService.searchSource.and.returnValue(searchedData);
+          const query = 'testquery';
 
-    // it('should load next page on request',  fakeAsync(() => {
-    //     component.scrolledDown = true;
-    //     tick(1000);
-    //     expect(searchService.searchSource.calls.count()).toBe(1);
-    //     expect(searchService.searchSource).toHaveBeenCalledWith('', 1, 10);
-    // }));
+          page.searchQuery(query);
+          fixture.detectChanges();
+          tick();
+          expectItems([], [], searchedData);
+        }));
 
-    it('check rendered items', () => {
-      const items = fixture.debugElement.query(By.directive(MockFilterItem));
+        it('should start new load if new search requested before previous succeeded', fakeAsync(() => {
+          const query = 'testquery';
+          page.searchQuery(query);
+          const query1 = 'testquery1';
+          page.searchQuery(query1);
+          fixture.detectChanges();
+          tick();
+
+          expect(searchService.searchSource.calls.count()).toBe(3);
+          expect(searchService.searchSource).toHaveBeenCalledWith(query1, 1, testCountPerPage);
+        }));
+    });
+
+    describe('load next page', () => {
+      beforeEach(() => {
+        searchService.searchSource.calls.reset();
+      });
+
+      it('should start when new page requested', fakeAsync(() => {
+        component.scrolledDown = true;
+        fixture.detectChanges();
+        tick();
+        expect(searchService.searchSource.calls.count()).toBe(1);
+        expect(searchService.searchSource).toHaveBeenCalledWith('', 2, testCountPerPage);
+      }));
+
+      it('should reset current page number when new search started', fakeAsync(() => {
+        tick();
+        component.scrolledDown = true;
+        fixture.detectChanges();
+        tick();
+        expect(searchService.searchSource.calls.count()).toBe(1);
+        const query = 'testquery';
+        page.searchQuery(query);
+        tick();
+        expect(searchService.searchSource.calls.count()).toBe(2);
+        expect(searchService.searchSource).toHaveBeenCalledWith(query, 1, testCountPerPage);
+      }));
+
+      it('should not start paged load when filter not active', fakeAsync(() => {
+        component.active = false;
+        component.scrolledDown = true;
+        fixture.detectChanges();
+        tick();
+        expect(searchService.searchSource.calls.count()).toBe(0);
+      }));
+
+      it('should render paged items', fakeAsync(() => {
+        expectItems([], testData.slice(0, 2), []);
+        component.scrolledDown = true;
+        fixture.detectChanges();
+        tick();
+        expectItems([], testData.slice(0, 4), []);
+      }));
     });
    });
 
+   function expectItems(selected, all, search) {
+     expectSearchItems(search);
+     expectAllItems(all);
+     expectSelectedItems(selected);
+   }
+   function expectSearchItems(expectedItems) {
+     expectItemsEquality('.search-container', expectedItems);
+   }
+   function expectAllItems(expectedItems) {
+     expectItemsEquality('.all-container', expectedItems);
+   }
+   function expectSelectedItems(expectedItems) {
+     expectItemsEquality('.selected-container', expectedItems);
+   }
+
+   function expectItemsEquality(containerClass, expectedItems) {
+     const container = fixture.debugElement.query(By.css(containerClass));
+     const actualNodes = container ? container.queryAll(By.directive(FilterItem)) : [];
+     const actualItems = actualNodes.map(n => n.componentInstance.item);
+     expect(isEqual(actualItems, expectedItems)).toBe(true);
+   }
    class Page {
      queryInput:    HTMLInputElement;
 
      constructor() {
      }
+
+     searchQuery(query: string) {
+       this.queryInput.value = query;
+       fireEvent(page.queryInput, 'keyup');
+     }
      /** Add page elements after hero arrives */
      addPageElements() {
-         this.queryInput   = fixture.debugElement.query(By.css('input')).nativeElement;
+         this.queryInput = fixture.debugElement.query(By.css('input')).nativeElement;
      }
    }
 

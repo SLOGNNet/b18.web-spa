@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
 import { Document } from '../../models';
 import { BaseForm } from '../base-form';

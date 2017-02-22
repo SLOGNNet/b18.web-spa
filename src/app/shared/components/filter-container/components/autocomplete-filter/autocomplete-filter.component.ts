@@ -22,7 +22,16 @@ class PageQuery {
 export class AutocompleteFilter extends BaseFilter {
   @ViewChild('bdInput') bdInput;
   @Input() itemTemplate: TemplateRef<any>;
-  @Input() scrolledDown: boolean = false;
+  @Input()
+  public set scrolledDown(newValue: boolean) {
+    if (this._scrolledDown !== newValue && newValue) {
+      this.loadNextPage();
+    }
+    this._scrolledDown = newValue;
+  }
+  public get scrolledDown() {
+    return this._scrolledDown;
+  }
   @Input() countPerPage: number = 20;
   @Input() debounceTime: number = 200;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
@@ -31,8 +40,10 @@ export class AutocompleteFilter extends BaseFilter {
   private selectedItemsCache = [];
   private isAllLoaded = false;
   private isLoading = false;
-  private page = 1;
+  private startPage = 1;
+  private page = this.startPage;
   private query = '';
+  private _scrolledDown: boolean = false;
   private isSearchFieldFocused: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
@@ -43,15 +54,8 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   public ngOnInit() {
-    debugger;
     this.setupAutocomplete();
     this.onAutocompleteChange('');
-  }
-
-  public ngOnChanges(changes) {
-    if (changes.scrolledDown && this.scrolledDown) {
-      this.loadNextPage();
-    }
   }
 
   ngAfterViewChecked() {
@@ -123,15 +127,14 @@ export class AutocompleteFilter extends BaseFilter {
 
     const $request = Observable.combineLatest(
       $searchRequest,
-      this.scrolledDownEventEmitter.startWith({query: '', page: 0, count: this.countPerPage}),
+      this.scrolledDownEventEmitter.startWith({query: '', page: this.startPage, count: this.countPerPage}),
       (query: string, pageQuery: PageQuery) =>
-      { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : 0}; });
+      { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : this.startPage}; });
     $searchRequest.subscribe(() => {
       this.loadedItems = [];
     });
     $request.subscribe((pageQuery: PageQuery) => {
       this.isLoading = true;
-      debugger;
       this.page = pageQuery.page;
       this.cdr.markForCheck();
     });
@@ -139,7 +142,6 @@ export class AutocompleteFilter extends BaseFilter {
       .switchMap((pageQuery: PageQuery) => { return this.autocompleteSearchSource(pageQuery.query, pageQuery.page, pageQuery.count); });
 
     $response.subscribe((matches: any[]) => {
-      debugger;
       this.isLoading = false;
       this.isAllLoaded = matches.length !== this.countPerPage;
       this.selectedItems = this.merge(this.selectedItems, matches);
