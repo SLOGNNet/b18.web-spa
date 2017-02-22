@@ -18,7 +18,7 @@
     "build:demo:layout": "webpack --config layout/webpack.config.js  --progress --profile",
     "build": "npm run build:dev",
     "build:hybrid:dev": "cross-env NODE_ENV=development webpack --config config/webpack.hybrid.js --progress --profile",
-    "ci": "npm run lint && npm run lint:style",
+    "ci": "npm run lint && npm run lint:style && npm run test",
     "clean:dist": "npm run rimraf -- dist",
     "clean:install": "npm set progress=false && npm install",
     "clean:start": "npm start",
