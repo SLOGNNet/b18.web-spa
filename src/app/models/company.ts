@@ -26,9 +26,8 @@ const statusText = createStatusText();
 
 @JsonObject()
 export class Company {
-
   id: number;
-
+  @JsonMember
   name: string = '';
   @JsonMember({ elements: Contact })
   contacts: Contact[];
@@ -59,7 +58,7 @@ export class Company {
   }
 
   static getStatusText(status: CompanyStatuses) {
-    return statusText[status];
+    return statusText[status] || 'None';
   }
 
   constructor() {

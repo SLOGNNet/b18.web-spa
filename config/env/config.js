@@ -15,7 +15,8 @@ config = {
     port: 3000,
     baseUrl: '/',
     hmr: helpers.hasProcessFlag('hot'),
-    socketIoHost: 'http://localhost:5000'
+    socketIoHost: 'http://localhost:5000',
+    apiUrl: 'http://8a31ea10.ngrok.io/'
   },
   publicdev: {
     socketIoHost: 'https://dev.bridge18.com'

@@ -3,14 +3,14 @@
     <span class="load-number">LD{{load.systemLoadNo}}</span>
     <span class="company-name">
       <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
-        {{load.company.name}}
+        {{load.customer.name}}
         <bd-popover-content
           #companyPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="-10"
           [closeOnClickOutside]="closeOnClickOutside">
-          <company-popover [company]="load.company"></company-popover>
+          <company-popover [company]="load.customer"[companyBillingAddress]="load.billingAddress" [companyAddress]="load.customerAddress"></company-popover>
         </bd-popover-content>
       </span>
     </span>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{currentTrips.driverTeams[0].drivers[0].firstName}}</span>
+    <span class="link">{{currentTrips.driverTeams[0].drivers[0].contact.firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrips.truck.number}}

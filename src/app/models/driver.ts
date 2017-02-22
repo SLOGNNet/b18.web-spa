@@ -88,7 +88,7 @@ export class Driver {
   }
 
   public static getStatusText(status: DriverStatuses): string {
-    return statusText[status];
+    return statusText[status] || 'None';
   }
 
   public static getStatusColor(status: DriverStatuses): string {
@@ -96,6 +96,6 @@ export class Driver {
   }
 
   public static getTypeText(type: DriverTypes): string {
-    return typeText[type];
+    return typeText[type] || 'None';
   }
 };

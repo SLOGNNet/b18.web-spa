@@ -78,11 +78,11 @@ export class Stop {
   }
 
   public static getStatusText(status: StopStatuses): string {
-    return stopStatusText[status];
+    return stopStatusText[status] || 'None';
   }
 
   public static getTypeText(type: StopTypes): string {
-    return stopTypeText[type];
+    return stopTypeText[type] || 'None';
   }
 
 }

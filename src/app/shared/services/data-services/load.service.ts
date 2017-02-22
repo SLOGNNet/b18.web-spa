@@ -4,35 +4,39 @@ import {
   Load, Company, LoadStatuses,
   DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, Commodity,
-  LoadType, FreightType } from './models';
+  LoadType, FreightType
+} from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
-import { CompanyService } from  './index';
+import { CompanyService } from './index';
 import MockData from './mock-data';
+import { HttpService } from '../http.service';
+import { TypedJSON } from 'typedjson-npm/src/typed-json';
 
 @Injectable()
 export class LoadService {
 
-  constructor(private http: Http, private companyService: CompanyService) {
-
+  constructor(private http: HttpService, private companyService: CompanyService, @Inject('AppConfig') private config) {
+    console.log(this.http.get(config.apiUrl + 'load/1/card'));
   }
 
   getAll(): Observable<Load[]> {
-    return Observable.from(MockData.loads)
-      .flatMap(
-        (load) => this.companyService
-          .getDetails(load.companyId)
-          .map(company => Object.assign(load, { company }))
-    ).toArray();
-  }
+    return Observable.create((observer: any) => {
+      this.http.get(this.config.apiUrl + 'load/cards').subscribe(res => {
+        const data = res.json();
+        let arr = data.map(item => TypedJSON.parse(item, Load));
+        observer.next(arr);
+      });
+    });
+  };
 
   getDetails(loadId: number): Observable<Load> {
     return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) =>
         this.companyService
           .getDetails(load.companyId)
-          .map(company => Object.assign(load, { customer: company }))
+          .map(company => Object.assign(load, { company: company }))
       );
   };
 

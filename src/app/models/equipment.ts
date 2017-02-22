@@ -114,11 +114,6 @@ export class Equipment {
   @JsonMember
   equipmentNotification: EquipmentNotification;
 
-
-
-
-
-
   static create(): Equipment{
     const result = new Equipment();
     result.status = EquipmentStatuses.Active;
@@ -130,13 +125,12 @@ export class Equipment {
     return result;
   }
 
-
   public static getStatusText(status: EquipmentStatuses): string {
-    return statusText[status];
+    return statusText[status] || 'None';
   }
 
   public static getDriverText(driverType: DriverTypes): string {
-    return equipmentDriverText[driverType];
+    return equipmentDriverText[driverType] || 'None';
   }
 
   public static getStatusColor(status: EquipmentStatuses): string {
@@ -144,14 +138,14 @@ export class Equipment {
   }
 
   public static getShortTypeText(type: EquipmentTypes): string {
-    return shortTypeText[type];
+    return shortTypeText[type] || 'None';
   }
 
   public static getTypeText(type: EquipmentTypes): string {
-    return typeText[type];
+    return typeText[type] || 'None';
   }
 
   public static getModeText(type: EquipmentModes): string {
-    return modeText[type];
+    return modeText[type] || 'None';
   }
 };

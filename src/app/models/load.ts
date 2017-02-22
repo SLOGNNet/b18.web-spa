@@ -1,6 +1,7 @@
 import { Stop } from './stop';
 import { Company } from './company';
 import { Commodity } from './commodity';
+import { Address } from './address';
 import { Trip } from './trip';
 import { Document } from './document';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
@@ -56,6 +57,10 @@ export class Load {
   freightType: FreightType;
   @JsonMember
   billingAddressId: number;
+  @JsonMember({ elements: Address })
+  customerAddress: Address;
+  @JsonMember({ elements: Address })
+  billingAddress: Address;
   @JsonMember({ elements: Commodity })
   commodities: Array<Commodity>;
   @JsonMember

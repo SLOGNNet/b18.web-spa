@@ -9,7 +9,7 @@ export class Trip {
   @JsonMember
   id: number;
   @JsonMember
-  number: number = 0;
+  number: string = '';
   @JsonMember
   truck: Equipment;
   @JsonMember

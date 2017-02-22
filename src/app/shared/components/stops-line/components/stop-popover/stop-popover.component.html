@@ -1,7 +1,7 @@
 <div class="stop-popover">
   <div class="section">
     <span class="blue">{{typeText}}#{{stop.id}}</span>
-    <span>{{stop.date | date:'MM/dd/yy'}} | Appt: {{stop.date | date:'HH:mm'}} | {{statusText}}</span>
+    <span>{{stop.plannedArrivalAt | date:'MM/dd/yy'}} | Appt: {{stop.plannedArrivalAt | date:'HH:mm'}} | {{statusText}}</span>
   </div>
   <div class="section">
     <span class="blue">{{stop.facility.name}}</span>

@@ -3,19 +3,19 @@
     <span class="blue">{{company.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
     <span>MC#{{company.mc}} | USDOT: {{company.taxId}}</span>
   </div>
-  <div class="section">
+  <div class="section" *ngIf="companyAddress">
     <span class="blue">Address</span>
-    <span>{{company.addresses[0].streetAddress1}}</span>
-    <span>{{company.addresses[0].city}}, {{company.addresses[0].state}}</span>
-    <span>{{company.addresses[0].zip}}</span>
+    <span>{{companyAddress.streetAddress1}}</span>
+    <span>{{companyAddress.city}}, {{companyAddress.state}}</span>
+    <span>{{companyAddress.zip}}</span>
   </div>
-  <div class="section">
+  <div class="section" *ngIf="companyBillingAddress">
     <span class="blue">Billing Address</span>
-    <span>{{company.addresses[1].streetAddress1}}</span>
-    <span>{{company.addresses[1].city}}, {{company.addresses[1].state}}</span>
-    <span>{{company.addresses[1].zip}}</span>
+    <span>{{companyBillingAddress.streetAddress1}}</span>
+    <span>{{companyBillingAddress.city}}, {{companyBillingAddress.state}}</span>
+    <span>{{companyBillingAddress.zip}}</span>
   </div>
-  <div class="section">
+  <div class="section" *ngIf="companyAddress">
     <span>{{phone}}</span>
   </div>
 </div>
