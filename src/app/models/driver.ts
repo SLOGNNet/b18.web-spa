@@ -17,7 +17,7 @@ const statusColors = createStatusColors();
 
 @JsonObject
 export class Driver {
-  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
+  private static statusText = ['inactive', 'active', 'unavaliable'];
   private static typeText = ['Company driver', 'Owner operator'];
 
   @JsonMember

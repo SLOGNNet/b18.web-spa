@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   height: 100px;
-  padding: $default-margin;
+  padding: 14px $default-margin;
   background: inherit;
   font-size: $tiny-font-size;
   line-height: 18px;
@@ -19,14 +19,9 @@
 
     .driver-full-name {
       overflow: hidden;
-      padding-top: 6px;
-
-      span {
-        overflow: hidden;
-        font-weight: bold;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+      font-weight: bold;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .driver-type {
@@ -64,7 +59,6 @@
     line-height: 17px;
     flex-direction: column;
     padding-left: $default-margin;
-    padding-top: 1px;
 
     .tr-city {
       display: flex;
@@ -72,7 +66,7 @@
       .tr-city-circle {
         width: 10px;
         height: 10px;
-        margin: 2px 5px 0 0;
+        margin: 4px 5px 0 0;
         background: $black;
         border-radius: 50%;
       }
@@ -87,7 +81,7 @@
     .status-text {
       position: absolute;
       right: 22px;
-      bottom: -3px;
+      bottom: 0;
       justify-content: center;
     }
 
@@ -97,7 +91,7 @@
       width: 12px;
       height: 12px;
       background: $black;
-      bottom: 0;
+      bottom: 3px;
       border-radius: $form-control-height;
     }
   }

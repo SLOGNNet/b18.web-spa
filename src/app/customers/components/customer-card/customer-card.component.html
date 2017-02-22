@@ -5,17 +5,13 @@ class="customer-card-section"
   <div class="left">
     <span class="cropped-customer-name">{{this.croppedCustomerName}}</span>
     <div class="customer-name">
-      <span>{{customer.name}}</span>
+      {{customer.name}}
     </div>
     <div>MC# {{customer.mc}}</div>
   </div>
   <div class="middle">
-    <div class="customer-contact-full-name-container">
     <span class="customer-contact-full-name">{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
-  </div>
-  <div class="position-container">
     <span class="position">{{customer.contacts[0].position}}</span>
-  </div>
   <div class="customer-address-phone">{{customer.addresses[0].phone}}</div>
   </div>
   <div class="right">

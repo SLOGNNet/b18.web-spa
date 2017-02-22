@@ -16,7 +16,7 @@ function createStatusColors() {
 const statusColors = createStatusColors();
 @JsonObject()
 export class Customer {
-  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
+  private static statusText = ['inactive', 'active', 'unavaliable'];
 
   id: number;
 

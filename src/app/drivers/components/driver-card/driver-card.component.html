@@ -11,17 +11,13 @@ class="driver-card-section"
       </bd-initials-circle>
     </div>
     <div class="driver-full-name">
-      <span>{{driver.firstName}} {{driver.lastName}}</span>
+      {{driver.firstName}} {{driver.lastName}}
     </div>
     <div class="driver-type">{{driverTypeText}}</div>
   </div>
   <div class="middle">
-    <div class="driver-phone">
-    <span>{{driver.phone}}</span>
-  </div>
-  <div class="send-message">
-    <span>Send Message</span>
-  </div>
+    <span class="driver-phone">{{driver.phone}}</span>
+    <span class="send-message">Send Message</span>
   </div>
   <div class="right">
     <div class="tr-city">
