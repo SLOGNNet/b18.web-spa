@@ -29,20 +29,20 @@ import { LoadsComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
-  CustomerPopoverComponent,
+  CompanyPopoverComponent,
   DriverPopoverComponent } from './loads';
 import {
   CommodityActions,
   LoadActions,
   AddressActions,
-  CustomerActions,
+  CompanyActions,
   EquipmentActions,
   DriverActions,
   StopActions
 } from './actions';
-import { CustomersComponent, CustomerDetailComponent } from './customers';
-import { CustomerCardComponent } from './customers/components/customer-card';
-import { CustomerCardsComponent } from './customers/components/customer-cards';
+import { CompaniesComponent, CompanyDetailComponent } from './companies';
+import { CompanyCardComponent } from './companies/components/company-card';
+import { CompanyCardsComponent } from './companies/components/company-cards';
 import { BdToastManagerComponent } from './bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from './equipment';
 // Application wide providers
@@ -75,14 +75,14 @@ type StoreType = {
      MessageComponent,
      LoadsComponent,
      LoadDetailComponent,
-     CustomersComponent,
-     CustomerDetailComponent,
-     CustomerCardComponent,
-     CustomerCardsComponent,
+     CompaniesComponent,
+     CompanyDetailComponent,
+     CompanyCardComponent,
+     CompanyCardsComponent,
      LoadStopCardComponent,
      LoadStopCardsComponent,
      TripPopoverComponent,
-     CustomerPopoverComponent,
+     CompanyPopoverComponent,
      DriverPopoverComponent,
      TopPanelComponent,
      BdToastManagerComponent,
@@ -105,7 +105,7 @@ type StoreType = {
     CommodityActions,
     LoadActions,
     AddressActions,
-    CustomerActions,
+    CompanyActions,
     EquipmentActions,
     DriverActions,
     StopActions

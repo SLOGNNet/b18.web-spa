@@ -31,7 +31,7 @@
         <div [hidden]="isFilterActive">
           <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
           </bd-button>
-          <load-stop-cards [selected]="selected" [loads]="items" (select)='onSelect($event)'></load-stop-cards>
+          <load-stop-cards [selected]="selected" [loads]="items"></load-stop-cards>
         </div>
       </div>
     </bd-infinite-scroll>

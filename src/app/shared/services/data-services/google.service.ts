@@ -53,20 +53,20 @@ export class GoogleService {
       }
     }
 
-    let streetAddress = place.formatted_address;
-    const stateIdx = streetAddress.indexOf(details.administrative_area_level_1) - 2;
+    let streetAddress1 = place.formatted_address;
+    const stateIdx = streetAddress1.indexOf(details.administrative_area_level_1) - 2;
 
     if (stateIdx > 0) {
-      streetAddress = streetAddress.substring(0, stateIdx);
+      streetAddress1 = streetAddress1.substring(0, stateIdx);
     }
 
     return {
       city: details.locality,
       zip: details.postal_code,
-      streetAddress: streetAddress,
+      streetAddress1: streetAddress1,
       state: details.administrative_area_level_1,
-      lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
+      latitude: place.geometry.location.latitude(),
+      longitude: place.geometry.location.longitude()
     };
   }
 }

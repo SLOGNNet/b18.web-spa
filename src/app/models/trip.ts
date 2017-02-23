@@ -1,4 +1,6 @@
 import { Driver } from './driver';
+import { DriverTeam } from './driverTeam';
+import { Equipment } from './equipment';
 import { generateNewId } from './utils';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
@@ -7,18 +9,17 @@ export class Trip {
   @JsonMember
   id: number;
   @JsonMember
-  number: number = 0;
+  number: string = '';
   @JsonMember
-  truckNumber: number = 0;
+  truck: Equipment;
   @JsonMember
-  trailerNumber: number = 0;
-  @JsonMember({ elements: Driver })
-  driver: Driver;
+  trailer: Equipment;
+  @JsonMember({ elements: DriverTeam })
+  driverTeams: Array<DriverTeam>;
 
   static create(): Trip{
     const result = new Trip();
     result.id = generateNewId();
-    result.driver = Driver.create();
     return result;
   }
 }

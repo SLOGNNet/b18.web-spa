@@ -1,5 +1,11 @@
 @import './variables';
 
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .button-group {
   display: flex;
   width: 100%;
