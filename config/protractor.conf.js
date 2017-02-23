@@ -26,7 +26,7 @@ exports.config = {
     includeStackTrace: false,
     defaultTimeoutInterval: 400000
   },
-  directConnect: true,
+  directConnect: false,
 
   capabilities: {
     'browserName': 'phantomjs',
