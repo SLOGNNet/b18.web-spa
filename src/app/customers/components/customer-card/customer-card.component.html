@@ -1,40 +1,28 @@
 <div
 class="customer-card-section"
 (mouseover)="onEnter()"
-(mouseleave)="onLeave()"
-(click)="onClick()">
-  <div class="top">
-    <div class="left">
-      <span>{{this.croppedCustomerName}}</span>
+(mouseleave)="onLeave()">
+  <div class="left">
+    <span class="cropped-customer-name">{{this.croppedCustomerName}}</span>
+    <div class="customer-name ellipsis">
+      {{customer.name}}
     </div>
-    <div class="middle">
-      <span>{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
-    </div>
-    <div class="right">
-      <div class="loads-container">
-        <div *ngFor="let load of customer.loads" class="load">
-          <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
-          <span class="load-name">LD{{load.systemLoadNumber}}</span>
-        </div>
-      </div>
-    </div>
+    <div>MC# {{customer.mc}}</div>
   </div>
-
-  <div class="bottom">
-    <div class="left">
-      <div class="customer-name">{{customer.name}}</div>
-      <div>MC# {{customer.mc}}</div>
+  <div class="middle">
+    <span class="customer-contact-full-name">{{customer.contacts[0].firstName}} {{customer.contacts[0].lastName}}</span>
+    <span class="position ellipsis">{{customer.contacts[0].position}}</span>
+  <div class="customer-address-phone ellipsis">{{customer.addresses[0].phone}}</div>
+  </div>
+  <div class="right">
+    <div *ngFor="let load of customer.loads" class="load">
+      <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
+      <span class="load-name ellipsis">LD{{load.systemLoadNumber}}</span>
     </div>
-    <div class="middle">
-      <div class="position">{{customer.contacts[0].position}}</div>
-      <div>{{customer.addresses[0].phone}}</div>
-    </div>
-    <div class="right">
       <span *ngIf="statusText" [style.color]="customerStatusColor" class="status-text">{{customerStatusText}}</span>
-        <span
-        [style.background]="customerStatusColor"
-        class="status">
+      <span
+      [style.background]="customerStatusColor"
+      class="status">
       </span>
-    </div>
   </div>
 </div>

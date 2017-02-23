@@ -8,19 +8,15 @@ class="equipment-card-section"
       [firstName]="firstLetter"
       [lastName]="lastLetter">
     </bd-initials-circle>
-    <div class="equipment-make">
-      <span>{{equipment.make}}</span>
+    <div class="equipment-make ellipsis">
+      {{equipment.make}}
     </div>
     <div>{{equipment.number}}</div>
   </div>
   <div class="middle">
-    <div class="driver-name">
-    <span>{{equipment.driverFirstName}} {{equipment.driverLastName}}</span>
-  </div>
-  <div class="driver-type">
-    <span>{{driverType}}</span>
-  </div>
-  <div class="changes">{{this.equipment.equipmentNotification?.date | date:'MM/dd'}}</div>
+    <span class="driver-name">{{equipment.driverFirstName}} {{equipment.driverLastName}}</span>
+    <span class="driver-type ellipsis">{{driverType}}</span>
+  <div class="changes ellipsis">{{this.equipment.equipmentNotification?.date | date:'MM/dd'}}</div>
   </div>
   <div class="right">
       <div class="tr-city">
