@@ -14,12 +14,12 @@
         </bd-popover-content>
       </span>
     </span>
-    <span>{{load.customerLoadNumber}}</span>
+    <span class="customer-load-number">{{load.customerLoadNumber}}</span>
   </div>
-  <div class="right" *ngIf="this.load.stops.length > 1">
+  <div class="right stops-container" *ngIf="this.load.stops.length > 1">
     <div class="distance-wrapper">
-      <span>{{firstStop.address.city}}, {{firstStop.address.state}}</span>
-      <span>{{lastStop.address.city}}, {{lastStop.address.state}}</span>
+      <span class="firstStopAddress">{{firstStop.address.city}}, {{firstStop.address.state}}</span>
+      <span class="lastStopAddress">{{lastStop.address.city}}, {{lastStop.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
@@ -34,9 +34,9 @@
     </div>
   </div>
   <div class="bottom">
-    <span class="link">{{currentTrip.driver.firstName}}</span>
+    <span class="link firstName">{{currentTrip.driver.firstName}}</span>
     <span class="link">|</span>
-    <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
+    <span class="link truckNumber" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrip.truckNumber}}
       <bd-popover-content
         #driverPopover
@@ -48,9 +48,9 @@
       </bd-popover-content>
       </span>
     <span class="link">|</span>
-    <span class="link">TI{{currentTrip.trailerNumber}}</span>
+    <span class="link trailerNumber">TI{{currentTrip.trailerNumber}}</span>
     <span class="current-trip">
-      <span [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
+      <span class="tripNumber" [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
         TR{{currentTrip.number}}
         <bd-popover-content
           #tripPopover
