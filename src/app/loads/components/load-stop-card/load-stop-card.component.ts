@@ -24,7 +24,7 @@ export class LoadStopCardComponent {
   }
 
   get currentTrip() {
-    return this.load.currentTrip[0];
+    return this.load.currentTrips[0];
   }
 
   get firstStop() {

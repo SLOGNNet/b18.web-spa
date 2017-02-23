@@ -1,26 +1,26 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Customer } from '../../models';
+import { Company } from '../../models';
 import { BaseDetailComponent } from '../../base';
 import {  ActivatedRoute, Params } from '@angular/router';
-import { CustomerActions } from '../../actions';
+import { CompanyActions } from '../../actions';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../../store';
 
 @Component({
-  selector: 'customer-detail',
-  templateUrl: './customer-detail.component.html',
+  selector: 'company-detail',
+  templateUrl: './company-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CustomerDetailComponent extends BaseDetailComponent<Customer> {
+export class CompanyDetailComponent extends BaseDetailComponent<Company> {
   private anchors = [{
-    id: 'customer-basic-information',
+    id: 'company-basic-information',
     title: 'Basic information'
   }, {
-    id: 'customer-addresses',
+    id: 'company-addresses',
     title: 'Adresses'
   }, {
-    id: 'customer-contacts',
+    id: 'company-contacts',
     title: 'Contacts'
   }, {
     id: '',
@@ -55,9 +55,9 @@ export class CustomerDetailComponent extends BaseDetailComponent<Customer> {
   }];
 
   constructor(
-    customerActions: CustomerActions,
+    companyActions: CompanyActions,
     route: ActivatedRoute,
     ngRedux: NgRedux<IAppState>) {
-      super(customerActions, ngRedux.select(state => state.customers.selected), route);
+      super(companyActions, ngRedux.select(state => state.companies.selected), route);
   }
 }

@@ -6,7 +6,7 @@ import { BdPerfectScrollbarComponent } from './common/bd-perfect-scrollbar/bd-pe
 import { FilterContainer } from './components/filter-container/filter-container.component';
 import { Load } from '../models';
 import { LoadActions } from '../actions';
-import { LoadService, CustomerService } from '../shared';
+import { LoadService, CompanyService } from '../shared';
 import { ViewMode } from '../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -25,7 +25,7 @@ export class LoadsComponent extends BaseListComponent<Load>{
   private scrolledDown = false;
 
   constructor(private loadService: LoadService,
-    private customerService: CustomerService,
+    private companyService: CompanyService,
     loadActions: LoadActions,
     router: Router,
     route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class LoadsComponent extends BaseListComponent<Load>{
   }
 
   autocompleteSearchSource(query: string, page: number, count: number) {
-    return this.customerService.getPaginatedSearch(query, page, count);
+    return this.companyService.getPaginatedSearch(query, page, count);
   }
 
   onFilterVisibilityChange(isVisible) {

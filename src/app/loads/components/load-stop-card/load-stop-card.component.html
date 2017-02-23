@@ -1,54 +1,54 @@
 <div class="load-stop-card-section" (click)="onClick()">
   <div class="left">
-    <span class="load-number">LD{{load.systemLoadNumber}}</span>
-    <span class="customer-name">
-      <span [bd-popover]="customerPopover" [popoverOnHover]="popoverOnHover">
+    <span class="load-number">LD{{load.systemLoadNo}}</span>
+    <span class="company-name">
+      <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
         {{load.customer.name}}
         <bd-popover-content
-          #customerPopover
+          #companyPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="-10"
           [closeOnClickOutside]="closeOnClickOutside">
-          <customer-popover [customer]="load.customer"></customer-popover>
+          <company-popover [company]="load.customer" [companyBillingAddress]="load.customerBillingAddress" [companyAddress]="load.customerAddress"></company-popover>
         </bd-popover-content>
       </span>
     </span>
-    <span class="customer-load-number">{{load.customerLoadNumber}}</span>
+    <span class="customer-load-number">{{load.customerLoadNo}}</span>
   </div>
   <div class="right stops-container" *ngIf="this.load.stops.length > 1">
     <div class="distance-wrapper">
-      <span class="firstStopAddress">{{firstStop.address.city}}, {{firstStop.address.state}}</span>
-      <span class="lastStopAddress">{{lastStop.address.city}}, {{lastStop.address.state}}</span>
+      <span class="firstStopAddress">{{firstStop.facility.address.city}}, {{firstStop.facility.address.state}}</span>
+      <span class="lastStopAddress">{{lastStop.facility.address.city}}, {{lastStop.facility.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">
-        {{firstStop.date | date:'MM/dd'}}
+        {{firstStop.plannedArrivalAt | date:'MM/dd'}}
       </div>
       <div class="schedule">
         <stops-line [stops]="load.stops"></stops-line>
       </div>
       <div class="end-date">
-        {{lastStop.date | date:'MM/dd'}}
+        {{lastStop.plannedArrivalAt | date:'MM/dd'}}
       </div>
     </div>
   </div>
-  <div class="bottom">
-    <span class="link firstName">{{currentTrip.driver.firstName}}</span>
+  <div *ngIf="load.currentTrips && load.currentTrips.length" class="bottom">
+    <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].contact.firstName}}</span>
     <span class="link">|</span>
     <span class="link truckNumber" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
-      Tk{{currentTrip.truckNumber}}
+      Tk{{currentTrip.truck.number}}
       <bd-popover-content
         #driverPopover
         placement="auto"
         [width]="popupWidth"
         [horizontalOffset]="-10"
         [closeOnClickOutside]="closeOnClickOutside">
-        <driver-popover [driver]="currentTrip.driver"></driver-popover>
+        <driver-popover [driver]="currentTrip.driverTeams[0].drivers[0]"></driver-popover>
       </bd-popover-content>
       </span>
     <span class="link">|</span>
-    <span class="link trailerNumber">TI{{currentTrip.trailerNumber}}</span>
+    <span class="link trailerNumber">TI{{currentTrip.trailer.number}}</span>
     <span class="current-trip">
       <span class="tripNumber" [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
         TR{{currentTrip.number}}

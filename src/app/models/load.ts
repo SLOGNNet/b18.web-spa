@@ -1,6 +1,7 @@
 import { Stop } from './stop';
-import { Customer } from './customer';
+import { Company } from './company';
 import { Commodity } from './commodity';
+import { Address } from './address';
 import { Trip } from './trip';
 import { Document } from './document';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
@@ -43,39 +44,43 @@ export class Load {
   @JsonMember
   id: number;
   @JsonMember
-  customerId: number;
+  companyId: number;
   @JsonMember
   addressId: number;
   @JsonMember
-  systemLoadNumber: number;
+  systemLoadNo: string;
   @JsonMember
-  customerLoadNumber: number;
+  customerLoadNo: string;
   @JsonMember
-  loadType: LoadType;
+  type: LoadType;
   @JsonMember
   freightType: FreightType;
   @JsonMember
-  billingAddressId: number;
+  customerBillingAddressId: number;
+  @JsonMember({ elements: Address })
+  customerAddress: Address = new Address();
+  @JsonMember({ elements: Address })
+  customerBillingAddress: Address;
   @JsonMember({ elements: Commodity })
   commodities: Array<Commodity>;
   @JsonMember
   contactId: number;
   @JsonMember
   status: LoadStatuses;
-  @JsonMember({ elements: Customer })
-  customer: Customer;
+  @JsonMember({ elements: Company })
+  customer: Company;
   @JsonMember
   driverRequirment: DriverRequirements;
   @JsonMember
-  powerUnitType: PowerUnitTypes;
+  requiredPowerUnitType: PowerUnitTypes;
   @JsonMember
-  trailerType: TrailerTypes;
+  requiredTrailerType: TrailerTypes;
   @JsonMember
-  specialRequirment: string;
+  specialRequirments: string;
   @JsonMember({ elements: Trip })
   trips: Array<Trip>;
   @JsonMember({ elements: Trip })
-  currentTrip: Array<Trip>;
+  currentTrips: Array<Trip>;
   @JsonMember({ elements: Stop })
   stops: Array<Stop>;
   @JsonMember({ elements: Document })
@@ -85,12 +90,12 @@ export class Load {
     const result = new Load();
     result.id = generateNewId();
     result.status = LoadStatuses.Booked;
-    result.customer = Customer.create();
+    result.customer = Company.create();
     result.driverRequirment = DriverRequirements.Solo;
-    result.powerUnitType = PowerUnitTypes.Tractor;
-    result.trailerType = TrailerTypes.DryVan53;
+    result.requiredPowerUnitType = PowerUnitTypes.Tractor;
+    result.requiredTrailerType = TrailerTypes.DryVan53;
     result.trips = [Trip.create()];
-    result.currentTrip = [Trip.create()];
+    result.currentTrips = [Trip.create()];
     result.stops = [Stop.create(StopTypes.Dropoff)];
     result.documents = [];
     result.commodities = new Array<Commodity>();

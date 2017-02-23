@@ -12,8 +12,8 @@ let nextUniqueId = 0;
 export class GoogleMapComponent implements OnChanges {
 
     @Input() id: string = `google-${nextUniqueId++}`;
-    @Input() lng: number = 0;
-    @Input() lat: number = 0;
+    @Input() longitude: number = 0;
+    @Input() latitude: number = 0;
     @Input() info = '';
     @Input() infoLabelSize = 10;
     @Input() markerSize = 20;
@@ -35,7 +35,7 @@ export class GoogleMapComponent implements OnChanges {
         if (!this._isInitialized) {
             this.init();
         } else {
-            this.update(this.lng, this.lat, this.info);
+            this.update(this.longitude, this.latitude, this.info);
         }
     }
 
@@ -77,19 +77,19 @@ export class GoogleMapComponent implements OnChanges {
             });
 
             this._isInitialized = true;
-            this.update(this.lng, this.lat, this.info);
+            this.update(this.longitude, this.latitude, this.info);
         }, 0);
     }
 
-    update(lng: number, lat: number, info: string): void {
+    update(longitude: number, latitude: number, info: string): void {
         if (this._isInitialized) {
             this._marker.setVisible(false);
 
-            if (lat && lng) {
+            if (latitude && longitude) {
                 this._showMapElelemts();
 
-                this._updateMap(lng, lat);
-                this._updateMarker(lng, lat);
+                this._updateMap(longitude, latitude);
+                this._updateMarker(longitude, latitude);
                 this._updateInfowindow(info);
             } else {
                 this._hideMapElelemts();
@@ -97,17 +97,17 @@ export class GoogleMapComponent implements OnChanges {
         }
     }
 
-    private _updateMap(lng: number, lat: number): void {
-        this._map.setCenter({lng, lat});
+    private _updateMap(longitude: number, latitude: number): void {
+        this._map.setCenter({lng: longitude, lat: latitude});
     }
 
-    private _updateMarker(lng: number, lat: number): void {
+    private _updateMarker(longitude: number, latitude: number): void {
         this._marker.setIcon({
             url: this.markerIcon,
             scaledSize: new google.maps.Size(this.markerSize, this.markerSize),
             origin: new google.maps.Point(0, 0)
         });
-        this._marker.setPosition({lng, lat});
+        this._marker.setPosition({lng: longitude, lat: latitude});
         this._marker.setVisible(true);
     }
 

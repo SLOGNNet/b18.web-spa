@@ -1,5 +1,5 @@
 <template #customItemTemplate let-model="item" let-index="index">
-    <div class="dropdown-customer-item-wrapper">
+    <div class="dropdown-company-item-wrapper">
       <div class="full-properties-wrapper">
         <div class="name-title">
           {{model.name}}
@@ -13,33 +13,33 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info">
-    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNo">
     </bd-input>
-    <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNumber">
+    <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNo">
     </bd-input>
-    <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="loadType" [items]="loadTypesNames">
+    <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
     <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
     </bd-form-switch>
   </bd-form-section>
-  <navigation-anchor id="customer"></navigation-anchor>
+  <navigation-anchor id="company"></navigation-anchor>
   <bd-form-section labelText="Customer">
     <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
       <bd-typeahead
         class="bd-form-control"
         formControlName="customer"
         [labelText]="'Name or MC#'"
-        [footerButtonText]="'Add New Customer'"
-        [source]="customerSource"
-        (onRemove)="onCustomerRemove()"
-        [(value)]="customerQuery"
+        [footerButtonText]="'Add New Company'"
+        [source]="companySource"
+        (onRemove)="onCompanyRemove()"
+        [(value)]="companyQuery"
         [itemTemplate]="customItemTemplate"
-        (onSelect)="onCustomerSelect($event)"
-        (onFooterButtonClick)="onAddNewCustomer()"
+        (onSelect)="onCompanySelect($event)"
+        (onFooterButtonClick)="onAddNewCompany()"
         [optionField]="'name'">
       </bd-typeahead>
     </bd-validator>
-    <customer-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [customer]='load.customer' (save)="onCustomerSave($event)" (cancel)="onCustomerEditCancel()" [viewMode]="customerViewMode"> </customer-form>
+    <company-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [company]='load.customer' (save)="onCompanySave($event)" (cancel)="onCompanyEditCancel()" [viewMode]="companyViewMode"> </company-form>
     <bd-form-section>
       <bd-dropdown
         *ngIf='load.customer'
@@ -60,7 +60,7 @@
         clearLabel='Leave Empty'
         class="bd-form-control"
         labelText='Billing Address'
-        formControlName="billingAddressId"
+        formControlName="customerBillingAddressId"
         defaultTitleText="Select Billing Address"
         [dropdownItemTemplate]="addressDropdown"
         [items]="load.customer.addresses"
@@ -93,13 +93,13 @@
     <bd-form-section labelText="REQUIREMENTS">
       <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirement" [items]="driverRequirementsNames">
       </bd-form-switch>
-      <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="powerUnitType" [items]="powerUnitTypesNames">
+      <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="requiredPowerUnitType" [items]="requiredPowerUnitTypesNames">
       </bd-dropdown>
-      <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="trailerType" [items]="trailerTypesNames">
+      <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="requiredTrailerType" [items]="requiredTrailerTypesNames">
       </bd-dropdown>
       <bd-textarea
         class="bd-form-control"
-        formControlName="specialRequirment"
+        formControlName="specialRequirments"
       [labelText]="'Special Requirements'">
       </bd-textarea>
     </bd-form-section>

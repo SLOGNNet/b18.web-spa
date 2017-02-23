@@ -15,7 +15,8 @@ config = {
     port: 3000,
     baseUrl: '/',
     hmr: helpers.hasProcessFlag('hot'),
-    socketIoHost: 'http://localhost:5000'
+    socketIoHost: 'http://localhost:5000',
+    apiUrl: 'https://dev.bridge18.com/api/expedition/'
   },
   publicdev: {
     socketIoHost: 'https://dev.bridge18.com'
