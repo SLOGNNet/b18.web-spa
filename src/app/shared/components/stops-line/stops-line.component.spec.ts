@@ -2,7 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { StopsLineComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
-import { hexToRgb, getRGBString } from '../../../shared';
+import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { StopPopoverComponent } from './components';
 import { Address, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 

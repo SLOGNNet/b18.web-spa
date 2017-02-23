@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { LoadStopCardComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
 import { StopsLineComponent } from '../../../shared/components/stops-line';
-import { hexToRgb, getRGBString } from '../../../shared';
+import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
 import { Load, LoadStatuses, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
