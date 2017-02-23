@@ -74,7 +74,7 @@ fdescribe('CustomerCardComponent', () => {
     component.customer.contacts[0].firstName = testContactFirstName;
     component.customer.contacts[0].lastName = testContactLastName;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.customer-contacts-full-name'));
+    let element = fixture.debugElement.query(By.css('.customer-contact-full-name'));
     expect(element.nativeElement.textContent).toBe(testContactFirstName + ' ' + testContactLastName);
   });
 
@@ -128,7 +128,7 @@ fdescribe('CustomerCardComponent', () => {
     let testCroopedCustomerName = 'CHR';
     component.customer = testCustomer;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.crooped-customer-name'));
+    let element = fixture.debugElement.query(By.css('.cropped-customer-name'));
     expect(element.nativeElement.textContent).toBe(testCroopedCustomerName);
   });
 
