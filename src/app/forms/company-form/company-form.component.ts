@@ -2,7 +2,8 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef }
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Company, CompanyStatuses, CompanyTypes, Address } from '../../models';
 import { AddressActions } from '../../actions';
-import { EnumHelperService, BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { NgRedux, select } from 'ng2-redux';

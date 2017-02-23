@@ -1,7 +1,8 @@
 import { Component, Input, Output, OnChanges, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { CompanyService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
+import { CompanyService, BdFormBuilder, BdFormGroup, ContactService } from '../../shared';
+import { EnumHelperService } from '../../shared/helpers';
 import {
   Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
