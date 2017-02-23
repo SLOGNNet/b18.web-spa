@@ -19,7 +19,7 @@ export class StopPopoverComponent {
   }
 
   get phone() {
-    return [this.stop.address.phone, this.stop.address.phoneExtension].filter(v => v).join(' x ');
+    return [this.stop.facility.address.phone, this.stop.facility.address.phoneExtension].filter(v => v).join(' x ');
   }
 
 }

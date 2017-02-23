@@ -3,7 +3,9 @@ import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
-  CustomerService,
+  CompanyService,
+  EquipmentService,
+  DriverService,
   SocketService,
   LoadService,
   GoogleService,
@@ -18,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdCheckbox } from '././components/bd-checkbox';
+import { BdFormCheckbox } from './components/bd-form-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
@@ -62,7 +65,9 @@ import { EmailValidator } from './validators';
     NotificationService,
     LoadService,
     SocketService,
-    CustomerService,
+    CompanyService,
+    EquipmentService,
+    DriverService,
     ContactService,
     EnumHelperService,
     GoogleService,
@@ -88,6 +93,7 @@ import { EmailValidator } from './validators';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
@@ -146,6 +152,7 @@ import { EmailValidator } from './validators';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,

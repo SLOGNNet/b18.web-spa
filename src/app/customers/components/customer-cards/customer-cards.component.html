@@ -1,6 +1,0 @@
-<customer-card
-  *ngFor="let customer of this.customers"
-  [customer]="customer"
-  [class.active]="isActive(customer.id)"
-  (select)="onCardSelect($event)">
-</customer-card>

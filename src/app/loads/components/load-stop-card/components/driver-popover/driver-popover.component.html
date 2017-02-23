@@ -1,17 +1,17 @@
 <div class="driver-popover">
   <div class="section">
-    <span class="blue">{{driver.firstName}} {{driver.lastName}} <span class="black">| {{type}} | {{status}}</span></span>
+    <span class="blue">{{driver.contact.firstName}} {{driver.contact.lastName}} <span class="black">| {{type}} | {{status}}</span></span>
     <span>{{driver.ssn}}</span>
     <span>Notifications: {{driver.notes}}</span>
   </div>
   <div class="section">
-    <span class="blue">{{getEquipmentTypeText(driver.powerUnitAssigned.type)}}: {{driver.powerUnitAssigned.number}}</span>
-    <span>{{driver.powerUnitAssigned.make}} {{driver.powerUnitAssigned.model}} | {{getEquipmentModeText(driver.powerUnitAssigned.mode)}} | {{getEquipmentStatusText(driver.powerUnitAssigned.status)}}</span>
-    <span>Notifications: {{driver.powerUnitAssigned.notes}}</span>
+    <span class="blue">{{getEquipmentTypeText(driver.currentTruck.type)}}: {{driver.currentTruck.number}}</span>
+    <span>{{driver.currentTruck.make}} {{driver.currentTruck.model}} | {{getEquipmentModeText(driver.currentTruck.mode)}} | {{getEquipmentStatusText(driver.currentTruck.status)}}</span>
+    <span>Notifications: {{driver.currentTruck.notes}}</span>
   </div>
   <div class="section">
-    <span class="blue">{{getEquipmentTypeText(driver.trailerAssigned.type)}}: {{driver.trailerAssigned.number}}</span>
-    <span>{{driver.trailerAssigned.make}} {{driver.trailerAssigned.model}} | {{getEquipmentModeText(driver.trailerAssigned.mode)}} | {{getEquipmentStatusText(driver.trailerAssigned.status)}}</span>
-    <span>Notifications: {{driver.trailerAssigned.notes}}</span>
+    <span class="blue">{{getEquipmentTypeText(driver.currentTrailer.type)}}: {{driver.currentTrailer.number}}</span>
+    <span>{{driver.currentTrailer.make}} {{driver.currentTrailer.model}} | {{getEquipmentModeText(driver.currentTrailer.mode)}} | {{getEquipmentStatusText(driver.currentTrailer.status)}}</span>
+    <span>Notifications: {{driver.currentTrailer.notes}}</span>
   </div>
 </div>
