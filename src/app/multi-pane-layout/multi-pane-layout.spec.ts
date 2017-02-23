@@ -21,11 +21,10 @@ fdescribe('MultiPaneLayoutComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MultiPaneLayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
-    debugger;
     let de = fixture.debugElement.query(By.css('.first-pane'));
     expect(de.attributes['hidden']).toBeUndefined();
   });
