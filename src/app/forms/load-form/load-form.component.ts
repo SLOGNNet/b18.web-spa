@@ -1,9 +1,9 @@
 import { Component, Input, Output, OnChanges, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
+import { CompanyService, BdFormBuilder, BdFormGroup, EnumHelperService, ContactService } from '../../shared';
 import {
-  Load, Document, Customer,
+  Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
   Stop, StopTypes, Contact, Commodity,
   LoadType, FreightType } from '../../models';
@@ -20,8 +20,8 @@ import { NgRedux, select } from 'ng2-redux';
 }, BaseForm.metaData))
 export class BdLoadFormComponent extends BaseForm implements OnChanges {
   driverRequirementsNames: Array<any>;
-  powerUnitTypesNames: Array<any>;
-  trailerTypesNames: Array<any>;
+  requiredPowerUnitTypesNames: Array<any>;
+  requiredTrailerTypesNames: Array<any>;
   loadTypesNames: Array<any>;
   freightTypesNames: Array<any>;
   @Input() load: Load;
@@ -31,24 +31,24 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
   private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Pickup));
   private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Dropoff));
 
-  private customerSource: any[];
-  private customerQuery: string = '';
-  private customerViewMode: ViewMode = ViewMode.None;
+  private companySource: any[];
+  private companyQuery: string = '';
+  private companyViewMode: ViewMode = ViewMode.None;
   private loadForm: FormGroup;
   private stopTypes = StopTypes;
   private documents: Array<Document>;
 
   public constructor(
     private stopActions: StopActions,
-    private customerService: CustomerService,
+    private companyService: CompanyService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
     private contactService: ContactService,
     elementRef: ElementRef) {
     super(elementRef);
     this.driverRequirementsNames = this.enumHelperService.getDropdownKeyValues(DriverRequirements);
-    this.powerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
-    this.trailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
+    this.requiredPowerUnitTypesNames = this.enumHelperService.getDropdownKeyValues(PowerUnitTypes);
+    this.requiredTrailerTypesNames = this.enumHelperService.getDropdownKeyValues(TrailerTypes);
     this.loadTypesNames = this.enumHelperService.getDropdownKeyValues(LoadType);
     this.freightTypesNames = this.enumHelperService.getDropdownKeyValues(FreightType);
   }
@@ -60,56 +60,56 @@ export class BdLoadFormComponent extends BaseForm implements OnChanges {
     }
   }
 
-  onCustomerRemove() {
+  onCompanyRemove() {
     this.load.customer = null;
   }
 
-  onAddNewCustomer() {
-    this.load.customer = Customer.create();
-    this.customerViewMode = ViewMode.Edit;
+  onAddNewCompany() {
+    this.load.customer = Company.create();
+    this.companyViewMode = ViewMode.Edit;
   }
 
-  onCustomerSave(customer: Customer) {
+  onCompanySave(customer: Company) {
     this.load.customer = customer;
-    this.customerService.create(customer);
-    this.customerViewMode = ViewMode.View;
+    this.companyService.create(customer);
+    this.companyViewMode = ViewMode.View;
     this.initCustomerTypeahead(customer);
   }
 
-  onCustomerEditCancel() {
+  onCompanyEditCancel() {
     this.load.customer = this.load.customer;
   }
 
   public initForm() {
-    this.customerViewMode = ViewMode.ViewCollapsed;
+    this.companyViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
       addressId: [this.load.addressId],
-      billingAddressId: [this.load.billingAddressId],
+      customerBillingAddressId: [this.load.customerBillingAddressId],
       contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
-      powerUnitType: [this.load.powerUnitType],
-      trailerType: [this.load.trailerType],
-      specialRequirment: [this.load.specialRequirment],
+      requiredPowerUnitType: [this.load.requiredPowerUnitType],
+      requiredTrailerType: [this.load.requiredTrailerType],
+      specialRequirments: [this.load.specialRequirments],
       pickups: this.formBuilder.array([]),
       dropoffs: this.formBuilder.array([]),
-      systemLoadNumber: [this.load.systemLoadNumber],
-      customerLoadNumber: [this.load.customerLoadNumber],
-      loadType: [this.load.loadType],
+      systemLoadNo: [this.load.systemLoadNo],
+      customerLoadNo: [this.load.customerLoadNo],
+      type: [this.load.type],
       freightType: [this.load.freightType]
     });
   }
 
-  public onCustomerSelect(customer: Customer) {
-   this.load.customer = customer;
-   this.customerViewMode = ViewMode.ViewCollapsed;
+  public onCompanySelect(company: Company) {
+   this.load.customer = company;
+   this.companyViewMode = ViewMode.ViewCollapsed;
   }
 
   private initCustomerTypeahead(customer) {
-    this.customerQuery = customer && customer.name;
-    this.customerSource = Observable.create((observer: any) => {
-      observer.next(this.customerQuery);
-    }).mergeMap((token: string) => this.customerService.search(token));
+    this.companyQuery = customer && customer.name;
+    this.companySource = Observable.create((observer: any) => {
+      observer.next(this.companyQuery);
+    }).mergeMap((token: string) => this.companyService.search(token));
   }
 
   private onLoadCancel() {

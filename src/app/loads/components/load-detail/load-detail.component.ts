@@ -16,8 +16,8 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     id: 'info',
     title: 'Info'
   },  {
-    id: 'customer',
-    title: 'Customer'
+    id: 'company',
+    title: 'Company'
   },  {
     id: 'pickups',
     title: 'Pickups'

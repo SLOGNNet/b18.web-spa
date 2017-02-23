@@ -13,41 +13,57 @@ function createStatusColors() {
   return result;
 };
 
+// Status Text
+function createStatusText() {
+ let result = {};
+  result[DriverStatuses.None] = 'none';
+  result[DriverStatuses.Unavaliable] = 'unavaliable';
+  result[DriverStatuses.Active] = 'active';
+  result[DriverStatuses.Inactive] = 'inactive';
+
+  return result;
+};
+
+// Type Text
+function createTypeText() {
+ let result = {};
+  result[DriverTypes.None] = 'None';
+  result[DriverTypes.CompanyDriver] = 'Company driver';
+  result[DriverTypes.OwnerOperator] = 'Owner operator';
+
+  return result;
+};
+
 const statusColors = createStatusColors();
+const statusText = createStatusText();
+const typeText = createTypeText();
 
 @JsonObject
 export class Driver {
-  private static statusText = ['Inactive', 'Active', 'Unavaliable'];
-  private static typeText = ['Company driver', 'Owner operator'];
-
   @JsonMember
   id: number = 0;
-  @JsonMember
-  firstName: string = '';
-  @JsonMember
-  lastName: string = '';
   @JsonMember
   dateOfBirth: Date = null;
   @JsonMember
   ssn: string = '';
   @JsonMember({ elements: Equipment })
-  powerUnitAssigned: Equipment;
+  currentTruck: Equipment = new Equipment();
   @JsonMember({ elements: Equipment })
-  trailerAssigned: Equipment;
+  currentTrailer: Equipment = new Equipment();
   @JsonMember
   paymentOption: DriverPaymentOptions;
   @JsonMember
   rate: number;
   @JsonMember({ elements: Contact })
-  contact: Contact;
+  contact: Contact = new Contact();
   @JsonMember
-  type: DriverTypes;
+  type: DriverTypes = DriverTypes.CompanyDriver;
   @JsonMember
   hireDate: Date = null;
   @JsonMember
   terminationDate: Date = null;
   @JsonMember
-  status: DriverStatuses;
+  status: DriverStatuses = DriverStatuses.Active;
   @JsonMember
   notes: string = '';
   @JsonMember
@@ -63,8 +79,8 @@ export class Driver {
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
-    result.powerUnitAssigned = Equipment.create();
-    result.trailerAssigned = Equipment.create();
+    result.currentTruck = Equipment.create();
+    result.currentTrailer = Equipment.create();
     result.paymentOption = DriverPaymentOptions.PerMile;
     result.contact = Contact.create();
     result.type = DriverTypes.CompanyDriver;
@@ -72,15 +88,15 @@ export class Driver {
     return result;
   }
 
-  public static getStatusText(status): string {
-    return Driver.statusText[status];
+  public static getStatusText(status: DriverStatuses): string {
+    return statusText[status];
   }
 
   public static getStatusColor(status: DriverStatuses): string {
     return statusColors[status];
   }
 
-  public static getTypeText(type): string {
-    return Driver.typeText[type];
+  public static getTypeText(type: DriverTypes): string {
+    return typeText[type];
   }
 };

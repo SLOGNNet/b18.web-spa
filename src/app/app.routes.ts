@@ -6,7 +6,7 @@ import { NoContentComponent } from './no-content';
 import { TypeaheadDemoComponent } from './typeahead/typeahead.component.ts';
 import { DataResolver } from './app.resolver';
 import { LoadsComponent, LoadDetailComponent } from './loads';
-import { CustomersComponent, CustomerDetailComponent } from './customers';
+import { CompaniesComponent, CompanyDetailComponent } from './companies';
 import { EquipmentComponent } from './equipment';
 import { AuthGuard, LoginComponent } from './auth';
 import { MessagesComponent } from './drivers/messages';
@@ -22,9 +22,9 @@ export const ROUTES: Routes = [
     ],
     canActivate: [AuthGuard]
   },
-  { path: 'customers', component: CustomersComponent, children: [{
+  { path: 'companies', component: CompaniesComponent, children: [{
         path: ':id',
-        component: CustomerDetailComponent
+        component: CompanyDetailComponent
       }
     ]
   },

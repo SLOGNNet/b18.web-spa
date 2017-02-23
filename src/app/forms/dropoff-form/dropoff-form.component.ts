@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
+import { CompanyService, BdFormBuilder, BdFormGroup, EnumHelperService } from '../../shared';
 import { Stop, StopTypes, Commodity } from '../../models';
 import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
 import { ViewMode } from '../../shared/enums';

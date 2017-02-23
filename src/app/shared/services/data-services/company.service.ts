@@ -1,46 +1,46 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Customer, Address, CustomerStatuses, CustomerTypes, Contact } from './models';
+import { Company, Address, CompanyStatuses, CompanyTypes, Contact } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
 import { slice, take } from 'lodash';
 @Injectable()
-export class CustomerService {
+export class CompanyService {
 
   constructor(private http: Http) {
     this.http = http;
   }
 
-  getAll(): Observable<Customer[]> {
+  getAll(): Observable<Company[]> {
     return Observable.of(
-      MockData.customers
+      MockData.companies
     );
   }
 
-  getDetails(id: number): Observable<Customer> {
+  getDetails(id: number): Observable<Company> {
     return Observable.of(
-      MockData.customers.find((customer) => id === customer.id)
+      MockData.companies.find((company) => id === company.id)
     );
   }
 
-  create(customer: Customer) {
-    MockData.customers.push(customer);
+  create(company: Company) {
+    MockData.companies.push(company);
   }
 
-  update(customer: Customer) {
-    const id = customer.id;
+  update(company: Company) {
+    const id = company.id;
 
-    MockData.customers.forEach(c => {
+    MockData.companies.forEach(c => {
       if (id === c.id) {
-        Object.assign(c, customer);
+        Object.assign(c, company);
         return;
       }
     });
   }
 
-  search(query: string): Observable<Customer[]> {
+  search(query: string): Observable<Company[]> {
     return Observable.of(this._search(query));
   }
 
@@ -50,8 +50,8 @@ export class CustomerService {
 
   private _search(query: string) {
     let queryRegex = new RegExp(query, 'ig');
-    return MockData.customers.filter((customer: Customer) => {
-        return queryRegex.test(customer.name);
+    return MockData.companies.filter((company: Company) => {
+        return queryRegex.test(company.name);
     });
   }
 

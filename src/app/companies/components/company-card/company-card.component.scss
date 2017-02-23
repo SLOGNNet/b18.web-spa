@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/styles';
 
-.customer-card-section {
+.company-card-section {
   position: relative;
   display: flex;
   height: 100px;
@@ -15,7 +15,7 @@
   .left {
     width: 30%;
 
-    .cropped-customer-name {
+    .cropped-company-name {
       display: flex;
       width: 28px;
       height: 28px;
@@ -28,7 +28,7 @@
       align-items: center;
     }
 
-    .customer-name {
+    .company-name {
       font-weight: bold;
     }
   }
@@ -40,7 +40,7 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    .customer-contact-full-name {
+    .company-contact-full-name {
       overflow: hidden;
       font-weight: bold;
     }
@@ -95,7 +95,7 @@
   }
 
   &.active {
-    .customer-card-section {
+    .company-card-section {
       border-bottom-color: $blue;
     }
   }
