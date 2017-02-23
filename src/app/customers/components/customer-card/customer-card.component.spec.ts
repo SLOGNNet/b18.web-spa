@@ -3,6 +3,7 @@ import { createGenericTestComponent } from '../../../shared/test/common';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { CustomerCardComponent } from './index';
+import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { SharedModule } from '../../../shared/shared.module';
 import { Load, Customer, Address, Contact, CustomerStatuses, CustomerTypes, LoadStatuses } from '../../../models';
 
@@ -90,8 +91,9 @@ fdescribe('CustomerCardComponent', () => {
   it('should display right status color', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+    let element = fixture.debugElement.query(By.css('.status')),
+    customerStatusColor = hexToRgb(component.customerStatusColor);
+    expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(customerStatusColor));
   });
 
   it('should display right status text color', () => {
@@ -99,14 +101,18 @@ fdescribe('CustomerCardComponent', () => {
     component.statusText = true;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
-    expect(element.nativeElement.getAttribute('style')).toContain('color: rgb(133, 209, 131)');
+    let customerStatusText = hexToRgb(component.customerStatusColor);
+    expect(element.nativeElement.style.color).toBe(getRGBString(customerStatusText));
   });
 
   it('should display right load color', () => {
+    let testLoadStatusColor = LoadStatuses.Completed;
     component.customer = testCustomer;
+    component.customer.loads[0].status = testLoadStatusColor;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-circle'));
-    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+    let loadStatusColor = hexToRgb(component.loadStatusColor(testLoadStatusColor));
+    expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(loadStatusColor));
   });
 
   it('should display right status text if element equal null', () => {
