@@ -58,7 +58,7 @@ export class Load {
   @JsonMember
   customerBillingAddressId: number;
   @JsonMember({ elements: Address })
-  customerAddress: Address;
+  customerAddress: Address = new Address();
   @JsonMember({ elements: Address })
   customerBillingAddress: Address;
   @JsonMember({ elements: Commodity })

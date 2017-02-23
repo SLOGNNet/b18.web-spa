@@ -87,29 +87,29 @@ export class Equipment {
   @JsonMember
   id: number = 0;
   @JsonMember
-  make: string = '';
+  make: string = 'Kenworth';
   @JsonMember
-  model: string = '';
+  model: string = 'T610';
   @JsonMember
-  number: string = '';
+  number: string = '101';
   @JsonMember
   vin: string = '';
   @JsonMember
-  notes: string = '';
+  notes: string = 'Oil Change';
   @JsonMember
   driverFirstName: string = '';
   @JsonMember
   driverLastName: string = '';
   @JsonMember
-  status: EquipmentStatuses;
+  status: EquipmentStatuses = EquipmentStatuses.Active;
   @JsonMember
   driverType: DriverTypes;
   @JsonMember
-  type: EquipmentTypes;
+  type: EquipmentTypes = EquipmentTypes.Trailer;
   @JsonMember
   subType: PowerUnitTypes | TrailerTypes;
   @JsonMember
-  mode: EquipmentModes;
+  mode: EquipmentModes = EquipmentModes.Company;
   @JsonMember
   vehicleOperating: EquipmentVehicleOperatings;
   @JsonMember

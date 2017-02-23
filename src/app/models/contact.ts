@@ -6,15 +6,15 @@ export class Contact {
   @JsonMember
   id: number = 0;
   @JsonMember
-  firstName: string = '';
+  firstName: string = 'Jonh';
   @JsonMember
-  lastName: string = '';
+  lastName: string = 'Doe';
   @JsonMember
   personalEmail: string = '';
   @JsonMember
-  position: string = '';
+  position: string = 'Driver';
   @JsonMember
-  addressId: number;
+  addressId: number = 0;
 
   static create(): Contact{
     const result = new Contact();

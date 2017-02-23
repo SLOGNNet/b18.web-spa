@@ -30,7 +30,7 @@ export class Company {
   @JsonMember
   id: number;
   @JsonMember
-  name: string = '';
+  name: string = 'CH ROBINSON COMPANY INC';
   @JsonMember({ elements: Contact })
   contacts: Contact[];
   @JsonMember
@@ -38,13 +38,13 @@ export class Company {
   @JsonMember
   type: CompanyTypes;
   @JsonMember
-  mc: string = '';
+  mc: string = '384859';
   @JsonMember
   taxId: string = '';
   @JsonMember({ elements: Address })
   addresses: Array<Address>;
   @JsonMember
-  email: string = '';
+  email: string = 'carrier.services@chrobinson.com';
   loads: Array<Load>;
 
   static create(): Company{

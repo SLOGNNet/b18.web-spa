@@ -5,19 +5,19 @@ export class Address {
   @JsonMember
   id: number = 0;
   @JsonMember
-  name: string = '';
+  name: string = 'Main Office';
   @JsonMember
-  streetAddress1: string = '';
+  streetAddress1: string = '14701 Charlson Road, United States';
   @JsonMember
   streetAddress2: string = '';
   @JsonMember
-  city: string = '';
+  city: string = 'Eden Prairie';
   @JsonMember
-  phone: string = '';
+  phone: string = '(925) 937-8500';
   @JsonMember
-  state: string = '';
+  state: string = 'MN';
   @JsonMember
-  zip: string = '';
+  zip: string = '55347';
   @JsonMember
   fax: string = '';
   @JsonMember
@@ -25,9 +25,9 @@ export class Address {
   @JsonMember
   faxExtension: string = '';
   @JsonMember
-  latitude: number;
+  latitude: number = 40.795675;
   @JsonMember
-  longitude: number;
+  longitude: number = -73.93600099999998;
 
   static create(): Address {
     const result = new Address();

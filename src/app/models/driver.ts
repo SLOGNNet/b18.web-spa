@@ -47,23 +47,23 @@ export class Driver {
   @JsonMember
   ssn: string = '';
   @JsonMember({ elements: Equipment })
-  currentTruck: Equipment;
+  currentTruck: Equipment = new Equipment();
   @JsonMember({ elements: Equipment })
-  currentTrailer: Equipment;
+  currentTrailer: Equipment = new Equipment();
   @JsonMember
   paymentOption: DriverPaymentOptions;
   @JsonMember
   rate: number;
   @JsonMember({ elements: Contact })
-  contact: Contact;
+  contact: Contact = new Contact();
   @JsonMember
-  type: DriverTypes;
+  type: DriverTypes = DriverTypes.CompanyDriver;
   @JsonMember
   hireDate: Date = null;
   @JsonMember
   terminationDate: Date = null;
   @JsonMember
-  status: DriverStatuses;
+  status: DriverStatuses = DriverStatuses.Active;
   @JsonMember
   notes: string = '';
   @JsonMember
