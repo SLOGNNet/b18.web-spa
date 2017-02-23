@@ -26,10 +26,10 @@ exports.config = {
     includeStackTrace: false,
     defaultTimeoutInterval: 400000
   },
-  directConnect: false,
+  directConnect: true,
 
   capabilities: {
-    'browserName': 'phantomjs',
+    'browserName': 'chrome',
     'chromeOptions': {
       'args': ['show-fps-counter=true']
     }
