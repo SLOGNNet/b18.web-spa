@@ -47,32 +47,35 @@
       formControlName="phone">
     </bd-input>
   </bd-validator>
-  <bd-validator [component]="registerForm.controls.password" [errorDefs]="{required: 'This field is required'}">
-    <bd-input
-      class="bd-form-control"
-      [type]="'password'"
-      [labelText]="'Password'"
-      formControlName="password">
-    </bd-input>
-  </bd-validator>
-  <bd-complexity-password-messenger *ngIf="registerForm.controls.password.value"
-                                    [component]="registerForm.controls.password">
-  </bd-complexity-password-messenger>
-  <bd-validator [component]="registerForm.controls.retryPassword"
-                [errorDefs]="{required: 'This field is required', passwordsNotMatch: 'Passwords do not match'}">
-    <bd-input
-      class="bd-form-control"
-      [type]="'password'"
-      [labelText]="'Retry Password'"
-      formControlName="retryPassword">
-    </bd-input>
-  </bd-validator>
+  <fieldset formGroupName="passwordGroup">
+    <bd-validator [component]="registerForm.controls.passwordGroup.controls.password"
+                  [errorDefs]="{required: 'Passwords do not match.'}">
+      <bd-input
+        class="bd-form-control"
+        [type]="'password'"
+        [labelText]="'Password'"
+        formControlName="password">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.passwordGroup.controls.retryPassword"
+                  [errorDefs]="{required: 'This field is required'}">
+      <bd-input
+        class="bd-form-control"
+        [type]="'password'"
+        [labelText]="'Retry Password'"
+        formControlName="retryPassword">
+      </bd-input>
+    </bd-validator>
+    <bd-validator [component]="registerForm.controls.passwordGroup"
+                  *ngIf="registerForm.controls.passwordGroup.controls.password.touched && registerForm.controls.passwordGroup.controls.retryPassword.touched"
+                  [errorDefs]="{passwordsNotMatch: 'Passwords do not match.'}">
+    </bd-validator>
+  </fieldset>
   <div class="divider"></div>
   <bd-button
     type="submit"
     color="primary"
     class="button"
-  
     [text]="'Next'">
   </bd-button>
 </form>

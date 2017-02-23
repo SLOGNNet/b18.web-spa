@@ -39,21 +39,23 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
       registerType: new FormControl('email', [Validators.required]),
       email: new FormControl('',  [Validators.required, EmailValidator.isValidMailFormat]),
       phone: new FormControl(''),
-      password: new FormControl('',  [Validators.required]),
-      retryPassword: new FormControl('',  [Validators.required, this.isEqualPassword.bind(this)])
+      passwordGroup: new FormGroup({
+        password: new FormControl('',  [Validators.required]),
+        retryPassword: new FormControl('',  [Validators.required])
+      }, this.matchingPasswords('password', 'retryPassword'))
     });
     this.subscribeTypeChanges();
   }
 
   onSubmit(form: FormGroup) {
-console.log(form);
-    // this.authenticationService.signUp(form.value).subscribe(
-    //   response => {
-    //     if (!response) {
-    //       console.log('error');
-    //     }
-    //   }
-    // );
+    console.log(form);
+    this.authenticationService.signUp(form.value).subscribe(
+      response => {
+        if (!response) {
+          console.log('error');
+        }
+      }
+    );
   }
 
   subscribeTypeChanges() {
@@ -74,13 +76,14 @@ console.log(form);
     });
   }
 
-  isEqualPassword(control: FormControl): {[s: string]: boolean} {
-      if (!this.registerForm) {
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[passwordKey];
+      let confirmPassword = group.controls[confirmPasswordKey];
+      if (password.value !== confirmPassword.value) {
         return {passwordsNotMatch: true};
       }
-      if (control.value !== this.registerForm.controls['password'].value) {
-        return {passwordsNotMatch: true};
-      }
-    }
+    };
+  }
 
 }
