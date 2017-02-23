@@ -1,31 +1,23 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/styles';
 @import '../../../../assets/styles/mixins';
 
 .driver-card-section {
   position: relative;
   display: flex;
   height: 100px;
-  padding: $default-margin;
+  padding: 14px $default-margin;
   background: inherit;
   font-size: $tiny-font-size;
   line-height: 18px;
   cursor: pointer;
   border-bottom: $border;
-  justify-content: space-between;
 
   .left {
     width: 30%;
 
     .driver-full-name {
-      overflow: hidden;
-      padding-top: 6px;
-
-      span {
-        overflow: hidden;
-        font-weight: bold;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+      font-weight: bold;
     }
 
     .driver-type {
@@ -36,22 +28,12 @@
   .middle {
     display: flex;
     width: 30%;
-    height: 70px;
     padding-left: $default-margin;
     flex-direction: column;
-    justify-content: flex-end;
-
-    .driver-phone {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    justify-content: flex-start;
 
     .send-message {
-      overflow: hidden;
       color: $blue;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       font-weight: bold;
     }
   }
@@ -60,9 +42,7 @@
     position: relative;
     width: 40%;
     line-height: 17px;
-    flex-direction: column;
     padding-left: $default-margin;
-    padding-top: 1px;
 
     .tr-city {
       display: flex;
@@ -76,7 +56,7 @@
       }
 
       .tr-city-name {
-        @include multi-line-ellipsis($line-height: 17px, $line-count: 2);
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
         width: 80%;
         text-align: left;
       }
@@ -85,7 +65,7 @@
     .status-text {
       position: absolute;
       right: 22px;
-      bottom: -5px;
+      bottom: 0;
       justify-content: center;
     }
 
@@ -95,7 +75,7 @@
       width: 12px;
       height: 12px;
       background: $black;
-      bottom: -2px;
+      bottom: 3px;
       border-radius: $form-control-height;
     }
   }
@@ -107,16 +87,6 @@
   &.active,
   &:hover {
     background: $light-blue;
-
-    .right {
-      .tr-city {
-        .tr-city-name {
-          @include multi-line-ellipsis($line-height: 17px, $line-count: 2);
-          width: 80%;
-          text-align: left;
-        }
-      }
-    }
   }
 
   &.active {
