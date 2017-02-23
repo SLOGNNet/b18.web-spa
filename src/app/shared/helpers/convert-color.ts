@@ -4,19 +4,19 @@
  */
 
 export function hexToRgb(hex) {
-	if (typeof hex !== 'string') {
-		throw new TypeError('Expected a string');
-	}
+  if (typeof hex !== 'string') {
+    throw new TypeError('Expected a string');
+  }
 
-	hex = hex.replace(/^#/, '');
+  hex = hex.replace(/^#/, '');
 
-	if (hex.length === 3) {
-		hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-	}
+  if (hex.length === 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+  }
 
-	let num = parseInt(hex, 16);
+  let num = parseInt(hex, 16);
 
-	return [num >> 16, num >> 8 & 255, num & 255];
+  return [num >> 16, num >> 8 & 255, num & 255];
 }
 
 /**
@@ -24,5 +24,5 @@ export function hexToRgb(hex) {
  * @param {array} colors
  */
 export function getRGBString(colors) {
-	return 'rgb(' + colors[0] + ', ' + colors[1] + ', ' + colors[2] + ')';
+  return 'rgb(' + colors[0] + ', ' + colors[1] + ', ' + colors[2] + ')';
 }
