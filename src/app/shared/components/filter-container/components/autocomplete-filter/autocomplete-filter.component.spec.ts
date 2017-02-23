@@ -201,8 +201,7 @@ describe('autocomplete-filter', () => {
 
     describe('headers', () => {
       it('should show all-header-section on open', fakeAsync(() => {
-        debugger;
-        expect(page.allHeaderSection).toBeDefined()
+        expect(page.allHeaderSection).toBeDefined();
         expect(page.selectedHeaderSection).toBeNull();
       }));
 
@@ -226,7 +225,6 @@ describe('autocomplete-filter', () => {
         page.reopenFilter();
         page.selectItem(1);
         fixture.detectChanges();
-        debugger;
         expect(page.allHeaderSection).toBeDefined();
         expect(page.selectedHeaderSection).toBeDefined();
         expect(page.unselectButton.disabled).toBe(true);
@@ -292,8 +290,7 @@ describe('autocomplete-filter', () => {
      selectItem(index): void {
        const filterItemInstance = fixture.debugElement.queryAll(By.directive(FilterItem))
         .map(n => n.componentInstance)[index];
-        debugger;
-      filterItemInstance.checkedChange.emit(filterItemInstance.item);
+       filterItemInstance.checkedChange.emit(filterItemInstance.item);
      }
 
      get queryInput(): HTMLInputElement {
@@ -316,16 +313,6 @@ describe('autocomplete-filter', () => {
        return element && element.nativeElement;
      }
    }
-
-     @Directive({
-      selector: 'filter-item'
-    })
-    class MockFilterItem {
-        @Input() itemTemplate: TemplateRef<any>;
-        @Input() item: Object;
-        @Input() checked: boolean = false;
-        @Output() checkedChange: EventEmitter<any> = new EventEmitter();
-    }
 });
 
 export function fireEvent (target, action) {
