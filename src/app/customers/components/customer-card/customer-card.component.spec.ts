@@ -114,7 +114,7 @@ fdescribe('CustomerCardComponent', () => {
     expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(loadStatusColor));
   });
 
-  it('should display right status text if element equal null', () => {
+  it('status text equal null', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
