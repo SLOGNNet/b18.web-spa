@@ -193,7 +193,7 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element === null).toBeTruthy();
   });
 
-  it('should display right address of first stop in load', () => {
+  it('should display address of first stop', () => {
     let testCity = 'New York', testState = 'AL';
     component.load = testLoad;
     component.load.stops[0].address.city = testCity;
@@ -203,7 +203,7 @@ fdescribe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
   });
 
-  it('should display right address of last stop in load', () => {
+  it('should display address of last stop', () => {
     let testCity = 'Eden Prairie', testState = 'AL';
     component.load = testLoad;
     component.load.stops[1].address.city = testCity;
