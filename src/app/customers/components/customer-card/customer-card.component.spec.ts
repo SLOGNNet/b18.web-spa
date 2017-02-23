@@ -1,5 +1,4 @@
-import { async, TestBed, ComponentFixture, inject } from '@angular/core/testing';
-import { createGenericTestComponent } from '../../../shared/test/common';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { CustomerCardComponent } from './index';
