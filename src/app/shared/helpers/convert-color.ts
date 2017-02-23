@@ -6,9 +6,9 @@
 export function hexToRgb(hex) {
   if (typeof hex !== 'string') {
     throw new Error('Expected a string');
-  } else if(!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(hex)) {
+  } else if (!/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(hex)) {
     throw new Error('Input data is not valid');
-  } 
+  }
 
   hex = hex.replace(/^#/, '');
 
