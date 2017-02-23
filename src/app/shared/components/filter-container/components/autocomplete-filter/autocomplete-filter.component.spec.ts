@@ -4,10 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement, Input, Output, EventEmitter, Directive, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { getPaginated } from '../../../../helpers';
-import { isEqualWith } from 'lodash';
-
+import { isEqualWith, chain, isEqual, identity, curry, isEmpty, differenceBy } from 'lodash';
 import { SharedModule } from '../../../../shared.module';
-describe('autocomplete-filter', () => {
+fdescribe('autocomplete-filter', () => {
 
   let component:    AutocompleteFilter;
   let searchService;
@@ -16,7 +15,6 @@ describe('autocomplete-filter', () => {
   let de:      DebugElement;
   let page: Page;
   const comparer = (val, otherVal) => val['id'] === otherVal['id'];
-
   const testData = [{ id: 1, name: 'test'}, { id: 2, name: 'test1'}, { id: 3, name: 'test2'},
     {id: 4, name: 'test3'}, {id: 5, name: 'test4'}];
 
@@ -53,7 +51,7 @@ describe('autocomplete-filter', () => {
       fixture.detectChanges();
       expect(searchService.searchSource.calls.count()).toBe(1);
       expect(searchService.searchSource).toHaveBeenCalledWith('', 1, testCountPerPage);
-      expectItems([], testData.slice(0, 2), []);
+      expectSectionItems([], testData.slice(0, 2), []);
     }));
 
     describe('search', () => {
@@ -62,7 +60,7 @@ describe('autocomplete-filter', () => {
           const query = 'testquery';
           page.searchQuery(query);
           fixture.detectChanges();
-          expectItems([], [], []);
+          expectSectionItems([], [], []);
         }));
 
         it('should start load data with query', fakeAsync(() => {
@@ -82,7 +80,7 @@ describe('autocomplete-filter', () => {
           page.searchQuery(query);
           fixture.detectChanges();
           tick();
-          expectItems([], [], searchedData);
+          expectSectionItems([], [], searchedData);
         }));
 
         it('should start new load if new search requested before previous succeeded', fakeAsync(() => {
@@ -104,7 +102,7 @@ describe('autocomplete-filter', () => {
       });
 
       it('should start when new page requested', fakeAsync(() => {
-        component.scrolledDown = true;
+        page.requestNextPage();
         fixture.detectChanges();
         tick();
         expect(searchService.searchSource.calls.count()).toBe(1);
@@ -113,7 +111,7 @@ describe('autocomplete-filter', () => {
 
       it('should reset current page number when new search started', fakeAsync(() => {
         tick();
-        component.scrolledDown = true;
+        page.requestNextPage();
         fixture.detectChanges();
         tick();
         expect(searchService.searchSource.calls.count()).toBe(1);
@@ -126,18 +124,18 @@ describe('autocomplete-filter', () => {
 
       it('should not start paged load when filter not active', fakeAsync(() => {
         component.active = false;
-        component.scrolledDown = true;
+        page.requestNextPage();
         fixture.detectChanges();
         tick();
         expect(searchService.searchSource.calls.count()).toBe(0);
       }));
 
       it('should render paged items', fakeAsync(() => {
-        expectItems([], testData.slice(0, 2), []);
-        component.scrolledDown = true;
+        expectSectionItems([], testData.slice(0, 2), []);
+        page.requestNextPage();
         fixture.detectChanges();
         tick();
-        expectItems([], testData.slice(0, 4), []);
+        expectSectionItems([], testData.slice(0, 4), []);
       }));
     });
 
@@ -145,20 +143,35 @@ describe('autocomplete-filter', () => {
       it('should select items', fakeAsync(() => {
         const selectIndex = 1;
         page.selectItem(selectIndex);
+        fixture.detectChanges();
         expectedSelected([testData[selectIndex]]);
+        expectCheckedSectionItems([], [testData[selectIndex]], []);
       }));
 
       it('should deselect items on second selection', fakeAsync(() => {
         const selectIndex = 1;
         page.selectItem(selectIndex);
+        fixture.detectChanges();
         page.selectItem(selectIndex);
+        fixture.detectChanges();
         expectedSelected([]);
+        expectCheckedSectionItems([], [], []);
       }));
 
-      it('should not move items to selected immediatley', fakeAsync(() => {
+      it('should preserve selection on next page load', fakeAsync(() => {
         const selectIndex = 1;
         page.selectItem(selectIndex);
-        expectItems([], testData.slice(0, 2), []);
+        page.requestNextPage();
+        fixture.detectChanges();
+
+        expectedSelected([testData[selectIndex]]);
+      }));
+      it('should not move items to selected section immediatley', fakeAsync(() => {
+        const selectIndex = 1;
+        page.selectItem(selectIndex);
+        fixture.detectChanges();
+        expectSectionItems([], testData.slice(0, 2), []);
+        expectCheckedSectionItems([], [testData[selectIndex]], []);
       }));
 
       it('should move items to selected section after reopening', fakeAsync(() => {
@@ -166,35 +179,40 @@ describe('autocomplete-filter', () => {
         page.selectItem(selectIndex);
         page.reopenFilter();
         fixture.detectChanges();
-        expectItems([testData[0]], [testData[1]], []);
+        expectSectionItems([testData[1]], [testData[0]], []);
+        expectCheckedSectionItems([testData[selectIndex]], [], []);
       }));
 
-      it('should not remove items from selected section immedialtey', fakeAsync(() => {
+      it('should not remove items from selected section immediatley', fakeAsync(() => {
         const selectIndex = 1;
         page.selectItem(selectIndex);
+        fixture.detectChanges();
         page.reopenFilter();
-
         page.selectItem(selectIndex);
-        expectItems([testData[0]], [testData[1]], []);
+        fixture.detectChanges();
+        expectSectionItems([testData[1]], [testData[0]], []);
+        expectCheckedSectionItems([], [], []);
       }));
 
-      it('should not move items to selected immediatley on search', fakeAsync(() => {
+      it('should not move items to selected section immediatley when search mode', fakeAsync(() => {
         const query = 'testquery';
         page.searchQuery(query);
         const selectIndex = 1;
         page.selectItem(selectIndex);
-        expectItems([], [], testData.slice(0, 2));
+        fixture.detectChanges();
+        expectSectionItems([], [], testData.slice(0, 2));
         expectedSelected([testData[selectIndex]]);
+        expectCheckedSectionItems([], [], [testData[selectIndex]]);
       }));
 
-      it('should not move items to selected after reopen on search', fakeAsync(() => {
+      it('should not move items to selected after reopen when search mode', fakeAsync(() => {
         const query = 'testquery';
         page.searchQuery(query);
         const selectIndex = 1;
         page.selectItem(selectIndex);
         page.reopenFilter();
-
-        expectItems([], [], testData.slice(0, 2));
+        fixture.detectChanges();
+        expectSectionItems([], [], testData.slice(0, 2));
         expectedSelected([testData[selectIndex]]);
       }));
     });
@@ -207,6 +225,7 @@ describe('autocomplete-filter', () => {
 
       it('should not show selected header immediatley', fakeAsync(() => {
         page.selectItem(1);
+        fixture.detectChanges();
         expect(page.allHeaderSection).toBeDefined();
         expect(page.selectedHeaderSection).toBeNull();
       }));
@@ -249,37 +268,18 @@ describe('autocomplete-filter', () => {
     });
    });
 
-   function expectItems(selected, all, search) {
-     expectSearchItems(search);
-     expectAllItems(all);
-     expectSelectedItems(selected);
-   }
-   function expectSearchItems(expectedItems) {
-     expectItemsEquality('.search-container', expectedItems);
-   }
-   function expectAllItems(expectedItems) {
-     expectItemsEquality('.all-container', expectedItems);
-   }
-   function expectSelectedItems(expectedItems) {
-     expectItemsEquality('.selected-container', expectedItems);
-   }
-
-   function expectItemsEquality(containerClass, expectedItems) {
-     const container = fixture.debugElement.query(By.css(containerClass));
-     const actualNodes = container ? container.queryAll(By.directive(FilterItem)) : [];
-     const actualItems = actualNodes.map(n => n.componentInstance.item);
-     expect(isEqualWith(actualItems, expectedItems, comparer)).toBe(true);
-   }
-
-   function expectedSelected(expectedSelectedItems) {
-     const actualSelectedItems = component.selectedItems;
-     expect(isEqualWith(actualSelectedItems, expectedSelectedItems, comparer)).toBe(true);
-   }
-
    class Page {
+     public static selectedSectionSelector = '.selected-container';
+     public static allSectionSelector = '.all-container';
+     public static searchSectionSelector = '.search-container';
      reopenFilter() {
        component.active = false;
        component.active = true;
+     }
+
+     requestNextPage() {
+       component.scrolledDown = true;
+       component.scrolledDown = false;
      }
 
      searchQuery(query: string): void{
@@ -313,7 +313,50 @@ describe('autocomplete-filter', () => {
        return element && element.nativeElement;
      }
    }
+
+   const expectItemsEquality =  curry(function(containerClass, nodeFilter, expectedItems ) {
+     const container = fixture.debugElement.query(By.css(containerClass));
+     const actualNodes = container ? container.queryAll(By.directive(FilterItem)) : [];
+     const actualItems = actualNodes
+      .map(n => n.componentInstance)
+      .filter(nodeFilter)
+      .map(n => n.item);
+     const test = isEqualWith;
+     expect(isArraysEqual(actualItems, expectedItems)).toBe(true);
+   });
+
+   const expectSearchSectionItems = expectItemsEquality(Page.searchSectionSelector)(identity);
+   const expectAllSectionItems = expectItemsEquality(Page.allSectionSelector, identity);
+   const expectSelectedSectionItems = expectItemsEquality(Page.selectedSectionSelector, identity);
+   function expectSectionItems(selected, all, search) {
+     expectSearchSectionItems(search);
+     expectAllSectionItems(all);
+     expectSelectedSectionItems(selected);
+   }
+
+   const checkedItemComponentFilter = (fitlerComp: FilterItem) => fitlerComp.checked;
+   const expectSelectedSearchSectionItems = expectItemsEquality(Page.searchSectionSelector, checkedItemComponentFilter);
+   const expectSelectedAllSectionItems = expectItemsEquality(Page.allSectionSelector, checkedItemComponentFilter);
+   const expectSelectedSelectedSectionItems = expectItemsEquality(Page.selectedSectionSelector, checkedItemComponentFilter);
+   function expectCheckedSectionItems(selected, all, search) {
+     expectSelectedSearchSectionItems(search);
+     expectSelectedAllSectionItems(all);
+     expectSelectedSelectedSectionItems(selected);
+   }
+   function expectedSelected(expectedSelectedItems) {
+     const actualSelectedItems = component.selectedItems;
+     expect(isArraysEqual(actualSelectedItems, expectedSelectedItems)).toBe(true);
+   }
 });
+
+ function isArraysEqual(x, y) {
+  const swap = x;
+  if (x.length <= y.length) {
+    x = y;
+    y = swap;
+   }
+   return isEmpty(differenceBy(x, y, 'id'));
+};
 
 export function fireEvent (target, action) {
   const event = document.createEvent('Event');

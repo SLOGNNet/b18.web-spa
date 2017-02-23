@@ -23,7 +23,7 @@
     </filter-item>
   </div>
   <div *ngIf="!isSearchMode">
-    <div class="autocomplete-section-header selected-section-header" *ngIf="selectedItemsCache.length || selectedItems.length">
+    <div class="autocomplete-section-header selected-section-header" *ngIf="selectedItemsCache.length">
       <button
         class="clear-selected-button"
         (click)="clearSelectedItems($event)"
