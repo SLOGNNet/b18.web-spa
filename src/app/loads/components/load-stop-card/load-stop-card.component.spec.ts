@@ -175,7 +175,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.getAttribute('style')).toContain('background: rgb(133, 209, 131)');
+    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
   });
 
   it('should display stops line when stops length is greater than 1', () => {
