@@ -44,7 +44,7 @@ import { AuthenticationService } from './auth';
     `
 })
 export class AppComponent {
-  isLoggedIn: boolean;
+  isLoggedIn: boolean = true;
   subscription: any;
 
   private switchState: number = SwitchState.All;
@@ -77,7 +77,7 @@ export class AppComponent {
       });
     this.isLoggedIn = this.authenticationService.isLoggedIn();
     this.subscription = this.authenticationService.loggedStateWasChanged.subscribe((value) => {
-      this.isLoggedIn = value;
+      this.isLoggedIn = true;
     });
   }
 

@@ -1,5 +1,5 @@
 <div class="main-area">
-    <bd-resize-container #firstPane [width]="panesWidth[0]" [hidden]="!isVisible(switchStateEnum.FirstPaneVisible)">
+    <bd-resize-container #firstPane class="first-pane" [width]="panesWidth[0]" [hidden]="true">
         <div class="panel" *ngIf="isVisible(switchStateEnum.FirstPaneVisible)">
             <ng-content select="first-pane"></ng-content>
         </div>
