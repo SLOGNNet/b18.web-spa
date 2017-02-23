@@ -12,15 +12,6 @@
       aria-hidden="true">
     </i>
   </bd-input>
-  <div
-    class="autocomplete-section-header selected-section-header" *ngIf="selectedItemsCache.length || selectedItems.length">
-    <button
-      class="clear-selected-button"
-      (click)="clearSelectedItems($event)"
-      [disabled]="isClearButtonDisabled">
-      Clear selected items
-    </button>
-  </div>
   <div *ngIf="isSearchMode" class="search-container">
     <filter-item
       *ngFor="let item of loadedItems; let i = index;"
@@ -32,6 +23,14 @@
     </filter-item>
   </div>
   <div *ngIf="!isSearchMode">
+    <div class="autocomplete-section-header selected-section-header" *ngIf="selectedItemsCache.length || selectedItems.length">
+      <button
+        class="clear-selected-button"
+        (click)="clearSelectedItems($event)"
+        [disabled]="isClearButtonDisabled">
+        Clear selected items
+      </button>
+    </div>
     <div class="selected-container">
       <filter-item
         *ngFor="let item of selectedItemsCache; let i = index;"

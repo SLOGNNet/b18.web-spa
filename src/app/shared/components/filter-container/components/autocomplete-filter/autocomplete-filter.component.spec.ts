@@ -249,7 +249,6 @@ describe('autocomplete-filter', () => {
         expect(page.selectedHeaderSection).toBeNull();
       }));
     });
-
    });
 
    function expectItems(selected, all, search) {
@@ -278,8 +277,8 @@ describe('autocomplete-filter', () => {
      const actualSelectedItems = component.selectedItems;
      expect(isEqualWith(actualSelectedItems, expectedSelectedItems, comparer)).toBe(true);
    }
-   class Page {
 
+   class Page {
      reopenFilter() {
        component.active = false;
        component.active = true;
@@ -314,7 +313,7 @@ describe('autocomplete-filter', () => {
 
      get unselectButton(): HTMLButtonElement {
        const element = fixture.debugElement.query(By.css('.clear-selected-button'));
-      return element && element.nativeElement;
+       return element && element.nativeElement;
      }
    }
 
