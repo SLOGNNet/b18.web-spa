@@ -85,7 +85,7 @@ fdescribe('CustomerCardComponent', () => {
     component.customer.mc = testCustomerMc;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-mc'));
-    expect(element.nativeElement.textContent).toMatch(testCustomerMc);
+    expect(element.nativeElement.textContent).toMatch('MC# ' + testCustomerMc);
   });
 
   it('should display right status color', () => {
@@ -150,12 +150,12 @@ fdescribe('CustomerCardComponent', () => {
   });
 
   it('should display system load number', () => {
-    let testStystemLoadNumber = 209282402;
+    let testSystemLoadNumber = 209282402;
     component.customer = testCustomer;
-    component.customer.loads[0].systemLoadNumber = testStystemLoadNumber;
+    component.customer.loads[0].systemLoadNumber = testSystemLoadNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-name'));
-    expect(element.nativeElement.textContent).toMatch('LD' + testStystemLoadNumber);
+    expect(element.nativeElement.textContent).toMatch('LD' + testSystemLoadNumber);
   });
 
   it('should display customer contact position', () => {
