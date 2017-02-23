@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="bottom">
+  <div *ngIf="load.currentTrips && load.currentTrips.length" class="bottom">
     <span class="link">{{currentTrip.driverTeams[0].drivers[0].contact.firstName}}</span>
     <span class="link">|</span>
     <span class="link" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">

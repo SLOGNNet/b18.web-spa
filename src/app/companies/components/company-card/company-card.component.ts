@@ -11,6 +11,7 @@ export class CompanyCardComponent {
   @Input() company: Company;
   @Output() select: EventEmitter<any> = new EventEmitter();
   croppedCompanyName: string;
+  public statusText: boolean = false;
 
   ngOnInit() {
      this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
@@ -30,6 +31,14 @@ export class CompanyCardComponent {
 
   onClick() {
     this.select.emit(this.company);
+  }
+
+  onEnter() {
+    this.statusText = true;
+  }
+
+  onLeave() {
+    this.statusText = false;
   }
 
 }

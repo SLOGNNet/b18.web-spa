@@ -38,4 +38,9 @@ export class LoadStopCardComponent {
   onClick() {
     this.select.emit(this.load);
   }
+
+  ngOnInit() {
+    console.log(this.load, 'load');
+    console.log(this.firstStop.facility, 'this.firstStop');
+  }
 }
