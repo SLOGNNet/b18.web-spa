@@ -794,7 +794,7 @@ class MockData {
       type: CustomerTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1], this.loads[3]]
+      loads: [this.loads[0], this.loads[1]]
     },
     {
       id: 2,
