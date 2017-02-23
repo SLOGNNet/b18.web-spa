@@ -29,7 +29,7 @@ export class EquipmentNotification {
 
 @JsonObject
 export class Equipment {
-  private static statusText = ['inactive', 'active', 'not avaliable'];
+  private static statusText = ['Inactive', 'Active', 'NotAvaliable'];
   private static typeText = ['Trailer', 'PowerUnit'];
   private static shortTypeText = ['TL', 'TK'];
   private static modeText = ['Company'];
