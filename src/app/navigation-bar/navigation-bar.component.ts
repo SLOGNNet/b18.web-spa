@@ -48,15 +48,15 @@ export class NavigationBarComponent {
           link: './loads/0'
         }]
     }, {
-        label: 'Customers',
+        label: 'Companies',
         icon: 'icon',
-        link: './customers',
+        link: './companies',
         items: [{
-              label: 'Customers',
-              link: './customers'
+              label: 'Companies',
+              link: './companies'
           }, {
-          label: 'New Customer',
-          link: './customers/0'
+          label: 'New Company',
+          link: './companies/0'
         }]
     },
     {

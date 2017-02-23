@@ -4,6 +4,28 @@ import { NotificationStatus, NotificationType, NotificationPriority, TaskType } 
 
 const notificationsTaskTypeColors = createNotificationsTaskTypeColors();
 const notificationsStatusColors = createNotificationsStatusColors();
+const notificationPriorityText = createNotificationPriorityText();
+const notificationTypeText = createNotificationTypeText();
+
+// Type Text
+function createNotificationTypeText() {
+ let result = {};
+  result[NotificationType.Notification] = 'notification';
+  result[NotificationType.Message] = 'message';
+  result[NotificationType.Task] = 'task';
+
+  return result;
+};
+
+// Priority Text
+function createNotificationPriorityText() {
+ let result = {};
+  result[NotificationPriority.High] = 'HI';
+  result[NotificationPriority.Middle] = 'ME';
+  result[NotificationPriority.Low] = 'LO';
+
+  return result;
+};
 
 // Colors for event statuses
 function createNotificationsStatusColors() {
@@ -28,9 +50,6 @@ function createNotificationsTaskTypeColors() {
 
 
 export class Notification {
-
-  public static notificationTypeText = ['notification', 'message', 'task'];
-  public static notificationPriorityText = ['HI', 'LO', 'ME'];
 
   id: number;
   title: string;
@@ -57,11 +76,11 @@ export class Notification {
   }
 
   public static getPriorityText(priority: NotificationPriority): string {
-    return Notification.notificationPriorityText[priority];
+    return notificationPriorityText[priority];
   }
 
   public static getTypeText(type: NotificationType): string {
-    return Notification.notificationTypeText[type];
+    return notificationTypeText[type];
   }
 
   public static getEventTypeColor(taskType: TaskType): string {
