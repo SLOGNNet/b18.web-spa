@@ -17,7 +17,7 @@ class="company-card-section"
   <div class="right">
     <div *ngFor="let load of company.loads" class="load">
       <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
-      <span class="load-name ellipsis">LD{{load.systemLoadNumber}}</span>
+      <span class="load-name ellipsis">LD{{load.systemLoadNo}}</span>
     </div>
       <span *ngIf="statusText" [style.color]="companyStatusColor" class="status-text">{{companyStatusText}}</span>
       <span
