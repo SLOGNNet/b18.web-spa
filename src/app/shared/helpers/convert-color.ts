@@ -5,7 +5,7 @@
 
 export function hexToRgb(hex) {
   if (typeof hex !== 'string') {
-    throw new TypeError('Expected a string');
+    throw new Error('Expected a string');
   }
 
   hex = hex.replace(/^#/, '');
@@ -24,5 +24,9 @@ export function hexToRgb(hex) {
  * @param {array} colors
  */
 export function getRGBString(colors) {
-  return 'rgb(' + colors[0] + ', ' + colors[1] + ', ' + colors[2] + ')';
+  if (colors instanceof Array) {
+    return 'rgb(' + colors[0] + ', ' + colors[1] + ', ' + colors[2] + ')';
+  } else {
+     throw new Error('Expected an Array');
+  }
 }
