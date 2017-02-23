@@ -96,6 +96,7 @@ fdescribe('CustomerCardComponent', () => {
 
   it('should display right status text color', () => {
     component.customer = testCustomer;
+    component.statusText = true;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
     expect(element.nativeElement.getAttribute('style')).toContain('color: rgb(133, 209, 131)');
@@ -108,11 +109,21 @@ fdescribe('CustomerCardComponent', () => {
     expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
   });
 
-  it('should display right status text', () => {
+  it('should display right status text if element equal null', () => {
     component.customer = testCustomer;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
-    expect(element.nativeElement.textContent).toMatch(Customer.getStatusText(CustomerStatuses.Active));
+    expect(element === null).toBeTruthy();
+  });
+
+  it('should display right status text', () => {
+    let testCustomerStatus = CustomerStatuses.Active;
+    component.customer = testCustomer;
+    component.statusText = true;
+    component.customer.status = testCustomerStatus;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.status-text'));
+    expect(element.nativeElement.textContent).toMatch(Customer.getStatusText(testCustomerStatus));
   });
 
   it('should display right address phone', () => {
