@@ -51,7 +51,7 @@ fdescribe('LayoutSwitchComponent', () => {
     const activeToggles = getActiveToggles();
 
     expect(activeToggles.length).toBe(1);
-    expect(activeToggles[0]).toBe(toggleFirst);
+    expect(activeToggles[0] === toggleFirst).toBeTruthy();
   });
 
   it('should have only active second toggle', () => {
@@ -61,7 +61,7 @@ fdescribe('LayoutSwitchComponent', () => {
     const activeToggles = getActiveToggles();
 
     expect(activeToggles.length).toBe(1);
-    expect(activeToggles[0]).toBe(toggleSecond);
+    expect(activeToggles[0] === toggleSecond).toBeTruthy();
   });
 
   it('should have only active third toggle', () => {
@@ -71,7 +71,18 @@ fdescribe('LayoutSwitchComponent', () => {
     const activeToggles = getActiveToggles();
 
     expect(activeToggles.length).toBe(1);
-    expect(activeToggles[0]).toBe(toggleThird);
+    expect(activeToggles[0] === toggleThird).toBeTruthy();
+  });
+
+  it('should have only active second and third toggles', () => {
+    component.switchState = 6;
+    fixture.detectChanges();
+
+    const activeToggles = getActiveToggles();
+
+    expect(activeToggles.length).toBe(2);
+    expect(activeToggles[0] === toggleSecond).toBeTruthy();
+    expect(activeToggles[1] === toggleThird).toBeTruthy();
   });
 
   it('should have only active fourth toggle', () => {
@@ -81,7 +92,18 @@ fdescribe('LayoutSwitchComponent', () => {
     const activeToggles = getActiveToggles();
 
     expect(activeToggles.length).toBe(1);
-    expect(activeToggles[0]).toBe(toggleFourth);
+    expect(activeToggles[0] === toggleFourth).toBeTruthy();
+  });
+
+  it('should have only active third and fourth toggles', () => {
+    component.switchState = 12;
+    fixture.detectChanges();
+
+    const activeToggles = getActiveToggles();
+
+    expect(activeToggles.length).toBe(2);
+    expect(activeToggles[0] === toggleThird).toBeTruthy();
+    expect(activeToggles[1] === toggleFourth).toBeTruthy();
   });
 
   it('should have active all toggles except first', () => {
