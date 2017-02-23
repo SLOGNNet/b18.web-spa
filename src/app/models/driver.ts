@@ -16,10 +16,10 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
  let result = {};
-  result[DriverStatuses.None] = 'None';
-  result[DriverStatuses.Unavaliable] = 'Unavaliable';
-  result[DriverStatuses.Active] = 'Active';
-  result[DriverStatuses.Inactive] = 'Inactive';
+  result[DriverStatuses.None] = 'none';
+  result[DriverStatuses.Unavaliable] = 'unavaliable';
+  result[DriverStatuses.Active] = 'active';
+  result[DriverStatuses.Inactive] = 'inactive';
 
   return result;
 };

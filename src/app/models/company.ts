@@ -15,10 +15,10 @@ function createStatusColors() {
 
 function createStatusText() {
  let result = {};
-  result[CompanyStatuses.None] = 'None';
-  result[CompanyStatuses.Unavaliable] = 'Unavaliable';
-  result[CompanyStatuses.Active] = 'Active';
-  result[CompanyStatuses.Inactive] = 'Inactive';
+  result[CompanyStatuses.None] = 'none';
+  result[CompanyStatuses.Unavaliable] = 'unavaliable';
+  result[CompanyStatuses.Active] = 'active';
+  result[CompanyStatuses.Inactive] = 'inactive';
   return result;
 };
 

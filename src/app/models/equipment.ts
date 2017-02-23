@@ -21,10 +21,10 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
  let result = {};
-  result[EquipmentStatuses.None] = 'None';
-  result[EquipmentStatuses.NotAvaliable] = 'Not Avaliable';
-  result[EquipmentStatuses.Active] = 'Active';
-  result[EquipmentStatuses.Inactive] = 'Inactive';
+  result[EquipmentStatuses.None] = 'none';
+  result[EquipmentStatuses.NotAvaliable] = 'not avaliable';
+  result[EquipmentStatuses.Active] = 'active';
+  result[EquipmentStatuses.Inactive] = 'inactive';
 
   return result;
 };
