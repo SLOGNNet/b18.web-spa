@@ -2,6 +2,8 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { LoadStopCardComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
+import { StopsLineComponent } from '../../../shared/components/stops-line';
+import { hexToRgb, getRGBString } from '../../../shared';
 import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
 import { Load, LoadStatuses, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
@@ -73,16 +75,17 @@ fdescribe('LoadStopCardComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
+      imports: [
+        SharedModule
+      ],
       declarations: [
         LoadStopCardComponent,
         CustomerPopoverComponent,
         DriverPopoverComponent,
         TripPopoverComponent
-      ],
-      imports: [
-        SharedModule
       ]
-    });
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LoadStopCardComponent);
     component = fixture.componentInstance;
     testLoad = createTestData();
@@ -174,8 +177,9 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display load status color', () => {
     component.load = testLoad;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.getAttribute('style')).toContain('background-color: rgb(133, 209, 131)');
+    let element = fixture.debugElement.query(By.css('.status')),
+        loadStatusColor = hexToRgb(component.loadStatusColor);
+    expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(loadStatusColor));
   });
 
   it('should display stops line when stops length is greater than 1', () => {
@@ -250,5 +254,15 @@ fdescribe('LoadStopCardComponent', () => {
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(TripPopoverComponent)).componentInstance;
     expect(element.trip).toEqual(tripData);
+  });
+
+  it('should send load stops collection to stops-line component', () => {
+    let stopData = Stop.create(StopTypes.Pickup),
+        stopsCollection = [stopData, stopData];
+    component.load = testLoad;
+    component.load.stops = stopsCollection;
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.directive(StopsLineComponent)).componentInstance;
+    expect(element.stops).toBe(stopsCollection);
   });
 });

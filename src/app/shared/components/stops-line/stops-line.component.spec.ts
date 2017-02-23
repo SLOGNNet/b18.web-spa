@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { StopsLineComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
+import { hexToRgb, getRGBString } from '../../../shared';
 import { StopPopoverComponent } from './components';
 import { Address, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
 
@@ -27,7 +28,7 @@ function createTestData() {
   return testStopCollection;
 }
 
-fdescribe('StopsLineComponent', () => {
+describe('StopsLineComponent', () => {
   let fixture: ComponentFixture<StopsLineComponent>,
     component: StopsLineComponent,
     stopCollection: Array<Stop>;
@@ -75,8 +76,9 @@ fdescribe('StopsLineComponent', () => {
     component.stops = stopCollection;
     component.stops[0].type = currentStopType;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.stop0')).nativeElement;
-    expect(element.getAttribute('style')).toContain('color: ' + component.getColor(currentStopType));
+    let element = fixture.debugElement.query(By.css('.stop0')).nativeElement,
+        pickupColor = hexToRgb(component.getColor(currentStopType));
+    expect(element.style.color).toBe(getRGBString(pickupColor));
   });
 
   it('should have arrow down icon if it\'s dropoff', () => {
@@ -93,8 +95,9 @@ fdescribe('StopsLineComponent', () => {
     component.stops = stopCollection;
     component.stops[0].type = currentStopType;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.stop1')).nativeElement;
-    expect(element.getAttribute('style')).toContain('color: ' + component.getColor(currentStopType));
+    let element = fixture.debugElement.query(By.css('.stop1')).nativeElement,
+        dropoffColor = hexToRgb(component.getColor(currentStopType));
+    expect(element.style.color).toBe(getRGBString(dropoffColor));
   });
 
   it('should send stop\'s data to stop popover', () => {
