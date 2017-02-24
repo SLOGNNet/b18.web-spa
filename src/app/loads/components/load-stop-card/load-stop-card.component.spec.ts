@@ -4,27 +4,41 @@ import { LoadStopCardComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
 import { StopsLineComponent } from '../../../shared/components/stops-line';
 import { hexToRgb, getRGBString } from '../../../shared/helpers';
-import { CustomerPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
-import { Load, LoadStatuses, Customer, Trip, Driver, Address, Equipment, Stop, StopTypes, StopStatuses, Facility } from '../../../models';
+import { CompanyPopoverComponent, DriverPopoverComponent, TripPopoverComponent } from './components';
+import { Load,
+  LoadStatuses,
+  Company,
+  Contact,
+  Trip,
+  Driver,
+  DriverTeam,
+  Address,
+  Equipment,
+  Stop,
+  StopTypes,
+  StopStatuses,
+  Facility } from '../../../models';
 
 
 function createTestData() {
   let resultLoad = new Load(),
-      testTrip = new Trip(),
-      testDriver = new Driver(),
-      testAddress = new Address(),
-      testCustomer = new Customer(),
-      testStop1 = new Stop(),
-      testStop2 = new Stop();
+    testTrip = new Trip(),
+    testDriver = Driver.create(),
+    testAddress = new Address(),
+    testCustomer = new Company(),
+    testDriverTeam = new DriverTeam(),
+    testContact = new Contact(),
+    testStop1 = new Stop(),
+    testStop2 = new Stop();
   testAddress.id = 1;
   testAddress.name = 'Main Office';
-  testAddress.streetAddress = '14701 Charlson Road, United States';
+  testAddress.streetAddress1 = '14701 Charlson Road, United States';
   testAddress.city = 'Eden Prairie';
   testAddress.phone = '(925) 937-8500';
   testAddress.state = 'MN';
   testAddress.zip = '55347';
-  testAddress.lat = 40.795675;
-  testAddress.lng = -73.93600099999998;
+  testAddress.latitude = 40.795675;
+  testAddress.longitude = -73.93600099999998;
   // test customer
   testCustomer.id = 1;
   testCustomer.mc = '384859';
@@ -36,33 +50,37 @@ function createTestData() {
   testCustomer.type = null;
   // test driver
   testDriver.id = 1;
-  testDriver.firstName = 'John';
-  testDriver.lastName = 'Doe';
-  testDriver.powerUnitAssigned = Equipment.create();
-  testDriver.trailerAssigned = Equipment.create();
+  testDriver.contact.firstName = 'John';
+  testDriver.contact.lastName = 'Doe';
+  // test driver team
+  testDriverTeam.drivers = [testDriver];
   // test trip
   testTrip.id = 1;
-  testTrip.number = 1212;
-  testTrip.truckNumber = 1010;
-  testTrip.trailerNumber = 1111;
-  testTrip.driver = testDriver;
+  testTrip.number = '1212';
+  testTrip.truck = new Equipment();
+  testTrip.truck.number = '1010';
+  testTrip.trailer = new Equipment();
+  testTrip.trailer.number = '1111';
+  testTrip.driverTeams = [testDriverTeam];
   // test stops
   testStop1.id = 1;
   testStop1.type = StopTypes.Pickup;
-  testStop1.address = testAddress;
-  testStop1.date = new Date(2017, 0, 9);
+  testStop1.plannedArrivalAt = new Date(2017, 0, 9);
   testStop1.facility = Facility.create();
+  testStop1.facility.address = testAddress;
   testStop1.status = StopStatuses.InProgress;
   testStop2.id = 2;
   testStop2.type = StopTypes.Pickup;
-  testStop2.address = testAddress;
-  testStop2.date = new Date(2017, 1, 10);
+  testStop2.plannedArrivalAt = new Date(2017, 1, 10);
   testStop2.facility = Facility.create();
+  testStop2.facility.address = testAddress;
   testStop2.status = StopStatuses.InProgress;
   // test load
   resultLoad.id = 1;
   resultLoad.customer = testCustomer;
-  resultLoad.currentTrip = [testTrip];
+  resultLoad.customerLoadNo = '123123';
+  resultLoad.systemLoadNo = '121212';
+  resultLoad.currentTrips = [testTrip];
   resultLoad.status = LoadStatuses.Completed;
   resultLoad.stops = [testStop1, testStop2];
   return resultLoad;
@@ -80,11 +98,11 @@ fdescribe('LoadStopCardComponent', () => {
       ],
       declarations: [
         LoadStopCardComponent,
-        CustomerPopoverComponent,
+        CompanyPopoverComponent,
         DriverPopoverComponent,
         TripPopoverComponent
       ]
-    }).compileComponents();
+    });
 
     fixture = TestBed.createComponent(LoadStopCardComponent);
     component = fixture.componentInstance;
@@ -95,19 +113,22 @@ fdescribe('LoadStopCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display load number', () => {
-    let testLoadNumber = 100500;
+  fit('should display load number', () => {
+    let testLoadNumber = '100500';
     component.load = testLoad;
-    component.load.systemLoadNumber = testLoadNumber;
+    component.load.systemLoadNo = testLoadNumber;
+    debugger;
+    fixture.detectChanges();
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-number'));
-    expect(element.nativeElement.textContent).toMatch('LD' + testLoadNumber);
+    debugger;
+    expect(element.nativeElement.textContent).toEqual('LD'+testLoadNumber);
   });
 
   it('should display customer load number', () => {
-    let testCustomerNumber = 100200;
+    let testCustomerNumber = '100200';
     component.load = testLoad;
-    component.load.customerLoadNumber = testCustomerNumber;
+    component.load.customerLoadNo = testCustomerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-load-number'));
     expect(element.nativeElement.textContent).toEqual(String(testCustomerNumber));
@@ -116,34 +137,33 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display driver firstname', () => {
     let testDriverName = 'Isaak';
     component.load = testLoad;
-    component.load.currentTrip[0].driver.firstName = testDriverName;
+    component.load.currentTrips[0].driverTeams[0].drivers[0].contact.firstName = testDriverName;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstName'));
-    expect(element.nativeElement.textContent).toMatch(testDriverName);
+    expect(element.nativeElement.textContent).toEqual(testDriverName);
   });
 
   it('should display truck number', () => {
-    let testTruckNumber = 2017;
+    let testTruckNumber = '2017';
     component.load = testLoad;
-    component.load.currentTrip[0].truckNumber = testTruckNumber;
+    component.load.currentTrips[0].truck.number = testTruckNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.truckNumber'));
     expect(element.nativeElement.textContent).toMatch('Tk' + testTruckNumber);
   });
 
   it('should display trailer number', () => {
-    let testTrailerNumber = 7102;
-    component.load = testLoad;
-    component.load.currentTrip[0].trailerNumber = testTrailerNumber;
+    let testTrailerNumber = '7102';
+    component.load.currentTrips[0].trailer.number = testTrailerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.trailerNumber'));
     expect(element.nativeElement.textContent).toMatch('TI' + testTrailerNumber);
   });
 
   it('should display trip number', () => {
-    let testTripNumber = 4038;
+    let testTripNumber = '4038';
     component.load = testLoad;
-    component.load.currentTrip[0].number = testTripNumber;
+    component.load.currentTrips[0].number = testTripNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.tripNumber'));
     expect(element.nativeElement.textContent).toMatch('TR' + testTripNumber);
@@ -152,7 +172,7 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display start date in right format', () => {
     let testStartdate = new Date(2017, 7, 10);
     component.load = testLoad;
-    component.load.stops[0].date = testStartdate;
+    component.load.stops[0].plannedArrivalAt = testStartdate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.start-date'));
     expect(element.nativeElement.textContent).toMatch('08/10');
@@ -161,7 +181,7 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display end date in right format', () => {
     let testEndDate = new Date(2017, 5, 9);
     component.load = testLoad;
-    component.load.stops[1].date = testEndDate;
+    component.load.stops[1].plannedArrivalAt = testEndDate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.end-date'));
     expect(element.nativeElement.textContent).toMatch('06/09');
@@ -178,7 +198,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status')),
-        loadStatusColor = hexToRgb(component.loadStatusColor);
+      loadStatusColor = hexToRgb(component.loadStatusColor);
     expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(loadStatusColor));
   });
 
@@ -200,8 +220,8 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display address of first stop', () => {
     let testCity = 'New York', testState = 'AL';
     component.load = testLoad;
-    component.load.stops[0].address.city = testCity;
-    component.load.stops[0].address.state = testState;
+    component.load.stops[0].facility.address.city = testCity;
+    component.load.stops[0].facility.address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstStopAddress'));
     expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
@@ -210,8 +230,8 @@ fdescribe('LoadStopCardComponent', () => {
   it('should display address of last stop', () => {
     let testCity = 'Eden Prairie', testState = 'AL';
     component.load = testLoad;
-    component.load.stops[1].address.city = testCity;
-    component.load.stops[1].address.state = testState;
+    component.load.stops[1].facility.address.city = testCity;
+    component.load.stops[1].facility.address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.lastStopAddress'));
     expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
@@ -227,19 +247,19 @@ fdescribe('LoadStopCardComponent', () => {
 
   it('should send customer\'s data to customer popover', () => {
     let addressData = new Address(),
-      customerData = Customer.create();
+      customerData = Company.create();
     customerData.addresses = [addressData, addressData];
     component.load = testLoad;
     component.load.customer = customerData;
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.directive(CustomerPopoverComponent)).componentInstance;
+    let element = fixture.debugElement.query(By.directive(CompanyPopoverComponent)).componentInstance;
     expect(element.customer).toEqual(customerData);
   });
 
   it('should send current trip\'s driver data to driver popover', () => {
     let driverData = Driver.create();
     component.load = testLoad;
-    component.load.currentTrip[0].driver = driverData;
+    component.load.currentTrips[0].driverTeams[0].drivers[0] = driverData;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(DriverPopoverComponent)).componentInstance;
     fixture.whenStable().then(() => {
@@ -250,7 +270,7 @@ fdescribe('LoadStopCardComponent', () => {
   it('should send current trip data to trip popover', () => {
     let tripData = Trip.create();
     component.load = testLoad;
-    component.load.currentTrip = [tripData];
+    component.load.currentTrips = [tripData];
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(TripPopoverComponent)).componentInstance;
     expect(element.trip).toEqual(tripData);
@@ -258,7 +278,7 @@ fdescribe('LoadStopCardComponent', () => {
 
   it('should send load stops collection to stops-line component', () => {
     let stopData = Stop.create(StopTypes.Pickup),
-        stopsCollection = [stopData, stopData];
+      stopsCollection = [stopData, stopData];
     component.load = testLoad;
     component.load.stops = stopsCollection;
     fixture.detectChanges();
