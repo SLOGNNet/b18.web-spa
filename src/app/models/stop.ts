@@ -1,21 +1,49 @@
-import { Address } from './address';
 import { Facility } from './facility';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
+const stopStatusColor = createStopStatusColors();
+const stopStatusText = createStopStatusText();
+const stopTypeText = createStopTypeText();
+
+// Stop type text
+function createStopTypeText() {
+ let result = {};
+  result[StopTypes.None] = 'None';
+  result[StopTypes.Pickup] = 'Pickup';
+  result[StopTypes.Dropoff] = 'Dropoff';
+
+  return result;
+};
+
+// Stop status text
+function createStopStatusText() {
+ let result = {};
+  result[StopStatuses.None] = 'None';
+  result[StopStatuses.Completed] = 'Complete';
+  result[StopStatuses.InProgress] = 'In progress';
+  result[StopStatuses.Problem] = 'Problem';
+  result[StopStatuses.Pending] = 'Pending';
+
+  return result;
+};
+
+// Stop status colors
+function createStopStatusColors() {
+ let result = {};
+  result[StopStatuses.Completed] = '#ffbe4d';
+  result[StopStatuses.InProgress] = '#85d183';
+  result[StopStatuses.Problem] = '#fb3a3a';
+  result[StopStatuses.Pending] = '#75b3e1';
+
+  return result;
+};
+
 @JsonObject
 export class Stop {
-  private static stopStatusColor = ['rgb(117, 179, 225)', 'rgb(133, 209, 131)', 'rgb(255, 190, 77)', 'rgb(251, 58, 58)'];
-  private static stopStatusText = ['Pending', 'In progress', 'Complete', 'Problem'];
-  private static stopTypeText = ['None', 'Pickup', 'Dropoff'];
-
   @JsonMember
   id: number;
-  @JsonMember({ elements: Address })
-  address: Address;
-  @JsonMember
-  date: Date = null;
   @JsonMember
   notes: string = '';
   @JsonMember
@@ -24,27 +52,37 @@ export class Stop {
   facility: Facility;
   @JsonMember
   status: StopStatuses.InProgress;
+  @JsonMember
+  arrivedAt: Date = null;
+  @JsonMember
+  departedAt: Date = null;
+  @JsonMember
+  plannedArrivalAt: Date = null;
+  @JsonMember
+  plannedDepartureAt: Date = null;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();
     result.id = generateNewId();
-    result.date = new Date();
+    result.arrivedAt = new Date();
+    result.departedAt = new Date();
+    result.plannedArrivalAt = new Date();
+    result.plannedDepartureAt = new Date();
     result.type = type;
-    result.address = Address.create();
     result.facility = Facility.create();
     return result;
   }
 
-  public static getStatusColor(status): string {
-    return Stop.stopStatusColor[status];
+  public static getStatusColor(status: StopStatuses): string {
+    return stopStatusColor[status];
   }
 
-  public static getStatusText(status): string {
-    return Stop.stopStatusText[status];
+  public static getStatusText(status: StopStatuses): string {
+    return stopStatusText[status];
   }
 
-  public static getTypeText(type): string {
-    return Stop.stopTypeText[type];
+  public static getTypeText(type: StopTypes): string {
+    return stopTypeText[type];
   }
 
 }

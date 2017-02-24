@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
-  CustomerService,
+  CompanyService,
   EquipmentService,
   DriverService,
   SocketService,
@@ -63,7 +63,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     NotificationService,
     LoadService,
     SocketService,
-    CustomerService,
+    CompanyService,
     EquipmentService,
     DriverService,
     ContactService,
