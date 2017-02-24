@@ -206,7 +206,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.stops-container'));
-    expect(element).toBeDefined();
+    expect(element.nativeElement).toBeDefined();
   });
 
   it('should not display stops line when stops length is less than 2', () => {
