@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { getPaginated } from '../../../../helpers';
 import { isEqualWith, chain, isEqual, identity, curry, isEmpty, differenceBy } from 'lodash';
 import { SharedModule } from '../../../../shared.module';
-fdescribe('autocomplete-filter', () => {
+describe('autocomplete-filter', () => {
 
   let component:    AutocompleteFilter;
   let searchService;
@@ -40,7 +40,7 @@ fdescribe('autocomplete-filter', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('data loading', () => {
+  describe('data loading', () => {
     beforeEach(() => {
       component.autocompleteSearchSource = searchService.searchSource;
       component.debounceTime = 0;

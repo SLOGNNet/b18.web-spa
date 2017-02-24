@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppState } from '../app.service';
 import { MultiPaneLayoutComponent } from './multi-pane-layout.component';
 
-fdescribe('MultiPaneLayoutComponent', () => {
+describe('MultiPaneLayoutComponent', () => {
   let appStateStub = {
     state: { switchState: 14 },
 
