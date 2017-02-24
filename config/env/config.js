@@ -19,7 +19,8 @@ config = {
     apiUrl: 'https://dev.bridge18.com/api/expedition/'
   },
   publicdev: {
-    socketIoHost: 'https://dev.bridge18.com'
+    socketIoHost: 'https://dev.bridge18.com',
+    apiUrl: 'https://dev.bridge18.com/api/expedition/'
   },
   test: {
 

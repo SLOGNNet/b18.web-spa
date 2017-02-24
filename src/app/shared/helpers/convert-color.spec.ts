@@ -2,7 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { hexToRgb, getRGBString } from '.';
 
-fdescribe('Convert color helper', () => {
+describe('Convert color helper', () => {
   const testRedHexColor = '#fb3a3a';
   const testRedRGBString = 'rgb(251, 58, 58)';
   const testRedRGBCollection = [ 251, 58, 58 ];

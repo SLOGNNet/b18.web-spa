@@ -9,26 +9,26 @@ import { Address, Stop, StopTypes, StopStatuses, Facility } from '../../../model
 // test stops
 function createTestData() {
   let testStopCollection: Array<Stop> = [],
-      testStop1 = new Stop(),
-      testStop2 = new Stop();
+    testStop1 = new Stop(),
+    testStop2 = new Stop();
   testStop1.id = 1;
   testStop1.type = StopTypes.Pickup;
-  testStop1.address = new Address();
-  testStop1.date = new Date(2017, 0, 9);
+  testStop1.plannedArrivalAt = new Date(2017, 0, 9);
   testStop1.facility = Facility.create();
-  testStop1.facility.id = 10;
+  testStop1.facility.address = new Address();
   testStop1.status = StopStatuses.InProgress;
   testStop2.id = 2;
-  testStop2.type = StopTypes.Dropoff;
-  testStop2.address = new Address();
-  testStop2.date = new Date(2017, 1, 10);
+  testStop2.type = StopTypes.Pickup;
+  testStop2.plannedArrivalAt = new Date(2017, 1, 10);
   testStop2.facility = Facility.create();
+  testStop2.facility.address = new Address();
   testStop2.status = StopStatuses.InProgress;
   testStopCollection.push(testStop1, testStop2);
   return testStopCollection;
 }
 
-fdescribe('StopsLineComponent', () => {
+
+describe('StopsLineComponent', () => {
   let fixture: ComponentFixture<StopsLineComponent>,
     component: StopsLineComponent,
     stopCollection: Array<Stop>;
@@ -82,9 +82,9 @@ fdescribe('StopsLineComponent', () => {
   });
 
   it('should have arrow down icon if it\'s dropoff', () => {
-    let currentStopType = StopTypes.Pickup;
+    let currentStopType = StopTypes.Dropoff;
     component.stops = stopCollection;
-    component.stops[0].type = currentStopType;
+    component.stops[1].type = currentStopType;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.stop1')).nativeElement;
     expect(element.classList.contains('icon-dropoff')).toBe(true);
@@ -93,7 +93,7 @@ fdescribe('StopsLineComponent', () => {
   it('should be orange if it\'s dropoff', () => {
     let currentStopType = StopTypes.Dropoff;
     component.stops = stopCollection;
-    component.stops[0].type = currentStopType;
+    component.stops[1].type = currentStopType;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.stop1')).nativeElement,
         dropoffColor = hexToRgb(component.getColor(currentStopType));

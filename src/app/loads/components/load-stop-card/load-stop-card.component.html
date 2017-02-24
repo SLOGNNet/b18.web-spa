@@ -33,9 +33,8 @@
       </div>
     </div>
   </div>
-  <div class="bottom">
   <div *ngIf="load.currentTrips && load.currentTrips.length" class="bottom">
-    <span class="link">{{currentTrip.driverTeams[0].drivers[0].contact.firstName}}</span>
+    <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].contact.firstName}}</span>
     <span class="link">|</span>
     <span class="link truckNumber" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrip.truck.number}}
@@ -66,4 +65,3 @@
         {{loadStatusText}}
     </span>
   </div>
-</div>
