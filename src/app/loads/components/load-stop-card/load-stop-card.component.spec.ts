@@ -65,13 +65,13 @@ function createTestData() {
   // test stops
   testStop1.id = 1;
   testStop1.type = StopTypes.Pickup;
-  testStop1.plannedArrivalAt = new Date(2017, 0, 9);
+  testStop1.plannedArrivalAt = null;
   testStop1.facility = Facility.create();
   testStop1.facility.address = testAddress;
   testStop1.status = StopStatuses.InProgress;
   testStop2.id = 2;
   testStop2.type = StopTypes.Pickup;
-  testStop2.plannedArrivalAt = new Date(2017, 1, 10);
+  testStop2.plannedArrivalAt = null;
   testStop2.facility = Facility.create();
   testStop2.facility.address = testAddress;
   testStop2.status = StopStatuses.InProgress;
@@ -86,7 +86,7 @@ function createTestData() {
   return resultLoad;
 }
 
-fdescribe('LoadStopCardComponent', () => {
+describe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
     component: LoadStopCardComponent,
     testLoad: Load;
@@ -128,7 +128,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.customerLoadNo = testCustomerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-load-number'));
-    expect(element.nativeElement.innerText).toEqual('100200');
+    expect(element.nativeElement.textContent).toEqual('100200');
   });
 
 
@@ -169,28 +169,28 @@ fdescribe('LoadStopCardComponent', () => {
   });
 
   it('should display start date in right format', () => {
-    let testStartdate = new Date(2017, 7, 10);
+    let testStartdate = new Date(2017, 10, 10);
     component.load = testLoad;
     component.load.stops[0].plannedArrivalAt = testStartdate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.start-date'));
-    expect(element.nativeElement.textContent).toMatch('08/10');
+    expect(element.nativeElement.textContent).toContain('11/10');
   });
 
   it('should display end date in right format', () => {
-    let testEndDate = new Date(2017, 5, 9);
+    let testEndDate = new Date(2017, 9, 10);
     component.load = testLoad;
     component.load.stops[1].plannedArrivalAt = testEndDate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.end-date'));
-    expect(element.nativeElement.textContent).toBe('06/09');
+    expect(element.nativeElement.textContent).toContain('10/10');
   });
 
   it('should display load status text', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.textContent).toBe(Load.getStatusText(LoadStatuses.Completed));
+    expect(element.nativeElement.textContent).toContain(Load.getStatusText(LoadStatuses.Completed));
   });
 
   it('should display load status color', () => {

@@ -28,7 +28,7 @@ function createTestData() {
 }
 
 
-fdescribe('StopsLineComponent', () => {
+describe('StopsLineComponent', () => {
   let fixture: ComponentFixture<StopsLineComponent>,
     component: StopsLineComponent,
     stopCollection: Array<Stop>;
