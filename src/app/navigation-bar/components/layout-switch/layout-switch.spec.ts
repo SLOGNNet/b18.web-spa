@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { LayoutSwitchComponent } from './layout-switch.component';
 
-fdescribe('LayoutSwitchComponent', () => {
+describe('LayoutSwitchComponent', () => {
   let fixture: ComponentFixture<LayoutSwitchComponent>;
   let component: LayoutSwitchComponent;
   let toggleFirst;
