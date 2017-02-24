@@ -113,16 +113,13 @@ fdescribe('LoadStopCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should display load number', () => {
+  it('should display load number', () => {
     let testLoadNumber = '100500';
     component.load = testLoad;
     component.load.systemLoadNo = testLoadNumber;
-    debugger;
-    fixture.detectChanges();
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-number'));
-    debugger;
-    expect(element.nativeElement.textContent).toEqual('LD'+testLoadNumber);
+    expect(element.nativeElement.textContent).toEqual('LD' + testLoadNumber);
   });
 
   it('should display customer load number', () => {
@@ -131,8 +128,9 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.customerLoadNo = testCustomerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.customer-load-number'));
-    expect(element.nativeElement.textContent).toEqual(String(testCustomerNumber));
+    expect(element.nativeElement.innerText).toEqual('100200');
   });
+
 
   it('should display driver firstname', () => {
     let testDriverName = 'Isaak';
@@ -154,6 +152,7 @@ fdescribe('LoadStopCardComponent', () => {
 
   it('should display trailer number', () => {
     let testTrailerNumber = '7102';
+    component.load = testLoad;
     component.load.currentTrips[0].trailer.number = testTrailerNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.trailerNumber'));
@@ -184,14 +183,14 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.stops[1].plannedArrivalAt = testEndDate;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.end-date'));
-    expect(element.nativeElement.textContent).toMatch('06/09');
+    expect(element.nativeElement.textContent).toBe('06/09');
   });
 
   it('should display load status text', () => {
     component.load = testLoad;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.textContent).toMatch(Load.getStatusText(LoadStatuses.Completed));
+    expect(element.nativeElement.textContent).toBe(Load.getStatusText(LoadStatuses.Completed));
   });
 
   it('should display load status color', () => {
@@ -224,7 +223,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.stops[0].facility.address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstStopAddress'));
-    expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
+    expect(element.nativeElement.textContent).toEqual(testCity + ', ' + testState);
   });
 
   it('should display address of last stop', () => {
@@ -234,7 +233,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.stops[1].facility.address.state = testState;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.lastStopAddress'));
-    expect(element.nativeElement.textContent).toMatch(testCity + ', ' + testState);
+    expect(element.nativeElement.textContent).toEqual(testCity + ', ' + testState);
   });
 
   it('should handle click', () => {
@@ -253,7 +252,7 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.customer = customerData;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(CompanyPopoverComponent)).componentInstance;
-    expect(element.customer).toEqual(customerData);
+    expect(element.company).toEqual(customerData);
   });
 
   it('should send current trip\'s driver data to driver popover', () => {
@@ -268,9 +267,19 @@ fdescribe('LoadStopCardComponent', () => {
   });
 
   it('should send current trip data to trip popover', () => {
-    let tripData = Trip.create();
+    let tripData = new Trip();
+    let testDriverTeam = new DriverTeam();
+    let testDriver = Driver.create();
+    testDriverTeam.drivers = [testDriver];
+      tripData.id = 1;
+      tripData.number = '1212';
+      tripData.truck = new Equipment();
+      tripData.truck.number = '1010';
+      tripData.trailer = new Equipment();
+      tripData.trailer.number = '1111';
+      tripData.driverTeams = [testDriverTeam];
     component.load = testLoad;
-    component.load.currentTrips = [tripData];
+    component.load.currentTrips = [tripData, tripData];
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(TripPopoverComponent)).componentInstance;
     expect(element.trip).toEqual(tripData);
@@ -283,6 +292,6 @@ fdescribe('LoadStopCardComponent', () => {
     component.load.stops = stopsCollection;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(StopsLineComponent)).componentInstance;
-    expect(element.stops).toBe(stopsCollection);
+    expect(element.stops).toEqual(stopsCollection);
   });
 });
