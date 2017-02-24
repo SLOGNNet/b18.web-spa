@@ -21,7 +21,7 @@ function createTestData() {
   testContact.lastName = 'Watson';
   testContact.position = 'Sales manager';
   // test load
-  testLoad.systemLoadNo = 209282402;
+  testLoad.systemLoadNo = '209282402';
   testLoad.status = LoadStatuses.Completed;
   // test company
   resultCompany.name = 'CH ROBINSON COMPANY INC';
@@ -34,7 +34,7 @@ function createTestData() {
 }
 
 
-fdescribe('CompanyCardComponent', () => {
+describe('CompanyCardComponent', () => {
   let fixture: ComponentFixture<CompanyCardComponent>,
     component: CompanyCardComponent,
     testCompany: Company;
@@ -149,7 +149,7 @@ fdescribe('CompanyCardComponent', () => {
   });
 
   it('should display system load number', () => {
-    let testSystemLoadNumber = 209282402;
+    let testSystemLoadNumber = '209282402';
     component.company = testCompany;
     component.company.loads[0].systemLoadNo = testSystemLoadNumber;
     fixture.detectChanges();
