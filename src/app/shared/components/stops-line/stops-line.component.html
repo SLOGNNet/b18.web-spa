@@ -1,8 +1,8 @@
 <div class="stops-container" *ngIf="stops.length">
   <div class="stops">
     <div
-      *ngFor="let stop of stops"
-      class="stop-icon"
+      *ngFor="let stop of stops; let i = index"
+      class="stop-icon stop{{i}}"
       [bd-popover]="stopPopover"
       [popoverOnHover]="true"
       [style.color]="getColor(stop.type)"

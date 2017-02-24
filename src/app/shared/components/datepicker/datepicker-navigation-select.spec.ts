@@ -22,7 +22,7 @@ function changeSelect(element: HTMLSelectElement, value: string) {
   element.dispatchEvent(evt);
 }
 
-describe('ngb-datepicker-navigation-select', () => {
+xdescribe('ngb-datepicker-navigation-select', () => {
 
   beforeEach(() => {
     TestBed.overrideModule(NgbDatepickerModule, {set: {exports: [NgbDatepickerNavigationSelect]}});
