@@ -12,17 +12,7 @@
       aria-hidden="true">
     </i>
   </bd-input>
-  <div
-    class="autocomplete-section-header">
-    <span *ngIf="!selectedItems.length && !selectedItemsCache.length">ALL VALUES</span>
-    <button
-      *ngIf="selectedItemsCache.length || selectedItems.length"
-      (click)="clearSelectedItems($event)"
-      [disabled]="isClearButtonDisabled">
-      Clear selected items
-    </button>
-  </div>
-  <div *ngIf="isSearchMode">
+  <div *ngIf="isSearchMode" class="search-container">
     <filter-item
       *ngFor="let item of loadedItems; let i = index;"
       [itemTemplate]="itemTemplate"
@@ -33,18 +23,28 @@
     </filter-item>
   </div>
   <div *ngIf="!isSearchMode">
-    <filter-item
-      *ngFor="let item of selectedItemsCache; let i = index;"
-      [checked]="isSelected(item)"
-      [itemTemplate]="itemTemplate"
-      (checkedChange)="onSelectedChange($event)"
-      (click)="onItemClick(item)"
-      [item]="item">
-    </filter-item>
-    <div class="autocomplete-section-header" *ngIf="loadedItemsCache.length && selectedItemsCache.length">
+    <div class="autocomplete-section-header selected-section-header" *ngIf="selectedItemsCache.length">
+      <button
+        class="clear-selected-button"
+        (click)="clearSelectedItems($event)"
+        [disabled]="isClearButtonDisabled">
+        Clear selected items
+      </button>
+    </div>
+    <div class="selected-container">
+      <filter-item
+        *ngFor="let item of selectedItemsCache; let i = index;"
+        [checked]="isSelected(item)"
+        [itemTemplate]="itemTemplate"
+        (checkedChange)="onSelectedChange($event)"
+        (click)="onItemClick(item)"
+        [item]="item">
+      </filter-item>
+    </div>
+    <div class="autocomplete-section-header all-section-header" *ngIf="loadedItemsCache.length">
       ALL VALUES
     </div>
-    <div *ngIf="loadedItemsCache.length">
+    <div *ngIf="loadedItemsCache.length" class="all-container">
       <filter-item
         *ngFor="let item of loadedItemsCache; let i = index;"
         [itemTemplate]="itemTemplate"
