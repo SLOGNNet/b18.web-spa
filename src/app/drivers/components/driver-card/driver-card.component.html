@@ -6,12 +6,13 @@ class="driver-card-section"
     <div>
       <bd-initials-circle
         class="initials-circle"
-        [firstName]="driver.firstName"
-        [lastName]="driver.lastName">
+        [firstName]="driver.contact.firstName"
+        [lastName]="driver.contact.lastName">
       </bd-initials-circle>
     </div>
+
     <div class="driver-full-name ellipsis">
-      {{driver.firstName}} {{driver.lastName}}
+      {{driver.contact.firstName}} {{driver.contact.lastName}}
     </div>
     <div class="driver-type">{{driverTypeText}}</div>
   </div>

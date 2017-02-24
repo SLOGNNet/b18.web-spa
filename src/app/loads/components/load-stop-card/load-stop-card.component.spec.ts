@@ -68,7 +68,7 @@ function createTestData() {
   return resultLoad;
 }
 
-fdescribe('LoadStopCardComponent', () => {
+xdescribe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
     component: LoadStopCardComponent,
     testLoad: Load;

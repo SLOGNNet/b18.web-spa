@@ -4,7 +4,6 @@ import { Component, Input, forwardRef,
 import { BaseFilter } from '../base-filter';
 import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
-import { CustomerService } from '../../../../services';
 import { difference, without } from 'lodash';
 
 class PageQuery {
@@ -23,22 +22,33 @@ class PageQuery {
 export class AutocompleteFilter extends BaseFilter {
   @ViewChild('bdInput') bdInput;
   @Input() itemTemplate: TemplateRef<any>;
-  @Input() scrolledDown: boolean = false;
+  @Input()
+  public set scrolledDown(newValue: boolean) {
+    if (this._scrolledDown !== newValue && newValue) {
+      this.loadNextPage();
+    }
+    this._scrolledDown = newValue;
+  }
+  public get scrolledDown() {
+    return this._scrolledDown;
+  }
+  @Input() countPerPage: number = 20;
+  @Input() debounceTime: number = 200;
   private keyUpEventEmitter: EventEmitter<string> = new EventEmitter();
   private scrolledDownEventEmitter: EventEmitter<PageQuery> = new EventEmitter();
   private loadedItems = [];
   private selectedItemsCache = [];
   private isAllLoaded = false;
   private isLoading = false;
-  private page = 1;
-  private countPerPage: number = 20;
+  private startPage = 1;
+  private page = this.startPage;
   private query = '';
+  private _scrolledDown: boolean = false;
   private isSearchFieldFocused: boolean = false;
   @Input() comparer: Function = (item1, item2) => { return item1['id'] === item2['id']; };
   @Input() autocompleteSearchSource: (query: string, page: number, count: number) => Observable<any[]> = () => Observable.empty();
 
-  constructor(private customerService: CustomerService,
-    private cdr: ChangeDetectorRef,
+  constructor(private cdr: ChangeDetectorRef,
     private elRef: ElementRef) {
     super();
   }
@@ -46,12 +56,6 @@ export class AutocompleteFilter extends BaseFilter {
   public ngOnInit() {
     this.setupAutocomplete();
     this.onAutocompleteChange('');
-  }
-
-  public ngOnChanges(changes) {
-    if (changes.scrolledDown && this.scrolledDown) {
-      this.loadNextPage();
-    }
   }
 
   ngAfterViewChecked() {
@@ -80,9 +84,7 @@ export class AutocompleteFilter extends BaseFilter {
   }
 
   protected onSelectedChange(changed) {
-    changed.event.preventDefault();
-    changed.event.stopPropagation();
-    super.onSelectedChange(changed.item);
+    super.onSelectedChange(changed);
   }
 
   public onItemClick(item) {
@@ -118,14 +120,14 @@ export class AutocompleteFilter extends BaseFilter {
 
   private setupAutocomplete() {
     const $searchRequest = this.keyUpEventEmitter
-      .debounceTime(200)
+      .debounceTime(this.debounceTime)
       .distinctUntilChanged();
 
     const $request = Observable.combineLatest(
       $searchRequest,
-      this.scrolledDownEventEmitter.startWith({query: '', page: 0, count: this.countPerPage}),
+      this.scrolledDownEventEmitter.startWith({query: '', page: this.startPage, count: this.countPerPage}),
       (query: string, pageQuery: PageQuery) =>
-      { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : 0}; });
+      { return { query, count: pageQuery.count, page: pageQuery.query === query ? pageQuery.page : this.startPage}; });
     $searchRequest.subscribe(() => {
       this.loadedItems = [];
     });
@@ -134,7 +136,7 @@ export class AutocompleteFilter extends BaseFilter {
       this.page = pageQuery.page;
       this.cdr.markForCheck();
     });
-    const $response = $request.delay(3000)
+    const $response = $request
       .switchMap((pageQuery: PageQuery) => { return this.autocompleteSearchSource(pageQuery.query, pageQuery.page, pageQuery.count); });
 
     $response.subscribe((matches: any[]) => {

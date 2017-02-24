@@ -15,7 +15,9 @@ export class BaseFilter {
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
-
+  get selectedItems() {
+    return this._selectedItems;
+  }
   @HostBinding('class.active')
   @Input()
   public set active(newValue: boolean) {
@@ -31,9 +33,6 @@ export class BaseFilter {
   private _active: boolean = false;
   private _selectedItems: Array<Object> = [];
 
-  get selectedItems() {
-    return this._selectedItems;
-  }
 
   public get tagValue() {
     return this.selectedItems.length > 0 ? this._selectedItems.map(item => this.getItemValue(item)).join(', ') : this.defaultLabel;

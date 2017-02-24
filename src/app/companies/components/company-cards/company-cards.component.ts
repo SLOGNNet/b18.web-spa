@@ -1,15 +1,15 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Customer } from '../../../models';
+import { Company } from '../../../models';
 
 @Component({
-    selector: 'customer-cards',
-    templateUrl: './customer-cards.component.html',
-    styleUrls: ['./customer-cards.component.scss'],
+    selector: 'company-cards',
+    templateUrl: './company-cards.component.html',
+    styleUrls: ['./company-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CustomerCardsComponent {
-  @Input() customers: Array<Customer>;
-  @Input() selected: Array<Customer> = [];
+export class CompanyCardsComponent {
+  @Input() companies: Array<Company>;
+  @Input() selected: Array<Company> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onCardSelect(item) {

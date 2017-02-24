@@ -1,60 +1,61 @@
-// customer enums
-export enum CustomerTypes {
+// company enums
+export enum CompanyTypes {
   Broker = 1,
   FreightForwarder = 2,
   Shipper = 3,
   Carrier = 4
 };
 
-export enum CustomerStatuses {
-  Inactive = 0,
-  Active = 1,
-  Unavaliable = 2
+export enum CompanyStatuses {
+  None = 0,
+  Inactive = 1,
+  Active = 2,
+  Unavaliable = 3
 }
 
 // driver enums
 export enum DriverTypes {
-  CompanyDriver = 0,
-  OwnerOperator = 1
+  None = 0,
+  CompanyDriver = 1,
+  OwnerOperator = 2
 };
 
 export enum DriverStatuses {
-  Inactive = 0,
-  Active = 1,
-  Unavaliable = 2
+  None = 0,
+  Inactive = 1,
+  Active = 2,
+  Unavaliable = 3
 }
 
 export enum DriverPaymentOptions {
-  PerMile = 0,
-  Percentage = 1,
-  Hourly = 2,
-  Flat = 3
+  PerMile = 1,
+  Percentage = 2,
+  Hourly = 3,
+  Flat = 4
 }
 
 // equipment enums
 export enum EquipmentTypes {
-  Trailer = 0,
-  PowerUnit = 1
+  None = 0,
+  Trailer = 1,
+  PowerUnit = 2
 };
 
 export enum EquipmentModes {
-  Company = 0
+  None = 0,
+  Company = 1
 };
 
-export enum EquipmentDriverType {
-  CompanyDriver = 0,
-  OwnerOperator = 1
-}
-
 export enum EquipmentStatuses {
-  Inactive = 0,
-  Active = 1,
-  NotAvaliable = 2
+  None = 0,
+  Inactive = 1,
+  Active = 2,
+  NotAvaliable = 3
 }
 
 export enum EquipmentVehicleOperatings {
-  InterState = 0,
-  IntraState = 1
+  InterState = 1,
+  IntraState = 2
 }
 
 // load enums
@@ -109,15 +110,15 @@ export enum NotificationStatus {
 };
 
 export enum NotificationType {
-  Notification = 0,
-  Message = 1,
-  Task = 2
+  Notification = 1,
+  Message = 2,
+  Task = 3
 };
 
 export enum NotificationPriority {
-  High = 0,
-  Middle = 1,
-  Low = 2,
+  High = 1,
+  Middle = 2,
+  Low = 3,
 };
 
 export enum TaskType {
@@ -135,8 +136,9 @@ export enum StopTypes {
 };
 
 export enum StopStatuses {
-  Pending = 0,
-  InProgress = 1,
-  Completed = 2,
-  Problem = 3
+  None = 0,
+  Pending = 1,
+  InProgress = 2,
+  Completed = 3,
+  Problem = 4
 };
