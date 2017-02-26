@@ -8,11 +8,9 @@ import { ViewMode } from '../../../shared/enums';
 })
 export class LoginComponent implements OnInit{
 
-  loginViewMode: ViewMode;
+  formViewMode: ViewMode;
 
   ngOnInit() {
-    this.loginViewMode = ViewMode.Edit;
+    this.formViewMode = ViewMode.Edit;
   }
-
 }
-
