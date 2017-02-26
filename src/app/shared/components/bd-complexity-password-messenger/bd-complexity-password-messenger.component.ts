@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { PasswordComplexity } from '../../../shared/enums';
 
 @Component({
   selector: 'bd-complexity-password-messenger',
@@ -11,7 +12,7 @@ export class ComplexityPasswordMessengerComponent implements OnChanges {
 
   @Input()
   component: FormControl;
-  complexity: string;
+  private complexity: string;
 
   ngOnChanges(changes: any): void {
     const component: FormControl = changes.component.currentValue;
@@ -24,11 +25,11 @@ export class ComplexityPasswordMessengerComponent implements OnChanges {
     const strongRegularExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
     const mediumRegularExp = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})');
     if (strongRegularExp.test(value)) {
-      this.complexity = 'strong';
+      this.complexity = PasswordComplexity[PasswordComplexity.Strong];
     } else if (mediumRegularExp.test(value)) {
-      this.complexity = 'normal';
+      this.complexity = PasswordComplexity[PasswordComplexity.Normal];
     } else {
-      this.complexity = 'low';
+      this.complexity = PasswordComplexity[PasswordComplexity.Low];
     }
   }
 

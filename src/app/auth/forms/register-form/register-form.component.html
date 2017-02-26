@@ -24,14 +24,14 @@
     </bd-input>
   </div>
   <bd-form-switch class="bd-form-control"
-                  formControlName="registerType"
-                  [hideLabel]="true"
-                  [enableButtonSwitch]="true"
-                  [items]="registerTypes">
+    formControlName="registerType"
+    [hideLabel]="true"
+    [enableButtonSwitch]="true"
+    [items]="registerTypes">
   </bd-form-switch>
   <bd-validator *ngIf="registerForm.controls.registerType.value === 'email'"
-                [component]="registerForm.controls.email"
-                [errorDefs]="{required: 'This field is required', isValidMailFormat: 'Email entered not correct.'}">
+    [component]="registerForm.controls.email"
+    [errorDefs]="{required: 'This field is required', isValidMailFormat: 'Email entered not correct.'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Email'"
@@ -39,8 +39,8 @@
     </bd-input>
   </bd-validator>
   <bd-validator *ngIf="registerForm.controls.registerType.value === 'phone'"
-                [component]="registerForm.controls.phone"
-                [errorDefs]="{required: 'This field is required'}">
+    [component]="registerForm.controls.phone"
+    [errorDefs]="{required: 'This field is required'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Phone'"
@@ -49,7 +49,7 @@
   </bd-validator>
   <fieldset formGroupName="passwordGroup">
     <bd-validator [component]="registerForm.controls.passwordGroup.controls.password"
-                  [errorDefs]="{required: 'Passwords do not match.'}">
+      [errorDefs]="{required: 'Passwords do not match.'}">
       <bd-input
         class="bd-form-control"
         [type]="'password'"
@@ -57,8 +57,9 @@
         formControlName="password">
       </bd-input>
     </bd-validator>
+    <bd-complexity-password-messenger [component]="registerForm.controls.passwordGroup.controls.password"></bd-complexity-password-messenger>
     <bd-validator [component]="registerForm.controls.passwordGroup.controls.retryPassword"
-                  [errorDefs]="{required: 'This field is required'}">
+      [errorDefs]="{required: 'This field is required'}">
       <bd-input
         class="bd-form-control"
         [type]="'password'"
@@ -67,8 +68,8 @@
       </bd-input>
     </bd-validator>
     <bd-validator [component]="registerForm.controls.passwordGroup"
-                  *ngIf="registerForm.controls.passwordGroup.controls.password.touched && registerForm.controls.passwordGroup.controls.retryPassword.touched"
-                  [errorDefs]="{passwordsNotMatch: 'Passwords do not match.'}">
+      *ngIf="registerForm.controls.passwordGroup.controls.password.touched && registerForm.controls.passwordGroup.controls.retryPassword.touched"
+      [errorDefs]="{passwordsNotMatch: 'Passwords do not match.'}">
     </bd-validator>
   </fieldset>
   <div class="divider"></div>
