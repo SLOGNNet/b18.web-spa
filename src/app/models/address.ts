@@ -5,27 +5,29 @@ export class Address {
   @JsonMember
   id: number = 0;
   @JsonMember
-  name: string = '';
+  name: string = 'Main Office';
   @JsonMember
-  streetAddress: string = '';
+  streetAddress1: string = '14701 Charlson Road, United States';
   @JsonMember
-  secondStreetAddress: string = '';
+  streetAddress2: string = '';
   @JsonMember
-  city: string = '';
+  city: string = 'Eden Prairie';
   @JsonMember
-  phone: string = '';
+  phone: string = '(925) 937-8500';
   @JsonMember
-  state: string = '';
+  state: string = 'MN';
   @JsonMember
-  zip: string = '';
+  zip: string = '55347';
   @JsonMember
   fax: string = '';
   @JsonMember
   phoneExtension: string = '';
   @JsonMember
   faxExtension: string = '';
-  lat: number;
-  lng: number;
+  @JsonMember
+  latitude: number = 40.795675;
+  @JsonMember
+  longitude: number = -73.93600099999998;
 
   static create(): Address {
     const result = new Address();
@@ -33,7 +35,7 @@ export class Address {
   }
 
   constructor() {
-    this.lat = 0;
-    this.lng = 0;
+    this.latitude = 0;
+    this.longitude = 0;
   }
 }

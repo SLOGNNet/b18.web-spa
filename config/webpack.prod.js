@@ -44,6 +44,7 @@ module.exports = function (config) {
        */
       path: helpers.root('dist'),
 
+      publicPath: config.baseUrl,
       /**
        * Specifies the name of each output file on disk.
        * IMPORTANT: You must not specify an absolute path here!

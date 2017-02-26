@@ -3,7 +3,16 @@
 .filter-item-container {
   display: flex;
   height: $form-control-height;
-  padding: 0 17px;
+  padding-right: $default-margin;
   border-bottom: $border;
   align-items: center;
+
+  bd-form-checkbox {
+    width: $form-control-height;
+  }
+
+  &:hover {
+    background: $light-blue;
+    cursor: pointer;
+  }
 }

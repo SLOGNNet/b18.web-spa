@@ -5,15 +5,16 @@ import { Component, Input, Output, EventEmitter, OnChanges, TemplateRef } from '
   styleUrls: ['./filter-item.component.scss'],
   templateUrl: './filter-item.component.html'
 })
-export class FilterItem  {
+export class FilterItem {
   @Input() itemTemplate: TemplateRef<any>;
   @Input() item: Object;
-  @Input() selected: boolean = false;
-  @Output() selectedChange = new EventEmitter();
+  @Input() checked: boolean = false;
+  @Output() checkedChange: EventEmitter<any> = new EventEmitter();
 
-  onCheckedChange(checked)
-  {
-    this.selected = checked;
-    this.selectedChange.emit(this.item);
+  onCheckedChange(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.checked = !this.checked;
+    this.checkedChange.emit(this.item);
   }
 }

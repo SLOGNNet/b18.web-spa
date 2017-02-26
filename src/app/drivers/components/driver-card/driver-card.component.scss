@@ -1,0 +1,97 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/styles';
+@import '../../../../assets/styles/mixins';
+
+.driver-card-section {
+  position: relative;
+  display: flex;
+  height: 100px;
+  padding: 14px $default-margin;
+  background: inherit;
+  font-size: $tiny-font-size;
+  line-height: 18px;
+  cursor: pointer;
+  border-bottom: $border;
+
+  .left {
+    width: 30%;
+
+    .driver-full-name {
+      font-weight: bold;
+    }
+
+    .driver-type {
+      white-space: nowrap;
+    }
+  }
+
+  .middle {
+    display: flex;
+    width: 30%;
+    padding-left: $default-margin;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .send-message {
+      color: $blue;
+      font-weight: bold;
+    }
+  }
+
+  .right {
+    position: relative;
+    width: 40%;
+    line-height: 17px;
+    padding-left: $default-margin;
+
+    .tr-city {
+      display: flex;
+
+      .tr-city-circle {
+        width: 10px;
+        height: 10px;
+        margin: 3px 5px 0 0;
+        background: $black;
+        border-radius: 50%;
+      }
+
+      .tr-city-name {
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+        width: 80%;
+        text-align: left;
+      }
+    }
+
+    .status-text {
+      position: absolute;
+      right: 22px;
+      bottom: 0;
+      justify-content: center;
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: $black;
+      bottom: 3px;
+      border-radius: $form-control-height;
+    }
+  }
+}
+
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .equipment-card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}

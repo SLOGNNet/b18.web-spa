@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { SwitchState } from '../../../shared/enums/switchState';
 
 @Component({
@@ -6,7 +6,8 @@ import { SwitchState } from '../../../shared/enums/switchState';
     templateUrl: './layout-switch.component.html',
     styleUrls: [
         './layout-switch.component.scss'
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class LayoutSwitchComponent {

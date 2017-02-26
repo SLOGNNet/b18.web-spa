@@ -12,11 +12,17 @@
   letter-spacing: 1px;
 
   button {
+    padding: 0;
     border: 0;
     background: 0;
     color: $active-color;
     font-size: $default-font-size;
     text-transform: capitalize;
+
+    &:disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed;
+    }
 
     &:focus {
       outline: 0;

@@ -18,7 +18,7 @@ date;
      { name: 'Gender' }
    ];
 
-   switchButtons1 = [ 'Company', 'Customer' , 'None'];
+   switchButtons1 = [ 'Company', 'Company' , 'None'];
 
    switchButtons2 = [ 'Dry', 'Reefer' ];
 

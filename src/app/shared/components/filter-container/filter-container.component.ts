@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
@@ -19,8 +19,14 @@ export class FilterContainer {
 
   ngAfterContentInit() {
     if (this.filters) {
-      this.filters.forEach((fitlerItem: BaseFilter) => {
-        fitlerItem.selectionChanged.subscribe(() => {
+      this.filters.forEach((filterItem: BaseFilter) => {
+        filterItem.selectedChanged.subscribe(filter => {
+          const visibleFilters = this.filters.filter(f => f.active);
+
+          if (visibleFilters.length === 0) {
+            this.deactivateFilters();
+          }
+
           this.cdr.markForCheck();
         });
       });
@@ -44,9 +50,9 @@ export class FilterContainer {
   }
 
   private _toggleFilter(filter: BaseFilter) {
-    let currentActiveState = filter.active;
+    let currentFilterState = filter.active;
     this.deactivateFilters();
-    filter.active = !currentActiveState;
+    filter.active = !currentFilterState;
     this.visibilityChange.emit(filter.active);
   }
 }

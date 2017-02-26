@@ -1,0 +1,21 @@
+<div class="company-popover">
+  <div class="section">
+    <span class="blue">{{company.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
+    <span>MC#{{company.mc}} | USDOT: {{company.taxId}}</span>
+  </div>
+  <div class="section" *ngIf="companyAddress">
+    <span class="blue">Address</span>
+    <span>{{companyAddress.streetAddress1}}</span>
+    <span>{{companyAddress.city}}, {{companyAddress.state}}</span>
+    <span>{{companyAddress.zip}}</span>
+  </div>
+  <div class="section" *ngIf="companyBillingAddress">
+    <span class="blue">Billing Address</span>
+    <span>{{companyBillingAddress.streetAddress1}}</span>
+    <span>{{companyBillingAddress.city}}, {{companyBillingAddress.state}}</span>
+    <span>{{companyBillingAddress.zip}}</span>
+  </div>
+  <div class="section" *ngIf="companyAddress">
+    <span>{{phone}}</span>
+  </div>
+</div>

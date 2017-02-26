@@ -18,7 +18,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { DriversComponent } from './drivers';
+import { DriversComponent, DriverCardsComponent, DriverCardComponent } from './drivers';
 import { MultiPaneLayoutComponent } from './multi-pane-layout';
 import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
@@ -29,19 +29,22 @@ import { LoadsComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
-  CustomerPopoverComponent,
+  CompanyPopoverComponent,
   DriverPopoverComponent } from './loads';
 import {
   CommodityActions,
   LoadActions,
   AddressActions,
-  CustomerActions,
+  CompanyActions,
+  EquipmentActions,
+  DriverActions,
   StopActions
 } from './actions';
-import { CustomersComponent, CustomerDetailComponent } from './customers';
-import { CustomerCardComponent } from './customers/components/customer-card';
-import { CustomerCardsComponent } from './customers/components/customer-cards';
+import { CompaniesComponent, CompanyDetailComponent } from './companies';
+import { CompanyCardComponent } from './companies/components/company-card';
+import { CompanyCardsComponent } from './companies/components/company-cards';
 import { BdToastManagerComponent } from './bd-toast-manager/bd-toast-manager.component';
+import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from './equipment';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -65,22 +68,27 @@ type StoreType = {
      MultiPaneLayoutComponent,
      HomeComponent,
      DriversComponent,
+     DriverCardsComponent,
+     DriverCardComponent,
      NoContentComponent,
      MessagesComponent,
      MessageComponent,
      LoadsComponent,
      LoadDetailComponent,
-     CustomersComponent,
-     CustomerDetailComponent,
-     CustomerCardComponent,
-     CustomerCardsComponent,
+     CompaniesComponent,
+     CompanyDetailComponent,
+     CompanyCardComponent,
+     CompanyCardsComponent,
      LoadStopCardComponent,
      LoadStopCardsComponent,
      TripPopoverComponent,
-     CustomerPopoverComponent,
+     CompanyPopoverComponent,
      DriverPopoverComponent,
      TopPanelComponent,
-     BdToastManagerComponent
+     BdToastManagerComponent,
+     EquipmentComponent,
+     EquipmentCardComponent,
+     EquipmentCardsComponent
   ],
   imports: [
     SharedModule,
@@ -97,7 +105,9 @@ type StoreType = {
     CommodityActions,
     LoadActions,
     AddressActions,
-    CustomerActions,
+    CompanyActions,
+    EquipmentActions,
+    DriverActions,
     StopActions
   ]
 })
