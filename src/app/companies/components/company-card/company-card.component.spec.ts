@@ -143,6 +143,7 @@ describe('CompanyCardComponent', () => {
   it('should display crooped company name', () => {
     let testCroopedCompanyName = 'CHR';
     component.company = testCompany;
+    component.company.name = 'CH ROBINSON COMPANY INC';
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.cropped-company-name'));
     expect(element.nativeElement.textContent).toBe(testCroopedCompanyName);
