@@ -110,23 +110,23 @@ fdescribe('BdInputComponent', function () {
     expect(fixture.debugElement.componentInstance.focus).toHaveBeenCalled();
   });
 
-  it('should not be empty after input entered', async(() => {
-    // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
-    fixture.detectChanges();
-
-    let inputEl = fixture.debugElement.query(By.css('input'));
-    let el = fixture.debugElement.query(By.css('label')).nativeElement;
-    expect(el).not.toBeNull();
-    expect(el.classList.contains('md-empty')).toBe(true, 'should be empty');
-
-    inputEl.nativeElement.value = 'hello';
-    // Simulate input event.
-    inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
-    fixture.detectChanges();
-
-    el = fixture.debugElement.query(By.css('label')).nativeElement;
-    expect(el.classList.contains('md-empty')).toBe(false, 'should not be empty');
-  }));
+  // it('should not be empty after input entered', async(() => {
+  //   let fixture = TestBed.createComponent(BdInputComponentTextTestController);
+  //   fixture.detectChanges();
+  //
+  //   let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).nativeElement;
+  //   let el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
+  //   expect(el).not.toBeNull();
+  //   expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
+  //
+  //   inputEl.nativeElement.value = 'hello';
+  //   // Simulate input event.
+  //   inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
+  //   fixture.detectChanges();
+  //   //
+  //   el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
+  //   expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
+  // }));
 
   // md input tests
 
