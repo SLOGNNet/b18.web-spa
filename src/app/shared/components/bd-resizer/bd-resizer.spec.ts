@@ -6,7 +6,17 @@ import { AppState } from '../app.service';
 import { BdResizerComponent } from './bd-resizer.component';
 import { BdResizeContainerComponent } from './components';
 
- describe('BdResizerComponent', () => {
+describe('BdResizerComponent', () => {
+  const toggleResizer = (resizer, offset) => {
+    let startMouseDownEvent = document.createEvent('MouseEvents');
+    startMouseDownEvent.initMouseEvent('mousedown', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    let endMouseMoveEvent = document.createEvent('MouseEvents');
+    endMouseMoveEvent.initMouseEvent('mousemove', true, true, window, 0, 0, 0, offset, 0, false, false, false, false, 0, null);
+
+    resizer.dispatchEvent(startMouseDownEvent);
+    resizer.dispatchEvent(endMouseMoveEvent);
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BdResizerComponent, BdResizeContainerComponent, TwoPanesTestComponent, ThreePanesTestComponent]
@@ -24,16 +34,9 @@ import { BdResizeContainerComponent } from './components';
     const secondPane = fixture.nativeElement.querySelector('.second');
     const firstPaneInitialWidth = firstPane.clientWidth;
     const secondPaneInitialWidth = secondPane.clientWidth;
-    let startMouseDownEvent = new MouseEvent('mousedown', {
-      'clientX': 0
-    });
-    let endMouseMoveEvent = new MouseEvent('mousemove', {
-      'bubbles': true,
-      'clientX': offset
-    });
+    let startMouseDownEvent = document.createEvent('MouseEvents');
 
-    resizer.dispatchEvent(startMouseDownEvent);
-    resizer.dispatchEvent(endMouseMoveEvent);
+    toggleResizer(resizer, offset);
 
     expect(firstPane.clientWidth === firstPaneInitialWidth + offset).toBeTruthy();
     expect(secondPane.clientWidth === secondPaneInitialWidth - offset).toBeTruthy();
@@ -51,16 +54,8 @@ import { BdResizeContainerComponent } from './components';
     const firstPaneInitialWidth = firstPane.clientWidth;
     const secondPaneInitialWidth = secondPane.clientWidth;
     const thirdPaneInitialWidth = secondPane.clientWidth;
-    let startMouseDownEvent = new MouseEvent('mousedown', {
-      'clientX': 0
-    });
-    let endMouseMoveEvent = new MouseEvent('mousemove', {
-      'bubbles': true,
-      'clientX': offset
-    });
 
-    resizer.dispatchEvent(startMouseDownEvent);
-    resizer.dispatchEvent(endMouseMoveEvent);
+    toggleResizer(resizer, offset);
 
     expect(firstPane.clientWidth === firstPaneInitialWidth + offset).toBeTruthy();
     expect(secondPane.clientWidth === secondPaneInitialWidth - offset).toBeTruthy();
