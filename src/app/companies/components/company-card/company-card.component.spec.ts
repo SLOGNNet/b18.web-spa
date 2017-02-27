@@ -9,9 +9,9 @@ import { Load, Company, Address, Contact, CompanyStatuses, CompanyTypes, LoadSta
 
 function createTestData() {
   let resultCompany = new Company(),
-  testContact = new Contact(),
-  testLoad = new Load(),
-  testAddress = new Address();
+    testContact = new Contact(),
+    testLoad = new Load(),
+    testAddress = new Address();
 
   // test address
   testAddress.phone = '(925) 937-8500';
@@ -87,15 +87,15 @@ describe('CompanyCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch('MC# ' + testCompanyMc);
   });
 
-  it('should display right status color', () => {
+  it('should display status color', () => {
     component.company = testCompany;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status')),
-    companyStatusColor = hexToRgb(component.companyStatusColor);
+      companyStatusColor = hexToRgb(component.companyStatusColor);
     expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(companyStatusColor));
   });
 
-  it('should display right status text color', () => {
+  it('should display status text color', () => {
     component.company = testCompany;
     component.statusText = true;
     fixture.detectChanges();
@@ -104,7 +104,7 @@ describe('CompanyCardComponent', () => {
     expect(element.nativeElement.style.color).toBe(getRGBString(companyStatusText));
   });
 
-  it('should display right load color', () => {
+  it('should display load color', () => {
     let testLoadStatusColor = LoadStatuses.Completed;
     component.company = testCompany;
     component.company.loads[0].status = testLoadStatusColor;
@@ -121,7 +121,7 @@ describe('CompanyCardComponent', () => {
     expect(element === null).toBeTruthy();
   });
 
-  it('should display right status text', () => {
+  it('should display status text', () => {
     let testCompanyStatus = CompanyStatuses.Active;
     component.company = testCompany;
     component.statusText = true;
@@ -131,7 +131,7 @@ describe('CompanyCardComponent', () => {
     expect(element.nativeElement.textContent).toMatch(Company.getStatusText(testCompanyStatus));
   });
 
-  it('should display right address phone', () => {
+  it('should display address phone', () => {
     let testCompanyAddressPhone = '(925) 937-8500';
     component.company = testCompany;
     component.company.addresses[0].phone = testCompanyAddressPhone;
@@ -140,7 +140,7 @@ describe('CompanyCardComponent', () => {
     expect(element.nativeElement.textContent).toBe(testCompanyAddressPhone);
   });
 
-  it('should display right crooped company name', () => {
+  it('should display crooped company name', () => {
     let testCroopedCompanyName = 'CHR';
     component.company = testCompany;
     fixture.detectChanges();
@@ -167,10 +167,36 @@ describe('CompanyCardComponent', () => {
   });
 
   it('should handle click', () => {
-   component.company = testCompany;
-   spyOn(component, 'onClick');
-   let element = fixture.debugElement.query(By.css('.company-card-section'));
-   element.nativeElement.click();
-   expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
- });
+    component.company = testCompany;
+    spyOn(component, 'onClick');
+    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    element.nativeElement.click();
+    expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
+  });
+
+  it('should handle mouse leave', () => {
+    component.company = testCompany;
+    spyOn(component, 'onLeave');
+    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let event = new Event('mouseleave');
+    element.nativeElement.dispatchEvent(event);
+    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+    fixture.detectChanges();
+    expect(statusTextElement === null).toBeTruthy();
+    expect(fixture.debugElement.componentInstance.onLeave).toHaveBeenCalled();
+  });
+
+  it('should handle mouse enter', () => {
+    component.company = testCompany;
+    component.statusText = true;
+    spyOn(component, 'onEnter');
+    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let event = new Event('mouseenter');
+    element.nativeElement.dispatchEvent(event);
+    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+    fixture.detectChanges();
+    expect(fixture.debugElement.componentInstance.onEnter).toHaveBeenCalled();
+    expect(statusTextElement === null).toBeFalsy();
+  });
+
 });

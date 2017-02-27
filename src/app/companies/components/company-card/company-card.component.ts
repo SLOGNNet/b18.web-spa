@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Company } from '../../../models';
 import { Load, LoadStatuses } from '../../../models';
 
@@ -33,10 +33,13 @@ export class CompanyCardComponent {
     this.select.emit(this.company);
   }
 
-  onEnter() {
+
+  @HostListener('mouseenter', ['$event'])
+    onEnter() {
     this.statusText = true;
   }
 
+  @HostListener('mouseleave', ['$event'])
   onLeave() {
     this.statusText = false;
   }
