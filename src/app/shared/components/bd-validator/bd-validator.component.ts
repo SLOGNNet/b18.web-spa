@@ -1,6 +1,6 @@
 import { Component, Optional, Input, ViewChild, OnChanges, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
-import { NgControl } from '@angular/forms';
-import { BdFormControl, FormValidationService } from '../..';
+import { NgControl, AbstractControl } from '@angular/forms';
+import { FormValidationService } from '../..';
 @Component({
   selector: 'bd-validator',
   styleUrls: ['./bd-validator.component.scss'],
@@ -8,7 +8,7 @@ import { BdFormControl, FormValidationService } from '../..';
 })
 export class BdValidatorComponent implements OnChanges {
   @Input()
-  component: BdFormControl;
+  component: AbstractControl;
   @Input()
   errorDefs: any;
   @ViewChild(NgControl) controls;
@@ -22,7 +22,7 @@ export class BdValidatorComponent implements OnChanges {
   }
 
   ngOnChanges(changes: any): void {
-    const component: BdFormControl = changes.component.currentValue;
+    const component: AbstractControl = changes.component.currentValue;
     component.valueChanges.subscribe(() => {
       this.checkErrors(component);
     });
