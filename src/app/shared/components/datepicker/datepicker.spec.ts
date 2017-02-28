@@ -58,7 +58,7 @@ function customizeConfig(config: NgbDatepickerConfig) {
   config.startDate = {year: 2015, month: 1};
 }
 
-xdescribe('ngb-datepicker', () => {
+describe('ngb-datepicker', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule(

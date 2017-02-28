@@ -31,7 +31,7 @@ export abstract class NgbDatepickerI18n {
    * Returns the month name to display in the date picker navigation.
    * With default calendar we use ISO 8601: 'month' is 1=Jan ... 12=Dec
    */
-  abstract getMonthName(month: number): string;
+  abstract getMonthName(monthNumber: number): string;
 
   /**
    * Returns the month collection.
@@ -43,7 +43,10 @@ export abstract class NgbDatepickerI18n {
 export class NgbDatepickerI18nDefault extends NgbDatepickerI18n {
   getWeekdayName(weekday: number): string { return WEEKDAYS[weekday - 1]; }
 
-  getMonthName(month: number): string { return MONTHS[month - 1].month; }
+  getMonthName(monthNumber: number): string {
+    if ( monthNumber < 1 || monthNumber > 12 ) return undefined;
+    return MONTHS[monthNumber - 1].month;
+  }
 
   getMonthCollection(): Array<Object> { return MONTHS; }
 }

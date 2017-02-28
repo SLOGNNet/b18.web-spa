@@ -21,7 +21,7 @@ function changeSelect(element: HTMLSelectElement, value: string) {
   element.dispatchEvent(evt);
 }
 
-xdescribe('ngb-datepicker-navigation', () => {
+describe('ngb-datepicker-navigation', () => {
 
   beforeEach(() => {
     TestBed.overrideModule(
@@ -29,7 +29,7 @@ xdescribe('ngb-datepicker-navigation', () => {
     TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDatepickerModule.forRoot()]});
   });
 
-  it('should toggle navigation select component', () => {
+  xit('should toggle navigation select component', () => {
     const fixture = createTestComponent(`<ngb-datepicker-navigation [showSelect]="showSelect" [date]="date"
           [minDate]="minDate" [maxDate]="maxDate"></ngb-datepicker-navigation>`);
 
@@ -42,7 +42,7 @@ xdescribe('ngb-datepicker-navigation', () => {
     expect(fixture.debugElement.query(By.directive(NgbDatepickerNavigationSelect))).toBeNull();
   });
 
-  it('should send date selection event', () => {
+  xit('should send date selection event', () => {
     const fixture = createTestComponent(`<ngb-datepicker-navigation [showSelect]="true" [date]="date"
           [minDate]="minDate" [maxDate]="maxDate" (select)="onSelect($event)"></ngb-datepicker-navigation>`);
 
@@ -57,7 +57,7 @@ xdescribe('ngb-datepicker-navigation', () => {
     expect(fixture.componentInstance.onSelect).toHaveBeenCalledWith(new NgbDate(2020, 8, 1));
   });
 
-  it('should make prev navigation button disabled', () => {
+  xit('should make prev navigation button disabled', () => {
     const fixture = createTestComponent(`<ngb-datepicker-navigation [showSelect]="true" [date]="date"
           [minDate]="minDate" [maxDate]="maxDate"></ngb-datepicker-navigation>`);
 

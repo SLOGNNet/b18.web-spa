@@ -39,7 +39,7 @@ function expectDates(element: HTMLElement, dates: string[]) {
   expect(result).toEqual(dates);
 }
 
-xdescribe('ngb-datepicker-month-view', () => {
+describe('ngb-datepicker-month-view', () => {
 
   beforeEach(() => {
     TestBed.overrideModule(NgbDatepickerModule, {set: {exports: [NgbDatepickerMonthView, NgbDatepickerDayView]}});
@@ -166,14 +166,12 @@ xdescribe('ngb-datepicker-month-view', () => {
 
     const dates = getDates(fixture.nativeElement);
     expect(window.getComputedStyle(dates[1]).getPropertyValue('cursor')).toBe('pointer');
-
     fixture.componentInstance.outsideDays = 'collapsed';
     fixture.detectChanges();
     expect(window.getComputedStyle(dates[1]).getPropertyValue('cursor')).toBe('default');
-
     fixture.componentInstance.outsideDays = 'hidden';
     fixture.detectChanges();
-    expect(window.getComputedStyle(dates[1]).getPropertyValue('cursor')).toBe('default');
+    expect(window.getComputedStyle(dates[1]).getPropertyValue('cursor')).toBe('pointer');
   });
 
   it('should apply proper visibility to other months days', () => {
@@ -181,23 +179,23 @@ xdescribe('ngb-datepicker-month-view', () => {
         '<ngb-datepicker-month-view [month]="month" [outsideDays]="outsideDays"></ngb-datepicker-month-view>');
 
     let dates = getDates(fixture.nativeElement);
-    expect(dates[0]).not.toHaveCssClass('hidden');
+    expect(dates[0]).not.toHaveCssClass('bd-hidden');
     expect(dates[0]).not.toHaveCssClass('collapsed');
-    expect(dates[1]).not.toHaveCssClass('hidden');
+    expect(dates[1]).not.toHaveCssClass('bd-hidden');
     expect(dates[1]).not.toHaveCssClass('collapsed');
 
     fixture.componentInstance.outsideDays = 'collapsed';
     fixture.detectChanges();
-    expect(dates[0]).not.toHaveCssClass('hidden');
+    expect(dates[0]).not.toHaveCssClass('bd-hidden');
     expect(dates[0]).not.toHaveCssClass('collapsed');
-    expect(dates[1]).not.toHaveCssClass('hidden');
+    expect(dates[1]).not.toHaveCssClass('bd-hidden');
     expect(dates[1]).toHaveCssClass('collapsed');
 
     fixture.componentInstance.outsideDays = 'hidden';
     fixture.detectChanges();
-    expect(dates[0]).not.toHaveCssClass('hidden');
+    expect(dates[0]).not.toHaveCssClass('bd-hidden');
     expect(dates[0]).not.toHaveCssClass('collapsed');
-    expect(dates[1]).toHaveCssClass('hidden');
+    expect(dates[1]).toHaveCssClass('bd-hidden');
     expect(dates[1]).not.toHaveCssClass('collapsed');
   });
 

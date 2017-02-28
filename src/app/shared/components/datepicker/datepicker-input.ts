@@ -134,7 +134,7 @@ export class NgbInputDatepicker {
 
   writeValue(value) {
     const newModel =
-      value ? this._service.toValidDate(this._parserFormatter.parse(value, this.format), null) : null;
+      value ? this._service.toValidDate(this._parserFormatter.parse(value, this.format, false), null) : null;
 
     if (this._isModelChanged(newModel)) {
       this._model = newModel;
@@ -143,7 +143,7 @@ export class NgbInputDatepicker {
   }
 
   manualDateChange(value: string) {
-    this._model = this._service.toValidDate(this._parserFormatter.parse(value, this.format), null);
+    this._model = this._service.toValidDate(this._parserFormatter.parse(value, this.format, false), null);
     this._writeModelValue(this._model, true);
   }
 
