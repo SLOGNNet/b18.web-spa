@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -24,6 +24,26 @@ export class AuthenticationService {
         this.router.navigate(['loads']);
       } else {
         observer.next(this.loggedIn);
+      }
+    });
+  }
+
+  signUp(model) {
+    return Observable.create((observer) => {
+      if (Object.keys(model).length)  {
+        this.router.navigate(['phone-confirmation']);
+      } else {
+        observer.next(false);
+      }
+    });
+  }
+
+  confirmPhone(model) {
+    return Observable.create((observer) => {
+      if (Object.keys(model).length)  {
+        this.router.navigate(['login']);
+      } else {
+        observer.next(false);
       }
     });
   }
