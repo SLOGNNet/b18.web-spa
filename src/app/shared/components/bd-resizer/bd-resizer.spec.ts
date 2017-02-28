@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { BdResizerComponent } from './bd-resizer.component';
 import { BdResizeContainerComponent } from './components';
-import { fireViewEvent } from '../../test/helpers/helper';
+import { fireMouseEvent } from '../../test/helpers/domHelper';
 
 describe('BdResizerComponent', () => {
   const toggleResizer = (resizer, offset) => {
-    fireViewEvent({ target: resizer, event: 'mousedown' });
-    fireViewEvent({ target: resizer, event: 'mousemove', clientX: offset });
+    fireMouseEvent(resizer, 'mousedown');
+    fireMouseEvent(resizer, 'mousemove', { clientX: offset });
   };
 
   beforeEach(async(() => {
