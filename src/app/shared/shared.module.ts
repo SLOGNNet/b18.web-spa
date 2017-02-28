@@ -3,7 +3,9 @@ import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NotificationService,
-  CustomerService,
+  CompanyService,
+  EquipmentService,
+  DriverService,
   SocketService,
   LoadService,
   GoogleService,
@@ -18,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
 import { BdCheckbox } from '././components/bd-checkbox';
+import { BdFormCheckbox } from './components/bd-form-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
 import { BdInputComponent } from './components/bd-input';
@@ -54,13 +57,17 @@ import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
+import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
+import { EmailValidator } from './validators';
 
 @NgModule({
   providers: [
     NotificationService,
     LoadService,
     SocketService,
-    CustomerService,
+    CompanyService,
+    EquipmentService,
+    DriverService,
     ContactService,
     EnumHelperService,
     GoogleService,
@@ -68,7 +75,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormBuilder,
     FormValidationService,
     DatePipe,
-    HttpService
+    HttpService,
+    EmailValidator
   ],
   declarations: [
     BdFormButtonComponent,
@@ -85,6 +93,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     GoogleMapComponent,
@@ -115,7 +124,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     FilterContainer,
     AutocompleteFilter,
     FilterItem,
-    BdInfiniteScrollComponent
+    BdInfiniteScrollComponent,
+    ComplexityPasswordMessengerComponent
   ],
   imports: [
     CommonModule,
@@ -142,6 +152,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
     TypeaheadModule,
@@ -183,7 +194,8 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
     FilterContainer,
     AutocompleteFilter,
     FilterItem,
-    BdInfiniteScrollComponent
+    BdInfiniteScrollComponent,
+    ComplexityPasswordMessengerComponent
   ]
 })
 export class SharedModule {

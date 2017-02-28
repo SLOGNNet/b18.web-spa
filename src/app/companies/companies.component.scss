@@ -1,0 +1,17 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/styles';
+
+company-form {
+  display: block;
+  height: 100%;
+}
+
+.data-panel {
+  height: 100%;
+
+  .add-button {
+    display: block;
+    width: 70px;
+    margin-bottom: 17px;
+  }
+}

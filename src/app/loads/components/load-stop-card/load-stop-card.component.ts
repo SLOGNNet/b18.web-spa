@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../models';
 
 @Component({
   selector: 'load-stop-card',
   templateUrl: './load-stop-card.component.html',
-  styleUrls: ['./load-stop-card.component.scss']
+  styleUrls: ['./load-stop-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadStopCardComponent {
   @Input() load: Load;
@@ -20,6 +21,10 @@ export class LoadStopCardComponent {
 
   get loadStatusText() {
     return Load.getStatusText(this.load.status);
+  }
+
+  get currentTrip() {
+    return this.load.currentTrips[0];
   }
 
   get firstStop() {

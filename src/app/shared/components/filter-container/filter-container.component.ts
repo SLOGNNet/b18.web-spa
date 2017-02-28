@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
 import { BaseFilter, AutocompleteFilter } from './components';
 
 @Component({
@@ -11,14 +11,34 @@ export class FilterContainer {
   @Output() visibilityChange: EventEmitter<any> = new EventEmitter();
   @ContentChildren(BaseFilter) filters: QueryList<BaseFilter>;
 
+  private _hoveredFilter = null;
+
+  constructor(private cdr: ChangeDetectorRef) {
+
+  }
+
   ngAfterContentInit() {
-    if (this.filters[0]) {
-      this.filters[0].active = true;
+    if (this.filters) {
+      this.filters.forEach((filterItem: BaseFilter) => {
+        filterItem.selectedChanged.subscribe(filter => {
+          const visibleFilters = this.filters.filter(f => f.active);
+
+          if (visibleFilters.length === 0) {
+            this.deactivateFilters();
+          }
+
+          this.cdr.markForCheck();
+        });
+      });
     }
   }
 
   get opened() {
     return this.filters.filter(f => f.active === true).length > 0;
+  }
+
+  onFilterItemHover(filter) {
+    this._hoveredFilter = filter;
   }
 
   deactivateFilters() {
@@ -30,9 +50,9 @@ export class FilterContainer {
   }
 
   private _toggleFilter(filter: BaseFilter) {
-    let currentActiveState = filter.active;
+    let currentFilterState = filter.active;
     this.deactivateFilters();
-    filter.active = !currentActiveState;
+    filter.active = !currentFilterState;
     this.visibilityChange.emit(filter.active);
   }
 }

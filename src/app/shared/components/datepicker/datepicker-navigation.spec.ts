@@ -21,7 +21,7 @@ function changeSelect(element: HTMLSelectElement, value: string) {
   element.dispatchEvent(evt);
 }
 
-describe('ngb-datepicker-navigation', () => {
+xdescribe('ngb-datepicker-navigation', () => {
 
   beforeEach(() => {
     TestBed.overrideModule(

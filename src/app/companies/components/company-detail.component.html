@@ -1,0 +1,14 @@
+<div *ngIf="selectedItem">
+  <form-navigation
+    sticky
+    [title]="'Company'"
+    [anchors]="anchors">
+  </form-navigation>
+  <company-form
+    [scrollable]="true"
+    [company]="selectedItem"
+    [viewMode]="viewMode"
+    (save)="onItemSave($event)"
+    (cancel)="onItemCancel()">
+  </company-form>
+</div>

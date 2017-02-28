@@ -1,5 +1,6 @@
-import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { includes, without, some } from 'lodash';
+
 export class BaseFilter {
 
   public static filterMetaData = {
@@ -10,10 +11,13 @@ export class BaseFilter {
 
   @Input() defaultLabel: string;
   @Input() valueField: string;
+  @Output() selectedChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Input() set selectedItems(items: any) {
     this._selectedItems = items || [];
   }
-
+  get selectedItems() {
+    return this._selectedItems;
+  }
   @HostBinding('class.active')
   @Input()
   public set active(newValue: boolean) {
@@ -29,9 +33,6 @@ export class BaseFilter {
   private _active: boolean = false;
   private _selectedItems: Array<Object> = [];
 
-  get selectedItems() {
-    return this._selectedItems;
-  }
 
   public get tagValue() {
     return this.selectedItems.length > 0 ? this._selectedItems.map(item => this.getItemValue(item)).join(', ') : this.defaultLabel;
@@ -45,20 +46,22 @@ export class BaseFilter {
     return item[this.valueField];
   }
 
-  protected clearSelection() {
+  protected clearSelectedItems(event) {
     this.selectedItems = [];
+    this.selectedChanged.emit(this.selectedItems);
   }
 
-  protected isSelected(checkItem: Object) {
-    return includes(this.selectedItems, checkItem);
+  protected isSelected(selectItem: Object) {
+    return includes(this.selectedItems, selectItem);
   }
 
-  protected onSelect(changed: Object) {
+  protected onSelectedChange(changed: Object) {
     if (!this.isSelected(changed)) {
       this.selectedItems.push(changed);
     } else {
       this.selectedItems = without(this.selectedItems, changed);
     }
+    this.selectedChanged.emit(this.selectedItems);
   }
 
   protected onActiveChanged(active: boolean) {

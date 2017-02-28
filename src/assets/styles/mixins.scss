@@ -1,28 +1,11 @@
-@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2, $bg-color: $black) {
-  position: relative;
+@mixin multi-line-ellipsis($line-height: 1.2em, $line-count: 2) {
+  //sass-lint:disable no-vendor-prefixes
+  display: -webkit-box;
   overflow: hidden;
-  width: 100%;
   line-height: $line-height;
-  text-align: justify;
-  max-height: $line-height * $line-count;
-  word-break: break-word;
-  opacity: 1;
-
-  &:before {
-    position: absolute;
-    right: 0;
-    background: $bg-color;
-    content: '...';
-    bottom: 2px;
-  }
-
-  &:after {
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    background: $bg-color;
-    content: '';
-    margin-top: .2em;
-  }
+  max-height: $line-height * $line-count; /* Fallback for non-webkit */
+  -webkit-line-clamp: $line-count;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  //sass-lint:enable no-vendor-prefixes
 }

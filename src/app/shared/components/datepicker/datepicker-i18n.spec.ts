@@ -1,6 +1,6 @@
 import { NgbDatepickerI18nDefault } from './datepicker-i18n';
 
-describe('ngb-datepicker-i18n-default', () => {
+xdescribe('ngb-datepicker-i18n-default', () => {
 
   const i18n = new NgbDatepickerI18nDefault();
 

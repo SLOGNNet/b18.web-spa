@@ -17,6 +17,8 @@ $light-blue: #f5fefe;
 $serenity: #f5f9fc;
 $red: #fc3b3b;
 $light-red: #ffebeb;
+$dark-blue: #3d454d;
+$light-black: #2a2e33;
 
 /*  */
 $text-color: $black;
@@ -38,6 +40,7 @@ $btn-primary-focus: $mako;
 $btn-secondary-background: $light-grey;
 $btn-secondary-color: $black;
 
+$disabled-text-color: $grey;
 
 /* placeholder */
 $placeholder-color: $dark-grey;
@@ -59,6 +62,7 @@ $mini-font-size: .625rem;
 $tiny-font-size: .75rem;
 $small-font-size: .875rem;
 $large-font-size: 1.25rem;
+$extra-large-font-size: 2rem;
 $top-panel-icon-size: 19px;
 
 @font-face {
