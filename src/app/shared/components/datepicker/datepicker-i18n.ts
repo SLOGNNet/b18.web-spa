@@ -43,9 +43,9 @@ export abstract class NgbDatepickerI18n {
 export class NgbDatepickerI18nDefault extends NgbDatepickerI18n {
   getWeekdayName(weekday: number): string { return WEEKDAYS[weekday - 1]; }
 
-  getMonthName(monthNumber: number): string {
-    if ( monthNumber < 1 || monthNumber > 12 ) return undefined;
-    return MONTHS[monthNumber - 1].month;
+  getMonthName(month: number): string {
+    if ( month < 1 || month > 12 ) return undefined;
+    return MONTHS[month - 1].month;
   }
 
   getMonthCollection(): Array<Object> { return MONTHS; }
