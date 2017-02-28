@@ -35,6 +35,7 @@ fdescribe('BdInputComponent', function () {
         // MdTextareaWithBindings,
         // BdInputComponentWithDisabled,
         // BdInputComponent
+        TestBdInputComponent
       ],
     });
     fixture = TestBed.createComponent(BdInputComponent);
@@ -81,13 +82,13 @@ fdescribe('BdInputComponent', function () {
   //       }
   //     }));
 
-  it('should treat text input type as empty at init', () => {
+  it('should hide label when label text is empty', () => {
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     expect(element.classList.contains('bd-hidden-label')).toBe(true);
   });
 
-  it('should display label text', () => {
+  it('should show label when label text is not empty', () => {
     let testLabelText = 'label text';
     component.labelText = testLabelText;
     fixture.detectChanges();
@@ -110,192 +111,195 @@ fdescribe('BdInputComponent', function () {
     expect(fixture.debugElement.componentInstance.focus).toHaveBeenCalled();
   });
 
-  // it('should not be empty after input entered', async(() => {
-  //   let fixture = TestBed.createComponent(BdInputComponentTextTestController);
-  //   fixture.detectChanges();
-  //
-  //   let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).nativeElement;
-  //   let el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
-  //   expect(el).not.toBeNull();
-  //   expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
-  //
-  //   inputEl.nativeElement.value = 'hello';
-  //   // Simulate input event.
-  //   inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
-  //   fixture.detectChanges();
-  //   //
-  //   el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
-  //   expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
-  // }));
+  fit('should not be empty after input entered', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponent);
+    // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
+    fixture.detectChanges();
+    let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
+    // let el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
+    // expect(el).not.toBeNull();
+    // expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
+
+    inputEl.nativeElement.value = 'added input value';
+    // Simulate input event.
+    inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
+    fixture.detectChanges();
+    //
+    // el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
+    // expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
+    debugger;
+    // expect(inputEl.nativeElement.classList.contains('.bd-expanded-input')).toBeTruthy();
+    expect(inputEl.nativeElement.value === '').toBeFalsy();
+  });
 
   // md input tests
 
-  it('should treat password input type as empty at init', () => {
-    let fixture = TestBed.createComponent(BdInputComponentPasswordTestController);
-    fixture.detectChanges();
-
-    let el = fixture.debugElement.query(By.css('label')).nativeElement;
-    expect(el).not.toBeNull();
-    expect(el.classList.contains('md-empty')).toBe(true);
-  });
-
-  it('should treat number input type as empty at init', () => {
-    let fixture = TestBed.createComponent(BdInputComponentNumberTestController);
-    fixture.detectChanges();
-
-    let el = fixture.debugElement.query(By.css('label')).nativeElement;
-    expect(el).not.toBeNull();
-    expect(el.classList.contains('md-empty')).toBe(true);
-  });
-
-  it('should add id', () => {
-    let fixture = TestBed.createComponent(BdInputComponentTextTestController);
-    fixture.detectChanges();
-
-    const inputElement: HTMLInputElement =
-        fixture.debugElement.query(By.css('input')).nativeElement;
-    const labelElement: HTMLInputElement =
-        fixture.debugElement.query(By.css('label')).nativeElement;
-
-    expect(inputElement.id).toBeTruthy();
-    expect(inputElement.id).toEqual(labelElement.getAttribute('for'));
-  });
-
-  it('should not overwrite existing id', () => {
-    let fixture = TestBed.createComponent(BdInputComponentWithId);
-    fixture.detectChanges();
-
-    const inputElement: HTMLInputElement =
-        fixture.debugElement.query(By.css('input')).nativeElement;
-    const labelElement: HTMLInputElement =
-        fixture.debugElement.query(By.css('label')).nativeElement;
-
-    expect(inputElement.id).toBe('test-id');
-    expect(labelElement.getAttribute('for')).toBe('test-id');
-  });
-
-  it('validates there\'s only one hint label per side', () => {
-    let fixture = TestBed.createComponent(BdInputComponentInvalidHintTestController);
-
-    expect(() => fixture.detectChanges()).toThrow();
-    // TODO(jelbourn): .toThrow(new BdInputComponentDuplicatedHintError('start'));
-    // See https://github.com/angular/angular/issues/8348
-  });
-
-  it('validates there\'s only one hint label per side (attribute)', () => {
-    let fixture = TestBed.createComponent(BdInputComponentInvalidHint2TestController);
-
-    expect(() => fixture.detectChanges()).toThrow();
-    // TODO(jelbourn): .toThrow(new BdInputComponentDuplicatedHintError('start'));
-    // See https://github.com/angular/angular/issues/8348
-  });
-
-  it('validates there\'s only one placeholder', () => {
-    let fixture = TestBed.createComponent(BdInputComponentInvalidPlaceholderTestController);
-
-    expect(() => fixture.detectChanges()).toThrow();
-    // TODO(jelbourn): .toThrow(new BdInputComponentPlaceholderConflictError());
-    // See https://github.com/angular/angular/issues/8348
-  });
-
-  it('validates the type', () => {
-    let fixture = TestBed.createComponent(BdInputComponentInvalidTypeTestController);
-
-    // Technically this throws during the OnChanges detection phase,
-    // so the error is really a ChangeDetectionError and it becomes
-    // hard to build a full exception to compare with.
-    // We just check for any exception in this case.
-    expect(() => fixture.detectChanges()).toThrow(
-        /* new BdInputComponentUnsupportedTypeError('file') */);
-  });
-
-  it('supports hint labels attribute', () => {
-    let fixture = TestBed.createComponent(BdInputComponentHintLabelTestController);
-    fixture.detectChanges();
-
-    // If the hint label is empty, expect no label.
-    expect(fixture.debugElement.query(By.css('.md-hint'))).toBeNull();
-
-    fixture.componentInstance.label = 'label';
-    fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.md-hint'))).not.toBeNull();
-  });
-
-  it('supports hint labels elements', () => {
-    let fixture = TestBed.createComponent(BdInputComponentHintLabel2TestController);
-    fixture.detectChanges();
-
-    // In this case, we should have an empty <md-hint>.
-   let el = fixture.debugElement.query(By.css('md-hint')).nativeElement;
-    expect(el.textContent).toBeFalsy();
-
-    fixture.componentInstance.label = 'label';
-    fixture.detectChanges();
-    el = fixture.debugElement.query(By.css('md-hint')).nativeElement;
-    expect(el.textContent).toBe('label');
-  });
-
-  it('supports placeholder attribute', async(() => {
-   let fixture = TestBed.createComponent(BdInputComponentPlaceholderAttrTestComponent);
-    fixture.detectChanges();
-
-    let el = fixture.debugElement.query(By.css('label'));
-    expect(el).toBeNull();
-
-    fixture.componentInstance.placeholder = 'Other placeholder';
-    fixture.detectChanges();
-
-    el = fixture.debugElement.query(By.css('label'));
-    expect(el).not.toBeNull();
-    expect(el.nativeElement.textContent).toMatch('Other placeholder');
-    expect(el.nativeElement.textContent).not.toMatch(/\*/g);
-  }));
-
-  it('supports placeholder element', async(() => {
-    let fixture = TestBed.createComponent(BdInputComponentPlaceholderElementTestComponent);
-    fixture.detectChanges();
-
-    let el = fixture.debugElement.query(By.css('label'));
-    expect(el).not.toBeNull();
-    expect(el.nativeElement.textContent).toMatch('Default Placeholder');
-
-    fixture.componentInstance.placeholder = 'Other placeholder';
-    fixture.detectChanges();
-
-   el = fixture.debugElement.query(By.css('label'));
-    expect(el).not.toBeNull();
-    expect(el.nativeElement.textContent).toMatch('Other placeholder');
-    expect(el.nativeElement.textContent).not.toMatch(/\*/g);
-  }));
-
-  it('supports placeholder required star', () => {
-    let fixture = TestBed.createComponent(BdInputComponentPlaceholderRequiredTestComponent);
-    fixture.detectChanges();
-
-    let el = fixture.debugElement.query(By.css('label'));
-    expect(el).not.toBeNull();
-   expect(el.nativeElement.textContent).toMatch(/hello\s0\*/g);
-  });
-
-  it('supports the disabled attribute', async(() => {
-    let fixture = TestBed.createComponent(BdInputComponentWithDisabled);
-    fixture.detectChanges();
-
-    let underlineEl = fixture.debugElement.query(By.css('.md-input-underline')).nativeElement;
-    expect(underlineEl.classList.contains('md-disabled')).toBe(false, 'should not be disabled');
-
-   fixture.componentInstance.disabled = true;
-    fixture.detectChanges();
-    expect(underlineEl.classList.contains('md-disabled')).toBe(true, 'should be disabled');
-  }));
-
- it('supports textarea', () => {
-    let fixture = TestBed.createComponent(MdTextareaWithBindings);
-    fixture.detectChanges();
-
-    const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector('textarea');
-    expect(textarea).not.toBeNull();
-  });
+ //  it('should treat password input type as empty at init', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentPasswordTestController);
+ //    fixture.detectChanges();
+ //
+ //    let el = fixture.debugElement.query(By.css('label')).nativeElement;
+ //    expect(el).not.toBeNull();
+ //    expect(el.classList.contains('md-empty')).toBe(true);
+ //  });
+ //
+ //  it('should treat number input type as empty at init', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentNumberTestController);
+ //    fixture.detectChanges();
+ //
+ //    let el = fixture.debugElement.query(By.css('label')).nativeElement;
+ //    expect(el).not.toBeNull();
+ //    expect(el.classList.contains('md-empty')).toBe(true);
+ //  });
+ //
+ //  it('should add id', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentTextTestController);
+ //    fixture.detectChanges();
+ //
+ //    const inputElement: HTMLInputElement =
+ //        fixture.debugElement.query(By.css('input')).nativeElement;
+ //    const labelElement: HTMLInputElement =
+ //        fixture.debugElement.query(By.css('label')).nativeElement;
+ //
+ //    expect(inputElement.id).toBeTruthy();
+ //    expect(inputElement.id).toEqual(labelElement.getAttribute('for'));
+ //  });
+ //
+ //  it('should not overwrite existing id', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentWithId);
+ //    fixture.detectChanges();
+ //
+ //    const inputElement: HTMLInputElement =
+ //        fixture.debugElement.query(By.css('input')).nativeElement;
+ //    const labelElement: HTMLInputElement =
+ //        fixture.debugElement.query(By.css('label')).nativeElement;
+ //
+ //    expect(inputElement.id).toBe('test-id');
+ //    expect(labelElement.getAttribute('for')).toBe('test-id');
+ //  });
+ //
+ //  it('validates there\'s only one hint label per side', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentInvalidHintTestController);
+ //
+ //    expect(() => fixture.detectChanges()).toThrow();
+ //    // TODO(jelbourn): .toThrow(new BdInputComponentDuplicatedHintError('start'));
+ //    // See https://github.com/angular/angular/issues/8348
+ //  });
+ //
+ //  it('validates there\'s only one hint label per side (attribute)', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentInvalidHint2TestController);
+ //
+ //    expect(() => fixture.detectChanges()).toThrow();
+ //    // TODO(jelbourn): .toThrow(new BdInputComponentDuplicatedHintError('start'));
+ //    // See https://github.com/angular/angular/issues/8348
+ //  });
+ //
+ //  it('validates there\'s only one placeholder', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentInvalidPlaceholderTestController);
+ //
+ //    expect(() => fixture.detectChanges()).toThrow();
+ //    // TODO(jelbourn): .toThrow(new BdInputComponentPlaceholderConflictError());
+ //    // See https://github.com/angular/angular/issues/8348
+ //  });
+ //
+ //  it('validates the type', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentInvalidTypeTestController);
+ //
+ //    // Technically this throws during the OnChanges detection phase,
+ //    // so the error is really a ChangeDetectionError and it becomes
+ //    // hard to build a full exception to compare with.
+ //    // We just check for any exception in this case.
+ //    expect(() => fixture.detectChanges()).toThrow(
+ //        /* new BdInputComponentUnsupportedTypeError('file') */);
+ //  });
+ //
+ //  it('supports hint labels attribute', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentHintLabelTestController);
+ //    fixture.detectChanges();
+ //
+ //    // If the hint label is empty, expect no label.
+ //    expect(fixture.debugElement.query(By.css('.md-hint'))).toBeNull();
+ //
+ //    fixture.componentInstance.label = 'label';
+ //    fixture.detectChanges();
+ //    expect(fixture.debugElement.query(By.css('.md-hint'))).not.toBeNull();
+ //  });
+ //
+ //  it('supports hint labels elements', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentHintLabel2TestController);
+ //    fixture.detectChanges();
+ //
+ //    // In this case, we should have an empty <md-hint>.
+ //   let el = fixture.debugElement.query(By.css('md-hint')).nativeElement;
+ //    expect(el.textContent).toBeFalsy();
+ //
+ //    fixture.componentInstance.label = 'label';
+ //    fixture.detectChanges();
+ //    el = fixture.debugElement.query(By.css('md-hint')).nativeElement;
+ //    expect(el.textContent).toBe('label');
+ //  });
+ //
+ //  it('supports placeholder attribute', async(() => {
+ //   let fixture = TestBed.createComponent(BdInputComponentPlaceholderAttrTestComponent);
+ //    fixture.detectChanges();
+ //
+ //    let el = fixture.debugElement.query(By.css('label'));
+ //    expect(el).toBeNull();
+ //
+ //    fixture.componentInstance.placeholder = 'Other placeholder';
+ //    fixture.detectChanges();
+ //
+ //    el = fixture.debugElement.query(By.css('label'));
+ //    expect(el).not.toBeNull();
+ //    expect(el.nativeElement.textContent).toMatch('Other placeholder');
+ //    expect(el.nativeElement.textContent).not.toMatch(/\*/g);
+ //  }));
+ //
+ //  it('supports placeholder element', async(() => {
+ //    let fixture = TestBed.createComponent(BdInputComponentPlaceholderElementTestComponent);
+ //    fixture.detectChanges();
+ //
+ //    let el = fixture.debugElement.query(By.css('label'));
+ //    expect(el).not.toBeNull();
+ //    expect(el.nativeElement.textContent).toMatch('Default Placeholder');
+ //
+ //    fixture.componentInstance.placeholder = 'Other placeholder';
+ //    fixture.detectChanges();
+ //
+ //   el = fixture.debugElement.query(By.css('label'));
+ //    expect(el).not.toBeNull();
+ //    expect(el.nativeElement.textContent).toMatch('Other placeholder');
+ //    expect(el.nativeElement.textContent).not.toMatch(/\*/g);
+ //  }));
+ //
+ //  it('supports placeholder required star', () => {
+ //    let fixture = TestBed.createComponent(BdInputComponentPlaceholderRequiredTestComponent);
+ //    fixture.detectChanges();
+ //
+ //    let el = fixture.debugElement.query(By.css('label'));
+ //    expect(el).not.toBeNull();
+ //   expect(el.nativeElement.textContent).toMatch(/hello\s0\*/g);
+ //  });
+ //
+ //  it('supports the disabled attribute', async(() => {
+ //    let fixture = TestBed.createComponent(BdInputComponentWithDisabled);
+ //    fixture.detectChanges();
+ //
+ //    let underlineEl = fixture.debugElement.query(By.css('.md-input-underline')).nativeElement;
+ //    expect(underlineEl.classList.contains('md-disabled')).toBe(false, 'should not be disabled');
+ //
+ //   fixture.componentInstance.disabled = true;
+ //    fixture.detectChanges();
+ //    expect(underlineEl.classList.contains('md-disabled')).toBe(true, 'should be disabled');
+ //  }));
+ //
+ // it('supports textarea', () => {
+ //    let fixture = TestBed.createComponent(MdTextareaWithBindings);
+ //    fixture.detectChanges();
+ //
+ //    const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector('textarea');
+ //    expect(textarea).not.toBeNull();
+ //  });
 });
 
 @Component({
@@ -307,10 +311,10 @@ fdescribe('BdInputComponent', function () {
 class BdInputComponentWithId {}
 
 @Component({
- template: `<md-input-container><input md-input [disabled]="disabled"></md-input-container>`
+ template: `<bd-input></bd-input>`
 })
-class BdInputComponentWithDisabled {
-  disabled: boolean;
+class TestBdInputComponent {
+
 }
 
 @Component({

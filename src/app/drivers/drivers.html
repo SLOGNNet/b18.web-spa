@@ -3,6 +3,13 @@
     <driver-cards [selected]="selected" (select)='onSelect($event)' [drivers]="items"></driver-cards>
   </first-pane>
   <second-pane>
+    <bd-input
+        [labelText]="'Estimated distance Estimated'"
+        [collapsibleInput]="true"
+        [attr.name]="'Andrew'">
+        <span class="prefix" bd-prefix>$&nbsp;</span>
+        <span bd-suffix>$&nbsp;</span>
+    </bd-input>
   </second-pane>
   <third-pane>
     <router-outlet></router-outlet>
