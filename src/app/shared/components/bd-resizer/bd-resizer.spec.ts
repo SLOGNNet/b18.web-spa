@@ -4,7 +4,7 @@ import { BdResizerComponent } from './bd-resizer.component';
 import { BdResizeContainerComponent } from './components';
 import { fireViewEvent } from '../../test/helpers/helper';
 
-fdescribe('BdResizerComponent', () => {
+describe('BdResizerComponent', () => {
   const toggleResizer = (resizer, offset) => {
     fireViewEvent({ target: resizer, event: 'mousedown' });
     fireViewEvent({ target: resizer, event: 'mousemove', clientX: offset });
