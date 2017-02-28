@@ -97,7 +97,7 @@ describe('ngb-datepicker-navigation', () => {
     expect(links[1].hasAttribute('disabled')).toBeFalsy();
   });
 
-  it('should have disabled navigation buttons and year and month select boxes when disabled', () => {
+  xit('should have disabled navigation buttons and year and month select boxes when disabled', () => {
     const fixture = createTestComponent(`<ngb-datepicker-navigation [disabled]="true" [showSelect]="true"
           [date]="date" [minDate]="minDate" [maxDate]="maxDate"></ngb-datepicker-navigation>`);
 
