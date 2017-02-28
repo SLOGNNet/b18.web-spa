@@ -1,20 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement, NO_ERRORS_SCHEMA, Component } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
-import { AppState } from '../app.service';
+import { Component } from '@angular/core';
 import { BdResizerComponent } from './bd-resizer.component';
 import { BdResizeContainerComponent } from './components';
+import { fireViewEvent } from '../../test/helpers/helper';
 
-describe('BdResizerComponent', () => {
+fdescribe('BdResizerComponent', () => {
   const toggleResizer = (resizer, offset) => {
-    let startMouseDownEvent = document.createEvent('MouseEvents');
-    startMouseDownEvent.initMouseEvent('mousedown', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-    let endMouseMoveEvent = document.createEvent('MouseEvents');
-    endMouseMoveEvent.initMouseEvent('mousemove', true, true, window, 0, 0, 0, offset, 0, false, false, false, false, 0, null);
-
-    resizer.dispatchEvent(startMouseDownEvent);
-    resizer.dispatchEvent(endMouseMoveEvent);
+    fireViewEvent({ target: resizer, event: 'mousedown' });
+    fireViewEvent({ target: resizer, event: 'mousemove', clientX: offset });
   };
 
   beforeEach(async(() => {
@@ -34,7 +27,6 @@ describe('BdResizerComponent', () => {
     const secondPane = fixture.nativeElement.querySelector('.second');
     const firstPaneInitialWidth = firstPane.clientWidth;
     const secondPaneInitialWidth = secondPane.clientWidth;
-    let startMouseDownEvent = document.createEvent('MouseEvents');
 
     toggleResizer(resizer, offset);
 
