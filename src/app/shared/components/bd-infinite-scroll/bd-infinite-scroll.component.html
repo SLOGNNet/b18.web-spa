@@ -2,7 +2,8 @@
   class="bd-infinite-scroll"
   infinite-scroll 
   [debounce]="true" 
-  [infiniteScrollDistance]="1.1" 
+  [infiniteScrollDistance]="1" 
+  [infiniteScrollThrottle]="0" 
   [scrollWindow]="false"
   (scrolledUp)="onScrolledUp($event)"
   (scrolled)="onScrolledDown($event)">

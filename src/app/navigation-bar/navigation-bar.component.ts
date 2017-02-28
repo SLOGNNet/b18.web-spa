@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { SwitchState } from '../shared/enums/switchState';
 
 @Component({
@@ -7,7 +7,8 @@ import { SwitchState } from '../shared/enums/switchState';
     styleUrls: [
         './navigation-bar.component.scss'
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class NavigationBarComponent {
@@ -30,11 +31,11 @@ export class NavigationBarComponent {
     //         link: './home',
     //     }]
     // },
-    // {
-    //     label: 'Drivers',
-    //     icon: 'icon',
-    //     link: './drivers/1'
-    // },
+    {
+        label: 'Drivers',
+        icon: 'icon',
+        link: './drivers/1'
+    },
     {
         label: 'Loads',
         icon: 'icon',
@@ -47,16 +48,21 @@ export class NavigationBarComponent {
           link: './loads/0'
         }]
     }, {
-        label: 'Customers',
+        label: 'Companies',
         icon: 'icon',
-        link: './customers',
+        link: './companies',
         items: [{
-              label: 'Customers',
-              link: './customers'
+              label: 'Companies',
+              link: './companies'
           }, {
-          label: 'New Customer',
-          link: './customers/0'
+          label: 'New Company',
+          link: './companies/0'
         }]
+    },
+    {
+        label: 'Equipment',
+        icon: 'icon',
+        link: './equipment'
     }];
 
     onSwitchStateChange(switchState: SwitchState) {

@@ -16,11 +16,19 @@
     .virtual-area {
       bottom: -11px;
     }
+
+    .arrow {
+      border-bottom-color: $grey;
+    }
   }
 
   &.bottom {
     .virtual-area {
       top: -11px;
+    }
+
+    .arrow {
+      border-bottom-color: $grey;
     }
   }
 
@@ -28,11 +36,19 @@
     .virtual-area {
       right: -11px;
     }
+
+    .arrow {
+      border-bottom-color: $grey;
+    }
   }
 
   &.right {
     .virtual-area {
       left: -11px;
+    }
+
+    .arrow {
+      border-bottom-color: $grey;
     }
   }
 }

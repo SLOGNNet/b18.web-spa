@@ -6,7 +6,8 @@
   width: 16px;
   height: 16px;
   border: $border;
-  border-radius: 3px;
+  background: $white;
+  border-radius: $default-border-radius;
 
   .arrow {
     display: none;

@@ -10,6 +10,7 @@ const noop = () => { };
 export class BdButtonSwitchComponent implements ControlValueAccessor  {
 
   @Input() labelText: string;
+  @Input() hideLabel: boolean;
   @Input() items: any[];
   @Input() keyField: string = 'key';
   @Input() valueField: string = 'value';

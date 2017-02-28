@@ -2,7 +2,7 @@ const helpers = require('../helpers');
 
 config = {
   base: {
-    title: 'Bridge18',
+    title: 'Bridge 18',
     port: 3000,
     host: '',
     port: '',
@@ -15,12 +15,14 @@ config = {
     port: 3000,
     baseUrl: '/',
     hmr: helpers.hasProcessFlag('hot'),
-    socketIoHost: 'http://localhost:5000'
+    socketIoHost: 'http://localhost:5000',
+    apiUrl: 'https://dev.bridge18.com/api/expedition/'
   },
   publicdev: {
-    socketIoHost: 'https://dev.bridge18.com'
+    socketIoHost: 'https://dev.bridge18.com',
+    apiUrl: 'https://dev.bridge18.com/api/expedition/'
   },
-  testing: {
+  test: {
 
   },
   qa: {

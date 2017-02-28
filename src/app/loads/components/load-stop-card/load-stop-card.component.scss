@@ -25,6 +25,7 @@
   border-bottom: $border;
 
   .left {
+    overflow: hidden;
     width: 30%;
     float: left;
 
@@ -36,11 +37,12 @@
       font-weight: bold;
     }
 
-    .customer-name {
+    .company-name {
       overflow: hidden;
       color: $blue;
       margin-right: 20px;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

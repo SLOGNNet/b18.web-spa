@@ -10,10 +10,9 @@ switch (process.env.NODE_ENV) {
     break;
   case 'dev':
   case 'development':
-    module.exports = require('./config/webpack.prod')({env: 'development'});
+    module.exports = require('./config/webpack.dev')({env: 'development'});
     break;
   case 'test':
-  case 'testing':
     module.exports = require('./config/webpack.test')({env: 'test'});
     break;
   case 'stage':
@@ -24,5 +23,5 @@ switch (process.env.NODE_ENV) {
     break;
   case 'publicdev':
   default:
-    module.exports = require('./config/webpack.dev')({env: 'publicdev'});
+    module.exports = require('./config/webpack.prod')({env: 'publicdev'});
 }
