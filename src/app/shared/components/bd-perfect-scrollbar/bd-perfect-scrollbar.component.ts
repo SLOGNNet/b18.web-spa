@@ -8,7 +8,8 @@ import { Component, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 })
 export class BdPerfectScrollbarComponent {
   private config = {
-    suppressScrollY: true
+    suppressScrollY: true,
+    useBothWheelAxes: true
   };
 
   constructor(private _cdr: ChangeDetectorRef) {
