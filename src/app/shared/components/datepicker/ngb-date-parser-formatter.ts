@@ -12,7 +12,7 @@ export abstract class NgbDateParserFormatter {
    * partial. They must return null if the value can't be parsed.
    * @param value the value to parse
    */
-  abstract parse(value: string, format: string, useStrict: boolean): NgbDateStruct;
+  abstract parse(value: string, format: string): NgbDateStruct;
 
   /**
    * Formats the given date to a string. Implementations should return an empty string if the given date is null,
@@ -23,7 +23,7 @@ export abstract class NgbDateParserFormatter {
 }
 
 export class NgbDateISOParserFormatter extends NgbDateParserFormatter {
-  parse(value: string, format: string, useStrict: boolean = false): NgbDateStruct {
+  parse(value: string, format: string): NgbDateStruct {
     let result = null;
     const date = moment(value, format, true);
     return date.isValid() ? {year: date.year(), month: date.month() + 1, day: date.date()} : null;
