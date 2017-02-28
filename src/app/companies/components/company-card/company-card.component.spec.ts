@@ -5,7 +5,7 @@ import { CompanyCardComponent } from './index';
 import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { SharedModule } from '../../../shared/shared.module';
 import { Load, Company, Address, Contact, CompanyStatuses, CompanyTypes, LoadStatuses } from '../../../models';
-
+import { fireMouseEvent } from '../../../shared/test/helpers/domHelper';
 
 function createTestData() {
   let resultCompany = new Company(),
@@ -177,27 +177,26 @@ describe('CompanyCardComponent', () => {
 
   it('should handle mouse leave', () => {
     component.company = testCompany;
-    spyOn(component, 'onLeave');
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
-    let event = new Event('mouseleave');
-    element.nativeElement.dispatchEvent(event);
-    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+    spyOn(component, 'onLeave').and.callThrough();
+    let element = fixture.nativeElement.querySelector('.company-card-section');
+    fireMouseEvent(element, 'mouseleave');
     fixture.detectChanges();
+    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+
     expect(statusTextElement === null).toBeTruthy();
-    expect(fixture.debugElement.componentInstance.onLeave).toHaveBeenCalled();
+    expect(component.onLeave).toHaveBeenCalled();
   });
 
   it('should handle mouse enter', () => {
     component.company = testCompany;
-    component.statusText = true;
-    spyOn(component, 'onEnter');
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
-    let event = new Event('mouseenter');
-    element.nativeElement.dispatchEvent(event);
-    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+    spyOn(component, 'onEnter').and.callThrough();
+    let element = fixture.nativeElement.querySelector('.company-card-section');
+    fireMouseEvent(element, 'mouseenter');
     fixture.detectChanges();
-    expect(fixture.debugElement.componentInstance.onEnter).toHaveBeenCalled();
+    let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
+
     expect(statusTextElement === null).toBeFalsy();
+    expect(component.onEnter).toHaveBeenCalled();
   });
 
 });
