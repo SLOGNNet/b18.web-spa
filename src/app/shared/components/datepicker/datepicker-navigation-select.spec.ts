@@ -67,21 +67,28 @@ describe('ngb-datepicker-navigation-select', () => {
   });
 
 
+  // currently we generate dropdown with full month collection
   xit('should generate month options correctly depends on min/max dates', () => {
     const fixture =
         createTestComponent(`<ngb-datepicker-navigation-select [date]="date" [minDate]="minDate" [maxDate]="maxDate">`);
     fixture.componentInstance.minDate = new NgbDate(2016, 7, 1);
     fixture.detectChanges();
-    expect(getOptionValues(getMonthSelect(fixture.nativeElement))).toEqual(['7', '8', '9', '10', '11', '12']);
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.months-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance)).toEqual(['7', '8', '9', '10', '11', '12']);
 
     fixture.componentInstance.maxDate = new NgbDate(2016, 9, 1);
     fixture.detectChanges();
-    expect(getOptionValues(getMonthSelect(fixture.nativeElement))).toEqual(['7', '8', '9']);
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.months-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance)).toEqual(['7', '8', '9']);
 
     fixture.componentInstance.minDate = new NgbDate(2015, 1, 1);
     fixture.detectChanges();
 
-     expect(getOptionValues(getMonthSelect(fixture.nativeElement))).toEqual([
+     expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.months-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance)).toEqual([
         '1', '2', '3', '4', '5', '6', '7', '8', '9'
       ]);
   });
@@ -113,30 +120,46 @@ describe('ngb-datepicker-navigation-select', () => {
     const yearSelect = getDropdownItems(fixture.debugElement
       .query(By.css('.years-container'))
       .query(By.directive(BdDropdownComponent)).componentInstance);
+
     let testMinDate = new NgbDate(2015, 1, 1), testMaxDate = new NgbDate(2020, 1, 1);
     fixture.detectChanges();
     expect(yearSelect).toEqual(getYears(testMaxDate, testMinDate));
 
   });
 
-  xit('should generate year options correctly depends on min/max dates', () => {
+  it('should generate year options correctly depends on min/max dates', () => {
     const fixture =
         createTestComponent(`<ngb-datepicker-navigation-select [date]="date" [minDate]="minDate" [maxDate]="maxDate">`);
 
-    const yearSelect = getYearSelect(fixture.nativeElement);
-    expect(getOptionValues(yearSelect)).toEqual(['2015', '2016', '2017', '2018', '2019', '2020']);
+    const yearSelectItems = getDropdownItems(fixture.debugElement
+      .query(By.css('.years-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance);
+    
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.years-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance))
+    .toEqual([{ year: 2015 }, { year: 2016 }, { year: 2017 }, { year: 2018 }, { year: 2019 }, { year: 2020 } ]);
 
     fixture.componentInstance.maxDate = new NgbDate(2017, 1, 1);
     fixture.detectChanges();
-    expect(getOptionValues(yearSelect)).toEqual(['2015', '2016', '2017']);
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.years-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance))
+    .toEqual([{ year: 2015 }, { year: 2016 }, { year: 2017 }]);
 
     fixture.componentInstance.minDate = new NgbDate(2014, 1, 1);
     fixture.detectChanges();
-    expect(getOptionValues(yearSelect)).toEqual(['2014', '2015', '2016', '2017']);
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.years-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance))
+    .toEqual([{ year: 2014 }, { year: 2015 }, { year: 2016 }, { year: 2017 }]);
 
     fixture.componentInstance.minDate = new NgbDate(2017, 1, 1);
     fixture.detectChanges();
-    expect(getOptionValues(yearSelect)).toEqual(['2017']);
+    expect(getDropdownItems(fixture.debugElement
+      .query(By.css('.years-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance))
+    .toEqual([{ year: 2017 }]);
   });
 
   it('should send month selection events', () => {
@@ -159,33 +182,39 @@ describe('ngb-datepicker-navigation-select', () => {
     expect(fixture.componentInstance.onItemClick).toHaveBeenCalled();
   });
 
-  xit('should select months and years when date changes', () => {
+  it('should select months and years when date changes', () => {
     const fixture =
         createTestComponent(`<ngb-datepicker-navigation-select [date]="date" [minDate]="minDate" [maxDate]="maxDate">`);
 
+    console.log(fixture.debugElement
+      .query(By.css('.months-container'))
+      .query(By.directive(BdDropdownComponent)).componentInstance);
+
+
     expect(fixture.debugElement
       .query(By.css('.months-container'))
-      .query(By.directive(BdDropdownComponent)).componentInstance.selectedValue)
+      .query(By.directive(BdDropdownComponent)).componentInstance._selectedValue)
     .toBe('8');
 
     expect(fixture.debugElement
       .query(By.css('.years-container'))
-      .query(By.directive(BdDropdownComponent)).componentInstance.selectedValue)
-    .toBe('2016');
+      .query(By.directive(BdDropdownComponent)).componentInstance._selectedValue)
+    .toBe(2016);
 
     fixture.componentInstance.date = new NgbDate(2017, 9, 22);
     fixture.detectChanges();
     expect(fixture.debugElement
       .query(By.css('.months-container'))
-      .query(By.directive(BdDropdownComponent)).componentInstance.selectedValue)
+      .query(By.directive(BdDropdownComponent)).componentInstance._selectedValue)
     .toBe('9');
 
     expect(fixture.debugElement
       .query(By.css('.years-container'))
-      .query(By.directive(BdDropdownComponent)).componentInstance.selectedValue)
-    .toBe('2017');
+      .query(By.directive(BdDropdownComponent)).componentInstance._selectedValue)
+    .toBe(2017);
   });
 
+  // currently we don't use select boxes  
   xit('should have disabled select boxes when disabled', () => {
     const fixture = createTestComponent(
         `<ngb-datepicker-navigation-select [disabled]="true" [date]="date" [minDate]="minDate" [maxDate]="maxDate">`);
