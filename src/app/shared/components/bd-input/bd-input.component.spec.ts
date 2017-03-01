@@ -393,13 +393,13 @@ describe('BdInputComponent', function () {
  //     }));
 });
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input id="test-id" placeholder="test">
-    </md-input-container>`
-})
-class BdInputComponentWithId {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input id="test-id" placeholder="test">
+//     </md-input-container>`
+// })
+// class BdInputComponentWithId {}
 
 @Component({
  template: `
@@ -432,123 +432,123 @@ class TestBdInputComponentWithoutPrefixAndSuffixWithLabel {
 
 }
 
-@Component({
-  template: `<md-input-container><input md-input required placeholder="hello"></md-input-container>`
-})
-class BdInputComponentPlaceholderRequiredTestComponent {}
+// @Component({
+//   template: `<md-input-container><input md-input required placeholder="hello"></md-input-container>`
+// })
+// class BdInputComponentPlaceholderRequiredTestComponent {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input>
-      <md-placeholder>{{placeholder}}</md-placeholder>
-    </md-input-container>`
-})
-class BdInputComponentPlaceholderElementTestComponent {
-  placeholder: string = 'Default Placeholder';
-}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input>
+//       <md-placeholder>{{placeholder}}</md-placeholder>
+//     </md-input-container>`
+// })
+// class BdInputComponentPlaceholderElementTestComponent {
+//   placeholder: string = 'Default Placeholder';
+// }
 
-@Component({
-  template: `<md-input-container><input md-input [placeholder]="placeholder"></md-input-container>`
-})
-class BdInputComponentPlaceholderAttrTestComponent {
-  placeholder: string = '';
-}
+// @Component({
+//   template: `<md-input-container><input md-input [placeholder]="placeholder"></md-input-container>`
+// })
+// class BdInputComponentPlaceholderAttrTestComponent {
+//   placeholder: string = '';
+// }
 
-@Component({
-  template: `<md-input-container><input md-input><md-hint>{{label}}</md-hint></md-input-container>`
-})
-class BdInputComponentHintLabel2TestController {
-  label: string = '';
-}
+// @Component({
+//   template: `<md-input-container><input md-input><md-hint>{{label}}</md-hint></md-input-container>`
+// })
+// class BdInputComponentHintLabel2TestController {
+//   label: string = '';
+// }
 
-@Component({
-  template: `<md-input-container [hintLabel]="label"><input md-input></md-input-container>`
-})
-class BdInputComponentHintLabelTestController {
- label: string = '';
-}
+// @Component({
+//   template: `<md-input-container [hintLabel]="label"><input md-input></md-input-container>`
+// })
+// class BdInputComponentHintLabelTestController {
+//  label: string = '';
+// }
 
-@Component({
-  template: `<md-input-container><input md-input type="file"></md-input-container>`
-})
-class BdInputComponentInvalidTypeTestController {}
+// @Component({
+//   template: `<md-input-container><input md-input type="file"></md-input-container>`
+// })
+// class BdInputComponentInvalidTypeTestController {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input placeholder="Hello">
-      <md-placeholder>World</md-placeholder>
-    </md-input-container>`
-})
-class BdInputComponentInvalidPlaceholderTestController {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input placeholder="Hello">
+//       <md-placeholder>World</md-placeholder>
+//     </md-input-container>`
+// })
+// class BdInputComponentInvalidPlaceholderTestController {}
 
-@Component({
-  template: `
-    <md-input-container hintLabel="Hello">
-      <input md-input>
-      <md-hint>World</md-hint>
-    </md-input-container>`
-})
-class BdInputComponentInvalidHint2TestController {}
+// @Component({
+//   template: `
+//     <md-input-container hintLabel="Hello">
+//       <input md-input>
+//       <md-hint>World</md-hint>
+//     </md-input-container>`
+// })
+// class BdInputComponentInvalidHint2TestController {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input>
-      <md-hint>Hello</md-hint>
-      <md-hint>World</md-hint>
-    </md-input-container>`
-})
-class BdInputComponentInvalidHintTestController {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input>
+//       <md-hint>Hello</md-hint>
+//       <md-hint>World</md-hint>
+//     </md-input-container>`
+// })
+// class BdInputComponentInvalidHintTestController {}
 
-@Component({
-  template: `<md-input-container><input md-input [(ngModel)]="model"></md-input-container>`
-})
-class BdInputComponentBaseTestController {
- model: any = '';
-}
+// @Component({
+//   template: `<md-input-container><input md-input [(ngModel)]="model"></md-input-container>`
+// })
+// class BdInputComponentBaseTestController {
+//  model: any = '';
+// }
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input type="date" placeholder="Placeholder">
-    </md-input-container>`
-})
-class BdInputComponentDateTestController {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input type="date" placeholder="Placeholder">
+//     </md-input-container>`
+// })
+// class BdInputComponentDateTestController {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input type="text" placeholder="Placeholder">
-    </md-input-container>`
-})
-class BdInputComponentTextTestController {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input type="text" placeholder="Placeholder">
+//     </md-input-container>`
+// })
+// class BdInputComponentTextTestController {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input type="password" placeholder="Placeholder">
-    </md-input-container>`
-})
-class BdInputComponentPasswordTestController {}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input type="password" placeholder="Placeholder">
+//     </md-input-container>`
+// })
+// class BdInputComponentPasswordTestController {}
 
-@Component({
-  template: `
-    <md-input-container>
-      <input md-input type="number" placeholder="Placeholder">
-    </md-input-container>`
-})
-class BdInputComponentNumberTestController {}
-
-@Component({
-  template: `
-    <md-input-container>
-      <textarea md-input [rows]="rows" [cols]="cols" [wrap]="wrap" placeholder="Snacks"></textarea>
-    </md-input-container>`
-})
-class MdTextareaWithBindings {
-  rows: number = 4;
-  cols: number = 8;
-  wrap: string = 'hard';
-}
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <input md-input type="number" placeholder="Placeholder">
+//     </md-input-container>`
+// })
+// class BdInputComponentNumberTestController {}
+//
+// @Component({
+//   template: `
+//     <md-input-container>
+//       <textarea md-input [rows]="rows" [cols]="cols" [wrap]="wrap" placeholder="Snacks"></textarea>
+//     </md-input-container>`
+// })
+// class MdTextareaWithBindings {
+//   rows: number = 4;
+//   cols: number = 8;
+//   wrap: string = 'hard';
+// }
