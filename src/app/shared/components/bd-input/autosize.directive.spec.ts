@@ -73,11 +73,11 @@ describe('BdTextareaAutosize', () => {
     fixture.detectChanges();
     expect(textarea.style.minHeight).toBeDefined('Expected a min-height to be set via minRows.');
 
-    let previousMinHeight = parseInt(textarea.style.minHeight);
+    let previousMinHeight = parseInt(textarea.style.minHeight, 10);
     fixture.componentInstance.minRows = 6;
     fixture.detectChanges();
 
-   expect(parseInt(textarea.style.minHeight))
+   expect(parseInt(textarea.style.minHeight, 10))
         .toBeGreaterThan(previousMinHeight, 'Expected increased min-height with minRows increase.');
   });
 
@@ -89,11 +89,11 @@ describe('BdTextareaAutosize', () => {
 
     expect(textarea.style.maxHeight).toBeDefined('Expected a max-height to be set via maxRows.');
 
-    let previousMaxHeight = parseInt(textarea.style.maxHeight);
+    let previousMaxHeight = parseInt(textarea.style.maxHeight, 10);
     fixture.componentInstance.maxRows = 6;
     fixture.detectChanges();
 
-    expect(parseInt(textarea.style.maxHeight))
+    expect(parseInt(textarea.style.maxHeight, 10))
         .toBeGreaterThan(previousMaxHeight, 'Expected increased max-height with maxRows increase.');
   });
 });

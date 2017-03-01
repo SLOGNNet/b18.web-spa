@@ -71,46 +71,46 @@ describe('BdInputComponent', function () {
   });
 
   it('should contain prefix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponent);
-    fixture.detectChanges();
-    let prefix = fixture.nativeElement.querySelector('.bd-input-prefix').querySelector('.prefix');
+    const testFixture = TestBed.createComponent(TestBdInputComponent);
+    testFixture.detectChanges();
+    let prefix = testFixture.nativeElement.querySelector('.bd-input-prefix').querySelector('.prefix');
     expect(prefix).toBeDefined();
     expect(prefix.textContent).toMatch('prefix');
   });
 
   it('should contain suffix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponent);
-    fixture.detectChanges();
-    let suffix = fixture.nativeElement.querySelector('.bd-input-suffix').querySelector('.suffix');
+    const testFixture = TestBed.createComponent(TestBdInputComponent);
+    testFixture.detectChanges();
+    let suffix = testFixture.nativeElement.querySelector('.bd-input-suffix').querySelector('.suffix');
     expect(suffix).toBeDefined();
     expect(suffix.textContent).toMatch('suffix');
   });
 
   it('should not contain prefix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
-    fixture.detectChanges();
-    let prefix = fixture.nativeElement.querySelector('.bd-input-prefix');
+    const testFixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
+    testFixture.detectChanges();
+    let prefix = testFixture.nativeElement.querySelector('.bd-input-prefix');
     expect(prefix === null).toBeTruthy();
   });
 
   it('should be input', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
-    fixture.detectChanges();
-    let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
+    const testFixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
+    testFixture.detectChanges();
+    let inputEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
     expect(inputEl).toBeDefined();
   });
 
   it('should be textarea', () => {
-    const fixture = TestBed.createComponent(TestBdTextArea);
-    fixture.detectChanges();
-    let textareaEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('textarea'));
+    const testFixture = TestBed.createComponent(TestBdTextArea);
+    testFixture.detectChanges();
+    let textareaEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('textarea'));
     expect(textareaEl).toBeDefined();
   });
 
   it('should not contain suffix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
-    fixture.detectChanges();
-    let suffix = fixture.nativeElement.querySelector('.bd-input-suffix');
+    const testFixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
+    testFixture.detectChanges();
+    let suffix = testFixture.nativeElement.querySelector('.bd-input-suffix');
     expect(suffix === null).toBeTruthy();
   });
 
@@ -123,9 +123,9 @@ describe('BdInputComponent', function () {
   });
 
   it('should handle change', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponent);
-    fixture.detectChanges();
-    let inputEl = fixture.debugElement.query(By.css('input'));
+    const testFixture = TestBed.createComponent(TestBdInputComponent);
+    testFixture.detectChanges();
+    let inputEl = testFixture.debugElement.query(By.css('input'));
     inputEl.nativeElement.value = 'added input value';
     fireEvent(inputEl.nativeElement, 'change');
     expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
@@ -141,38 +141,38 @@ describe('BdInputComponent', function () {
   });
 
   it('should handle blur and add bd collapsed input class', () => {
-  const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
-  fixture.detectChanges();
-  let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
-  let inputEl = fixture.debugElement.query(By.css('input'));
+  const testFixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
+  testFixture.detectChanges();
+  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+  let inputEl = testFixture.debugElement.query(By.css('input'));
   fireEvent(inputEl.nativeElement, 'focus');
-   fixture.detectChanges();
+   testFixture.detectChanges();
    expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
    expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
    fireEvent(inputEl.nativeElement, 'blur');
-   fixture.detectChanges();
+   testFixture.detectChanges();
    expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
   });
 
   it('should handle blur and add bd expanded input class', () => {
-  const fixture = TestBed.createComponent(TestBdInputComponent);
-  fixture.detectChanges();
-  let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
-  let inputEl = fixture.debugElement.query(By.css('input'));
+  const testFixture = TestBed.createComponent(TestBdInputComponent);
+  testFixture.detectChanges();
+  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+  let inputEl = testFixture.debugElement.query(By.css('input'));
   fireEvent(inputEl.nativeElement, 'focus');
-   fixture.detectChanges();
+   testFixture.detectChanges();
    expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
    expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
    fireEvent(inputEl.nativeElement, 'blur');
-   fixture.detectChanges();
+   testFixture.detectChanges();
    expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
   });
 
   it('should not be empty after input entered', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponent);
+    const testFixture = TestBed.createComponent(TestBdInputComponent);
     // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
-    fixture.detectChanges();
-    let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
+    testFixture.detectChanges();
+    let inputEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
     // let el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     // expect(el).not.toBeNull();
     // expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
@@ -181,7 +181,7 @@ describe('BdInputComponent', function () {
     inputEl.nativeElement.click();
     // Simulate input event.
     inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
-    fixture.detectChanges();
+    testFixture.detectChanges();
     //
     // el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     // expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
