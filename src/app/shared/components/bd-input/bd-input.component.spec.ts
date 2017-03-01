@@ -10,7 +10,7 @@ import { fireMouseEvent, fireEvent } from '../../test/helpers/domHelper';
 
 
 
-fdescribe('BdInputComponent', function () {
+describe('BdInputComponent', function () {
   let fixture: ComponentFixture<BdInputComponent>,
   component: BdInputComponent;
   beforeEach(async(() => {
