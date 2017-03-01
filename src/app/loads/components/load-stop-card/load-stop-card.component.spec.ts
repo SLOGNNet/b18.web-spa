@@ -86,7 +86,6 @@ function createTestData() {
   return resultLoad;
 }
 
-
 describe('LoadStopCardComponent', () => {
   let fixture: ComponentFixture<LoadStopCardComponent>,
     component: LoadStopCardComponent,
