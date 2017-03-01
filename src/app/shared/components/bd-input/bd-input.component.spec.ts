@@ -170,21 +170,12 @@ describe('BdInputComponent', function () {
 
   it('should not be empty after input entered', () => {
     const testFixture = TestBed.createComponent(TestBdInputComponent);
-    // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
     testFixture.detectChanges();
     let inputEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
-    // let el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
-    // expect(el).not.toBeNull();
-    // expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
-
     inputEl.nativeElement.value = 'added input value';
     inputEl.nativeElement.click();
-    // Simulate input event.
     inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
     testFixture.detectChanges();
-    //
-    // el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
-    // expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
     expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
   });
 
