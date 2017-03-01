@@ -134,6 +134,13 @@ describe('BdInputComponent', function () {
     expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
   });
 
+  it('should be expanded when label empty', () => {
+  const testFixture = TestBed.createComponent(TestBdInputComponent);
+  testFixture.detectChanges();
+  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+  expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+  });
+
   it('should be collapsed when label set', () => {
   const testFixture = TestBed.createComponent(TestBdInputComponentWithLabel);
   testFixture.detectChanges();
