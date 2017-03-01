@@ -5,7 +5,7 @@ import { SharedModule } from '../../shared.module';
 import { BdTextareaAutosize } from './autosize.directive';
 
 
-fdescribe('BdTextareaAutosize', () => {
+describe('BdTextareaAutosize', () => {
   let fixture: ComponentFixture<AutosizeTextAreaWithContent>;
   let textarea: HTMLTextAreaElement;
   let autosize: BdTextareaAutosize;

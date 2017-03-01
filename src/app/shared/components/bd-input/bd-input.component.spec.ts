@@ -6,9 +6,11 @@ import { SharedModule } from '../../shared.module';
 import { BdInputComponent } from './bd-input.component';
 // import { MdPlatform } from '../core/platform/platform';
 import { PlatformModule } from '../core/platform/index';
+import { fireMouseEvent, fireEvent } from '../../test/helpers/domHelper';
 
 
-fdescribe('BdInputComponent', function () {
+
+describe('BdInputComponent', function () {
   let fixture: ComponentFixture<BdInputComponent>,
   component: BdInputComponent;
   beforeEach(async(() => {
@@ -37,7 +39,7 @@ fdescribe('BdInputComponent', function () {
         // BdInputComponent
         TestBdTextArea,
         TestBdInputComponent,
-        TestBdInputComponentWithoutPrefixAndSuffix
+        TestBdInputComponentWithoutPrefixAndSuffixWithLabel
       ],
     });
     fixture = TestBed.createComponent(BdInputComponent);
@@ -85,14 +87,14 @@ fdescribe('BdInputComponent', function () {
   });
 
   it('should not contain prefix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
     fixture.detectChanges();
     let prefix = fixture.nativeElement.querySelector('.bd-input-prefix');
     expect(prefix === null).toBeTruthy();
   });
 
   it('should be input', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
     fixture.detectChanges();
     let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
     expect(inputEl).toBeDefined();
@@ -106,7 +108,7 @@ fdescribe('BdInputComponent', function () {
   });
 
   it('should not contain suffix', () => {
-    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
     fixture.detectChanges();
     let suffix = fixture.nativeElement.querySelector('.bd-input-suffix');
     expect(suffix === null).toBeTruthy();
@@ -120,6 +122,15 @@ fdescribe('BdInputComponent', function () {
     expect(element.nativeElement.placeholder).toMatch(testPlaceholder);
   });
 
+  it('should handle change', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponent);
+    fixture.detectChanges();
+    let inputEl = fixture.debugElement.query(By.css('input'));
+    inputEl.nativeElement.value = 'added input value';
+    fireEvent(inputEl.nativeElement, 'change');
+    expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
+  });
+
   it('should handle click and add bd expanded input class', () => {
     spyOn(component, 'focus');
     let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
@@ -129,31 +140,36 @@ fdescribe('BdInputComponent', function () {
     expect(fixture.debugElement.componentInstance.focus).toHaveBeenCalled();
   });
 
-  fit('should handle blur', () => {
-  const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+  it('should handle blur and add bd collapsed input class', () => {
+  const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
   fixture.detectChanges();
   let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
-  let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
-  dispatchFakeEvent(inputEl, 'focus');
+  let inputEl = fixture.debugElement.query(By.css('input'));
+  fireEvent(inputEl.nativeElement, 'focus');
    fixture.detectChanges();
-   fixture.whenStable().then(() => {
-     dispatchFakeEvent(inputEl, 'blur');
-     fixture.detectChanges();
-    debugger;
-    // spyOn(component, '_handleBlur');
-    // let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
-    // element.nativeElement.click();
-    // fixture.detectChanges();
-    // debugger;
-    // fixture.detectChanges();
-    // element.nativeElement.blur();
-    // fixture.detectChanges();
-    // expect(fixture.debugElement.componentInstance._handleBlur).toHaveBeenCalled();
+   expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+   expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
+   fireEvent(inputEl.nativeElement, 'blur');
+   fixture.detectChanges();
+   expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
   });
 
-  it('should not be empty after input entered and add bd focused class after click', () => {
+  it('should handle blur and add bd expanded input class', () => {
+  const fixture = TestBed.createComponent(TestBdInputComponent);
+  fixture.detectChanges();
+  let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
+  let inputEl = fixture.debugElement.query(By.css('input'));
+  fireEvent(inputEl.nativeElement, 'focus');
+   fixture.detectChanges();
+   expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+   expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
+   fireEvent(inputEl.nativeElement, 'blur');
+   fixture.detectChanges();
+   expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+  });
+
+  it('should not be empty after input entered', () => {
     const fixture = TestBed.createComponent(TestBdInputComponent);
-    let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
     // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
     fixture.detectChanges();
     let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
@@ -169,8 +185,7 @@ fdescribe('BdInputComponent', function () {
     //
     // el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     // expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
-    expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
-    expect(inputEl.nativeElement.value === '').toBeFalsy();
+    expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
   });
 
   // md input tests
@@ -408,10 +423,12 @@ class TestBdTextArea {
 
 @Component({
  template: `
- <bd-input>
+ <bd-input
+ [labelText]="'label text'"
+ >
  </bd-input>`
 })
-class TestBdInputComponentWithoutPrefixAndSuffix {
+class TestBdInputComponentWithoutPrefixAndSuffixWithLabel {
 
 }
 
