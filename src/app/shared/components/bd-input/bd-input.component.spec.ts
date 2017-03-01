@@ -134,7 +134,6 @@ fdescribe('BdInputComponent', function () {
   fit('should handle click and add bd expanded input class', () => {
     spyOn(component, 'focus');
     let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
-    debugger;
     element.nativeElement.click();
     fixture.detectChanges();
     expect(element.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
