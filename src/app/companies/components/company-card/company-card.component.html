@@ -1,13 +1,14 @@
 <div
 class="company-card-section"
-(mouseover)="onEnter()"
-(mouseleave)="onLeave()">
+(mouseenter)="onEnter()"
+(mouseleave)="onLeave()"
+(click)="onClick()">
   <div class="left">
     <span class="cropped-company-name">{{this.croppedCompanyName}}</span>
     <div class="company-name ellipsis">
       {{company.name}}
     </div>
-    <div>MC# {{company.mc}}</div>
+    <div class="company-mc">MC# {{company.mc}}</div>
   </div>
   <div class="middle">
     <span class="company-contact-full-name">{{company.contacts[0].firstName}} {{company.contacts[0].lastName}}</span>
