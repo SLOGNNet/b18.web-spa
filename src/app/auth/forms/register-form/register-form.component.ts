@@ -14,6 +14,7 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
 
   registerForm: FormGroup;
   registerTypes: Array<any>;
+  isLoading: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -48,14 +49,18 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(form);
-    this.authenticationService.signUp(form.value).subscribe(
-      response => {
-        if (!response) {
-          console.log('error');
-        }
+    if (this.isLoading) {
+      return;
+    }
+    this.isLoading = true;
+    this.authenticationService.signUp(form.value).subscribe(response => {
+      if (response === 'register_failed') {
+        // this.isLoginFailed = true;
+        // this.registerForm.markAsPristine();
+        // this.cd.markForCheck();
       }
-    );
+      this.isLoading = false;
+    });
   }
 
   subscribeTypeChanges() {
