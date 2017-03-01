@@ -35,7 +35,9 @@ fdescribe('BdInputComponent', function () {
         // MdTextareaWithBindings,
         // BdInputComponentWithDisabled,
         // BdInputComponent
-        TestBdInputComponent
+        TestBdTextArea,
+        TestBdInputComponent,
+        TestBdInputComponentWithoutPrefixAndSuffix
       ],
     });
     fixture = TestBed.createComponent(BdInputComponent);
@@ -43,57 +45,71 @@ fdescribe('BdInputComponent', function () {
     TestBed.compileComponents();
   }));
 
+  // bd-input
   it('should have a component instance', () => {
   expect(component).toBeTruthy();
 });
 
-  // it('should default to floating placeholders', () => {
-  //   let fixture = TestBed.createComponent(BdInputComponentBaseTestController);
-  //   fixture.detectChanges();
-  //
-  //   let inputContainer = fixture.debugElement.query(By.directive(BdInputComponent))
-  //       .componentInstance as BdInputComponent;
-  //   expect(inputContainer.floatingPlaceholder).toBe(true,
-  //       'Expected BdInputComponent to default to having floating placeholders turned on');
-  // });
-
-  // it('should not be treated as empty if type is date',
-  //     inject([MdPlatform], (platform: MdPlatform) => {
-  //       if (!(platform.TRIDENT || platform.FIREFOX)) {
-  //         let fixture = TestBed.createComponent(BdInputComponentDateTestController);
-  //         fixture.detectChanges();
-  //
-  //         let el = fixture.debugElement.query(By.css('label')).nativeElement;
-  //         expect(el).not.toBeNull();
-  //         expect(el.classList.contains('md-empty')).toBe(false);
-  //       }
-  //     }));
-
-  // Firefox and IE don't support type="date" and fallback to type="text".
-  // it('should be treated as empty if type is date on Firefox and IE',
-  //     inject([MdPlatform], (platform: MdPlatform) => {
-  //       if (platform.TRIDENT || platform.FIREFOX) {
-  //         let fixture = TestBed.createComponent(BdInputComponentDateTestController);
-  //         fixture.detectChanges();
-  //
-  //         let el = fixture.debugElement.query(By.css('label')).nativeElement;
-  //         expect(el).not.toBeNull();
-  //         expect(el.classList.contains('md-empty')).toBe(true);
-  //       }
-  //     }));
-
   it('should hide label when label text is empty', () => {
+    let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     expect(element.classList.contains('bd-hidden-label')).toBe(true);
+    expect(componentContainer.nativeElement.classList.contains('bd-not-empty-label')).toBeFalsy();
   });
 
-  it('should show label when label text is not empty', () => {
+  it('should show label when label text is not empty and container contains bd not empty label class', () => {
     let testLabelText = 'label text';
     component.labelText = testLabelText;
+    let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.bd-input-placeholder'));
-    expect(element.nativeElement.textContent).toMatch(testLabelText);
+    let label = fixture.debugElement.query(By.css('.bd-input-placeholder'));
+    expect(label.nativeElement.textContent).toMatch(testLabelText);
+    expect(componentContainer.nativeElement.classList.contains('bd-not-empty-label')).toBeTruthy();
+  });
+
+  it('should contain prefix', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponent);
+    fixture.detectChanges();
+    let prefix = fixture.nativeElement.querySelector('.bd-input-prefix').querySelector('.prefix');
+    expect(prefix).toBeDefined();
+    expect(prefix.textContent).toMatch('prefix');
+  });
+
+  it('should contain suffix', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponent);
+    fixture.detectChanges();
+    let suffix = fixture.nativeElement.querySelector('.bd-input-suffix').querySelector('.suffix');
+    expect(suffix).toBeDefined();
+    expect(suffix.textContent).toMatch('suffix');
+  });
+
+  it('should not contain prefix', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    fixture.detectChanges();
+    let prefix = fixture.nativeElement.querySelector('.bd-input-prefix');
+    expect(prefix === null).toBeTruthy();
+  });
+
+  it('should be input', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    fixture.detectChanges();
+    let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
+    expect(inputEl).toBeDefined();
+  });
+
+  it('should be textarea', () => {
+    const fixture = TestBed.createComponent(TestBdTextArea);
+    fixture.detectChanges();
+    let textareaEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('textarea'));
+    expect(textareaEl).toBeDefined();
+  });
+
+  it('should not contain suffix', () => {
+    const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+    fixture.detectChanges();
+    let suffix = fixture.nativeElement.querySelector('.bd-input-suffix');
+    expect(suffix === null).toBeTruthy();
   });
 
   it('should display placeholder', () => {
@@ -104,15 +120,40 @@ fdescribe('BdInputComponent', function () {
     expect(element.nativeElement.placeholder).toMatch(testPlaceholder);
   });
 
-  it('should handle click', () => {
+  it('should handle click and add bd expanded input class', () => {
     spyOn(component, 'focus');
     let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
     element.nativeElement.click();
+    fixture.detectChanges();
+    expect(element.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
     expect(fixture.debugElement.componentInstance.focus).toHaveBeenCalled();
   });
 
-  fit('should not be empty after input entered', () => {
+  fit('should handle blur', () => {
+  const fixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffix);
+  fixture.detectChanges();
+  let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
+  let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
+  dispatchFakeEvent(inputEl, 'focus');
+   fixture.detectChanges();
+   fixture.whenStable().then(() => {
+     dispatchFakeEvent(inputEl, 'blur');
+     fixture.detectChanges();
+    debugger;
+    // spyOn(component, '_handleBlur');
+    // let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
+    // element.nativeElement.click();
+    // fixture.detectChanges();
+    // debugger;
+    // fixture.detectChanges();
+    // element.nativeElement.blur();
+    // fixture.detectChanges();
+    // expect(fixture.debugElement.componentInstance._handleBlur).toHaveBeenCalled();
+  });
+
+  it('should not be empty after input entered and add bd focused class after click', () => {
     const fixture = TestBed.createComponent(TestBdInputComponent);
+    let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
     // let fixture = TestBed.createComponent(BdInputComponentTextTestController);
     fixture.detectChanges();
     let inputEl = fixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
@@ -121,14 +162,14 @@ fdescribe('BdInputComponent', function () {
     // expect(el.classList.contains('.bd-hidden-label')).toBe(false, 'should be empty');
 
     inputEl.nativeElement.value = 'added input value';
+    inputEl.nativeElement.click();
     // Simulate input event.
     inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
     fixture.detectChanges();
     //
     // el = fixture.debugElement.query(By.css('.bd-label')).nativeElement;
     // expect(el.classList.contains('.bd-hidden-label')).toBe(true, 'should not be empty');
-    debugger;
-    // expect(inputEl.nativeElement.classList.contains('.bd-expanded-input')).toBeTruthy();
+    expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
     expect(inputEl.nativeElement.value === '').toBeFalsy();
   });
 
@@ -300,6 +341,41 @@ fdescribe('BdInputComponent', function () {
  //    const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector('textarea');
  //    expect(textarea).not.toBeNull();
  //  });
+
+ // it('should default to floating placeholders', () => {
+ //   let fixture = TestBed.createComponent(BdInputComponentBaseTestController);
+ //   fixture.detectChanges();
+ //
+ //   let inputContainer = fixture.debugElement.query(By.directive(BdInputComponent))
+ //       .componentInstance as BdInputComponent;
+ //   expect(inputContainer.floatingPlaceholder).toBe(true,
+ //       'Expected BdInputComponent to default to having floating placeholders turned on');
+ // });
+
+ // it('should not be treated as empty if type is date',
+ //     inject([MdPlatform], (platform: MdPlatform) => {
+ //       if (!(platform.TRIDENT || platform.FIREFOX)) {
+ //         let fixture = TestBed.createComponent(BdInputComponentDateTestController);
+ //         fixture.detectChanges();
+ //
+ //         let el = fixture.debugElement.query(By.css('label')).nativeElement;
+ //         expect(el).not.toBeNull();
+ //         expect(el.classList.contains('md-empty')).toBe(false);
+ //       }
+ //     }));
+
+ // Firefox and IE don't support type="date" and fallback to type="text".
+ // it('should be treated as empty if type is date on Firefox and IE',
+ //     inject([MdPlatform], (platform: MdPlatform) => {
+ //       if (platform.TRIDENT || platform.FIREFOX) {
+ //         let fixture = TestBed.createComponent(BdInputComponentDateTestController);
+ //         fixture.detectChanges();
+ //
+ //         let el = fixture.debugElement.query(By.css('label')).nativeElement;
+ //         expect(el).not.toBeNull();
+ //         expect(el.classList.contains('md-empty')).toBe(true);
+ //       }
+ //     }));
 });
 
 @Component({
@@ -311,9 +387,31 @@ fdescribe('BdInputComponent', function () {
 class BdInputComponentWithId {}
 
 @Component({
- template: `<bd-input></bd-input>`
+ template: `
+ <bd-input>
+ <span class="prefix" bd-prefix>prefix</span>
+ <span class="suffix" bd-suffix>suffix</span>
+ </bd-input>`
 })
 class TestBdInputComponent {
+
+}
+
+@Component({
+ template: `
+ <bd-textarea>
+ </bd-textarea>`
+})
+class TestBdTextArea {
+
+}
+
+@Component({
+ template: `
+ <bd-input>
+ </bd-input>`
+})
+class TestBdInputComponentWithoutPrefixAndSuffix {
 
 }
 
