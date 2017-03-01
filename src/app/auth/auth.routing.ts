@@ -9,7 +9,7 @@ import {
 } from './';
 
 const routes: Routes = [{
-  path: '',
+  path: 'auth',
   component: AuthWrapperComponent,
   children: [
     { path: 'login', component: LoginComponent },

@@ -31,7 +31,7 @@ export class AuthenticationService {
   signUp(model) {
     return Observable.create((observer) => {
       if (Object.keys(model).length)  {
-        this.router.navigate(['phone-confirmation']);
+        this.router.navigate(['auth/phone-confirmation']);
       } else {
         observer.next(false);
       }
@@ -41,7 +41,7 @@ export class AuthenticationService {
   confirmPhone(model) {
     return Observable.create((observer) => {
       if (Object.keys(model).length)  {
-        this.router.navigate(['login']);
+        this.router.navigate(['auth/login']);
       } else {
         observer.next(false);
       }
@@ -52,7 +52,7 @@ export class AuthenticationService {
     this.loggedIn = false;
     this.loggedStateWasChanged.next(this.loggedIn);
     localStorage.removeItem('currentUser');
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
   }
 
   isLoggedIn() {
