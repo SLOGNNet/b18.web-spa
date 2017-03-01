@@ -178,8 +178,8 @@ describe('CompanyCardComponent', () => {
   it('should handle mouse leave', () => {
     component.company = testCompany;
     spyOn(component, 'onLeave').and.callThrough();
-    let element = fixture.nativeElement.querySelector('.company-card-section');
-    fireMouseEvent(element, 'mouseleave');
+    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    fireMouseEvent(element.nativeElement, 'mouseleave');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
 
@@ -190,8 +190,8 @@ describe('CompanyCardComponent', () => {
   it('should handle mouse enter', () => {
     component.company = testCompany;
     spyOn(component, 'onEnter').and.callThrough();
-    let element = fixture.nativeElement.querySelector('.company-card-section');
-    fireMouseEvent(element, 'mouseenter');
+    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    fireMouseEvent(element.nativeElement, 'mouseenter');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
 
