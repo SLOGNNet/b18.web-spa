@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, forwardRef, Optional, ChangeDetectionStrategy } from '@angular/core';
-import { NgbInputDatepicker } from '../datepicker';
+import { NgbInputDatepicker, NgbDate } from '../datepicker';
 import { BdDatePicker } from './components';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
@@ -15,8 +15,7 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'bd-form-datepicker',
   templateUrl: './bd-form-datepicker.component.html',
   styleUrls: ['bd-form-datepicker.component.scss'],
-  providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class BdFormDatePicker implements ControlValueAccessor {
   @Input() dateFormat: string = 'MM/DD/YYYY';
@@ -38,7 +37,6 @@ export class BdFormDatePicker implements ControlValueAccessor {
   onDateChange(value: string) {
     if (value !== this.dateValue) {
       const newDate = moment(value, this.dateFormat);
-      this.dateValue = value;
       this.value = newDate ? moment(this.value)
         .year(newDate.year())
         .month(newDate.month())

@@ -13,6 +13,7 @@ import {
   Output,
   Optional
 } from '@angular/core';
+import { isEqual } from 'lodash';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NgControl } from '@angular/forms';
 
 import { NgbDate } from './ngb-date';
@@ -128,15 +129,16 @@ export class NgbInputDatepicker {
   ngOnInit(): void {
     if (this._control) {
       this.writeValue(this._control.value);
-      this._control.valueChanges.subscribe(this.writeValue.bind(this));
+      this._control.valueChanges.subscribe( value => {
+        this.writeValue(value);
+      });
     }
   }
 
   writeValue(value) {
-    const newModel =
-      value ? this._service.toValidDate(this._parserFormatter.parse(value, this.format), null) : null;
-
-    if (this._isModelChanged(newModel)) {
+    if (this._isValueChanged(value)) {
+      const newModel =
+        value ? this._service.toValidDate(this._parserFormatter.parse(value, this.format), null) : null;
       this._model = newModel;
       this._writeModelValue(this._model);
     }
@@ -144,7 +146,7 @@ export class NgbInputDatepicker {
 
   manualDateChange(value: string) {
     this._model = this._service.toValidDate(this._parserFormatter.parse(value, this.format), null);
-    this._writeModelValue(this._model, true);
+    this._writeModelValue(this._model);
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -174,7 +176,7 @@ export class NgbInputDatepicker {
       this._cRef.instance.registerOnChange((selectedDate) => {
         this._model =
           selectedDate ? this._service.toValidDate({year: selectedDate.year, month: selectedDate.month, day: selectedDate.day}, null) : null;
-        this._writeModelValue(selectedDate, true);
+        this._writeModelValue(this._model);
         this.close();
       });
     }
@@ -215,10 +217,11 @@ export class NgbInputDatepicker {
 
   onBlur() {}
 
-  private _isModelChanged(newModel: NgbDate): boolean{
-    const icChanged = (this._model === null && newModel !== null)
-      || ( this._model && !this._model.equals(newModel));
-      return icChanged;
+  private _isValueChanged(newValue: string): boolean{
+    newValue = newValue || '';
+    const value = this._parserFormatter.format(this._model, this.format);
+    const isChanged = !isEqual(value, newValue);
+    return isChanged;
   }
 
   private _applyDatepickerInputs(datepickerInstance: NgbDatepicker): void {
@@ -241,9 +244,9 @@ export class NgbInputDatepicker {
     datepickerInstance.navigate.subscribe(date => this.navigate.emit(date));
   }
 
-  private _writeModelValue(model: NgbDate, shouldUpdateControl: boolean = false) {
+  private _writeModelValue(model: NgbDate) {
     const value = this._parserFormatter.format(model, this.format);
-    if (shouldUpdateControl && this._control) {
+    if (this._control) {
       this._control.viewToModelUpdate(value);
       (this._control.control as FormControl).setValue(value);
     }

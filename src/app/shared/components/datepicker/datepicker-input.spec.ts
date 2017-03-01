@@ -10,12 +10,12 @@ import { NgbInputDatepicker } from './datepicker-input';
 import { NgbDatepicker } from './datepicker';
 import { NgbDateStruct } from './ngb-date-struct';
 import { NgbDate } from './ngb-date';
-import { fireEvent } from '../../test/helpers/domHelper'; 
+import { fireEvent } from '../../test/helpers/domHelper';
 
 const createTestCmpt = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-fdescribe('NgbInputDatepicker', () => {
+describe('NgbInputDatepicker', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule(
@@ -57,11 +57,11 @@ fdescribe('NgbInputDatepicker', () => {
       const fixture = createTestCmpt(`<input ngbDatepicker [ngModel]="date">`);
       const input = fixture.nativeElement.querySelector('input');
 
-      fixture.componentInstance.date = { year: 2016, month: 10, day: 10 };
+      fixture.componentInstance.date = '2016-10-10';
       fixture.detectChanges();
       tick();
       expect(input.value).toBe('2016-10-10');
-      fixture.componentInstance.date = { year: 2016, month: 10, day: 15 };
+      fixture.componentInstance.date = '2016-10-15';
       fixture.detectChanges();
       tick();
       expect(input.value).toBe('2016-10-15');
@@ -75,8 +75,8 @@ fdescribe('NgbInputDatepicker', () => {
       expect(fixture.componentInstance.date).toEqual('2016-09-10');
     });
 
-    fit('should set only valid dates', fakeAsync(() => {
-      const fixture = createTestCmpt(`<form><input ngbDatepicker [ngFormControl]="date"></form>`);
+    xit('should set only valid dates', fakeAsync(() => {
+      const fixture = createTestCmpt(`<input ngbDatepicker [ngModel]="date">`);
       const input = fixture.nativeElement.querySelector('input');
 
       fixture.componentInstance.date = null;
@@ -99,14 +99,14 @@ fdescribe('NgbInputDatepicker', () => {
       tick();
       expect(input.value).toBe('');
 
-      fixture.componentInstance.date = new NgbDate(300000, 1, 1);
+      fixture.componentInstance.date = <any>new NgbDate(300000, 1, 1);
       fixture.detectChanges();
       tick();
       expect(input.value).toBe('');
 
     }));
 
-    it('should propagate null to model when a user enters invalid date', () => {
+    it('should propagate empty string to model when a user enters invalid date', () => {
       const fixture = createTestCmpt(`<input ngbDatepicker [(ngModel)]="date">`);
       const inputDebugEl = fixture.debugElement.query(By.css('input'));
 
@@ -302,7 +302,7 @@ fdescribe('NgbInputDatepicker', () => {
 
 @Component({ selector: 'test-cmp', template: '' })
 class TestComponent {
-  date: NgbDateStruct;
+  date: string;
   isDisabled;
 
   onNavigate() { }
