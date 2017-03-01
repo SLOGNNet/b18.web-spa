@@ -134,7 +134,7 @@ describe('ngb-datepicker-navigation-select', () => {
     const yearSelectItems = getDropdownItems(fixture.debugElement
       .query(By.css('.years-container'))
       .query(By.directive(BdDropdownComponent)).componentInstance);
-    
+
     expect(getDropdownItems(fixture.debugElement
       .query(By.css('.years-container'))
       .query(By.directive(BdDropdownComponent)).componentInstance))
@@ -214,7 +214,7 @@ describe('ngb-datepicker-navigation-select', () => {
     .toBe(2017);
   });
 
-  // currently we don't use select boxes  
+  // currently we don't use select boxes
   xit('should have disabled select boxes when disabled', () => {
     const fixture = createTestComponent(
         `<ngb-datepicker-navigation-select [disabled]="true" [date]="date" [minDate]="minDate" [maxDate]="maxDate">`);
