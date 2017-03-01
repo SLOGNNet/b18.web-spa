@@ -24,6 +24,7 @@ import { HomeComponent } from './home';
 import { MessagesComponent } from './drivers/messages';
 import { MessageComponent } from './drivers/messages/message';
 import { NoContentComponent } from './no-content';
+import { MainComponent } from './main/main.component';
 import { LoadsComponent,
   LoadDetailComponent,
   LoadStopCardComponent,
@@ -45,6 +46,7 @@ import { CompanyCardComponent } from './companies/components/company-card';
 import { CompanyCardsComponent } from './companies/components/company-cards';
 import { BdToastManagerComponent } from './bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from './equipment';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -88,7 +90,8 @@ type StoreType = {
      BdToastManagerComponent,
      EquipmentComponent,
      EquipmentCardComponent,
-     EquipmentCardsComponent
+     EquipmentCardsComponent,
+     MainComponent
   ],
   imports: [
     SharedModule,
