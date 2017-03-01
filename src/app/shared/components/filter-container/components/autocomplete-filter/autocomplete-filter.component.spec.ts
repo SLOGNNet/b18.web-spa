@@ -4,9 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement, Input, Output, EventEmitter, Directive, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { getPaginated } from '../../../../helpers';
+import { fireEvent } from '../../../../test/helpers/domHelper';
 import { isEqualWith, chain, isEqual, identity, curry, isEmpty, differenceBy } from 'lodash';
 import { SharedModule } from '../../../../shared.module';
-fdescribe('autocomplete-filter', () => {
+describe('autocomplete-filter', () => {
 
   let component:    AutocompleteFilter;
   let searchService;
@@ -40,7 +41,7 @@ fdescribe('autocomplete-filter', () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe('data loading', () => {
+  describe('data loading', () => {
     beforeEach(() => {
       component.autocompleteSearchSource = searchService.searchSource;
       component.debounceTime = 0;
@@ -358,8 +359,3 @@ fdescribe('autocomplete-filter', () => {
    return isEmpty(differenceBy(x, y, 'id'));
 };
 
-export function fireEvent (target, action) {
-  const event = document.createEvent('Event');
-  event.initEvent(action, false, true);
-  target.dispatchEvent(event);
-};

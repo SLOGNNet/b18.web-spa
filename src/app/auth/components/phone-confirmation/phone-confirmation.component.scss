@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/variables';
+
+.phone-confirmation-form-wrapper {
+  width: 480px;
+
+  bd-label {
+    font-size: 10px;
+  }
+
+  h3 {
+    color: $blue;
+    font-size: $large-font-size;
+    font-weight: 600;
+  }
+}
+
+.text-wrapper {
+  color: $dark-grey;
+}

@@ -1,6 +1,7 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "node_modules/codelyzer",
+    "node_modules/vrsource-tslint-rules/rules"
   ],
   "rules": {
     "member-access": false,
@@ -126,6 +127,7 @@
       "check-separator",
       "check-type"
     ],
-    "import-destructuring-spacing": true
+    "import-destructuring-spacing": true,
+    "no-jasmine-focus": true
   }
 }

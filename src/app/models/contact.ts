@@ -6,7 +6,7 @@ export class Contact {
   @JsonMember
   id: number = 0;
   @JsonMember
-  firstName: string = 'Jonh';
+  firstName: string = 'John';
   @JsonMember
   lastName: string = 'Doe';
   @JsonMember

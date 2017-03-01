@@ -30,7 +30,7 @@ export class BdInputComponent {
     return !!this.labelText; }
 
   get characterCount(): number {
-    return this.empty ? 0 : ('' + this._value).length;
+    return this.empty ? 0 : (this._value.toString()).length;
   }
 
   get empty() { return (this._value == null || this._value === ''); }

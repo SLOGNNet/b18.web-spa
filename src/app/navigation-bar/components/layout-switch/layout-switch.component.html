@@ -1,22 +1,26 @@
 <div class="pane-switch-container">
     <ul id="pane-switch-group">
         <li 
-            #toggleFirst 
+            #toggleFirst
+            class="toggle-first"
             [class.active]="isActive(switchStateEnum.MenuVisible)"
             (click)="onSwitchChange(toggleFirst, switchStateEnum.MenuVisible)">
         </li>
         <li 
             #toggleSecond 
+            class="toggle-second"
             [class.active]="isActive(switchStateEnum.FirstPaneVisible)"
             (click)="onSwitchChange(toggleSecond, switchStateEnum.FirstPaneVisible)">
         </li>
         <li 
             #toggleThird
+            class="toggle-third"
             [class.active]="isActive(switchStateEnum.SecondPaneVisible)"
             (click)="onSwitchChange(toggleThird, switchStateEnum.SecondPaneVisible)">
         </li>
         <li 
             #toggleFourth
+            class="toggle-fourth"
             [class.active]="isActive(switchStateEnum.ThirdPaneVisible)"
             (click)="onSwitchChange(toggleFourth, switchStateEnum.ThirdPaneVisible)">
         </li>
