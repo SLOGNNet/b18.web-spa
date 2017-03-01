@@ -33,13 +33,10 @@ export class CompanyCardComponent {
     this.select.emit(this.company);
   }
 
-
-  @HostListener('mouseenter', ['$event'])
-    onEnter() {
+  onEnter() {
     this.statusText = true;
   }
 
-  @HostListener('mouseleave', ['$event'])
   onLeave() {
     this.statusText = false;
   }

@@ -1,5 +1,7 @@
 <div
 class="company-card-section"
+(mouseover)="onEnter()"
+(mouseleave)="onLeave()"
 (click)="onClick()">
   <div class="left">
     <span class="cropped-company-name">{{this.croppedCompanyName}}</span>
