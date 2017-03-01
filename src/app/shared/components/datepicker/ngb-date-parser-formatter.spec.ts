@@ -19,7 +19,7 @@ describe('ngb-date parsing and formatting', () => {
     it('should parse non-date as null', () => {
       expect(pf.parse('foo-bar-baz', format)).toBeNull();
       expect(pf.parse('2014-bar', format)).toBeNull();
-      expect(pf.parse('2014-11-12-15', format) === null).toBeTruthy();
+      expect(pf.parse('2014-11-12-15', format)).toBeNull();
     });
 
     it('should do its best parsing incomplete dates',

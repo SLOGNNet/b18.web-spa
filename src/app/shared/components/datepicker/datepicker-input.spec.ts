@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { createGenericTestComponent } from '../../test/common';
 
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { NgbDatepickerModule } from './datepicker.module';
 import { NgbInputDatepicker } from './datepicker-input';
@@ -19,7 +19,7 @@ describe('NgbInputDatepicker', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule(
-      { declarations: [TestComponent], imports: [NgbDatepickerModule.forRoot(), FormsModule, ReactiveFormsModule ]});
+      { declarations: [TestComponent], imports: [NgbDatepickerModule.forRoot(), FormsModule ]});
   });
 
   describe('open, close and toggle', () => {
