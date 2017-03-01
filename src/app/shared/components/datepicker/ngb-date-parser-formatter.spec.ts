@@ -24,6 +24,7 @@ describe('ngb-date parsing and formatting', () => {
 
     it('should do its best parsing incomplete dates',
        () => { expect(pf.parse('2011-5', format)).toBe(null);
+    });
   });
 
   describe('formatting', () => {
