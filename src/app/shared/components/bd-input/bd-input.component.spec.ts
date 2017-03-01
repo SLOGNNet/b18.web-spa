@@ -10,7 +10,7 @@ import { fireMouseEvent, fireEvent } from '../../test/helpers/domHelper';
 
 
 
-describe('BdInputComponent', function () {
+fdescribe('BdInputComponent', function () {
   let fixture: ComponentFixture<BdInputComponent>,
   component: BdInputComponent;
   beforeEach(async(() => {
@@ -60,7 +60,7 @@ describe('BdInputComponent', function () {
     expect(componentContainer.nativeElement.classList.contains('bd-not-empty-label')).toBeFalsy();
   });
 
-  it('should show label when label text is not empty and container contains bd not empty label class', () => {
+  it('should show label when label text is not empty and container contains bd-not-empty-label class', () => {
     let testLabelText = 'label text';
     component.labelText = testLabelText;
     let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
@@ -93,14 +93,14 @@ describe('BdInputComponent', function () {
     expect(prefix === null).toBeTruthy();
   });
 
-  it('should be input', () => {
+  it('should render input', () => {
     const testFixture = TestBed.createComponent(TestBdInputComponentWithoutPrefixAndSuffixWithLabel);
     testFixture.detectChanges();
     let inputEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
     expect(inputEl).toBeDefined();
   });
 
-  it('should be textarea', () => {
+  it('should render textarea', () => {
     const testFixture = TestBed.createComponent(TestBdTextArea);
     testFixture.detectChanges();
     let textareaEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('textarea'));
@@ -131,9 +131,10 @@ describe('BdInputComponent', function () {
     expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
   });
 
-  it('should handle click and add bd expanded input class', () => {
+  fit('should handle click and add bd expanded input class', () => {
     spyOn(component, 'focus');
     let element = fixture.debugElement.query(By.css('.bd-input-wrapper'));
+    debugger;
     element.nativeElement.click();
     fixture.detectChanges();
     expect(element.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
