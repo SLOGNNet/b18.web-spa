@@ -1,0 +1,11 @@
+<navigation-bar [class.slide]="isSlided()"
+                [switchState]="switchState"
+                (switchStateChange)="updateSwitchState($event)">
+</navigation-bar>
+<main>
+  <top-panel></top-panel>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+    <bd-toast-manager [notification]="notification"></bd-toast-manager>
+  </div>
+</main>

@@ -17,12 +17,14 @@ import {
 } from './forms';
 import { AuthGuard } from './guards';
 import { AuthenticationService } from './services';
+import { AuthRoutingModule } from './auth.routing';
 
 @NgModule({
   imports: [
     RouterModule,
     SharedModule,
-    BdFormsModule
+    BdFormsModule,
+    AuthRoutingModule
   ],
   declarations: [
     AuthWrapperComponent,

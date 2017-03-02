@@ -1,10 +1,8 @@
-<bd-auth-wrapper>
-  <div class="register-form-wrapper">
-    <h3 class="text-center">Sign Up</h3>
-    <bd-register-form [viewMode]="formViewMode"></bd-register-form>
-    <div class="links-wrapper text-center">
-      Already registered?
-      <a [routerLink]="['/login']">Login</a>
-    </div>
+<div class="register-form-wrapper">
+  <h3 class="text-center">Sign Up</h3>
+  <bd-register-form [viewMode]="formViewMode"></bd-register-form>
+  <div class="links-wrapper text-center">
+    Already registered?
+    <a [routerLink]="['/auth/login']">Login</a>
   </div>
-</bd-auth-wrapper>
+</div>

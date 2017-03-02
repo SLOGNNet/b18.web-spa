@@ -34,35 +34,35 @@ export class NavigationBarComponent {
     {
         label: 'Drivers',
         icon: 'icon',
-        link: './drivers/1'
+        link: '/drivers/1'
     },
     {
         label: 'Loads',
         icon: 'icon',
-        link: './loads',
+        link: '/loads',
         items: [{
             label: 'Loads',
-            link: './loads'
+            link: '/loads'
           }, {
           label: 'New Load',
-          link: './loads/0'
+          link: '/loads/0'
         }]
     }, {
         label: 'Companies',
         icon: 'icon',
-        link: './companies',
+        link: '/companies',
         items: [{
               label: 'Companies',
-              link: './companies'
+              link: '/companies'
           }, {
           label: 'New Company',
-          link: './companies/0'
+          link: '/companies/0'
         }]
     },
     {
         label: 'Equipment',
         icon: 'icon',
-        link: './equipment'
+        link: '/equipment'
     }];
 
     onSwitchStateChange(switchState: SwitchState) {
