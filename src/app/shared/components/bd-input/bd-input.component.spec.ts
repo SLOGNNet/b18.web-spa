@@ -9,9 +9,9 @@ import { fireMouseEvent, fireEvent } from '../../test/helpers/domHelper';
 
 
 
-describe('BdInputComponent', function () {
+describe('BdInputComponent', function() {
   let fixture: ComponentFixture<BdInputComponent>,
-  component: BdInputComponent;
+    component: BdInputComponent;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -27,14 +27,14 @@ describe('BdInputComponent', function () {
       ],
     });
     fixture = TestBed.createComponent(BdInputComponent);
-   component = fixture.componentInstance;
+    component = fixture.componentInstance;
     TestBed.compileComponents();
   }));
 
   // bd-input
   it('should have a component instance', () => {
-  expect(component).toBeTruthy();
-});
+    expect(component).toBeTruthy();
+  });
 
   it('should hide label when label text is empty', () => {
     let componentContainer = fixture.debugElement.query(By.css('.bd-input-wrapper'));
@@ -116,17 +116,17 @@ describe('BdInputComponent', function () {
   });
 
   it('should be expanded when label empty', () => {
-  const testFixture = TestBed.createComponent(TestBdInputComponent);
-  testFixture.detectChanges();
-  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
-  expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+    const testFixture = TestBed.createComponent(TestBdInputComponent);
+    testFixture.detectChanges();
+    let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+    expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
   });
 
   it('should be collapsed when label set', () => {
-  const testFixture = TestBed.createComponent(TestBdInputComponentWithLabel);
-  testFixture.detectChanges();
-  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
-  expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
+    const testFixture = TestBed.createComponent(TestBdInputComponentWithLabel);
+    testFixture.detectChanges();
+    let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+    expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
   });
 
   it('should be expanded when focused and label set', () => {
@@ -140,17 +140,17 @@ describe('BdInputComponent', function () {
   });
 
   it('should be collapsed on blur', () => {
-  const testFixture = TestBed.createComponent(TestBdInputComponentWithLabel);
-  testFixture.detectChanges();
-  let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
-  let inputEl = testFixture.debugElement.query(By.css('input'));
-  fireEvent(inputEl.nativeElement, 'focus');
-   testFixture.detectChanges();
-   expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
-   expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
-   fireEvent(inputEl.nativeElement, 'blur');
-   testFixture.detectChanges();
-   expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
+    const testFixture = TestBed.createComponent(TestBdInputComponentWithLabel);
+    testFixture.detectChanges();
+    let componentContainer = testFixture.debugElement.query(By.css('.bd-input-wrapper'));
+    let inputEl = testFixture.debugElement.query(By.css('input'));
+    fireEvent(inputEl.nativeElement, 'focus');
+    testFixture.detectChanges();
+    expect(componentContainer.nativeElement.classList.contains('bd-expanded-input')).toBeTruthy();
+    expect(componentContainer.nativeElement.classList.contains('bd-focused')).toBeTruthy();
+    fireEvent(inputEl.nativeElement, 'blur');
+    testFixture.detectChanges();
+    expect(componentContainer.nativeElement.classList.contains('bd-collapsed-input')).toBeTruthy();
   });
 
   it('should not be collapsed when text is not empty', () => {
@@ -175,7 +175,7 @@ describe('BdInputComponent', function () {
     let inputEl = testFixture.debugElement.query(By.css('.bd-input-infix')).query(By.css('input'));
     inputEl.nativeElement.value = 'added input value';
     inputEl.nativeElement.click();
-    inputEl.triggerEventHandler('input', {target: inputEl.nativeElement});
+    inputEl.triggerEventHandler('input', { target: inputEl.nativeElement });
     testFixture.detectChanges();
     expect(inputEl.nativeElement.value === 'added input value').toBeTruthy();
   });
@@ -183,7 +183,7 @@ describe('BdInputComponent', function () {
 });
 
 @Component({
- template: `
+  template: `
  <bd-input>
  </bd-input>`
 })
@@ -192,7 +192,7 @@ class TestBdInputComponent {
 }
 
 @Component({
- template: `
+  template: `
  <bd-input>
  <span class="suffix" bd-suffix>suffix</span>
  </bd-input>`
@@ -202,7 +202,7 @@ class TestBdInputComponentWithSuffix {
 }
 
 @Component({
- template: `
+  template: `
  <bd-input>
  <span class="prefix" bd-prefix>prefix</span>
  </bd-input>`
@@ -212,7 +212,7 @@ class TestBdInputComponentWithPrefix {
 }
 
 @Component({
- template: `
+  template: `
  <bd-textarea>
  </bd-textarea>`
 })
@@ -221,7 +221,7 @@ class TestBdTextArea {
 }
 
 @Component({
- template: `
+  template: `
  <bd-input
  [labelText]="'label text'"
  >
@@ -232,7 +232,7 @@ class TestBdInputComponentWithLabel {
 }
 
 @Component({
- template: `
+  template: `
  <bd-input
  [collapsibleInput]="false"
  [labelText]="'label text'"
