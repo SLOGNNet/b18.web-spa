@@ -32,7 +32,7 @@ class TestTypeaheadComponent {
   public onBlurEvent (activeItem) { };
 }
 
-fdescribe('Directive: Typeahead', () => {
+describe('Directive: Typeahead', () => {
   let fixture: ComponentFixture<TestTypeaheadComponent>;
   let component: TestTypeaheadComponent;
   let directive: TypeaheadDirective;
@@ -94,7 +94,7 @@ fdescribe('Directive: Typeahead', () => {
     });
   });
 
-  describe('onChange', () => {
+  xdescribe('onChange', () => {
 
     beforeEach(fakeAsync(() => {
       inputElement.value = 'Ala';
@@ -103,7 +103,7 @@ fdescribe('Directive: Typeahead', () => {
       tick(100);
     }));
 
-    fit('should render the typeahead-container child element', () => {
+    it('should render the typeahead-container child element', () => {
       let typeaheadContainer = fixture.debugElement.query(By.css('typeahead-container'));
       expect(typeaheadContainer).not.toBeNull();
     });
