@@ -61,6 +61,7 @@
     padding: 0;
     border: 0;
     margin: -1px 0 0;
+    font-size: inherit;
     border-radius: 0;
 
     div {
@@ -80,7 +81,7 @@
         display: flex;
         background: $white;
         color: $black;
-        font-size: 16px;
+        font-size: inherit;
         padding-left: 17px;
         min-height: $form-control-height;
         border-bottom: $border;
