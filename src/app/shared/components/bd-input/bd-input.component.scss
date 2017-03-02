@@ -63,7 +63,10 @@
     justify-content: flex-end;
 
     label {
+      overflow: hidden;
       margin: 0;
+      line-height: 1em;
+      max-height: 2em;
       font-weight: normal;
     }
   }
@@ -155,6 +158,7 @@
     .bd-label {
       text-align: right;
       text-transform: uppercase;
+      
       label {
         animation: labelFlight .1s 1;
       }

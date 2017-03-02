@@ -23,7 +23,10 @@
       margin-right: 32px;
 
       label {
+        overflow: hidden;
         font-size: 10px;
+        line-height: 1em;
+        max-height: 2em;
         font-weight: 300;
         margin-bottom: 0;
         text-transform: uppercase;
