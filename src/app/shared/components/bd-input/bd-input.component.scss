@@ -1,11 +1,11 @@
 @import '../../../../assets/styles/variables';
 @keyframes labelFlight {
   from {
-    left: 200px;
+    margin-right: -50px;
   }
 
   to {
-    left: 0;
+    margin-right: 0;
   }
 }
 @mixin flex-element {
@@ -155,7 +155,9 @@
     .bd-label {
       text-align: right;
       text-transform: uppercase;
-      animation: labelFlight .1s 1;
+      label {
+        animation: labelFlight .1s 1;
+      }
     }
   }
 
