@@ -1,12 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NoContentComponent } from './no-content';
-import { AuthGuard } from './auth';
-import { MainComponent } from './main/main.component';
-import { MAIN_ROUTES } from './main/main.routing';
 
 export const ROUTES: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '', component: MainComponent, children: MAIN_ROUTES, canActivate: [AuthGuard] },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: '', loadChildren: './app/main/main.module#MainModule' },
+  { path: 'auth', loadChildren: './app/auth/auth.module#AuthModule' },
   { path: '**', component: NoContentComponent }
 ];

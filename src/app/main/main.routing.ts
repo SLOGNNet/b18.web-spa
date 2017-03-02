@@ -1,14 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
-
+import { MainComponent } from './main.component';
 import { DriversComponent } from '../drivers';
 import { MessagesComponent } from '../drivers/messages';
 import { HomeComponent } from '../home';
 import { LoadsComponent, LoadDetailComponent } from '../loads';
 import { CompaniesComponent, CompanyDetailComponent } from '../companies';
 import { EquipmentComponent } from '../equipment';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth';
+import { NoContentComponent } from '../no-content';
 
-export const MAIN_ROUTES: Routes = [
+const routes: Routes = [{
+  path: '',
+  component: MainComponent, canActivate: [AuthGuard],
+  children: [
   { path: '', redirectTo: 'loads', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'drivers/:id', component: DriversComponent },
@@ -25,5 +30,13 @@ export const MAIN_ROUTES: Routes = [
       component: CompanyDetailComponent
     }]
   },
-  { path: 'equipment', component: EquipmentComponent }
-];
+  { path: 'equipment', component: EquipmentComponent },
+  { path: '**', component: NoContentComponent }
+  ]
+}];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class MainRoutingModule { }
