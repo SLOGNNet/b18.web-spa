@@ -1,3 +1,5 @@
+import { isEqual } from 'lodash';
+
 beforeEach(() => {
   jasmine.addMatchers({
     toHaveCssClass: function(util, customEqualityTests) {
@@ -11,6 +13,16 @@ beforeEach(() => {
           };
         };
       }
+    },
+
+    toDeepEqual: function(util, customEqualityTesters) {
+       return {
+         compare: function(actual, expected) {
+           return {
+             pass: isEqual(actual, expected)
+           };
+         }
+       };
     }
   });
 });

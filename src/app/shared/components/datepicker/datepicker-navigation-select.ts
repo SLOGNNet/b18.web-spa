@@ -10,7 +10,7 @@ import { NgbCalendar } from './ngb-calendar';
   template:
   `
   <div class="datepicker-navigation-select">
-    <div class="dropdown-container"
+    <div class="dropdown-container months-container"
     [class.opened]="monthsListOpened">
     <bd-dropdown
         defaultTitleText='Select month'
@@ -32,7 +32,7 @@ import { NgbCalendar } from './ngb-calendar';
     +
     `
 
-      <div class="dropdown-container"
+      <div class="dropdown-container years-container"
       [class.opened]="yearsListOpened">
       <bd-dropdown
           [defaultTitleText]="'Select Year'"

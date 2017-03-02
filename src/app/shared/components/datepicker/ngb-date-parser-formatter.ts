@@ -25,7 +25,7 @@ export abstract class NgbDateParserFormatter {
 export class NgbDateISOParserFormatter extends NgbDateParserFormatter {
   parse(value: string, format: string): NgbDateStruct {
     let result = null;
-    const date = moment(value, format, false);
+    const date = moment(value, format, true);
     return date.isValid() ? {year: date.year(), month: date.month() + 1, day: date.date()} : null;
   }
 
