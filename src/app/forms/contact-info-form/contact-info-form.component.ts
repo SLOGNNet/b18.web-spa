@@ -27,7 +27,7 @@ export class ContactInfoForm extends BaseForm {
   initForm() {
     this.contactInfoForm.addControl(
       'info',
-      this._formBuilder.control(this.contactInfo.value,[])
+      this._formBuilder.control(this.contactInfo.value, [])
     );
   }
 }
