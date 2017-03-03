@@ -25,13 +25,13 @@
   display: flex;
   overflow: hidden;
   height: 100%;
-  padding: 0 17px;
+  padding: 0 $default-margin;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
   .text {
     color: $black;
-    font-size: 14px;
+    font-size: $small-font-size;
   }
 }
