@@ -1,4 +1,7 @@
 @import '../../../assets/styles/variables';
+@import '../../../assets/styles/styles';
+@import '../../../assets/styles/mixins';
+
 
 :host {
   background: $white;
@@ -12,5 +15,70 @@
     .card-section {
       border-bottom-color: $blue;
     }
+  }
+}
+
+.card-section {
+  position: relative;
+  display: flex;
+  height: $card-height;
+  padding: 10px $default-margin;
+  background: inherit;
+  font-size: $tiny-font-size;
+  line-height: 18px;
+  cursor: pointer;
+  border-bottom: $border;
+
+  .left {
+    width: 30%;
+  }
+
+  .middle {
+    display: flex;
+    width: 30%;
+    padding-left: $default-margin;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .right {
+    position: relative;
+    width: 40%;
+    padding-left: $default-margin;
+
+    .tr-city {
+      display: flex;
+
+      .tr-city-circle {
+        width: 10px;
+        height: 10px;
+        margin: 3px 5px 0 0;
+        border-radius: $circle-radius;
+      }
+
+      .tr-city-name {
+        @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
+        width: 80%;
+        text-align: left;
+      }
+    }
+  }
+
+  .status-text {
+    position: absolute;
+    right: 35px;
+    line-height: 1em;
+    bottom: 13px;
+    justify-content: center;
+  }
+
+  .status {
+    position: absolute;
+    right: 13px;
+    width: 12px;
+    height: 12px;
+    background: $black;
+    bottom: 13px;
+    border-radius: $form-control-height;
   }
 }
