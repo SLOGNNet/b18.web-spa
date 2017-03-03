@@ -1,0 +1,14 @@
+<div *ngIf="selectedItem">
+  <form-navigation
+    sticky
+    [title]="'Driver'"
+    [anchors]="anchors">
+  </form-navigation>
+  <driver-form
+    [scrollable]="true"
+    [driver]="selectedItem"
+    [viewMode]="viewMode"
+    (save)="onItemSave($event)"
+    (cancel)="onItemCancel()">
+  </driver-form>
+</div>

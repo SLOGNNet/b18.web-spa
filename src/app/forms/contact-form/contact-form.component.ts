@@ -23,7 +23,7 @@ export class ContactForm extends BaseForm {
   private fields = [
     { name: 'firstName', validators: [Validators.required] },
     { name: 'lastName', validators: [] },
-    { name: 'personalEmail', validators: [] },
+    { name: 'email', validators: [] },
     { name: 'position', validators: [] },
     { name: 'addressId', validators: [] },
   ];

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Driver } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
@@ -9,26 +9,31 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardComponent {
-    @Input() driver: Driver;
-    public statusText: boolean = false;
+  @Input() driver: Driver;
+  @Output() select: EventEmitter<any> = new EventEmitter();
+  public statusText: boolean = false;
 
-    get driverStatusColor(): string {
-      return Driver.getStatusColor(this.driver.status);
-    }
+  get driverStatusColor(): string {
+    return Driver.getStatusColor(this.driver.status);
+  }
 
-    get driverTypeText(): string {
-      return Driver.getTypeText(this.driver.type);
-    }
+  get driverTypeText(): string {
+    return Driver.getTypeText(this.driver.type);
+  }
 
-    get driverStatusText(): string {
-      return Driver.getStatusText(this.driver.status);
-    }
+  get driverStatusText(): string {
+    return Driver.getStatusText(this.driver.status);
+  }
 
-    onEnter() {
-      this.statusText = true;
-    }
+  onClick() {
+    this.select.emit(this.driver);
+  }
 
-    onLeave() {
-      this.statusText = false;
-    }
+  onEnter() {
+    this.statusText = true;
+  }
+
+  onLeave() {
+    this.statusText = false;
+  }
 }

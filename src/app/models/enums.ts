@@ -142,3 +142,11 @@ export enum StopStatuses {
   Completed = 3,
   Problem = 4
 };
+
+// license class enums
+export enum LicenseClassTypes {
+  None = 0,
+  ClassA = 1,
+  ClassB = 2,
+  ClassC = 3
+};
