@@ -9,7 +9,7 @@ $icon-size: 35px;
   height: $icon-size - 5px;
   background: $white;
   font-size: $icon-size;
-  border-radius: 50%;
+  border-radius: $circle-radius;
   align-items: center;
   justify-content: center;
 }

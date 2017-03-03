@@ -3,6 +3,6 @@
   [type]="type"
   class="button">
   <span *ngIf="prefixLabel.length" class="prefix-label text">{{prefixLabel}}</span>
-  <span class="icon"><img [src]="iconUrl" alt="Button"></span>
+  <span class="btn-icon {{iconClass}}"></span>
   <span *ngIf="suffixLabel.length" class="suffix-label text">{{suffixLabel}}</span>
 </button>
