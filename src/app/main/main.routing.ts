@@ -8,6 +8,7 @@ import { EquipmentComponent } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth';
+import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
 
 const routes: Routes = [{
@@ -32,7 +33,8 @@ const routes: Routes = [{
     {
       path: 'companies', component: CompaniesComponent, children: [{
         path: ':id',
-        component: CompanyDetailComponent
+      component: CompanyDetailComponent,
+      canDeactivate: [CanDeactivateGuard]
       }]
     },
     { path: 'equipment', component: EquipmentComponent },
