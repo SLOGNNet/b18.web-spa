@@ -17,8 +17,8 @@
 
 .load-stop-card-section {
   position: relative;
-  height: 100px;
-  padding: 17px;
+  height: $card-height;
+  padding: 13px;
   background: inherit;
   font-size: $tiny-font-size;
   cursor: pointer;
@@ -87,6 +87,7 @@
       align-items: center;
       border-radius: 3px;
       justify-content: center;
+      margin-top: -2px;
     }
 
     .current-trip {
