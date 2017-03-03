@@ -23,14 +23,14 @@
   }
 
   .weekday {
-    height: 50px;
+    height: $form-control-height;
     background: $white;
     text-align: center;
   }
 
   .week-row {
     td {
-      width: 50px;
+      width: $form-control-height;
       border: $border;
 
       &:first-child {
@@ -48,7 +48,7 @@
   }
 
   .day {
-    height: 50px;
+    height: $form-control-height;
     padding: 0;
     cursor: pointer;
 

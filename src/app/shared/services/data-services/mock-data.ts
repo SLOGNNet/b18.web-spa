@@ -2,7 +2,7 @@ import {
   Load, Document, Company, Address, CompanyStatuses, CompanyTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
-  FreightType, Facility, Trip,
+  FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes
 } from './models';
@@ -161,16 +161,36 @@ class MockData {
   },
   ];
 
+  public contactInfo: Array<ContactInfo> = [
+    {
+      label: 'primaryPhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'alternativePhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'fax',
+      value: '',
+      type: ContactInfoType.Fax
+    },
+    {
+      label: 'email',
+      value: 'CHANJAS@chrobinson.com',
+      type: ContactInfoType.Email
+    }
+  ];
+
   public contacts: Array<Contact> = [{
     id: 1,
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
-    email: 'CHANJAS@chrobinson.com',
+    contactInfo: this.contactInfo.slice(),
     position: 'Sales manager',
-    primaryPhone: '',
-    alternativePhone: '',
-    fax: '',
     address: this.addresses[0]
   },
   {
@@ -178,11 +198,8 @@ class MockData {
     firstName: 'Scott',
     middleName: 'Chang',
     lastName: 'Spearow',
-    email: 'sspearow@TQL.com',
     position: 'Sales manager',
-    primaryPhone: '',
-    alternativePhone: '',
-    fax: '',
+    contactInfo: this.contactInfo.slice(),
     address: this.addresses[1]
   },
   {
@@ -190,11 +207,8 @@ class MockData {
     firstName: 'Emma',
     middleName: 'Chang',
     lastName: 'Watson',
-    email: 'Emma@TQL.com',
     position: 'Sales manager',
-    primaryPhone: '',
-    alternativePhone: '',
-    fax: '',
+    contactInfo: this.contactInfo.slice(),
     address: this.addresses[2]
   },
   {
@@ -202,11 +216,8 @@ class MockData {
     firstName: 'Johnny',
     middleName: 'Chang',
     lastName: 'Depp',
-    email: 'Johnny@TQL.com',
     position: 'Sales manager',
-    primaryPhone: '',
-    alternativePhone: '',
-    fax: '',
+    contactInfo: this.contactInfo.slice(),
     address: this.addresses[3]
   }
   ];
@@ -358,12 +369,9 @@ class MockData {
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
-    email: 'CHANJAS@chrobinson.com',
     position: 'Sales manager',
-    primaryPhone: '3434212343',
-    alternativePhone: '',
-    fax: '',
     address: this.addresses[0],
+    contactInfo: this.contactInfo.slice(),
     dateOfBirth: null,
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
@@ -383,11 +391,8 @@ class MockData {
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
-    email: 'CHANJAS@chrobinson.com',
+    contactInfo: this.contactInfo.slice(),
     position: 'Sales manager',
-    primaryPhone: '32323423',
-    alternativePhone: '',
-    fax: '',
     address: this.addresses[1],
     dateOfBirth: null,
     ssn: '123144241241777',

@@ -11,5 +11,5 @@ export class BdAddRemoveButtonComponent {
   @Input() prefixLabel: string = '';
   @Input() suffixLabel: string = '';
 
-  protected iconUrl: string = '';
+  protected iconClass: string = '';
 }

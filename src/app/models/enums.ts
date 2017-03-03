@@ -143,7 +143,13 @@ export enum StopStatuses {
   Problem = 4
 };
 
-// license class enums
+export enum ContactInfoType {
+  None = 0,
+  Phone = 1,
+  Fax = 2,
+  Email = 3
+};
+
 export enum LicenseClassTypes {
   None = 0,
   ClassA = 1,

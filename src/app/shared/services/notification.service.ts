@@ -51,11 +51,8 @@ export class NotificationService {
         firstName: 'Jason',
         lastName: 'Chang',
         middleName: 'Chang',
-        email: 'CHANJAS@chrobinson.com',
         position: 'sales',
-        primaryPhone: '',
-        alternativePhone: '',
-        fax: '',
+        contactInfo: [],
         address: null
       },
       taskType: TaskType.New,

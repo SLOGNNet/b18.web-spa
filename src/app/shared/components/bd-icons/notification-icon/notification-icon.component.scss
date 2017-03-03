@@ -6,7 +6,7 @@
   height: 35px;
   color: $white;
   text-align: center;
-  border-radius: 3px;
+  border-radius: $default-border-radius;
 
   .icon-task-succes-icon {
     color: inherit;
