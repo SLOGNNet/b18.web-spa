@@ -1,1 +1,71 @@
-test
+<div class="load-view-mode-section">
+    <div class="stop-info-container">
+        <div class="facility-info">
+            <div class="title">Tailor Freshh Foods</div>
+            <div class="info-item">
+                <div class="item-icon icon-location"></div>
+                <div class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</div>
+            </div>
+            <div class="info-item">
+                <div class="item-icon icon-phone"></div>
+                <div class="item-text facility-phone-number">937-99-92</div>
+            </div>
+            <div class="notes">Call after 12:00</div>
+        </div>
+        <div class="date-time-info">
+            <div class="appointment-type">
+                <div class="type-container">
+                    <span class="circle"></span>
+                    <span class="type">FCFS</span>
+                </div>
+
+                <div class="btn-container">
+                    <span class="text">expand</span>
+                    <span class="icon-down-arrow"></span>
+                </div>
+            </div>
+            <div class="date-range-container">
+                <div class="date first-date">
+                    <div class="date-value">09/09</div>
+                    <div class="time-value">12:15</div>
+                </div>
+                <div class="date last-date">
+                    <div class="date-value">09/09</div>
+                    <div class="time-value">12:15</div>
+                </div>
+            </div>
+            <div class="business-hours-container">
+                <div class="hours-string">
+                    <span class="days">Mo-Fr:</span>
+                    <span class="hours">08:00-17:00</span>
+                </div>
+                <div class="hours-string">
+                    <span class="days">Sa:</span>
+                    <span class="hours">12:00-16:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="trip-info-container">
+        <div class="info-panel">
+            <span class="trip-number">TR3453563 :</span>
+            <span class="driver-name">Nick Smith</span>
+        </div>
+        <div class="buttons-panel">
+            <button class="icon-fax"></button>
+            <button class="icon-call"></button>
+            
+            <span [bd-popover]="phonePopover" [popoverOnHover]="true">
+            <button class="icon-message"></button>
+                    <bd-popover-content
+                       #phonePopover
+                       placement="auto"
+                       [width]="100"
+                       [horizontalOffset]="-10"
+                       [closeOnClickOutside]="closeOnClickOutside">
+                         <phone-popover [phoneNumber]="123123123"></phone-popover>
+                </bd-popover-content>
+            </span>
+        </div>
+    </div>
+</div>

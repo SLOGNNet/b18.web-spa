@@ -1,2 +1,122 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
+
+.load-view-mode-section {
+     display: flex;
+     font-size: $tiny-font-size;
+     flex-direction: column;
+     border: $border;
+     border-left: 4px solid $pickup-view-mode-color;
+     border-radius: $default-border-radius;
+     background: $white;
+
+     .stop-info-container {
+         display: flex;
+         .facility-info {
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;;
+            width: 50%;
+            padding: 13px;
+            color: $dark-grey;
+             .title { 
+                 color: $black;
+                 font-weight: bold;
+             }
+             .info-item {
+                 display: flex;
+                 .item-icon {
+                     margin-right: 5px;
+                 }
+                 .item-text {
+                     line-height: $tiny-font-size;
+                 }
+             }
+             .notes {
+                overflow: hidden;
+                color: $black;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+             }
+         }
+
+         .date-time-info {
+            width: 50%;
+            padding: 13px;
+            border-left: 1px dashed $grey;
+             .appointment-type {
+                 display: flex;
+                 flex-direction: row;
+                 justify-content: space-between;
+                 .type-container {
+                     display: flex;
+                     align-items: center;
+                    .circle {
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        margin-right: 5px;
+                        background: $blue;
+                    }
+
+                    .type {
+                        line-height: $tiny-font-size;
+                    }
+                 }
+                 .btn-container {
+                     color: $blue;
+                     .text {
+                         color: transparent;
+                     }
+
+                     &:hover {
+                         cursor: pointer;
+                         .text {
+                             color: $blue;
+                             transition: color .2s;
+                         }
+                     } 
+                 }
+             }
+             .date-range-container {
+                 display: flex;
+                 flex-direction: row;
+                 justify-content: space-between;
+             }
+             .business-hours-container {
+                 color: $dark-grey;
+                 .hours-string {
+                     display: flex;
+                     justify-content: space-between;
+                 }
+             }
+         }
+     }
+     .trip-info-container {
+         display: flex;
+         padding: 13px;
+         border-top: $border;
+         flex-direction: row;
+         justify-content: space-between;
+         .info-panel {
+            .trip-number {
+                align-self: flex-start;
+                color: $black;
+            }
+         }   
+         .buttons-panel {
+             display: inline;
+             align-self: flex-end;
+             color: $dark-grey;
+             button {
+                 background: transparent;
+                 border: 0;
+
+                 &:focus {
+                     outline: 0;
+                 }
+             }
+         }
+     }
+}
