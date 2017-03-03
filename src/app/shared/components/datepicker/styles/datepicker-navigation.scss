@@ -6,22 +6,28 @@
 
 .header {
   width: 100%;
-  height: 50px;
+  height: $form-control-height;
   background: $white;
-  padding-left: 17px;
-  padding-right: 17px;
+  padding-left: $default-margin;
+  padding-right: $default-margin;
   border-bottom: $border;
 
   .arrow-left {
-    height: 30px;
+    height: 20px;
     background: url('../../../../../assets/img/arrow-left.svg') no-repeat;
-    margin-left: 17px;
+    margin-left: $default-margin;
   }
 
   .arrow-right {
-    height: 30px;
+    height: 20px;
     background: url('../../../../../assets/img/arrow-right.svg') no-repeat;
     float: right;
-    margin-right: 17px;
+    margin-right: $default-margin;
    }
+
+  button {
+    &:focus {
+      outline: 0;
+    }
+  }
 }

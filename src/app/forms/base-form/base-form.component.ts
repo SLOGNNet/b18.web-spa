@@ -8,6 +8,7 @@ export class BaseForm {
     host: {
       '[class.bd-view-mode]': '!isEditMode',
       '[class.bd-edit-mode]': 'isEditMode',
+      '[class.bd-form]': 'true',
       '(control-blur)': 'onFormControlBlur($event)'
     },
     changeDetection: ChangeDetectionStrategy.OnPush

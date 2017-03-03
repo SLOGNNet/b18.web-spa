@@ -8,14 +8,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'CONTACT'" >
-		<bd-input class="bd-form-control" formControlName="primaryPhone" [labelText]="'Primary Phone'">
-		</bd-input>
-		<bd-input class="bd-form-control" formControlName="alternativePhone" [labelText]="'Alt Phone'">
-		</bd-input>
-		<bd-input class="bd-form-control" formControlName="fax" [labelText]="'Fax'">
-		</bd-input>
-		<bd-input class="bd-form-control" formControlName="email" [labelText]="'Email'">
-		</bd-input>
+    <contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'ADDRESS'" >

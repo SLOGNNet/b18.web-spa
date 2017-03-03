@@ -71,20 +71,18 @@ export class DriverForm extends BaseForm {
       firstName: [this.driver.firstName],
       lastName: [this.driver.lastName],
       dateOfBirth: [this.driver.dateOfBirth],
-      primaryPhone: [this.driver.primaryPhone],
-      alternativePhone: [this.driver.alternativePhone],
       paymentOption: [this.driver.paymentOption],
       stateIssued: [this.driver.license.stateIssued],
       class: [this.driver.license.class],
       number: [this.driver.license.number],
       expiration: [this.driver.license.expiration],
       dateIssued: [this.driver.license.dateIssued],
-      // endorsments: [this.driver.license.endorsments],
       fax: [this.driver.fax],
       email: [this.driver.email],
       ssn: [this.driver.ssn],
       rate: [this.driver.rate],
-      address: this.formBuilder.group({ })
+      address: this.formBuilder.group({ }),
+      contactInfo: this.formBuilder.array([])
     });
   }
 }
