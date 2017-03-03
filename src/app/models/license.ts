@@ -1,8 +1,8 @@
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
-import { LicenceClassTypes } from './enums';
+import { LicenseClassTypes } from './enums';
 
 @JsonObject
-export class Licence {
+export class License {
   @JsonMember
   id: number = 0;
   @JsonMember
@@ -14,14 +14,14 @@ export class Licence {
   @JsonMember
   stateIssued: string;
   @JsonMember
-  class: LicenceClassTypes;
+  class: LicenseClassTypes;
   @JsonMember
   endorsments: string = 'MN';
   @JsonMember
   restrictions: string = 'MN';
 
-  static create(): Licence {
-    const result = new Licence();
+  static create(): License {
+    const result = new License();
     return result;
   }
 }

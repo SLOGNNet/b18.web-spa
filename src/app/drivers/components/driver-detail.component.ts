@@ -15,7 +15,7 @@ import { DriverForm } from '../../forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
-  @ViewChild(DriverForm) companyFormComponent: DriverForm;
+  @ViewChild(DriverForm) driverFormComponent: DriverForm;
 
   private anchors = [{
     id: 'driver-personal-information',
@@ -30,8 +30,8 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     id: 'driver-payment',
     title: 'Payment'
   }, {
-    id: 'driver-licence',
-    title: 'Licence'
+    id: 'driver-license',
+    title: 'License'
   }, {
     id: '',
     title: 'Link'
@@ -70,6 +70,6 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   }
 
   isDetailsChanged() {
-    return this.companyFormComponent.driverForm.dirty;
+    return this.driverFormComponent.driverForm.dirty;
   }
 }

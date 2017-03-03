@@ -25,7 +25,7 @@ export class DriverForm extends BaseForm {
 
   // add endorsments and restrictions mock data and service to get them
   states: Array<any>;
-  licenceSlassed: Array<any>;
+  licenseSlassed: Array<any>;
 
   constructor(private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
@@ -52,7 +52,6 @@ export class DriverForm extends BaseForm {
   }
 
   onCancel() {
-    this.driverForm.reset();
     this.cancel.emit();
   }
 

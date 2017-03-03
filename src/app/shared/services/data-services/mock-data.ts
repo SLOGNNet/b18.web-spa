@@ -4,7 +4,7 @@ import {
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
   FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, Licence, LicenceClassTypes
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes
 } from './models';
 class MockData {
   public addresses: Array<Address> = [{
@@ -333,13 +333,13 @@ class MockData {
     equipmentNotification: this.equipmentNotification[0]
   }];
 
-  public lecences: Array<Licence> = [{
+  public licenses: Array<License> = [{
     id: 0,
     number: '21424',
     expiration: new Date(),
     dateIssued: new Date(),
     stateIssued: 'AD',
-    class: LicenceClassTypes.ClassB,
+    class: LicenseClassTypes.ClassB,
     endorsments: 'X',
     restrictions: 'X',
   }, {
@@ -348,7 +348,7 @@ class MockData {
     expiration: new Date(),
     dateIssued: new Date(),
     stateIssued: 'AD',
-    class: LicenceClassTypes.ClassA,
+    class: LicenseClassTypes.ClassA,
     endorsments: 'S',
     restrictions: 'F',
   }];
@@ -377,7 +377,7 @@ class MockData {
     notes: 'notes',
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento',
-    license: this.lecences[1]
+    license: this.licenses[1]
   }, {
     id: 2,
     firstName: 'Jason',
@@ -402,7 +402,7 @@ class MockData {
     notes: 'notes',
     lastTripNumber: 349777,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    license: this.lecences[0]
+    license: this.licenses[0]
   }];
 
   public trips: Array<Trip> = [{

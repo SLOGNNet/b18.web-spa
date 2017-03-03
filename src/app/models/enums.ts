@@ -143,8 +143,8 @@ export enum StopStatuses {
   Problem = 4
 };
 
-// licence class enums
-export enum LicenceClassTypes {
+// license class enums
+export enum LicenseClassTypes {
   None = 0,
   ClassA = 1,
   ClassB = 2,

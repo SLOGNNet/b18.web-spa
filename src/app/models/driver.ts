@@ -1,6 +1,6 @@
 import { Equipment } from './equipment';
 import { Contact } from './contact';
-import { Licence } from './licence';
+import { License } from './license';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
@@ -68,7 +68,7 @@ export class Driver extends Contact {
   @JsonMember
   lastAddress: string = '';
   @JsonMember
-  license: Licence;
+  license: License;
 
 
   static create(): Driver {
