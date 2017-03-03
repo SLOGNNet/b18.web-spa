@@ -1,4 +1,4 @@
-import { Address } from './index';
+import { ContactInfo } from './contact-info';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 @JsonObject
@@ -15,6 +15,8 @@ export class Contact {
   position: string = 'Driver';
   @JsonMember
   addressId: number = 0;
+  @JsonMember({ elements: ContactInfo })
+  contactInfo: Array<ContactInfo>;
 
   static create(): Contact{
     const result = new Contact();
@@ -22,6 +24,6 @@ export class Contact {
   }
 
   constructor() {
-
+    this.contactInfo = new Array<ContactInfo>();
   }
 };

@@ -1,0 +1,5 @@
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index">
+  <div class='bd-form-list-item'>
+   <contact-form [group]='data.group' [contact]='data.item' [addresses]="contactsInfo" [viewMode]="viewMode"></contact-form>
+ </div>
+</template>
