@@ -1,11 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { Company } from '../../models';
 import { BaseDetailComponent } from '../../base';
-import {  ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CompanyActions } from '../../actions';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../../store';
+import { Location } from '@angular/common';
+import { CompanyForm } from '../../forms';
 
 @Component({
   selector: 'company-detail',
@@ -13,6 +15,7 @@ import { IAppState } from '../../store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
+  @ViewChild(CompanyForm) companyFormComponent: CompanyForm;
   private anchors = [{
     id: 'company-basic-information',
     title: 'Basic information'
@@ -54,10 +57,15 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     title: 'Link'
   }];
 
+
+  isDetailsChanged() {
+    return this.companyFormComponent.companyForm.dirty;
+  }
   constructor(
     companyActions: CompanyActions,
     route: ActivatedRoute,
+    location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), route);
+      super(companyActions, ngRedux.select(state => state.companies.selected), route, location);
   }
 }

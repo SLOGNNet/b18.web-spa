@@ -30,6 +30,9 @@ import {
   StopActions
 } from './actions';
 
+import {
+  CanDeactivateGuard
+} from './guards';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -69,7 +72,8 @@ type StoreType = {
     CompanyActions,
     EquipmentActions,
     DriverActions,
-    StopActions
+    StopActions,
+    CanDeactivateGuard
   ]
 })
 export class AppModule {

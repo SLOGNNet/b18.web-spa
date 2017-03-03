@@ -5,15 +5,18 @@ import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import {  ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { CanComponentDeactivate } from '../../guards';
+import { Location } from '@angular/common';
 
-export abstract class BaseDetailComponent<T> {
+export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
   protected isNew = false;
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
 
   constructor(private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private location: Location) {
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });
@@ -21,6 +24,18 @@ export abstract class BaseDetailComponent<T> {
       this.onQueryParams(params);
     });
   }
+
+  // CanComponentDeactivate inteface
+  public canDeactivate() {
+    if (this.isDetailsChanged()) {
+      return confirm('There are unsaved changes that will discard once you leave?');
+    }
+    else {
+      return true;
+    }
+  }
+
+  protected abstract isDetailsChanged();
 
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);
@@ -46,11 +61,12 @@ export abstract class BaseDetailComponent<T> {
   }
 
   private onItemCancel() {
-    if (this.isNew) {
-      this.isNew = false;
-      this.selectedItem = null;
-    } else {
-      this.selectedItem = cloneDeep(this.selectedItem);
-    }
+    this.location.back();
+    // if (this.isNew) {
+    //   this.isNew = false;
+    //   this.selectedItem = null;
+    // } else {
+    //   this.selectedItem = cloneDeep(this.selectedItem);
+    // }
   }
 }
