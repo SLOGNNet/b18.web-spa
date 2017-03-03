@@ -186,13 +186,6 @@ describe('LoadStopCardComponent', () => {
     expect(element.nativeElement.textContent).toContain('10/10');
   });
 
-  it('should display load status text', () => {
-    component.load = testLoad;
-    fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.status'));
-    expect(element.nativeElement.textContent).toContain(Load.getStatusText(LoadStatuses.Completed));
-  });
-
   it('should display load status color', () => {
     component.load = testLoad;
     fixture.detectChanges();
