@@ -3,6 +3,7 @@
 .filter-item-container {
   display: flex;
   height: $form-control-height;
+  font-size: $small-font-size;
   padding-right: $default-margin;
   border-bottom: $border;
   align-items: center;

@@ -17,17 +17,17 @@
   align-items: center;
 
   .suffix-label {
-    margin: auto 11px auto 6px;
+    margin: auto $default-margin auto 6px;
   }
 
   .btn-icon {
     font-size: $small-font-size;
-    margin-right: 11px;
+    margin-right: $default-margin;
     flex: 1;
   }
 
   .prefix-label {
-    margin-left: 11px;
+    margin-left: $default-margin;
   }
 
   .text {
