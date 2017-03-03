@@ -84,6 +84,7 @@
       @include flex-element;
       display: flex;
       height: $form-control-height;
+      font-size: $small-font-size;
       align-self: flex-start;
       align-items: center;
       justify-content: flex-end;
@@ -110,6 +111,7 @@
 
     .bd-input-suffix {
       @include flex-element;
+      font-size: $small-font-size;
       flex-grow: 0;
       margin-left: $default-margin;
     }
