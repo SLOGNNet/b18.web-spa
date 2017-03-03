@@ -11,6 +11,7 @@ import { BaseForm } from '../base-form';
   styleUrls: ['./address-form.component.scss']
 }, BaseForm.metaData))
 export class AddressForm extends BaseForm {
+  @Input() isNameFieldVisible: boolean = true;
   @Input()
   public address: Address;
   @Input('group')
