@@ -1,19 +1,20 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
 
 .expandable-arrow-wrapper {
   display: flex;
   width: 100%;
-  height: 50px;
+  height: $form-control-height;
   background: $light-blue;
   border-bottom: $border;
   align-items: center;
   justify-content: center;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: $default-border-radius;
+  border-bottom-right-radius: $default-border-radius;
 
   &.open {
     margin-top: 20px;
-    border-radius: 3px;
+    border-radius: $default-border-radius;
   }
 
   &:hover {
@@ -22,6 +23,6 @@
 
   .expandable-arrow {
     color: $grey;
-    font-size: 28px;
+    font-size: 24px;
   }
 }
