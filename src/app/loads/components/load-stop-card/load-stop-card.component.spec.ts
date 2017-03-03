@@ -239,7 +239,7 @@ describe('LoadStopCardComponent', () => {
   it('should handle click', () => {
     component.load = testLoad;
     spyOn(component, 'onClick');
-    let element = fixture.debugElement.query(By.css('.load-stop-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     element.nativeElement.click();
     expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
   });

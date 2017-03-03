@@ -5,7 +5,10 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
 @Component({
   selector: 'driver-card',
   templateUrl: './driver-card.component.html',
-  styleUrls: ['./driver-card.component.scss'],
+  styleUrls: [
+    './driver-card.component.scss',
+    '../../../base/base-card/base-card.component.scss'
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardComponent {

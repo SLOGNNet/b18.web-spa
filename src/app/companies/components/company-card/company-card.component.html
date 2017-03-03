@@ -1,5 +1,5 @@
 <div
-class="company-card-section"
+class="card-section"
 (mouseenter)="onEnter()"
 (mouseleave)="onLeave()"
 (click)="onClick()">
@@ -20,10 +20,10 @@ class="company-card-section"
       <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
       <span class="load-name ellipsis">LD{{load.systemLoadNo}}</span>
     </div>
-      <span *ngIf="statusText" [style.color]="companyStatusColor" class="status-text">{{companyStatusText}}</span>
-      <span
-      [style.background]="companyStatusColor"
-      class="status">
-      </span>
   </div>
+  <span *ngIf="statusText" [style.color]="companyStatusColor" class="status-text">{{companyStatusText}}</span>
+  <span
+  [style.background]="companyStatusColor"
+  class="status">
+  </span>
 </div>

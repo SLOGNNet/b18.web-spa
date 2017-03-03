@@ -1,5 +1,5 @@
 <div
-class="driver-card-section"
+class="card-section"
 (mouseover)="onEnter()"
 (mouseleave)="onLeave()"
 (click)="onClick()">
@@ -29,10 +29,10 @@ class="driver-card-section"
       <span style="background: red" class="tr-city-circle"></span>
       <span class="tr-city-name">{{driver.lastAddress}}</span>
     </div>
-    <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
-      <span
-      [style.background]="driverStatusColor"
-      class="status">
-    </span>
   </div>
+  <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
+    <span
+    [style.background]="driverStatusColor"
+    class="status">
+  </span>
 </div>

@@ -1,5 +1,5 @@
 <div
-class="equipment-card-section"
+class="card-section"
 (mouseover)="onEnter()"
 (mouseleave)="onLeave()">
   <div class="left">
@@ -27,10 +27,10 @@ class="equipment-card-section"
         <span style="background: red" class="tr-city-circle"></span>
         <span class="tr-city-name">{{equipment.lastAddress}}</span>
   </div>
-      <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
-      <span
-      [style.background]="equipmentStatusColor"
-      class="status">
-      </span>
   </div>
+  <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
+  <span
+  [style.background]="equipmentStatusColor"
+  class="status">
+  </span>
 </div>

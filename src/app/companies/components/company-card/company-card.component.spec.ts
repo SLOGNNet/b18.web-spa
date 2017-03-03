@@ -170,7 +170,7 @@ describe('CompanyCardComponent', () => {
   it('should handle click', () => {
     component.company = testCompany;
     spyOn(component, 'onClick');
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     element.nativeElement.click();
     expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
   });
@@ -178,7 +178,7 @@ describe('CompanyCardComponent', () => {
   it('should handle mouse leave', () => {
     component.company = testCompany;
     spyOn(component, 'onLeave').and.callThrough();
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     fireMouseEvent(element.nativeElement, 'mouseleave');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
@@ -190,7 +190,7 @@ describe('CompanyCardComponent', () => {
   it('should handle mouse enter', () => {
     component.company = testCompany;
     spyOn(component, 'onEnter').and.callThrough();
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     fireMouseEvent(element.nativeElement, 'mouseenter');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));

@@ -5,7 +5,10 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
 @Component({
   selector: 'equipment-card',
   templateUrl: './equipment-card.component.html',
-  styleUrls: ['./equipment-card.component.scss'],
+  styleUrls: [
+    './equipment-card.component.scss',
+    '../../../base/base-card/base-card.component.scss'
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentCardComponent {

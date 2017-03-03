@@ -5,7 +5,10 @@ import { Load, LoadStatuses } from '../../../models';
 @Component({
   selector: 'company-card',
   templateUrl: './company-card.component.html',
-  styleUrls: ['./company-card.component.scss']
+  styleUrls: [
+    './company-card.component.scss',
+    '../../../base/base-card/base-card.component.scss'
+  ]
 })
 export class CompanyCardComponent {
   @Input() company: Company;
