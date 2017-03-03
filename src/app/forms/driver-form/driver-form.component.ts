@@ -77,8 +77,6 @@ export class DriverForm extends BaseForm {
       number: [this.driver.license.number],
       expiration: [this.driver.license.expiration],
       dateIssued: [this.driver.license.dateIssued],
-      fax: [this.driver.fax],
-      email: [this.driver.email],
       ssn: [this.driver.ssn],
       rate: [this.driver.rate],
       address: this.formBuilder.group({ }),
