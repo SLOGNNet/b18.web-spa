@@ -35,7 +35,9 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     PickupsFormComponent,
     PickUpCommodityFormComponent,
     DropOffCommodityFormComponent,
-    LoadDocumentFormComponent
+    LoadDocumentFormComponent,
+    ContactsInfoForm,
+    ContactInfoForm
   ],
   imports: [
     SharedModule

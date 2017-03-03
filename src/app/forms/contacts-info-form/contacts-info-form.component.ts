@@ -4,8 +4,8 @@ import { ContactInfo } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
-  selector: 'contacts-form',
-  templateUrl: './contacts-form.component.html',
+  selector: 'contacts-info-form',
+  templateUrl: './contacts-info-form.component.html',
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class ContactsInfoForm extends BaseListForm<ContactInfo>  {

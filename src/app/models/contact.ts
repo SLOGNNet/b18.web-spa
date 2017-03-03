@@ -12,15 +12,8 @@ export class Contact {
   middleName: string = 'Doe';
   @JsonMember
   lastName: string = 'Doe';
-  @JsonMember
-  primaryPhone: string = '';
-  @JsonMember
-  alternativePhone: string = '';
-  @JsonMember
-  fax: string = '';
   @JsonMember({ elements: ContactInfo })
   contactInfo: Array<ContactInfo>;
-  email: string = '';
   @JsonMember
   position: string = 'Driver';
   // @JsonMember

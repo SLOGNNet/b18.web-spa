@@ -5,15 +5,15 @@ import { ContactInfo } from '../../models';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({
-  selector: 'contact-form',
-  templateUrl: './contact-form.component.html',
+  selector: 'contact-info-form',
+  templateUrl: './contact-info-form.component.html',
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactInfoForm extends BaseForm {
   @Input()
   public contactInfo: ContactInfo;
   @Input('group')
-  public form: FormGroup;
+  public contactInfoForm: FormGroup;
 
   constructor(
     private _formBuilder: FormBuilder, elementRef: ElementRef){
@@ -25,9 +25,9 @@ export class ContactInfoForm extends BaseForm {
   }
 
   initForm() {
-    this.form.addControl(
-     'info',
-      this._formBuilder.control(this.contactInfo.value)
+    this.contactInfoForm.addControl(
+      'info',
+      this._formBuilder.control(this.contactInfo.value,[])
     );
   }
 }
