@@ -50,9 +50,10 @@ export class NotificationService {
         id: 1,
         firstName: 'Jason',
         lastName: 'Chang',
-        personalEmail: 'CHANJAS@chrobinson.com',
+        middleName: 'Chang',
         position: 'sales',
-        addressId: 1
+        contactInfo: [],
+        address: null
       },
       taskType: TaskType.New,
       priority: NotificationPriority.Middle,

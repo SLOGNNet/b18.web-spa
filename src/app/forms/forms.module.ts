@@ -4,13 +4,15 @@ import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
 import { AddressesForm } from './addresses-form';
+import { DriverForm } from './driver-form';
 import { DropoffFormComponent } from './dropoff-form';
 import { DropoffsFormComponent } from './dropoffs-form';
 import { PickupFormComponent } from './pickup-form';
 import { PickupsFormComponent } from './pickups-form';
 import { LoadDocumentFormComponent } from './load-document-form';
 import { SharedModule } from '../shared/shared.module';
-
+import { ContactInfoForm } from './contact-info-form';
+import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
@@ -26,13 +28,16 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DropoffpCommodityComponent,
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
+    DriverForm,
     DropoffFormComponent,
     DropoffsFormComponent,
     PickupFormComponent,
     PickupsFormComponent,
     PickUpCommodityFormComponent,
     DropOffCommodityFormComponent,
-    LoadDocumentFormComponent
+    LoadDocumentFormComponent,
+    ContactsInfoForm,
+    ContactInfoForm
   ],
   imports: [
     SharedModule
@@ -40,6 +45,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
   exports: [
     CompanyForm,
     LoadFormComponent,
+    DriverForm,
     LoadDocumentFormComponent
   ]
 })

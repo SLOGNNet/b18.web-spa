@@ -1,11 +1,11 @@
 @import '../../../../assets/styles/variables';
 @keyframes labelFlight {
   from {
-    left: 200px;
+    margin-right: -50px;
   }
 
   to {
-    left: 0;
+    margin-right: 0;
   }
 }
 @mixin flex-element {
@@ -43,7 +43,7 @@
   overflow: hidden;
   width: 100%;
   height: $form-control-height;
-  padding: 0 17px;
+  padding: 0 $default-margin;
   border-bottom: $border;
   margin-bottom: 0;
   flex-flow: row wrap;
@@ -57,13 +57,16 @@
     color: $label-default-color;
     font-size: $mini-font-size;
     align-self: flex-start;
-    margin-left: -17px;
-    margin-right: 32px;
+    margin-left: -$default-margin;
+    margin-right: $default-margin * 2;
     align-items: center;
     justify-content: flex-end;
 
     label {
+      overflow: hidden;
       margin: 0;
+      line-height: 1em;
+      max-height: 2em;
       font-weight: normal;
     }
   }
@@ -81,11 +84,12 @@
       @include flex-element;
       display: flex;
       height: $form-control-height;
+      font-size: $small-font-size;
       align-self: flex-start;
       align-items: center;
       justify-content: flex-end;
       flex-grow: 0;
-      margin-right: 15px;
+      margin-right: $default-margin;
     }
 
     .bd-input-infix {
@@ -107,8 +111,9 @@
 
     .bd-input-suffix {
       @include flex-element;
+      font-size: $small-font-size;
       flex-grow: 0;
-      margin-left: 15px;
+      margin-left: $default-margin;
     }
   }
 
@@ -144,7 +149,7 @@
       width: auto;
       margin: 0;
       color: $label-default-color;
-      font-size: $default-font-size;
+      font-size: $small-font-size;
       text-align: left;
       flex-grow: 1;
       justify-content: flex-start;
@@ -155,7 +160,9 @@
     .bd-label {
       text-align: right;
       text-transform: uppercase;
-      animation: labelFlight .1s 1;
+      label {
+        animation: labelFlight .1s 1;
+      }
     }
   }
 

@@ -29,14 +29,14 @@ navigation-bar {
 top-panel {
   display: flex;
   width: 100%;
-  height: $form-control-height;
+  height: $top-panel-height;
   background: $white;
   align-items: center;
   border-bottom: $border;
 }
 
 .main-content {
-  height: calc(100% - #{$form-control-height});
+  height: calc(100% - #{$top-panel-height});
 }
 
 main {

@@ -142,3 +142,17 @@ export enum StopStatuses {
   Completed = 3,
   Problem = 4
 };
+
+export enum ContactInfoType {
+  None = 0,
+  Phone = 1,
+  Fax = 2,
+  Email = 3
+};
+
+export enum LicenseClassTypes {
+  None = 0,
+  ClassA = 1,
+  ClassB = 2,
+  ClassC = 3
+};

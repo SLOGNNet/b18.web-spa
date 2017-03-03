@@ -10,7 +10,7 @@ $circle-diameter: 28px;
   background: $black;
   color: $white;
   font-size: $mini-font-size;
-  border-radius: 50%;
+  border-radius: $circle-radius;
   text-transform: uppercase;
   align-items: center;
   justify-content: center;

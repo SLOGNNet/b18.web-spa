@@ -29,7 +29,7 @@ input {
     display: flex;
     overflow: hidden;
     width: 57px;
-    height: $form-control-height;
+    height: $top-panel-height;
     font-size: $top-panel-icon-size;
     cursor: pointer;
     justify-content: center;
@@ -37,6 +37,10 @@ input {
 
     &:hover {
       background: $grey;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 }

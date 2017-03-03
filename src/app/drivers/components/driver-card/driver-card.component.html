@@ -1,23 +1,23 @@
 <div
 class="driver-card-section"
 (mouseover)="onEnter()"
-(mouseleave)="onLeave()">
+(mouseleave)="onLeave()"
+(click)="onClick()">
   <div class="left">
     <div>
       <bd-initials-circle
         class="initials-circle"
-        [firstName]="driver.contact.firstName"
-        [lastName]="driver.contact.lastName">
+        [firstName]="driver.firstName"
+        [lastName]="driver.lastName">
       </bd-initials-circle>
     </div>
-
     <div class="driver-full-name ellipsis">
-      {{driver.contact.firstName}} {{driver.contact.lastName}}
+      {{driver.firstName}} {{driver.lastName}}
     </div>
     <div class="driver-type">{{driverTypeText}}</div>
   </div>
   <div class="middle">
-    <span class="driver-phone ellipsis">{{driver.phone}}</span>
+    <span class="driver-phone ellipsis">{{driver.primaryPhone}}</span>
     <span class="send-message ellipsis">Send Message</span>
   </div>
   <div class="right">
@@ -28,8 +28,8 @@ class="driver-card-section"
     <div class="tr-city">
       <span style="background: red" class="tr-city-circle"></span>
       <span class="tr-city-name">{{driver.lastAddress}}</span>
-</div>
-      <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
+    </div>
+    <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
       <span
       [style.background]="driverStatusColor"
       class="status">

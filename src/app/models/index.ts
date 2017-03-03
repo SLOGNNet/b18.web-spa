@@ -12,4 +12,6 @@ export * from './equipment';
 export * from './driver';
 export * from './document';
 export * from './notification';
+export * from './license';
 export * from './enums';
+export * from './contact-info';
