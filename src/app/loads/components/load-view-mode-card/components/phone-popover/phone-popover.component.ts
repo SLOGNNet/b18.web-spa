@@ -7,8 +7,4 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PhonePopoverComponent {
   @Input() phoneNumber: number;
-
-  ngOnChanges() {
-    console.log(this.phoneNumber);
-  }
 }

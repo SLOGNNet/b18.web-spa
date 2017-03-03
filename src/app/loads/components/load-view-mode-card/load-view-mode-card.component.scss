@@ -118,8 +118,16 @@
     justify-content: space-between;
 
     .info-panel {
+      display: flex;
+      align-items: center;
+
       .trip-number {
         color: $black;
+      }
+
+      .initials-circle {
+        display: inline-block;
+        margin: 0 5px;
       }
     }
 
