@@ -50,8 +50,8 @@ function createTestData() {
   testCustomer.type = null;
   // test driver
   testDriver.id = 1;
-  testDriver.contact.firstName = 'John';
-  testDriver.contact.lastName = 'Doe';
+  testDriver.firstName = 'John';
+  testDriver.lastName = 'Doe';
   // test driver team
   testDriverTeam.drivers = [testDriver];
   // test trip
@@ -135,7 +135,7 @@ describe('LoadStopCardComponent', () => {
   it('should display driver firstname', () => {
     let testDriverName = 'Isaak';
     component.load = testLoad;
-    component.load.currentTrips[0].driverTeams[0].drivers[0].contact.firstName = testDriverName;
+    component.load.currentTrips[0].driverTeams[0].drivers[0].firstName = testDriverName;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.firstName'));
     expect(element.nativeElement.textContent).toEqual(testDriverName);

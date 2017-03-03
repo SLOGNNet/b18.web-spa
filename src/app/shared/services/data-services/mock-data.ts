@@ -4,7 +4,8 @@ import {
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
   FreightType, Facility, Trip,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification } from './models';
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, Licence, LicenceClassTypes
+} from './models';
 class MockData {
   public addresses: Array<Address> = [{
     id: 1,
@@ -161,38 +162,54 @@ class MockData {
   ];
 
   public contacts: Array<Contact> = [{
-   id: 1,
-   firstName: 'Jason',
-   lastName: 'Chang',
-   personalEmail: 'CHANJAS@chrobinson.com',
-   position: 'Sales manager',
-   addressId: 1
- },
- {
-   id: 2,
-   firstName: 'Scott',
-   lastName: 'Spearow',
-   personalEmail: 'sspearow@TQL.com',
-   position: 'Sales manager',
-   addressId: 2
- },
- {
-   id: 3,
-   firstName: 'Emma',
-   lastName: 'Watson',
-   personalEmail: 'Emma@TQL.com',
-   position: 'Sales manager',
-   addressId: 3
- },
- {
-   id: 4,
-   firstName: 'Johnny',
-   lastName: 'Depp',
-   personalEmail: 'Johnny@TQL.com',
-   position: 'Sales manager',
-   addressId: 4
- }
- ];
+    id: 1,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    email: 'CHANJAS@chrobinson.com',
+    position: 'Sales manager',
+    primaryPhone: '',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[0]
+  },
+  {
+    id: 2,
+    firstName: 'Scott',
+    middleName: 'Chang',
+    lastName: 'Spearow',
+    email: 'sspearow@TQL.com',
+    position: 'Sales manager',
+    primaryPhone: '',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[1]
+  },
+  {
+    id: 3,
+    firstName: 'Emma',
+    middleName: 'Chang',
+    lastName: 'Watson',
+    email: 'Emma@TQL.com',
+    position: 'Sales manager',
+    primaryPhone: '',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[2]
+  },
+  {
+    id: 4,
+    firstName: 'Johnny',
+    middleName: 'Chang',
+    lastName: 'Depp',
+    email: 'Johnny@TQL.com',
+    position: 'Sales manager',
+    primaryPhone: '',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[3]
+  }
+  ];
 
   public documents: Array<Document> = [
     {
@@ -256,7 +273,7 @@ class MockData {
     palletCount: 42,
     weight: 0
   }
-];
+  ];
 
   public facilities: Array<Facility> = [{
     id: 1,
@@ -316,40 +333,76 @@ class MockData {
     equipmentNotification: this.equipmentNotification[0]
   }];
 
-  public drivers: Array<Driver> = [{
+  public lecences: Array<Licence> = [{
     id: 0,
+    number: '21424',
+    expiration: new Date(),
+    dateIssued: new Date(),
+    stateIssued: 'AD',
+    class: LicenceClassTypes.ClassB,
+    endorsments: 'X',
+    restrictions: 'X',
+  }, {
+    id: 1,
+    number: '21424',
+    expiration: new Date(),
+    dateIssued: new Date(),
+    stateIssued: 'AD',
+    class: LicenceClassTypes.ClassA,
+    endorsments: 'S',
+    restrictions: 'F',
+  }];
+
+  public drivers: Array<Driver> = [{
+    id: 1,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    email: 'CHANJAS@chrobinson.com',
+    position: 'Sales manager',
+    primaryPhone: '3434212343',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[0],
     dateOfBirth: null,
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
     paymentOption: DriverPaymentOptions.PerMile,
     rate: 1.2,
-    contact: this.contacts[0],
     type: DriverTypes.CompanyDriver,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes',
-    phone: '+1-650-4603122',
     lastTripNumber: 349611,
-    lastAddress: '2229 San Pedro Rd, North Sacramento'
+    lastAddress: '2229 San Pedro Rd, North Sacramento',
+    license: this.lecences[1]
   }, {
-    id: 1,
+    id: 2,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    email: 'CHANJAS@chrobinson.com',
+    position: 'Sales manager',
+    primaryPhone: '32323423',
+    alternativePhone: '',
+    fax: '',
+    address: this.addresses[1],
     dateOfBirth: null,
     ssn: '123144241241777',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
     paymentOption: DriverPaymentOptions.PerMile,
     rate: 1.2,
-    contact: this.contacts[1],
     type: DriverTypes.OwnerOperator,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes',
-    phone: '+1-650-4603122',
     lastTripNumber: 349777,
-    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California',
+    license: this.lecences[0]
   }];
 
   public trips: Array<Trip> = [{
@@ -357,25 +410,25 @@ class MockData {
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{id: 1, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 1, drivers: [this.drivers[0]] }]
   }, {
     id: 2,
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{id: 2, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 2, drivers: [this.drivers[0]] }]
   }, {
     id: 3,
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{id: 3, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 3, drivers: [this.drivers[0]] }]
   }, {
     id: 4,
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{id: 4, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 4, drivers: [this.drivers[0]] }]
   }];
 
   public startDate = new Date(2017, 0, 9);

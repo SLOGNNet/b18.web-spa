@@ -8,13 +8,21 @@ export class Contact {
   @JsonMember
   firstName: string = 'John';
   @JsonMember
+  middleName: string = 'Doe';
+  @JsonMember
   lastName: string = 'Doe';
   @JsonMember
-  personalEmail: string = '';
+  primaryPhone: string = '';
+  @JsonMember
+  alternativePhone: string = '';
+  @JsonMember
+  fax: string = '';
+  @JsonMember
+  email: string = '';
   @JsonMember
   position: string = 'Driver';
-  @JsonMember
-  addressId: number = 0;
+  // @JsonMember
+  address: Address;
 
   static create(): Contact{
     const result = new Contact();

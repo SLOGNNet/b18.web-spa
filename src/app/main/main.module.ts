@@ -15,7 +15,7 @@ import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
-import { DriversComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
+import { DriversComponent, DriverDetailComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
 import { MultiPaneLayoutComponent } from '../multi-pane-layout';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
@@ -46,6 +46,7 @@ import {
     MultiPaneLayoutComponent,
     HomeComponent,
     DriversComponent,
+    DriverDetailComponent,
     DriverCardsComponent,
     DriverCardComponent,
     MessagesComponent,

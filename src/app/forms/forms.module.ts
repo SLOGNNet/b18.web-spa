@@ -4,6 +4,7 @@ import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
 import { AddressesForm } from './addresses-form';
+import { DriverForm } from './driver-form';
 import { DropoffFormComponent } from './dropoff-form';
 import { DropoffsFormComponent } from './dropoffs-form';
 import { PickupFormComponent } from './pickup-form';
@@ -26,6 +27,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DropoffpCommodityComponent,
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
+    DriverForm,
     DropoffFormComponent,
     DropoffsFormComponent,
     PickupFormComponent,
@@ -40,6 +42,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
   exports: [
     CompanyForm,
     BdLoadFormComponent,
+    DriverForm,
     LoadDocumentFormComponent
   ]
 })

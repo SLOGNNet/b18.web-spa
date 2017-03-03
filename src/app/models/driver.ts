@@ -1,11 +1,12 @@
 import { Equipment } from './equipment';
 import { Contact } from './contact';
+import { Licence } from './licence';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 // Colors
 function createStatusColors() {
- let result = {};
+  let result = {};
   result[DriverStatuses.Unavaliable] = '#ffbe4d';
   result[DriverStatuses.Active] = '#85d183';
   result[DriverStatuses.Inactive] = '#fb3a3a';
@@ -15,7 +16,7 @@ function createStatusColors() {
 
 // Status Text
 function createStatusText() {
- let result = {};
+  let result = {};
   result[DriverStatuses.None] = 'none';
   result[DriverStatuses.Unavaliable] = 'unavaliable';
   result[DriverStatuses.Active] = 'active';
@@ -26,7 +27,7 @@ function createStatusText() {
 
 // Type Text
 function createTypeText() {
- let result = {};
+  let result = {};
   result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company driver';
   result[DriverTypes.OwnerOperator] = 'Owner operator';
@@ -39,9 +40,7 @@ const statusText = createStatusText();
 const typeText = createTypeText();
 
 @JsonObject
-export class Driver {
-  @JsonMember
-  id: number = 0;
+export class Driver extends Contact {
   @JsonMember
   dateOfBirth: Date = null;
   @JsonMember
@@ -54,8 +53,6 @@ export class Driver {
   paymentOption: DriverPaymentOptions;
   @JsonMember
   rate: number;
-  @JsonMember({ elements: Contact })
-  contact: Contact = new Contact();
   @JsonMember
   type: DriverTypes = DriverTypes.CompanyDriver;
   @JsonMember
@@ -67,11 +64,11 @@ export class Driver {
   @JsonMember
   notes: string = '';
   @JsonMember
-  phone: string = '';
-  @JsonMember
   lastTripNumber: number;
   @JsonMember
   lastAddress: string = '';
+  @JsonMember
+  license: Licence;
 
 
   static create(): Driver {
@@ -82,7 +79,6 @@ export class Driver {
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
     result.paymentOption = DriverPaymentOptions.PerMile;
-    result.contact = Contact.create();
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
     return result;
