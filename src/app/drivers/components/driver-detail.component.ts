@@ -1,11 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { Driver } from '../../models';
 import { BaseDetailComponent } from '../../base';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { DriverActions } from '../../actions';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../../store';
+import { DriverForm } from '../../forms';
 
 @Component({
   selector: 'driver-detail',
@@ -13,6 +15,8 @@ import { IAppState } from '../../store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
+  @ViewChild(DriverForm) companyFormComponent: DriverForm;
+
   private anchors = [{
     id: 'driver-personal-information',
     title: 'Personal Info'
@@ -60,7 +64,12 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   constructor(
     driverActions: DriverActions,
     route: ActivatedRoute,
+    location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), route);
+      super(driverActions, ngRedux.select(state => state.drivers.selected), route, location);
+  }
+
+  isDetailsChanged() {
+    return this.companyFormComponent.driverForm.dirty;
   }
 }

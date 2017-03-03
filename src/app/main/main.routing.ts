@@ -20,7 +20,8 @@ const routes: Routes = [{
     {
       path: 'drivers', component: DriversComponent, children: [{
         path: ':id',
-        component: DriverDetailComponent
+        component: DriverDetailComponent,
+        canDeactivate: [CanDeactivateGuard]
       }]
     },
     { path: 'drivers/:id/messages', component: MessagesComponent },
@@ -33,8 +34,8 @@ const routes: Routes = [{
     {
       path: 'companies', component: CompaniesComponent, children: [{
         path: ':id',
-      component: CompanyDetailComponent,
-      canDeactivate: [CanDeactivateGuard]
+        component: CompanyDetailComponent,
+        canDeactivate: [CanDeactivateGuard]
       }]
     },
     { path: 'equipment', component: EquipmentComponent },
