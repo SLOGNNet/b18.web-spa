@@ -1,11 +1,10 @@
 @import '../../../../../assets/styles/variables';
 
-$circle-diameter: 28px;
+$default-size: 28px;
+$small-size: 10px;
 
 .circle {
   display: flex;
-  width: $circle-diameter;
-  height: $circle-diameter;
   margin: 4px 0;
   background: $black;
   color: $white;
@@ -14,4 +13,15 @@ $circle-diameter: 28px;
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
+
+  &.default {
+    width: $default-size;
+    height: $default-size;
+  }
+
+  &.small {
+    width: $small-size;
+    height: $small-size;
+    font-size: $small-size - 4px;
+  }
 }

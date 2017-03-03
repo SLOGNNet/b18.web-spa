@@ -1,8 +1,8 @@
 //sass-lint:disable no-important no-vendor-prefixes no-duplicate-properties no-unknown-properties
 @font-face {
   font-family: 'icon';
-  src: url('./assets/fonts/font-icons/icon.eot?yk6m6j');
-  src: url('./assets/fonts/font-icons/icon.eot?yk6m6j#iefix') format('embedded-opentype'), url('./assets/fonts/font-icons/icon.ttf?yk6m6j') format('truetype'), url('./assets/fonts/font-icons/icon.woff?yk6m6j') format('woff'), url('./assets/fonts/font-icons/icon.svg?yk6m6j#icon') format('svg');
+  src: url('../assets/fonts/font-icons/icon.eot?yk6m6j');
+  src: url('../assets/fonts/font-icons/icon.eot?yk6m6j#iefix') format('embedded-opentype'), url('../assets/fonts/font-icons/icon.ttf?yk6m6j') format('truetype'), url('../assets/fonts/font-icons/icon.woff?yk6m6j') format('woff'), url('../assets/fonts/font-icons/icon.svg?yk6m6j#icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -147,5 +147,35 @@
   &:before {
     content: '\e913';
   }
-
 }
+
+.icon-call {
+  &:before {
+    content: '\e917';
+  }
+}
+
+.icon-location {
+  &:before {
+    content: '\e919';
+  }
+}
+
+.icon-fax {
+  &:before {
+    content: '\e91b';
+  }
+}
+
+.icon-message {
+  &:before {
+    content: '\e918';
+  }
+}
+
+.icon-phone {
+  &:before {
+    content: '\e91a';
+  }
+}
+
