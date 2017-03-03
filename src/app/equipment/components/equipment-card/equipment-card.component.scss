@@ -49,7 +49,7 @@
         height: 10px;
         background: $black;
         margin-top: 3px;
-        border-radius: 50%;
+        border-radius: $circle-radius;
       }
 
       .tr-city-name {
@@ -74,7 +74,7 @@
       background: $black;
       color: $white;
       bottom: 3px;
-      border-radius: $default-height;
+      border-radius: $circle-radius;
     }
   }
 }

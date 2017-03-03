@@ -23,7 +23,7 @@
       background: $black;
       color: $white;
       font-size: $mini-font-size;
-      border-radius: 50%;
+      border-radius: $circle-radius;
       justify-content: center;
       align-items: center;
     }
@@ -59,7 +59,7 @@
         height: 10px;
         background: $black;
         margin-top: 3px;
-        border-radius: 50%;
+        border-radius: $circle-radius;
       }
 
       .load-name {
@@ -81,7 +81,7 @@
       background: $black;
       color: $white;
       bottom: 3px;
-      border-radius: $default-height;
+      border-radius: $circle-radius;
     }
   }
 }
