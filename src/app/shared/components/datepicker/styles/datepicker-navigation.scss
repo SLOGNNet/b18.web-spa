@@ -25,9 +25,9 @@
     margin-right: $default-margin;
    }
 
-   button {
-     &:focus {
-       outline: 0;
-     }
-   }
+  button {
+    &:focus {
+      outline: 0;
+    }
+  }
 }
