@@ -27,7 +27,8 @@ import {
   LoadStopCardsComponent,
   TripPopoverComponent,
   CompanyPopoverComponent,
-  DriverPopoverComponent
+  DriverPopoverComponent,
+  LoadViewModeCardComponent
 } from '../loads';
 
 
@@ -58,6 +59,7 @@ import {
     CompanyCardsComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
+    LoadViewModeCardComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
