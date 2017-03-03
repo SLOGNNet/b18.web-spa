@@ -1,4 +1,5 @@
 import { Facility } from './facility';
+import { Appointment } from './appointment';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
@@ -60,6 +61,8 @@ export class Stop {
   plannedArrivalAt: Date = null;
   @JsonMember
   plannedDepartureAt: Date = null;
+  //@JsonMember
+  //appointments: Array<Appointment>;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();
