@@ -149,3 +149,10 @@ export enum ContactInfoType {
   Fax = 2,
   Email = 3
 };
+
+export enum LicenseClassTypes {
+  None = 0,
+  ClassA = 1,
+  ClassB = 2,
+  ClassC = 3
+};
