@@ -4,8 +4,8 @@
 .company-card-section {
   position: relative;
   display: flex;
-  height: 100px;
-  padding: 14px $default-margin;
+  height: $card-height;
+  padding: 10px $default-margin;
   background: inherit;
   font-size: $tiny-font-size;
   line-height: 18px;
@@ -81,7 +81,7 @@
       background: $black;
       color: $white;
       bottom: 3px;
-      border-radius: $form-control-height;
+      border-radius: $default-height;
     }
   }
 }
