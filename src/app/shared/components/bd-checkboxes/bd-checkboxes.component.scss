@@ -31,7 +31,8 @@
 
   .checkboxes {
     display: flex;
-    padding: 11px 0;
+    padding-top: calc(#{$default-margin} - 6px);
+    padding-bottom: calc(#{$default-margin} - 6px);
     flex-flow: row wrap;
 
     .bd-checkbox {
