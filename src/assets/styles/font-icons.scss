@@ -147,5 +147,16 @@
   &:before {
     content: '\e913';
   }
+}
 
+.icon-call {
+  &:before {
+    content: '\e917';
+  }
+}
+
+.icon-location {
+  &:before {
+    content: '\e919';
+  }
 }
