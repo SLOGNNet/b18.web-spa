@@ -13,13 +13,17 @@ import { NotificationService,
   ContactService,
   FormValidationService,
   FileUploadService,
-  HttpService
+  HttpService,
+  StateService,
+  EndorsementService,
+  RestrictionService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
-import { BdCheckbox } from '././components/bd-checkbox';
+import { BdCheckbox } from './components/bd-checkbox';
+import { BdCheckboxes } from './components/bd-checkboxes';
 import { BdFormCheckbox } from './components/bd-form-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
@@ -76,7 +80,10 @@ import { EmailValidator } from './validators';
     FormValidationService,
     DatePipe,
     HttpService,
-    EmailValidator
+    EmailValidator,
+    StateService,
+    EndorsementService,
+    RestrictionService
   ],
   declarations: [
     BdFormButtonComponent,
@@ -93,6 +100,7 @@ import { EmailValidator } from './validators';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
@@ -152,6 +160,7 @@ import { EmailValidator } from './validators';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,

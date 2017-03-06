@@ -27,7 +27,9 @@ import {
   LoadStopCardsComponent,
   TripPopoverComponent,
   CompanyPopoverComponent,
-  DriverPopoverComponent
+  DriverPopoverComponent,
+  PhonePopoverComponent,
+  LoadViewModeCardComponent
 } from '../loads';
 
 
@@ -59,9 +61,11 @@ import {
     CompanyCardsComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
+    LoadViewModeCardComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
+    PhonePopoverComponent,
     BdToastManagerComponent,
     EquipmentComponent,
     EquipmentCardComponent,
