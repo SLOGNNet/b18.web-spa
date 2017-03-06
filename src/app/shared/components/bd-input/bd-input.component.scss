@@ -167,6 +167,16 @@
     }
   }
 
+  &.bd-disabled {
+    .bd-label {
+      color: $disabled-text-color;
+    }
+
+    .bd-input {
+      color: $disabled-text-color;
+    }
+  }
+
   &.bd-not-empty-label {
     .bd-input {
       width: 0;

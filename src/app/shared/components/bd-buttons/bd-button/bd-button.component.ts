@@ -8,6 +8,6 @@ import { Component, Input, HostBinding } from '@angular/core';
 export class BdButtonComponent {
   @Input() type: string = 'button';
   @Input() color: 'primary' | 'default' = 'default';
-  @Input() disabled: boolean = false;
+  @Input() disabled: boolean;
   @Input() text: any;
 }
