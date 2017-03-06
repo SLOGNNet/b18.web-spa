@@ -1,23 +1,24 @@
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { generateNewId } from './utils';
 
 @JsonObject
 export class Address {
   @JsonMember
   id: number = 0;
   @JsonMember
-  name: string = 'Main Office';
+  name: string = '';
   @JsonMember
-  streetAddress1: string = '14701 Charlson Road, United States';
+  streetAddress1: string = '';
   @JsonMember
   streetAddress2: string = '';
   @JsonMember
-  city: string = 'Eden Prairie';
+  city: string = '';
   @JsonMember
-  phone: string = '(925) 937-8500';
+  phone: string = '';
   @JsonMember
-  state: string = 'MN';
+  state: string = '';
   @JsonMember
-  zip: string = '55347';
+  zip: string = '';
   @JsonMember
   fax: string = '';
   @JsonMember
@@ -25,12 +26,13 @@ export class Address {
   @JsonMember
   faxExtension: string = '';
   @JsonMember
-  latitude: number = 40.795675;
+  latitude: number = 0;
   @JsonMember
-  longitude: number = -73.93600099999998;
+  longitude: number = 0;
 
   static create(): Address {
     const result = new Address();
+    result.id = generateNewId();
     return result;
   }
 

@@ -1,4 +1,5 @@
 import { Facility } from './facility';
+import { Appointment } from './appointment';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
