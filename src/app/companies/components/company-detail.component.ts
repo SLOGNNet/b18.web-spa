@@ -59,7 +59,7 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
 
   isDetailsChanged() {
-    return this.companyFormComponent.companyForm.dirty;
+    return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
   }
   constructor(
     companyActions: CompanyActions,

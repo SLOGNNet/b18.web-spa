@@ -289,19 +289,31 @@ class MockData {
   public facilities: Array<Facility> = [{
     id: 1,
     name: 'Larede, TX',
-    address: this.addresses[0]
+    address: this.addresses[0],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'San Francisco, CA',
-    address: this.addresses[1]
+    address: this.addresses[1],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 1,
     name: 'Los Angeles, CA',
-    address: this.addresses[2]
+    address: this.addresses[2],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'Los Altos, CA',
-    address: this.addresses[3]
+    address: this.addresses[3],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }];
 
   equipmentNotification: Array<EquipmentNotification> = [];

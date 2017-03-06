@@ -1,4 +1,5 @@
 <form [formGroup]="driverForm" novalidate (ngSubmit)="submit(driverForm.value, driverForm.valid)">
+	<bd-form-spinner *ngIf="false"></bd-form-spinner>
 	<navigation-anchor id="driver-personal-information" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'PERSONAL INFO'">
 		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>

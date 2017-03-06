@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Load } from '../models';
 import { IDetailDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, merge } from 'lodash';
 import {  ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
@@ -49,15 +49,13 @@ export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
   }
 
   private onItemSave(item) {
-    // temporary disable for demo
-
-    // if (this.isNew) {
-    //   this.isNew = false;
-    //   this.store.add(item);
-    // } else {
-    //   this.store.update(item);
-    // }
-    // this.selectedItem = cloneDeep(item);
+    const changedItem = merge(cloneDeep(this.selectedItem), item);
+    if (this.isNew) {
+      this.isNew = false;
+      this.actions.add(changedItem);
+    } else {
+      this.actions.update(changedItem);
+    }
   }
 
   private onItemCancel() {

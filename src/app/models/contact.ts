@@ -7,16 +7,16 @@ export class Contact {
   @JsonMember
   id: number = 0;
   @JsonMember
-  firstName: string = 'John';
+  firstName: string = '';
   @JsonMember
-  middleName: string = 'Doe';
+  middleName: string = '';
   @JsonMember
-  lastName: string = 'Doe';
+  lastName: string = '';
   @JsonMember({ elements: ContactInfo })
   contactInfo: Array<ContactInfo>;
   @JsonMember
-  position: string = 'Driver';
-  // @JsonMember
+  position: string = '';
+  @JsonMember({ elements: Address })
   address: Address;
 
   static create(): Contact{
@@ -26,5 +26,6 @@ export class Contact {
 
   constructor() {
     this.contactInfo = new Array<ContactInfo>();
+    this.address = Address.create();
   }
 };

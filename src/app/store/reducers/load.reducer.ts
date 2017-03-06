@@ -1,7 +1,7 @@
 import { LoadActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Load } from './models';
-import { addItem, updateItem, removeItem } from './utils';
+import { addItem, updateListItem, removeItem } from './utils';
 
 export interface ILoadState {
     items: Load[];
@@ -17,12 +17,12 @@ export const loadReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: removeItem(state.items, action.load)});
   },
   [LoadActions.UPDATE_LOAD](state, action) {
-    return Object.assign({}, state, { items: updateItem(state.items, action.load)});
+    return Object.assign({}, state, { items: updateListItem(state.items, action.load)});
   },
   [LoadActions.SELECT_LOAD](state, action) {
     return Object.assign({}, state, { selected: action.load});
   },
   [LoadActions.GET_ALL_LOADS](state, action) {
-    return Object.assign({}, state, { items: action.items, selected: null});
+    return Object.assign({}, state, { items: action.items.slice(), selected: null});
   },
 });
