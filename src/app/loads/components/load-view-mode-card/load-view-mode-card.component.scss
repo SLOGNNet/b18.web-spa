@@ -1,0 +1,148 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
+
+.load-view-mode-section {
+  display: flex;
+  border: $border;
+  background: $white;
+  font-size: $tiny-font-size;
+  flex-direction: column;
+  border-left: 4px solid $pickup-view-mode-color;
+  border-radius: $default-border-radius;
+
+
+  .stop-info-container {
+    display: flex;
+
+    .facility-info {
+      display: flex;
+      width: 50%;
+      padding: $default-margin;
+      color: $dark-grey;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .title {
+        color: $black;
+        font-weight: bold;
+      }
+
+      .info-item {
+        display: flex;
+
+        .item-icon {
+          margin-right: 5px;
+        }
+
+        .item-text {
+          line-height: $tiny-font-size;
+        }
+      }
+
+      .notes {
+        overflow: hidden;
+        color: $black;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .date-time-info {
+      width: 50%;
+      padding: $default-margin;
+      border-left: 1px dashed $grey;
+
+      .appointment-type {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .type-container {
+          display: flex;
+          align-items: center;
+
+          .circle {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: $blue;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+
+          .type {
+            line-height: $tiny-font-size;
+          }
+        }
+
+        .btn-container {
+          color: $blue;
+
+          .text {
+            color: transparent;
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            .text {
+              color: $blue;
+              transition: color .2s;
+            }
+          }
+        }
+      }
+
+      .date-range-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .business-hours-container {
+        color: $dark-grey;
+
+        .hours-string {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .trip-info-container {
+    display: flex;
+    padding: $default-margin;
+    border-top: $border;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .info-panel {
+      display: flex;
+      align-items: center;
+
+      .trip-number {
+        color: $black;
+      }
+
+      .initials-circle {
+        display: inline-block;
+        margin: 0 5px;
+      }
+    }
+
+    .buttons-panel {
+      display: inline;
+      color: $dark-grey;
+
+      button {
+        border: 0;
+        background: transparent;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+}

@@ -19,7 +19,13 @@ $red: #fc3b3b;
 $light-red: #ffebeb;
 $dark-blue: #3d454d;
 $light-black: #2a2e33;
+$plum: #d289dd;
+$primrose: #dfd78f;
 
+
+/* load view mode colors */
+$pickup-view-mode-color: $plum;
+$dropoff-view-mode-color: $primrose;
 /*  */
 $text-color: $black;
 $active-color: $blue;

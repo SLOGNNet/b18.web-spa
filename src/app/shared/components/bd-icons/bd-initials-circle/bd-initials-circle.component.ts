@@ -11,6 +11,7 @@ export class BdInitialsCircleComponent {
 
       @Input() private firstName: string;
       @Input() private lastName: string;
+      @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials(){
         if (!this.firstName && !this.lastName) return DEFAULT_INITIALS;
