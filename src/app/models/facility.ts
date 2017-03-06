@@ -15,7 +15,7 @@ export class Facility {
   notes: string = '';
   @JsonMember
   businessHours: string = '';
-  @JsonMember
+  @JsonMember({ elements: ContactInfo })
   contactInfo: Array<ContactInfo>;
 
   static create(): Facility{
