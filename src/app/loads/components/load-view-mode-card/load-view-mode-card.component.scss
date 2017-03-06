@@ -2,6 +2,22 @@
 @import '../../../../assets/styles/font-icons';
 
 .stop-view-mode-section {
+
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+
+    &:focus {
+      outline: 0;
+    }
+   }
+
+  span {
+    line-height: 16px;
+  }
+
   display: flex;
   border: $border;
   background: $light-blue;
@@ -14,7 +30,6 @@
     display: flex;
     background: $white;
     border-bottom: $border;
-
 
     .facility-info {
       display: flex;
@@ -57,7 +72,6 @@
         top: $default-margin;
         right: $default-margin;
         display: none;
-        padding: 0 5px;
         background: $white;
         color: $blue;
 
@@ -80,96 +94,5 @@
       }
     }
   }
-  .trip-info-container {
-    display: flex;
-    border: $border;
-    margin: 10px;
-    border-radius: $default-border-radius;
-    background: $white;
-    flex-direction: row;
 
-    .left-panel {
-      display: flex;
-      width: 50%;
-      padding: $default-margin;
-      flex-direction: column;
-
-      .trip-info-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .trip-number {
-          color: $black;
-        }
-
-        .buttons-panel {
-          display: inline;
-          color: $dark-grey;
-
-          button {
-            border: 0;
-            background: transparent;
-            &:focus {
-              outline: 0;
-            }
-          }
-        }
-      }
-      .driver-info {
-        display: flex;
-        align-items: center;
-
-        .initials-circle {
-          display: inline-block;
-          margin-right: 5px;
-        }
-
-        .driver-name {
-
-        }
-
-        .driver-count {
-
-        }
-      }
-
-      .trailer-info {
-        overflow: hidden;
-        color: $dark-grey;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-    .right-panel {
-      width: 50%;
-      padding: $default-margin;
-      border-left: $border;
-      .appointment-type {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .type-container {
-          display: flex;
-          align-items: center;
-          .circle {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: $blue;
-            border-radius: 50%;
-            margin-right: 5px;
-          }
-          .type {
-            line-height: $tiny-font-size;
-          }
-        }
-      }
-      .date-range-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-  }
 }

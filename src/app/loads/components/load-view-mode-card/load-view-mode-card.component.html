@@ -1,4 +1,5 @@
-<div class="stop-view-mode-section">
+<div class="stop-view-mode-section"
+    [class.expanded-view]="isExpanded">
     <div class="stop-info-container">
         <div class="facility-info">
             <div class="title">Tailor Freshh Foods</div>
@@ -6,18 +7,26 @@
                 <span class="item-icon icon-location"></span>
                 <span class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</span>
             </div>
-            <div class="info-item">
+            <div class="info-item main-phone">
                 <span class="item-icon icon-phone"></span>
                 <span class="item-text facility-phone-number">937-99-92</span>
+            </div>
+            <div class="info-item alt-phone" *ngIf="isExpanded">
+                <span class="item-icon icon-phone"></span>
+                <span class="item-text facility-phone-number">937-99-92</span>
+            </div>
+            <div class="info-item fax" *ngIf="isExpanded">
+                <span class="item-icon icon-fax"></span>
+                <span class="item-text facility-phone-number">fax@bridge18.com</span>
             </div>
         </div>
         <div class="business-hours-container">
             <div class="btn-container">
                 <button 
-                    [class.icon-down-arrow]="isCollapsed" 
-                    [class.icon-down-up]="!isCollapsed" 
-                    (click)="isCollapsed = !isCollapsed">
-                    </button>
+                    [class.icon-down-arrow]="!isExpanded" 
+                    [class.icon-up-arrow]="isExpanded" 
+                    (click)="isExpanded = !isExpanded">
+                </button>
             </div>
             <div class="hours-string">
                 <span class="days">Mo-Fr:</span>
@@ -30,65 +39,7 @@
             <div class="notes">Call after 12:00</div>
         </div>
     </div>
-    <div class="trip-info-container">
-        <div class="left-panel">
-            <div class="trip-info-header">
-                <span class="trip-number">TR3453563 :</span>
-                <div class="buttons-panel">
-                    <button class="icon-fax"></button>
-                    <button class="icon-call"></button>
-                    <span [bd-popover]="phonePopover" [popoverOnHover]="true">
-                    <button class="icon-message"></button>
-                            <bd-popover-content
-                            #phonePopover
-                            placement="auto"
-                            [width]="100"
-                            [horizontalOffset]="-10"
-                            [closeOnClickOutside]="closeOnClickOutside">
-                                <phone-popover [phoneNumber]="123123123"></phone-popover>
-                        </bd-popover-content>
-                    </span>
-                </div>
-            </div>
-            <div class="driver-info">
-                <span class="initials-circle">
-                    <bd-initials-circle
-                        [firstName]="'Nick'"
-                        [lastName]="'Smith'"
-                        size='small'>
-                    </bd-initials-circle>
-                </span>
-                <span class="driver-name">Nick Smith</span>
-                <span class="driver-count">(+1)</span>
-            </div>
-            <span class="trailer-info">
-                Kenworth 101, Wabash and some long long text
-            </span>
-        </div>
-        <div class="right-panel">
-            <div class="appointment-type">
-                <div class="type-container">
-                    <span class="circle"></span>
-                    <span class="type">FCFS</span>
-                </div>
-            </div>
-            <div class="date-range-container">
-                <div class="date first-date">
-                    <span class="date-value">09/09</span>
-                    <span class="time-value">12:15</span>
-                </div>
-                <div class="date last-date">
-                    <span class="date-value">09/09</span>
-                    <span class="time-value">12:15</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <trip-view [isExpanded]="isExpanded"></trip-view>
 </div>
-<br>
-<div (collapsed)="collapsed($event)"
-     (expanded)="expanded($event)"
-     [collapse]="isCollapsed"
-     class="expanded-view-container">
-    <expanded-load-view></expanded-load-view>
-</div>
+
+

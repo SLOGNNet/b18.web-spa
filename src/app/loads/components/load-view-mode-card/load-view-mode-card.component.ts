@@ -12,13 +12,6 @@ import { CollapseModule, CollapseDirective } from 'ng2-bootstrap/components/coll
 export class LoadViewModeCardComponent {
   @Input() load: Load;
 
-    public isCollapsed: boolean = false;
+  public isExpanded: boolean = false;
 
-    public collapsed(event: any): void {
-      console.log(event);
-    }
-
-    public expanded(event: any): void {
-      console.log(event);
-    }
 }

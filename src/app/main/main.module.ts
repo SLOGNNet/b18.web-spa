@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { BdFormsModule } from '../forms/forms.module';
 import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
-import { CollapseModule, CollapseDirective } from 'ng2-bootstrap/collapse';
 
 // Components
 import { MainComponent } from './main.component';
@@ -31,7 +30,7 @@ import {
   DriverPopoverComponent,
   PhonePopoverComponent,
   LoadViewModeCardComponent,
-  ExpandedLoadViewComponent
+  TripViewComponent
 } from '../loads';
 
 
@@ -42,8 +41,7 @@ import {
     SharedModule,
     BdFormsModule,
     NavigationBarModule,
-    MainRoutingModule,
-    CollapseModule.forRoot()
+    MainRoutingModule
   ],
   declarations: [
     MainComponent,
@@ -65,7 +63,7 @@ import {
     LoadStopCardComponent,
     LoadStopCardsComponent,
     LoadViewModeCardComponent,
-    ExpandedLoadViewComponent,
+    TripViewComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
@@ -76,7 +74,6 @@ import {
     EquipmentCardsComponent
   ],
   exports: [
-    CollapseModule
   ]
 })
 export class MainModule { }

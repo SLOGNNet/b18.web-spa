@@ -1,0 +1,55 @@
+<div class="trip-info-container"
+[class.expanded]="isExpanded">
+  <div class="left-panel">
+    <div class="trip-info-header">
+      <span class="trip-number">TR3453563 :</span>
+      <div class="buttons-panel">
+        <button class="icon-fax"></button>
+        <button class="icon-call"></button>
+        <span [bd-popover]="phonePopover" [popoverOnHover]="true">
+                    <button class="icon-message"></button>
+                            <bd-popover-content
+                            #phonePopover
+                            placement="auto"
+                            [width]="100"
+                            [horizontalOffset]="-10"
+                            [closeOnClickOutside]="closeOnClickOutside">
+                                <phone-popover [phoneNumber]="123123123"></phone-popover>
+                        </bd-popover-content>
+                    </span>
+      </div>
+    </div>
+    <div class="driver-info">
+      <span class="initials-circle">
+                    <bd-initials-circle
+                        [firstName]="'Nick'"
+                        [lastName]="'Smith'"
+                        size='small'>
+                    </bd-initials-circle>
+                </span>
+      <span class="driver-name">Nick Smith</span>
+      <span class="driver-count" *ngIf="!isExpanded">(+1)</span>
+    </div>
+    <span class="trailer-info">
+                Kenworth 101, Wabash and some long long text
+            </span>
+  </div>
+  <div class="right-panel">
+    <div class="appointment-type">
+      <div class="type-container">
+        <span class="circle"></span>
+        <span class="type">FCFS</span>
+      </div>
+    </div>
+    <div class="date-range-container">
+      <div class="date first-date">
+        <span class="date-value">09/09</span>
+        <span class="time-value">12:15</span>
+      </div>
+      <div class="date last-date">
+        <span class="date-value">09/09</span>
+        <span class="time-value">12:15</span>
+      </div>
+    </div>
+  </div>
+</div>
