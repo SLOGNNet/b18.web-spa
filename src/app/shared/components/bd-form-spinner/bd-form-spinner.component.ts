@@ -52,7 +52,7 @@ export class BdFormSpinnerComponent {
 
             t = percent % 0.25 / 0.25;
             t = percent % 0.25 - (2 * (1 - t) * t * -0.0185 + t * t * 0.25);
-            if (Math.floor(percent / 0.25) == 0 || Math.floor(percent / 0.25) == 2) {
+            if (Math.floor(percent / 0.25) === 0 || Math.floor(percent / 0.25) === 2) {
               t *= -1;
             }
             z = radius * Math.sin(pi2 * 2 * (percent - t));
@@ -133,7 +133,12 @@ export class BdFormSpinnerComponent {
         requestAnimationFrame(animate);
       }
 
-      function easing(t, b, c, d) { if ((t /= d / 2) < 1) return c / 2 * t * t + b; return c / 2 * ((t -= 2) * t * t + 2) + b; }
+      function easing(t, b, c, d) {
+        t /= d / 2;
+
+        if (t < 1) return c / 2 * t * t + b;
+        return c / 2 * ((t -= 2) * t * t + 2) + b;
+      }
     }, 0);
   }
 
