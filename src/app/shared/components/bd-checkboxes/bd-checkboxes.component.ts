@@ -8,7 +8,7 @@ import { includes, without, some } from 'lodash';
 })
 export class BdCheckboxes {
   @Input() labelText: any;
-  @Input() disabled: any;
+  @Input() disabled: boolean;
   @Input() items: Array<any>;
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter();
