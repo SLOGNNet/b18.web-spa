@@ -7,9 +7,13 @@ import { LoadService } from '../shared';
 
 @Injectable()
 export class LoadActions implements IListDataActions<Load>, IDetailDataActions<Load> {
-  static ADD_LOAD: string = 'ADD_LOAD';
+  static ADD_LOAD_REQUEST: string = 'ADD_LOAD_REQUEST';
+  static ADD_LOAD_SUCCESS: string = 'ADD_LOAD_SUCCESS';
+  static ADD_LOAD_FAILURE: string = 'ADD_LOAD_FAILURE';
   static REMOVE_LOAD: string = 'REMOVE_LOAD';
-  static UPDATE_LOAD: string = 'UPDATE_LOAD';
+  static UPDATE_LOAD_REQUEST: string = 'UPDATE_LOAD_REQUEST';
+  static UPDATE_LOAD_SUCCESS: string = 'UPDATE_LOAD_SUCCESS';
+  static UPDATE_LOAD_FAILURE: string = 'UPDATE_LOAD_FAILURE';
   static SELECT_LOAD: string = 'SELECT_LOAD';
   static CREATE_NEW_LOAD: string = 'CRETE_NEW_LOAD';
   static GET_ALL_LOADS: string = 'GET_ALL_LOADS';
@@ -19,7 +23,7 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
     private loadService: LoadService) {}
 
   add(load: Load): void {
-    this.ngRedux.dispatch({ type: LoadActions.ADD_LOAD, load });
+    this.ngRedux.dispatch({ type: LoadActions.ADD_LOAD_REQUEST, load });
   }
 
   remove(load: Load): void {
@@ -27,7 +31,7 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
   }
 
   update(load: Load): void {
-    this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD, load });
+    this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD_REQUEST, load });
   }
 
   select(loadId: number): void {

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Company } from '../../models';
 import { BaseDetailComponent } from '../../base';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -62,10 +62,17 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
   }
   constructor(
+    private cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
     route: ActivatedRoute,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), route, location);
+      super(companyActions, ngRedux.select(state => state.companies.selected), ngRedux.select(state => state.companies.isLoading), route, location);
+  }
+
+  onStateChange(state) {
+    if (this.cdr && state.isLoading !== undefined) {
+      this.cdr.markForCheck();
+    }
   }
 }

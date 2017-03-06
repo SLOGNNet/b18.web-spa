@@ -1,6 +1,6 @@
 <bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode">
 	<form [formGroup]="companyForm" novalidate (ngSubmit)="submit(companyForm.value, companyForm.valid)">
-		<bd-form-spinner *ngIf="false"></bd-form-spinner>
+		<bd-form-spinner *ngIf="isLoading"></bd-form-spinner>
 		<navigation-anchor id="company-basic-information" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [labelText]="'COMPANY > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
