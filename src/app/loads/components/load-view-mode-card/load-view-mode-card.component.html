@@ -1,77 +1,83 @@
-<div class="load-view-mode-section">
+<div class="stop-view-mode-section">
     <div class="stop-info-container">
         <div class="facility-info">
             <div class="title">Tailor Freshh Foods</div>
             <div class="info-item">
-                <div class="item-icon icon-location"></div>
-                <div class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</div>
+                <span class="item-icon icon-location"></span>
+                <span class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</span>
             </div>
             <div class="info-item">
-                <div class="item-icon icon-phone"></div>
-                <div class="item-text facility-phone-number">937-99-92</div>
+                <span class="item-icon icon-phone"></span>
+                <span class="item-text facility-phone-number">937-99-92</span>
+            </div>
+        </div>
+        <div class="business-hours-container">
+            <div class="btn-container">
+                <span class="icon-down-arrow"></span>
+            </div>
+            <div class="hours-string">
+                <span class="days">Mo-Fr:</span>
+                <span class="hours">08:00-17:00</span>
+            </div>
+            <div class="hours-string">
+                <span class="days">Sa:</span>
+                <span class="hours">12:00-16:00</span>
             </div>
             <div class="notes">Call after 12:00</div>
         </div>
-        <div class="date-time-info">
+    </div>
+    <div class="trip-info-container">
+        <div class="left-panel">
+            <div class="trip-info-header">
+                <span class="trip-number">TR3453563 :</span>
+                <div class="buttons-panel">
+                    <button class="icon-fax"></button>
+                    <button class="icon-call"></button>
+                    <span [bd-popover]="phonePopover" [popoverOnHover]="true">
+                    <button class="icon-message"></button>
+                            <bd-popover-content
+                            #phonePopover
+                            placement="auto"
+                            [width]="100"
+                            [horizontalOffset]="-10"
+                            [closeOnClickOutside]="closeOnClickOutside">
+                                <phone-popover [phoneNumber]="123123123"></phone-popover>
+                        </bd-popover-content>
+                    </span>
+                </div>
+            </div>
+            <div class="driver-info">
+                <span class="initials-circle">
+                    <bd-initials-circle
+                        [firstName]="'Nick'"
+                        [lastName]="'Smith'"
+                        size='small'>
+                    </bd-initials-circle>
+                </span>
+                <span class="driver-name">Nick Smith</span>
+                <span class="driver-count">(+1)</span>
+            </div>
+            <span class="trailer-info">
+                Kenworth 101, Wabash and some long long text
+            </span>
+        </div>
+        <div class="right-panel">
             <div class="appointment-type">
                 <div class="type-container">
                     <span class="circle"></span>
                     <span class="type">FCFS</span>
                 </div>
-
-                <div class="btn-container">
-                    <span class="text">expand</span>
-                    <span class="icon-down-arrow"></span>
-                </div>
             </div>
             <div class="date-range-container">
                 <div class="date first-date">
-                    <div class="date-value">09/09</div>
-                    <div class="time-value">12:15</div>
+                    <span class="date-value">09/09</span>
+                    <span class="time-value">12:15</span>
                 </div>
                 <div class="date last-date">
-                    <div class="date-value">09/09</div>
-                    <div class="time-value">12:15</div>
+                    <span class="date-value">09/09</span>
+                    <span class="time-value">12:15</span>
                 </div>
             </div>
-            <div class="business-hours-container">
-                <div class="hours-string">
-                    <span class="days">Mo-Fr:</span>
-                    <span class="hours">08:00-17:00</span>
-                </div>
-                <div class="hours-string">
-                    <span class="days">Sa:</span>
-                    <span class="hours">12:00-16:00</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="trip-info-container">
-        <div class="info-panel">
-            <span class="trip-number">TR3453563 :</span>
-            <span class="initials-circle">
-                <bd-initials-circle
-                    [firstName]="'Nick'"
-                    [lastName]="'Smith'"
-                    size='small'>
-                </bd-initials-circle>
-            </span>
-            <span class="driver-name">Nick Smith</span>
-        </div>
-        <div class="buttons-panel">
-            <button class="icon-fax"></button>
-            <button class="icon-call"></button>
-            <span [bd-popover]="phonePopover" [popoverOnHover]="true">
-            <button class="icon-message"></button>
-                    <bd-popover-content
-                       #phonePopover
-                       placement="auto"
-                       [width]="100"
-                       [horizontalOffset]="-10"
-                       [closeOnClickOutside]="closeOnClickOutside">
-                         <phone-popover [phoneNumber]="123123123"></phone-popover>
-                </bd-popover-content>
-            </span>
         </div>
     </div>
 </div>
