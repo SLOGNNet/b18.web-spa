@@ -361,19 +361,19 @@ class MockData {
     number: '21424',
     expiration: new Date(),
     dateIssued: new Date(),
-    stateIssued: 'AD',
+    stateIssued: 'AL',
     class: LicenseClassTypes.ClassB,
-    endorsments: 'X',
-    restrictions: 'X',
+    endorsments: 'M N',
+    restrictions: 'D E',
   }, {
     id: 1,
     number: '21424',
     expiration: new Date(),
     dateIssued: new Date(),
-    stateIssued: 'AD',
+    stateIssued: 'AL',
     class: LicenseClassTypes.ClassA,
-    endorsments: 'S',
-    restrictions: 'F',
+    endorsments: 'X L',
+    restrictions: 'C Z',
   }];
 
   public drivers: Array<Driver> = [{
@@ -1207,6 +1207,24 @@ class MockData {
       mc: '283221',
       loads: [this.loads[0], this.loads[1]]
     }
+  ];
+
+  public states: Array<string> = [
+    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+    'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+    'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+    'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+    'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
+    'WY'
+  ];
+
+  public endorsements: Array<string> = [
+    'P', 'H', 'M', 'N', 'T', 'X', 'L', 'S'
+  ];
+
+  public restrictions: Array<string> = [
+    'B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N',
+    'O', 'T', 'Z'
   ];
 }
 
