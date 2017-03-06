@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 import { Company } from '../models';
-import { CompanyService } from '../shared';
+import { CompanyService, NotificationService } from '../shared';
 import { IListDataActions, IDetailDataActions } from './intefaces';
 
 @Injectable()
@@ -19,6 +19,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
   static GET_ALL_COMPANIES: string = 'GET_ALL_COMPANIES';
   constructor (
     private companyService: CompanyService,
+    private notificatonService: NotificationService,
     private ngRedux: NgRedux<IAppState>) {}
 
   add(company: Company): void {
@@ -27,6 +28,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     setTimeout(() => {
       this.companyService.update(company);
       this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company });
+      this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
     }, 3000);
   }
 
@@ -40,6 +42,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     setTimeout(() => {
       this.companyService.update(company);
       this.ngRedux.dispatch({ type: CompanyActions.UPDATE_COMPANY_SUCCESS, company });
+      this.notificatonService.sendNotification('Company updated.', `${company.name} was updated.`);
     }, 3000);
   }
 
