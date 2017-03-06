@@ -25,6 +25,7 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   requiredTrailerTypesNames: Array<any>;
   loadTypesNames: Array<any>;
   freightTypesNames: Array<any>;
+  @Input() public isLoading: boolean = false;
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
