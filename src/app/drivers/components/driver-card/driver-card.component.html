@@ -7,32 +7,32 @@ class="card-section"
     <div>
       <bd-initials-circle
         class="initials-circle"
-        [firstName]="driver.firstName"
-        [lastName]="driver.lastName">
+        [firstName]="item.firstName"
+        [lastName]="item.lastName">
       </bd-initials-circle>
     </div>
-    <div class="driver-full-name ellipsis">
-      {{driver.firstName}} {{driver.lastName}}
+    <div class="item-full-name ellipsis">
+      {{item.firstName}} {{item.lastName}}
     </div>
-    <div class="driver-type">{{driverTypeText}}</div>
+    <div class="item-type">{{driverTypeText}}</div>
   </div>
   <div class="middle">
-    <span class="driver-phone ellipsis">{{driver.primaryPhone}}</span>
+    <span class="item-phone ellipsis">{{item.primaryPhone}}</span>
     <span class="send-message ellipsis">Send Message</span>
   </div>
   <div class="right">
     <div class="tr-city">
       <span style="background: rgb(133, 209, 131)" class="tr-city-circle"></span>
-      <span class="tr-city-name">TR{{driver.lastTripNumber}}</span>
+      <span class="tr-city-name">TR{{item.lastTripNumber}}</span>
     </div>
     <div class="tr-city">
       <span style="background: red" class="tr-city-circle"></span>
-      <span class="tr-city-name">{{driver.lastAddress}}</span>
+      <span class="tr-city-name">{{item.lastAddress}}</span>
     </div>
   </div>
-  <span *ngIf="statusText" [style.color]="driverStatusColor" class="status-text">{{driverStatusText}}</span>
+  <span *ngIf="statusText" [style.color]="itemStatusColor()" class="status-text">{{itemStatusText()}}</span>
     <span
-    [style.background]="driverStatusColor"
+    [style.background]="itemStatusColor()"
     class="status">
   </span>
 </div>

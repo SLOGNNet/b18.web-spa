@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
+import { BaseCardComponent } from '../../../base';
 
 @Component({
   selector: 'equipment-card',
@@ -11,34 +12,24 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EquipmentCardComponent {
-    @Input() equipment: Equipment;
+export class EquipmentCardComponent extends BaseCardComponent {
     public firstLetter: string;
     public lastLetter: string;
-    public statusText: boolean = false;
 
-    get equipmentStatusColor(): string {
-      return Equipment.getStatusColor(this.equipment.status);
+    itemStatusColor(): string {
+      return Equipment.getStatusColor(this.item.status);
     }
 
-    get equipmentStatusText(): string {
-      return Equipment.getStatusText(this.equipment.status);
+     itemStatusText(): string {
+      return Equipment.getStatusText(this.item.status);
     }
 
-    get driverType(): string {
-      return Equipment.getDriverText(this.equipment.driverType);
+    get equipmentTypeText(): string {
+      return Equipment.getDriverText(this.item.driverType);
     }
 
     get equipmentShortTypeText(): string {
-      return Equipment.getShortTypeText(this.equipment.type);
-    }
-
-    onEnter() {
-      this.statusText = true;
-    }
-
-    onLeave() {
-      this.statusText = false;
+      return Equipment.getShortTypeText(this.item.type);
     }
 
     ngOnInit() {

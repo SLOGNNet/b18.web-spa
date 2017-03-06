@@ -4,26 +4,26 @@ class="card-section"
 (mouseleave)="onLeave()"
 (click)="onClick()">
   <div class="left">
-    <span class="cropped-company-name">{{this.croppedCompanyName}}</span>
-    <div class="company-name ellipsis">
-      {{company.name}}
+    <span class="cropped-item-name">{{this.croppeditemName}}</span>
+    <div class="item-name ellipsis">
+      {{item.name}}
     </div>
-    <div class="company-mc">MC# {{company.mc}}</div>
+    <div class="item-mc">MC# {{item.mc}}</div>
   </div>
   <div class="middle">
-    <span class="company-contact-full-name">{{company.contacts[0].firstName}} {{company.contacts[0].lastName}}</span>
-    <span class="position ellipsis">{{company.contacts[0].position}}</span>
-  <div class="company-address-phone ellipsis">{{company.addresses[0].phone}}</div>
+    <span class="item-contact-full-name">{{item.contacts[0].firstName}} {{item.contacts[0].lastName}}</span>
+    <span class="position ellipsis">{{item.contacts[0].position}}</span>
+  <div class="item-address-phone ellipsis">{{item.addresses[0].phone}}</div>
   </div>
   <div class="right">
-    <div *ngFor="let load of company.loads" class="load">
+    <div *ngFor="let load of item.loads" class="load">
       <span [style.background]="loadStatusColor(load.status)" class="load-circle"></span>
       <span class="load-name ellipsis">LD{{load.systemLoadNo}}</span>
     </div>
   </div>
-  <span *ngIf="statusText" [style.color]="companyStatusColor" class="status-text">{{companyStatusText}}</span>
+  <span *ngIf="statusText" [style.color]="itemStatusColor()" class="status-text">{{itemStatusText()}}</span>
   <span
-  [style.background]="companyStatusColor"
+  [style.background]="itemStatusColor()"
   class="status">
   </span>
 </div>

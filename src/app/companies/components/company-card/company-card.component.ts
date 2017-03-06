@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Company } from '../../../models';
 import { Load, LoadStatuses } from '../../../models';
+import { BaseCardComponent } from '../../../base';
 
 @Component({
   selector: 'company-card',
@@ -10,38 +11,23 @@ import { Load, LoadStatuses } from '../../../models';
     '../../../base/base-card/base-card.component.scss'
   ]
 })
-export class CompanyCardComponent {
-  @Input() company: Company;
-  @Output() select: EventEmitter<any> = new EventEmitter();
+export class CompanyCardComponent extends BaseCardComponent {
   croppedCompanyName: string;
-  public statusText: boolean = false;
 
   ngOnInit() {
-     this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
+     this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
   }
 
   loadStatusColor(status: LoadStatuses): string {
     return Load.getStatusColor(status);
   }
 
-  get companyStatusText(): string {
-    return Company.getStatusText(this.company.status);
+  itemStatusText() {
+    return Company.getStatusText(this.item.status);
   }
 
-  get companyStatusColor(): string {
-    return Company.getStatusColor(this.company.status);
-  }
-
-  onClick() {
-    this.select.emit(this.company);
-  }
-
-  onEnter() {
-    this.statusText = true;
-  }
-
-  onLeave() {
-    this.statusText = false;
+   itemStatusColor(): string {
+    return Company.getStatusColor(this.item.status);
   }
 
 }
