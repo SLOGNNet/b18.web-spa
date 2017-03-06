@@ -75,12 +75,10 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   public _handleDropdownHeaderClick(event): void {
-        if(this.disabled) return;
     this._selectedValue = null;
   }
 
   public _handleDropdownItemClick(event, item): void {
-    //if(this.disabled) return;
     this._selectedValue = item[this.keyField];
     this._onChangeCallback(this._selectedValue);
     this._onTouchedCallback();

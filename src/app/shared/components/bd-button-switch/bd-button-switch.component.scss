@@ -52,12 +52,13 @@
 
 .bd-disabled {
   .bd-switch-label {
-    color: $disabled-text-color;
+    opacity: $disabled-opacity;
   }
 
   .bd-buttons-container {
     button {
-      color: $disabled-text-color;
+      color: $label-default-color;
+      opacity: $disabled-opacity;
     }
   }
 }

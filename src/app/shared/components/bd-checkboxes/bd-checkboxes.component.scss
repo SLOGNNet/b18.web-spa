@@ -54,10 +54,11 @@
 .bd-disabled {
 
   .bd-label {
-    color: $disabled-text-color;
+    opacity: $disabled-opacity;
   }
 
   .checkboxes {
-    color: $disabled-text-color;
+    color: $label-default-color;
+    opacity: $disabled-opacity;
   }
 }

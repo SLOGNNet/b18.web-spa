@@ -169,11 +169,12 @@
 
   &.bd-disabled {
     .bd-label {
-      color: $disabled-text-color;
+      opacity: $disabled-opacity;
     }
 
     .bd-input {
-      color: $disabled-text-color;
+      color: $label-default-color;
+      opacity: $disabled-opacity;
     }
   }
 

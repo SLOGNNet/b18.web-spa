@@ -134,21 +134,24 @@
 .bd-disabled {
   .bd-dropdown-wrapper {
     .bd-dropdown-label {
-      color: $disabled-text-color;
+      opacity: $disabled-opacity;
     }
 
     .bd-dropdown-value {
       span {
-        color: $disabled-text-color;
+        color: $label-default-color;
+        opacity: $disabled-opacity;
       }
 
       .item-selected {
-        color: $disabled-text-color;
+        color: $label-default-color;
+        opacity: $disabled-opacity;
       }
     }
 
     .bd-dropdown-icon {
-      color: $disabled-text-color;
+      color: $label-default-color;
+      opacity: $disabled-opacity;
     }
   }
 }

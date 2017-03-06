@@ -49,7 +49,7 @@ export class BdButtonSwitchComponent implements ControlValueAccessor  {
   }
 
   private _handleItemClick(event, item){
-    if(this.disabled) return;
+    if (this.disabled) return;
     this.selectedValue = item[this.keyField];
     this._onChangeCallback(this.selectedValue);
     this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField]});
