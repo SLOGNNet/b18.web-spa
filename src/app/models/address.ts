@@ -1,4 +1,5 @@
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { generateNewId } from './utils';
 
 @JsonObject
 export class Address {
@@ -31,6 +32,7 @@ export class Address {
 
   static create(): Address {
     const result = new Address();
+    result.id = generateNewId();
     return result;
   }
 

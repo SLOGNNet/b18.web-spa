@@ -3,6 +3,7 @@ import { Contact } from './contact';
 import { License } from './license';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { generateNewId } from './utils';
 
 // Colors
 function createStatusColors() {
@@ -73,6 +74,8 @@ export class Driver extends Contact {
 
   static create(): Driver {
     const result = new Driver();
+    result.id = generateNewId();
+    result.license = new License();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
