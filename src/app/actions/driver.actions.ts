@@ -18,6 +18,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     private ngRedux: NgRedux<IAppState>) {}
 
   add(driver: Driver): void {
+    this.driverService.create(driver);
     this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER, driver });
   }
 
@@ -26,6 +27,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   }
 
   update(driver: Driver): void {
+    this.driverService.update(driver);
     this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER, driver });
   }
 

@@ -156,3 +156,9 @@ export enum LicenseClassTypes {
   ClassB = 2,
   ClassC = 3
 };
+
+export enum AppointmentType {
+  None = 0,
+  FCFS = 1,
+  APPT = 2
+}
