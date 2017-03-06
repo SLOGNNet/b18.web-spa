@@ -17,6 +17,7 @@ export const BD_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BdDatePicker implements ControlValueAccessor {
   @Input() datePlaceholder: string;
+  @Input() labelText: string;
   @Input() set value(v: any) {
     if (v !== this._value) {
       this.writeValue(v);

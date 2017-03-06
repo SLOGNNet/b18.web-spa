@@ -3,7 +3,7 @@
 	<bd-form-section [labelText]="'PERSONAL INFO'">
 		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>
 		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
-		<bd-input class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-input>
+		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-form-datepicker>
 		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
@@ -25,10 +25,10 @@
 	<bd-form-section [labelText]="'LICENSE'">
 		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Number'">
 		</bd-input>
-		<bd-input class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
-		</bd-input>
-		<bd-input class="bd-form-control" formControlName="dateIssued" [labelText]="'Date Issued'">
-		</bd-input>
+		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
+		</bd-form-datepicker>
+		<bd-form-datepicker class="bd-form-control" formControlName="dateIssued" [labelText]="'Date Issued'">
+		</bd-form-datepicker>
 		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [labelText]="'State issued'" [items]="states">
 		</bd-dropdown>
 		<bd-dropdown class="bd-form-control" formControlName="class" [labelText]="'Class'" [items]="licenseClasses">
