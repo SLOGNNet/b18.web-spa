@@ -91,7 +91,7 @@ describe('CompanyCardComponent', () => {
     component.item = testCompany;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status')),
-      companyStatusColor = hexToRgb(component.itemStatusColor);
+      companyStatusColor = hexToRgb(component.itemStatusColor());
     expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(companyStatusColor));
   });
 
@@ -100,7 +100,7 @@ describe('CompanyCardComponent', () => {
     component.statusText = true;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
-    let companyStatusText = hexToRgb(component.itemStatusColor);
+    let companyStatusText = hexToRgb(component.itemStatusColor());
     expect(element.nativeElement.style.color).toBe(getRGBString(companyStatusText));
   });
 
