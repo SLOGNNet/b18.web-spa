@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { BdFormsModule } from '../forms/forms.module';
 import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
+import { CollapseModule, CollapseDirective } from 'ng2-bootstrap/collapse';
 
 // Components
 import { MainComponent } from './main.component';
@@ -41,7 +42,8 @@ import {
     SharedModule,
     BdFormsModule,
     NavigationBarModule,
-    MainRoutingModule
+    MainRoutingModule,
+    CollapseModule.forRoot()
   ],
   declarations: [
     MainComponent,
@@ -74,6 +76,7 @@ import {
     EquipmentCardsComponent
   ],
   exports: [
+    CollapseModule
   ]
 })
 export class MainModule { }

@@ -13,7 +13,11 @@
         </div>
         <div class="business-hours-container">
             <div class="btn-container">
-                <span class="icon-down-arrow"></span>
+                <button 
+                    [class.icon-down-arrow]="isCollapsed" 
+                    [class.icon-down-up]="!isCollapsed" 
+                    (click)="isCollapsed = !isCollapsed">
+                    </button>
             </div>
             <div class="hours-string">
                 <span class="days">Mo-Fr:</span>
@@ -80,4 +84,11 @@
             </div>
         </div>
     </div>
+</div>
+<br>
+<div (collapsed)="collapsed($event)"
+     (expanded)="expanded($event)"
+     [collapse]="isCollapsed"
+     class="expanded-view-container">
+    <expanded-load-view></expanded-load-view>
 </div>
