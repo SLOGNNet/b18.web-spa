@@ -61,8 +61,6 @@ export class Stop {
   plannedArrivalAt: Date = null;
   @JsonMember
   plannedDepartureAt: Date = null;
-  //@JsonMember
-  //appointments: Array<Appointment>;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();
