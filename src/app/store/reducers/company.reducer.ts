@@ -20,7 +20,7 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: updateListItem(state.companies, action.company)});
   },
   [CompanyActions.GET_ALL_COMPANIES](state, action) {
-    return Object.assign({}, state, { items: action.items, selected: null});
+    return Object.assign({}, state, { items: action.items.slice(), selected: null});
   },
   [CompanyActions.SELECT_COMPANY](state, action) {
     return Object.assign({}, state, { selected: action.company});

@@ -26,7 +26,7 @@ export const driverReducer = createReducer(INITIAL_STATE, {
       });
   },
   [DriverActions.GET_ALL_DRIVERS](state, action) {
-    return Object.assign({}, state, { items: action.items, selected: null});
+    return Object.assign({}, state, { items: action.items.slice(), selected: null});
   },
   [DriverActions.SELECT_DRIVER](state, action) {
     return Object.assign({}, state, { selected: action.driver});

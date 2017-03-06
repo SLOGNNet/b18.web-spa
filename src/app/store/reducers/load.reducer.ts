@@ -23,6 +23,6 @@ export const loadReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { selected: action.load});
   },
   [LoadActions.GET_ALL_LOADS](state, action) {
-    return Object.assign({}, state, { items: action.items, selected: null});
+    return Object.assign({}, state, { items: action.items.slice(), selected: null});
   },
 });
