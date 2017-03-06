@@ -22,6 +22,7 @@ $small-size: 10px;
   &.small {
     width: $small-size;
     height: $small-size;
+    margin: 0;
     font-size: $small-size - 4px;
   }
 }

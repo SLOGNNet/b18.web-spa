@@ -1,6 +1,10 @@
 <div class="stop-view-mode-section"
     [class.expanded-view]="isExpanded">
-    <div class="stop-info-container">
+    <div class="stop-info-container"
+    [class.pickup]="pickupCommodities.length && !dropoffCommodities.length"
+    [class.dropoff]="!pickupCommodities.length && dropoffCommodities.length"
+    [class.combined]="pickupCommodities.length && dropoffCommodities.length">
+        <div class="stripped-border" *ngIf="pickupCommodities.length && dropoffCommodities.length"></div>
         <div class="facility-info">
             <div class="title">Tailor Freshh Foods</div>
             <div class="info-item">
@@ -36,10 +40,14 @@
                 <span class="days">Sa:</span>
                 <span class="hours">12:00-16:00</span>
             </div>
+            <div class="hours-string">
+                <span class="days">Su:</span>
+                <span class="hours">13:00-14:00</span>
+            </div>
             <div class="notes">Call after 12:00</div>
         </div>
     </div>
-    <trip-view [isExpanded]="isExpanded"></trip-view>
+        <trip-view [isExpanded]="isExpanded"></trip-view>
 </div>
 
 

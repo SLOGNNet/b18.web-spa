@@ -1,12 +1,12 @@
-<div class="trip-info-container"
-[class.expanded]="isExpanded">
-  <div class="left-panel">
-    <div class="trip-info-header">
-      <span class="trip-number">TR3453563 :</span>
-      <div class="buttons-panel">
-        <button class="icon-fax"></button>
-        <button class="icon-call"></button>
-        <span [bd-popover]="phonePopover" [popoverOnHover]="true">
+<div class="trip-container" [class.expanded]="isExpanded">
+  <div class="trip-info-container">
+    <div class="left-panel">
+      <div class="trip-info-header">
+        <span class="trip-number">TR3453563 :</span>
+        <div class="buttons-panel">
+          <button class="icon-fax"></button>
+          <button class="icon-call"></button>
+          <span [bd-popover]="phonePopover" [popoverOnHover]="true">
                     <button class="icon-message"></button>
                             <bd-popover-content
                             #phonePopover
@@ -17,39 +17,93 @@
                                 <phone-popover [phoneNumber]="123123123"></phone-popover>
                         </bd-popover-content>
                     </span>
+        </div>
+      </div>
+      <div class="driver-container">
+              <div class="driver-info">
+        <span class="initials-circle">
+                      <bd-initials-circle
+                          [firstName]="'Vasya'"
+                          [lastName]="'Pupkin'"
+                          size='small'>
+                      </bd-initials-circle>
+                  </span>
+        <span class="driver-name">Vasya Pupkin</span>
+        <span class="driver-count" *ngIf="!isExpanded">(+1)</span>
+      </div>
+      <div class="driver-info">
+        <span class="initials-circle">
+                      <bd-initials-circle
+                          [firstName]="'Ihor'"
+                          [lastName]="'Pidruchny'"
+                          size='small'>
+                      </bd-initials-circle>
+                  </span>
+        <span class="driver-name">Ihor Pidruchny</span>
+        <span class="driver-count" *ngIf="!isExpanded">(+1)</span>
+      </div>
+      <div class="driver-info">
+        <span class="initials-circle">
+                      <bd-initials-circle
+                          [firstName]="'Nick'"
+                          [lastName]="'Smith'"
+                          size='small'>
+                      </bd-initials-circle>
+                  </span>
+        <span class="driver-name">Nick Smith</span>
+        <span class="driver-count" *ngIf="!isExpanded">(+1)</span>
+      </div>
+      </div>
+      <span class="trailer-info">
+          Kenworth 101, Wabash and some long long text
+      </span>
+    </div>
+    <div class="right-panel">
+      <div class="appointment-type">
+        <div class="type-container">
+          <span class="circle"></span>
+          <span class="type">FCFS</span>
+        </div>
+      </div>
+      <div class="date-range-container">
+        <div class="date first-date">
+          <span class="date-value">09/09</span>
+          <span class="time-value">12:15</span>
+        </div>
+        <div class="date last-date">
+          <span class="date-value">09/09</span>
+          <span class="time-value">12:15</span>
+        </div>
       </div>
     </div>
-    <div class="driver-info">
-      <span class="initials-circle">
-                    <bd-initials-circle
-                        [firstName]="'Nick'"
-                        [lastName]="'Smith'"
-                        size='small'>
-                    </bd-initials-circle>
-                </span>
-      <span class="driver-name">Nick Smith</span>
-      <span class="driver-count" *ngIf="!isExpanded">(+1)</span>
-    </div>
-    <span class="trailer-info">
-                Kenworth 101, Wabash and some long long text
-            </span>
   </div>
-  <div class="right-panel">
-    <div class="appointment-type">
-      <div class="type-container">
-        <span class="circle"></span>
-        <span class="type">FCFS</span>
-      </div>
+
+  <div class="commodities-section" *ngIf="isExpanded">
+    <div class="commodities-container dropoff-border">
+        <commodities-header 
+          [titles]="commodityHeaders">
+        </commodities-header>
+      <dropoff-commodity class='commodity-item' *ngFor="let data of renderFormData; let i = index; trackBy: commodityTrackBy" [viewMode]="viewMode"
+          [commodity]="data.item" [group]="data.group"></dropoff-commodity>
+          <div class="commodities-notes">
+            Storage # 2
+          </div>
     </div>
-    <div class="date-range-container">
-      <div class="date first-date">
-        <span class="date-value">09/09</span>
-        <span class="time-value">12:15</span>
-      </div>
-      <div class="date last-date">
-        <span class="date-value">09/09</span>
-        <span class="time-value">12:15</span>
-      </div>
+    <div 
+      *ngIf="pickupCommodities.length"
+      class="commodities-container pickup-border" 
+      [style.border-color]="getStopColor(StopTypes.Pickup)">
+      <commodities-header 
+        *ngIf="!dropoffCommodities.length"
+        [titles]="commodityHeaders">
+      </commodities-header>
+        <pickup-commodity class='commodity-item' *ngFor="let data of renderFormData; let i = index; trackBy: commodityTrackBy" [viewMode]="viewMode"
+          [commodity]="data.item" [group]="data.group"></pickup-commodity>
+          <div class="commodities-notes">
+            Storage # 2
+          </div>
     </div>
+
   </div>
+
 </div>

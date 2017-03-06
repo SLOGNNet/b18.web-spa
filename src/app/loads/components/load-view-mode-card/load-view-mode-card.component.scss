@@ -1,6 +1,9 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
 
+$text-line-height: 16px;
+$text-margin: 5px;
+
 .stop-view-mode-section {
 
   button {
@@ -15,7 +18,7 @@
    }
 
   span {
-    line-height: 16px;
+    line-height: $text-line-height;
   }
 
   display: flex;
@@ -23,13 +26,36 @@
   background: $light-blue;
   font-size: $tiny-font-size;
   flex-direction: column;
-  border-left: 4px solid $pickup-view-mode-color;
   border-radius: $default-border-radius;
 
   .stop-info-container {
+    position: relative;
     display: flex;
     background: $white;
     border-bottom: $border;
+    border-left: 4px solid $grey;
+
+    &.pickup {
+      border-left: 4px solid $pickup-view-mode-color;
+    }
+
+    &.dropoff {
+      border-left: 4px solid $dropoff-view-mode-color;
+    }
+
+    &.combined {
+      border-left: 0;
+    }
+
+    .stripped-border {
+      position: absolute;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background-image: url('assets/img/combined_stop_border.png');
+      background-repeat: repeat-y;
+      left: -5px;
+    }
 
     .facility-info {
       display: flex;
@@ -38,7 +64,6 @@
       color: $dark-grey;
       border-right: 1px dashed $grey;
       flex-direction: column;
-      justify-content: space-between;
 
       .title {
         color: $black;
@@ -49,14 +74,11 @@
         display: flex;
 
         .item-icon {
-          margin-right: 5px;
-        }
-
-        .item-text {
-          line-height: $tiny-font-size;
+          margin-right: $text-margin;
         }
       }
     }
+
     .business-hours-container {
       width: 50%;
       padding: $default-margin;
@@ -74,6 +96,11 @@
         display: none;
         background: $white;
         color: $blue;
+        transition: display .2s;
+
+        button {
+          padding: 0 $text-margin;
+        }
 
         &:hover {
           cursor: pointer;
@@ -86,13 +113,18 @@
         white-space: nowrap;
         text-overflow: ellipsis;
       }
+    }
 
-      &:hover {
+    &:hover {
+      .business-hours-container {
         .btn-container {
           display: block;
+          transition: display .2s;
         }
       }
     }
-  }
+    // mixed load type border
 
+
+  }
 }

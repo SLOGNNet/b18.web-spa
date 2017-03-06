@@ -46,7 +46,10 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     CompanyForm,
     LoadFormComponent,
     DriverForm,
-    LoadDocumentFormComponent
+    LoadDocumentFormComponent,
+    CommoditiesHeaderComponent,
+    DropoffpCommodityComponent,
+    PickupCommodityComponent
   ]
 })
 export class BdFormsModule {

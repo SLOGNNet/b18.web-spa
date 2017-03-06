@@ -74,6 +74,7 @@ import {
     EquipmentCardsComponent
   ],
   exports: [
+    BdFormsModule
   ]
 })
 export class MainModule { }
