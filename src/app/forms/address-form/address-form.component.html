@@ -7,10 +7,11 @@
     </div>
 </template>
 <bd-validator *ngIf="isNameFieldVisible" [component]="addressForm.controls.name" [errorDefs]="{required: 'Name is required'}">
-  <bd-input class="bd-form-control" formControlName="name" placeholder="Name">
+  <bd-input class="bd-form-control" formControlName="name" [disabled]="disabled" placeholder="Name">
   </bd-input>
 </bd-validator>
 <bd-typeahead
+  [disabled]="disabled"
 	class="bd-form-control"
 	formControlName="streetAddress1"
 	placeholder="Street address 1"
