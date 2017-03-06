@@ -50,3 +50,14 @@
     }
   }
 }
+
+.bd-disabled {
+
+  .bd-label {
+    color: $disabled-text-color;
+  }
+
+  .checkboxes {
+    color: $disabled-text-color;
+  }
+}

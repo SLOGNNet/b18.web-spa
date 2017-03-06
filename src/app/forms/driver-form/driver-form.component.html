@@ -4,7 +4,7 @@
 	<bd-form-section [labelText]="'PERSONAL INFO'">
 		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>
 		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
-		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-form-datepicker>
+		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [disabled]="true" [labelText]="'Date Of Birth'"></bd-form-datepicker>
 		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
@@ -19,12 +19,12 @@
 	<bd-form-section [labelText]="'PAYMENT'">
 		<bd-dropdown class="bd-form-control" formControlName="paymentOption" [labelText]="'Payment options'" [items]="paymentsTypes">
 		</bd-dropdown>
-		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
+		<bd-input class="bd-form-control" formControlName="rate" [disabled]="true" [labelText]="'Rate'">
 		</bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'LICENSE'">
-		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Number'">
+		<bd-input class="bd-form-control" formControlName="number" [disabled]="true" [labelText]="'Number'">
 		</bd-input>
 		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
 		</bd-form-datepicker>
@@ -32,10 +32,10 @@
 		</bd-form-datepicker>
 		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [labelText]="'State issued'" [items]="states">
 		</bd-dropdown>
-		<bd-dropdown class="bd-form-control" formControlName="class" [labelText]="'Class'" [items]="licenseClasses">
+		<bd-dropdown class="bd-form-control" formControlName="class" [disabled]="true" [labelText]="'Class'" [items]="licenseClasses">
 		</bd-dropdown>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" [items]="endorsements" [value]="driver.license.endorsments"></bd-checkboxes>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" [items]="restrictions" [value]="driver.license.restrictions"></bd-checkboxes>
+		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" [disabled]="true" [items]="endorsements" [value]="driver.license.endorsments"></bd-checkboxes>
+		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" [disabled]="true" [items]="restrictions" [value]="driver.license.restrictions"></bd-checkboxes>
 	</bd-form-section>
 	<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 		<div class="button-group">

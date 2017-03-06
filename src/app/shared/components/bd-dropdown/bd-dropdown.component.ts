@@ -26,6 +26,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Input() dropdownItemTemplate: TemplateRef<any>;
   @Input() toogleTemplate: TemplateRef<any>;
   @Input() items: any[];
+  @Input() disabled: boolean = false;
   @Input() clearLabel: string = '';
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
@@ -74,10 +75,12 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   public _handleDropdownHeaderClick(event): void {
+        if(this.disabled) return;
     this._selectedValue = null;
   }
 
   public _handleDropdownItemClick(event, item): void {
+    //if(this.disabled) return;
     this._selectedValue = item[this.keyField];
     this._onChangeCallback(this._selectedValue);
     this._onTouchedCallback();
@@ -91,7 +94,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
   onToggle(isOpen) {
     this._isOpen = isOpen;
     this.focusChange.emit(this._isOpen);
-
     if (!isOpen) {
       const blurEvent = new Event('blur', { bubbles: true });
       this.renderer.invokeElementMethod(

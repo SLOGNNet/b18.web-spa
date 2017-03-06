@@ -131,6 +131,28 @@
   }
 }
 
+.bd-disabled {
+  .bd-dropdown-wrapper {
+    .bd-dropdown-label {
+      color: $disabled-text-color;
+    }
+
+    .bd-dropdown-value {
+      span {
+        color: $disabled-text-color;
+      }
+
+      .item-selected {
+        color: $disabled-text-color;
+      }
+    }
+
+    .bd-dropdown-icon {
+      color: $disabled-text-color;
+    }
+  }
+}
+
 //sass-lint:disable force-element-nesting
 :host-context(.view).bd-form-control {
   .bd-dropdown-icon {

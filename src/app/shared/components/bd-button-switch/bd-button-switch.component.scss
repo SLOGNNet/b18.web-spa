@@ -49,3 +49,15 @@
     }
   }
 }
+
+.bd-disabled {
+  .bd-switch-label {
+    color: $disabled-text-color;
+  }
+
+  .bd-buttons-container {
+    button {
+      color: $disabled-text-color;
+    }
+  }
+}
