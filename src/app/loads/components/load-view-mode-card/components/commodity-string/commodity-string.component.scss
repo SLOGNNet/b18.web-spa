@@ -1,0 +1,26 @@
+@import '../../../../../../assets/styles/variables';
+
+.commodity-string-container {
+  display: flex;
+  height: $form-control-height;
+  background: $white;
+  color: $black;
+  border-bottom: $border;
+  flex-direction: row;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  .commodity-item {
+    display: flex;
+    border-right: $border;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    &:last-of-type {
+      border-right: 0;
+    }
+  }
+}

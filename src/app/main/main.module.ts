@@ -30,6 +30,7 @@ import {
   DriverPopoverComponent,
   PhonePopoverComponent,
   LoadViewModeCardComponent,
+  CommodityStringComponent,
   TripViewComponent
 } from '../loads';
 
@@ -68,6 +69,7 @@ import {
     CompanyPopoverComponent,
     DriverPopoverComponent,
     PhonePopoverComponent,
+    CommodityStringComponent,
     BdToastManagerComponent,
     EquipmentComponent,
     EquipmentCardComponent,
