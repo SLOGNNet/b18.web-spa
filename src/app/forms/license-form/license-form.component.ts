@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { License, LicenseClassTypes } from '../../models';
 import { EnumHelperService } from '../../shared/helpers';
-import { StateService, EndorsementService, RestrictionService } from '../../shared/services';
+import { StateService, LicenseService } from '../../shared/services';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 
@@ -28,16 +28,15 @@ export class LicenseForm extends BaseForm {
     private _cdr: ChangeDetectorRef,
     private enumHelperService: EnumHelperService,
     private stateService: StateService,
-    private endorsementService: EndorsementService,
-    private restrictionService: RestrictionService,
+    private licenseService: LicenseService,
     private _formBuilder: FormBuilder,
     element: ElementRef
   ) {
     super(element);
 
     this.stateService.getAll().subscribe(states => this.states = states.map(value => ({ 'key': value, 'value': value })));
-    this.endorsementService.getAll().subscribe(endorsements => this.endorsmentList = endorsements);
-    this.restrictionService.getAll().subscribe(restrictions => this.restrictionList = restrictions);
+    this.licenseService.getAllEndorsements().subscribe(endorsements => this.endorsmentList = endorsements);
+    this.licenseService.getAllRestrictions().subscribe(restrictions => this.restrictionList = restrictions);
 
     this.licenseClasses = enumHelperService.getDropdownKeyValues(LicenseClassTypes);
   }
