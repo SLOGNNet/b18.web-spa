@@ -3,7 +3,7 @@ import { TripStop } from './tripStop';
 import { Appointment } from './appointment';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Type } from 'class-transformer';
 
 const stopStatusColor = createStopStatusColors();
 const stopStatusText = createStopStatusText();
@@ -42,27 +42,18 @@ function createStopStatusColors() {
   return result;
 };
 
-@JsonObject
 export class Stop {
-  @JsonMember
   id: number;
-  @JsonMember
   notes: string = '';
-  @JsonMember
   type: StopTypes = StopTypes.None;
-  @JsonMember({ elements: Facility })
+  @Type(() => Facility)
   facility: Facility;
-  @JsonMember
   status: StopStatuses.InProgress;
-  @JsonMember
   arrivedAt: Date = null;
-  @JsonMember
   departedAt: Date = null;
-  @JsonMember
   plannedArrivalAt: Date = null;
-  @JsonMember
   plannedDepartureAt: Date = null;
-  @JsonMember({ elements: TripStop })
+  @Type(() => TripStop)
   tripStops: Array<TripStop>;
 
   static create(type: StopTypes): Stop{

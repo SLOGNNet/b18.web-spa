@@ -62,5 +62,4 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
   }
-
 }
