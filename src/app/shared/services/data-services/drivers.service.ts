@@ -21,12 +21,8 @@ export class DriverService {
   }
 
   getDetails(id: number): Observable<Driver> {
-    const dr = MockData.drivers.find((driver) => id === driver.id);
-    debugger;
-    let json = classToPlain(dr);
-    const dr1 = plainToClass(Driver, json);
-    debugger;
-    return Observable.of(dr1);
+    const result = MockData.drivers.find((driver) => id === driver.id);
+    return Observable.of(result);
   }
 
   create(driver: Driver) {
