@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop } from '../../../../../models';
+import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { CommoditiesHeaderComponent, PickupCommodityComponent, DropoffpCommodityComponent } from '../../../../../forms/commodities-forms';
-import { find } from 'lodash';
+import { find, map } from 'lodash';
 
 const stopColors = ['#d7d8db', '#d289dd', '#dfd78f'];
 
@@ -21,7 +21,6 @@ export class TripViewComponent {
   public appointmentType: string = '';
   public phoneNumber: string = '';
 
-
   public commodityHeaders = [
       { name: 'NUMBER' },
       { name: 'P.O.' },
@@ -39,7 +38,13 @@ export class TripViewComponent {
   ngOnInit() {
     this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
     this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'primaryPhone').value;
-    console.log('trip = ', this.tripData);
+
+    map(this.tripData.stopActions, item => {
+      if (item.type === StopActionTypes.Pickup) this.pickupCommodities.push(item.commodity);
+    });
+    map(this.tripData.stopActions, item => {
+      if (item.type === StopActionTypes.Dropoff) this.dropoffCommodities.push(item.commodity);
+    });
   }
 
   getAppointmentType(type: AppointmentTypes) {

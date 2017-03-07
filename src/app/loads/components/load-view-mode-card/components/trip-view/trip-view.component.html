@@ -7,16 +7,16 @@
           <button class="icon-fax"></button>
           <button class="icon-call"></button>
           <span [bd-popover]="phonePopover" [popoverOnHover]="true">
-                    <button class="icon-message"></button>
-                            <bd-popover-content
-                            #phonePopover
-                            placement="auto"
-                            [width]="100"
-                            [horizontalOffset]="-10"
-                            [closeOnClickOutside]="closeOnClickOutside">
-                                <phone-popover [phoneNumber]="phoneNumber"></phone-popover>
-                        </bd-popover-content>
-                    </span>
+              <button class="icon-message"></button>
+                  <bd-popover-content
+                      #phonePopover
+                      placement="auto"
+                      [width]="100"
+                      [horizontalOffset]="-10"
+                      [closeOnClickOutside]="closeOnClickOutside">
+                           <phone-popover [phoneNumber]="phoneNumber"></phone-popover>
+                   </bd-popover-content>
+            </span>
         </div>
       </div>
       <div class="driver-container">
@@ -59,16 +59,21 @@
       </div>
     </div>
   </div>
-
   <div class="commodities-section" *ngIf="isExpanded">
-    <div class="commodities-container dropoff-border">
+    <div 
+        *ngIf="dropoffCommodities.length"
+        class="commodities-container dropoff-border">
         <commodities-header 
           [titles]="commodityHeaders">
         </commodities-header>
-      <dropoff-commodity class='commodity-item' *ngFor="let data of renderFormData; let i = index; trackBy: commodityTrackBy" [viewMode]="viewMode"
-          [commodity]="data.item" [group]="data.group"></dropoff-commodity>
-          <div class="commodities-notes">
-            Storage # 2
+          <commodity-string
+              class='commodity-item' 
+              *ngFor="let data of dropoffCommodities; let i = index;" 
+              [commodity]="data" 
+              [index]="i">
+          </commodity-string>
+          <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
+            {{tripData.notes}}
           </div>
     </div>
     <div 
@@ -79,11 +84,15 @@
         *ngIf="!dropoffCommodities.length"
         [titles]="commodityHeaders">
       </commodities-header>
-        <pickup-commodity class='commodity-item' *ngFor="let data of renderFormData; let i = index; trackBy: commodityTrackBy" [viewMode]="viewMode"
-          [commodity]="data.item" [group]="data.group"></pickup-commodity>
-          <div class="commodities-notes">
-            Storage # 2
-          </div>
+        <commodity-string
+          class='commodity-item'
+          *ngFor="let data of pickupCommodities; let i = index;" 
+          [commodity]="data"
+          [index]="i">
+        </commodity-string>
+        <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
+            {{tripData.notes}}
+        </div>
     </div>
 
   </div>

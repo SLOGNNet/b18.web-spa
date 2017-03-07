@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Stop, ContactInfo, TripStop } from '../../../models';
+import { Load, Stop, ContactInfo, TripStop, Address, StopActionTypes } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { CommoditiesHeaderComponent, PickupCommodityComponent } from '../../../forms';
 import MockData from '../../../shared/services/data-services/mock-data';
-import { find } from 'lodash';
+import { find, map } from 'lodash';
 
 @Component({
   selector: 'load-view-mode-card',
@@ -28,5 +28,19 @@ export class LoadViewModeCardComponent {
     this.primaryPhone = find(this.stop.facility.contactInfo, item => item.label === 'primaryPhone').value;
     this.altPhone = find(this.stop.facility.contactInfo, item => item.label === 'alternativePhone').value;
     this.fax = find(this.stop.facility.contactInfo, item => item.label === 'fax').value;
+
+    this.tripStops.map(item => {
+      map(item.stopActions, stopAction => {
+          this.pickupCommodities = item.stopActions.filter(obj => obj.type === StopActionTypes.Pickup);
+          this.dropoffCommodities = item.stopActions.filter(obj => obj.type === StopActionTypes.Dropoff);
+      });
+    });
   }
+
+  onClick() {
+    console.log('click');
+    this.isExpanded = !this.isExpanded;
+    console.log(this.isExpanded);
+  }
+
 }

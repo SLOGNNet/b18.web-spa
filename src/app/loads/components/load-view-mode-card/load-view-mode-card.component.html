@@ -29,7 +29,7 @@
                 <button 
                     [class.icon-down-arrow]="!isExpanded" 
                     [class.icon-up-arrow]="isExpanded" 
-                    (click)="isExpanded = !isExpanded">
+                    (click)="onClick()">
                 </button>
             </div>
             <div class="hours-string">
@@ -47,7 +47,11 @@
             <div class="notes">{{stop.facility.notes}}</div>
         </div>
     </div>
-        <trip-view [tripData]="tripStops[0]" [isExpanded]="isExpanded"></trip-view>
+
+    <trip-view 
+        [tripData]="tripStops[0]" 
+        [isExpanded]="isExpanded">
+    </trip-view>
 </div>
 
 
