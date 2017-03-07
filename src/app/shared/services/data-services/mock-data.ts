@@ -475,7 +475,7 @@ class MockData {
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 1, drivers: [this.drivers[0]] }]
+    driverTeams: [{ id: 1, drivers: [this.drivers[0],this.drivers[0],this.drivers[1]] }]
   }, {
     id: 2,
     number: '345351',
@@ -487,7 +487,7 @@ class MockData {
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 3, drivers: [this.drivers[0]] }]
+    driverTeams: [{ id: 3, drivers: [this.drivers[0],] }]
   }, {
     id: 4,
     number: '345351',
@@ -496,7 +496,7 @@ class MockData {
     driverTeams: [{ id: 4, drivers: [this.drivers[0]] }]
   }];
 
-      public tripStopCollection: Array<TripStop> = [{
+  public tripStopCollection: Array<TripStop> = [{
       id: 1,
       appointment: {
         from: new Date(2017, 2, 1, 8),
