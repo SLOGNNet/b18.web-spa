@@ -56,8 +56,4 @@ export class BdCheckboxes implements ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  ngOnInit() {
-    console.log(this.disabled);
-  }
-
 }
