@@ -9,8 +9,8 @@
 		</bd-dropdown>
 		<bd-dropdown class="bd-form-control" formControlName="class" [labelText]="'Class'" [items]="licenseClasses">
 		</bd-dropdown>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" formControlName="endorsments" [items]="endorsmentList">
+		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" [disabled]="disabled" formControlName="endorsments" [items]="endorsmentList">
 		</bd-checkboxes>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" formControlName="restrictions" [items]="restrictionList">
+		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" [disabled]="disabled" formControlName="restrictions" [items]="restrictionList">
 		</bd-checkboxes>
 </form>

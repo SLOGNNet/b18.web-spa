@@ -1,13 +1,11 @@
 import { Driver } from './driver';
 import { generateNewId } from './utils';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
-@JsonObject
+import { Type } from 'class-transformer';
+
 export class DriverTeam {
-
-  @JsonMember
   id: number = 0;
-  @JsonMember({ elements: Driver })
+  @Type(() => Driver)
   drivers: Array<Driver>;
 
   static create(): DriverTeam {
