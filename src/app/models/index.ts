@@ -18,3 +18,4 @@ export * from './enums';
 export * from './contact-info';
 export * from './tripStop';
 export * from './appointment';
+export * from './stopAction';

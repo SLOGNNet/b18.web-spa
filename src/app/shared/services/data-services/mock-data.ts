@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, TripStop
+  AppointmentTypes, TripStop, StopAction
 } from './models';
 class MockData {
 
@@ -496,6 +496,20 @@ class MockData {
     driverTeams: [{ id: 4, drivers: [this.drivers[0]] }]
   }];
 
+  public stopActionCollection: Array<StopAction> = [{
+        type: StopActionTypes.Pickup,
+        commodity: this.commodities[0]
+       },
+       {
+        type: StopActionTypes.Pickup,
+        commodity: this.commodities[1]
+       },
+       {
+        type: StopActionTypes.Pickup,
+        commodity: this.commodities[2]
+       }
+  ];
+
   public tripStopCollection: Array<TripStop> = [{
       id: 1,
       appointment: {
@@ -505,10 +519,7 @@ class MockData {
       },
       notes: 'test',
       facility: this.facilities[0],
-      stopActions: [{
-        type: StopActionTypes.Pickup,
-        commodity: this.commodities[0]
-       }],
+      stopActions: [this.stopActionCollection[0],this.stopActionCollection[1],this.stopActionCollection[2]],
        trip: this.trips[0]
     },
     {
@@ -521,10 +532,7 @@ class MockData {
       notes: 'test',
       trip: this.trips[0],
       facility: this.facilities[0],
-        stopActions: [{
-        type: StopActionTypes.Dropoff,
-        commodity: this.commodities[0]
-       }]
+      stopActions: [this.stopActionCollection[0],this.stopActionCollection[0],this.stopActionCollection[0]]
     }
     ];
 
