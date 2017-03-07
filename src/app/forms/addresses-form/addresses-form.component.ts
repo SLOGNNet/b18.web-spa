@@ -10,6 +10,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 }, BaseListForm.metaData))
 export class AddressesForm extends BaseListForm<Address>  {
   @Output() updatePlace = new EventEmitter();
+  @Input() disabled:boolean = false;
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
     super(formBuilder, elementRef);

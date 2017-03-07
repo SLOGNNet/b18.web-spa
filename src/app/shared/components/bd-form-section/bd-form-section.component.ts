@@ -7,7 +7,7 @@ import { ExpandablePanelComponent } from '../expandable-panel';
   styleUrls: ['./bd-form-section.component.scss']
 })
 export class BdFormSectionComponent {
-
+  @Input() disabled:boolean = false;
   @Input() labelText: string;
   @Input() isExpanded: boolean = true;
 

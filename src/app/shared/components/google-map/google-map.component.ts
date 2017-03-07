@@ -14,6 +14,7 @@ export class GoogleMapComponent implements OnChanges {
     @Input() id: string = `google-${nextUniqueId++}`;
     @Input() longitude: number = 0;
     @Input() latitude: number = 0;
+    @Input() disabled:boolean = true;
     @Input() info = '';
     @Input() infoLabelSize = 10;
     @Input() markerSize = 20;

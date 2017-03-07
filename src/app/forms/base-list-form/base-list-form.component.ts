@@ -10,7 +10,6 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   public items: Array<T>= new Array<T>();
   @Input()
   public formArray: FormArray;
-  @Input() disabled: boolean = false;
 
   @Output() update: EventEmitter<T> = new EventEmitter<T>();
   @Output() add: EventEmitter<T> = new EventEmitter<T>();
@@ -45,8 +44,6 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   }
 
   protected addNewItem() {
-    if (this.disabled) return;
-
     const item = this.createItem();
     this.add.emit(item);
     this.addItem(item);
@@ -61,7 +58,6 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   }
 
   protected removeItem(removeData) {
-    if (this.disabled) return;
 
     this.remove.emit(removeData.item);
     this.renderFormData = this.renderFormData.filter(data => data !== removeData);

@@ -1,6 +1,7 @@
 <div *ngIf="selectedItem">
   <form-navigation
     sticky
+    [disabled]="disabled"
     [title]="'Company'"
     [anchors]="anchors">
   </form-navigation>
