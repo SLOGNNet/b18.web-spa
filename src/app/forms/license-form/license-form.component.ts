@@ -13,6 +13,8 @@ import { BaseForm } from '../base-form';
   styleUrls: ['./license-form.component.scss']
 }, BaseForm.metaData))
 export class LicenseForm extends BaseForm {
+
+  @Input() disabled: boolean = false;
   @Input()
   public license: License;
   @Input('group')

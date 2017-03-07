@@ -17,7 +17,7 @@ const BD_CHECKBOXES_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BdCheckboxes implements ControlValueAccessor {
   @Input() labelText: any;
-  @Input() disabled: boolean;
+  @Input() disabled: boolean = false;
   @Input() items: Array<any>;
   @Input()
   set value(v: any) {
@@ -54,6 +54,10 @@ export class BdCheckboxes implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
+  }
+
+  ngOnInit() {
+    console.log(this.disabled);
   }
 
 }
