@@ -24,14 +24,14 @@
 
   &:focus {
     background: $btn-primary-focus;
+
+    &:hover {
+      background: $btn-primary-focus;
+    }
   }
 
   &:hover {
     background: $btn-primary-hover;
-  }
-
-  &:focus:hover {
-    background: $btn-primary-focus;
   }
 }
 
@@ -53,9 +53,10 @@
 
   &:focus {
     background: $btn-default-focus;
+
+    &:hover {
+      background: $btn-default-focus;
+    }
   }
 
-  &:focus:hover {
-    background: $btn-default-focus;
-  }
 }

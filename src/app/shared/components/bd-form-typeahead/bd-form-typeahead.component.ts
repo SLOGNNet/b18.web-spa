@@ -19,7 +19,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
-  @Input() disabled:boolean = false;
+  @Input() disabled: boolean = false;
   @Input() placeholder: string;
   @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
@@ -65,7 +65,8 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   remove(event): void {
-    if(this.disabled) return;
+    if (this.disabled) return;
+
     event.stopPropagation();
     this.changeValue('');
 
