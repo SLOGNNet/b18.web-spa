@@ -49,3 +49,16 @@
     }
   }
 }
+
+.bd-disabled {
+  .bd-switch-label {
+    opacity: $disabled-opacity;
+  }
+
+  .bd-buttons-container {
+    button {
+      color: $label-default-color;
+      opacity: $disabled-opacity;
+    }
+  }
+}

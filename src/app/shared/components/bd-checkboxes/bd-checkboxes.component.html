@@ -1,10 +1,10 @@
-<div class="bd-checkboxes">
+<div class="bd-checkboxes" [class.bd-disabled]="disabled">
   <div class="bd-label">
     {{labelText}}
   </div>
   <div class="checkboxes">
     <div class="bd-checkbox" *ngFor="let item of items">
-      <bd-checkbox [checked]="isChecked(item)"  (checkedChange)="onCheckedChange(item)"></bd-checkbox>
+      <bd-checkbox [checked]="isChecked(item)" [disabled]="disabled" (checkedChange)="onCheckedChange(item)"></bd-checkbox>
       {{item.key}}
     </div>
   </div>
