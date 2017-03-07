@@ -3,7 +3,6 @@ import { Contact } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
@@ -26,7 +25,6 @@ function createStatusText() {
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 
-@JsonObject()
 export class Company {
   id: number;
   name: string = 'CH ROBINSON COMPANY INC';

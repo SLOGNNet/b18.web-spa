@@ -2,10 +2,8 @@ import { Driver } from './driver';
 import { DriverTeam } from './driverTeam';
 import { Equipment } from './equipment';
 import { generateNewId } from './utils';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { Type } from 'class-transformer';
 
-@JsonObject
 export class Trip {
   id: number;
   number: string = '';

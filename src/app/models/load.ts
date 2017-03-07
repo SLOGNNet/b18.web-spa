@@ -4,7 +4,6 @@ import { Commodity } from './commodity';
 import { Address } from './address';
 import { Trip } from './trip';
 import { Document } from './document';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
 import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
 import { Type } from 'class-transformer';
@@ -40,7 +39,6 @@ function createStatusTexts() {
 
 const statusTexts = createStatusTexts();
 
-@JsonObject
 export class Load {
   id: number;
   companyId: number;

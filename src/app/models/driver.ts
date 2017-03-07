@@ -2,7 +2,7 @@ import { Equipment } from './equipment';
 import { Contact } from './contact';
 import { License } from './license';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
 // Colors
@@ -40,7 +40,6 @@ const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
 
-@JsonObject
 export class Driver extends Contact {
   dateOfBirth: Date = null;
   ssn: string = '';

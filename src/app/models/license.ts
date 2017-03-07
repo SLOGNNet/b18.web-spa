@@ -1,8 +1,6 @@
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { LicenseClassTypes } from './enums';
 import { Type } from 'class-transformer';
 
-@JsonObject
 export class License {
   id: number = 0;
   number: string;

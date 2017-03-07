@@ -3,7 +3,6 @@ import { TripStop } from './tripStop';
 import { Appointment } from './appointment';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { Type } from 'class-transformer';
 
 const stopStatusColor = createStopStatusColors();
@@ -43,7 +42,6 @@ function createStopStatusColors() {
   return result;
 };
 
-@JsonObject
 export class Stop {
   id: number;
   notes: string = '';

@@ -7,7 +7,6 @@ import { PowerUnitTypes,
   EquipmentStatuses,
   DriverTypes,
   EquipmentVehicleOperatings } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 // Colors
 function createStatusColors() {
@@ -76,9 +75,7 @@ const typeText = createTypeText();
 const shortTypeText = createShortTypeText();
 const modeText = createModeText();
 
-@JsonObject
 export class EquipmentNotification {
-  @JsonMember
   message: string = '';
   date: Date;
 }
