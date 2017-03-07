@@ -475,7 +475,7 @@ class MockData {
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 1, drivers: [this.drivers[0],this.drivers[0],this.drivers[1]] }]
+    driverTeams: [{ id: 1, drivers: [this.drivers[0], this.drivers[0], this.drivers[1]] }]
   }, {
     id: 2,
     number: '345351',
@@ -487,7 +487,7 @@ class MockData {
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 3, drivers: [this.drivers[0],] }]
+    driverTeams: [{ id: 3, drivers: [this.drivers[0]] }]
   }, {
     id: 4,
     number: '345351',
@@ -519,7 +519,7 @@ class MockData {
       },
       notes: 'test',
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0],this.stopActionCollection[1],this.stopActionCollection[2]],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1], this.stopActionCollection[2]],
        trip: this.trips[0]
     },
     {
@@ -532,7 +532,7 @@ class MockData {
       notes: 'test',
       trip: this.trips[0],
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0],this.stopActionCollection[0],this.stopActionCollection[0]]
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[0], this.stopActionCollection[0]]
     }
     ];
 
