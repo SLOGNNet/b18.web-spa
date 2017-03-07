@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Driver, DriverTypes, DriverPaymentOptions, LicenseClassTypes } from '../../models';
+import { Driver, DriverTypes, DriverPaymentTypes, LicenseClassTypes } from '../../models';
 import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { StateService, EndorsementService, RestrictionService } from '../../shared/services';
@@ -44,7 +44,7 @@ export class DriverForm extends BaseForm {
     this.endorsementService.getAll().subscribe(endorsements => this.endorsements = endorsements.map(value => ({ 'key': value, 'value': value })));
     this.restrictionService.getAll().subscribe(restrictions => this.restrictions = restrictions.map(value => ({ 'key': value, 'value': value })));
 
-    this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentOptions);
+    this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
     this.licenseClasses = enumHelperService.getDropdownKeyValues(LicenseClassTypes);
   }
 
@@ -72,7 +72,7 @@ export class DriverForm extends BaseForm {
       firstName: [this.driver.firstName],
       lastName: [this.driver.lastName],
       dateOfBirth: [this.driver.dateOfBirth],
-      paymentOption: [this.driver.paymentOption],
+      paymentType: [this.driver.paymentType],
       stateIssued: [this.driver.license.stateIssued],
       class: [this.driver.license.class],
       number: [this.driver.license.number],
