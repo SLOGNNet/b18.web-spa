@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class DriverForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input() public scrollable: boolean = true;
   @Input() public submitButtonText: string = 'Save';
   @Input() public driver: Driver;

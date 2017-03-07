@@ -22,14 +22,6 @@
   background: $blue;
   color: $white;
 
-  &:focus {
-    background: $btn-primary-focus;
-
-    &:hover {
-      background: $btn-primary-focus;
-    }
-  }
-
   &:hover {
     background: $btn-primary-hover;
   }
@@ -49,14 +41,6 @@
 
   &:hover {
     background: $btn-default-hover;
-  }
-
-  &:focus {
-    background: $btn-default-focus;
-
-    &:hover {
-      background: $btn-default-focus;
-    }
   }
 
 }
