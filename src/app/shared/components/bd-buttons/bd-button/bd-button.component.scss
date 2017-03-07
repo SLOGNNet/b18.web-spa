@@ -25,13 +25,13 @@
   &:hover {
     background: $btn-primary-hover;
   }
-}
 
-.bd-disabled {
-  background: $btn-primary-focus;
-
-  &:hover {
+  &:active {
     background: $btn-primary-focus;
+
+    &:hover {
+      background: $btn-primary-focus;
+    }
   }
 }
 

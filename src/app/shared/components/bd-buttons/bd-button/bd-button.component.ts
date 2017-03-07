@@ -10,14 +10,4 @@ export class BdButtonComponent {
   @Input() color: 'primary' | 'default' = 'default';
   @Input() disabled: boolean = false;
   @Input() text: any;
-
-  @HostListener('mousedown', ['$event'])
-  onMousedown(event) {
-    this.disabled = true;
-  }
-
-  @HostListener('mouseup', ['$event'])
- onMouseup() {
-     this.disabled = false;
- }
 }
