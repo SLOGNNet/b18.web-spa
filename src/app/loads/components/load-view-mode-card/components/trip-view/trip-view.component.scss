@@ -126,6 +126,12 @@ $text-margin: 5px;
           display: flex;
           flex-direction: column;
         }
+
+        .last-date {
+          span {
+            text-align: right;
+          }
+        }
       }
     }
   }
@@ -134,6 +140,7 @@ $text-margin: 5px;
     margin: 10px;
   
     .commodities-container {
+      overflow: hidden;
       border: $border;
       border-left: 4px solid $grey;
       border-bottom-right-radius: $default-border-radius;
