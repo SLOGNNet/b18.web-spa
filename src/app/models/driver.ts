@@ -4,7 +4,7 @@ import { License } from './license';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
-
+import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
   let result = {};
@@ -42,37 +42,25 @@ const typeText = createTypeText();
 
 @JsonObject
 export class Driver extends Contact {
-  @JsonMember
   dateOfBirth: Date = null;
-  @JsonMember
   ssn: string = '';
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTruck: Equipment = new Equipment();
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   associatedEquipment: Array<Equipment>;
-  @JsonMember
   paymentType: DriverPaymentTypes;
-  @JsonMember
   rate: number;
-  @JsonMember
   type: DriverTypes = DriverTypes.CompanyDriver;
-  @JsonMember
   hireDate: Date = null;
-  @JsonMember
   terminationDate: Date = null;
-  @JsonMember
   status: DriverStatuses = DriverStatuses.Active;
-  @JsonMember
   notes: string = '';
-  @JsonMember
   lastTripNumber: number;
-  @JsonMember
   lastAddress: string = '';
-  @JsonMember
+  @Type(() => License)
   license: License;
-
 
   static create(): Driver {
     const result = new Driver();

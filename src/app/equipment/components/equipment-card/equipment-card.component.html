@@ -14,7 +14,7 @@ class="equipment-card-section"
     <div>{{equipment.number}}</div>
   </div>
   <div class="middle">
-    <span class="driver-name">{{equipment.driverFirstName}} {{equipment.driverLastName}}</span>
+    <span class="driver-name">{{equipment.driver?.firstName}} {{equipment.driver?.lastName}}</span>
     <span class="driver-type ellipsis">{{driverType}}</span>
   <div class="changes ellipsis">{{this.equipment.equipmentNotification?.date | date:'MM/dd'}}</div>
   </div>

@@ -13,7 +13,7 @@ import { CompanyService } from './index';
 import MockData from './mock-data';
 import { HttpService } from '../http.service';
 import { TypedJSON } from 'typedjson-npm/src/typed-json';
-
+import { plainToClass } from 'class-transformer';
 @Injectable()
 export class LoadService {
 
@@ -25,7 +25,8 @@ export class LoadService {
     return Observable.create((observer: any) => {
       this.http.get(this.config.apiUrl + 'load/cards').subscribe(res => {
         const data = res.json();
-        let arr = data.map(item => TypedJSON.parse(item, Load));
+        let arr = data.map(item => plainToClass(Load, item));
+        debugger;
         observer.next(arr);
       });
     });

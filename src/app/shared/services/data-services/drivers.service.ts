@@ -5,6 +5,7 @@ import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
+import { plainToClass, classToPlain } from 'class-transformer';
 
 @Injectable()
 export class DriverService {
@@ -20,9 +21,12 @@ export class DriverService {
   }
 
   getDetails(id: number): Observable<Driver> {
-    return Observable.of(
-      MockData.drivers.find((driver) => id === driver.id)
-    );
+    const dr = MockData.drivers.find((driver) => id === driver.id);
+    debugger;
+    let json = classToPlain(dr);
+    const dr1 = plainToClass(Driver, json);
+    debugger;
+    return Observable.of(dr1);
   }
 
   create(driver: Driver) {

@@ -2,20 +2,17 @@ import { Address } from './address';
 import { ContactInfo } from './contact-info';
 import { generateNewId } from './utils';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Type } from 'class-transformer';
 
 @JsonObject
 export class Facility {
-  @JsonMember
   id: number;
-  @JsonMember({ elements: Address })
+  @Type(() => Address)
   address: Address;
-  @JsonMember
   name: string = '';
-  @JsonMember
   notes: string = '';
-  @JsonMember
   businessHours: string = '';
-  @JsonMember({ elements: ContactInfo })
+  @Type(() => ContactInfo)
   contactInfo: Array<ContactInfo>;
 
   static create(): Facility{
