@@ -128,13 +128,14 @@ $text-margin: 5px;
   }
 
   .commodities-section {
-    border: $border;
     margin: 10px;
-    border-bottom-right-radius: $default-border-radius;
-    border-bottom-left-radius: $default-border-radius;
+    
 
     .commodities-container {
+      border: $border;
       border-left: 4px solid $grey;
+      border-bottom-right-radius: $default-border-radius;
+      border-bottom-left-radius: $default-border-radius;
 
       &.pickup-border {
         border-color: $pickup-view-mode-color;

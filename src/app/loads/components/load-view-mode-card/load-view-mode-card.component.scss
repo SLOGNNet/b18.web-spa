@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
 
-$text-line-height: 16px;
+$element-height: 16px;
 $text-margin: 5px;
 
 .stop-view-mode-section {
@@ -18,10 +18,11 @@ $text-margin: 5px;
    }
 
   span {
-    line-height: $text-line-height;
+    line-height: $element-height;
   }
 
   display: flex;
+  overflow: hidden;
   border: $border;
   background: $light-blue;
   font-size: $tiny-font-size;
@@ -36,11 +37,11 @@ $text-margin: 5px;
     border-left: 4px solid $grey;
 
     &.pickup {
-      border-left: 4px solid $pickup-view-mode-color;
+      border-left-color: $pickup-view-mode-color;
     }
 
     &.dropoff {
-      border-left: 4px solid $dropoff-view-mode-color;
+      border-left-color: $dropoff-view-mode-color;
     }
 
     &.combined {
@@ -54,7 +55,7 @@ $text-margin: 5px;
       height: 100%;
       background-image: url('assets/img/combined_stop_border.png');
       background-repeat: repeat-y;
-      left: -5px;
+      left: -4px;
     }
 
     .facility-info {
@@ -68,6 +69,7 @@ $text-margin: 5px;
       .title {
         color: $black;
         font-weight: bold;
+        max-height: $element-height;
       }
 
       .info-item {
@@ -112,6 +114,7 @@ $text-margin: 5px;
         color: $black;
         white-space: nowrap;
         text-overflow: ellipsis;
+        max-height: $element-height;
       }
     }
 
@@ -123,8 +126,5 @@ $text-margin: 5px;
         }
       }
     }
-    // mixed load type border
-
-
   }
 }
