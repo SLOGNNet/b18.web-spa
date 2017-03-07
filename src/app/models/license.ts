@@ -16,7 +16,7 @@ export class License {
   @JsonMember
   class: LicenseClassTypes;
   @JsonMember
-  endorsments: string = 'MN';
+  endorsments: string = 'A C';
   @JsonMember
   restrictions: string = 'MN';
 

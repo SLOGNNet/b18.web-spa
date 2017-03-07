@@ -70,6 +70,6 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   }
 
   isDetailsChanged() {
-    return this.driverFormComponent.driverForm.dirty;
+    return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
   }
 }

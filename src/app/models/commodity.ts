@@ -1,6 +1,7 @@
 import { generateNewId } from './utils';
 import { Stop } from './stop';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { StopActionTypes } from './enums';
 
 @JsonObject
 export class Commodity {
@@ -27,10 +28,9 @@ export class Commodity {
   @JsonMember
   weight: number;
 
-  static create(pickup: Stop): Commodity{
+  static create(): Commodity{
     const result = new Commodity();
     result.id = generateNewId();
-    result.pickupId = pickup.id;
     return result;
   }
 }
