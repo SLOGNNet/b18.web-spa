@@ -17,25 +17,14 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'PAYMENT'">
-		<bd-dropdown class="bd-form-control" formControlName="paymentOption" [labelText]="'Payment options'" [items]="paymentsTypes">
+		<bd-dropdown class="bd-form-control" formControlName="paymentType" [labelText]="'Payment options'" [items]="paymentsTypes">
 		</bd-dropdown>
 		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'LICENSE'">
-		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Number'">
-		</bd-input>
-		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
-		</bd-form-datepicker>
-		<bd-form-datepicker class="bd-form-control" formControlName="dateIssued" [labelText]="'Date Issued'">
-		</bd-form-datepicker>
-		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [labelText]="'State issued'" [items]="states">
-		</bd-dropdown>
-		<bd-dropdown class="bd-form-control" formControlName="class" [labelText]="'Class'" [items]="licenseClasses">
-		</bd-dropdown>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" [items]="endorsements" [value]="driver.license.endorsments"></bd-checkboxes>
-		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" [items]="restrictions" [value]="driver.license.restrictions"></bd-checkboxes>
+		<license-form [group]='driverForm.controls.license' [license]='driver.license' [viewMode]="viewMode"></license-form>
 	</bd-form-section>
 	<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 		<div class="button-group">
