@@ -62,17 +62,17 @@
       <div class="appointment-type">
         <div class="type-container">
           <span class="circle"></span>
-          <span class="type">FCFS</span>
+          <span class="type">facs</span>
         </div>
       </div>
       <div class="date-range-container">
         <div class="date first-date">
-          <span class="date-value">09/09</span>
-          <span class="time-value">12:15</span>
+          <span class="date-value">{{trip.appointment.from | date:'MM/dd/yy'}}</span>
+          <span class="time-value">{{trip.appointment.from | date:'HH:mm'}}</span>
         </div>
         <div class="date last-date">
-          <span class="date-value">09/09</span>
-          <span class="time-value">12:15</span>
+          <span class="date-value">{{trip.appointment.to | date:'MM/dd/yy'}}</span>
+          <span class="time-value">{{trip.appointment.to | date:'HH:mm'}}</span>
         </div>
       </div>
     </div>

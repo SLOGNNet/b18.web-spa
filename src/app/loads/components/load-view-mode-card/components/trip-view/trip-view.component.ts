@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Trip, StopTypes, Commodity } from '../../../../../models';
+import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { CommoditiesHeaderComponent, PickupCommodityComponent, DropoffpCommodityComponent } from '../../../../../forms/commodities-forms';
 
@@ -15,10 +15,13 @@ export class TripViewComponent {
   @Input() trip: Trip;
   @Input() isExpanded: boolean = false;
 
-  private pickupCommodities: Array<any> = [];
-  private dropoffCommodities: Array<any> = [];
+  public pickupCommodities: Array<any> = [];
+  public dropoffCommodities: Array<any> = [];
 
-  private commodityHeaders = [
+  //public appointmentType = this.getAppointmentType(this.trip.appointment.type);
+
+
+  public commodityHeaders = [
       { name: 'NUMBER' },
       { name: 'P.O.' },
       { name: 'COMMO-<br />DITY' },
@@ -28,7 +31,15 @@ export class TripViewComponent {
       { name: 'WEIGHT<br />(IBS)' }
     ];
 
-    getStopColor(stopType: StopTypes){
+    public getStopColor(stopType: StopTypes){
       return stopColors[stopType];
     }
+
+  ngOnInit() {
+    console.log('trip = ', this.trip);
+  }
+
+  getAppointmentType(type: AppointmentTypes) {
+    return Appointment.getAppointmentText(type);
+  }
 }

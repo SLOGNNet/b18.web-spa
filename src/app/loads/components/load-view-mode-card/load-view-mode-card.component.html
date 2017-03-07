@@ -6,22 +6,22 @@
     [class.combined]="pickupCommodities.length && dropoffCommodities.length">
         <div class="stripped-border" *ngIf="pickupCommodities.length && dropoffCommodities.length"></div>
         <div class="facility-info">
-            <div class="title">Tailor Freshh Foods</div>
+            <div class="title">{{stop.facility.name}}</div>
             <div class="info-item">
                 <span class="item-icon icon-location"></span>
-                <span class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</span>
+                <span class="item-text facility-address">{{stop.facility.address.streetAddress}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
             </div>
             <div class="info-item main-phone">
                 <span class="item-icon icon-phone"></span>
-                <span class="item-text facility-phone-number">937-99-92</span>
+                <span class="item-text facility-phone-number">{{primaryPhone}}</span>
             </div>
             <div class="info-item alt-phone" *ngIf="isExpanded">
                 <span class="item-icon icon-phone"></span>
-                <span class="item-text facility-phone-number">937-99-92</span>
+                <span class="item-text facility-phone-number">{{altPhone}}</span>
             </div>
             <div class="info-item fax" *ngIf="isExpanded">
                 <span class="item-icon icon-fax"></span>
-                <span class="item-text facility-phone-number">fax@bridge18.com</span>
+                <span class="item-text facility-phone-number">{{fax}}</span>
             </div>
         </div>
         <div class="business-hours-container">
@@ -44,10 +44,10 @@
                 <span class="days">Su:</span>
                 <span class="hours">13:00-14:00</span>
             </div>
-            <div class="notes">Call after 12:00</div>
+            <div class="notes">{{stop.facility.notes}}</div>
         </div>
     </div>
-        <trip-view [isExpanded]="isExpanded"></trip-view>
+        <trip-view [trip]="stop.tripStops[0]" [isExpanded]="isExpanded"></trip-view>
 </div>
 
 
