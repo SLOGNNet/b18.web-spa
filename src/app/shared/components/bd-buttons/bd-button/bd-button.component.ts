@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'bd-button',
