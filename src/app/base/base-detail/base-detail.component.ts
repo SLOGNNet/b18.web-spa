@@ -13,8 +13,7 @@ export abstract class BaseDetailComponent<T> {
 
   constructor(private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
-    private route: ActivatedRoute,
-    private location: Location) {
+    private route: ActivatedRoute) {
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });
