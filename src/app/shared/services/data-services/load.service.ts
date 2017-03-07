@@ -26,7 +26,6 @@ export class LoadService {
       this.http.get(this.config.apiUrl + 'load/cards').subscribe(res => {
         const data = res.json();
         let arr = data.map(item => plainToClass(Load, item));
-        debugger;
         observer.next(arr);
       });
     });
