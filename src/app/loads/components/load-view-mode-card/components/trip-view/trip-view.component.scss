@@ -1,7 +1,7 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
 
-$text-line-height: 16px;
+$element-size: 16px;
 $text-margin: 5px;
 
 .trip-container {
@@ -17,7 +17,7 @@ $text-margin: 5px;
     }
 
     span {
-      line-height: $text-line-height;
+      line-height: $element-size;
     }
 
     display: flex;
@@ -40,6 +40,7 @@ $text-margin: 5px;
 
         .trip-number {
           color: $black;
+          margin-left: $element-size;
         }
 
         .buttons-panel {
@@ -80,6 +81,7 @@ $text-margin: 5px;
       .trailer-info {
         overflow: hidden;
         color: $dark-grey;
+        margin-left: $element-size;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
@@ -100,7 +102,7 @@ $text-margin: 5px;
           align-items: center;
 
           span {
-            line-height: $text-line-height;
+            line-height: $element-size;
 
             &.circle {
               display: inline-block;
@@ -116,6 +118,7 @@ $text-margin: 5px;
 
       .date-range-container {
         display: flex;
+        padding-left: $element-size;
         flex-direction: row;
         justify-content: space-between;
 
@@ -129,8 +132,7 @@ $text-margin: 5px;
 
   .commodities-section {
     margin: 10px;
-    
-
+  
     .commodities-container {
       border: $border;
       border-left: 4px solid $grey;
@@ -138,11 +140,11 @@ $text-margin: 5px;
       border-bottom-left-radius: $default-border-radius;
 
       &.pickup-border {
-        border-color: $pickup-view-mode-color;
+        border-left-color: $pickup-view-mode-color;
       }
 
       &.dropoff-border {
-        border-color: $dropoff-view-mode-color;
+        border-left-color: $dropoff-view-mode-color;
       }
 
       .commodities-notes {
@@ -168,7 +170,7 @@ $text-margin: 5px;
               display: flex;
             }
             
-            .driver-count {
+           .driver-count {
               display: none;
             }
           }

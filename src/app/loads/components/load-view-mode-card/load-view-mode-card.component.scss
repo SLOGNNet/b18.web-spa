@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
 
-$element-height: 16px;
+$element-size: 16px;
 $text-margin: 5px;
 
 .stop-view-mode-section {
@@ -11,14 +11,13 @@ $text-margin: 5px;
     border: 0;
     background: transparent;
 
-
     &:focus {
       outline: 0;
     }
    }
 
   span {
-    line-height: $element-height;
+    line-height: $element-size;
   }
 
   display: flex;
@@ -68,8 +67,9 @@ $text-margin: 5px;
 
       .title {
         color: $black;
+        margin-left: $element-size;
         font-weight: bold;
-        max-height: $element-height;
+        max-height: $element-size;
       }
 
       .info-item {
@@ -114,7 +114,7 @@ $text-margin: 5px;
         color: $black;
         white-space: nowrap;
         text-overflow: ellipsis;
-        max-height: $element-height;
+        max-height: $element-size;
       }
     }
 
