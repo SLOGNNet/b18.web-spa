@@ -49,6 +49,7 @@
 		</div>
 		<div class="right-side bottom-border">
 			<google-map
+        [disabled]="disabled"
 				[longitude]="_map.longitude"
         [latitude]="_map.latitude"
 				[info]="_map.labelText">
