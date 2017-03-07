@@ -15,8 +15,7 @@ import { NotificationService,
   FileUploadService,
   HttpService,
   StateService,
-  EndorsementService,
-  RestrictionService
+  LicenseService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -83,8 +82,7 @@ import { EmailValidator } from './validators';
     HttpService,
     EmailValidator,
     StateService,
-    EndorsementService,
-    RestrictionService
+    LicenseService
   ],
   declarations: [
     BdFormButtonComponent,
