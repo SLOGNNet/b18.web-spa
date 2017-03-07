@@ -71,9 +71,4 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
       super(companyActions, ngRedux.select(state => state.companies.selected), ngRedux.select(state => state.companies.isLoading), route, location);
   }
 
-  onStateChange(state) {
-    if (this.cdr && state.isLoading !== undefined) {
-      this.cdr.markForCheck();
-    }
-  }
 }
