@@ -15,3 +15,4 @@ export * from './notification';
 export * from './license';
 export * from './enums';
 export * from './contact-info';
+export * from './tripStop';

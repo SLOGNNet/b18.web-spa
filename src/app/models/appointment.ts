@@ -1,4 +1,4 @@
-import { AppointmentType } from './enums';
+import { AppointmentTypes } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 @JsonObject
@@ -8,7 +8,7 @@ export class Appointment {
   @JsonMember
   to: Date;
   @JsonMember
-  type: AppointmentType;
+  type: AppointmentTypes;
 
   static create(): Appointment{
     const result = new Appointment();

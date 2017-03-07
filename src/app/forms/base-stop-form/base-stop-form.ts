@@ -38,7 +38,8 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
   abstract onCommodityRemove(commodity: Commodity);
 
   onCommodityAdd() {
-    const newCommodity = Commodity.create(this.stop);
+    const newCommodity = Commodity.create();
+    newCommodity.pickupId = this.stop.id;
     this.commodityActions.add(newCommodity);
   }
 

@@ -1,7 +1,7 @@
 import { Equipment } from './equipment';
 import { Contact } from './contact';
 import { License } from './license';
-import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
 
@@ -50,8 +50,10 @@ export class Driver extends Contact {
   currentTruck: Equipment = new Equipment();
   @JsonMember({ elements: Equipment })
   currentTrailer: Equipment = new Equipment();
+  @JsonMember({ elements: Equipment })
+  associatedEquipment: Array<Equipment>;
   @JsonMember
-  paymentOption: DriverPaymentOptions;
+  paymentType: DriverPaymentTypes;
   @JsonMember
   rate: number;
   @JsonMember
@@ -81,7 +83,7 @@ export class Driver extends Contact {
     result.terminationDate = new Date();
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentOption = DriverPaymentOptions.PerMile;
+    result.paymentType = DriverPaymentTypes.PerMile;
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
     return result;
