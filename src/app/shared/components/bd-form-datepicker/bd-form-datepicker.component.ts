@@ -20,6 +20,7 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BdFormDatePicker implements ControlValueAccessor {
   @Input() labelText: string;
+  @Input() disabled: boolean = false;
   @Input() dateFormat: string = 'MM/DD/YYYY';
   @ViewChild('datepicker') datepicker: BdDatePicker;
   private dateValue;

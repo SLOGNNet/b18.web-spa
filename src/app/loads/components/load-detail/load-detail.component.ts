@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Load } from '../../../models';
 import { LoadActions } from '../../../actions';
 import { BaseDetailComponent } from '../../../base';
@@ -51,13 +51,20 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }];
 
   constructor(
+    private cdr: ChangeDetectorRef,
     loadActions: LoadActions,
     route: ActivatedRoute,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected), route, location);
+      super(loadActions, ngRedux.select(state => state.loads.selected), ngRedux.select(state => state.loads.isLoading), route, location);
   }
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
+  }
+
+  onStateChange(state) {
+    if (this.cdr && state.isLoading !== undefined) {
+      this.cdr.markForCheck();
+    }
   }
 }

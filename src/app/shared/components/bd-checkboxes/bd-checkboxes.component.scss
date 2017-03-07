@@ -50,3 +50,15 @@
     }
   }
 }
+
+.bd-disabled {
+
+  .bd-label {
+    opacity: $disabled-opacity;
+  }
+
+  .checkboxes {
+    color: $label-default-color;
+    opacity: $disabled-opacity;
+  }
+}

@@ -24,6 +24,10 @@
 
   &:focus {
     background: $btn-primary-focus;
+
+    &:hover {
+      background: $btn-primary-focus;
+    }
   }
 
   &:hover {
@@ -31,15 +35,28 @@
   }
 }
 
+.bd-disabled {
+  background: $btn-primary-focus;
+
+  &:hover {
+    background: $btn-primary-focus;
+  }
+}
+
 .default {
   background: $light-grey;
   color: $black;
 
-  &:focus {
-    background: $btn-default-focus;
-  }
-
   &:hover {
     background: $btn-default-hover;
   }
+
+  &:focus {
+    background: $btn-default-focus;
+
+    &:hover {
+      background: $btn-default-focus;
+    }
+  }
+
 }
