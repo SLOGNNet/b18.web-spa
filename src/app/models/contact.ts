@@ -1,5 +1,5 @@
 import { ContactInfo } from './contact-info';
-import { Address } from './address';
+import { Location } from './location';
 import { Type } from 'class-transformer';
 
 export class Contact {
@@ -10,8 +10,8 @@ export class Contact {
   @Type(() => ContactInfo)
   contactInfo: Array<ContactInfo>;
   position: string = '';
-  @Type(() => Address)
-  address: Address;
+  @Type(() => Location)
+  location: Location;
 
   static create(): Contact{
     const result = new Contact();
@@ -20,6 +20,6 @@ export class Contact {
 
   constructor() {
     this.contactInfo = new Array<ContactInfo>();
-    this.address = Address.create();
+    this.location = Location.create();
   }
 };

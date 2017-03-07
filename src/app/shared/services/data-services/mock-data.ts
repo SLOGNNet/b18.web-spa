@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes
+  AppointmentTypes, Location
 } from './models';
 class MockData {
   public addresses: Array<Address> = [{
@@ -14,12 +14,7 @@ class MockData {
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: '',
     city: 'Eden Prairie',
-    phone: '(925) 937-8500',
     state: 'MN',
-    zip: '55347',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
@@ -29,12 +24,7 @@ class MockData {
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
@@ -44,12 +34,7 @@ class MockData {
     streetAddress1: '641 East Watkins Street',
     streetAddress2: '',
     city: 'Phoenix',
-    phone: '(602) 256-9470',
     state: 'AZ',
-    zip: '85004',
-    fax: '(602)-256-0631',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
@@ -59,12 +44,7 @@ class MockData {
     streetAddress1: '3101 Packerland Drive, Green Bay, WI, United States',
     streetAddress2: '',
     city: 'Green Bay',
-    phone: '(800) 558-6767',
     state: 'WI',
-    zip: '54313',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
@@ -74,12 +54,7 @@ class MockData {
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
-    phone: '(312) 326-8000',
     state: 'IL',
-    zip: '60490',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   }
@@ -91,12 +66,7 @@ class MockData {
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'MN',
-    zip: '33708',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
@@ -106,12 +76,7 @@ class MockData {
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
@@ -121,12 +86,7 @@ class MockData {
     streetAddress1: 'BROKER_BILLING_ADDRESS',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
@@ -136,12 +96,7 @@ class MockData {
     streetAddress1: 'PO BOX 2545',
     streetAddress2: '',
     city: 'Green Bay',
-    phone: '(920)-592-6867',
     state: 'WI',
-    zip: '54313',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
@@ -151,12 +106,7 @@ class MockData {
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
-    phone: '(312) 326-8000',
     state: 'IL',
-    zip: '60490',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
@@ -185,6 +135,29 @@ class MockData {
     }
   ];
 
+  public locations: Array<Location> = [
+    {
+      id: 1,
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 2,
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 3,
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 4,
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice()
+    }
+  ];
+
   public contacts: Array<Contact> = [{
     id: 1,
     firstName: 'Jason',
@@ -192,7 +165,7 @@ class MockData {
     lastName: 'Chang',
     contactInfo: this.contactInfo.slice(),
     position: 'Sales manager',
-    address: this.addresses[0]
+    location: this.locations[0]
   },
   {
     id: 2,
@@ -201,7 +174,7 @@ class MockData {
     lastName: 'Spearow',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    address: this.addresses[1]
+    location: this.locations[1]
   },
   {
     id: 3,
@@ -210,7 +183,7 @@ class MockData {
     lastName: 'Watson',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    address: this.addresses[2]
+    location: this.locations[2]
   },
   {
     id: 4,
@@ -219,7 +192,7 @@ class MockData {
     lastName: 'Depp',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    address: this.addresses[3]
+    location: this.locations[3]
   }
   ];
 
@@ -340,7 +313,6 @@ class MockData {
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
-      position: 'Sales manager',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
       dateOfBirth: null,
@@ -380,7 +352,6 @@ class MockData {
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
-      position: 'Sales manager',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
       dateOfBirth: null,
@@ -426,7 +397,6 @@ class MockData {
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
-    position: 'Sales manager',
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     dateOfBirth: null,
@@ -450,7 +420,6 @@ class MockData {
     middleName: 'Chang',
     lastName: 'Chang',
     contactInfo: this.contactInfo.slice(),
-    position: 'Sales manager',
     address: this.addresses[1],
     dateOfBirth: null,
     ssn: '123144241241777',
@@ -994,7 +963,7 @@ class MockData {
     {
       id: 1,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1006,7 +975,7 @@ class MockData {
     {
       id: 2,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1018,7 +987,7 @@ class MockData {
     {
       id: 3,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1030,7 +999,7 @@ class MockData {
     {
       id: 4,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1041,7 +1010,7 @@ class MockData {
     {
       id: 5,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1053,7 +1022,7 @@ class MockData {
     {
       id: 6,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1065,7 +1034,7 @@ class MockData {
     {
       id: 7,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1077,7 +1046,7 @@ class MockData {
     {
       id: 8,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1089,7 +1058,7 @@ class MockData {
     {
       id: 9,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1100,7 +1069,7 @@ class MockData {
     {
       id: 10,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1112,7 +1081,7 @@ class MockData {
     {
       id: 11,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1124,7 +1093,7 @@ class MockData {
     {
       id: 12,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1136,7 +1105,7 @@ class MockData {
     {
       id: 13,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1148,7 +1117,7 @@ class MockData {
     {
       id: 14,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1159,7 +1128,7 @@ class MockData {
     {
       id: 15,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1171,7 +1140,7 @@ class MockData {
     {
       id: 16,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1183,7 +1152,7 @@ class MockData {
     {
       id: 17,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1195,7 +1164,7 @@ class MockData {
     {
       id: 18,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1207,7 +1176,7 @@ class MockData {
     {
       id: 19,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1218,7 +1187,7 @@ class MockData {
     {
       id: 20,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1230,7 +1199,7 @@ class MockData {
     {
       id: 21,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1242,7 +1211,7 @@ class MockData {
     {
       id: 22,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1254,7 +1223,7 @@ class MockData {
     {
       id: 23,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1266,7 +1235,7 @@ class MockData {
     {
       id: 24,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1277,7 +1246,7 @@ class MockData {
     {
       id: 25,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[1]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
