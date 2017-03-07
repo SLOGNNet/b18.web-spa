@@ -5,7 +5,7 @@
     [anchors]="anchors">
   </form-navigation>
   <driver-form
-    [isLoading]="isLoading"
+    [isLoading]="isLoading$ | async"
     [scrollable]="true"
     [driver]="selectedItem"
     [viewMode]="viewMode"

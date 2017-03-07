@@ -476,7 +476,8 @@ class MockData {
       stopActions: [{
         type: StopActionTypes.Pickup,
         commodity: this.commodities[0]
-       }]
+       }],
+       trip: this.trips[0]
     }]
   }
   // {
@@ -630,6 +631,7 @@ class MockData {
         type: AppointmentTypes.FCFS
       },
       notes: 'test',
+      trip: this.trips[0],
       facility: this.facilities[0],
         stopActions: [{
         type: StopActionTypes.Dropoff,

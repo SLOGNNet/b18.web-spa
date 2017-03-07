@@ -5,7 +5,7 @@ import { Appointment } from './appointment';
 import { Commodity } from './commodity';
 import { generateNewId } from './utils';
 import { StopActionTypes } from './enums';
-
+import { Trip } from './trip';
 @JsonObject
 export class TripStop {
   @JsonMember
@@ -18,6 +18,8 @@ export class TripStop {
   stopActions: Array<StopAction>;
   @JsonMember({ elements: Appointment })
   appointment: Appointment;
+  @JsonMember({ elements: Trip })
+  trip: Trip;
 
   static create(): TripStop{
     const result = new TripStop();

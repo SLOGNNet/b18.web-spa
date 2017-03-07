@@ -61,10 +61,4 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
   }
-
-  onStateChange(state) {
-    if (this.cdr && state.isLoading !== undefined) {
-      this.cdr.markForCheck();
-    }
-  }
 }
