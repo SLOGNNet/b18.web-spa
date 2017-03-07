@@ -10,7 +10,6 @@ function createAppointmentTypes() {
   return result;
 }
 
-@JsonObject
 export class Appointment {
   from: Date;
   to: Date;
