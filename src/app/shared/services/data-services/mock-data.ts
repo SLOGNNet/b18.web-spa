@@ -5,9 +5,10 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes
+  AppointmentTypes, TripStop
 } from './models';
 class MockData {
+
   public addresses: Array<Address> = [{
     id: 1,
     name: 'Main Office',
@@ -165,17 +166,17 @@ class MockData {
   public contactInfo: Array<ContactInfo> = [
     {
       label: 'primaryPhone',
-      value: '',
+      value: '213123123',
       type: ContactInfoType.Phone
     },
     {
       label: 'alternativePhone',
-      value: '',
+      value: '12424234',
       type: ContactInfoType.Phone
     },
     {
       label: 'fax',
-      value: '',
+      value: 'fax@gmail.comj',
       type: ContactInfoType.Fax
     },
     {
@@ -451,20 +452,7 @@ class MockData {
     driverTeams: [{ id: 4, drivers: [this.drivers[0]] }]
   }];
 
-  public startDate = new Date(2017, 0, 9);
-  public endDate = new Date(2017, 0, 22);
-
-  public pickups: Array<Stop> = [{
-    id: 1,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
-    status: StopStatuses.InProgress,
-    tripStops: [{
+      public tripStopCollection: Array<TripStop> = [{
       id: 1,
       appointment: {
         from: new Date(2017, 2, 1, 8),
@@ -478,7 +466,38 @@ class MockData {
         commodity: this.commodities[0]
        }],
        trip: this.trips[0]
-    }]
+    },
+    {
+      id: 13,
+      appointment: {
+        from: new Date(2017, 2, 2, 8),
+        to: new Date(2017, 2, 2, 10),
+        type: AppointmentTypes.FCFS
+      },
+      notes: 'test',
+      trip: this.trips[0],
+      facility: this.facilities[0],
+        stopActions: [{
+        type: StopActionTypes.Dropoff,
+        commodity: this.commodities[0]
+       }]
+    }
+    ];
+
+  public startDate = new Date(2017, 0, 9);
+  public endDate = new Date(2017, 0, 22);
+
+  public pickups: Array<Stop> = [{
+    id: 1,
+    notes: 'notes',
+    type: StopTypes.Pickup,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
+    facility: this.facilities[0],
+    status: StopStatuses.InProgress,
+    tripStops: [this.tripStopCollection[0]]
   }
   // {
   //   id: 2,
@@ -623,21 +642,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress,
-    tripStops: [{
-      id: 13,
-      appointment: {
-        from: new Date(2017, 2, 2, 8),
-        to: new Date(2017, 2, 2, 10),
-        type: AppointmentTypes.FCFS
-      },
-      notes: 'test',
-      trip: this.trips[0],
-      facility: this.facilities[0],
-        stopActions: [{
-        type: StopActionTypes.Dropoff,
-        commodity: this.commodities[0]
-       }]
-    }]
+    tripStops: [this.tripStopCollection[0]]
   }
   // {
   //   id: 14,
@@ -772,7 +777,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
+      stops: [this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },
