@@ -19,10 +19,6 @@ export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
     private isLoading$: Observable<boolean>,
     private route: ActivatedRoute,
     private location: Location) {
-    isLoading$.subscribe(isLoading => {
-      this.isLoading = isLoading;
-      this.onStateChange({ isLoading });
-    });
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });
@@ -42,7 +38,6 @@ export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
   }
 
   protected abstract isDetailsChanged();
-  protected abstract onStateChange(state);
 
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);

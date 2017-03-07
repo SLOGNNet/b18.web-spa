@@ -5,7 +5,7 @@
     [anchors]="anchors">
   </form-navigation>
   <company-form
-    [isLoading]="isLoading"
+    [isLoading]="isLoading$ | async"
     [scrollable]="true"
     [company]="selectedItem"
     [viewMode]="viewMode"
