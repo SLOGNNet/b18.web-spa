@@ -1,8 +1,8 @@
 <button
-[disabled]="disabled"
-[type]="type"
-class="common {{color}}"
-[class.bd-disabled]="disabled"
->
-{{text}}
+  class="common {{color}}"
+  (click)="onButtonClick()"
+  [disabled]="disabled"
+  [type]="type"
+  [class.bd-disabled]="disabled">
+  {{text}}
 </button>
