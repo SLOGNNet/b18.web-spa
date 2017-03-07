@@ -73,10 +73,4 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
   }
-
-  onStateChange(state) {
-    if (this.cdr && state.isLoading !== undefined) {
-      this.cdr.markForCheck();
-    }
-  }
 }
