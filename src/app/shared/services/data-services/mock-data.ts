@@ -745,7 +745,7 @@ class MockData {
   //   plannedDepartureAt: this.startDate,
   //   facility: this.facilities[2],
   //   status: StopStatuses.InProgress
-  //}
+  // }
   ];
 
 
