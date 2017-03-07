@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { CommoditiesHeaderComponent, PickupCommodityComponent, DropoffpCommodityComponent } from '../../../../../forms/commodities-forms';
+import { find } from 'lodash';
 
 const stopColors = ['#d7d8db', '#d289dd', '#dfd78f'];
 
@@ -12,13 +13,13 @@ const stopColors = ['#d7d8db', '#d289dd', '#dfd78f'];
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TripViewComponent {
-  @Input() trip: Trip;
+  @Input() tripData: TripStop;
   @Input() isExpanded: boolean = false;
 
   public pickupCommodities: Array<any> = [];
   public dropoffCommodities: Array<any> = [];
-
-  //public appointmentType = this.getAppointmentType(this.trip.appointment.type);
+  public appointmentType: string = '';
+  public phoneNumber: string = '';
 
 
   public commodityHeaders = [
@@ -36,7 +37,9 @@ export class TripViewComponent {
     }
 
   ngOnInit() {
-    console.log('trip = ', this.trip);
+    this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
+    this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'primaryPhone').value;
+    console.log('trip = ', this.tripData);
   }
 
   getAppointmentType(type: AppointmentTypes) {
