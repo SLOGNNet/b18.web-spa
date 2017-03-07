@@ -16,7 +16,6 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CompanyForm extends BaseForm {
-  @Input() public isLoading: boolean = false;
   @Input() public scrollable: boolean = false;
   @Input() public submitButtonText: string = 'Save';
   @Input() public company: Company;

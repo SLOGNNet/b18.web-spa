@@ -1,5 +1,4 @@
 @import '../../../../assets/styles/variables';
-
 $container-height: $horizontal-scroll-container-height;
 
 form-navigation {
@@ -53,6 +52,28 @@ form-navigation {
 
         &:last-child {
           margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.bd-disabled {
+  .title {
+    color: $label-default-color;
+  }
+
+  .container {
+    .content {
+      span {
+        color: $label-default-color;
+
+        &.active {
+          color: $label-default-color;
+        }
+
+        &:hover {
+          color: $label-default-color;
         }
       }
     }

@@ -1,7 +1,7 @@
 <div *ngIf="selectedItem">
+  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
   <form-navigation [title]="'Load'" [anchors]="anchors" sticky></form-navigation>
   <load-form
-    [isLoading]="isLoading$ | async"
     (save)="onItemSave($event)"
     (cancel)="onItemCancel($event)"
     [load]="selectedItem"

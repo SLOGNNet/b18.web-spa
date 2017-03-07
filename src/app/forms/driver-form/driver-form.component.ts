@@ -1,9 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Driver, DriverTypes, DriverPaymentTypes, LicenseClassTypes } from '../../models';
+import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
 import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
-import { StateService, EndorsementService, RestrictionService } from '../../shared/services';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { NgRedux, select } from 'ng2-redux';
@@ -16,7 +15,6 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class DriverForm extends BaseForm {
-  @Input() public isLoading: boolean = false;
   @Input() public scrollable: boolean = true;
   @Input() public submitButtonText: string = 'Save';
   @Input() public driver: Driver;
@@ -24,28 +22,15 @@ export class DriverForm extends BaseForm {
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   driverForm: FormGroup;
   paymentsTypes: Array<any>;
-  states: Array<any> = [];
-  licenseClasses: Array<any> = [];
-  endorsements: Array<any> = [];
-  restrictions: Array<any> = [];
-
 
   constructor(private formBuilder: FormBuilder,
-    private enumHelperService: EnumHelperService,
     private cdr: ChangeDetectorRef,
     private validationService: FormValidationService,
-    private stateService: StateService,
-    private endorsementService: EndorsementService,
-    private restrictionService: RestrictionService,
+    private enumHelperService: EnumHelperService,
     elementRef: ElementRef) {
     super(elementRef);
 
-    this.stateService.getAll().subscribe(states => this.states = states.map(value => ({ 'key': value, 'value': value })));
-    this.endorsementService.getAll().subscribe(endorsements => this.endorsements = endorsements.map(value => ({ 'key': value, 'value': value })));
-    this.restrictionService.getAll().subscribe(restrictions => this.restrictions = restrictions.map(value => ({ 'key': value, 'value': value })));
-
     this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
-    this.licenseClasses = enumHelperService.getDropdownKeyValues(LicenseClassTypes);
   }
 
   ngOnChanges(changes: any) {
@@ -73,15 +58,11 @@ export class DriverForm extends BaseForm {
       lastName: [this.driver.lastName],
       dateOfBirth: [this.driver.dateOfBirth],
       paymentType: [this.driver.paymentType],
-      stateIssued: [this.driver.license.stateIssued],
-      class: [this.driver.license.class],
-      number: [this.driver.license.number],
-      expiration: [this.driver.license.expiration],
-      dateIssued: [this.driver.license.dateIssued],
       ssn: [this.driver.ssn],
       rate: [this.driver.rate],
       address: this.formBuilder.group({ }),
-      contactInfo: this.formBuilder.array([])
+      contactInfo: this.formBuilder.array([]),
+      license: this.formBuilder.group({ })
     });
   }
 }

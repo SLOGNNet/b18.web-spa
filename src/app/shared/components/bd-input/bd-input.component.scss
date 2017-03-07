@@ -168,13 +168,9 @@
   }
 
   &.bd-disabled {
-    .bd-label {
-      opacity: $disabled-opacity;
-    }
 
     .bd-input {
       color: $label-default-color;
-      opacity: $disabled-opacity;
     }
   }
 
