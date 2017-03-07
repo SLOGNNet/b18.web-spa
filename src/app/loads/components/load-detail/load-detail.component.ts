@@ -58,6 +58,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(state => state.loads.selected), ngRedux.select(state => state.loads.isLoading), route, location);
   }
+
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
   }

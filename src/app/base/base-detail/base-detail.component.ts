@@ -3,7 +3,7 @@ import { Load } from '../models';
 import { IDetailDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep, merge } from 'lodash';
-import {  ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
@@ -16,9 +16,12 @@ export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
 
   constructor(private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
-    private isLoading$: Observable<boolean>,
+    protected isLoading$: Observable<boolean>,
     private route: ActivatedRoute,
     private location: Location) {
+    isLoading$.subscribe(isLoading => {
+      this.isLoading = isLoading;
+    });
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });

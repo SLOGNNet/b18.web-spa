@@ -9,6 +9,7 @@ import { chain, sortBy, findLastIndex } from 'lodash';
 })
 export class FormNavigationComponent implements OnChanges {
   @Input() title: string = '';
+  @Input() disabled: boolean = false;
   @Input() anchors: Array<Object>;
 
   private _anchorOffset = 20;
@@ -94,6 +95,7 @@ export class FormNavigationComponent implements OnChanges {
   }
 
   private _scrollTo(id, index) {
+    if (this.disabled) return;
     if (id && id.length && id.trim().length) {
       let targetAnchor = this._anchorList[index];
 

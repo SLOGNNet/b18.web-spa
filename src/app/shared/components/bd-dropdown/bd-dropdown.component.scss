@@ -133,25 +133,19 @@
 
 .bd-disabled {
   .bd-dropdown-wrapper {
-    .bd-dropdown-label {
-      opacity: $disabled-opacity;
-    }
 
     .bd-dropdown-value {
       span {
         color: $label-default-color;
-        opacity: $disabled-opacity;
       }
 
       .item-selected {
         color: $label-default-color;
-        opacity: $disabled-opacity;
       }
     }
 
     .bd-dropdown-icon {
       color: $label-default-color;
-      opacity: $disabled-opacity;
     }
   }
 }

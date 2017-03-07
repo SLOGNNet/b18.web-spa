@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactInfoForm } from './contact-info-form';
 import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
+import { LicenseForm } from './license-form';
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
@@ -37,7 +38,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DropOffCommodityFormComponent,
     LoadDocumentFormComponent,
     ContactsInfoForm,
-    ContactInfoForm
+    ContactInfoForm,
+    LicenseForm
   ],
   imports: [
     SharedModule
@@ -49,7 +51,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     LoadDocumentFormComponent,
     CommoditiesHeaderComponent,
     DropoffpCommodityComponent,
-    PickupCommodityComponent
+    PickupCommodityComponent,
+    LicenseForm
   ]
 })
 export class BdFormsModule {
