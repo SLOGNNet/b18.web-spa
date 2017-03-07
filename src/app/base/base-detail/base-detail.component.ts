@@ -9,14 +9,20 @@ import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
 
 export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
+  protected isLoading = false;
   protected isNew = false;
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
 
   constructor(private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
+    private isLoading$: Observable<boolean>,
     private route: ActivatedRoute,
     private location: Location) {
+    isLoading$.subscribe(isLoading => {
+      this.isLoading = isLoading;
+      this.onStateChange({ isLoading });
+    });
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
     });
@@ -36,6 +42,7 @@ export abstract class BaseDetailComponent<T> implements CanComponentDeactivate {
   }
 
   protected abstract isDetailsChanged();
+  protected abstract onStateChange(state);
 
   private onQueryParams(params) {
     const id = Number.parseInt(params['id']);

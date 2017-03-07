@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Driver } from '../../models';
 import { BaseDetailComponent } from '../../base';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -62,14 +62,21 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   }];
 
   constructor(
+    private cdr: ChangeDetectorRef,
     driverActions: DriverActions,
     route: ActivatedRoute,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), route, location);
+      super(driverActions, ngRedux.select(state => state.drivers.selected), ngRedux.select(state => state.drivers.isLoading), route, location);
   }
 
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
+  }
+
+  onStateChange(state) {
+    if (this.cdr && state.isLoading !== undefined) {
+      this.cdr.markForCheck();
+    }
   }
 }

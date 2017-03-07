@@ -167,6 +167,17 @@
     }
   }
 
+  &.bd-disabled {
+    .bd-label {
+      opacity: $disabled-opacity;
+    }
+
+    .bd-input {
+      color: $label-default-color;
+      opacity: $disabled-opacity;
+    }
+  }
+
   &.bd-not-empty-label {
     .bd-input {
       width: 0;

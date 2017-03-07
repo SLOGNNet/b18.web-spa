@@ -8,10 +8,12 @@ import { Component, Input, Output, HostListener, EventEmitter, ChangeDetectionSt
 })
 export class BdCheckbox  {
   @Input() checked: boolean = false;
+  @Input() disabled: boolean = false;
   @Output() checkedChange = new EventEmitter();
 
   @HostListener('click', ['$event'])
   onClick(e) {
+    if (this.disabled) return;
     this.checked = !this.checked;
     this.checkedChange.emit(e);
   }
