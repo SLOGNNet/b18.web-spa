@@ -5,8 +5,7 @@ import { Load } from '../../../models';
   selector: 'load-stop-card',
   templateUrl: './load-stop-card.component.html',
   styleUrls: [
-    './load-stop-card.component.scss',
-    '../../../base/base-card/base-card.component.scss'
+    './load-stop-card.component.scss'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
