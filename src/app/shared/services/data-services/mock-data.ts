@@ -501,11 +501,11 @@ class MockData {
         commodity: this.commodities[0]
        },
        {
-        type: StopActionTypes.Pickup,
+        type: StopActionTypes.Dropoff,
         commodity: this.commodities[1]
        },
        {
-        type: StopActionTypes.Pickup,
+        type: StopActionTypes.Dropoff,
         commodity: this.commodities[2]
        }
   ];
@@ -519,7 +519,7 @@ class MockData {
       },
       notes: 'test',
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1], this.stopActionCollection[2]],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
        trip: this.trips[0]
     },
     {
@@ -532,7 +532,7 @@ class MockData {
       notes: 'test',
       trip: this.trips[0],
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0], this.stopActionCollection[0], this.stopActionCollection[0]]
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]]
     }
     ];
 
