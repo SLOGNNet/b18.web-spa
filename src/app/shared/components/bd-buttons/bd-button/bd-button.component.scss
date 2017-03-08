@@ -1,30 +1,5 @@
 @import '../../../../../assets/styles/variables';
 
-.default-size {
-  width: 100%;
-  height: $form-control-height;
-  border: 0;
-  font-size: $small-font-size;
-  border-bottom: $border;
-  border-radius: $default-border-radius;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-}
-
-.small {
-  width: 81px;
-  height: 29px;
-  padding: 0 13px;
-  font-size: $tiny-font-size;
-  margin-right: 13px;
-}
-
 .primary {
   border: 0;
   background: $blue;
@@ -65,5 +40,40 @@
     &:hover {
       background: $btn-default-focus;
     }
+  }
+}
+
+.default-size {
+  width: 100%;
+  height: $form-control-height;
+  border: 0;
+  font-size: $small-font-size;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.small {
+  width: 81px;
+  height: 30px;
+  padding: 2px 13px 0;
+  font-size: $tiny-font-size;
+  margin-right: 13px;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
   }
 }
