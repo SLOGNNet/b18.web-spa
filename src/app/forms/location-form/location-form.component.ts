@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Location } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 
-@Component({
+@Component(Object.assign({
   selector: 'location-form',
   templateUrl: './location-form.component.html',
   styleUrls: ['./location-form.component.scss']
-})
-export class LocationForm {
+}, BaseForm.metaData))
+export class LocationForm extends BaseForm {
   @Input() viewMode: ViewMode = ViewMode.View;
   @Input() isNameFieldVisible: boolean = true;
   @Input() location: Location;
@@ -18,8 +18,8 @@ export class LocationForm {
   @Output() update = new EventEmitter();
   @Output() updatePlace = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) {
-
+  constructor(private formBuilder: FormBuilder,  elementRef: ElementRef) {
+    super(elementRef);
   }
 
   ngOnChanges(changes: any) {
@@ -32,10 +32,12 @@ export class LocationForm {
     }));
     this.locationForm.addControl('address', this.formBuilder.group({ }));
     this.locationForm.addControl('contactInfo', this.formBuilder.array([]));
-  }
 
-  updateItem(e) {
-    this.update.emit(e);
+    this.locationForm.valueChanges.subscribe((value) => {
+      if (this.locationForm.valid) {
+          this.update.emit(value);
+      }
+    });
   }
 
   onUpdatePlace(e) {

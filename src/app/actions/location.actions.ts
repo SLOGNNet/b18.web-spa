@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Location } from '../models';
+import { Location, Address } from '../models';
 import { GoogleService } from '../shared';
 
 @Injectable()
@@ -9,6 +9,7 @@ export class LocationActions {
   static ADD_LOCATION: string = 'ADD_ADDRES';
   static REMOVE_LOCATION: string = 'REMOVE_LOCATION';
   static UPDATE_LOCATION: string = 'UPDATE_LOCATION';
+  static UPDATE_LOCATION_ADDRESS: string = 'UPDATE_LOCATION_ADDRESS';
 
   constructor (
     private _googleService: GoogleService,
@@ -26,10 +27,14 @@ export class LocationActions {
     this.ngRedux.dispatch({ type: LocationActions.UPDATE_LOCATION, location });
   }
 
-  updatePlace(locationId: number, placeId: string): void {
+  updateAddress(address: Address): void {
+    this.ngRedux.dispatch({ type: LocationActions.UPDATE_LOCATION_ADDRESS, address });
+  }
+
+  updatePlace(addressId: number, placeId: string): void {
     this._googleService.getDetails(placeId)
       .subscribe(detail => {
-        this.update(Object.assign(detail, { id: locationId}));
+        this.updateAddress(Object.assign(detail, { id: addressId}));
       });
   }
 }

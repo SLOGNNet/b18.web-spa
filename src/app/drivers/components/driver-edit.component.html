@@ -7,9 +7,10 @@
   </form-navigation>
   <driver-form
     [scrollable]="true"
-    [driver]="selectedItem"
+    [driver]="selected$ | async"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"
+    (updatePlace)="onPlaceUpdate($event)"
     (cancel)="onItemCancel()">
   </driver-form>
 </div>

@@ -12,7 +12,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'ADDRESS'" >
-		<address-form [group]='driverForm.controls.address' [address]='driver.address' [isNameFieldVisible]="false" [viewMode]="viewMode"></address-form>
+		<address-form [group]='driverForm.controls.address' [address]='driver.address' [isNameFieldVisible]="false" [viewMode]="viewMode" (updatePlace)="onPlaceUpdate($event)"></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'PAYMENT'">

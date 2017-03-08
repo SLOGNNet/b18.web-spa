@@ -21,7 +21,7 @@ export class CompanyForm extends BaseForm {
   @Input() public company: Company;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
-  @select(state => state.addresses.items) addresses$: Observable<Address[]>;
+  @select(state => state.locations.items.map(location => location.address)) addresses$: Observable<Address[]>;
   @select(state => state.locations.items) locations$: Observable<Location[]>;
   companyForm: FormGroup;
   private companyTypes: Array<any>;
@@ -81,10 +81,10 @@ export class CompanyForm extends BaseForm {
   }
 
   onLocationPlaceUpdate(data: any) {
-    // this.locationActions.updatePlace(data.addressId, data.placeId);
+    this.locationActions.updatePlace(data.addressId, data.placeId);
   }
 
-  onAddressRemove(location: Location) {
+  onLocationRemove(location: Location) {
     this.locationActions.remove(location);
   }
 

@@ -20,10 +20,12 @@ export class DriverForm extends BaseForm {
   @Input() public driver: Driver;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
+  @Output() updatePlace = new EventEmitter();
   driverForm: FormGroup;
   paymentsTypes: Array<any>;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private validationService: FormValidationService,
     private enumHelperService: EnumHelperService,
@@ -49,6 +51,10 @@ export class DriverForm extends BaseForm {
 
   onCancel() {
     this.cancel.emit();
+  }
+
+  onPlaceUpdate(data) {
+    this.updatePlace.emit(data);
   }
 
   initForm() {

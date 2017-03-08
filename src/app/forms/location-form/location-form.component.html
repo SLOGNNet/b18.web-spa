@@ -1,4 +1,4 @@
 <form [formGroup]="locationForm">
-		<address-form [group]='locationForm.controls.address' [address]='location.address' (update)="updateItem($event)" (updatePlace)="onUpdatePlace($event)" [viewMode]="viewMode"></address-form>
+		<address-form [group]='locationForm.controls.address' [address]='location.address' (updatePlace)="onUpdatePlace($event)" [viewMode]="viewMode"></address-form>
 		<contacts-info-form [items]="location.contactInfo" [formArray]='locationForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
 </form>
