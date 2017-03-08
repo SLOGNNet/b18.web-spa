@@ -14,6 +14,7 @@
 
   .commodity-item {
     display: flex;
+    overflow: hidden;
     border-right: $border;
     align-items: center;
     justify-content: center;
@@ -21,6 +22,14 @@
 
     &:last-of-type {
       border-right: 0;
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      width: calc(100% - 6px);
+      text-align: center;
+      white-space: nowrap;
     }
   }
 }

@@ -173,10 +173,8 @@ $text-margin: 5px;
         .driver-container {
 
           .driver-info {
-            &:not(:first-of-type) {
-              display: flex;
-            }
-            
+            display: flex;
+
            .driver-count {
               display: none;
             }
