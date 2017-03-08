@@ -5,3 +5,5 @@ export * from './contact.service';
 export * from './commodity.service';
 export * from './equipment.service';
 export * from './drivers.service';
+export * from './state.service';
+export * from './license.service';

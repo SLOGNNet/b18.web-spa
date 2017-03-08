@@ -10,6 +10,7 @@
   <bd-input [value]="value"
       (valueChange)="changeValue($event)"
       #input
+      [disabled]="disabled"
       (focusChange)="onFocusChanged($event)"
       [typeahead]="source"
       [collapsibleInput]="true"
@@ -24,6 +25,6 @@
       (typeaheadNoResults)="changeTypeaheadNoResults($event)"
       (typeaheadFooterClick)="onFooterClick()"
       [typeaheadOptionsLimit]="'5'">
-      <i bd-suffix *ngIf="!removeButtonHidden" (click)="remove($event)" class="fa fa-minus-circle" aria-hidden="true"></i>
+      <i bd-suffix *ngIf="!removeButtonHidden" (click)="remove($event)" class="icon-minus" aria-hidden="true"></i>
   </bd-input>
 </div>

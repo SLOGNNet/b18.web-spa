@@ -1,4 +1,7 @@
-<div class="load-stop-card-section" (click)="onClick()">
+<div class="card-section"
+(mouseenter)="onEnter()"
+(mouseleave)="onLeave()"
+(click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.systemLoadNo}}</span>
     <span class="company-name">
@@ -61,7 +64,10 @@
         </bd-popover-content>
       </span>
     </span>
-    <span class="status" [style.background]="loadStatusColor">
-        {{loadStatusText}}
-    </span>
   </div>
+  <span *ngIf="statusText" [style.color]="loadStatusColor" class="status-text">{{loadStatusText}}</span>
+  <span
+  [style.background]="loadStatusColor"
+  class="status">
+  </span>
+</div>

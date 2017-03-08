@@ -9,7 +9,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class AddressesForm extends BaseListForm<Address>  {
-
+  @Input() disabled: boolean = false;
   @Output() updatePlace = new EventEmitter();
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {

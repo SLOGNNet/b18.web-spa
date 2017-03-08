@@ -13,13 +13,16 @@ import { NotificationService,
   ContactService,
   FormValidationService,
   FileUploadService,
-  HttpService
+  HttpService,
+  StateService,
+  LicenseService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
 import { TypeaheadModule } from './components/typeahead/typeahead.module.ts';
 import { BdButtonSwitchComponent } from './components/bd-button-switch';
-import { BdCheckbox } from '././components/bd-checkbox';
+import { BdCheckbox } from './components/bd-checkbox';
+import { BdCheckboxes } from './components/bd-checkboxes';
 import { BdFormCheckbox } from './components/bd-form-checkbox';
 import { BdFormSwitchComponent } from './components/bd-form-switch';
 import { BdTextareaAutosize } from './components/bd-input/autosize.directive';
@@ -28,6 +31,7 @@ import { BdUploadFileComponent } from './components/bd-upload-file';
 import { BdFilePreviewComponent } from './components/bd-file-preview';
 import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
+import { BdFormSpinnerComponent } from './components/bd-form-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
 import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
@@ -76,7 +80,9 @@ import { EmailValidator } from './validators';
     FormValidationService,
     DatePipe,
     HttpService,
-    EmailValidator
+    EmailValidator,
+    StateService,
+    LicenseService
   ],
   declarations: [
     BdFormButtonComponent,
@@ -85,6 +91,7 @@ import { EmailValidator } from './validators';
     BdUploadFileComponent,
     BdFilePreviewComponent,
     BdSpinnerComponent,
+    BdFormSpinnerComponent,
     BdFormTypeaheadComponent,
     BdFormExpandComponent,
     BdButtonComponent,
@@ -93,6 +100,7 @@ import { EmailValidator } from './validators';
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,
@@ -147,11 +155,13 @@ import { EmailValidator } from './validators';
     BdUploadFileComponent,
     BdFilePreviewComponent,
     BdSpinnerComponent,
+    BdFormSpinnerComponent,
     GoogleMapComponent,
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
     BdButtonSwitchComponent,
     BdCheckbox,
+    BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
     BdValidatorComponent,

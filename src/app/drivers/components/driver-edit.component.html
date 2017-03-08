@@ -1,4 +1,5 @@
 <div *ngIf="selectedItem">
+  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
   <form-navigation
     sticky
     [title]="'Driver'"

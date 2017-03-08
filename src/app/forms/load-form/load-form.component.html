@@ -11,9 +11,10 @@
     </div>
 </template>
 <form [formGroup]="loadForm" class="edit">
+	<bd-form-spinner *ngIf="isLoading"></bd-form-spinner>
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info">
-    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="true" formControlName="systemLoadNo">
+    <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="disabled" formControlName="systemLoadNo">
     </bd-input>
     <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNo">
     </bd-input>

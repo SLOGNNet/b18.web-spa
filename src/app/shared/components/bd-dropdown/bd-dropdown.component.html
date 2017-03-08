@@ -1,5 +1,5 @@
-<div dropdown [autoClose]="autoClose" class="bd-dropdown-container" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
-  <div *ngIf="!toogleTemplate" dropdownToggle
+<div dropdown [autoClose]="autoClose" class="bd-dropdown-container" [class.bd-disabled]="disabled" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
+  <div *ngIf="!toogleTemplate" dropdownToggle [isDisabled]="disabled"
     id="bd-dropdown"
     class="bd-dropdown-wrapper"
     name="bd-dropdown-wrapper">
@@ -13,7 +13,7 @@
         </span>
       </div>
       <div class="bd-dropdown-icon">
-        <i class="fa fa-sort"></i>
+        <i class="icon-dropdown"></i>
       </div>
   </div>
   <div dropdownToggle *ngIf="toogleTemplate">

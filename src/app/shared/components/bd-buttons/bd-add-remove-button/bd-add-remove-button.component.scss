@@ -1,9 +1,11 @@
 @import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/font-icons';
 
 .button {
   display: flex;
   width: 100%;
   height: $form-control-height;
+  padding: 0;
   border: 0;
   text-align: right;
   cursor: pointer;
@@ -15,28 +17,25 @@
   align-items: center;
 
   .suffix-label {
-    margin: auto 11px auto 6px;
+    margin: auto $default-margin auto 6px;
   }
 
-  .icon {
-    text-align: right;
-    margin-right: 11px;
-    mask: none;
+  .btn-icon {
+    font-size: $small-font-size;
+    margin-right: $default-margin;
     flex: 1;
-
-    img {
-      width: 18px;
-      height: 18px;
-      vertical-align: sub;
-    }
   }
 
   .prefix-label {
-    margin-left: 11px;
+    margin-left: $default-margin;
   }
 
   .text {
     font-size: $small-font-size;
     text-transform: uppercase;
   }
+}
+
+.bd-disabled {
+  color: $label-default-color;
 }

@@ -20,7 +20,7 @@
         border-color: transparent;
 
         .bd-dropdown-value {
-          padding-left: 17px;
+          padding-left: $default-margin;
           padding-right: 15px;
         }
       }
@@ -50,6 +50,6 @@
     border-left: $border;
     border-right: $border;
     align-items: center;
-    padding-left: 17px;
+    padding-left: $default-margin;
   }
 }
