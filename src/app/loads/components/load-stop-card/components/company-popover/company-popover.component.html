@@ -1,6 +1,6 @@
 <div class="company-popover">
   <div class="section">
-    <span class="blue">{{company.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
+    <span class="blue">{{company?.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
     <span>MC#{{company.mc}} | USDOT: {{company.taxId}}</span>
   </div>
   <div class="section" *ngIf="companyAddress">

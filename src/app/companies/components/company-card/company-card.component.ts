@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Company } from '../../../models';
+import { Company, ContactInfo } from '../../../models';
 import { Load, LoadStatuses } from '../../../models';
 
 @Component({
@@ -27,6 +27,10 @@ export class CompanyCardComponent {
 
   get companyStatusColor(): string {
     return Company.getStatusColor(this.company.status);
+  }
+
+  get phone() {
+    return ContactInfo.getPrimaryPhone(this.company.locations[0].contactInfo);
   }
 
   onClick() {

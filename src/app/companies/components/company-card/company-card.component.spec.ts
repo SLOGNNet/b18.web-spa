@@ -14,7 +14,6 @@ function createTestData() {
     testAddress = new Address();
 
   // test address
-  testAddress.phone = '(925) 937-8500';
 
   // test contact
   testContact.firstName = 'Emma';
@@ -25,7 +24,6 @@ function createTestData() {
   testLoad.status = LoadStatuses.Completed;
   // test company
   resultCompany.name = 'CH ROBINSON COMPANY INC';
-  resultCompany.addresses = [testAddress];
   resultCompany.contacts = [testContact];
   resultCompany.status = CompanyStatuses.Active;
   resultCompany.mc = '384859';
@@ -134,7 +132,6 @@ describe('CompanyCardComponent', () => {
   it('should display address phone', () => {
     let testCompanyAddressPhone = '(925) 937-8500';
     component.company = testCompany;
-    component.company.addresses[0].phone = testCompanyAddressPhone;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-address-phone'));
     expect(element.nativeElement.textContent).toBe(testCompanyAddressPhone);

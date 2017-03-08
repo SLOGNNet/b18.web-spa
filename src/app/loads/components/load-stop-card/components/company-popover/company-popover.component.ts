@@ -13,10 +13,12 @@ export class CompanyPopoverComponent {
   @Input() companyBillingAddress: Address;
 
   get status() {
+    debugger;
     return Company.getStatusText(this.company.status);
   }
 
   get phone() {
-    return [this.companyAddress.phone, this.companyAddress.phoneExtension].filter(v => v).join(' x ');
+    // return [this.companyAddress.phone, this.companyAddress.phoneExtension].filter(v => v).join(' x ');
+    return 'TODO';
   }
 }

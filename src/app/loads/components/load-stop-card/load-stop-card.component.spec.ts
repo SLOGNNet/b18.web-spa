@@ -34,15 +34,12 @@ function createTestData() {
   testAddress.name = 'Main Office';
   testAddress.streetAddress1 = '14701 Charlson Road, United States';
   testAddress.city = 'Eden Prairie';
-  testAddress.phone = '(925) 937-8500';
   testAddress.state = 'MN';
-  testAddress.zip = '55347';
   testAddress.latitude = 40.795675;
   testAddress.longitude = -73.93600099999998;
   // test customer
   testCustomer.id = 1;
   testCustomer.mc = '384859';
-  testCustomer.addresses = [testAddress, testAddress];
   testCustomer.name = 'CH ROBINSON COMPANY INC';
   testCustomer.contacts = [null];
   testCustomer.email = 'carrier.services@chrobinson.com';
@@ -247,7 +244,6 @@ describe('LoadStopCardComponent', () => {
   it('should send customer\'s data to customer popover', () => {
     let addressData = new Address(),
       customerData = Company.create();
-    customerData.addresses = [addressData, addressData];
     component.load = testLoad;
     component.load.customer = customerData;
     fixture.detectChanges();

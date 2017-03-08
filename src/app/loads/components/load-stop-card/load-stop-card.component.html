@@ -3,7 +3,7 @@
     <span class="load-number">LD{{load.systemLoadNo}}</span>
     <span class="company-name">
       <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
-        {{load.customer.name}}
+        {{load.customer?.name}}
         <bd-popover-content
           #companyPopover
           placement="auto"

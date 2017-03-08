@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Driver } from '../../../models';
+import { Driver, ContactInfo } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
@@ -23,6 +23,10 @@ export class DriverCardComponent {
 
   get driverStatusText(): string {
     return Driver.getStatusText(this.driver.status);
+  }
+
+  get phone(): string {
+    return ContactInfo.getPrimaryPhone(this.driver.contactInfo);
   }
 
   onClick() {

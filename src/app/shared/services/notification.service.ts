@@ -70,7 +70,7 @@ export class NotificationService {
         middleName: 'Chang',
         position: 'sales',
         contactInfo: [],
-        address: null
+        location: null
       },
       taskType: TaskType.New,
       priority: NotificationPriority.Middle,
