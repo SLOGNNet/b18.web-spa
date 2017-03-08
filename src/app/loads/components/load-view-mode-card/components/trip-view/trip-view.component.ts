@@ -32,7 +32,7 @@ export class TripViewComponent {
   ngOnInit() {
     this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
     this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'primaryPhone').value;
-    
+
     this.pickupCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Pickup);
     this.dropoffCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Dropoff);
   }
