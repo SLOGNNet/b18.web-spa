@@ -1,6 +1,6 @@
 @import '../../../../../assets/styles/variables';
 
-.common {
+.default-size {
   width: 100%;
   height: $form-control-height;
   border: 0;
@@ -15,6 +15,14 @@
   &:focus {
     outline: 0;
   }
+}
+
+.small {
+  width: 81px;
+  height: 29px;
+  padding: 0 13px;
+  font-size: $tiny-font-size;
+  margin-right: 13px;
 }
 
 .primary {
@@ -58,5 +66,4 @@
       background: $btn-default-focus;
     }
   }
-
 }

@@ -10,4 +10,5 @@ export class BdButtonComponent {
   @Input() color: 'primary' | 'default' = 'default';
   @Input() disabled: boolean = false;
   @Input() text: any;
+  @Input() size: 'default-size' | 'small' = 'default-size';
 }
