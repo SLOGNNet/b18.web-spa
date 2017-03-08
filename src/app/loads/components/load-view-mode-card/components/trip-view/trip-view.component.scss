@@ -13,16 +13,16 @@ $text-margin: 5px;
       border-bottom-left-radius: 0;
 
       .left-panel {
-        .info-panel{
-        .driver-container {
-          .driver-info {
-            display: flex;
+        .info-panel {
+          .driver-container {
+            .driver-info {
+              display: flex;
 
-            .driver-count {
-              display: none;
+              .driver-count {
+                display: none;
+              }
             }
           }
-        }
       }
       }
     }
