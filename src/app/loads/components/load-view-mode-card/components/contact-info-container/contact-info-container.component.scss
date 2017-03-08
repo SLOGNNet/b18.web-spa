@@ -1,0 +1,21 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+
+$element-size: 16px;
+$text-margin: 5px;
+
+.contact-info-container {
+  font-size: $tiny-font-size;
+  
+  span {
+    line-height: $element-size;
+  }
+
+  .contact-info-item {
+    display: flex;
+
+    .item-icon {
+      margin-right: $text-margin;
+    }
+  }
+}

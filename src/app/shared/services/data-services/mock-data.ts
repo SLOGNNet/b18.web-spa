@@ -178,11 +178,6 @@ class MockData {
       label: 'fax',
       value: 'fax@gmail.comj',
       type: ContactInfoType.Fax
-    },
-    {
-      label: 'email',
-      value: 'CHANJAS@chrobinson.com',
-      type: ContactInfoType.Email
     }
   ];
 

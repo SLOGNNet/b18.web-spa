@@ -11,18 +11,7 @@
                 <span class="item-icon icon-location"></span>
                 <span class="item-text facility-address">{{stop.facility.address.streetAddress}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
             </div>
-            <div class="info-item main-phone">
-                <span class="item-icon icon-phone"></span>
-                <span class="item-text facility-phone-number">{{primaryPhone}}</span>
-            </div>
-            <div class="info-item alt-phone" *ngIf="isExpanded">
-                <span class="item-icon icon-phone"></span>
-                <span class="item-text facility-phone-number">{{altPhone}}</span>
-            </div>
-            <div class="info-item fax" *ngIf="isExpanded">
-                <span class="item-icon icon-fax"></span>
-                <span class="item-text facility-phone-number">{{fax}}</span>
-            </div>
+            <contact-info-container [contactCollection]="stop.facility.contactInfo"></contact-info-container>
         </div>
         <div class="business-hours-container">
             <div class="btn-container">
