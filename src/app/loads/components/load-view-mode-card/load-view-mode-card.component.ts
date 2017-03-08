@@ -19,16 +19,8 @@ export class LoadViewModeCardComponent {
 
   private tripStops: Array<TripStop> = [];
 
-  private primaryPhone: string = '';
-  private altPhone: string = '';
-  private fax: string = '';
-
   ngOnInit() {
     this.tripStops = this.stop.tripStops;
-    this.primaryPhone = find(this.stop.facility.contactInfo, item => item.label === 'primaryPhone').value;
-    this.altPhone = find(this.stop.facility.contactInfo, item => item.label === 'alternativePhone').value;
-    this.fax = find(this.stop.facility.contactInfo, item => item.label === 'fax').value;
-
     this.tripStops.map(item => {
       map(item.stopActions, stopAction => {
           this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.Pickup);
@@ -39,5 +31,11 @@ export class LoadViewModeCardComponent {
 
   onClick() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  getContactInfoCollection(contactItems: Array<ContactInfo>) {
+    let result: Array<ContactInfo> = [];
+    this.isExpanded ? result = contactItems : result.push(ContactInfo.getPrimaryPhone(contactItems));
+    return result;
   }
 }

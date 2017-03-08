@@ -1,11 +1,35 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
 
-$element-size: 16px;
+$element-height: 18px;
+$element-width: 16px;
 $text-margin: 5px;
 
 .trip-container {
+
+  &.expanded {
+    .trip-info-container {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+      .left-panel {
+        .info-panel{
+        .driver-container {
+          .driver-info {
+            display: flex;
+
+            .driver-count {
+              display: none;
+            }
+          }
+        }
+      }
+      }
+    }
+  }
+
   .trip-info-container {
+
     button {
       padding: 0;
       border: 0;
@@ -17,7 +41,7 @@ $text-margin: 5px;
     }
 
     span {
-      line-height: $element-size;
+      line-height: $element-height;
     }
 
     display: flex;
@@ -31,59 +55,65 @@ $text-margin: 5px;
       display: flex;
       width: 50%;
       padding: $default-margin;
-      flex-direction: column;
+      flex-direction: row;
 
-      .trip-info-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      .info-panel {
+        flex: 1;
 
-        .trip-number {
-          color: $black;
-          margin-left: $element-size;
+        .trip-info-header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .trip-number {
+            color: $black;
+            margin-left: $element-width;
+          }
         }
 
-        .buttons-panel {
-          display: inline;
-          color: $dark-grey;
+        .driver-container {
 
-          button {
-            padding: 0 $text-margin;
+          .driver-info {
+            display: none;
+            color: $dark-grey;
+            align-items: center;
 
-            &:hover {
-              color: $blue;
+            .initials-circle {
+              display: inline-block;
+              margin-right: $text-margin;
+            }
+
+            .driver-count {
+              margin-left: $text-margin;
+            }
+
+            &:first-of-type {
+              display: flex;
             }
           }
         }
-      }
 
-      .driver-container {
-        .driver-info {
-          display: flex;
+        .trailer-info {
+          overflow: hidden;
           color: $dark-grey;
-          align-items: center;
-
-          .initials-circle {
-            display: inline-block;
-            margin-right: $text-margin;
-          }
-
-          .driver-count {
-            margin-left: $text-margin;
-          }
-
-          &:not(:first-of-type) {
-            display: none;
-          }
+          margin-left: $element-width;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
-      .trailer-info {
-        overflow: hidden;
+      .buttons-panel {
+        display: flex;
         color: $dark-grey;
-        margin-left: $element-size;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        flex-direction: column;
+        
+        button {
+          padding: 3px 0;
+
+          &:hover {
+            color: $blue;
+          }
+        }
       }
     }
 
@@ -102,12 +132,12 @@ $text-margin: 5px;
           align-items: center;
 
           span {
-            line-height: $element-size;
+            line-height: $element-height;
 
             &.circle {
               display: inline-block;
-              width: 12px;
-              height: 12px;
+              width: 10px;
+              height: 10px;
               background: $blue;
               border-radius: 50%;
               margin-right: $text-margin;
@@ -118,7 +148,7 @@ $text-margin: 5px;
 
       .date-range-container {
         display: flex;
-        padding-left: $element-size;
+        padding-left: $element-width;
         flex-direction: row;
         justify-content: space-between;
 
@@ -135,7 +165,7 @@ $text-margin: 5px;
       }
     }
   }
-
+  
   .commodities-section {
     margin: 10px;
 
@@ -163,26 +193,6 @@ $text-margin: 5px;
       &:last-of-type {
         border-bottom-right-radius: $default-border-radius;
         border-bottom-left-radius: $default-border-radius;
-      }
-    }
-  }
-
-  &.expanded {
-    
-    .trip-info-container {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-
-      .left-panel {
-        .driver-container {
-          .driver-info {
-            display: flex;
-
-            .driver-count {
-              display: none;
-            }
-          }
-        }
       }
     }
   }

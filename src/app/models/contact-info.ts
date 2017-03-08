@@ -18,8 +18,10 @@ export class ContactInfo {
   type: ContactInfoType;
 
 
-  public static getPrimaryPhone(type: ContactInfoType): ContactInfo {
-    return new ContactInfo();
+  public static getPrimaryPhone(collection: Array<ContactInfo>): ContactInfo {
+    let result: ContactInfo = null;
+    result = collection.filter(item => item.label === 'primaryPhone')[0];
+    return result;
   }
 
   public static getContactInfoType(type: ContactInfoType): string {

@@ -544,7 +544,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.InProgress,
-    tripStops: [this.tripStopCollection[0]]
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
   }
   // {
   //   id: 2,

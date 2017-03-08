@@ -9,9 +9,9 @@
             <div class="title">{{stop.facility.name}}</div>
             <div class="info-item">
                 <span class="item-icon icon-location"></span>
-                <span class="item-text facility-address">{{stop.facility.address.streetAddress}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
+                <span class="item-text facility-address">{{stop.facility.address.streetAddress1}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
             </div>
-            <contact-info-container [contactCollection]="stop.facility.contactInfo"></contact-info-container>
+            <contact-info-container [contactCollection]="getContactInfoCollection(stop.facility.contactInfo)"></contact-info-container>
         </div>
         <div class="business-hours-container">
             <div class="btn-container">
@@ -37,10 +37,14 @@
         </div>
     </div>
 
-    <trip-view 
-        [tripData]="tripStops[0]" 
-        [isExpanded]="isExpanded">
-    </trip-view>
+    <div class="trip-view-container">
+        <trip-view 
+            *ngFor="let tripStop of tripStops"
+            class="trip-view-item"
+            [tripData]="tripStop" 
+            [isExpanded]="isExpanded">
+        </trip-view>
+    </div>
 </div>
 
 

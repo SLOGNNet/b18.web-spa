@@ -1,7 +1,7 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
 
-$element-size: 16px;
+$element-size: 18px;
 $text-margin: 5px;
 
 .contact-info-container {
@@ -15,6 +15,7 @@ $text-margin: 5px;
     display: flex;
 
     .item-icon {
+      color: $dark-grey;
       margin-right: $text-margin;
     }
   }
