@@ -1,10 +1,10 @@
 <div class="stop-view-mode-section"
     [class.expanded-view]="isExpanded">
     <div class="stop-info-container"
-    [class.pickup]="pickupCommodities.length && !dropoffCommodities.length"
-    [class.dropoff]="!pickupCommodities.length && dropoffCommodities.length"
-    [class.combined]="pickupCommodities.length && dropoffCommodities.length">
-        <div class="stripped-border" *ngIf="pickupCommodities.length && dropoffCommodities.length"></div>
+    [class.pickup]="pickups.length && !dropoffs.length"
+    [class.dropoff]="!pickups.length && dropoffs.length"
+    [class.combined]="pickups.length && dropoffs.length">
+        <div class="stripped-border" *ngIf="pickups.length && dropoffs.length"></div>
         <div class="facility-info">
             <div class="title">{{stop.facility.name}}</div>
             <div class="info-item">

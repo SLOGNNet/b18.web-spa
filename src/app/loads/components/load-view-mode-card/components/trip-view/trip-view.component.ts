@@ -1,10 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes } from '../../../../../models';
+import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
-import { CommoditiesHeaderComponent, PickupCommodityComponent, DropoffpCommodityComponent } from '../../../../../forms/commodities-forms';
-import { find, map } from 'lodash';
-
-const stopColors = ['#d7d8db', '#d289dd', '#dfd78f'];
+import { CommoditiesHeaderComponent } from '../../../../../forms/commodities-forms';
+import { find, map, filter } from 'lodash';
 
 @Component({
   selector: 'trip-view',
@@ -16,8 +14,8 @@ export class TripViewComponent {
   @Input() tripData: TripStop;
   @Input() isExpanded: boolean;
 
-  public pickupCommodities: Array<any> = [];
-  public dropoffCommodities: Array<any> = [];
+  public pickupCommodities: Array<StopAction> = [];
+  public dropoffCommodities: Array<StopAction> = [];
   public appointmentType: string = '';
   public phoneNumber: string = '';
 
@@ -31,23 +29,16 @@ export class TripViewComponent {
       { name: 'WEIGHT<br />(IBS)' }
     ];
 
-    public getStopColor(stopType: StopTypes){
-      return stopColors[stopType];
-    }
-
   ngOnInit() {
     this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
     this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'primaryPhone').value;
-
-    map(this.tripData.stopActions, item => {
-      if (item.type === StopActionTypes.Pickup) this.pickupCommodities.push(item.commodity);
-    });
-    map(this.tripData.stopActions, item => {
-      if (item.type === StopActionTypes.Dropoff) this.dropoffCommodities.push(item.commodity);
-    });
+    
+    this.pickupCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Pickup);
+    this.dropoffCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Dropoff);
   }
 
   getAppointmentType(type: AppointmentTypes) {
     return Appointment.getAppointmentText(type);
   }
+
 }

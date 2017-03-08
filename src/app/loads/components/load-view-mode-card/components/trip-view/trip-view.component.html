@@ -69,7 +69,7 @@
           <commodity-string
               class='commodity-item' 
               *ngFor="let data of dropoffCommodities; let i = index;" 
-              [commodity]="data" 
+              [commodity]="data.commodity" 
               [index]="i">
           </commodity-string>
           <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
@@ -78,8 +78,7 @@
     </div>
     <div 
       *ngIf="pickupCommodities.length"
-      class="commodities-container pickup-border" 
-      [style.border-color]="getStopColor(StopTypes.Pickup)">
+      class="commodities-container pickup-border">
       <commodities-header 
         *ngIf="!dropoffCommodities.length"
         [titles]="commodityHeaders">
@@ -87,7 +86,7 @@
         <commodity-string
           class='commodity-item'
           *ngFor="let data of pickupCommodities; let i = index;" 
-          [commodity]="data"
+          [commodity]="data.commodity"
           [index]="i">
         </commodity-string>
         <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
