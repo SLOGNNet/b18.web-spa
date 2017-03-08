@@ -14,7 +14,7 @@ const stopColors = ['#d7d8db', '#d289dd', '#dfd78f'];
 })
 export class TripViewComponent {
   @Input() tripData: TripStop;
-  @Input() isExpanded: boolean = false;
+  @Input() isExpanded: boolean;
 
   public pickupCommodities: Array<any> = [];
   public dropoffCommodities: Array<any> = [];
