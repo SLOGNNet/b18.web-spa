@@ -143,8 +143,7 @@ $text-margin: 5px;
       overflow: hidden;
       border: $border;
       border-left: 4px solid $grey;
-      border-bottom-right-radius: $default-border-radius;
-      border-bottom-left-radius: $default-border-radius;
+      margin-bottom: 10px;
 
       &.pickup-border {
         border-left-color: $pickup-view-mode-color;
@@ -159,6 +158,11 @@ $text-margin: 5px;
         background: $white;
         line-height: $form-control-height;
         margin-left: $text-margin;
+      }
+
+      &:last-of-type {
+        border-bottom-right-radius: $default-border-radius;
+        border-bottom-left-radius: $default-border-radius;
       }
     }
   }
