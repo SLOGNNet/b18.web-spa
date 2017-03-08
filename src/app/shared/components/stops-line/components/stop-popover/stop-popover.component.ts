@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, StopTypes } from '../../../../../models';
+import { Stop, StopTypes, ContactInfo } from '../../../../../models';
 
 @Component({
   selector: 'stop-popover',
@@ -19,8 +19,7 @@ export class StopPopoverComponent {
   }
 
   get phone() {
-    // return [this.stop.facility.address.phone, this.stop.facility.address.phoneExtension].filter(v => v).join(' x ');
-    return 'TODO';
+    return ContactInfo.getPrimaryPhone(this.stop.facility.contactInfo);
   }
 
 }
