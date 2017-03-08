@@ -31,6 +31,6 @@ export class CompanyCardComponent extends BaseCardComponent {
   }
 
   get phone() {
-    return ContactInfo.getPrimaryPhone(this.company.locations[0].contactInfo);
+    return ContactInfo.getPrimaryPhone(this.item.locations[0].contactInfo);
   }
 }
