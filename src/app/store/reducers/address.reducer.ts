@@ -1,7 +1,7 @@
 import { AddressActions, CompanyActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Address } from './models';
-import { addItem, updateItem, removeItem } from './utils';
+import { addItem, updateListItem, removeItem } from './utils';
 
 export interface IAddressState {
     items: Address[];
@@ -16,7 +16,7 @@ export const addressReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: removeItem(state.items, action.address)});
   },
   [AddressActions.UPDATE_ADDRESS](state, action) {
-    return Object.assign({}, state, { items: updateItem(state.items, action.address)});
+    return Object.assign({}, state, { items: updateListItem(state.items, action.address)});
   },
   [CompanyActions.SELECT_COMPANY](state, action) {
     return Object.assign({}, state, { items: action.company.addresses});

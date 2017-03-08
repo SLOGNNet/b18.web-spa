@@ -11,6 +11,7 @@ export class BdButtonSwitchComponent implements ControlValueAccessor  {
 
   @Input() labelText: string;
   @Input() hideLabel: boolean;
+  @Input() disabled: boolean = false;
   @Input() items: any[];
   @Input() keyField: string = 'key';
   @Input() valueField: string = 'value';
@@ -48,6 +49,7 @@ export class BdButtonSwitchComponent implements ControlValueAccessor  {
   }
 
   private _handleItemClick(event, item){
+    if (this.disabled) return;
     this.selectedValue = item[this.keyField];
     this._onChangeCallback(this.selectedValue);
     this.onItemClick.emit({key: item[this.keyField], value: item[this.valueField]});

@@ -167,6 +167,13 @@
     }
   }
 
+  &.bd-disabled {
+
+    .bd-input {
+      color: $label-default-color;
+    }
+  }
+
   &.bd-not-empty-label {
     .bd-input {
       width: 0;

@@ -20,6 +20,23 @@ export class NotificationService {
     return this._notification.asObservable();
   }
 
+  sendNotification(title = '', message = '', status = NotificationStatus.New) {
+    const notification: Notification = {
+      id: 1,
+      title,
+      message,
+      date: new Date(),
+      type: 1,
+      sender: null,
+      taskType: 1,
+      priority: 0,
+      notificationStatus: status,
+      isViewed: false
+    };
+
+    this._notification.next(notification);
+  }
+
   private getUserRoomId(): string {
     const params = new URLSearchParams(window.location.search);
     const userIdParam = params.paramsMap.get('?userId');

@@ -3,7 +3,7 @@ import { Contact } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
  let result = {};
@@ -25,25 +25,17 @@ function createStatusText() {
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 
-@JsonObject()
 export class Company {
-  @JsonMember
   id: number;
-  @JsonMember
   name: string = 'CH ROBINSON COMPANY INC';
-  @JsonMember({ elements: Contact })
+  @Type(() => Contact)
   contacts: Contact[];
-  @JsonMember
   status: CompanyStatuses;
-  @JsonMember
   type: CompanyTypes;
-  @JsonMember
   mc: string = '384859';
-  @JsonMember
   taxId: string = '';
-  @JsonMember({ elements: Address })
+  @Type(() => Address)
   addresses: Array<Address>;
-  @JsonMember
   email: string = 'carrier.services@chrobinson.com';
   loads: Array<Load>;
 

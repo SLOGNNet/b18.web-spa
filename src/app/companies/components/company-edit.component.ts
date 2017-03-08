@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { Company } from '../../models';
-import { BaseDetailComponent } from '../../base';
+import { BaseEditComponent } from '../../base';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CompanyActions } from '../../actions';
 import { NgRedux, select } from 'ng2-redux';
@@ -10,11 +10,12 @@ import { Location } from '@angular/common';
 import { CompanyForm } from '../../forms';
 
 @Component({
-  selector: 'company-detail',
-  templateUrl: './company-detail.component.html',
+  selector: 'company-edit',
+  templateUrl: './company-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CompanyDetailComponent extends BaseDetailComponent<Company> {
+export class CompanyEditComponent extends BaseEditComponent<Company> {
+  @Input() disabled: boolean = false;
   @ViewChild(CompanyForm) companyFormComponent: CompanyForm;
   private anchors = [{
     id: 'company-basic-information',
@@ -59,13 +60,14 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
 
   isDetailsChanged() {
-    return this.companyFormComponent.companyForm.dirty;
+    return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
   }
   constructor(
+    private cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
     route: ActivatedRoute,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), route, location);
+      super(companyActions, ngRedux.select(state => state.companies.selected), ngRedux.select(state => state.companies.isLoading), route, location);
   }
 }

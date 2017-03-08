@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Driver, Contact, Equipment, DriverTypes, DriverStatuses, DriverPaymentOptions } from './models';
+import { Driver, Contact, Equipment, DriverTypes, DriverStatuses, DriverPaymentTypes } from './models';
 import { List } from 'immutable';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
+import { plainToClass, classToPlain } from 'class-transformer';
 
 @Injectable()
 export class DriverService {
@@ -20,9 +21,8 @@ export class DriverService {
   }
 
   getDetails(id: number): Observable<Driver> {
-    return Observable.of(
-      MockData.drivers.find((driver) => id === driver.id)
-    );
+    const result = MockData.drivers.find((driver) => id === driver.id);
+    return Observable.of(result);
   }
 
   create(driver: Driver) {

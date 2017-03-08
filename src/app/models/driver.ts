@@ -1,9 +1,10 @@
 import { Equipment } from './equipment';
 import { Contact } from './contact';
 import { License } from './license';
-import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
+import { generateNewId } from './utils';
+import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
   let result = {};
@@ -39,46 +40,37 @@ const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
 
-@JsonObject
 export class Driver extends Contact {
-  @JsonMember
   dateOfBirth: Date = null;
-  @JsonMember
   ssn: string = '';
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTruck: Equipment = new Equipment();
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
-  @JsonMember
-  paymentOption: DriverPaymentOptions;
-  @JsonMember
+  @Type(() => Equipment)
+  associatedEquipment: Array<Equipment>;
+  paymentType: DriverPaymentTypes;
   rate: number;
-  @JsonMember
   type: DriverTypes = DriverTypes.CompanyDriver;
-  @JsonMember
   hireDate: Date = null;
-  @JsonMember
   terminationDate: Date = null;
-  @JsonMember
   status: DriverStatuses = DriverStatuses.Active;
-  @JsonMember
   notes: string = '';
-  @JsonMember
   lastTripNumber: number;
-  @JsonMember
   lastAddress: string = '';
-  @JsonMember
+  @Type(() => License)
   license: License;
-
 
   static create(): Driver {
     const result = new Driver();
+    result.id = generateNewId();
+    result.license = new License();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentOption = DriverPaymentOptions.PerMile;
+    result.paymentType = DriverPaymentTypes.PerMile;
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
     return result;

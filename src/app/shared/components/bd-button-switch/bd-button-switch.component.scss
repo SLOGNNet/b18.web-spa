@@ -49,3 +49,12 @@
     }
   }
 }
+
+.bd-disabled {
+
+  .bd-buttons-container {
+    button {
+      color: $label-default-color;
+    }
+  }
+}

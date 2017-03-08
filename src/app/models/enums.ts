@@ -27,7 +27,7 @@ export enum DriverStatuses {
   Unavaliable = 3
 }
 
-export enum DriverPaymentOptions {
+export enum DriverPaymentTypes {
   PerMile = 1,
   Percentage = 2,
   Hourly = 3,
@@ -156,3 +156,15 @@ export enum LicenseClassTypes {
   ClassB = 2,
   ClassC = 3
 };
+
+export enum AppointmentTypes {
+  None = 0,
+  FCFS = 1,
+  APPT = 2
+}
+
+export enum StopActionTypes {
+    None = 0,
+    Pickup = 1,
+    Dropoff = 2
+}
