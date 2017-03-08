@@ -13,7 +13,6 @@ export class CompanyPopoverComponent {
   @Input() companyBillingAddress: Address;
 
   get status() {
-    debugger;
     return Company.getStatusText(this.company.status);
   }
 

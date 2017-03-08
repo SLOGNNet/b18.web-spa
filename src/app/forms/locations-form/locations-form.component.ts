@@ -1,14 +1,14 @@
 import { Component, Input, Output, ChangeDetectorRef, ElementRef, EventEmitter } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
-import { Address } from '../../models';
+import { Location } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
-  selector: 'addresses-form',
-  templateUrl: './addresses-form.component.html',
+  selector: 'locations-form',
+  templateUrl: './locations-form.component.html',
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
-export class AddressesForm extends BaseListForm<Address>  {
+export class LocationsForm extends BaseListForm<Location>  {
   @Input() disabled: boolean = false;
   @Output() updatePlace = new EventEmitter();
 
@@ -16,16 +16,16 @@ export class AddressesForm extends BaseListForm<Address>  {
     super(formBuilder, elementRef);
   }
 
-  createItem(): Address {
-    return Address.create();
+  createItem(): Location {
+    return Location.create();
   }
 
   label(index) {
-    return `Address #${index + 1}`;
+    return `Location #${index + 1}`;
   }
 
-  trackBy(index: number, address: Address) {
-    return address.id;
+  trackBy(index: number, location: Location) {
+    return location.id;
   }
 
   onUpdatePlace(data: any) {
