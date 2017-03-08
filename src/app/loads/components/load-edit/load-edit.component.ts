@@ -1,7 +1,7 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Load } from '../../../models';
 import { LoadActions } from '../../../actions';
-import { BaseDetailComponent } from '../../../base';
+import { BaseEditComponent } from '../../../base';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
@@ -10,10 +10,10 @@ import { Location } from '@angular/common';
 import { LoadFormComponent } from '../../../forms';
 
 @Component({
-  selector: 'load-detail',
-  templateUrl: './load-detail.component.html'
+  selector: 'load-edit',
+  templateUrl: './load-edit.component.html'
 })
-export class LoadDetailComponent extends BaseDetailComponent<Load> {
+export class LoadEditComponent extends BaseEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
   private anchors = [{
     id: 'info',
@@ -62,5 +62,4 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
   }
-
 }

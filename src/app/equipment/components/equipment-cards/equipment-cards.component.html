@@ -1,5 +1,5 @@
 <equipment-card
   *ngFor="let equipment of this.equipments; trackBy: trackBy;"
-  [equipment]="equipment"
+  [item]="equipment"
   (select)="onCardSelect($event)">
 </equipment-card>

@@ -328,15 +328,37 @@ class MockData {
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.CompanyDriver,
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      position: 'Sales manager',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
   }, {
     id: 1,
     make: 'Wabash',
@@ -346,15 +368,37 @@ class MockData {
     notes: '',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.OwnerOperator,
     lastTripNumber: 349616,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      position: 'Sales manager',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
   }];
 
   public licenses: Array<License> = [{
@@ -476,7 +520,8 @@ class MockData {
       stopActions: [{
         type: StopActionTypes.Pickup,
         commodity: this.commodities[0]
-       }]
+       }],
+       trip: this.trips[0]
     }]
   }
   // {
@@ -630,6 +675,7 @@ class MockData {
         type: AppointmentTypes.FCFS
       },
       notes: 'test',
+      trip: this.trips[0],
       facility: this.facilities[0],
         stopActions: [{
         type: StopActionTypes.Dropoff,
