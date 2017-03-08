@@ -9,20 +9,20 @@ import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 
 // Components
 import { MainComponent } from './main.component';
-import { CompaniesComponent, CompanyDetailComponent } from '../companies';
+import { CompaniesComponent, CompanyEditComponent } from '../companies';
 import { CompanyCardComponent } from '../companies/components/company-card';
 import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
-import { DriversComponent, DriverDetailComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
+import { DriversComponent, DriverEditComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
 import { MultiPaneLayoutComponent } from '../multi-pane-layout';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
 import { MessageComponent } from '../drivers/messages/message';
 import {
   LoadsComponent,
-  LoadDetailComponent,
+  LoadEditComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
@@ -48,15 +48,15 @@ import {
     MultiPaneLayoutComponent,
     HomeComponent,
     DriversComponent,
-    DriverDetailComponent,
+    DriverEditComponent,
     DriverCardsComponent,
     DriverCardComponent,
     MessagesComponent,
     MessageComponent,
     LoadsComponent,
-    LoadDetailComponent,
+    LoadEditComponent,
     CompaniesComponent,
-    CompanyDetailComponent,
+    CompanyEditComponent,
     CompanyCardComponent,
     CompanyCardsComponent,
     LoadStopCardComponent,

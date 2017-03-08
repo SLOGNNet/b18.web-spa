@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Driver } from '../../models';
-import { BaseDetailComponent } from '../../base';
+import { BaseEditComponent } from '../../base';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { DriverActions } from '../../actions';
@@ -10,11 +10,11 @@ import { IAppState } from '../../store';
 import { DriverForm } from '../../forms';
 
 @Component({
-  selector: 'driver-detail',
-  templateUrl: './driver-detail.component.html',
+  selector: 'driver-edit',
+  templateUrl: './driver-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DriverDetailComponent extends BaseDetailComponent<Driver> {
+export class DriverEditComponent extends BaseEditComponent<Driver> {
   @ViewChild(DriverForm) driverFormComponent: DriverForm;
 
   private anchors = [{

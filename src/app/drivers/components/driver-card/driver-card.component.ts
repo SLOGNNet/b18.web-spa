@@ -1,43 +1,32 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Driver, ContactInfo } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
+import { BaseCardComponent } from '../../../base';
 
 @Component({
   selector: 'driver-card',
   templateUrl: './driver-card.component.html',
-  styleUrls: ['./driver-card.component.scss'],
+  styleUrls: [
+    './driver-card.component.scss',
+    '../../../base/base-card/base-card.component.scss'
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DriverCardComponent {
-  @Input() driver: Driver;
-  @Output() select: EventEmitter<any> = new EventEmitter();
-  public statusText: boolean = false;
+export class DriverCardComponent extends BaseCardComponent {
 
-  get driverStatusColor(): string {
-    return Driver.getStatusColor(this.driver.status);
+  itemStatusColor() {
+    return Driver.getStatusColor(this.item.status);
   }
 
-  get driverTypeText(): string {
-    return Driver.getTypeText(this.driver.type);
+  itemStatusText() {
+    return Driver.getStatusText(this.item.status);
   }
 
-  get driverStatusText(): string {
-    return Driver.getStatusText(this.driver.status);
+  get driverTypeText() {
+    return Driver.getTypeText(this.item.type);
   }
 
   get phone(): string {
     return ContactInfo.getPrimaryPhone(this.driver.contactInfo);
-  }
-
-  onClick() {
-    this.select.emit(this.driver);
-  }
-
-  onEnter() {
-    this.statusText = true;
-  }
-
-  onLeave() {
-    this.statusText = false;
   }
 }
