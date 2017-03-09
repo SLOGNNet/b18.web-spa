@@ -29,17 +29,9 @@
       <div class="buttons-panel">
           <button class="icon-fax"></button>
           <button class="icon-call"></button>
-          <span [bd-popover]="phonePopover" [popoverOnHover]="true">
+          <span [bd-popover]="phoneNumber" [popoverOnHover]="true">
               <button class="icon-message"></button>
-                  <bd-popover-content
-                      #phonePopover
-                      placement="auto"
-                      [width]="100"
-                      [horizontalOffset]="-10"
-                      [closeOnClickOutside]="closeOnClickOutside">
-                           <phone-popover [phoneNumber]="phoneNumber"></phone-popover>
-                   </bd-popover-content>
-            </span>
+          </span>
         </div>
     </div>
     <div class="right-panel">

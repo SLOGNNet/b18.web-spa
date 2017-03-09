@@ -28,7 +28,6 @@ import {
   TripPopoverComponent,
   CompanyPopoverComponent,
   DriverPopoverComponent,
-  PhonePopoverComponent,
   LoadViewModeCardComponent,
   CommodityDetailsComponent,
   TripViewComponent
@@ -68,7 +67,6 @@ import {
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
-    PhonePopoverComponent,
     CommodityDetailsComponent,
     BdToastManagerComponent,
     EquipmentComponent,
