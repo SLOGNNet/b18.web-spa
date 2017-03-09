@@ -58,7 +58,7 @@
         *ngIf="hasDropoffCommodities"
         class="commodities-container dropoff-border">
         <commodities-header 
-          class="commoditites-header"
+          size='small'
           [titles]="commodityHeaders">
         </commodities-header>
           <commodity-details
@@ -75,7 +75,7 @@
       class="commodities-container pickup-border">
       <commodities-header 
         *ngIf="!hasDropoffCommodities"
-         class="commoditites-header"
+         size='small'
         [titles]="commodityHeaders">
       </commodities-header>
         <commodity-details

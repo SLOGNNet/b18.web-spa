@@ -175,14 +175,6 @@ $text-margin: 5px;
       border-left: 4px solid $grey;
       margin-bottom: 10px;
 
-      .commoditites-header {
-        /deep/ .header {
-          div {
-            height: 35px;
-          }
-        }
-      }
-
       &.pickup-border {
         border-left-color: $pickup-view-mode-color;
       }
