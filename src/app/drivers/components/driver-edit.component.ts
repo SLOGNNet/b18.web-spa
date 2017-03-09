@@ -71,7 +71,7 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
   }
 
   onPlaceUpdate(data) {
-    this.driverActions.updatePlace(data.addressId, data.placeId);
+    this.driverActions.updatePlace(this.selectedItem, data.placeId);
   }
 
   isDetailsChanged() {

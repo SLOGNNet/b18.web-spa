@@ -6,14 +6,14 @@ import { GoogleService } from '../shared';
 
 @Injectable()
 export class LocationActions {
-  static ADD_LOCATION: string = 'ADD_ADDRES';
+  static ADD_LOCATION: string = 'ADD_LOCATION';
   static REMOVE_LOCATION: string = 'REMOVE_LOCATION';
   static UPDATE_LOCATION: string = 'UPDATE_LOCATION';
-  static UPDATE_LOCATION_ADDRESS: string = 'UPDATE_LOCATION_ADDRESS';
+  static UPDATE_SELECTED_LOCATION_ADDRESS: string = 'UPDATE_LOCATION_ADDRESS';
 
-  constructor (
+  constructor(
     private _googleService: GoogleService,
-    private ngRedux: NgRedux<IAppState>) {}
+    private ngRedux: NgRedux<IAppState>) { }
 
   add(location: Location): void {
     this.ngRedux.dispatch({ type: LocationActions.ADD_LOCATION, location });
@@ -27,14 +27,15 @@ export class LocationActions {
     this.ngRedux.dispatch({ type: LocationActions.UPDATE_LOCATION, location });
   }
 
-  updateAddress(address: Address): void {
-    this.ngRedux.dispatch({ type: LocationActions.UPDATE_LOCATION_ADDRESS, address });
+  updateAddress(location: Location): void {
+    this.ngRedux.dispatch({ type: LocationActions.UPDATE_SELECTED_LOCATION_ADDRESS, location });
   }
 
-  updatePlace(addressId: number, placeId: string): void {
+  updatePlace(location: Location, placeId: string): void {
     this._googleService.getDetails(placeId)
       .subscribe(detail => {
-        this.updateAddress(Object.assign(detail, { id: addressId}));
+        location.address = Object.assign(location.address, detail);
+        this.updateAddress(location);
       });
   }
 }

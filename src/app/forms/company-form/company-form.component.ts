@@ -81,7 +81,7 @@ export class CompanyForm extends BaseForm {
   }
 
   onLocationPlaceUpdate(data: any) {
-    this.locationActions.updatePlace(data.addressId, data.placeId);
+    this.locationActions.updatePlace(data.location, data.placeId);
   }
 
   onLocationRemove(location: Location) {

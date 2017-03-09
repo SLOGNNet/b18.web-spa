@@ -40,7 +40,7 @@ export class LocationForm extends BaseForm {
     });
   }
 
-  onUpdatePlace(e) {
-    this.updatePlace.emit(e);
+  onUpdatePlace(data: any) {
+    this.updatePlace.emit({ location: this.location, placeId: data.placeId});
   }
 }
