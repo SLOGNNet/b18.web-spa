@@ -1,20 +1,19 @@
 @import '../../../../../assets/styles/variables';
 
 .primary {
-  border: 0;
   background: $blue;
   color: $white;
 
-  &:focus {
+  &:hover {
+    background: $btn-primary-hover;
+  }
+
+  &:active {
     background: $btn-primary-focus;
 
     &:hover {
       background: $btn-primary-focus;
     }
-  }
-
-  &:hover {
-    background: $btn-primary-hover;
   }
 }
 
@@ -32,14 +31,6 @@
 
   &:hover {
     background: $btn-default-hover;
-  }
-
-  &:focus {
-    background: $btn-default-focus;
-
-    &:hover {
-      background: $btn-default-focus;
-    }
   }
 }
 
