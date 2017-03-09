@@ -32,12 +32,6 @@ export class LocationForm extends BaseForm {
     }));
     this.locationForm.addControl('address', this.formBuilder.group({ }));
     this.locationForm.addControl('contactInfo', this.formBuilder.array([]));
-
-    this.locationForm.valueChanges.subscribe((value) => {
-      if (this.locationForm.valid) {
-          this.update.emit(value);
-      }
-    });
   }
 
   onUpdatePlace(data: any) {

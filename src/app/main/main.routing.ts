@@ -26,10 +26,7 @@ const routes: Routes = [{
     },
     { path: 'drivers/:id/messages', component: MessagesComponent },
     {
-      path: 'loads', component: LoadsComponent, children: [{
-        path: ':id',
-        component: LoadEditComponent
-      }]
+      path: 'loads', component: LoadsComponent
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{
