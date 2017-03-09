@@ -1,77 +1,50 @@
-<div class="load-view-mode-section">
-    <div class="stop-info-container">
+<div class="stop-view-mode-section"
+    [class.expanded-view]="isExpanded">
+    <div class="stop-info-container"
+    [class.pickup]="isPickup"
+    [class.dropoff]="isDropoff"
+    [class.combined]="isCombined">
+        <div class="stripped-border"></div>
         <div class="facility-info">
-            <div class="title">Tailor Freshh Foods</div>
+            <div class="title">{{stop.facility.name}}</div>
             <div class="info-item">
-                <div class="item-icon icon-location"></div>
-                <div class="item-text facility-address">1275, Hansen street, Salinas, CA, 939001</div>
+                <span class="item-icon icon-location"></span>
+                <span class="item-text facility-address">{{stop.facility.address.streetAddress1}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
             </div>
-            <div class="info-item">
-                <div class="item-icon icon-phone"></div>
-                <div class="item-text facility-phone-number">937-99-92</div>
-            </div>
-            <div class="notes">Call after 12:00</div>
+            <bd-contact-info [contactCollection]="getContactInfoCollection(stop.facility.contactInfo)"></bd-contact-info>
         </div>
-        <div class="date-time-info">
-            <div class="appointment-type">
-                <div class="type-container">
-                    <span class="circle"></span>
-                    <span class="type">FCFS</span>
-                </div>
-
-                <div class="btn-container">
-                    <span class="text">expand</span>
-                    <span class="icon-down-arrow"></span>
-                </div>
+        <div class="business-hours-container">
+            <div class="btn-container">
+                <button 
+                    [class.icon-down-arrow-bold]="!isExpanded" 
+                    [class.icon-up-arrow-bold]="isExpanded" 
+                    (click)="onClick()">
+                </button>
             </div>
-            <div class="date-range-container">
-                <div class="date first-date">
-                    <div class="date-value">09/09</div>
-                    <div class="time-value">12:15</div>
-                </div>
-                <div class="date last-date">
-                    <div class="date-value">09/09</div>
-                    <div class="time-value">12:15</div>
-                </div>
+            <div class="hours-string">
+                <span class="days">Mo-Fr:</span>
+                <span class="hours">08:00-17:00</span>
             </div>
-            <div class="business-hours-container">
-                <div class="hours-string">
-                    <span class="days">Mo-Fr:</span>
-                    <span class="hours">08:00-17:00</span>
-                </div>
-                <div class="hours-string">
-                    <span class="days">Sa:</span>
-                    <span class="hours">12:00-16:00</span>
-                </div>
+            <div class="hours-string">
+                <span class="days">Sa:</span>
+                <span class="hours">12:00-16:00</span>
             </div>
+            <div class="hours-string">
+                <span class="days">Su:</span>
+                <span class="hours">13:00-14:00</span>
+            </div>
+            <div class="notes">{{stop.facility.notes}}</div>
         </div>
     </div>
-    <div class="trip-info-container">
-        <div class="info-panel">
-            <span class="trip-number">TR3453563 :</span>
-            <span class="initials-circle">
-                <bd-initials-circle
-                    [firstName]="'Nick'"
-                    [lastName]="'Smith'"
-                    size='small'>
-                </bd-initials-circle>
-            </span>
-            <span class="driver-name">Nick Smith</span>
-        </div>
-        <div class="buttons-panel">
-            <button class="icon-fax"></button>
-            <button class="icon-call"></button>
-            <span [bd-popover]="phonePopover" [popoverOnHover]="true">
-            <button class="icon-message"></button>
-                    <bd-popover-content
-                       #phonePopover
-                       placement="auto"
-                       [width]="100"
-                       [horizontalOffset]="-10"
-                       [closeOnClickOutside]="closeOnClickOutside">
-                         <phone-popover [phoneNumber]="123123123"></phone-popover>
-                </bd-popover-content>
-            </span>
-        </div>
+
+    <div class="trip-view-container">
+        <trip-view 
+            *ngFor="let tripStop of tripStops"
+            class="trip-view-item"
+            [tripData]="tripStop" 
+            [isExpanded]="isExpanded">
+        </trip-view>
     </div>
 </div>
+
+

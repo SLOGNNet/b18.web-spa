@@ -63,6 +63,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
 import { EmailValidator } from './validators';
+import { BdContactInfoComponent } from './components/bd-contact-info';
 
 @NgModule({
   providers: [
@@ -133,7 +134,8 @@ import { EmailValidator } from './validators';
     AutocompleteFilter,
     FilterItem,
     BdInfiniteScrollComponent,
-    ComplexityPasswordMessengerComponent
+    ComplexityPasswordMessengerComponent,
+    BdContactInfoComponent
   ],
   imports: [
     CommonModule,
@@ -205,7 +207,8 @@ import { EmailValidator } from './validators';
     AutocompleteFilter,
     FilterItem,
     BdInfiniteScrollComponent,
-    ComplexityPasswordMessengerComponent
+    ComplexityPasswordMessengerComponent,
+    BdContactInfoComponent
   ]
 })
 export class SharedModule {
