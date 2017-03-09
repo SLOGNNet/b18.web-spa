@@ -10,15 +10,16 @@ export class CommodityDetailsComponent {
   @Input() index: number;
   @Input() commodity: Commodity;
 
-  public items: Array<any> = [];
+  public columns: Array<any> = [];
 
-  getCommodityItems(commodity: Commodity) {
+  getCommodityColumns(commodity: Commodity) {
     let result = [];
         result.push(commodity.po, commodity.commodity, commodity.unitType, commodity.unitCount, commodity.palletCount, commodity.weight);
     return result;
   }
+  
   ngOnInit() {
     this.index++;
-    this.items = this.getCommodityItems(this.commodity);
+    this.columns = this.getCommodityColumns(this.commodity);
   }
 }
