@@ -26,36 +26,6 @@ export class CompanyEditComponent extends BaseEditComponent<Company> {
   }, {
     id: 'company-contacts',
     title: 'Contacts'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
   }];
 
 
