@@ -1,6 +1,6 @@
 @import '../../../../../../assets/styles/variables';
 
-.commodity-string-container {
+.commodity-detail-container {
   display: flex;
   height: $form-control-height;
   background: $white;
@@ -12,7 +12,7 @@
     border-top: 0;
   }
 
-  .commodity-item {
+  .commodity-detail-item {
     display: flex;
     overflow: hidden;
     border-right: $border;

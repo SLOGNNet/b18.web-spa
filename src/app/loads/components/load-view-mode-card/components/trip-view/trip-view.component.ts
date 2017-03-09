@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
+import { BdContactInfoComponent } from './common/bd-icons/bd-contact-info';
 import { CommoditiesHeaderComponent } from '../../../../../forms/commodities-forms';
 import { find, map, filter } from 'lodash';
 

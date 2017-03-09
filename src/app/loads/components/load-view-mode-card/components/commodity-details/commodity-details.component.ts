@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes } from '../../../../../models';
 
 @Component({
-  selector: 'commodity-string',
-  templateUrl: './commodity-string.component.html',
-  styleUrls: ['./commodity-string.component.scss']
+  selector: 'commodity-details',
+  templateUrl: './commodity-details.component.html',
+  styleUrls: ['./commodity-details.component.scss']
 })
-export class CommodityStringComponent {
+export class CommodityDetailsComponent {
   @Input() index: number;
   @Input() commodity: Commodity;
 

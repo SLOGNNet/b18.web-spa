@@ -68,12 +68,12 @@
         <commodities-header 
           [titles]="commodityHeaders">
         </commodities-header>
-          <commodity-string
+          <commodity-details
               class='commodity-item' 
               *ngFor="let data of dropoffCommodities; let i = index;" 
               [commodity]="data.commodity" 
               [index]="i">
-          </commodity-string>
+          </commodity-details>
           <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
             {{tripData.notes}}
           </div>
@@ -85,12 +85,12 @@
         *ngIf="!dropoffCommodities.length"
         [titles]="commodityHeaders">
       </commodities-header>
-        <commodity-string
+        <commodity-details
           class='commodity-item'
           *ngFor="let data of pickupCommodities; let i = index;" 
           [commodity]="data.commodity"
           [index]="i">
-        </commodity-string>
+        </commodity-details>
         <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
             {{tripData.notes}}
         </div>
