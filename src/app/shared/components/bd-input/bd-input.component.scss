@@ -42,7 +42,6 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: $form-control-height;
   padding: 0 $default-margin;
   border-bottom: $border;
   margin-bottom: 0;
@@ -105,7 +104,7 @@
         @include input-textarea;
         overflow: hidden;
         align-self: flex-start;
-        margin-top: 7px;
+        margin-top: 1px;
       }
     }
 
