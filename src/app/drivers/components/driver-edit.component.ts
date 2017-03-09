@@ -11,8 +11,7 @@ import { DriverForm } from '../../forms';
 
 @Component({
   selector: 'driver-edit',
-  templateUrl: './driver-edit.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './driver-edit.component.html'
 })
 export class DriverEditComponent extends BaseEditComponent<Driver> {
   @ViewChild(DriverForm) driverFormComponent: DriverForm;

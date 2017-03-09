@@ -5,3 +5,9 @@ export function getPaginated(items: Array<any>, page: number = 0, count: number 
   const paginatedItems = take(slice(items, offset), count);
   return paginatedItems;
 }
+
+
+let id = 0;
+export function generateNewId() {
+  return --id;
+}

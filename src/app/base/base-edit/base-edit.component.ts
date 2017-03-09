@@ -26,8 +26,9 @@ export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
       this.selectedItem = cloneDeep(item);
     });
     this.route.params.subscribe(params => {
-      this.onQueryParams(params);
+      this.checkNewItem();
     });
+     this.checkNewItem();
   }
 
   // CanComponentDeactivate inteface
@@ -42,14 +43,12 @@ export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
 
   protected abstract isDetailsChanged();
 
-  private onQueryParams(params) {
-    const id = Number.parseInt(params['id']);
-    this.isNew = id === 0;
+  private checkNewItem() {
+    const snapshot = this.route.snapshot;
+    const paramId = Number.parseInt(snapshot.params['id']);
+    this.isNew = paramId === 0 || this.route.snapshot.data['new'];
     if (this.isNew) {
       this.actions.createNew();
-    }
-    else if (!isNaN(id)) {
-      this.actions.select(id);
     }
   }
 

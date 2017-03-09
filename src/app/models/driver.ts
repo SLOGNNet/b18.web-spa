@@ -63,7 +63,6 @@ export class Driver extends Contact {
 
   static create(): Driver {
     const result = new Driver();
-    result.id = generateNewId();
     result.license = new License();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
