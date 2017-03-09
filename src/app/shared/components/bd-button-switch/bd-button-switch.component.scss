@@ -8,12 +8,12 @@
 
   .bd-switch-label {
     display: flex;
-    width: 80px;
+    width: 24%;
     height: 100%;
     color: $dark-grey;
-    font-size: $mini-font-size;
+    font-size: $input-label-font-size;
     text-align: right;
-    margin-right: $default-margin;
+    margin-right: $default-margin * 2;
     text-transform: uppercase;
     align-items: center;
     justify-content: flex-end;
@@ -30,6 +30,7 @@
       margin: 1px 1px 1px 0;
       background: transparent;
       color: $black;
+      font-size: $form-control-font-size;
       letter-spacing: 1px;
       border-radius: $default-border-radius;
       flex: 1;

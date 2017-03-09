@@ -16,15 +16,16 @@
     justify-content: space-between;
 
     .bd-dropdown-label {
-      width: 80px;
+      width: 24%;
       color: $label-default-color;
+      font-size: $tiny-font-size;
       line-height: $tiny-font-size;
       text-align: right;
       margin-right: $default-margin * 2;
 
       label {
         overflow: hidden;
-        font-size: $mini-font-size;
+        font-size: $input-label-font-size;
         line-height: 1em;
         max-height: 2em;
         font-weight: 300;
@@ -34,6 +35,7 @@
     }
 
     .bd-dropdown-value {
+      font-size: $form-control-font-size;
       flex-grow: 1;
 
       span {
