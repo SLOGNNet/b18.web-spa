@@ -20,6 +20,10 @@ export class TripViewComponent {
   public appointmentType: string = '';
   public phoneNumber: string = '';
 
+  get hasPickupCommodities() { return this.pickupCommodities.length > 0; }
+
+  get hasDropoffCommodities() { return this.dropoffCommodities.length > 0; }
+
   public commodityHeaders = [
       { name: 'NUMBER' },
       { name: 'P.O.' },

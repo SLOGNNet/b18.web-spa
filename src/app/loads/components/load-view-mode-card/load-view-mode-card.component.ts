@@ -19,6 +19,12 @@ export class LoadViewModeCardComponent {
 
   private tripStops: Array<TripStop> = [];
 
+  get isPickup() { return this.pickups.length && !this.dropoffs.length; }
+
+  get isDropoff() { return !this.pickups.length && this.dropoffs.length; }
+  
+  get isCombined() { return this.pickups.length && this.dropoffs.length; }
+
   ngOnInit() {
     this.tripStops = this.stop.tripStops;
     this.tripStops.map(item => {

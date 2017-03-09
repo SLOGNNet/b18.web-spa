@@ -63,7 +63,7 @@
   </div>
   <div class="commodities-section" *ngIf="isExpanded">
     <div 
-        *ngIf="dropoffCommodities.length"
+        *ngIf="hasDropoffCommodities"
         class="commodities-container dropoff-border">
         <commodities-header 
           [titles]="commodityHeaders">
@@ -79,10 +79,10 @@
           </div>
     </div>
     <div 
-      *ngIf="pickupCommodities.length"
+      *ngIf="hasPickupCommodities"
       class="commodities-container pickup-border">
       <commodities-header 
-        *ngIf="!dropoffCommodities.length"
+        *ngIf="!hasDropoffCommodities"
         [titles]="commodityHeaders">
       </commodities-header>
         <commodity-details
