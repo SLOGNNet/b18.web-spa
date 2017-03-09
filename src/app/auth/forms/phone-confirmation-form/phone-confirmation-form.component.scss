@@ -1,33 +1,3 @@
-@import '../../../../assets/styles/variables';
-@import '../../../../assets/styles/form-control';
-@import '../../../../assets/styles/styles';
-
 .divider {
   min-height: 20px;
-}
-
-.general-help-message {
-  padding: 10px;
-  margin: 15px 0;
-  background: $light-blue;
-  color: $dark-blue;
-}
-
-.general-error-message {
-  margin: 15px 0;
-
-  .error-message {
-    display: flex;
-    padding: 5px;
-    background: $light-red;
-    color: $label-warning-color;
-    text-align: left;
-    min-height: 35px;
-    align-items: start;
-    border-bottom: $border;
-
-    i {
-      margin: 2px 15px 0 17px;
-    }
-  }
 }
