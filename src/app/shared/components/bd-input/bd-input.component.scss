@@ -99,11 +99,13 @@
 
       input {
         @include input-textarea;
+        font-size: $form-control-font-size;
       }
 
       textarea {
         @include input-textarea;
         overflow: hidden;
+        font-size: $form-control-font-size;
         align-self: flex-start;
       }
     }
