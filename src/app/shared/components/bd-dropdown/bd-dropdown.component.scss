@@ -8,6 +8,7 @@
     display: flex;
     width: 100%;
     height: $form-control-height;
+    padding: 0 $default-margin;
     background-color: inherit;
     box-shadow: inherit;
     border-bottom: $border;
@@ -22,6 +23,7 @@
       line-height: $tiny-font-size;
       text-align: right;
       margin-right: $default-margin * 2;
+      margin-left: -$default-margin;
 
       label {
         overflow: hidden;
@@ -49,7 +51,6 @@
 
     .bd-dropdown-icon {
       color: $label-default-color;
-      margin-right: $default-margin;
     }
 
     &:hover {

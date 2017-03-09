@@ -3,6 +3,7 @@
 .bd-switch-container {
   display: flex;
   height: $form-control-height;
+  padding: 0 $default-margin;
   background: $white;
   border-bottom: $border;
 
@@ -14,14 +15,16 @@
     font-size: $input-label-font-size;
     text-align: right;
     margin-right: $default-margin * 2;
+    margin-left: -$default-margin;
     text-transform: uppercase;
     align-items: center;
     justify-content: flex-end;
   }
 
   .bd-buttons-container {
-    display: flex;
+    display: flex;    
     flex: 1;
+    margin-right: -$default-margin;
 
     button {
       width: 100%;
