@@ -175,6 +175,14 @@ $text-margin: 5px;
       border-left: 4px solid $grey;
       margin-bottom: 10px;
 
+      .commoditites-header {
+        /deep/ .header {
+          div {
+            height: 35px;
+          }
+        }
+      }
+
       &.pickup-border {
         border-left-color: $pickup-view-mode-color;
       }
@@ -184,9 +192,9 @@ $text-margin: 5px;
       }
 
       .commodities-notes {
-        height: $form-control-height;
+        height: 35px;
         background: $white;
-        line-height: $form-control-height;
+        line-height: 35px;
         padding-left: $text-margin;
       }
 
