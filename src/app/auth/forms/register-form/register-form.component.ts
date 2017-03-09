@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
@@ -8,15 +8,17 @@ import { EmailValidator } from '../../../shared/validators';
 @Component(Object.assign({
   selector: 'bd-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss']
+  styleUrls: ['./register-form.component.scss', '../../components/auth-wrapper/spinner.scss']
 }, BaseForm.metaData))
 export class RegisterFormComponent extends BaseForm implements OnInit {
 
   registerForm: FormGroup;
   registerTypes: Array<any>;
   isLoading: boolean = false;
+  isRegisterFailed: boolean;
 
   constructor(
+    private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
     element: ElementRef) {
     super(element);
@@ -53,14 +55,17 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authenticationService.signUp(form.value).subscribe(response => {
-      if (response === 'register_failed') {
-        // this.isLoginFailed = true;
-        // this.registerForm.markAsPristine();
-        // this.cd.markForCheck();
+    this.authenticationService.signUp(form.value).subscribe(
+      response => {
+        this.isLoading = false;
+      },
+      error => {
+        this.isRegisterFailed = true;
+        this.registerForm.markAsPristine();
+        this.cd.markForCheck();
+        this.isLoading = false;
       }
-      this.isLoading = false;
-    });
+    );
   }
 
   subscribeTypeChanges() {

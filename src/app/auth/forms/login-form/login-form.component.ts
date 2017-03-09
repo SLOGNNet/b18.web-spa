@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../services';
 @Component(Object.assign({
   selector: 'bd-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss', '../../components/auth-wrapper/spinner.scss']
 }, BaseForm.metaData))
 export class LoginFormComponent extends BaseForm implements OnInit {
 
@@ -35,14 +35,17 @@ export class LoginFormComponent extends BaseForm implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authenticationService.login(form.value).subscribe(response => {
-      if (response === 'login_failed') {
+    this.authenticationService.login(form.value).subscribe(
+      response => {
+        this.isLoading = false;
+      },
+      error => {
         this.isLoginFailed = true;
         this.loginForm.markAsPristine();
         this.cd.markForCheck();
+        this.isLoading = false;
       }
-      this.isLoading = false;
-    });
+    );
   }
 
 }
