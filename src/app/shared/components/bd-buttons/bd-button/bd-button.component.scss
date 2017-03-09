@@ -43,11 +43,8 @@
   }
 }
 
-.default-size {
-  width: 100%;
-  height: $form-control-height;
+.common {
   border: 0;
-  font-size: $small-font-size;
   border-bottom: $border;
   border-radius: $default-border-radius;
 
@@ -60,20 +57,16 @@
   }
 }
 
+.default-size {
+  width: 100%;
+  height: $form-control-height;
+  font-size: $small-font-size;
+}
+
 .small {
   width: 81px;
   height: 30px;
   padding: 2px 13px 0;
   font-size: $tiny-font-size;
   margin-right: 13px;
-  border-bottom: $border;
-  border-radius: $default-border-radius;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: 0;
-  }
 }
