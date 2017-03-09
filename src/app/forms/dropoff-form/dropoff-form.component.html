@@ -13,9 +13,9 @@
     (select)="onCommoditySelect($event)"
     [viewMode]="viewMode">
   </drop-off-commodity-form>
-  <bd-input
+  <bd-textarea
     class="bd-form-control"
-    placeholder="Notes"
-    formControlName="notes">
-  </bd-input>
+    formControlName="notes"
+    [labelText]="'Notes'">
+  </bd-textarea>
 </form>
