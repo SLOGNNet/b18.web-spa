@@ -28,8 +28,8 @@
       label {
         overflow: hidden;
         font-size: $input-label-font-size;
-        line-height: 1em;
-        max-height: 2em;
+        line-height: calc(1em + 1px);
+        max-height: calc(2em + 2px);
         font-weight: 300;
         margin-bottom: 0;
         text-transform: uppercase;

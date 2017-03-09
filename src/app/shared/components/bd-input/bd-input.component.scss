@@ -65,8 +65,8 @@
     label {
       overflow: hidden;
       margin: 0;
-      line-height: 1em;
-      max-height: 2em;
+      line-height: calc(1em + 1px);
+      max-height: calc(2em + 2px);
       font-weight: normal;
     }
   }
