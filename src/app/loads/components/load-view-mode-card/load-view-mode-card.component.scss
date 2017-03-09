@@ -63,18 +63,23 @@ $text-margin: 5px;
       border-left-color: $dropoff-view-mode-color;
     }
 
-    &.combined {
-      border-left: 0;
-    }
-
     .stripped-border {
       position: absolute;
       top: 0;
+      display: none;
       width: 4px;
       height: 100%;
       background-image: url('assets/img/stripped-line.svg');
       background-repeat: repeat-y;
       left: -1px;
+    }
+
+    &.combined {
+      border-left: 0;
+
+      .stripped-border {
+        display: block;
+      }
     }
 
     .facility-info {
