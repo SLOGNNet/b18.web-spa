@@ -9,4 +9,5 @@ import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } fro
 export class CommoditiesHeaderComponent  {
   @Input() focusedColumnIndex: number = null;
   @Input() titles: Array<string> = new Array<string>();
+  @Input() private size: 'default' | 'small' = 'default';
 }

@@ -1,146 +1,163 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
 
-.load-view-mode-section {
+$element-height: 18px;
+$element-width: 16px;
+$text-margin: 5px;
+
+.stop-view-mode-section {
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  span {
+    line-height: $element-height;
+  }
+
   display: flex;
   border: $border;
-  background: $white;
+  background: $light-blue;
   font-size: $tiny-font-size;
   flex-direction: column;
-  border-left: 4px solid $pickup-view-mode-color;
   border-radius: $default-border-radius;
 
+  .trip-view-container {
+
+    .trip-view-item {
+      display: none;
+
+      &:first-of-type {
+        display: block;
+      }
+    }
+  }
+
+  &.expanded-view {
+    .trip-view-container {
+      .trip-view-item {
+        display: block;
+      }
+    }
+  }
 
   .stop-info-container {
+    position: relative;
     display: flex;
+    background: $white;
+    border-bottom: $border;
+    border-left: 4px solid $grey;
+    border-top-left-radius: $default-border-radius;
+    border-top-right-radius: $default-border-radius;
+
+    &.pickup {
+      border-left-color: $pickup-view-mode-color;
+    }
+
+    &.dropoff {
+      border-left-color: $dropoff-view-mode-color;
+    }
+
+    .stripped-border {
+      position: absolute;
+      top: 0;
+      display: none;
+      width: 4px;
+      height: 100%;
+      background-image: url('assets/img/stripped-line.svg');
+      background-repeat: repeat-y;
+      left: -1px;
+    }
+
+    &.combined {
+      border-left: 0;
+
+      .stripped-border {
+        display: block;
+      }
+    }
 
     .facility-info {
       display: flex;
       width: 50%;
       padding: $default-margin;
       color: $dark-grey;
+      border-right: 1px dashed $grey;
       flex-direction: column;
-      justify-content: space-between;
 
       .title {
         color: $black;
+        line-height: 12px;
+        margin-left: $element-width;
         font-weight: bold;
+        max-height: $element-height;
+        margin-bottom: 10px;
       }
 
       .info-item {
         display: flex;
+        margin-bottom: 15px;
 
         .item-icon {
-          margin-right: 5px;
+          color: $dark-grey;
+          line-height: 13px;
+          margin-right: $text-margin;
         }
 
-        .item-text {
-          line-height: $tiny-font-size;
+        .facility-address {
+          line-height: 14px;
+        }
+      }
+    }
+
+    .business-hours-container {
+      width: 50%;
+      padding: $default-margin;
+      color: $dark-grey;
+
+      .hours-string {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-container {
+        position: absolute;
+        top: $default-margin - 1px;
+        right: $default-margin;
+        display: none;
+        height: $default-margin + 2px;
+        background: $white;
+
+        button {
+          color: $blue;
+          padding-left: $default-margin;
+        }
+
+        &:hover {
+          cursor: pointer;
         }
       }
 
       .notes {
         overflow: hidden;
         color: $black;
-        white-space: nowrap;
+        line-height: $element-height;
+        margin-top: 15px;
         text-overflow: ellipsis;
-      }
-    }
-
-    .date-time-info {
-      width: 50%;
-      padding: $default-margin;
-      border-left: 1px dashed $grey;
-
-      .appointment-type {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .type-container {
-          display: flex;
-          align-items: center;
-
-          .circle {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: $blue;
-            border-radius: 50%;
-            margin-right: 5px;
-          }
-
-          .type {
-            line-height: $tiny-font-size;
-          }
-        }
-
-        .btn-container {
-          color: $blue;
-
-          .text {
-            color: transparent;
-          }
-
-          &:hover {
-            cursor: pointer;
-
-            .text {
-              color: $blue;
-              transition: color .2s;
-            }
-          }
-        }
-      }
-
-      .date-range-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .business-hours-container {
-        color: $dark-grey;
-
-        .hours-string {
-          display: flex;
-          justify-content: space-between;
-        }
       }
     }
   }
 
-  .trip-info-container {
-    display: flex;
-    padding: $default-margin;
-    border-top: $border;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .info-panel {
-      display: flex;
-      align-items: center;
-
-      .trip-number {
-        color: $black;
-      }
-
-      .initials-circle {
-        display: inline-block;
-        margin: 0 5px;
-      }
-    }
-
-    .buttons-panel {
-      display: inline;
-      color: $dark-grey;
-
-      button {
-        border: 0;
-        background: transparent;
-
-        &:focus {
-          outline: 0;
+  &:hover {
+    .stop-info-container {
+      .business-hours-container {
+        .btn-container {
+          display: block;
         }
       }
     }
