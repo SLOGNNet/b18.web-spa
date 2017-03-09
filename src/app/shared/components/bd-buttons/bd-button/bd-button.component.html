@@ -1,6 +1,7 @@
 <button
-[disabled]="disabled"
 [type]="type"
-class="common {{color}}">
+class="common {{color}}"
+[class.bd-disabled]="disabled"
+>
 {{text}}
 </button>

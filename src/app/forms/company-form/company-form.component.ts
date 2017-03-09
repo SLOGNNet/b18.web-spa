@@ -16,6 +16,7 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CompanyForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input() public scrollable: boolean = false;
   @Input() public submitButtonText: string = 'Save';
   @Input() public company: Company;
@@ -23,10 +24,10 @@ export class CompanyForm extends BaseForm {
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @select(state => state.addresses.items) addresses$: Observable<Address[]>;
   companyForm: FormGroup;
-  companyTypes: Array<any>;
-  selectedCompanyType: string;
-  companyStatuses: Array<any>;
-  selectedCompanyStatus: string;
+  private companyTypes: Array<any>;
+  private selectedCompanyType: string;
+  private companyStatuses: Array<any>;
+  private selectedCompanyStatus: string;
 
   constructor(private formBuilder: FormBuilder,
     private addressActions: AddressActions,
@@ -54,7 +55,6 @@ export class CompanyForm extends BaseForm {
   }
 
   onCancel() {
-    this.companyForm.reset();
     this.cancel.emit();
   }
 

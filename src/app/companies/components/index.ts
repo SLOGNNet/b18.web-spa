@@ -1,1 +1,1 @@
-export * from './company-detail.component';
+export * from './company-edit.component';

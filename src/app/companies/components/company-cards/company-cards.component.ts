@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Company } from '../../../models';
+import { BaseCardComponent } from '../../../base';
 
 @Component({
     selector: 'company-cards',

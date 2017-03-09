@@ -1,7 +1,7 @@
 import { StopActions, LoadActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Stop, Load } from './models';
-import { addItem, updateItem, removeItem } from './utils';
+import { addItem, updateListItem, removeItem } from './utils';
 
 export interface IStopState {
     items: Stop[];
@@ -16,7 +16,7 @@ export const stopReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: removeItem(state.items, action.stop)});
   },
   [StopActions.UPDATE_STOP](state, action) {
-    return Object.assign({}, state, { items: updateItem(state.items, action.stop)});
+    return Object.assign({}, state, { items: updateListItem(state.items, action.stop)});
   },
   [LoadActions.SELECT_LOAD](state, action) {
     return Object.assign({}, state, { items: action.load.stops});

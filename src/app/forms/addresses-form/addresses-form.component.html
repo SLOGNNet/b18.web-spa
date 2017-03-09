@@ -1,7 +1,7 @@
 <template let-data ngFor [ngForOf]="renderFormData" let-i="index" [ngForTrackBy]="trackBy">
   <div class='bd-form-list-item'>
-   <bd-remove-button class='bd-form-control' (click)='removeItem(data)' [prefixLabel]="label(i)"> </bd-remove-button>
-   <address-form [group]='data.group' [address]='data.item' (update)="updateItem($event)" (updatePlace)="onUpdatePlace($event)" [viewMode]="viewMode"></address-form>
+   <bd-remove-button class='bd-form-control' (click)='removeItem(data)' [disabled]="disabled" [prefixLabel]="label(i)"> </bd-remove-button>
+   <address-form [group]='data.group' [address]='data.item' (update)="updateItem($event)" [disabled]="disabled" (updatePlace)="onUpdatePlace($event)" [viewMode]="viewMode"></address-form>
   </div>
 </template>
-<bd-add-button class='bd-form-control' (click)='addNewItem()' [suffixLabel]="'Address'" ></bd-add-button>
+<bd-add-button class='bd-form-control' (click)='addNewItem($event)' [disabled]="disabled" [suffixLabel]="'Address'" ></bd-add-button>

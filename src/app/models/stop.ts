@@ -1,7 +1,9 @@
 import { Facility } from './facility';
+import { TripStop } from './tripStop';
+import { Appointment } from './appointment';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Type } from 'class-transformer';
 
 const stopStatusColor = createStopStatusColors();
 const stopStatusText = createStopStatusText();
@@ -40,26 +42,19 @@ function createStopStatusColors() {
   return result;
 };
 
-@JsonObject
 export class Stop {
-  @JsonMember
   id: number;
-  @JsonMember
   notes: string = '';
-  @JsonMember
   type: StopTypes = StopTypes.None;
-  @JsonMember({ elements: Facility })
+  @Type(() => Facility)
   facility: Facility;
-  @JsonMember
   status: StopStatuses.InProgress;
-  @JsonMember
   arrivedAt: Date = null;
-  @JsonMember
   departedAt: Date = null;
-  @JsonMember
   plannedArrivalAt: Date = null;
-  @JsonMember
   plannedDepartureAt: Date = null;
+  @Type(() => TripStop)
+  tripStops: Array<TripStop>;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();
@@ -70,6 +65,7 @@ export class Stop {
     result.plannedDepartureAt = new Date();
     result.type = type;
     result.facility = Facility.create();
+    result.tripStops = [];
     return result;
   }
 

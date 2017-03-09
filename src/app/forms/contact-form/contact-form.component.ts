@@ -13,6 +13,7 @@ import { BaseForm } from '../base-form';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input()
   public contact: Contact;
   @Input()
@@ -23,7 +24,7 @@ export class ContactForm extends BaseForm {
   private fields = [
     { name: 'firstName', validators: [Validators.required] },
     { name: 'lastName', validators: [] },
-    { name: 'personalEmail', validators: [] },
+    { name: 'email', validators: [] },
     { name: 'position', validators: [] },
     { name: 'addressId', validators: [] },
   ];

@@ -11,6 +11,8 @@ import { BaseForm } from '../base-form';
   styleUrls: ['./address-form.component.scss']
 }, BaseForm.metaData))
 export class AddressForm extends BaseForm {
+  @Input() disabled: boolean = false;
+  @Input() isNameFieldVisible: boolean = true;
   @Input()
   public address: Address;
   @Input('group')
@@ -24,21 +26,7 @@ export class AddressForm extends BaseForm {
     latitude: 0,
     longitude: 0
   };
-  private fields = [
-    { name: 'id', validators: [] },
-    { name: 'name', validators: [Validators.required] },
-    { name: 'phone', validators: [Validators.required] },
-    { name: 'fax', validators: [] },
-    { name: 'state', validators: [] },
-    { name: 'zip', validators: [] },
-    { name: 'phoneExtension', validators: [] },
-    { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress1', validators: [Validators.required] },
-    { name: 'streetAddress2', validators: [] },
-    { name: 'city', validators: [] },
-    { name: 'latitude', validators: [] },
-    { name: 'longitude', validators: [] }
-  ];
+
 
   constructor(
     private _cdr: ChangeDetectorRef,
@@ -56,7 +44,8 @@ export class AddressForm extends BaseForm {
   }
 
   initForm() {
-    this.fields.forEach(field => {
+    const fields = this._createFields();
+    fields.forEach(field => {
       this.addressForm.addControl(
         field.name,
         this._formBuilder.control(this.address[field.name], field.validators)
@@ -94,6 +83,25 @@ export class AddressForm extends BaseForm {
     if (place && typeof place.place_id === 'string') {
       this.updatePlace.emit({addressId: this.address.id, placeId: place.place_id});
     }
+  }
+
+  private _createFields() {
+    const fields = [
+      { name: 'id', validators: [] },
+      { name: 'state', validators: [] },
+      { name: 'zip', validators: [] },
+      { name: 'phoneExtension', validators: [] },
+      { name: 'faxExtension', validators: [] },
+      { name: 'streetAddress1', validators: [] },
+      { name: 'streetAddress2', validators: [] },
+      { name: 'city', validators: [] },
+      { name: 'latitude', validators: [] },
+      { name: 'longitude', validators: [] }
+    ];
+    if (this.isNameFieldVisible) {
+      fields.push(  { name: 'name', validators: [Validators.required] });
+    }
+    return fields;
   }
 
   private _initPlaceTypeahead() {

@@ -147,5 +147,35 @@
   &:before {
     content: '\e913';
   }
-
 }
+
+.icon-call {
+  &:before {
+    content: '\e917';
+  }
+}
+
+.icon-location {
+  &:before {
+    content: '\e919';
+  }
+}
+
+.icon-fax {
+  &:before {
+    content: '\e91b';
+  }
+}
+
+.icon-message {
+  &:before {
+    content: '\e918';
+  }
+}
+
+.icon-phone {
+  &:before {
+    content: '\e91a';
+  }
+}
+

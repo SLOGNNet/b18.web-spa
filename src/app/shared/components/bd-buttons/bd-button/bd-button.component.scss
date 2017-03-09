@@ -2,8 +2,9 @@
 
 .common {
   width: 100%;
-  height: 50px;
+  height: $form-control-height;
   border: 0;
+  font-size: $small-font-size;
   border-bottom: $border;
   border-radius: $default-border-radius;
 
@@ -21,12 +22,24 @@
   background: $blue;
   color: $white;
 
-  &:focus {
-    background: $btn-primary-focus;
-  }
-
   &:hover {
     background: $btn-primary-hover;
+  }
+
+  &:active {
+    background: $btn-primary-focus;
+
+    &:hover {
+      background: $btn-primary-focus;
+    }
+  }
+}
+
+.bd-disabled {
+  background: $btn-primary-focus;
+
+  &:hover {
+    background: $btn-primary-focus;
   }
 }
 
@@ -34,11 +47,8 @@
   background: $light-grey;
   color: $black;
 
-  &:focus {
-    background: $btn-default-focus;
-  }
-
   &:hover {
     background: $btn-default-hover;
   }
+
 }

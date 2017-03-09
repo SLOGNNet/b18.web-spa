@@ -1,4 +1,5 @@
 import { Driver } from './driver';
+import { Type } from 'class-transformer';
 import { PowerUnitTypes,
   TrailerTypes,
   EquipmentTypes,
@@ -6,7 +7,6 @@ import { PowerUnitTypes,
   EquipmentStatuses,
   DriverTypes,
   EquipmentVehicleOperatings } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 
 // Colors
 function createStatusColors() {
@@ -75,48 +75,28 @@ const typeText = createTypeText();
 const shortTypeText = createShortTypeText();
 const modeText = createModeText();
 
-@JsonObject
 export class EquipmentNotification {
-  @JsonMember
   message: string = '';
   date: Date;
 }
 
-@JsonObject
 export class Equipment {
-  @JsonMember
   id: number = 0;
-  @JsonMember
   make: string = 'Kenworth';
-  @JsonMember
   model: string = 'T610';
-  @JsonMember
   number: string = '101';
-  @JsonMember
   vin: string = '';
-  @JsonMember
   notes: string = 'Oil Change';
-  @JsonMember
-  driverFirstName: string = '';
-  @JsonMember
-  driverLastName: string = '';
-  @JsonMember
+  @Type(() => Driver)
+  driver: Driver;
   status: EquipmentStatuses = EquipmentStatuses.Active;
-  @JsonMember
   driverType: DriverTypes;
-  @JsonMember
   type: EquipmentTypes = EquipmentTypes.Trailer;
-  @JsonMember
   subType: PowerUnitTypes | TrailerTypes;
-  @JsonMember
   mode: EquipmentModes = EquipmentModes.Company;
-  @JsonMember
   vehicleOperating: EquipmentVehicleOperatings;
-  @JsonMember
   lastTripNumber: number;
-  @JsonMember
   lastAddress: string = '';
-  @JsonMember
   equipmentNotification: EquipmentNotification;
 
   static create(): Equipment{

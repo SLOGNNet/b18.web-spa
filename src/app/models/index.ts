@@ -8,8 +8,12 @@ export * from './stop';
 export * from './commodity';
 export * from './trip';
 export * from './facility';
-export * from './equipment';
 export * from './driver';
+export * from './equipment';
+
 export * from './document';
 export * from './notification';
+export * from './license';
 export * from './enums';
+export * from './contact-info';
+export * from './tripStop';

@@ -1,7 +1,7 @@
 import { EquipmentActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Equipment } from './models';
-import { addItem, updateItem, removeItem } from './utils';
+import { addItem, updateListItem, removeItem } from './utils';
 
 export interface IEquipmentState {
     items: Equipment[];
@@ -17,7 +17,7 @@ export const equipmentReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: removeItem(state.equipments, action.equipment)});
   },
   [EquipmentActions.UPDATE_EQUIPMENT](state, action) {
-    return Object.assign({}, state, { items: updateItem(state.equipments, action.equipment)});
+    return Object.assign({}, state, { items: updateListItem(state.equipments, action.equipment)});
   },
   [EquipmentActions.GET_ALL_EQUIPMENT](state, action) {
     return Object.assign({}, state, { items: action.items, selected: null});

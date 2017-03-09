@@ -51,12 +51,12 @@
 
   .bottom {
     display: flex;
-    padding: 8px 15px;
+    padding: 8px $popover-margin;
     font-size: $tiny-font-size;
     border-bottom: $border;
 
     .right {
-      margin-left: 15px;
+      margin-left: $popover-margin;
       flex-grow: 1;
     }
   }

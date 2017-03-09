@@ -19,23 +19,24 @@ import { NgRedux, select } from 'ng2-redux';
   styleUrls: ['load-form.component.scss'],
   templateUrl: './load-form.component.html'
 }, BaseForm.metaData))
-export class BdLoadFormComponent extends BaseForm implements OnChanges {
+export class LoadFormComponent extends BaseForm implements OnChanges {
   driverRequirementsNames: Array<any>;
   requiredPowerUnitTypesNames: Array<any>;
   requiredTrailerTypesNames: Array<any>;
   loadTypesNames: Array<any>;
   freightTypesNames: Array<any>;
+  @Input() public isLoading: boolean = false;
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
   @select(state => state.stops.items) stops$: Observable<Stop[]>;
+  public loadForm: FormGroup;
   private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Pickup));
   private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Dropoff));
 
   private companySource: any[];
   private companyQuery: string = '';
   private companyViewMode: ViewMode = ViewMode.None;
-  private loadForm: FormGroup;
   private stopTypes = StopTypes;
   private documents: Array<Document>;
 

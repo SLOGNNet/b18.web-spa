@@ -1,6 +1,10 @@
 @import './variables';
 
 :host {
+  &.bd-form {
+    font-size: $small-font-size;
+  }
+
   &.bd-view-mode {
     .bd-form-control {
       background-color: $light-blue;
