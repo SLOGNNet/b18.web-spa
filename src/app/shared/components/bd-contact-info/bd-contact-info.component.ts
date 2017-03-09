@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { ContactInfo, ContactInfoType } from '../../../../../models';
+import { ContactInfo, ContactInfoType } from '../../../models';
 
 @Component({
-  selector: 'contact-info-container',
-  templateUrl: './contact-info-container.component.html',
-  styleUrls: ['./contact-info-container.component.scss'],
+  selector: 'bd-contact-info',
+  templateUrl: './bd-contact-info.component.html',
+  styleUrls: ['./bd-contact-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactInfoContainerComponent {
+export class BdContactInfoComponent {
     @Input() contactCollection: Array<ContactInfo> = [];
 
     getContactInfoType(type: ContactInfoType) {
