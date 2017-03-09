@@ -1,5 +1,20 @@
 @import '../../../../assets/styles/variables';
 
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}
+
 .card-section {
   position: relative;
   height: $card-height;

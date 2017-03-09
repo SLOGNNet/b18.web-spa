@@ -32,33 +32,6 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
   }, {
     id: 'driver-license',
     title: 'License'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
   }];
 
   constructor(
