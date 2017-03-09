@@ -187,7 +187,7 @@ $text-margin: 5px;
         height: $form-control-height;
         background: $white;
         line-height: $form-control-height;
-        margin-left: $text-margin;
+        padding-left: $text-margin;
       }
 
       &:last-of-type {
