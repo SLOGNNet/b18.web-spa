@@ -104,3 +104,18 @@
     border-radius: $form-control-height;
   }
 }
+
+:host {
+  background: $white;
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+  }
+
+  &.active {
+    .card-section {
+      border-bottom-color: $blue;
+    }
+  }
+}
