@@ -132,7 +132,6 @@ $text-margin: 5px;
         display: none;
         height: $default-margin + 2px;
         background: $white;
-        transition: display .2s;
 
         button {
           color: $blue;
@@ -159,7 +158,6 @@ $text-margin: 5px;
       .business-hours-container {
         .btn-container {
           display: block;
-          transition: display .2s;
         }
       }
     }
