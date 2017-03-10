@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, Location
+  AppointmentTypes, StopAction, TripStop, Location
 } from './models';
 class MockData {
 

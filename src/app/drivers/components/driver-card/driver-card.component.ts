@@ -27,6 +27,7 @@ export class DriverCardComponent extends BaseCardComponent {
   }
 
   get phone(): string {
-    return ContactInfo.getPrimaryPhone(this.item.contactInfo);
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.item.contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
   }
 }
