@@ -22,7 +22,7 @@ function createTestData() {
   testContact.firstName = 'Emma';
   testContact.lastName = 'Watson';
   testContact.position = 'Sales manager';
-  testContact.contactInfo = [testContactInfo]
+  testContact.contactInfo = [testContactInfo];
   // test load
   testLoad.systemLoadNo = '209282402';
   testLoad.status = LoadStatuses.Completed;
