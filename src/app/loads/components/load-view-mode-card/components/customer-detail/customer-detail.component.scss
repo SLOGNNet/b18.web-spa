@@ -6,8 +6,7 @@
   background: $white;
   font-size: $tiny-font-size;
   border-bottom: $border;
-  border-bottom-left-radius: $default-border-radius;
-  border-bottom-right-radius: $default-border-radius;
+  border-radius: $default-border-radius;
   flex-direction: row;
 
   section {
