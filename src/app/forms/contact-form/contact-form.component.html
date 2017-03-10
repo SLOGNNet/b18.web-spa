@@ -11,16 +11,16 @@
     [disabled]="disabled"
     clearLabel='Leave Empty'
     class="bd-form-control"
-    labelText='Address'
-    [items]="addresses"
-    formControlName="addressId"
-    defaultTitleText="Select Address"
-    [dropdownItemTemplate]="contactsAddressDropdown"
+    labelText='Location'
+    [items]="locations"
+    formControlName="locationId"
+    defaultTitleText="Select Location"
+    [dropdownItemTemplate]="contactsLocationDropdown"
     keyField="id"
     valueField="name">
   </bd-dropdown>
 </form>
 
-<template #contactsAddressDropdown let-item="item">
+<template #contactsLocationDropdown let-item="item">
   <address-item-template [item]='item'></address-item-template>
 </template>

@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Validators } from '@angular/forms';
 import { Contact } from '../../models';
-import { Address } from '../../models';
+import { Location } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder } from '../../shared';
 import { BaseForm } from '../base-form';
@@ -17,7 +17,7 @@ export class ContactForm extends BaseForm {
   @Input()
   public contact: Contact;
   @Input()
-  public addresses: Array<any>;
+  public locations: Array<Location>;
   @Input('group')
   public contactForm: BdFormGroup;
 
@@ -26,7 +26,7 @@ export class ContactForm extends BaseForm {
     { name: 'lastName', validators: [] },
     { name: 'email', validators: [] },
     { name: 'position', validators: [] },
-    { name: 'addressId', validators: [] },
+    { name: 'locationId', validators: [] }
   ];
 
   constructor(

@@ -21,7 +21,7 @@
 		</bd-form-section>
 		<navigation-anchor id="company-contacts" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [disabled]="disabled" [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
-			<contacts-form [formArray]='companyForm.controls.contacts' [disabled]="disabled" [addresses]='addresses$ | async' [items]='company.contacts' [viewMode]="viewMode"></contacts-form>
+			<contacts-form [formArray]='companyForm.controls.contacts' [disabled]="disabled" [locations]='locationList' [items]='company.contacts' [viewMode]="viewMode"></contacts-form>
 		</bd-form-section>
 		<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 			<div class="button-group">

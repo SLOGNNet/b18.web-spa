@@ -155,6 +155,7 @@ class MockData {
     lastName: 'Chang',
     contactInfo: this.contactInfo.slice(),
     position: 'Sales manager',
+    locationId: 1,
     location: this.locations[0]
   },
   {
@@ -164,6 +165,7 @@ class MockData {
     lastName: 'Spearow',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
+    locationId: 2,
     location: this.locations[1]
   },
   {
@@ -173,6 +175,7 @@ class MockData {
     lastName: 'Watson',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
+    locationId: 3,
     location: this.locations[2]
   },
   {
@@ -182,6 +185,7 @@ class MockData {
     lastName: 'Depp',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
+    locationId: 4,
     location: this.locations[3]
   }
   ];
