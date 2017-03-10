@@ -17,6 +17,7 @@ export class CompanyPopoverComponent {
   }
 
   get phone() {
-    return ContactInfo.getPrimaryPhone(this.companyLocation.contactInfo);
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.companyLocation.contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
   }
 }

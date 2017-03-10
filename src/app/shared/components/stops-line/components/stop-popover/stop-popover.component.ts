@@ -19,7 +19,8 @@ export class StopPopoverComponent {
   }
 
   get phone() {
-    return ContactInfo.getPrimaryPhone(this.stop.facility.contactInfo);
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.stop.facility.contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
   }
 
 }

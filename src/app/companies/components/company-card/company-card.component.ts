@@ -15,7 +15,7 @@ export class CompanyCardComponent extends BaseCardComponent {
   croppedCompanyName: string;
 
   ngOnInit() {
-     this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
+    this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
   }
 
   loadStatusColor(status: LoadStatuses): string {
@@ -26,11 +26,12 @@ export class CompanyCardComponent extends BaseCardComponent {
     return Company.getStatusText(this.item.status);
   }
 
-   itemStatusColor(): string {
+  itemStatusColor(): string {
     return Company.getStatusColor(this.item.status);
   }
 
   get phone() {
-    return ContactInfo.getPrimaryPhone(this.item.locations[0].contactInfo);
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.item.locations[0].contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
   }
 }
