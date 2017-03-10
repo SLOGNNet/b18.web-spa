@@ -10,11 +10,4 @@ export class BdButtonComponent {
   @Input() color: 'primary' | 'default' = 'default';
   @Input() disabled: boolean = false;
   @Input() text: any;
-  @Output() click = new EventEmitter();
-
-  onButtonClick() {
-    if (this.disabled) return;
-
-    this.click.emit();
-  }
 }
