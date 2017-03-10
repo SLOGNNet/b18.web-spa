@@ -13,7 +13,7 @@
   section {
     display: flex;
     width: 50%;
-    padding: 11px;
+    padding: $default-margin 11px;
 
     &:first-of-type {
       border-right: $border;
@@ -49,6 +49,7 @@
           border: 0;
           background: none;
           color: $dark-grey;
+          outline: 0;
 
           &:first-of-type {
             padding-left: 0;

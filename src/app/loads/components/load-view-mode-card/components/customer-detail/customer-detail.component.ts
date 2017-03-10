@@ -3,11 +3,11 @@ import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripSt
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
-  selector: 'customer-view',
-  templateUrl: './customer-view.component.html',
-  styleUrls: ['./customer-view.component.scss']
+  selector: 'customer-detail',
+  templateUrl: './customer-detail.component.html',
+  styleUrls: ['./customer-detail.component.scss']
 })
-export class CustomerViewComponent {
+export class CustomerDetailComponent {
   @Input() company: Company;
 
   private companyNameSplitted: Array<string> = [];
