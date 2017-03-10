@@ -5,8 +5,9 @@ import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { BasePane } from '../base';
 
-export abstract class BaseListComponent<T> {
+export abstract class BaseListComponent<T> extends BasePane {
   protected items: T[] = new Array<T>();
 
   private childRouteSubscription: any;
@@ -15,6 +16,7 @@ export abstract class BaseListComponent<T> {
 
   constructor(private actions: IListDataActions<T>, protected items$: Observable<Array<T>>,
     protected router: Router, protected route: ActivatedRoute) {
+    super(router, route);
     actions.getAll();
   }
 
@@ -38,16 +40,7 @@ export abstract class BaseListComponent<T> {
   }
 
   private navigateToDetails(id: number) {
-    const urlTree = this.router.parseUrl(this.router.url);
-    const idSegment = urlTree.root.children['primary'].segments[1];
-    if (idSegment) {
-      // todo find better approach to change id parameter
-      idSegment.path = id.toString();
-      this.router.navigateByUrl(urlTree);
-    }
-    else {
-      this.router.navigate([id], {preserveQueryParams: true, relativeTo: this.route});
-    }
+    super.rediretToId(id);
   }
 
   private deselectRow() {

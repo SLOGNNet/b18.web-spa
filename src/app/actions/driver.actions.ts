@@ -24,11 +24,12 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
 
   add(driver: Driver): void {
     this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
-    setTimeout(() => {
-      this.driverService.create(driver);
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver });
-      this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
-    }, 3000);
+      this.driverService.create(driver).delay(3000).subscribe((newId) => {
+        const prevId = driver.id;
+        driver.id = newId;
+        this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, prevId });
+        this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
+      });
   }
 
   remove(driver: Driver): void {
