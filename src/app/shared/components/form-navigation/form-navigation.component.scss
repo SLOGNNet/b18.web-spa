@@ -14,11 +14,20 @@ form-navigation {
     padding: $default-margin $default-margin 0;
     background-color: $white;
 
-    .title {
-      display: inline-block;
-      font-size: $default-font-size;
-      line-height: $default-font-size;
-      font-weight: bold;
+    .top-panel {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        display: inline-block;
+        font-size: $default-font-size;
+        line-height: $default-font-size;
+        font-weight: bold;
+      }
+
+      .top-panel-content {
+        
+      }
     }
 
     .container {
