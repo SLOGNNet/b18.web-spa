@@ -67,7 +67,7 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), 
+      super(driverActions, ngRedux.select(state => state.drivers.selected),
         ngRedux.select(state => state.drivers.isLoading), route, router, location);
   }
 

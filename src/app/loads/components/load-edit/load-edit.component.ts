@@ -57,7 +57,7 @@ export class LoadEditComponent extends BaseEditComponent<Load> {
     router: Router,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected), 
+      super(loadActions, ngRedux.select(state => state.loads.selected),
         ngRedux.select(state => state.loads.isLoading), route, router, location);
   }
 
