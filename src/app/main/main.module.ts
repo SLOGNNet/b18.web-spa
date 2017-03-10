@@ -28,8 +28,9 @@ import {
   TripPopoverComponent,
   CompanyPopoverComponent,
   DriverPopoverComponent,
-  PhonePopoverComponent,
-  LoadViewModeCardComponent
+  LoadViewModeCardComponent,
+  CommodityDetailsComponent,
+  TripViewComponent
 } from '../loads';
 
 
@@ -62,16 +63,18 @@ import {
     LoadStopCardComponent,
     LoadStopCardsComponent,
     LoadViewModeCardComponent,
+    TripViewComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
-    PhonePopoverComponent,
+    CommodityDetailsComponent,
     BdToastManagerComponent,
     EquipmentComponent,
     EquipmentCardComponent,
     EquipmentCardsComponent
   ],
   exports: [
+    BdFormsModule
   ]
 })
 export class MainModule { }

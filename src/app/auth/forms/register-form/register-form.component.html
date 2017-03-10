@@ -1,11 +1,8 @@
 <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" class="register-form edit">
-  <!-- <div class="general-error-message" *ngIf="isLoginFailed && loginForm.pristine">
-    <div class="error-message">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-      Unable to login.<br/>
-      Please check that you have entered your Login and Password correctly.
-    </div>
-  </div> -->
+  <bd-auth-general-form-error *ngIf="isRegisterFailed && registerForm.pristine"
+    [headerText]="'Unable to registering.'">
+    Something wrong.
+  </bd-auth-general-form-error>
   <div class="section">
     <bd-input
       class="bd-form-control section-control"
@@ -79,4 +76,5 @@
     class="button"
     [text]="'Next'">
   </bd-button>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
 </form>

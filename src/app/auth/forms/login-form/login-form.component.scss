@@ -5,22 +5,3 @@
 .divider {
   min-height: 20px;
 }
-
-.general-error-message {
-  margin: 15px 0;
-
-  .error-message {
-    display: flex;
-    padding: 5px;
-    background: $light-red;
-    color: $label-warning-color;
-    text-align: left;
-    min-height: 35px;
-    align-items: start;
-    border-bottom: $border;
-
-    i {
-      margin: 2px 15px 0 17px;
-    }
-  }
-}

@@ -52,6 +52,9 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DriverForm,
     DriverViewForm,
     LoadDocumentFormComponent,
+    CommoditiesHeaderComponent,
+    DropoffpCommodityComponent,
+    PickupCommodityComponent,
     LicenseForm
   ]
 })

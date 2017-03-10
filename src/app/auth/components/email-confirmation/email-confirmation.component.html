@@ -1,7 +1,8 @@
 <div class="email-confirmation-wrapper">
   <h3 class="text-center">Sign Up</h3>
-  <div class="general-help-message">
-    Email sent.<br/>
-    An email with a link to registration has been sent to the address you have provided.
-  </div>
+  <bd-auth-general-form-error *ngIf="isConfirmationFailed"
+    [headerText]="'Email Confirmation Is Failed.'">
+  </bd-auth-general-form-error>
+  <bd-auth-form-message-helper *ngIf="!isConfirmationFailed">Email verification...</bd-auth-form-message-helper>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
 </div>
