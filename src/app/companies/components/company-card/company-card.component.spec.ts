@@ -4,21 +4,25 @@ import { Component } from '@angular/core';
 import { CompanyCardComponent } from './index';
 import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { SharedModule } from '../../../shared/shared.module';
-import { Load, Company, Address, Contact, CompanyStatuses, CompanyTypes, LoadStatuses } from '../../../models';
+import { Load, Company, Address, Contact, CompanyStatuses, CompanyTypes, LoadStatuses, ContactInfo } from '../../../models';
 import { fireMouseEvent } from '../../../shared/test/helpers/domHelper';
 
 function createTestData() {
   let resultCompany = new Company(),
     testContact = new Contact(),
     testLoad = new Load(),
-    testAddress = new Address();
+    testAddress = new Address(),
+    testContactInfo = new ContactInfo();
 
-  // test address
+  // test contact info
+  testContactInfo.value = '213123123';
+  testContactInfo.label = 'primaryPhone';
 
   // test contact
   testContact.firstName = 'Emma';
   testContact.lastName = 'Watson';
   testContact.position = 'Sales manager';
+  testContact.contactInfo = [testContactInfo];
   // test load
   testLoad.systemLoadNo = '209282402';
   testLoad.status = LoadStatuses.Completed;
@@ -130,8 +134,9 @@ describe('CompanyCardComponent', () => {
   });
 
   it('should display address phone', () => {
-    let testCompanyAddressPhone = '(925) 937-8500';
+    let testCompanyAddressPhone = '213123123';
     component.item = testCompany;
+    component.item.contacts[0].contactInfo[0].value = testCompanyAddressPhone;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-address-phone'));
     expect(element.nativeElement.textContent).toBe(testCompanyAddressPhone);
