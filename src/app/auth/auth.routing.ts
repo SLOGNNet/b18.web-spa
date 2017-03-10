@@ -5,6 +5,7 @@ import {
   RegisterComponent,
   PhoneConfirmationComponent,
   EmailConfirmationComponent,
+  EmailWasSentComponent,
   AuthWrapperComponent
 } from './';
 import { NoContentComponent } from '../no-content';
@@ -16,7 +17,8 @@ const routes: Routes = [{
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'phone-confirmation', component: PhoneConfirmationComponent },
-    { path: 'email-confirmation', component: EmailConfirmationComponent },
+    { path: 'email-was-sent', component: EmailWasSentComponent },
+    { path: 'email-confirmation/:invitationToken/:verificationToken', component: EmailConfirmationComponent },
     { path: '**', component: NoContentComponent }
   ]
 }];

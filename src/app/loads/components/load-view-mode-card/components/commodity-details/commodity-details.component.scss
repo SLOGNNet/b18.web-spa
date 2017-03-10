@@ -1,0 +1,35 @@
+@import '../../../../../../assets/styles/variables';
+
+.commodity-detail-container {
+  display: flex;
+  height: 35px;
+  background: $white;
+  color: $black;
+  border-bottom: $border;
+  flex-direction: row;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  .commodity-detail-column {
+    display: flex;
+    overflow: hidden;
+    border-right: $border;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    &:last-of-type {
+      border-right: 0;
+    }
+
+    span {
+      display: inline-block;
+      overflow: hidden;
+      width: calc(100% - 6px);
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+}
