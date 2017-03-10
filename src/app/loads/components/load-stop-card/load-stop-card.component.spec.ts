@@ -12,6 +12,9 @@ import { Load,
   Trip,
   Driver,
   DriverTeam,
+  ContactInfo,
+  ContactInfoType,
+  Location,
   Address,
   Equipment,
   Stop,
@@ -27,11 +30,29 @@ function createTestData() {
     testAddress = new Address(),
     testCustomer = new Company(),
     testDriverTeam = new DriverTeam(),
+    testLocation = new Location(),
     testContact = new Contact(),
     testStop1 = new Stop(),
-    testStop2 = new Stop();
+    testStop2 = new Stop(),
+    testContactInfo: Array<ContactInfo> = [
+      {
+        label: 'primaryPhone',
+        value: '213123123',
+        type: ContactInfoType.Phone
+      },
+      {
+        label: 'alternativePhone',
+        value: '12424234',
+        type: ContactInfoType.Phone
+      },
+      {
+        label: 'fax',
+        value: 'fax@gmail.comj',
+        type: ContactInfoType.Fax
+      }
+    ];
   testAddress.id = 1;
-  testAddress.streetAddress1 = '14701 Charlson Road, United States';
+  testAddress.streetAddress1 = '14701 Char lson Road, United States';
   testAddress.city = 'Eden Prairie';
   testAddress.state = 'MN';
   testAddress.latitude = 40.795675;
@@ -71,10 +92,18 @@ function createTestData() {
   testStop2.facility = Facility.create();
   testStop2.facility.address = testAddress;
   testStop2.status = StopStatuses.InProgress;
+
+  // test location
+  testLocation.id = 1;
+  testLocation.name = 'Main Office';
+  testLocation.address = testAddress;
+  testLocation.contactInfo = testContactInfo;
   // test load
   resultLoad.id = 1;
   resultLoad.customer = testCustomer;
   resultLoad.customerLoadNo = '123123';
+  resultLoad.customerBillingLocation = testLocation;
+  resultLoad.customerLocation = testLocation;
   resultLoad.systemLoadNo = '121212';
   resultLoad.currentTrips = [testTrip];
   resultLoad.status = LoadStatuses.Completed;
