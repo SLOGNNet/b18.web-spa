@@ -10,7 +10,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class ContactsForm extends BaseListForm<Contact>  {
-
+  @Input() disabled: boolean = false;
   @Input()
   public addresses: Array<any>;
 

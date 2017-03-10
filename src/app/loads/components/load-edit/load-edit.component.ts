@@ -33,21 +33,6 @@ export class LoadEditComponent extends BaseEditComponent<Load> {
   }, {
     id: 'documents',
     title: 'Documents'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
-  }, {
-    id: '',
-    title: 'Link'
   }];
 
   constructor(

@@ -9,13 +9,13 @@
   }
 
   &.active {
-    .load-stop-card-section {
+    .card-section {
       border-bottom-color: $blue;
     }
   }
 }
 
-.load-stop-card-section {
+.card-section {
   position: relative;
   height: $card-height;
   padding: 13px;
@@ -99,5 +99,23 @@
       color: $blue;
       margin-right: 3px;
     }
+  }
+
+  .status-text {
+    position: absolute;
+    right: 35px;
+    line-height: 1em;
+    bottom: 13px;
+    justify-content: center;
+  }
+
+  .status {
+    position: absolute;
+    right: 13px;
+    width: 12px;
+    height: 12px;
+    background: $black;
+    bottom: 13px;
+    border-radius: $form-control-height;
   }
 }

@@ -13,6 +13,7 @@ import { BaseForm } from '../base-form';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input()
   public contact: Contact;
   @Input()

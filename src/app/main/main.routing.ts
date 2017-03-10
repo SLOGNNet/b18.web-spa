@@ -14,7 +14,7 @@ import { EmptyComponent } from '../empty';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent, canActivate: [AuthGuard],
+  component: MainComponent,
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },

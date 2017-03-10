@@ -52,10 +52,10 @@
 
   .bd-label {
     display: flex;
-    width: 80px;
+    width: 24%;
     height: $form-control-height;
     color: $label-default-color;
-    font-size: $mini-font-size;
+    font-size: $input-label-font-size;
     align-self: flex-start;
     margin-left: -$default-margin;
     margin-right: $default-margin * 2;
@@ -65,8 +65,8 @@
     label {
       overflow: hidden;
       margin: 0;
-      line-height: 1em;
-      max-height: 2em;
+      line-height: calc(1em + 1px);
+      max-height: calc(2em + 2px);
       font-weight: normal;
     }
   }
@@ -84,7 +84,7 @@
       @include flex-element;
       display: flex;
       height: $form-control-height;
-      font-size: $small-font-size;
+      font-size: $form-control-font-size;
       align-self: flex-start;
       align-items: center;
       justify-content: flex-end;
@@ -99,11 +99,13 @@
 
       input {
         @include input-textarea;
+        font-size: $form-control-font-size;
       }
 
       textarea {
         @include input-textarea;
         overflow: hidden;
+        font-size: $form-control-font-size;
         align-self: flex-start;
         margin-top: 7px;
       }
@@ -111,7 +113,7 @@
 
     .bd-input-suffix {
       @include flex-element;
-      font-size: $small-font-size;
+      font-size: $form-control-font-size;
       flex-grow: 0;
       margin-left: $default-margin;
     }
@@ -149,7 +151,7 @@
       width: auto;
       margin: 0;
       color: $label-default-color;
-      font-size: $small-font-size;
+      font-size: $form-control-font-size;
       text-align: left;
       flex-grow: 1;
       justify-content: flex-start;

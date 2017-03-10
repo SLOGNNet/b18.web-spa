@@ -61,8 +61,8 @@ describe('CompanyCardComponent', () => {
 
   it('should display company name', () => {
     let testCompanyName = 'CH ROBINSON COMPANY INC';
-    component.company = testCompany;
-    component.company.name = testCompanyName;
+    component.item = testCompany;
+    component.item.name = testCompanyName;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-name'));
     expect(element.nativeElement.textContent).toMatch(testCompanyName);
@@ -70,9 +70,9 @@ describe('CompanyCardComponent', () => {
 
   it('should display company contacts full name', () => {
     let testContactFirstName = 'Emma', testContactLastName = 'Watson';
-    component.company = testCompany;
-    component.company.contacts[0].firstName = testContactFirstName;
-    component.company.contacts[0].lastName = testContactLastName;
+    component.item = testCompany;
+    component.item.contacts[0].firstName = testContactFirstName;
+    component.item.contacts[0].lastName = testContactLastName;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-contact-full-name'));
     expect(element.nativeElement.textContent).toBe(testContactFirstName + ' ' + testContactLastName);
@@ -80,34 +80,34 @@ describe('CompanyCardComponent', () => {
 
   it('should display company mc', () => {
     let testCompanyMc = '384859';
-    component.company = testCompany;
-    component.company.mc = testCompanyMc;
+    component.item = testCompany;
+    component.item.mc = testCompanyMc;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-mc'));
     expect(element.nativeElement.textContent).toMatch('MC# ' + testCompanyMc);
   });
 
   it('should display status color', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status')),
-      companyStatusColor = hexToRgb(component.companyStatusColor);
+      companyStatusColor = hexToRgb(component.itemStatusColor());
     expect(element.nativeElement.style.backgroundColor).toBe(getRGBString(companyStatusColor));
   });
 
   it('should display status text color', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     component.statusText = true;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
-    let companyStatusText = hexToRgb(component.companyStatusColor);
+    let companyStatusText = hexToRgb(component.itemStatusColor());
     expect(element.nativeElement.style.color).toBe(getRGBString(companyStatusText));
   });
 
   it('should display load color', () => {
     let testLoadStatusColor = LoadStatuses.Completed;
-    component.company = testCompany;
-    component.company.loads[0].status = testLoadStatusColor;
+    component.item = testCompany;
+    component.item.loads[0].status = testLoadStatusColor;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-circle'));
     let loadStatusColor = hexToRgb(component.loadStatusColor(testLoadStatusColor));
@@ -115,7 +115,7 @@ describe('CompanyCardComponent', () => {
   });
 
   it('status text equal null', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
     expect(element === null).toBeTruthy();
@@ -123,9 +123,9 @@ describe('CompanyCardComponent', () => {
 
   it('should display status text', () => {
     let testCompanyStatus = CompanyStatuses.Active;
-    component.company = testCompany;
+    component.item = testCompany;
     component.statusText = true;
-    component.company.status = testCompanyStatus;
+    component.item.status = testCompanyStatus;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
     expect(element.nativeElement.textContent).toMatch(Company.getStatusText(testCompanyStatus));
@@ -133,8 +133,8 @@ describe('CompanyCardComponent', () => {
 
   it('should display address phone', () => {
     let testCompanyAddressPhone = '(925) 937-8500';
-    component.company = testCompany;
-    component.company.addresses[0].phone = testCompanyAddressPhone;
+    component.item = testCompany;
+    component.item.addresses[0].phone = testCompanyAddressPhone;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.company-address-phone'));
     expect(element.nativeElement.textContent).toBe(testCompanyAddressPhone);
@@ -142,8 +142,8 @@ describe('CompanyCardComponent', () => {
 
   it('should display crooped company name', () => {
     let testCroopedCompanyName = 'CHR';
-    component.company = testCompany;
-    component.company.name = 'CH ROBINSON COMPANY INC';
+    component.item = testCompany;
+    component.item.name = 'CH ROBINSON COMPANY INC';
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.cropped-company-name'));
     expect(element.nativeElement.textContent).toBe(testCroopedCompanyName);
@@ -151,8 +151,8 @@ describe('CompanyCardComponent', () => {
 
   it('should display system load number', () => {
     let testSystemLoadNumber = '209282402';
-    component.company = testCompany;
-    component.company.loads[0].systemLoadNo = testSystemLoadNumber;
+    component.item = testCompany;
+    component.item.loads[0].systemLoadNo = testSystemLoadNumber;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.load-name'));
     expect(element.nativeElement.textContent).toMatch('LD' + testSystemLoadNumber);
@@ -160,25 +160,25 @@ describe('CompanyCardComponent', () => {
 
   it('should display company contact position', () => {
     let testCompanyContactPosition = 'Sales manager';
-    component.company = testCompany;
-    component.company.contacts[0].position = testCompanyContactPosition;
+    component.item = testCompany;
+    component.item.contacts[0].position = testCompanyContactPosition;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.position'));
     expect(element.nativeElement.textContent).toMatch(testCompanyContactPosition);
   });
 
   it('should handle click', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     spyOn(component, 'onClick');
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     element.nativeElement.click();
     expect(fixture.debugElement.componentInstance.onClick).toHaveBeenCalled();
   });
 
   it('should handle mouse leave', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     spyOn(component, 'onLeave').and.callThrough();
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     fireMouseEvent(element.nativeElement, 'mouseleave');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
@@ -188,9 +188,9 @@ describe('CompanyCardComponent', () => {
   });
 
   it('should handle mouse enter', () => {
-    component.company = testCompany;
+    component.item = testCompany;
     spyOn(component, 'onEnter').and.callThrough();
-    let element = fixture.debugElement.query(By.css('.company-card-section'));
+    let element = fixture.debugElement.query(By.css('.card-section'));
     fireMouseEvent(element.nativeElement, 'mouseenter');
     fixture.detectChanges();
     let statusTextElement = fixture.debugElement.query(By.css('.status-text'));
