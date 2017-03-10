@@ -18,6 +18,7 @@ export class LoadViewModeCardComponent {
   public dropoffs: Array<any> = [];
 
   private tripStops: Array<TripStop> = [];
+  private load: Load = MockData.loads[0];
 
   get isPickup() { return this.pickups.length && !this.dropoffs.length; }
 

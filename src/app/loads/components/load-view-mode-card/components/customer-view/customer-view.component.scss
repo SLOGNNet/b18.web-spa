@@ -1,0 +1,64 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+
+.customer-view-container {
+  display: flex;
+  background: $white;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  border-bottom-left-radius: $default-border-radius;
+  border-bottom-right-radius: $default-border-radius;
+  flex-direction: row;
+
+  section {
+    display: flex;
+    width: 50%;
+    padding: 11px;
+
+    &:first-of-type {
+      border-right: $border;
+    }
+
+    .circle {
+      margin-right: 10px;
+    }
+
+    .info-container {
+      display: flex;
+      overflow: hidden;
+      height: 28px;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 4px;
+
+      span {
+        line-height: 14px;
+      }
+
+      .text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .buttons-panel {
+        display: flex;
+
+        button {
+          padding: 0 5px;
+          border: 0;
+          background: none;
+          color: $dark-grey;
+
+          &:first-of-type {
+            padding-left: 0;
+          }
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+}
