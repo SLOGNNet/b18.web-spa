@@ -22,9 +22,9 @@ export class CompanyForm extends BaseForm {
   @Input() public company: Company;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
-  @select(state => state.locations.items.map(location => location.address)) addresses$: Observable<Address[]>;
   @select(state => state.locations.items) locations$: Observable<Location[]>;
   companyForm: FormGroup;
+  private locationList: Array<any>;
   private companyTypes: Array<any>;
   private selectedCompanyType: string;
   private companyStatuses: Array<any>;
@@ -39,6 +39,9 @@ export class CompanyForm extends BaseForm {
     super(elementRef);
     this.companyTypes = enumHelperService.getDropdownKeyValues(CompanyTypes);
     this.companyStatuses = enumHelperService.getDropdownKeyValues(CompanyStatuses);
+    this.locations$.subscribe(locations => {
+      this.locationList = locations;
+    });
   }
 
   ngOnChanges(changes: any) {

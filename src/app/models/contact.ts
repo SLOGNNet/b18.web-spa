@@ -10,6 +10,7 @@ export class Contact {
   @Type(() => ContactInfo)
   contactInfo: Array<ContactInfo>;
   position: string = '';
+  locationId: number;
   @Type(() => Location)
   location: Location;
 
