@@ -6,6 +6,9 @@
   display: flex;
   width: 100%;
   padding: 0 $default-margin;
+  background: $white;
+  font-size: $tiny-font-size;
+  line-height: 18px;
   border-bottom: $border;
 
   .left {
@@ -47,6 +50,7 @@
   padding: 0 $default-margin;
   background: $white;
   font-size: $tiny-font-size;
+  line-height: 18px;
   border-bottom: $border;
 
   .left {
@@ -95,6 +99,9 @@
 
 .license-container {
   width: 100%;
+  background: $white;
+  font-size: $tiny-font-size;
+  line-height: 18px;
   border-bottom: $border;
 
   .top {
@@ -104,16 +111,28 @@
     border-bottom: $border;
 
     .left {
+      display: flex;
       width: 50%;
       height: 34px;
       padding: $default-margin;
       border-right: $border;
+      align-items: center;
     }
 
     .right {
+      display: flex;
       width: 50%;
       height: 34px;
       padding: $default-margin;
+      align-items: center;
+    }
+  }
+
+  .bottom {
+    padding: $default-margin;
+
+    .bottom-title {
+      color: $grey;
     }
   }
 }
