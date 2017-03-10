@@ -40,13 +40,6 @@ export const driverReducer = createReducer(INITIAL_STATE, {
         isLoading: false
       });
   },
-  [DriverActions.UPDATE_SELECTED_DRIVER_ADDRESS](state, action) {
-    return Object.assign({}, state,
-      {
-        selected: updateItem(state.selected, action.driver),
-        isLoading: false
-      });
-  },
   [DriverActions.GET_ALL_DRIVERS](state, action) {
     return Object.assign({}, state, { items: action.items.slice(), selected: null });
   },

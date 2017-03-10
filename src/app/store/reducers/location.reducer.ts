@@ -18,13 +18,6 @@ export const locationReducer = createReducer(INITIAL_STATE, {
   [LocationActions.UPDATE_LOCATION](state, action) {
     return Object.assign({}, state, { items: updateListItem(state.items, action.location) });
   },
-  [LocationActions.UPDATE_SELECTED_LOCATION_ADDRESS](state, action) {
-    return Object.assign({}, state,
-      {
-        items: updateListItem(state.items, action.location),
-        isLoading: false
-      });
-  },
   [CompanyActions.SELECT_COMPANY](state, action) {
     return Object.assign({}, state, { items: action.company.locations });
   }

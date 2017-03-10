@@ -1,4 +1,8 @@
 <form [formGroup]="locationForm">
-		<address-form [group]='locationForm.controls.address' [address]='location.address' (updatePlace)="onUpdatePlace($event)" [viewMode]="viewMode"></address-form>
-		<contacts-info-form [items]="location.contactInfo" [formArray]='locationForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
+	  <bd-validator [component]="locationForm.controls.name" [errorDefs]="{required: 'Name is required'}">
+			<bd-input class="bd-form-control" formControlName="name" [disabled]="disabled" placeholder="Name">
+			</bd-input>
+		</bd-validator>
+		<address-form [group]='locationForm.controls.address' [address]='location.address' [viewMode]="viewMode" [disabled]="disabled"></address-form>
+		<contacts-info-form [items]="location.contactInfo" [formArray]='locationForm.controls.contactInfo' [viewMode]="viewMode" [disabled]="disabled"></contacts-info-form>
 </form>

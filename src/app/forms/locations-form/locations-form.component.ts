@@ -10,7 +10,6 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 }, BaseListForm.metaData))
 export class LocationsForm extends BaseListForm<Location>  {
   @Input() disabled: boolean = false;
-  @Output() updatePlace = new EventEmitter();
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
     super(formBuilder, elementRef);
@@ -26,9 +25,5 @@ export class LocationsForm extends BaseListForm<Location>  {
 
   trackBy(index: number, location: Location) {
     return location.id;
-  }
-
-  onUpdatePlace(data: any) {
-    this.updatePlace.emit(data);
   }
 }

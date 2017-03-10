@@ -11,12 +11,11 @@ import { BaseForm } from '../base-form';
   styleUrls: ['./location-form.component.scss']
 }, BaseForm.metaData))
 export class LocationForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input() viewMode: ViewMode = ViewMode.View;
-  @Input() isNameFieldVisible: boolean = true;
   @Input() location: Location;
   @Input('group') locationForm: FormGroup;
   @Output() update = new EventEmitter();
-  @Output() updatePlace = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,  elementRef: ElementRef) {
     super(elementRef);
@@ -27,14 +26,13 @@ export class LocationForm extends BaseForm {
   }
 
   initForm() {
-    this.locationForm.addControl('id', this.formBuilder.group({
-      id: [this.location.id]
-    }));
+    this.locationForm.addControl('id', this.formBuilder.control(
+      this.location.id, []
+    ));
+    this.locationForm.addControl('name', this.formBuilder.control(
+      this.location.name, []
+    ));
     this.locationForm.addControl('address', this.formBuilder.group({ }));
     this.locationForm.addControl('contactInfo', this.formBuilder.array([]));
-  }
-
-  onUpdatePlace(data: any) {
-    this.updatePlace.emit({ location: this.location, placeId: data.placeId});
   }
 }

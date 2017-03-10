@@ -31,7 +31,6 @@ function createTestData() {
     testStop1 = new Stop(),
     testStop2 = new Stop();
   testAddress.id = 1;
-  testAddress.name = 'Main Office';
   testAddress.streetAddress1 = '14701 Charlson Road, United States';
   testAddress.city = 'Eden Prairie';
   testAddress.state = 'MN';

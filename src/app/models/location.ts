@@ -5,6 +5,7 @@ import { ContactInfoType } from './enums';
 
 export class Location {
   id: number;
+  name: string;
   address: Address;
   contactInfo: Array<ContactInfo>;
 

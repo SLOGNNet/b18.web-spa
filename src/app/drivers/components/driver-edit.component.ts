@@ -43,10 +43,6 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
       super(driverActions, ngRedux.select(state => state.drivers.selected), ngRedux.select(state => state.drivers.isLoading), route, location);
   }
 
-  onPlaceUpdate(data) {
-    this.driverActions.updatePlace(this.selectedItem, data.placeId);
-  }
-
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
   }

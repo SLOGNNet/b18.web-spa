@@ -14,7 +14,6 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   static UPDATE_DRIVER_REQUEST: string = 'UPDATE_DRIVER_REQUEST';
   static UPDATE_DRIVER_SUCCESS: string = 'UPDATE_DRIVER_SUCCESS';
   static UPDATE_DRIVER_FAILURE: string = 'UPDATE_DRIVER_FAILURE';
-  static UPDATE_SELECTED_DRIVER_ADDRESS: string = 'UPDATE_DRIVER_ADDRESS';
   static SELECT_DRIVER: string = 'SELECT_DRIVER';
   static CREATE_NEW_DRIVER: string = 'CREATE_NEW_DRIVER';
   static GET_ALL_DRIVERS: string = 'GET_ALL_DRIVERS';
@@ -63,17 +62,4 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
       this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, items: drivers });
     });
   }
-
-  updateAddress(driver: Driver): void {
-    this.ngRedux.dispatch({ type: DriverActions.UPDATE_SELECTED_DRIVER_ADDRESS, driver });
-  }
-
-  updatePlace(driver: Driver, placeId: string): void {
-    this._googleService.getDetails(placeId)
-      .subscribe(detail => {
-        driver.address = Object.assign(driver.address, detail);
-        this.updateAddress(driver);
-      });
-  }
-
 }

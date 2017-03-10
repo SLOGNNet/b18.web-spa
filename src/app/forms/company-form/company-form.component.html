@@ -17,7 +17,7 @@
 		</bd-form-section>
 		<navigation-anchor id="company-addresses" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [labelText]="'COMPANY > LOCATIONS'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
-			<locations-form [formArray]='companyForm.controls.locations' (update)="onLocationUpdate($event)" [disabled]="disabled" (updatePlace)="onLocationPlaceUpdate($event)" (remove)="onLocationRemove($event)" (add)="onLocationAdd($event)"  [items]='locations$ | async' [viewMode]="viewMode"></locations-form>
+			<locations-form [formArray]='companyForm.controls.locations' (update)="onLocationUpdate($event)" [disabled]="disabled" (remove)="onLocationRemove($event)" (add)="onLocationAdd($event)"  [items]='locations$ | async' [viewMode]="viewMode"></locations-form>
 		</bd-form-section>
 		<navigation-anchor id="company-contacts" [isNestedForm]="isNestedForm"></navigation-anchor>
 		<bd-form-section [disabled]="disabled" [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
