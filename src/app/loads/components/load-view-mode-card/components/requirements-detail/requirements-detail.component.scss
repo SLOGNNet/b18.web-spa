@@ -1,0 +1,63 @@
+@import '../../../../../../assets/styles/variables';
+
+$element-height: 35px;
+
+.requirements-container {
+  background: $white;
+  font-size: $tiny-font-size;
+  line-height: $tiny-font-size;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  .main-requirements {
+    display: flex;
+    height: $element-height;
+    border-bottom: $border;
+
+    section {
+      display: flex;
+      width: calc(100% / 3);
+      padding: 0 $default-margin;
+      border-right: $border;
+      align-items: center;
+
+      &:last-of-type {
+        border-right: 0;
+      }
+    }
+  }
+
+  .additional-requirements {
+    display: flex;
+    min-height: $element-height;
+
+    .special-requirements {
+      padding: $default-margin;
+      flex: 1;
+    }
+
+    .reefer-options {
+      display: none;
+      width: calc(100% / 3 + 1px);
+      border-left: $border;
+
+      .option {
+        display: flex;
+        padding: 0 $default-margin;
+        min-height: $element-height;
+        border-bottom: $border;
+        align-items: center;
+
+        &:last-of-type {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &.is-addditional-requirements {
+      .reefer-options {
+        display: block;
+      }
+    }
+  }
+}

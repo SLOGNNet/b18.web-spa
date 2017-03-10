@@ -31,7 +31,8 @@ import {
   LoadViewModeCardComponent,
   CommodityDetailsComponent,
   TripViewComponent,
-  CustomerDetailComponent
+  CustomerDetailComponent,
+  RequirementsDetailComponent
 } from '../loads';
 
 
@@ -66,6 +67,7 @@ import {
     LoadViewModeCardComponent,
     TripViewComponent,
     CustomerDetailComponent,
+    RequirementsDetailComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,

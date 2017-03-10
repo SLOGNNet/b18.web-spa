@@ -1,0 +1,15 @@
+<div class="requirements-container">
+    <div class="main-requirements">
+        <section class="driver-count">Solo Driver</section>
+        <section class="power-unit-type">Tractor</section>
+        <section class="trailer-type">Dry Van 53'</section>
+    </div>
+    <div class="additional-requirements"
+         [class.is-addditional-requirements]="isAdditionalRequirements">
+        <div class="special-requirements">Special Requirements</div>
+        <div class="reefer-options">
+            <div class="option temperature">57 F</div>
+            <div class="option refrigerating-type">Cycle</div>
+        </div>
+    </div>
+</div>
