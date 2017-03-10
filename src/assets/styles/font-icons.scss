@@ -179,3 +179,8 @@
   }
 }
 
+.icon-mail {
+  &:before {
+    content: '\e916';
+  }
+}

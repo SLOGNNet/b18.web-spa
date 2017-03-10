@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { ViewMode } from '../../enums';
 import { ExpandablePanelComponent } from '../expandable-panel';
 @Component({
@@ -10,6 +10,10 @@ export class BdFormSectionComponent {
   @Input() disabled: boolean = false;
   @Input() labelText: string;
   @Input() isExpanded: boolean = true;
+  @Input() isExpandable: boolean = false;
+  @Output() expandChange: EventEmitter<any> = new EventEmitter();
+
+
 
   private get isLabelVisisble() {
     return this.isExpanded && this.labelText;
