@@ -19,15 +19,20 @@ export class DriverViewComponent  {
   @Input() driver: Driver;
 
   private anchors = [{
-    id: 'driver-personal-information',
+    id: 'information',
     title: 'Information'
   }, {
-    id: 'driver-contact',
+    id: 'equipment-associations',
     title: 'Equipment Associations'
   }, {
-    id: 'driver-address',
+    id: 'license',
     title: 'License'
   }];
+
+  ngOnChanges() {
+    console.log(this.driver);
+    // console.log(this.driver[0].firstName);
+  }
 
   // constructor(
   //   private cdr: ChangeDetectorRef,
