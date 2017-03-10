@@ -2,7 +2,6 @@
 
 :host {
   display: block;
-  padding-top: 20px;
 
   .bd-section-title {
     margin: 25px $default-margin 15px;
@@ -15,5 +14,9 @@
 
   .bd-disabled {
     color: $label-default-color;
+  }
+
+  &:first-of-type {
+    padding-top: 20px;
   }
 }
