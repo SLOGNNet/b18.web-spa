@@ -1,6 +1,14 @@
 
-<div
-class="bd-form-datepicker-container"
-(clickOutside)="onClickOutside($event)">
-  <bd-datepicker (valueChange)="onDateChange($event)" [ngModel]="dateValue" [datePlaceholder]="dateFormat" [format]="dateFormat" #datepicker></bd-datepicker>
+<div class="bd-form-datepicker-container">
+  <div (clickOutside)="onClickOutside($event)">
+    <bd-datepicker (valueChange)="onDateChange($event)"
+      [ngModel]="dateValue"
+      [datePlaceholder]="dateFormat"
+      [format]="dateFormat"
+      #datepicker>
+    </bd-datepicker>
+  </div>
+  <!-- <div>
+    <bd-form-timepicker class="bd-form-control" [date]="value"></bd-form-timepicker>
+  </div> -->
 </div>

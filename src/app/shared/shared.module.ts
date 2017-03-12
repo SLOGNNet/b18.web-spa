@@ -46,7 +46,10 @@ import { BdRemoveButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
+import { BdFormDateTimePicker } from './components/bd-form-datetimepicker';
 import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
+import { BdFormTimePicker } from './components/bd-form-timepicker';
+import { TimePickerComponent } from './components/timepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { BdPopoverModule } from './directives/bd-popover/index';
@@ -112,8 +115,10 @@ import { EmailValidator } from './validators';
     BlurForwarderDirective,
     ClickOutsideDirective,
     FormStickyBottomContainerComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
     BdDatePicker,
+    BdFormTimePicker,
     StopsLineComponent,
     StopPopoverComponent,
     BdResizerComponent,
@@ -133,7 +138,8 @@ import { EmailValidator } from './validators';
     AutocompleteFilter,
     FilterItem,
     BdInfiniteScrollComponent,
-    ComplexityPasswordMessengerComponent
+    ComplexityPasswordMessengerComponent,
+    TimePickerComponent
   ],
   imports: [
     CommonModule,
@@ -173,7 +179,9 @@ import { EmailValidator } from './validators';
     BdButtonComponent,
     BdRemoveButtonComponent,
     BdAddButtonComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
+    BdFormTimePicker,
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,

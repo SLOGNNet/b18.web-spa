@@ -31,12 +31,14 @@ export class BdFormDatePicker implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this.value = value;
-    this.dateValue = moment(value).format(this.dateFormat);
+    if (value) {
+      this.value = value;
+      this.dateValue = moment(value).format(this.dateFormat);
+    }
   }
 
   onDateChange(value: string) {
-    if (value !== this.dateValue) {
+    if (value && value !== this.dateValue) {
       const newDate = moment(value, this.dateFormat);
       this.value = newDate ? moment(this.value)
         .year(newDate.year())

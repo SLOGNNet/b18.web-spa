@@ -1,9 +1,14 @@
 <form [formGroup]="formGroup">
-  <bd-form-datepicker
+  <bd-form-datetimepicker
     class="bd-form-control"
     formControlName="date"
   >
-  </bd-form-datepicker>
+  </bd-form-datetimepicker>
+  <!-- <bd-form-datepicker
+    class="bd-form-control"
+    formControlName="date"
+  >
+  </bd-form-datepicker> -->
   <pick-up-commodity-form
     [formArray]="formGroup.controls.commodities"
     (update)="onCommodityUpdate($event)"
