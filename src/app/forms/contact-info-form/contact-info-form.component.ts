@@ -10,6 +10,7 @@ import { BaseForm } from '../base-form';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactInfoForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input()
   public contactInfo: ContactInfo;
   @Input('group')

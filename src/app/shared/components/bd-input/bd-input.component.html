@@ -3,6 +3,7 @@
      [class.bd-collapsed-input]="isCollapsed"
      [class.bd-expanded-input]="!isCollapsed"
      [class.bd-not-empty-label]="isEmptyLabel"
+     [class.bd-disabled]="disabled"
 >
         <div class="bd-label"
              (mousedown)="labelClick($event)"

@@ -18,6 +18,7 @@ export class BdFormSwitchComponent implements ControlValueAccessor {
 
   @Input() labelText: string;
   @Input() hideLabel: boolean;
+  @Input() disabled: boolean = false;
   @Input() items: any[];
   @Input() selectedValue: any;
   @Input() enableButtonSwitch: boolean = false;

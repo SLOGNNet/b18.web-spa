@@ -1,0 +1,16 @@
+<form [formGroup]="licenseForm">
+		<bd-input class="bd-form-control" formControlName="number" [disabled]="disabled" [labelText]="'Number'">
+		</bd-input>
+		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [disabled]="disabled" [labelText]="'Expiration'">
+		</bd-form-datepicker>
+		<bd-form-datepicker class="bd-form-control" formControlName="dateIssued" [disabled]="disabled" [labelText]="'Date Issued'">
+		</bd-form-datepicker>
+		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [disabled]="disabled" [labelText]="'State issued'" [items]="states">
+		</bd-dropdown>
+		<bd-dropdown class="bd-form-control" formControlName="class" [disabled]="disabled" [labelText]="'Class'" [items]="licenseClasses">
+		</bd-dropdown>
+		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" [disabled]="disabled" formControlName="endorsments" [items]="endorsmentList">
+		</bd-checkboxes>
+		<bd-checkboxes class="bd-form-control" [labelText]="'Restric.'" [disabled]="disabled" formControlName="restrictions" [items]="restrictionList">
+		</bd-checkboxes>
+</form>

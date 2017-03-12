@@ -15,8 +15,7 @@ import { NotificationService,
   FileUploadService,
   HttpService,
   StateService,
-  EndorsementService,
-  RestrictionService
+  LicenseService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -32,6 +31,7 @@ import { BdUploadFileComponent } from './components/bd-upload-file';
 import { BdFilePreviewComponent } from './components/bd-file-preview';
 import { AddressItemTemplate } from './components/templates/address-item';
 import { BdSpinnerComponent } from './components/bd-spinner';
+import { BdFormSpinnerComponent } from './components/bd-form-spinner';
 import { BdFormExpandComponent } from './components/bd-form-expand';
 import { GoogleMapComponent } from './components/google-map';
 import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
@@ -66,6 +66,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
 import { EmailValidator } from './validators';
+import { BdContactInfoComponent } from './components/bd-contact-info';
 
 @NgModule({
   providers: [
@@ -85,8 +86,7 @@ import { EmailValidator } from './validators';
     HttpService,
     EmailValidator,
     StateService,
-    EndorsementService,
-    RestrictionService
+    LicenseService
   ],
   declarations: [
     BdFormButtonComponent,
@@ -95,6 +95,7 @@ import { EmailValidator } from './validators';
     BdUploadFileComponent,
     BdFilePreviewComponent,
     BdSpinnerComponent,
+    BdFormSpinnerComponent,
     BdFormTypeaheadComponent,
     BdFormExpandComponent,
     BdButtonComponent,
@@ -139,7 +140,8 @@ import { EmailValidator } from './validators';
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    BdContactInfoComponent
   ],
   imports: [
     CommonModule,
@@ -161,6 +163,7 @@ import { EmailValidator } from './validators';
     BdUploadFileComponent,
     BdFilePreviewComponent,
     BdSpinnerComponent,
+    BdFormSpinnerComponent,
     GoogleMapComponent,
     BdFormTypeaheadComponent,
     BdFormSectionComponent,
@@ -212,7 +215,8 @@ import { EmailValidator } from './validators';
     AutocompleteFilter,
     FilterItem,
     BdInfiniteScrollComponent,
-    ComplexityPasswordMessengerComponent
+    ComplexityPasswordMessengerComponent,
+    BdContactInfoComponent
   ]
 })
 export class SharedModule {

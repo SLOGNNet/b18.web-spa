@@ -8,6 +8,7 @@
     display: flex;
     width: 100%;
     height: $form-control-height;
+    padding: 0 $default-margin;
     background-color: inherit;
     box-shadow: inherit;
     border-bottom: $border;
@@ -16,17 +17,19 @@
     justify-content: space-between;
 
     .bd-dropdown-label {
-      width: 80px;
+      width: 24%;
       color: $label-default-color;
+      font-size: $tiny-font-size;
       line-height: $tiny-font-size;
       text-align: right;
       margin-right: $default-margin * 2;
+      margin-left: -$default-margin;
 
       label {
         overflow: hidden;
-        font-size: $mini-font-size;
-        line-height: 1em;
-        max-height: 2em;
+        font-size: $input-label-font-size;
+        line-height: calc(1em + 1px);
+        max-height: calc(2em + 2px);
         font-weight: 300;
         margin-bottom: 0;
         text-transform: uppercase;
@@ -34,6 +37,7 @@
     }
 
     .bd-dropdown-value {
+      font-size: $form-control-font-size;
       flex-grow: 1;
 
       span {
@@ -47,7 +51,6 @@
 
     .bd-dropdown-icon {
       color: $label-default-color;
-      margin-right: $default-margin;
     }
 
     &:hover {
@@ -127,6 +130,25 @@
       .bd-dropdown-label {
         color: $label-active-color;
       }
+    }
+  }
+}
+
+.bd-disabled {
+  .bd-dropdown-wrapper {
+
+    .bd-dropdown-value {
+      span {
+        color: $label-default-color;
+      }
+
+      .item-selected {
+        color: $label-default-color;
+      }
+    }
+
+    .bd-dropdown-icon {
+      color: $label-default-color;
     }
   }
 }

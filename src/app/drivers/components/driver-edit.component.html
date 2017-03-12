@@ -1,11 +1,14 @@
 <div *ngIf="selectedItem">
+  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
   <form-navigation
+    [disabled]="isLoading"
     sticky
     [title]="'Driver'"
     [anchors]="anchors">
   </form-navigation>
   <driver-form
     [scrollable]="true"
+    [disabled]="isLoading"
     [driver]="selectedItem"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"

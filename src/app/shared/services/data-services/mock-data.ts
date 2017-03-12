@@ -3,10 +3,12 @@ import {
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
-  StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes
+  StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
+  AppointmentTypes, TripStop, StopAction
 } from './models';
 class MockData {
+
   public addresses: Array<Address> = [{
     id: 1,
     name: 'Main Office',
@@ -164,23 +166,18 @@ class MockData {
   public contactInfo: Array<ContactInfo> = [
     {
       label: 'primaryPhone',
-      value: '',
+      value: '213123123',
       type: ContactInfoType.Phone
     },
     {
       label: 'alternativePhone',
-      value: '',
+      value: '12424234',
       type: ContactInfoType.Phone
     },
     {
       label: 'fax',
-      value: '',
+      value: 'fax@gmail.comj',
       type: ContactInfoType.Fax
-    },
-    {
-      label: 'email',
-      value: 'CHANJAS@chrobinson.com',
-      type: ContactInfoType.Email
     }
   ];
 
@@ -289,19 +286,31 @@ class MockData {
   public facilities: Array<Facility> = [{
     id: 1,
     name: 'Larede, TX',
-    address: this.addresses[0]
+    address: this.addresses[0],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'San Francisco, CA',
-    address: this.addresses[1]
+    address: this.addresses[1],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 1,
     name: 'Los Angeles, CA',
-    address: this.addresses[2]
+    address: this.addresses[2],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'Los Altos, CA',
-    address: this.addresses[3]
+    address: this.addresses[3],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }];
 
   equipmentNotification: Array<EquipmentNotification> = [];
@@ -315,15 +324,37 @@ class MockData {
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.CompanyDriver,
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      position: 'Sales manager',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
   }, {
     id: 1,
     make: 'Wabash',
@@ -333,15 +364,37 @@ class MockData {
     notes: '',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.OwnerOperator,
     lastTripNumber: 349616,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      position: 'Sales manager',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
   }];
 
   public licenses: Array<License> = [{
@@ -376,7 +429,8 @@ class MockData {
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
-    paymentOption: DriverPaymentOptions.PerMile,
+    associatedEquipment: [this.equipments[0], this.equipments[1]],
+    paymentType: DriverPaymentTypes.PerMile,
     rate: 1.2,
     type: DriverTypes.CompanyDriver,
     hireDate: null,
@@ -398,7 +452,8 @@ class MockData {
     ssn: '123144241241777',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
-    paymentOption: DriverPaymentOptions.PerMile,
+    associatedEquipment: [this.equipments[0], this.equipments[1]],
+    paymentType: DriverPaymentTypes.PerMile,
     rate: 1.2,
     type: DriverTypes.OwnerOperator,
     hireDate: null,
@@ -415,7 +470,7 @@ class MockData {
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 1, drivers: [this.drivers[0]] }]
+    driverTeams: [{ id: 1, drivers: [this.drivers[0], this.drivers[0], this.drivers[1]] }]
   }, {
     id: 2,
     number: '345351',
@@ -436,6 +491,46 @@ class MockData {
     driverTeams: [{ id: 4, drivers: [this.drivers[0]] }]
   }];
 
+  public stopActionCollection: Array<StopAction> = [{
+        type: StopActionTypes.Pickup,
+        commodity: this.commodities[0]
+       },
+       {
+        type: StopActionTypes.Dropoff,
+        commodity: this.commodities[1]
+       },
+       {
+        type: StopActionTypes.Dropoff,
+        commodity: this.commodities[2]
+       }
+  ];
+
+  public tripStopCollection: Array<TripStop> = [{
+      id: 1,
+      appointment: {
+        from: new Date(2017, 2, 1, 8),
+        to: new Date(2017, 2, 1, 10),
+        type: AppointmentTypes.FCFS
+      },
+      notes: 'test',
+      facility: this.facilities[0],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
+       trip: this.trips[0]
+    },
+    {
+      id: 13,
+      appointment: {
+        from: new Date(2017, 2, 2, 8),
+        to: new Date(2017, 2, 2, 10),
+        type: AppointmentTypes.FCFS
+      },
+      notes: 'test',
+      trip: this.trips[0],
+      facility: this.facilities[0],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]]
+    }
+    ];
+
   public startDate = new Date(2017, 0, 9);
   public endDate = new Date(2017, 0, 22);
 
@@ -448,139 +543,141 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 2,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 3,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 4,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 5,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 6,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }, {
-    id: 7,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 8,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 9,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 10,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 11,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 12,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 13,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }];
+    status: StopStatuses.InProgress,
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
+  }
+  // {
+  //   id: 2,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 3,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 4,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 5,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 6,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }, {
+  //   id: 7,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[0],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 8,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 9,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 10,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 11,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 12,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 13,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }
+ ];
 
   public dropoffs: Array<Stop> = [{
     id: 13,
@@ -591,117 +688,119 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 14,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 15,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 16,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 17,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 18,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }, {
-    id: 19,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 20,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 21,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 22,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 23,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  }];
+    status: StopStatuses.InProgress,
+    tripStops: [this.tripStopCollection[0]]
+  }
+  // {
+  //   id: 14,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 15,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 16,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 17,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 18,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }, {
+  //   id: 19,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[0],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 20,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 21,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 22,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 23,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // }
+  ];
 
 
   public loads: Array<Load> = [
@@ -725,7 +824,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
+      stops: [this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },

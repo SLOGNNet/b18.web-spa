@@ -1,9 +1,9 @@
 import { MainComponent } from './main.component';
-import { DriversComponent, DriverDetailComponent } from '../drivers';
+import { DriversComponent, DriverEditComponent } from '../drivers';
 import { MessagesComponent } from '../drivers/messages';
 import { HomeComponent } from '../home';
-import { LoadsComponent, LoadDetailComponent } from '../loads';
-import { CompaniesComponent, CompanyDetailComponent } from '../companies';
+import { LoadsComponent, LoadEditComponent } from '../loads';
+import { CompaniesComponent, CompanyEditComponent } from '../companies';
 import { EquipmentComponent } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,14 +13,14 @@ import { NoContentComponent } from '../no-content';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent, canActivate: [AuthGuard],
+  component: MainComponent,
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     {
       path: 'drivers', component: DriversComponent, children: [{
         path: ':id',
-        component: DriverDetailComponent,
+        component: DriverEditComponent,
         canDeactivate: [CanDeactivateGuard]
       }]
     },
@@ -28,13 +28,13 @@ const routes: Routes = [{
     {
       path: 'loads', component: LoadsComponent, children: [{
         path: ':id',
-        component: LoadDetailComponent
+        component: LoadEditComponent
       }]
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{
         path: ':id',
-        component: CompanyDetailComponent,
+        component: CompanyEditComponent,
         canDeactivate: [CanDeactivateGuard]
       }]
     },
