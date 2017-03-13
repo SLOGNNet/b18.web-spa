@@ -39,7 +39,8 @@ export class BdFormDateTimePicker implements ControlValueAccessor {
 
   onDateChange(value: string) {
     if (value && value !== this.dateValue) {
-      this.value = moment(value).format();
+      this.value = moment(value).toDate();
+      this._onChangeCallback(this.value);
     }
   }
 
@@ -48,7 +49,8 @@ export class BdFormDateTimePicker implements ControlValueAccessor {
       let _values = value.split(':');
       let hours = +_values[0];
       let minutes = +_values[1];
-      this.value = moment(this.value).hours(hours).minutes(minutes).format();
+      this.value = moment(this.value).hours(hours).minutes(minutes).toDate();
+      this._onChangeCallback(this.value);
     }
   }
 

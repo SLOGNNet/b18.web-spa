@@ -22,7 +22,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   isSelected(hour) {
-    return hour.label === this.value;
+    return hour.label.split(':')[0] === this.value.split(':')[0];
   }
 
   onSelected(hour) {
