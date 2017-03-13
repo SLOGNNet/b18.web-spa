@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class BdFormButtonComponent {
 
   @Input() buttonText: any;
-
+  @Input() private buttonType: 'default' | 'small' = 'default';
 }
