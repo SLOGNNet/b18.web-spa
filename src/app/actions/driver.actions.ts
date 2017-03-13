@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Driver, Notification } from '../models';
-import { DriverService, NotificationService } from '../shared';
+import { Driver, Notification, Address } from '../models';
+import { DriverService, NotificationService, GoogleService } from '../shared';
 import { IListDataActions, IDetailDataActions } from './intefaces';
 
 @Injectable()
@@ -18,18 +18,19 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   static CREATE_NEW_DRIVER: string = 'CREATE_NEW_DRIVER';
   static GET_ALL_DRIVERS: string = 'GET_ALL_DRIVERS';
   constructor(
+    private _googleService: GoogleService,
     private driverService: DriverService,
     private notificatonService: NotificationService,
     private ngRedux: NgRedux<IAppState>) { }
 
   add(driver: Driver): void {
-    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST, driver });
-
-    setTimeout(() => {
-      this.driverService.create(driver);
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver });
+    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
+    this.driverService.create(driver).delay(3000).subscribe((newId) => {
+      const prevId = driver.id;
+      driver.id = newId;
+      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, prevId });
       this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
-    }, 3000);
+    });
   }
 
   remove(driver: Driver): void {
@@ -61,5 +62,4 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
       this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, items: drivers });
     });
   }
-
 }

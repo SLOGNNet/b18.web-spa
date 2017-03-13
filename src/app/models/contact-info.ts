@@ -17,14 +17,38 @@ export class ContactInfo {
   value: string = '';
   type: ContactInfoType;
 
+  public static getPrimaryPhone(contactInfoList: Array<ContactInfo>): ContactInfo {
+    const info = contactInfoList.filter(item => {
+      return item.label === 'primaryPhone';
+    });
 
-  public static getPrimaryPhone(collection: Array<ContactInfo>): ContactInfo {
-    let result: ContactInfo = null;
-    result = collection.filter(item => item.label === 'primaryPhone')[0];
-    return result;
+    return info[0];
   }
 
   public static getContactInfoType(type: ContactInfoType): string {
     return contactInfoTypes[type];
+  }
+
+  public static сreateDefaultList() {
+    return [{
+      label: 'primaryPhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'alternativePhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'fax',
+      value: '',
+      type: ContactInfoType.Fax
+    },
+    {
+      label: 'email',
+      value: '',
+      type: ContactInfoType.Email
+    }];
   }
 }

@@ -16,11 +16,10 @@
  */
 
 import { Component, ViewChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { CommonInputComponent } from './common/bd-input/bd-input.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SwitchState } from '../shared/enums/switchState';
-import { BdResizeContainerComponent } from '../shared/components/bd-resizer';
-import { AppState } from '../app.service';
+import { SwitchState } from '../../enums/switchState';
+import { BdResizeContainerComponent } from '../bd-resizer';
+import { AppState } from '../../../app.service';
 
 @Component({
     selector: 'multi-pane-layout',

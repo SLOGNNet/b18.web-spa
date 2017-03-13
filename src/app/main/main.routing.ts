@@ -1,5 +1,5 @@
 import { MainComponent } from './main.component';
-import { DriversComponent, DriverEditComponent } from '../drivers';
+import { DriversComponent, DriverEditComponent, DriverDetailComponent } from '../drivers';
 import { MessagesComponent } from '../drivers/messages';
 import { HomeComponent } from '../home';
 import { LoadsComponent, LoadEditComponent } from '../loads';
@@ -10,6 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth';
 import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
+import { DriversModule } from '../drivers';
 
 const routes: Routes = [{
   path: '',
@@ -18,18 +19,10 @@ const routes: Routes = [{
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     {
-      path: 'drivers', component: DriversComponent, children: [{
-        path: ':id',
-        component: DriverEditComponent,
-        canDeactivate: [CanDeactivateGuard]
-      }]
+      path: 'drivers', loadChildren: () => DriversModule
     },
-    { path: 'drivers/:id/messages', component: MessagesComponent },
     {
-      path: 'loads', component: LoadsComponent, children: [{
-        path: ':id',
-        component: LoadEditComponent
-      }]
+      path: 'loads', component: LoadsComponent
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{

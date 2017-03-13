@@ -41,6 +41,8 @@ import { BdValidatorComponent } from './components/bd-validator';
 import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
 import { BdDropdownModule } from './components/bd-dropdown';
 import { NgbDatepickerModule } from './components/datepicker';
+import { EmptyComponent } from './components/empty';
+import { MultiPaneLayoutComponent } from './components/multi-pane-layout';
 import { BdRemoveButtonComponent,
   BdAddButtonComponent,
   BdButtonComponent,
@@ -141,7 +143,9 @@ import { BdContactInfoComponent } from './components/bd-contact-info';
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
     TimePickerComponent,
-    BdContactInfoComponent
+    EmptyComponent,
+    BdContactInfoComponent,
+    MultiPaneLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -216,7 +220,8 @@ import { BdContactInfoComponent } from './components/bd-contact-info';
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
-    BdContactInfoComponent
+    BdContactInfoComponent,
+    MultiPaneLayoutComponent
   ]
 })
 export class SharedModule {
