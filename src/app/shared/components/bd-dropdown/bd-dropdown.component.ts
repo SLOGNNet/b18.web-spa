@@ -110,6 +110,11 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
-    }
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this._cdr.markForCheck();
+  }
 
 }

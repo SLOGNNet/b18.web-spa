@@ -62,4 +62,10 @@ export class BdFormDatePicker implements ControlValueAccessor {
       this.datepicker.close();
     }, 0);
   }
+
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
 }
