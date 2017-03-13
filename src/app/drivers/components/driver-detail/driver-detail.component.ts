@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Driver } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DriverActions } from '../../../actions';
 import { NgRedux, select } from 'ng2-redux';
@@ -25,7 +25,8 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     private cdr: ChangeDetectorRef,
     driverActions: DriverActions,
     route: ActivatedRoute,
+    router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), route);
+      super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
   }
 }

@@ -1,16 +1,19 @@
 import { Driver } from './driver';
 import { Type } from 'class-transformer';
-import { PowerUnitTypes,
+import {
+  PowerUnitTypes,
   TrailerTypes,
   EquipmentTypes,
   EquipmentModes,
   EquipmentStatuses,
   DriverTypes,
-  EquipmentVehicleOperatings } from './enums';
+  EquipmentVehicleOperatings
+} from './enums';
+import { generateNewId } from './utils';
 
 // Colors
 function createStatusColors() {
- let result = {};
+  let result = {};
   result[EquipmentStatuses.NotAvaliable] = '#ffbe4d';
   result[EquipmentStatuses.Active] = '#85d183';
   result[EquipmentStatuses.Inactive] = '#fb3a3a';
@@ -20,7 +23,7 @@ function createStatusColors() {
 
 // Status Text
 function createStatusText() {
- let result = {};
+  let result = {};
   result[EquipmentStatuses.None] = 'none';
   result[EquipmentStatuses.NotAvaliable] = 'not avaliable';
   result[EquipmentStatuses.Active] = 'active';
@@ -31,7 +34,7 @@ function createStatusText() {
 
 // Driver Text
 function createEquipmentDriverText() {
- let result = {};
+  let result = {};
   result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company Driver';
   result[DriverTypes.OwnerOperator] = 'Owner Operator';
@@ -41,7 +44,7 @@ function createEquipmentDriverText() {
 
 // Type Text
 function createTypeText() {
- let result = {};
+  let result = {};
   result[EquipmentTypes.None] = 'None';
   result[EquipmentTypes.Trailer] = 'Trailer';
   result[EquipmentTypes.PowerUnit] = 'PowerUnit';
@@ -51,7 +54,7 @@ function createTypeText() {
 
 // Short Type Text
 function createShortTypeText() {
- let result = {};
+  let result = {};
   result[EquipmentTypes.None] = 'None';
   result[EquipmentTypes.Trailer] = 'TL';
   result[EquipmentTypes.PowerUnit] = 'TK';
@@ -61,7 +64,7 @@ function createShortTypeText() {
 
 // Mode Text
 function createModeText() {
- let result = {};
+  let result = {};
   result[EquipmentModes.None] = 'None';
   result[EquipmentModes.Company] = 'Company';
 
@@ -95,18 +98,23 @@ export class Equipment {
   subType: PowerUnitTypes | TrailerTypes;
   mode: EquipmentModes = EquipmentModes.Company;
   vehicleOperating: EquipmentVehicleOperatings;
-  lastTripNumber: number;
+  lastTripNumber: number = 0;
   lastAddress: string = '';
   equipmentNotification: EquipmentNotification;
 
-  static create(): Equipment{
+  static create(): Equipment {
     const result = new Equipment();
+    result.id = generateNewId();
     result.status = EquipmentStatuses.Active;
     result.type = EquipmentTypes.Trailer;
     result.subType = TrailerTypes.DryVan53;
     result.mode = EquipmentModes.Company;
     result.vehicleOperating = EquipmentVehicleOperatings.InterState;
     result.driverType = DriverTypes.CompanyDriver;
+    result.equipmentNotification = {
+      message: '',
+      date: new Date()
+    };
     return result;
   }
 

@@ -1,6 +1,1 @@
-
-let id = 0;
-
-export function generateNewId() {
-  return --id;
-}
+export { generateNewId } from '../shared/helpers/data.helper'

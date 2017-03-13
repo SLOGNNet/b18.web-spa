@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { Company } from '../../models';
 import { BaseEditComponent } from '../../base';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CompanyActions } from '../../actions';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
@@ -37,7 +37,9 @@ export class CompanyEditComponent extends BaseEditComponent<Company> {
     companyActions: CompanyActions,
     route: ActivatedRoute,
     location: Location,
+    router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), ngRedux.select(state => state.companies.isLoading), route, location);
+      super(companyActions, ngRedux.select(state => state.companies.selected),
+        ngRedux.select(state => state.companies.isLoading), route, router, location);
   }
 }

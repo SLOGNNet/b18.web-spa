@@ -1,7 +1,7 @@
 import { Stop } from './stop';
 import { Company } from './company';
 import { Commodity } from './commodity';
-import { Address } from './address';
+import { Location } from './location';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
@@ -70,16 +70,15 @@ const statusTexts = createStatusTexts();
 export class Load {
   id: number;
   companyId: number;
-  addressId: number;
   systemLoadNo: string;
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
-  customerBillingAddressId: number;
-  @Type(() => Address)
-  customerAddress: Address = new Address();
-  @Type(() => Address)
-  customerBillingAddress: Address;
+  customerBillingLocationId: number;
+  @Type(() => Location)
+  customerLocation: Location = new Location();
+  @Type(() => Location)
+  customerBillingLocation: Location;
   @Type(() => Commodity)
   commodities: Array<Commodity>;
   contactId: number;

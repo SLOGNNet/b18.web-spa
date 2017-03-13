@@ -6,14 +6,14 @@
     <span class="load-number">LD{{load.systemLoadNo}}</span>
     <span class="company-name">
       <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
-        {{load.customer.name}}
+        {{load.customer?.name}}
         <bd-popover-content
           #companyPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="-10"
           [closeOnClickOutside]="closeOnClickOutside">
-          <company-popover [company]="load.customer" [companyBillingAddress]="load.customerBillingAddress" [companyAddress]="load.customerAddress"></company-popover>
+          <company-popover [company]="load.customer" [companyBillingLocation]="load.customerBillingLocation" [companyLocation]="load.customerLocation"></company-popover>
         </bd-popover-content>
       </span>
     </span>

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
 import { plainToClass, classToPlain } from 'class-transformer';
+import { generatePersistId } from '../../helpers';
 
 @Injectable()
 export class DriverService {
@@ -25,17 +26,17 @@ export class DriverService {
     return Observable.of(result);
   }
 
-  create(driver: Driver) {
+  create(driver: Driver): Observable<number>  {
     MockData.drivers.push(driver);
-  }
+    return Observable.of(generatePersistId());
+   }
 
   update(driver: Driver) {
     const id = driver.id;
 
     MockData.drivers.forEach(d => {
       if (id === d.id) {
-        Object.assign(d, driver);
-        return;
+        d = Object.assign(d, driver);
       }
     });
   }

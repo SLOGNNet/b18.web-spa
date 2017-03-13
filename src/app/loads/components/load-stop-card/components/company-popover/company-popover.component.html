@@ -1,21 +1,21 @@
 <div class="company-popover">
   <div class="section">
-    <span class="blue">{{company.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
+    <span class="blue">{{company?.name.slice(0, 16)}} <span class="black">| {{status}}</span></span>
     <span>MC#{{company.mc}} | USDOT: {{company.taxId}}</span>
   </div>
-  <div class="section" *ngIf="companyAddress">
-    <span class="blue">Address</span>
-    <span>{{companyAddress.streetAddress1}}</span>
-    <span>{{companyAddress.city}}, {{companyAddress.state}}</span>
-    <span>{{companyAddress.zip}}</span>
+  <div class="section" *ngIf="companyLocation">
+    <span class="blue">Location</span>
+    <span>{{companyLocation.address.streetAddress1}}</span>
+    <span>{{companyLocation.address.city}}, {{companyLocation.address.state}}</span>
+    <span>{{companyLocation.address.zip}}</span>
   </div>
-  <div class="section" *ngIf="companyBillingAddress">
-    <span class="blue">Billing Address</span>
-    <span>{{companyBillingAddress.streetAddress1}}</span>
-    <span>{{companyBillingAddress.city}}, {{companyBillingAddress.state}}</span>
-    <span>{{companyBillingAddress.zip}}</span>
+  <div class="section" *ngIf="companyBillingLocation">
+    <span class="blue">Billing Location</span>
+    <span>{{companyBillingLocation.address.streetAddress1}}</span>
+    <span>{{companyBillingLocation.address.city}}, {{companyBillingLocation.address.state}}</span>
+    <span>{{companyBillingLocation.address.zip}}</span>
   </div>
-  <div class="section" *ngIf="companyAddress">
+  <div class="section">
     <span>{{phone}}</span>
   </div>
 </div>

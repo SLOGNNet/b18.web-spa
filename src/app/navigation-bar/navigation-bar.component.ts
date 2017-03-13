@@ -40,7 +40,7 @@ export class NavigationBarComponent {
             link: '/drivers'
           }, {
           label: 'New Driver',
-          link: '/drivers/0'
+          link: '/drivers/0/edit'
         }]
     },
     {

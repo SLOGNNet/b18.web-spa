@@ -24,4 +24,8 @@ export class ContactsInfoForm extends BaseListForm<ContactInfo>  {
   label(index) {
     return `Contact #${index + 1}`;
   }
+
+  trackBy(index: number, info: ContactInfo) {
+    return info.label + info.type;
+  }
 }
