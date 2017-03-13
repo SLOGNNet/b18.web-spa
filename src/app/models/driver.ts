@@ -1,7 +1,9 @@
 import { Equipment } from './equipment';
-import { Contact } from './contact';
+import { Member } from './member';
+import { Address } from './address';
 import { License } from './license';
-import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
+import { ContactInfo } from './contact-info';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes, ContactInfoType } from './enums';
 
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
@@ -52,7 +54,7 @@ const statusText = createStatusText();
 const typeText = createTypeText();
 const paymentTypeText = createPaymentTypeText();
 
-export class Driver extends Contact {
+export class Driver extends Member {
   dateOfBirth: Date = null;
   ssn: string = '';
   @Type(() => Equipment)
@@ -62,13 +64,13 @@ export class Driver extends Contact {
   @Type(() => Equipment)
   associatedEquipment: Array<Equipment>;
   paymentType: DriverPaymentTypes;
-  rate: number;
+  rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;
   hireDate: Date = null;
   terminationDate: Date = null;
   status: DriverStatuses = DriverStatuses.Active;
   notes: string = '';
-  lastTripNumber: number;
+  lastTripNumber: number = 0;
   lastAddress: string = '';
   @Type(() => License)
   license: License;
@@ -76,7 +78,9 @@ export class Driver extends Contact {
   static create(): Driver {
     const result = new Driver();
     result.id = generateNewId();
-    result.license = new License();
+    result.address = Address.create();
+    result.contactInfo = ContactInfo.сreateDefaultList();
+    result.license = License.create();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
@@ -85,6 +89,7 @@ export class Driver extends Contact {
     result.paymentType = DriverPaymentTypes.PerMile;
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
+
     return result;
   }
 

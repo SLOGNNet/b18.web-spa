@@ -3,7 +3,7 @@ import { CompanyForm } from './company-form';
 import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
-import { AddressesForm } from './addresses-form';
+import { LocationsForm } from './locations-form';
 import { DriverForm } from './driver-form';
 import { DriverViewForm } from './driver-view-form';
 import { DropoffFormComponent } from './dropoff-form';
@@ -16,6 +16,7 @@ import { ContactInfoForm } from './contact-info-form';
 import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
 import { LicenseForm } from './license-form';
+import { LocationForm } from './location-form';
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
@@ -23,7 +24,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
   declarations: [
     CompanyForm,
     AddressForm,
-    AddressesForm,
+    LocationsForm,
     ContactForm,
     ContactsForm,
     LoadFormComponent,
@@ -41,7 +42,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     LoadDocumentFormComponent,
     ContactsInfoForm,
     ContactInfoForm,
-    LicenseForm
+    LicenseForm,
+    LocationForm
   ],
   imports: [
     SharedModule
@@ -55,7 +57,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     CommoditiesHeaderComponent,
     DropoffpCommodityComponent,
     PickupCommodityComponent,
-    LicenseForm
+    LicenseForm,
+    LocationForm
   ]
 })
 export class BdFormsModule {

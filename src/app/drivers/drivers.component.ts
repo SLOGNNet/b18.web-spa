@@ -10,11 +10,11 @@ import { BaseListComponent } from '../base';
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../store';
-
+import { CanDeactivateGuard } from '../guards';
 @Component({
   selector: 'drivers',
-  templateUrl: './drivers.html',
-  styleUrls: ['./drivers.scss']
+  templateUrl: './drivers.component.html',
+  styleUrls: ['./drivers.component.scss']
 })
 export class DriversComponent extends BaseListComponent<Driver> {
   constructor(

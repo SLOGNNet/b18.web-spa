@@ -5,8 +5,9 @@ import { ViewMode } from '../../shared/enums';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { BasePane } from '../base';
 
-export abstract class BaseListComponent<T> {
+export abstract class BaseListComponent<T> extends BasePane {
   protected items: T[] = new Array<T>();
 
   private childRouteSubscription: any;
@@ -15,6 +16,7 @@ export abstract class BaseListComponent<T> {
 
   constructor(private actions: IListDataActions<T>, protected items$: Observable<Array<T>>,
     protected router: Router, protected route: ActivatedRoute) {
+    super(router, route);
     actions.getAll();
   }
 
@@ -38,7 +40,7 @@ export abstract class BaseListComponent<T> {
   }
 
   private navigateToDetails(id: number) {
-    this.router.navigate([this.routePath(), id],  {preserveQueryParams: true});
+    super.rediretToId(id);
   }
 
   private deselectRow() {
