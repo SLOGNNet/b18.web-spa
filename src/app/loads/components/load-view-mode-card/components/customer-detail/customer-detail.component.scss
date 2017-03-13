@@ -1,5 +1,6 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/css/styles';
 
 .customer-view-container {
   display: flex;
@@ -32,12 +33,6 @@
 
       span {
         line-height: 14px;
-      }
-
-      .text {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
 
       .buttons-panel {

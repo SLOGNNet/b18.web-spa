@@ -2,19 +2,19 @@
 <form-navigation [title]="'Load'" [anchors]="anchors" sticky></form-navigation>
 <form>
     <navigation-anchor id="customer"></navigation-anchor>
-    <bd-view-detail [labelText]="'Customer'" [changeButton]="true" [addButton]="true">
+    <bd-view-detail-section [labelText]="'Customer'" [changeButton]="true" [addButton]="true">
         <customer-detail [company]="load.customer"></customer-detail>
-    </bd-view-detail>
+    </bd-view-detail-section>
  <navigation-anchor id="requirements"></navigation-anchor>
-    <bd-view-detail [labelText]="'Requirements'" [changeButton]="true" [addButton]="true">
+    <bd-view-detail-section [labelText]="'Requirements'" [changeButton]="true" [addButton]="true">
         <requirements-detail [load]="load"></requirements-detail>
-    </bd-view-detail>
+    </bd-view-detail-section>
     <navigation-anchor id="itinerary"></navigation-anchor>
-    <bd-view-detail [labelText]="'Itinerary'" [changeButton]="true" [addButton]="true">
+    <bd-view-detail-section [labelText]="'Itinerary'" [changeButton]="true" [addButton]="true">
         <stop-view 
             *ngFor="let stop of stops"
             [stop]="stop">
         </stop-view>
-    </bd-view-detail>
+    </bd-view-detail-section>
 </form>
 </div>
