@@ -5,7 +5,6 @@ import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
 import { LocationsForm } from './locations-form';
 import { DriverForm } from './driver-form';
-import { DriverViewForm } from './driver-view-form';
 import { DropoffFormComponent } from './dropoff-form';
 import { DropoffsFormComponent } from './dropoffs-form';
 import { PickupFormComponent } from './pickup-form';
@@ -32,7 +31,6 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
     DriverForm,
-    DriverViewForm,
     DropoffFormComponent,
     DropoffsFormComponent,
     PickupFormComponent,
@@ -52,7 +50,6 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     CompanyForm,
     LoadFormComponent,
     DriverForm,
-    DriverViewForm,
     LoadDocumentFormComponent,
     CommoditiesHeaderComponent,
     DropoffpCommodityComponent,

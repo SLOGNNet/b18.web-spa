@@ -410,9 +410,9 @@ class MockData {
     license: this.licenses[1]
   }, {
     id: 2,
-    firstName: 'Jason',
+    firstName: 'Emma',
     middleName: 'Chang',
-    lastName: 'Chang',
+    lastName: 'Watson',
     contactInfo: this.contactInfo.slice(),
     address: this.addresses[1],
     dateOfBirth: null,
