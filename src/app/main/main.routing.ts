@@ -13,7 +13,7 @@ import { NoContentComponent } from '../no-content';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent, canActivate: [AuthGuard],
+  component: MainComponent,
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -26,10 +26,7 @@ const routes: Routes = [{
     },
     { path: 'drivers/:id/messages', component: MessagesComponent },
     {
-      path: 'loads', component: LoadsComponent, children: [{
-        path: ':id',
-        component: LoadEditComponent
-      }]
+      path: 'loads', component: LoadsComponent
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{

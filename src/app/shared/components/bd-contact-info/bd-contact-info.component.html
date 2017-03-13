@@ -1,0 +1,8 @@
+<div class="contact-info-container">
+    <div 
+        *ngFor="let item of contactCollection"
+        class="contact-info-item">
+        <span class="item-icon icon-{{getContactInfoType(item.type) | lowercase}}"></span>
+        <span class="item-text facility-phone-number">{{item.value}}</span>
+    </div>
+</div>

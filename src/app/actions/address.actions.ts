@@ -25,11 +25,4 @@ export class AddressActions {
   update(address: Address): void {
     this.ngRedux.dispatch({ type: AddressActions.UPDATE_ADDRESS, address });
   }
-
-  updatePlace(addressId: number, placeId: string): void {
-    this._googleService.getDetails(placeId)
-      .subscribe(detail => {
-        this.update(Object.assign(detail, { id: addressId}));
-      });
-  }
 }

@@ -5,3 +5,4 @@ export * from './company.reducer';
 export * from './load.reducer';
 export * from './driver.reducer';
 export * from './stop.reducer';
+export * from './location.reducer';

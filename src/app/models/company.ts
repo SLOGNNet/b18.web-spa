@@ -1,4 +1,4 @@
-import { Address } from './address';
+import { Location } from './location';
 import { Contact } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
@@ -27,16 +27,16 @@ const statusText = createStatusText();
 
 export class Company {
   id: number;
-  name: string = 'CH ROBINSON COMPANY INC';
+  name: string = '';
   @Type(() => Contact)
   contacts: Contact[];
   status: CompanyStatuses;
   type: CompanyTypes;
-  mc: string = '384859';
+  mc: string = '';
   taxId: string = '';
-  @Type(() => Address)
-  addresses: Array<Address>;
-  email: string = 'carrier.services@chrobinson.com';
+  @Type(() => Location)
+  locations: Array<Location>;
+  email: string = '';
   loads: Array<Load>;
 
   static create(): Company{
@@ -56,7 +56,7 @@ export class Company {
   }
 
   constructor() {
-    this.addresses = new Array<Address>();
+    this.locations = new Array<Location>();
     this.contacts = new Array<Contact>();
   }
 }

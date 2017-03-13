@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Contact } from '../../models';
-import { Address } from '../../models';
+import { Location } from '../../models';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
@@ -10,9 +10,9 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class ContactsForm extends BaseListForm<Contact>  {
-
+  @Input() disabled: boolean = false;
   @Input()
-  public addresses: Array<any>;
+  public locations: Array<Location>;
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
     super(formBuilder, elementRef);

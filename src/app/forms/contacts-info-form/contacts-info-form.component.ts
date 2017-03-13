@@ -9,7 +9,7 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseListForm.metaData))
 export class ContactsInfoForm extends BaseListForm<ContactInfo>  {
-
+  @Input() disabled: boolean = false;
   @Input()
   public contactsInfo: Array<any>;
 
@@ -23,5 +23,9 @@ export class ContactsInfoForm extends BaseListForm<ContactInfo>  {
 
   label(index) {
     return `Contact #${index + 1}`;
+  }
+
+  trackBy(index: number, info: ContactInfo) {
+    return info.label + info.type;
   }
 }

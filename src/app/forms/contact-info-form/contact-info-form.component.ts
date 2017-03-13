@@ -10,6 +10,7 @@ import { BaseForm } from '../base-form';
   styleUrls: ['../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class ContactInfoForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input()
   public contactInfo: ContactInfo;
   @Input('group')
@@ -25,9 +26,12 @@ export class ContactInfoForm extends BaseForm {
   }
 
   initForm() {
-    this.contactInfoForm.addControl(
-      'info',
-      this._formBuilder.control(this.contactInfo.value, [])
-    );
+    const keys = Object.keys(this.contactInfo);
+
+    keys.forEach(key => {
+      this.contactInfoForm.addControl(
+        key, this._formBuilder.control(this.contactInfo[key], [])
+      );
+    });
   }
 }

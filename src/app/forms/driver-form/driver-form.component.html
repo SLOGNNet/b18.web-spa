@@ -1,38 +1,40 @@
 <form [formGroup]="driverForm" novalidate (ngSubmit)="submit(driverForm.value, driverForm.valid)">
 	<navigation-anchor id="driver-personal-information" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [labelText]="'PERSONAL INFO'">
-		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>
-		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
-		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-form-datepicker>
-		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
+	<bd-form-section [disabled]="disabled" [labelText]="'PERSONAL INFO'">
+		<bd-input class="bd-form-control" [disabled]="disabled" formControlName="firstName" [labelText]="'First Name'"></bd-input>
+		<bd-input class="bd-form-control" [disabled]="disabled" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
+		<bd-form-datepicker class="bd-form-control" [disabled]="disabled" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-form-datepicker>
+		<bd-input class="bd-form-control" formControlName="ssn" [disabled]="disabled" [labelText]="'SSN'"></bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [labelText]="'CONTACT'" >
-    <contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
+	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
+    <contacts-info-form [items]="driver.contactInfo" [disabled]="disabled" [formArray]='driverForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [labelText]="'ADDRESS'" >
-		<address-form [group]='driverForm.controls.address' [address]='driver.address' [isNameFieldVisible]="false" [viewMode]="viewMode"></address-form>
+		<address-form [group]='driverForm.controls.address' [address]='driver.address' [viewMode]="viewMode" [disabled]="disabled" ></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [labelText]="'PAYMENT'">
-		<bd-dropdown class="bd-form-control" formControlName="paymentType" [labelText]="'Payment options'" [items]="paymentsTypes">
+	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
+		<bd-dropdown class="bd-form-control" formControlName="paymentType" [disabled]="disabled" [labelText]="'Payment options'" [items]="paymentsTypes">
 		</bd-dropdown>
-		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
+		<bd-input class="bd-form-control" [disabled]="disabled" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [labelText]="'LICENSE'">
-		<license-form [group]='driverForm.controls.license' [license]='driver.license' [viewMode]="viewMode"></license-form>
+	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
+		<license-form [group]='driverForm.controls.license' [disabled]="disabled" [license]='driver.license' [viewMode]="viewMode" [disabled]="disabled"></license-form>
 	</bd-form-section>
 	<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 		<div class="button-group">
 			<bd-button
+        [disabled]="disabled"
 				(click)="onCancel()"
 				[text]="'Cancel'"
 				class="button">
 			</bd-button>
 			<bd-button
+        [disabled]="disabled"
 				type="submit"
 				color="primary"
 				class="button"

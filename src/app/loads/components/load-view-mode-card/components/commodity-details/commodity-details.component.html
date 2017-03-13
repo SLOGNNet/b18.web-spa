@@ -1,0 +1,10 @@
+<div class="commodity-detail-container">
+    <div class="commodity-detail-column">
+        <span>{{index}}</span>
+    </div>
+    <div
+        *ngFor="let column of columns" 
+        class="commodity-detail-column">
+        <span>{{column}}</span>
+    </div>
+</div>

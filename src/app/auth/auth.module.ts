@@ -8,7 +8,10 @@ import {
   LoginComponent,
   RegisterComponent,
   PhoneConfirmationComponent,
-  EmailConfirmationComponent
+  EmailWasSentComponent,
+  EmailConfirmationComponent,
+  AuthGeneralFormErrorComponent,
+  AuthFormMessageHelperComponent
  } from './components';
 import {
   LoginFormComponent,
@@ -34,7 +37,10 @@ import { AuthRoutingModule } from './auth.routing';
     RegisterFormComponent,
     PhoneConfirmationComponent,
     PhoneConfirmationFormComponent,
-    EmailConfirmationComponent
+    EmailConfirmationComponent,
+    EmailWasSentComponent,
+    AuthGeneralFormErrorComponent,
+    AuthFormMessageHelperComponent
   ],
   providers: [
     AuthGuard,

@@ -22,13 +22,12 @@ export class LoadService {
   }
 
   getAll(): Observable<Load[]> {
-    return Observable.create((observer: any) => {
-      this.http.get(this.config.apiUrl + 'load/cards').subscribe(res => {
-        const data = res.json();
-        let arr = data.map(item => plainToClass(Load, item));
-        observer.next(arr);
-      });
-    });
+    return Observable.from(MockData.loads)
+      .flatMap(
+      (load) => this.companyService
+        .getDetails(load.companyId)
+        .map(customer => Object.assign(load, { customer }))
+      ).toArray();
   };
 
   getDetails(loadId: number): Observable<Load> {
@@ -36,7 +35,7 @@ export class LoadService {
       .flatMap((load) =>
         this.companyService
           .getDetails(load.companyId)
-          .map(company => Object.assign(load, { company: company }))
+          .map(customer => Object.assign(load, { customer }))
       );
   };
 

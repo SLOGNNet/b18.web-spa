@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Company, CompanyStatuses, CompanyTypes, Address } from '../../models';
-import { AddressActions } from '../../actions';
+import { Company, CompanyStatuses, CompanyTypes, Address, Location } from '../../models';
+import { LocationActions } from '../../actions';
 import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
@@ -16,12 +16,13 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CompanyForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input() public scrollable: boolean = false;
   @Input() public submitButtonText: string = 'Save';
   @Input() public company: Company;
   @Output() save: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
-  @select(state => state.addresses.items) addresses$: Observable<Address[]>;
+  @select(state => state.locations.items) locations$: Observable<Location[]>;
   companyForm: FormGroup;
   private companyTypes: Array<any>;
   private selectedCompanyType: string;
@@ -29,7 +30,7 @@ export class CompanyForm extends BaseForm {
   private selectedCompanyStatus: string;
 
   constructor(private formBuilder: FormBuilder,
-    private addressActions: AddressActions,
+    private locationActions: LocationActions,
     private enumHelperService: EnumHelperService,
     private cdr: ChangeDetectorRef,
     private validationService: FormValidationService,
@@ -66,25 +67,21 @@ export class CompanyForm extends BaseForm {
       mc: [this.company.mc, Validators.required],
       taxId: [this.company.taxId],
       contacts: this.formBuilder.array([]),
-      addresses: this.formBuilder.array([]),
+      locations: this.formBuilder.array([]),
       email: [this.company.email]
     });
   }
 
-  onAddressAdd(address: Address) {
-    this.addressActions.add(address);
+  onLocationAdd(location: Location) {
+    this.locationActions.add(location);
   }
 
-  onAddressUpdate(address: Address) {
-    this.addressActions.update(address);
+  onLocationUpdate(location: Location) {
+    this.locationActions.update(location);
   }
 
-  onAddressPlaceUpdate(data: any) {
-    this.addressActions.updatePlace(data.addressId, data.placeId);
-  }
-
-  onAddressRemove(address: Address) {
-    this.addressActions.remove(address);
+  onLocationRemove(location: Location) {
+    this.locationActions.remove(location);
   }
 
   private onExpandChanged(viewMode) {

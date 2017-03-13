@@ -36,7 +36,7 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    driverActions: DriverActions,
+    private driverActions: DriverActions,
     route: ActivatedRoute,
     location: Location,
     ngRedux: NgRedux<IAppState>) {

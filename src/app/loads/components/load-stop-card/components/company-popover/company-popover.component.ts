@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Company, Address } from '../../../../../models';
+import { Company, Location, ContactInfo } from '../../../../../models';
 
 @Component({
   selector: 'company-popover',
@@ -9,14 +9,15 @@ import { Company, Address } from '../../../../../models';
 })
 export class CompanyPopoverComponent {
   @Input() company: Company;
-  @Input() companyAddress: Address;
-  @Input() companyBillingAddress: Address;
+  @Input() companyLocation: Location;
+  @Input() companyBillingLocation: Location;
 
   get status() {
     return Company.getStatusText(this.company.status);
   }
 
   get phone() {
-    return [this.companyAddress.phone, this.companyAddress.phoneExtension].filter(v => v).join(' x ');
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.companyLocation.contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
   }
 }

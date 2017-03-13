@@ -36,8 +36,7 @@ export class CompanyService {
 
     MockData.companies.forEach(c => {
       if (id === c.id) {
-        Object.assign(c, company);
-        return;
+        c = Object.assign(c, company);
       }
     });
   }

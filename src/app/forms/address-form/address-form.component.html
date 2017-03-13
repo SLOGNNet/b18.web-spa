@@ -6,10 +6,6 @@
 			</div>
     </div>
 </template>
-<bd-validator *ngIf="isNameFieldVisible" [component]="addressForm.controls.name" [errorDefs]="{required: 'Name is required'}">
-  <bd-input class="bd-form-control" formControlName="name" [disabled]="disabled" placeholder="Name">
-  </bd-input>
-</bd-validator>
 <bd-typeahead
   [disabled]="disabled"
 	class="bd-form-control"
@@ -26,20 +22,23 @@
 	<div class="section">
 		<div class="left-side">
 			<bd-input
+        [disabled]="disabled"
 				class="bd-form-control left-control"
 				placeholder="Street address 2"
 				formControlName="streetAddress2">
 			</bd-input>
-			<bd-input class="bd-form-control left-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
+			<bd-input class="bd-form-control left-control" formControlName="city" [disabled]="disabled" placeholder="City" (valueChange)="onRemoveMap($event)">
 			</bd-input>
 			<div class="section">
 				<bd-input
+          [disabled]="disabled"
 					class="bd-form-control left-control half-side"
 					placeholder="State"
 					formControlName="state"
 					(valueChange)="onRemoveMap($event)">
 				</bd-input>
 				<bd-input
+          [disabled]="disabled"
 					class="bd-form-control middle-control half-side"
 					placeholder="Zip"
 					(valueChange)="onRemoveMap($event)"

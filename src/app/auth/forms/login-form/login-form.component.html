@@ -1,21 +1,19 @@
 <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm)" class="login-form edit">
-  <div class="general-error-message" *ngIf="isLoginFailed && loginForm.pristine">
-    <div class="error-message">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-      Unable to login.<br/>
-      Please check that you have entered your Login and Password correctly.
-    </div>
-  </div>
-  <bd-validator [component]="loginForm.controls.login" [errorDefs]="{required: 'This field is required'}">
+  <bd-auth-general-form-error *ngIf="isLoginFailed && loginForm.pristine"
+    [headerText]="'Unable to login.'">
+    Please check that you have entered your Login and Password correctly.
+  </bd-auth-general-form-error>
+  <bd-validator [component]="loginForm.controls.username" [errorDefs]="{required: 'This field is required'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Phone or Email'"
-      formControlName="login">
+      formControlName="username">
     </bd-input>
   </bd-validator>
   <bd-validator [component]="loginForm.controls.password" [errorDefs]="{required: 'This field is required'}">
     <bd-input
       class="bd-form-control"
+      [type]="'password'"
       [labelText]="'Password'"
       formControlName="password">
     </bd-input>
@@ -28,4 +26,5 @@
     [(disabled)]="!loginForm.valid"
     [text]="'Login'">
   </bd-button>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
 </form>

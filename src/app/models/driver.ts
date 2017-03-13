@@ -1,5 +1,5 @@
 import { Equipment } from './equipment';
-import { Contact } from './contact';
+import { Member } from './member';
 import { License } from './license';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
@@ -40,7 +40,7 @@ const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
 
-export class Driver extends Contact {
+export class Driver extends Member {
   dateOfBirth: Date = null;
   ssn: string = '';
   @Type(() => Equipment)

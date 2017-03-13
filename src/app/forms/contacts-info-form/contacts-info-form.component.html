@@ -1,5 +1,5 @@
-<template let-data ngFor [ngForOf]="renderFormData" let-i="index">
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index" [ngForTrackBy]="trackBy">
   <div>
-   <contact-info-form [group]='data.group' [contactInfo]='data.item' [viewMode]="viewMode"></contact-info-form>
+   <contact-info-form [group]='data.group' [disabled]="disabled" [contactInfo]='data.item' [viewMode]="viewMode"></contact-info-form>
  </div>
 </template>
