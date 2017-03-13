@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
+import { Component, Input } from '@angular/core';
+import { Driver, DriverTypes, DriverPaymentTypes, Equipment, EquipmentStatuses, EquipmentModes, EquipmentTypes, License } from '../../models';
 import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
@@ -15,58 +14,36 @@ import { Observable } from 'rxjs/Observable';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class DriverViewForm extends BaseForm {
-  // @Input() public scrollable: boolean = true;
-  // @Input() public submitButtonText: string = 'Save';
   @Input() public driver: Driver;
-  // @Output() save: EventEmitter<any> = new EventEmitter();
-  // @Output() cancel: EventEmitter<any> = new EventEmitter();
-  // driverForm: FormGroup;
-  // paymentsTypes: Array<any>;
+  public restrictionsTypes: string;
+  public endorsmentsTypes: string;
 
-  constructor(private formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef,
-    private validationService: FormValidationService,
-    private enumHelperService: EnumHelperService,
-    elementRef: ElementRef) {
-    super(elementRef);
-
-    // this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
+  ngOnInit() {
+      this.restrictionsTypes = this.driver.license.restrictions.split(' ').join(', ');
+      this.endorsmentsTypes = this.driver.license.endorsments.split(' ').join(', ');
   }
 
-  ngOnChanges() {
-      console.log(this.driver, 'this driver');
+  get driverType() {
+    return Driver.getTypeText(this.driver.type);
   }
 
-  // ngOnChanges(changes: any) {
-  //   this.initForm();
-  // }
-  //
-  // submit(driver: Driver, isValid: boolean) {
-  //   if (!isValid) {
-  //     this.validationService.show();
-  //   }
-  //
-  //   if (driver && isValid) {
-  //     this.save.emit(driver);
-  //   }
-  // }
-  //
-  // onCancel() {
-  //   this.cancel.emit();
-  // }
-  //
-  // initForm() {
-  //   this.driverForm = this.formBuilder.group({
-  //     id: [this.driver.id],
-  //     firstName: [this.driver.firstName],
-  //     lastName: [this.driver.lastName],
-  //     dateOfBirth: [this.driver.dateOfBirth],
-  //     paymentType: [this.driver.paymentType],
-  //     ssn: [this.driver.ssn],
-  //     rate: [this.driver.rate],
-  //     address: this.formBuilder.group({ }),
-  //     contactInfo: this.formBuilder.array([]),
-  //     license: this.formBuilder.group({ })
-  //   });
-  // }
+  equipmentStatusColor(status: EquipmentStatuses) {
+    return Equipment.getStatusColor(status);
+  }
+
+  equipmentModeText(mode: EquipmentModes) {
+    return Equipment.getModeText(mode);
+  }
+
+  equipmentTypeText(status: EquipmentTypes) {
+    return Equipment.getTypeText(status);
+  }
+
+  get paymentTypeText() {
+    return Driver.getPaymentTypeText(this.driver.paymentType);
+  }
+
+  get licenseClassText() {
+    return License.getLicenseClassText(this.driver.license.class);
+  }
 }

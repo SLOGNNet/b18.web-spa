@@ -36,9 +36,21 @@ function createTypeText() {
   return result;
 };
 
+// Payment Type Text
+function createPaymentTypeText() {
+  let result = {};
+  result[DriverPaymentTypes.PerMile] = 'Per Miles';
+  result[DriverPaymentTypes.Percentage] = 'Percentage';
+  result[DriverPaymentTypes.Hourly] = 'Hourly';
+  result[DriverPaymentTypes.Flat] = 'Flat';
+
+  return result;
+};
+
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
+const paymentTypeText = createPaymentTypeText();
 
 export class Driver extends Contact {
   dateOfBirth: Date = null;
@@ -87,4 +99,10 @@ export class Driver extends Contact {
   public static getTypeText(type: DriverTypes): string {
     return typeText[type];
   }
+
+  public static getPaymentTypeText(paymentType: DriverPaymentTypes): string {
+    return paymentTypeText[paymentType];
+  }
+
+
 };

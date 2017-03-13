@@ -26,7 +26,12 @@
         }
 
         .top-icons {
-          color: $grey;
+          color: $dark-grey;
+
+          .icon-call,
+          .icon-message {
+            margin-left: 10px;
+          }
         }
       }
     }
@@ -34,13 +39,15 @@
     .bottom {
       .birth,
       .ssn {
-        color: $grey;
+        color: $dark-grey;
       }
     }
   }
 
   .right {
     width: 50%;
+    padding: 13px 0;
+    color: $dark-grey;
   }
 }
 
@@ -74,14 +81,14 @@
     }
 
     .number {
-      color: $grey;
+      color: $dark-grey;
     }
   }
 
   .right {
     width: 50%;
     padding: $default-margin 0 $default-margin $default-margin;
-    color: $grey;
+    color: $dark-grey;
   }
 }
 
@@ -95,6 +102,10 @@
   align-items: center;
   margin-top: 10px;
   border-bottom: $border;
+
+  .rate {
+    margin-left: 10px;
+  }
 }
 
 .license-container {
@@ -117,6 +128,11 @@
       padding: $default-margin;
       border-right: $border;
       align-items: center;
+
+      .license-plate-number {
+        flex: 1;
+        font-weight: bold;
+      }
     }
 
     .right {
@@ -124,15 +140,24 @@
       width: 50%;
       height: 34px;
       padding: $default-margin;
+      color: $dark-grey;
       align-items: center;
+
+      .date {
+        margin-left: 10px;
+      }
     }
   }
 
   .bottom {
     padding: $default-margin;
 
-    .bottom-title {
-      color: $grey;
+    .bottom-label {
+      color: $dark-grey;
+    }
+
+    .types {
+      margin-left: 10px;
     }
   }
 }
