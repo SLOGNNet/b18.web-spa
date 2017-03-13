@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
+import { Load, DriverRequirements, FreightType, PowerUnitTypes, TrailerTypes } from '../../../../../models';
 
 
 @Component({
@@ -11,5 +11,23 @@ import { Load, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAct
 export class RequirementsDetailComponent {
   @Input() load: Load;
   private isAdditionalRequirements: boolean = false;
+  private _isReeferTrailerType: boolean = false;
+
+  ngOnInit() {
+    if (this.load.freightType === FreightType.Reefer) this._isReeferTrailerType = true;
+  }
+
+  get driverRequirement() {
+    return Load.getDriverRequirement(this.load.driverRequirment);
+  }
+
+  get requiredPowerUnitType() {
+    return Load.getPowerUnitType(this.load.requiredPowerUnitType);
+  }
+
+  get requiredTrailerType() {
+    return Load.getTrailerType(this.load.requiredTrailerType);
+  }
+
 
 }

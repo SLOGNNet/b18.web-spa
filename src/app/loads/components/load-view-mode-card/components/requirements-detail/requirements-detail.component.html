@@ -1,12 +1,12 @@
 <div class="requirements-container">
     <div class="main-requirements">
-        <section class="driver-count">Solo Driver</section>
-        <section class="power-unit-type">Tractor</section>
-        <section class="trailer-type">Dry Van 53'</section>
+        <section class="driver-count">{{driverRequirement}}</section>
+        <section class="power-unit-type">{{requiredPowerUnitType}}</section>
+        <section class="trailer-type">{{requiredTrailerType}}</section>
     </div>
     <div class="additional-requirements"
-         [class.is-addditional-requirements]="isAdditionalRequirements">
-        <div class="special-requirements">Special Requirements</div>
+         [class.is-addditional-requirements]="isReeferTrailerType">
+        <div class="special-requirements">{{load.specialRequirments}}</div>
         <div class="reefer-options">
             <div class="option temperature">57 F</div>
             <div class="option refrigerating-type">Cycle</div>
