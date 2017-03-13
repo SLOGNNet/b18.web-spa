@@ -29,7 +29,7 @@ export class ContactInfo {
     return contactInfoTypes[type];
   }
 
-  public static create() {
+  public static сreateDefaultList() {
     return [{
       label: 'primaryPhone',
       value: '',

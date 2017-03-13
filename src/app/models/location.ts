@@ -13,7 +13,7 @@ export class Location {
     const result = new Location();
     result.id = generateNewId();
     result.address = Address.create();
-    result.contactInfo = ContactInfo.create();
+    result.contactInfo = ContactInfo.сreateDefaultList();
     return result;
   }
 }

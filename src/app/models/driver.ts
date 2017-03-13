@@ -67,7 +67,7 @@ export class Driver extends Member {
     const result = new Driver();
     result.id = generateNewId();
     result.address = Address.create();
-    result.contactInfo = ContactInfo.create();
+    result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
