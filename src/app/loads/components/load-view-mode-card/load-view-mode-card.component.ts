@@ -12,37 +12,8 @@ import { find, map } from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadViewModeCardComponent {
-  @Input() stop: Stop = MockData.loads[0].stops[0];
-  public isExpanded: boolean = false;
-  public pickups: Array<any> = [];
-  public dropoffs: Array<any> = [];
 
-  private tripStops: Array<TripStop> = [];
-  private load: Load = MockData.loads[0];
+  @Input() private load: Load = MockData.loads[0];
+  @Input() stop: Stop = this.load.stops[0];
 
-  get isPickup() { return this.pickups.length && !this.dropoffs.length; }
-
-  get isDropoff() { return !this.pickups.length && this.dropoffs.length; }
-
-  get isCombined() { return this.pickups.length && this.dropoffs.length; }
-
-  ngOnInit() {
-    this.tripStops = this.stop.tripStops;
-    this.tripStops.map(item => {
-      map(item.stopActions, stopAction => {
-          this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.Pickup);
-          this.dropoffs = item.stopActions.filter(obj => obj.type === StopActionTypes.Dropoff);
-      });
-    });
-  }
-
-  onClick() {
-    this.isExpanded = !this.isExpanded;
-  }
-
-  getContactInfoCollection(contactItems: Array<ContactInfo>) {
-    let result: Array<ContactInfo> = [];
-    this.isExpanded ? result = contactItems : result.push(ContactInfo.getPrimaryPhone(contactItems));
-    return result;
-  }
 }
