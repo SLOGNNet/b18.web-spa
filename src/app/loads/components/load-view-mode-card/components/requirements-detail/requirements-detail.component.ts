@@ -13,8 +13,9 @@ export class RequirementsDetailComponent {
   private isAdditionalRequirements: boolean = false;
   private _isReeferTrailerType: boolean = false;
 
-  ngOnInit() {
+  get isReeferTrailerType () {
     if (this.load.freightType === FreightType.Reefer) this._isReeferTrailerType = true;
+    return this._isReeferTrailerType;
   }
 
   get driverRequirement() {

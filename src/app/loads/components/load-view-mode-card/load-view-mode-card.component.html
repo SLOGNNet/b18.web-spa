@@ -12,7 +12,7 @@
     <navigation-anchor id="itinerary"></navigation-anchor>
     <bd-view-detail-section [labelText]="'Itinerary'" [changeButton]="true" [addButton]="true">
         <stop-view 
-            *ngFor="let stop of stops"
+            *ngFor="let stop of load.stops"
             [stop]="stop">
         </stop-view>
     </bd-view-detail-section>
