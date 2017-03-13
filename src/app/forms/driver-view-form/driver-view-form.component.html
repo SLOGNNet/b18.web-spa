@@ -19,10 +19,12 @@
 
       <div class="bottom">
         <div class="birth">
-          Birth: 09/091967
+          <span class="bottom-label">Birth:</span>
+          <span class="date-of-birth">{{driver?.dateOfBirth | date: 'dd/MM/yyyy'}}</span>
         </div>
         <div class="ssn">
-          SSN: {{driver.ssn}}
+          <span class="bottom-label">SSN:</span>
+          <span class="ssn">{{driver.ssn}}</span>
         </div>
         <div class="driver-type">
           {{driverType}}
@@ -66,7 +68,7 @@
 <div class="license-container">
   <div class="top">
     <div class="left">
-      <span class="license-plate-number">Y2</span>
+      <span class="license-number">{{driver.license.number}}</span>
       <span class="license-class">{{licenseClassText}}</span>
     </div>
     <div class="right">

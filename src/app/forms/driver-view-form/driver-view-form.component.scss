@@ -2,18 +2,34 @@
 @import '../../../assets/styles/styles';
 @import '../../../assets/styles/font-icons';
 
-.information-container {
+$element-height: 18px;
+
+@mixin driver-view-form-container {
   display: flex;
   width: 100%;
   padding: 0 $default-margin;
   background: $white;
   font-size: $tiny-font-size;
-  line-height: 18px;
+  line-height: $element-height;
   border-bottom: $border;
 
   .left {
     width: 50%;
     padding: $default-margin 0;
+    border-right: $border;
+  }
+
+  .right {
+    width: 50%;
+    padding: $default-margin;
+    color: $dark-grey;
+  }
+}
+
+.information-container {
+  @include driver-view-form-container;
+
+  .left {
 
     .top {
       display: flex;
@@ -40,30 +56,19 @@
       .birth,
       .ssn {
         color: $dark-grey;
+
+        .bottom-label {
+          margin-right: 10px;
+        }
       }
     }
-  }
-
-  .right {
-    width: 50%;
-    padding: 13px 0;
-    color: $dark-grey;
   }
 }
 
 .equipment-associations-container {
-  display: flex;
-  width: 100%;
-  padding: 0 $default-margin;
-  background: $white;
-  font-size: $tiny-font-size;
-  line-height: 18px;
-  border-bottom: $border;
+  @include driver-view-form-container;
 
   .left {
-    width: 50%;
-    padding: $default-margin 0;
-    border-right: $border;
 
     .make-model-circle-wrapper {
       display: flex;
@@ -85,11 +90,6 @@
     }
   }
 
-  .right {
-    width: 50%;
-    padding: $default-margin 0 $default-margin $default-margin;
-    color: $dark-grey;
-  }
 }
 
 .price {
@@ -112,7 +112,7 @@
   width: 100%;
   background: $white;
   font-size: $tiny-font-size;
-  line-height: 18px;
+  line-height: $element-height;
   border-bottom: $border;
 
   .top {
@@ -129,7 +129,7 @@
       border-right: $border;
       align-items: center;
 
-      .license-plate-number {
+      .license-number {
         flex: 1;
         font-weight: bold;
       }

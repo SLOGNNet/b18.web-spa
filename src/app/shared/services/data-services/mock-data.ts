@@ -425,7 +425,7 @@ class MockData {
     position: 'Sales manager',
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
-    dateOfBirth: null,
+    dateOfBirth: new Date(),
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],

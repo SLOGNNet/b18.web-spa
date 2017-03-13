@@ -27,7 +27,6 @@ export class DriverViewComponent {
 
   constructor(private driverService: DriverService, private ngRedux: NgRedux<IAppState>, driverActions: DriverActions) {
     this.driverService.getDetails(1).subscribe(driver => {
-      console.log(driver);
       this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, driver });
       this.testDriver = driver;
     });
