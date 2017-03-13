@@ -1,24 +1,6 @@
 @import '../../../../../assets/styles/variables';
 
-.common {
-  width: 100%;
-  height: $form-control-height;
-  border: 0;
-  font-size: $small-font-size;
-  border-bottom: $border;
-  border-radius: $default-border-radius;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-}
-
 .primary {
-  border: 0;
   background: $blue;
   color: $white;
 
@@ -50,5 +32,30 @@
   &:hover {
     background: $btn-default-hover;
   }
+}
 
+.common {
+  border: 0;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.default-size {
+  width: 100%;
+  height: $form-control-height;
+  font-size: $small-font-size;
+}
+
+.small {
+  height: 30px;
+  padding: 2px 13px 0;
+  font-size: $tiny-font-size;
 }

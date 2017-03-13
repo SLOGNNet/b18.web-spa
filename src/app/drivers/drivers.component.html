@@ -1,8 +1,6 @@
 <multi-pane-layout>
   <first-pane>
     <div>
-      <bd-button class="add-button" [color]="'primary'" [text]="'Add'" (click)="onAdd()">
-      </bd-button>
       <driver-cards [selected]="selected" (select)='onSelect($event)' [drivers]="items"></driver-cards>
     </div>
   </first-pane>
