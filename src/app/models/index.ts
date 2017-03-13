@@ -10,6 +10,7 @@ export * from './trip';
 export * from './facility';
 export * from './driver';
 export * from './equipment';
+export * from './location';
 
 export * from './document';
 export * from './notification';

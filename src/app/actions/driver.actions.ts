@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Driver, Notification } from '../models';
-import { DriverService, NotificationService } from '../shared';
+import { Driver, Notification, Address } from '../models';
+import { DriverService, NotificationService, GoogleService } from '../shared';
 import { IListDataActions, IDetailDataActions } from './intefaces';
 
 @Injectable()
@@ -18,6 +18,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   static CREATE_NEW_DRIVER: string = 'CREATE_NEW_DRIVER';
   static GET_ALL_DRIVERS: string = 'GET_ALL_DRIVERS';
   constructor(
+    private _googleService: GoogleService,
     private driverService: DriverService,
     private notificatonService: NotificationService,
     private ngRedux: NgRedux<IAppState>) { }
@@ -57,15 +58,8 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   }
 
   getAll(): void {
-    debugger;
     this.driverService.getAll().subscribe(drivers => {
       this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, items: drivers });
     });
   }
-
-  private getSelectedDriver() {
-    const { selected } = this.ngRedux.getState().drivers;
-    return selected;
-  }
-
 }

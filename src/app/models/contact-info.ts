@@ -17,11 +17,12 @@ export class ContactInfo {
   value: string = '';
   type: ContactInfoType;
 
+  public static getPrimaryPhone(contactInfoList: Array<ContactInfo>): ContactInfo {
+    const info = contactInfoList.filter(item => {
+      return item.label === 'primaryPhone';
+    });
 
-  public static getPrimaryPhone(collection: Array<ContactInfo>): ContactInfo {
-    let result: ContactInfo = null;
-    result = collection.filter(item => item.label === 'primaryPhone')[0];
-    return result;
+    return info[0];
   }
 
   public static getContactInfoType(type: ContactInfoType): string {

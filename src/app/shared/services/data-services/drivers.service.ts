@@ -36,8 +36,7 @@ export class DriverService {
 
     MockData.drivers.forEach(d => {
       if (id === d.id) {
-        Object.assign(d, driver);
-        return;
+        d = Object.assign(d, driver);
       }
     });
   }

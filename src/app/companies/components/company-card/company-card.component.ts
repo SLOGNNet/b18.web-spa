@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Company } from '../../../models';
+import { Company, ContactInfo } from '../../../models';
 import { Load, LoadStatuses } from '../../../models';
 import { BaseCardComponent } from '../../../base';
 
@@ -15,7 +15,7 @@ export class CompanyCardComponent extends BaseCardComponent {
   croppedCompanyName: string;
 
   ngOnInit() {
-     this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
+    this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
   }
 
   loadStatusColor(status: LoadStatuses): string {
@@ -26,8 +26,12 @@ export class CompanyCardComponent extends BaseCardComponent {
     return Company.getStatusText(this.item.status);
   }
 
-   itemStatusColor(): string {
+  itemStatusColor(): string {
     return Company.getStatusColor(this.item.status);
   }
 
+  get phone() {
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.item.contacts[0].contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
+  }
 }

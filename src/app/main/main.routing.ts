@@ -22,10 +22,7 @@ const routes: Routes = [{
       path: 'drivers', loadChildren: () => DriversModule
     },
     {
-      path: 'loads', component: LoadsComponent, children: [{
-        path: ':id',
-        component: LoadEditComponent
-      }]
+      path: 'loads', component: LoadsComponent
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{
