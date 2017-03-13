@@ -14,6 +14,6 @@ import { find, map } from 'lodash';
 export class LoadViewModeCardComponent {
 
   @Input() private load: Load = MockData.loads[0];
-  @Input() stop: Stop = this.load.stops[0];
+  @Input() private stop: Stop = this.load.stops[0];
 
 }
