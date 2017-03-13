@@ -1,0 +1,89 @@
+<navigation-anchor id="information"></navigation-anchor>
+<bd-form-section [labelText]="'INFORMATION'">
+  <div class="information-container">
+    <div class="left">
+      <div class="top">
+        <bd-initials-circle class="initials-circle" [firstName]="driver.firstName" [lastName]="driver.lastName">
+        </bd-initials-circle>
+        <div class="top-right">
+          <div class="full-name">
+            {{driver.firstName}} {{driver.lastName}}
+          </div>
+          <div class="top-icons">
+            <span class="icon-mail"></span>
+            <span class="icon-call"></span>
+            <span class="icon-message"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="birth">
+          <span class="bottom-label">Birth:</span>
+          <span class="date-of-birth">{{driver?.dateOfBirth | date: 'dd/MM/yyyy'}}</span>
+        </div>
+        <div class="ssn">
+          <span class="bottom-label">SSN:</span>
+          <span class="ssn">{{driver.ssn}}</span>
+        </div>
+        <div class="driver-type">
+          {{driverType}}
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <bd-contact-info [contactCollection]="driver.contactInfo"></bd-contact-info>
+    </div>
+  </div>
+</bd-form-section>
+<navigation-anchor id="equipment-associations"></navigation-anchor>
+<bd-form-section [labelText]="'EQUIPMENT ASSOCIATIONS'">
+</bd-form-section>
+<div *ngFor="let associatedEquipment of driver.associatedEquipment" class="equipment-associations-container">
+  <div class="left">
+    <div class="make-model-circle-wrapper">
+      <span [style.background]="equipmentStatusColor(associatedEquipment.status)" class="status-circle"></span>
+      <span class="make-model">{{associatedEquipment.make}} {{associatedEquipment.model}}</span>
+    </div>
+    <div class="number">
+      {{associatedEquipment.number}}
+    </div>
+  </div>
+  <div class="right">
+    <div class="equipment">
+      {{equipmentModeText(associatedEquipment.mode)}}
+    </div>
+    <div class="pover-unit">
+      {{equipmentTypeText(associatedEquipment.status)}}
+    </div>
+  </div>
+</div>
+<div class="price">
+  <span>{{paymentTypeText}}:</span>
+  <span class="rate">$ {{driver.rate}}</span>
+</div>
+<navigation-anchor id="license"></navigation-anchor>
+<bd-form-section [labelText]="'License'">
+</bd-form-section>
+<div class="license-container">
+  <div class="top">
+    <div class="left">
+      <span class="license-number">{{driver.license.number}}</span>
+      <span class="license-class">{{licenseClassText}}</span>
+    </div>
+    <div class="right">
+      <span class="state-issued">{{driver.license.stateIssued}}</span>
+      <span class="date">{{driver.license.dateIssued | date: 'dd/MM/yyyy'}} - {{driver.license.expiration | date: 'dd/MM/yyyy'}}</span>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="restrictions-container">
+      <span class="bottom-label">Restrict:</span>
+      <span class="types">{{restrictionsTypes}}</span>
+    </div>
+    <div class="endorsments-container">
+      <span class="bottom-label">Endors:</span>
+      <span class="types">{{endorsmentsTypes}}</span>
+    </div>
+  </div>
+</div>

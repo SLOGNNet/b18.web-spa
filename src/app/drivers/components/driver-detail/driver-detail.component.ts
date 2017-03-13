@@ -16,10 +16,17 @@ import { DriverForm } from '../../../forms';
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
 
- private anchors = [{
-    id: 'driver-personal-information',
+  private anchors = [{
+    id: 'information',
     title: 'Information'
-  }];
+  }, {
+      id: 'equipment-associations',
+      title: 'Equipment Associations'
+    }, {
+      id: 'license',
+      title: 'License'
+    }];
+
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -27,6 +34,6 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
+    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
   }
 }
