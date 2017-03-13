@@ -22,7 +22,6 @@ export abstract class BaseListComponent<T> extends BasePane {
 
   ngAfterViewInit() {
     this.items$.subscribe((items) => {
-      debugger;
       this.items = items;
       this.subscribeToDetailsChildRoute();
     });
