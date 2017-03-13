@@ -10,7 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth';
 import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
-import { EmptyComponent } from '../empty';
+import { DriversModule } from '../drivers';
 
 const routes: Routes = [{
   path: '',
@@ -19,41 +19,8 @@ const routes: Routes = [{
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     {
-      path: 'drivers', component: DriversComponent, children: [
-         {
-          path: '0',
-          children: [
-            {
-              path: '',
-              component: EmptyComponent,
-              outlet: 'detailOutlet',
-            },
-            {
-              path: 'edit',
-              component: DriverEditComponent,
-              data: { new: true },
-              canDeactivate: [CanDeactivateGuard]
-            }
-          ]
-        },
-        {
-          path: ':id',
-          children: [
-            {
-              path: '',
-              component: DriverDetailComponent,
-              outlet: 'detailOutlet',
-            },
-            {
-              path: 'edit',
-              component: DriverEditComponent,
-              canDeactivate: [CanDeactivateGuard]
-            }
-          ]
-        }
-      ]
+      path: 'drivers', loadChildren: () => DriversModule
     },
-    { path: 'drivers/:id/messages', component: MessagesComponent },
     {
       path: 'loads', component: LoadsComponent, children: [{
         path: ':id',

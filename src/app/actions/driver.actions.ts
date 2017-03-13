@@ -57,6 +57,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   }
 
   getAll(): void {
+    debugger;
     this.driverService.getAll().subscribe(drivers => {
       this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, items: drivers });
     });
