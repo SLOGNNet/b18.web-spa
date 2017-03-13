@@ -1,14 +1,14 @@
 import { DriverActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Driver } from './models';
-import { addItem, updateItem, updateListItem, removeItem } from './utils';
+import { addItem, updateItem, updateNewItem, updateListItem, removeItem } from './utils';
 
 export interface IDriverState {
   items: Driver[];
   selected: Driver;
   isLoading: boolean;
 }
-const INITIAL_STATE: IDriverState = { items: [], selected: null, isLoading: false };
+const INITIAL_STATE: IDriverState = { items: [], selected: null, isLoading: false};
 
 export const driverReducer = createReducer(INITIAL_STATE, {
   [DriverActions.ADD_DRIVER_REQUEST](state, action) {
@@ -19,7 +19,7 @@ export const driverReducer = createReducer(INITIAL_STATE, {
   [DriverActions.ADD_DRIVER_SUCCESS](state, action) {
     return Object.assign({}, state, {
       items: addItem(state.items, action.driver),
-      selected: updateItem(state.selected, action.driver),
+      selected: updateNewItem(state.selected, action.driver, action.prevId),
       isLoading: false
     });
   },
@@ -44,6 +44,6 @@ export const driverReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: action.items.slice(), selected: null });
   },
   [DriverActions.SELECT_DRIVER](state, action) {
-    return Object.assign({}, state, { selected: action.driver });
+    return Object.assign({}, state, { selected: action.driver, isLoading: false});
   },
 });
