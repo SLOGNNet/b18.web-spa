@@ -22,7 +22,7 @@ import { find, map } from 'lodash';
 export class LoadDetailComponent extends BaseDetailComponent<Load> {
   private load: Load = MockData.loads[0];
 
-  public anchors = [{
+  private anchors = [{
     id: 'customer',
     title: 'Customer'
   },  {
