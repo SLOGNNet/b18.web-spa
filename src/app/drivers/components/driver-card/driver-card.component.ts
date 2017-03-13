@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Driver } from '../../../models';
+import { Driver, ContactInfo } from '../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { BaseCardComponent } from '../../../base';
 
@@ -26,4 +26,8 @@ export class DriverCardComponent extends BaseCardComponent {
     return Driver.getTypeText(this.item.type);
   }
 
+  get phone(): string {
+    const phoneInfo = ContactInfo.getPrimaryPhone(this.item.contactInfo);
+    return phoneInfo ? phoneInfo.value : '';
+  }
 }
