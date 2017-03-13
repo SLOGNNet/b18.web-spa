@@ -22,6 +22,7 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
 
   ngOnChanges(changes: any) {
     if (changes.items) {
+    if (changes.items || changes.formArray) {
       this.items = this.items || [];
       this.initForm();
     }

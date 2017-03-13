@@ -26,7 +26,10 @@ export class ContactForm extends BaseForm {
     { name: 'lastName', validators: [] },
     { name: 'email', validators: [] },
     { name: 'position', validators: [] },
-    { name: 'locationId', validators: [] }
+    { name: 'locationId', validators: [] },
+    { name: 'location', validators: [] },
+    { name: 'contactInfo', validators: [] },
+    { name: 'location', validators: [] }
   ];
 
   constructor(

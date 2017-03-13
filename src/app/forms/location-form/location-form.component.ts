@@ -17,12 +17,14 @@ export class LocationForm extends BaseForm {
   @Input('group') locationForm: FormGroup;
   @Output() update = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder,  elementRef: ElementRef) {
+  constructor(private formBuilder: FormBuilder, elementRef: ElementRef) {
     super(elementRef);
   }
 
   ngOnChanges(changes: any) {
-    this.initForm();
+    if (changes.location || changes.locationForm) {
+      this.initForm();
+    }
   }
 
   initForm() {
