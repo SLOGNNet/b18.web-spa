@@ -19,10 +19,11 @@ export class StickyDirective {
   }
 
   private _updateWidth() {
-    const parentWidth = this._getParentWidth();
+    let parentWidth = this._getParentWidth();
+    parentWidth += 'px';
 
-    if (this.elementRef.nativeElement.clientWidth !== parentWidth) {
-      this.elementRef.nativeElement.style.width = parentWidth + 'px';
+    if (this.elementRef.nativeElement.style.width !== parentWidth) {
+      this.elementRef.nativeElement.style.width = parentWidth;
       this.cdr.detectChanges();
     }
   }

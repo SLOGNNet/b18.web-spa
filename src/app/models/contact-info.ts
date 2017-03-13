@@ -28,4 +28,27 @@ export class ContactInfo {
   public static getContactInfoType(type: ContactInfoType): string {
     return contactInfoTypes[type];
   }
+
+  public static сreateDefaultList() {
+    return [{
+      label: 'primaryPhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'alternativePhone',
+      value: '',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'fax',
+      value: '',
+      type: ContactInfoType.Fax
+    },
+    {
+      label: 'email',
+      value: '',
+      type: ContactInfoType.Email
+    }];
+  }
 }
