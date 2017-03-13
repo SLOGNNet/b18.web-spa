@@ -17,7 +17,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 8px 0;
+  padding: 11px 0;
   border: 0;
   background: none;
   box-shadow: none;
@@ -43,6 +43,7 @@
   overflow: hidden;
   width: 100%;
   padding: 0 $default-margin;
+  min-height: $form-control-height;
   border-bottom: $border;
   margin-bottom: 0;
   flex-flow: row wrap;
@@ -96,15 +97,9 @@
       flex-grow: 1;
       min-height: $form-control-height;
 
-      input {
-        @include input-textarea;
-      }
-
+      input,
       textarea {
         @include input-textarea;
-        overflow: hidden;
-        align-self: flex-start;
-        margin-top: 1px;
       }
     }
 
