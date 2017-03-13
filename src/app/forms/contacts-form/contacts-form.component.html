@@ -4,4 +4,4 @@
    <contact-form [group]='data.group' [contact]='data.item' [disabled]="disabled" [locations]="locations" [viewMode]="viewMode"></contact-form>
  </div>
 </template>
-<bd-add-button class='bd-form-control' (click)='addNewItem()' [disabled]="disabled" [suffixLabel]="'Contact'"></bd-add-button>
+<bd-add-button class='bd-form-control' (onClick)='addNewItem()' [suffixLabel]="'Contact'"></bd-add-button>
