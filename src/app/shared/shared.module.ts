@@ -64,6 +64,7 @@ import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
 import { EmailValidator } from './validators';
 import { BdContactInfoComponent } from './components/bd-contact-info';
+import { BdViewDetailComponent } from './components/bd-view-detail';
 
 @NgModule({
   providers: [
@@ -135,7 +136,8 @@ import { BdContactInfoComponent } from './components/bd-contact-info';
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
-    BdContactInfoComponent
+    BdContactInfoComponent,
+    BdViewDetailComponent
   ],
   imports: [
     CommonModule,
@@ -208,7 +210,8 @@ import { BdContactInfoComponent } from './components/bd-contact-info';
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
-    BdContactInfoComponent
+    BdContactInfoComponent,
+    BdViewDetailComponent
   ]
 })
 export class SharedModule {
