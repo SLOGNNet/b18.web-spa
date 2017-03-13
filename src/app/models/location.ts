@@ -13,26 +13,7 @@ export class Location {
     const result = new Location();
     result.id = generateNewId();
     result.address = Address.create();
-    result.contactInfo = [{
-      label: 'primaryPhone',
-      value: '',
-      type: ContactInfoType.Phone
-    },
-    {
-      label: 'alternativePhone',
-      value: '',
-      type: ContactInfoType.Phone
-    },
-    {
-      label: 'fax',
-      value: '',
-      type: ContactInfoType.Fax
-    },
-    {
-      label: 'email',
-      value: '',
-      type: ContactInfoType.Email
-    }];
+    result.contactInfo = ContactInfo.create();
     return result;
   }
 }
