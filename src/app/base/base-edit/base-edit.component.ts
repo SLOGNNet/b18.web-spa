@@ -54,7 +54,7 @@ export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
   }
 
   private onItemSave(item) {
-    const changedItem = merge(cloneDeep(this.selectedItem), item);
+    const changedItem = cloneDeep(item);
     if (this.isNew) {
       this.isNew = false;
       this.actions.add(changedItem);

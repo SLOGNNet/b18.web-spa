@@ -5,4 +5,5 @@ export * from './commodity.actions';
 export * from './stop.actions';
 export * from './equipment.actions';
 export * from './driver.actions';
+export * from './location.actions';
 export * from './intefaces';

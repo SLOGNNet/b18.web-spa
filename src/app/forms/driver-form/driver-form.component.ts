@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
-import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { BdFormBuilder, BdFormGroup, FormValidationService, GoogleService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -24,9 +24,11 @@ export class DriverForm extends BaseForm {
   driverForm: FormGroup;
   paymentsTypes: Array<any>;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private validationService: FormValidationService,
+    private googleService: GoogleService,
     private enumHelperService: EnumHelperService,
     elementRef: ElementRef) {
     super(elementRef);
@@ -61,9 +63,9 @@ export class DriverForm extends BaseForm {
       paymentType: [this.driver.paymentType],
       ssn: [this.driver.ssn],
       rate: [this.driver.rate],
-      address: this.formBuilder.group({ }),
+      address: this.formBuilder.group({}),
       contactInfo: this.formBuilder.array([]),
-      license: this.formBuilder.group({ })
+      license: this.formBuilder.group({})
     });
   }
 }

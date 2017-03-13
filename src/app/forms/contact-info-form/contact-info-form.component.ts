@@ -26,9 +26,12 @@ export class ContactInfoForm extends BaseForm {
   }
 
   initForm() {
-    this.contactInfoForm.addControl(
-      'info',
-      this._formBuilder.control(this.contactInfo.value, [])
-    );
+    const keys = Object.keys(this.contactInfo);
+
+    keys.forEach(key => {
+      this.contactInfoForm.addControl(
+        key, this._formBuilder.control(this.contactInfo[key], [])
+      );
+    });
   }
 }

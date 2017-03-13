@@ -9,7 +9,7 @@ import { Stop, StopTypes } from '../../../models';
 })
 export class StopsLineComponent {
   @Input() lineColor: string = 'lightGray';
-  @Input() stops: Array<any>;
+  @Input() stops: Array<Stop>;
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onStopSelect(selected) {

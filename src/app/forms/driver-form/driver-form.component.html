@@ -11,8 +11,8 @@
     <contacts-info-form [items]="driver.contactInfo" [disabled]="disabled" [formArray]='driverForm.controls.contactInfo' [viewMode]="viewMode"></contacts-info-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
-		<address-form [group]='driverForm.controls.address' [disabled]="disabled" [address]='driver.address' [isNameFieldVisible]="false" [viewMode]="viewMode"></address-form>
+	<bd-form-section [labelText]="'ADDRESS'" >
+		<address-form [group]='driverForm.controls.address' [address]='driver.address' [viewMode]="viewMode" [disabled]="disabled" ></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
@@ -23,7 +23,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
-		<license-form [group]='driverForm.controls.license' [disabled]="disabled" [license]='driver.license' [viewMode]="viewMode"></license-form>
+		<license-form [group]='driverForm.controls.license' [disabled]="disabled" [license]='driver.license' [viewMode]="viewMode" [disabled]="disabled"></license-form>
 	</bd-form-section>
 	<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 		<div class="button-group">

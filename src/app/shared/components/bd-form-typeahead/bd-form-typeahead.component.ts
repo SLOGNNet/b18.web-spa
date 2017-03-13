@@ -47,7 +47,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
     this.value = v;
     // fire change callback only for selected from list items
     // if user change input value - consider it as empty result
-    this._onChangeCallback('');
+
     this.valueChange.emit(v);
   }
 
@@ -69,12 +69,13 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
     event.stopPropagation();
     this.changeValue('');
-
+    this._onChangeCallback('');
     this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
     this.changeValue('');
+    this._onChangeCallback('');
     this.onFooterButtonClick.emit();
   }
 
