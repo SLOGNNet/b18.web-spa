@@ -1,26 +1,31 @@
-<span class="search-icon">
-  <i class="icon-search"></i>
-</span>
-<input type="text" placeholder="Search for anything by number, name, date or amount. You can also type action you would like to perform...">
+<div class="search">
+  <span class="search-icon">
+    <i class="icon-search"></i>
+  </span>
+  <input type="text" placeholder="Search for anything by number, name, date or amount. You can also type action you would like to perform...">
+</div>
 <div class="right">
-  <a [routerLink]="['/loads/0']"><bd-button class="new-load" [color]="'primary'" [size]="'small'" [text]="'New Load'"></bd-button></a>
-<bd-notification-popover
-    [width]="400"
-    [notificationType]="notificationTypeEnum.Task"
-    [items]="testNotifications">
-</bd-notification-popover>
+  <a [routerLink]="['/loads/0']">
+    <bd-button class="new-load" [color]="'primary'" [size]="'small'" [text]="'New Load'"></bd-button>
+  </a>
 
-<bd-notification-popover
-    [width]="400"
-    [notificationType]="notificationTypeEnum.Message"
-    [items]="testNotifications">
-</bd-notification-popover>
+  <bd-notification-popover
+      [width]="400"
+      [notificationType]="notificationTypeEnum.Task"
+      [items]="testNotifications">
+  </bd-notification-popover>
 
-<bd-notification-popover
-    [width]="400"
-    [notificationType]="notificationTypeEnum.Notification"
-    [items]="testNotifications">
-</bd-notification-popover>
+  <bd-notification-popover
+      [width]="400"
+      [notificationType]="notificationTypeEnum.Message"
+      [items]="testNotifications">
+  </bd-notification-popover>
+
+  <bd-notification-popover
+      [width]="400"
+      [notificationType]="notificationTypeEnum.Notification"
+      [items]="testNotifications">
+  </bd-notification-popover>
 
   <span>
     <a (click)="logout()"><i class="icon-user"></i></a>
