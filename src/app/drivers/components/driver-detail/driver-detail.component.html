@@ -1,9 +1,7 @@
 <div *ngIf="selectedItem">
   <bd-button class="add-button" [color]="'primary'" [text]="'Edit'" (click)="onEdit()">
   </bd-button>
-  <!--<form-navigation
-    sticky
-    [title]="'Driver'"
-    [anchors]="anchors">
-  </form-navigation>-->
+  <form-navigation [title]="'Driver'" [anchors]="anchors">
+  </form-navigation>
+  <driver-view-form [driver]="selectedItem"></driver-view-form>
 </div>
