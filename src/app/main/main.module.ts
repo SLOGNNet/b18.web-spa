@@ -15,11 +15,11 @@ import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
-import { DriversComponent, DriverEditComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
-import { MultiPaneLayoutComponent } from '../multi-pane-layout';
+import { DriversModule } from '../drivers';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
 import { MessageComponent } from '../drivers/messages/message';
+
 import {
   LoadsComponent,
   LoadEditComponent,
@@ -41,17 +41,13 @@ import {
     SharedModule,
     BdFormsModule,
     NavigationBarModule,
-    MainRoutingModule
+    MainRoutingModule,
+    DriversModule
   ],
   declarations: [
     MainComponent,
     TopPanelComponent,
-    MultiPaneLayoutComponent,
     HomeComponent,
-    DriversComponent,
-    DriverEditComponent,
-    DriverCardsComponent,
-    DriverCardComponent,
     MessagesComponent,
     MessageComponent,
     LoadsComponent,

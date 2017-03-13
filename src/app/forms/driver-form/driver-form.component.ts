@@ -46,6 +46,7 @@ export class DriverForm extends BaseForm {
     }
 
     if (driver && isValid) {
+      this.driverForm.markAsPristine();
       this.save.emit(driver);
     }
   }

@@ -1,14 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Load } from '../models';
 import { IDetailDataActions } from '../../actions';
 import { ViewMode } from '../../shared/enums';
 import { cloneDeep, merge } from 'lodash';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
+import { BasePane } from '../base';
 
-export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
+export abstract class BaseEditComponent<T> extends BasePane implements CanComponentDeactivate {
   protected isLoading = false;
   protected isNew = false;
   protected selectedItem: T = null;
@@ -17,17 +18,21 @@ export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
   constructor(private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
-    private route: ActivatedRoute,
+    route: ActivatedRoute,
+    router: Router,
     private location: Location) {
+    super(router, route);
     isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;
     });
     selected$.subscribe(item => {
+      this.redirectIfNewCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
     });
     this.route.params.subscribe(params => {
-      this.onQueryParams(params);
+      this.checkNewItem();
     });
+     this.checkNewItem();
   }
 
   // CanComponentDeactivate inteface
@@ -42,14 +47,22 @@ export abstract class BaseEditComponent<T> implements CanComponentDeactivate {
 
   protected abstract isDetailsChanged();
 
-  private onQueryParams(params) {
-    const id = Number.parseInt(params['id']);
-    this.isNew = id === 0;
+  redirectIfNewCreated(prevSelected, newSelected) {
+    if (newSelected && prevSelected
+     && !prevSelected['prevId']
+     && newSelected['prevId']
+     && prevSelected['id'] === newSelected['prevId']) {
+      const newId = newSelected['id'];
+      super.rediretToId(newId);
+    }
+  }
+
+  private checkNewItem() {
+    const snapshot = this.route.snapshot;
+    const paramId = Number.parseInt(snapshot.params['id']);
+    this.isNew = paramId === 0 || this.route.snapshot.data['new'];
     if (this.isNew) {
       this.actions.createNew();
-    }
-    else if (!isNaN(id)) {
-      this.actions.select(id);
     }
   }
 
