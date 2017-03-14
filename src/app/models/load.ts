@@ -2,6 +2,7 @@ import { Stop } from './stop';
 import { Company } from './company';
 import { Commodity } from './commodity';
 import { Location } from './location';
+import { Contact } from './contact';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
@@ -137,5 +138,11 @@ export class Load {
 
   public static getFreightType(fType: FreightType): string {
     return freightTypes[fType];
+  }
+
+  public static getSelectedContact(contacts: Contact[], id: number): Contact {
+    let result = null;
+    result = contacts.find(c => c.id === id);
+    return result;
   }
 }
