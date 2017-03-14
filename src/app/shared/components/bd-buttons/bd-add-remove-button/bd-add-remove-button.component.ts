@@ -17,7 +17,7 @@ export class BdAddRemoveButtonComponent {
 
   @HostListener('click', ['$event'])
   handleClick(event): void {
-    if (!event.target.classList.contains('btn-icon')) return;
+    if (!event.target.classList.contains('btn-icon') || this.disabled) return;
     this.onClick.emit(event);
   }
 }
