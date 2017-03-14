@@ -57,10 +57,8 @@ export class BdFormDatePicker implements ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  onClickOutside() {
-    setTimeout(() => {
-      this.datepicker.close();
-    }, 0);
+  onClickOutside(event) {
+    this.datepicker.close();
   }
 
 
