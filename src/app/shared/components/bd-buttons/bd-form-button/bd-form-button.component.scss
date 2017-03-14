@@ -3,13 +3,14 @@
 .form-button {
   border: 0;
   background: transparent;
-  
+
   &.default {
     color: $blue;
     font-size: $small-font-size;
   }
 
   &.small {
+    padding: 0;
     color: $dark-grey;
     font-size: $tiny-font-size;
 

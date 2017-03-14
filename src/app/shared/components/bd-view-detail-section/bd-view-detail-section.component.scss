@@ -1,0 +1,20 @@
+@import '../../../../assets/styles/variables';
+
+.detail-container {
+  .title {
+    display: flex;
+    padding: 0 $default-margin;
+    margin: 25px 0 15px;
+    justify-content: space-between;
+
+    label {
+      font-size: $tiny-font-size;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      word-spacing: 3px;
+    }
+    
+    .buttons-panel {}
+  }
+}

@@ -1,0 +1,30 @@
+<div class="customer-view-container">
+    <section class="company-info">
+        <bd-initials-circle
+            [firstName]="companyNameSplitted[0]"
+            [lastName]="companyNameSplitted[1]"
+            class="circle"
+            size='default'>
+        </bd-initials-circle>
+        <div class="info-container">
+            <span class="company-name ellipsis">{{company.name}}</span>
+            <span class="company-mc ellipsis">MC# {{company.mc}}</span>
+        </div>
+    </section>
+    <section class="contact-info">
+        <bd-initials-circle
+            [firstName]="selectedContact.firstName"
+            [lastName]="selectedContact.lastName"
+            class="circle"
+            size='default'>
+        </bd-initials-circle>
+        <div class="info-container">
+            <span class="contact-name ellipsis">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
+            <span class="buttons-panel">
+                <button class="icon-fax"></button>
+                <button class="icon-call"></button>
+                <button class="icon-message"></button>
+            </span>
+        </div>
+    </section>
+</div>

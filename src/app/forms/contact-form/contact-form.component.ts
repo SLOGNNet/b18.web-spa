@@ -45,7 +45,7 @@ export class ContactForm extends BaseForm {
     this.fields.forEach(field => {
       this.contactForm.addControl(
         field.name,
-        this._formBuilder.control(this.contact[field.name], field.validators)
+        this._formBuilder.control({value: this.contact[field.name], disabled: this.disabled}, field.validators)
       );
     });
   }

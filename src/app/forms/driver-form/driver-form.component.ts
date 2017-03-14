@@ -37,7 +37,23 @@ export class DriverForm extends BaseForm {
   }
 
   ngOnChanges(changes: any) {
-    this.initForm();
+    if (changes.disabled) {
+      this.setFormDisabled(this.disabled);
+    }
+
+    if (changes.driver) {
+      this.initForm();
+    }
+  }
+
+  setFormDisabled(isDisabled) {
+    if (this.driverForm) {
+      if (isDisabled) {
+        this.driverForm.disable();
+      } else {
+        this.driverForm.enable();
+      }
+    }
   }
 
   submit(driver: Driver, isValid: boolean) {
@@ -58,12 +74,12 @@ export class DriverForm extends BaseForm {
   initForm() {
     this.driverForm = this.formBuilder.group({
       id: [this.driver.id],
-      firstName: [this.driver.firstName],
-      lastName: [this.driver.lastName],
-      dateOfBirth: [this.driver.dateOfBirth],
-      paymentType: [this.driver.paymentType],
-      ssn: [this.driver.ssn],
-      rate: [this.driver.rate],
+      firstName: [{value: this.driver.firstName, disabled: this.disabled}],
+      lastName: [{value: this.driver.lastName, disabled: this.disabled}],
+      dateOfBirth: [{value: this.driver.dateOfBirth, disabled: this.disabled}],
+      paymentType: [{value: this.driver.paymentType, disabled: this.disabled}],
+      ssn: [{value: this.driver.ssn, disabled: this.disabled}],
+      rate: [{value: this.driver.rate, disabled: this.disabled}],
       address: this.formBuilder.group({}),
       contactInfo: this.formBuilder.array([]),
       license: this.formBuilder.group({})
