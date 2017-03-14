@@ -21,10 +21,6 @@ export class ContactInfoForm extends BaseForm {
     super(elementRef);
   }
 
-  get contactInfoLabelText() {
-    return this.contactInfo.label.split(/(?=[A-Z])/).join(' ');
-  }
-
   ngOnChanges(changes: any) {
     this.initForm();
   }
