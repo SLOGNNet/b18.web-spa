@@ -40,7 +40,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
       super(loadActions, ngRedux.select(state => state.loads.selected), router, route);
   }
 
-    get selectedContact(): Contact{
+    get selectedContact(): Contact {
       return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
     };
 
