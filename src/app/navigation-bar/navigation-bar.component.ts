@@ -34,7 +34,14 @@ export class NavigationBarComponent {
     {
         label: 'Drivers',
         icon: 'icon',
-        link: '/drivers/1'
+        link: '/drivers',
+        items: [{
+            label: 'Drivers',
+            link: '/drivers'
+          }, {
+          label: 'New Driver',
+          link: '/drivers/0/edit'
+        }]
     },
     {
         label: 'Loads',

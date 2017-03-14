@@ -1,0 +1,13 @@
+<multi-pane-layout>
+  <first-pane>
+    <div>
+      <driver-cards [selected]="selected" (select)='onSelect($event)' [drivers]="items"></driver-cards>
+    </div>
+  </first-pane>
+  <second-pane>
+    <router-outlet name="detailOutlet"></router-outlet>
+  </second-pane>
+  <third-pane>
+    <router-outlet></router-outlet>
+  </third-pane>
+</multi-pane-layout>

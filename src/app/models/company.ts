@@ -1,9 +1,9 @@
-import { Address } from './address';
+import { Location } from './location';
 import { Contact } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
  let result = {};
@@ -25,26 +25,18 @@ function createStatusText() {
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 
-@JsonObject()
 export class Company {
-  @JsonMember
   id: number;
-  @JsonMember
-  name: string = 'CH ROBINSON COMPANY INC';
-  @JsonMember({ elements: Contact })
+  name: string = '';
+  @Type(() => Contact)
   contacts: Contact[];
-  @JsonMember
   status: CompanyStatuses;
-  @JsonMember
   type: CompanyTypes;
-  @JsonMember
-  mc: string = '384859';
-  @JsonMember
+  mc: string = '';
   taxId: string = '';
-  @JsonMember({ elements: Address })
-  addresses: Array<Address>;
-  @JsonMember
-  email: string = 'carrier.services@chrobinson.com';
+  @Type(() => Location)
+  locations: Array<Location>;
+  email: string = '';
   loads: Array<Load>;
 
   static create(): Company{
@@ -64,7 +56,7 @@ export class Company {
   }
 
   constructor() {
-    this.addresses = new Array<Address>();
+    this.locations = new Array<Location>();
     this.contacts = new Array<Contact>();
   }
 }

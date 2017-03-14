@@ -11,12 +11,12 @@ import { BaseForm } from '../base-form';
   styleUrls: ['./address-form.component.scss']
 }, BaseForm.metaData))
 export class AddressForm extends BaseForm {
+  @Input() disabled: boolean = false;
   @Input()
   public address: Address;
   @Input('group')
   public addressForm: FormGroup;
   @Output() update = new EventEmitter();
-  @Output() updatePlace = new EventEmitter();
   private _placeSource: any[];
   private _placeQuery: string = '';
   private _map = {
@@ -24,28 +24,14 @@ export class AddressForm extends BaseForm {
     latitude: 0,
     longitude: 0
   };
-  private fields = [
-    { name: 'id', validators: [] },
-    { name: 'name', validators: [Validators.required] },
-    { name: 'phone', validators: [Validators.required] },
-    { name: 'fax', validators: [] },
-    { name: 'state', validators: [] },
-    { name: 'zip', validators: [] },
-    { name: 'phoneExtension', validators: [] },
-    { name: 'faxExtension', validators: [] },
-    { name: 'streetAddress1', validators: [Validators.required] },
-    { name: 'streetAddress2', validators: [] },
-    { name: 'city', validators: [] },
-    { name: 'latitude', validators: [] },
-    { name: 'longitude', validators: [] }
-  ];
+
 
   constructor(
     private _cdr: ChangeDetectorRef,
     private _formBuilder: FormBuilder,
     private _googleService: GoogleService,
     element: ElementRef
-    ) {
+  ) {
     super(element);
   }
 
@@ -56,17 +42,18 @@ export class AddressForm extends BaseForm {
   }
 
   initForm() {
-    this.fields.forEach(field => {
+    const fields = this._createFields();
+    fields.forEach(field => {
       this.addressForm.addControl(
         field.name,
-        this._formBuilder.control(this.address[field.name], field.validators)
+        this._formBuilder.control({value: this.address[field.name], disabled: this.disabled}, field.validators)
       );
     });
-      this.addressForm.valueChanges.subscribe((value) => {
-        if (this.addressForm.valid) {
-           this.update.emit(value);
-        }
-      });
+    this.addressForm.valueChanges.subscribe((value) => {
+      if (this.addressForm.valid) {
+        this.update.emit(value);
+      }
+    });
   }
 
   onRemoveMap() {
@@ -78,6 +65,7 @@ export class AddressForm extends BaseForm {
       {},
       this.addressForm.value,
       {
+        name: '',
         city: '',
         state: '',
         zip: '',
@@ -90,10 +78,36 @@ export class AddressForm extends BaseForm {
     this._updateMap();
   }
 
+  onAddressUpdate(address: Address) {
+    this.addressForm.setValue(Object.assign(
+      {},
+      this.addressForm.value, address
+    ));
+
+    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress1);
+  }
+
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
-      this.updatePlace.emit({addressId: this.address.id, placeId: place.place_id});
+      this._googleService.getDetails(place.place_id).subscribe(detail => {
+        this.onAddressUpdate(Object.assign({}, this.address, detail));
+      });
     }
+  }
+
+  private _createFields() {
+    const fields = [
+      { name: 'id', validators: [] },
+      { name: 'state', validators: [] },
+      { name: 'zip', validators: [] },
+      { name: 'streetAddress1', validators: [] },
+      { name: 'streetAddress2', validators: [] },
+      { name: 'city', validators: [] },
+      { name: 'latitude', validators: [] },
+      { name: 'longitude', validators: [] }
+    ];
+
+    return fields;
   }
 
   private _initPlaceTypeahead() {

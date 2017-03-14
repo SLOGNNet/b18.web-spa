@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'bd-button',
@@ -10,4 +10,5 @@ export class BdButtonComponent {
   @Input() color: 'primary' | 'default' = 'default';
   @Input() disabled: boolean = false;
   @Input() text: any;
+  @Input() size: 'default-size' | 'small' = 'default-size';
 }

@@ -2,7 +2,7 @@
 $white: #fff;
 $black: #30353b;
 $shark: #23282d;
-$dark-grey: #b3b2b2;
+$dark-grey: #a7a7a7;
 $grey: #d7d8db;
 $light-grey: #f0f0f0;
 $dirty-grey: #b7bcc1;
@@ -19,7 +19,13 @@ $red: #fc3b3b;
 $light-red: #ffebeb;
 $dark-blue: #3d454d;
 $light-black: #2a2e33;
+$plum: #d289dd;
+$primrose: #dfd78f;
 
+
+/* load view mode colors */
+$pickup-view-mode-color: $plum;
+$dropoff-view-mode-color: $primrose;
 /*  */
 $text-color: $black;
 $active-color: $blue;
@@ -58,26 +64,42 @@ $default-border-radius: 3px;
 $base-font-size: 16px;
 
 $default-font-size: 1rem;
-$mini-font-size: .625rem;
-$tiny-font-size: .75rem;
-$small-font-size: .875rem;
+$micro-font-size: .5625rem; // 9px
+$mini-font-size: .625rem; // 10px
+$tiny-font-size: .75rem; // 12px
+$low-font-size: .8125rem; // 13px
+$small-font-size: .875rem; // 14px
 $large-font-size: 1.25rem;
 $extra-large-font-size: 2rem;
+
+$input-label-font-size: $micro-font-size;
+$form-control-font-size: $low-font-size;
+
+
 $top-panel-icon-size: 19px;
 
 @font-face {
   font-family: 'SFUIText-Regular';
   src: ('../assets/fonts/sf-regular.woff');
 }
-/* default input height */
-$form-control-height: 50px;
+/* form control height */
+$form-control-height: 40px;
 $horizontal-scroll-container-height: 43px;
+
+/* top panel height */
+$top-panel-height: 50px;
+
+/* circle-radius */
+$circle-radius: 50px;
+
+/* card height */
+$card-height: 92px;
 
 /* form navigation */
 $form-navigation-height: 91px;
 
 /* */
-$default-margin: 17px;
+$default-margin: 13px;
 $popover-margin: 15px;
 
 /* zIndexes */

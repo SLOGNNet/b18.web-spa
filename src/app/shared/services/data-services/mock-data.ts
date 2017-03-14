@@ -2,82 +2,55 @@ import {
   Load, Document, Company, Address, CompanyStatuses, CompanyTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
-  FreightType, Facility, Trip,
-  StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification } from './models';
+  FreightType, Facility, Trip, ContactInfoType, ContactInfo,
+  StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
+  AppointmentTypes, StopAction, TripStop, Location
+} from './models';
 class MockData {
+
   public addresses: Array<Address> = [{
     id: 1,
-    name: 'Main Office',
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: '',
     city: 'Eden Prairie',
-    phone: '(925) 937-8500',
     state: 'MN',
-    zip: '55347',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
   {
     id: 2,
-    name: 'Main Office',
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
   {
     id: 3,
-    name: 'Main Office',
     streetAddress1: '641 East Watkins Street',
     streetAddress2: '',
     city: 'Phoenix',
-    phone: '(602) 256-9470',
     state: 'AZ',
-    zip: '85004',
-    fax: '(602)-256-0631',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
   {
     id: 4,
-    name: 'Main Office',
     streetAddress1: '3101 Packerland Drive, Green Bay, WI, United States',
     streetAddress2: '',
     city: 'Green Bay',
-    phone: '(800) 558-6767',
     state: 'WI',
-    zip: '54313',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   },
   {
     id: 5,
-    name: 'Main Office',
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
-    phone: '(312) 326-8000',
     state: 'IL',
-    zip: '60490',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 40.795675,
     longitude: -73.93600099999998
   }
@@ -85,114 +58,137 @@ class MockData {
 
   public customerBillingAddresses: Array<Address> = [{
     id: 3,
-    name: 'Billing Address',
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'MN',
-    zip: '33708',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
   {
     id: 4,
-    name: 'Billing Address',
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
   {
     id: 5,
-    name: 'Billing Address',
     streetAddress1: 'BROKER_BILLING_ADDRESS',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
-    phone: '(972) 669-4259',
     state: 'TX',
-    zip: '75240',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
   {
     id: 6,
-    name: 'Billing Address',
     streetAddress1: 'PO BOX 2545',
     streetAddress2: '',
     city: 'Green Bay',
-    phone: '(920)-592-6867',
     state: 'WI',
-    zip: '54313',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
   {
     id: 7,
-    name: 'Billing Address',
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
-    phone: '(312) 326-8000',
     state: 'IL',
-    zip: '60490',
-    fax: '',
-    phoneExtension: '',
-    faxExtension: '',
     latitude: 0,
     longitude: 0
   },
   ];
 
+  public contactInfo: Array<ContactInfo> = [
+    {
+      label: 'primaryPhone',
+      value: '213123123',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'alternativePhone',
+      value: '12424234',
+      type: ContactInfoType.Phone
+    },
+    {
+      label: 'fax',
+      value: 'fax@gmail.comj',
+      type: ContactInfoType.Fax
+    }
+  ];
+
+  public locations: Array<Location> = [
+    {
+      id: 1,
+      name: 'Main Office',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 2,
+      name: 'Main Office',
+      address: this.addresses[1],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 3,
+      name: 'Billing Address',
+      address: this.addresses[2],
+      contactInfo: this.contactInfo.slice()
+    },
+    {
+      id: 4,
+      name: 'Billing Address',
+      address: this.addresses[3],
+      contactInfo: this.contactInfo.slice()
+    }
+  ];
+
   public contacts: Array<Contact> = [{
-   id: 1,
-   firstName: 'Jason',
-   lastName: 'Chang',
-   personalEmail: 'CHANJAS@chrobinson.com',
-   position: 'Sales manager',
-   addressId: 1
- },
- {
-   id: 2,
-   firstName: 'Scott',
-   lastName: 'Spearow',
-   personalEmail: 'sspearow@TQL.com',
-   position: 'Sales manager',
-   addressId: 2
- },
- {
-   id: 3,
-   firstName: 'Emma',
-   lastName: 'Watson',
-   personalEmail: 'Emma@TQL.com',
-   position: 'Sales manager',
-   addressId: 3
- },
- {
-   id: 4,
-   firstName: 'Johnny',
-   lastName: 'Depp',
-   personalEmail: 'Johnny@TQL.com',
-   position: 'Sales manager',
-   addressId: 4
- }
- ];
+    id: 1,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    contactInfo: this.contactInfo.slice(),
+    position: 'Sales manager',
+    locationId: 1,
+    location: this.locations[0]
+  },
+  {
+    id: 2,
+    firstName: 'Scott',
+    middleName: 'Chang',
+    lastName: 'Spearow',
+    position: 'Sales manager',
+    contactInfo: this.contactInfo.slice(),
+    locationId: 2,
+    location: this.locations[1]
+  },
+  {
+    id: 3,
+    firstName: 'Emma',
+    middleName: 'Chang',
+    lastName: 'Watson',
+    position: 'Sales manager',
+    contactInfo: this.contactInfo.slice(),
+    locationId: 3,
+    location: this.locations[2]
+  },
+  {
+    id: 4,
+    firstName: 'Johnny',
+    middleName: 'Chang',
+    lastName: 'Depp',
+    position: 'Sales manager',
+    contactInfo: this.contactInfo.slice(),
+    locationId: 4,
+    location: this.locations[3]
+  }
+  ];
 
   public documents: Array<Document> = [
     {
@@ -256,24 +252,36 @@ class MockData {
     palletCount: 42,
     weight: 0
   }
-];
+  ];
 
   public facilities: Array<Facility> = [{
     id: 1,
     name: 'Larede, TX',
-    address: this.addresses[0]
+    address: this.addresses[0],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'San Francisco, CA',
-    address: this.addresses[1]
+    address: this.addresses[1],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 1,
     name: 'Los Angeles, CA',
-    address: this.addresses[2]
+    address: this.addresses[2],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }, {
     id: 2,
     name: 'Los Altos, CA',
-    address: this.addresses[3]
+    address: this.addresses[3],
+    contactInfo: this.contactInfo.slice(),
+    businessHours: '',
+    notes: ''
   }];
 
   equipmentNotification: Array<EquipmentNotification> = [];
@@ -287,15 +295,36 @@ class MockData {
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: PowerUnitTypes.Tractor,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.CompanyDriver,
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
   }, {
     id: 1,
     make: 'Wabash',
@@ -305,51 +334,102 @@ class MockData {
     notes: '',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
-    driverFirstName: 'Goving',
-    driverLastName: 'Bhatti',
     subType: TrailerTypes.DryVan48,
     mode: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
     driverType: DriverTypes.OwnerOperator,
     lastTripNumber: 349616,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
-    equipmentNotification: this.equipmentNotification[0]
+    equipmentNotification: this.equipmentNotification[0],
+    driver: {
+      id: 5,
+      firstName: 'Jason',
+      middleName: 'Chang',
+      lastName: 'Chang',
+      address: this.addresses[0],
+      contactInfo: this.contactInfo.slice(),
+      dateOfBirth: null,
+      ssn: '123144241241242',
+      currentTruck: null,
+      currentTrailer: null,
+      associatedEquipment: [],
+      paymentType: DriverPaymentTypes.PerMile,
+      rate: 1.2,
+      type: DriverTypes.CompanyDriver,
+      hireDate: null,
+      terminationDate: null,
+      status: DriverStatuses.Active,
+      notes: 'notes',
+      lastTripNumber: 349611,
+      lastAddress: '2229 San Pedro Rd, North Sacramento',
+      license: null
+    }
+  }];
+
+  public licenses: Array<License> = [{
+    id: 0,
+    number: '21424',
+    expiration: new Date(),
+    dateIssued: new Date(),
+    stateIssued: 'AL',
+    class: LicenseClassTypes.ClassB,
+    endorsments: 'M N',
+    restrictions: 'D E',
+  }, {
+    id: 1,
+    number: '21424',
+    expiration: new Date(),
+    dateIssued: new Date(),
+    stateIssued: 'AL',
+    class: LicenseClassTypes.ClassA,
+    endorsments: 'X L',
+    restrictions: 'C Z',
   }];
 
   public drivers: Array<Driver> = [{
-    id: 0,
+    id: 1,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    address: this.addresses[0],
+    contactInfo: this.contactInfo.slice(),
     dateOfBirth: null,
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
-    paymentOption: DriverPaymentOptions.PerMile,
+    associatedEquipment: [this.equipments[0], this.equipments[1]],
+    paymentType: DriverPaymentTypes.PerMile,
     rate: 1.2,
-    contact: this.contacts[0],
     type: DriverTypes.CompanyDriver,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes',
-    phone: '+1-650-4603122',
     lastTripNumber: 349611,
-    lastAddress: '2229 San Pedro Rd, North Sacramento'
+    lastAddress: '2229 San Pedro Rd, North Sacramento',
+    license: this.licenses[1]
   }, {
-    id: 1,
+    id: 2,
+    firstName: 'Jason',
+    middleName: 'Chang',
+    lastName: 'Chang',
+    contactInfo: this.contactInfo.slice(),
+    address: this.addresses[1],
     dateOfBirth: null,
     ssn: '123144241241777',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
-    paymentOption: DriverPaymentOptions.PerMile,
+    associatedEquipment: [this.equipments[0], this.equipments[1]],
+    paymentType: DriverPaymentTypes.PerMile,
     rate: 1.2,
-    contact: this.contacts[1],
     type: DriverTypes.OwnerOperator,
     hireDate: null,
     terminationDate: null,
     status: DriverStatuses.Active,
     notes: 'notes',
-    phone: '+1-650-4603122',
     lastTripNumber: 349777,
-    lastAddress: '2229 San Pedro Rd, North Sacramento, California'
+    lastAddress: '2229 San Pedro Rd, North Sacramento, California',
+    license: this.licenses[0]
   }];
 
   public trips: Array<Trip> = [{
@@ -357,26 +437,66 @@ class MockData {
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{id: 1, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 1, drivers: [this.drivers[0], this.drivers[0], this.drivers[1]] }]
   }, {
     id: 2,
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{id: 2, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 2, drivers: [this.drivers[1]] }]
   }, {
     id: 3,
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{id: 3, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 3, drivers: [this.drivers[0]] }]
   }, {
     id: 4,
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{id: 4, drivers: [this.drivers[0]]}]
+    driverTeams: [{ id: 4, drivers: [this.drivers[1]] }]
   }];
+
+  public stopActionCollection: Array<StopAction> = [{
+        type: StopActionTypes.Pickup,
+        commodity: this.commodities[0]
+       },
+       {
+        type: StopActionTypes.Dropoff,
+        commodity: this.commodities[1]
+       },
+       {
+        type: StopActionTypes.Dropoff,
+        commodity: this.commodities[2]
+       }
+  ];
+
+  public tripStopCollection: Array<TripStop> = [{
+      id: 1,
+      appointment: {
+        from: new Date(2017, 2, 1, 8),
+        to: new Date(2017, 2, 1, 10),
+        type: AppointmentTypes.FCFS
+      },
+      notes: 'test',
+      facility: this.facilities[0],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
+       trip: this.trips[0]
+    },
+    {
+      id: 13,
+      appointment: {
+        from: new Date(2017, 2, 2, 8),
+        to: new Date(2017, 2, 2, 10),
+        type: AppointmentTypes.FCFS
+      },
+      notes: 'test',
+      trip: this.trips[0],
+      facility: this.facilities[0],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]]
+    }
+    ];
 
   public startDate = new Date(2017, 0, 9);
   public endDate = new Date(2017, 0, 22);
@@ -390,139 +510,141 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 2,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 3,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 4,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 5,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 6,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }, {
-    id: 7,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 8,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 9,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 10,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 11,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 12,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 13,
-    notes: 'notes',
-    type: StopTypes.Pickup,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }];
+    status: StopStatuses.InProgress,
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
+  }
+  // {
+  //   id: 2,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 3,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 4,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 5,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 6,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }, {
+  //   id: 7,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[0],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 8,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 9,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 10,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 11,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 12,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 13,
+  //   notes: 'notes',
+  //   type: StopTypes.Pickup,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }
+ ];
 
   public dropoffs: Array<Stop> = [{
     id: 13,
@@ -533,117 +655,119 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 14,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 15,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 16,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 17,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 18,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  }, {
-    id: 19,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 20,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[1],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 21,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 22,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[3],
-    status: StopStatuses.InProgress
-  },
-  {
-    id: 23,
-    notes: 'notes',
-    type: StopTypes.Dropoff,
-    departedAt: this.startDate,
-    arrivedAt: this.endDate,
-    plannedArrivalAt: this.endDate,
-    plannedDepartureAt: this.startDate,
-    facility: this.facilities[2],
-    status: StopStatuses.InProgress
-  }];
+    status: StopStatuses.InProgress,
+    tripStops: [this.tripStopCollection[0]]
+  }
+  // {
+  //   id: 14,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 15,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 16,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 17,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 18,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // }, {
+  //   id: 19,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[0],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 20,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[1],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 21,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 22,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[3],
+  //   status: StopStatuses.InProgress
+  // },
+  // {
+  //   id: 23,
+  //   notes: 'notes',
+  //   type: StopTypes.Dropoff,
+  //   departedAt: this.startDate,
+  //   arrivedAt: this.endDate,
+  //   plannedArrivalAt: this.endDate,
+  //   plannedDepartureAt: this.startDate,
+  //   facility: this.facilities[2],
+  //   status: StopStatuses.InProgress
+  // }
+  ];
 
 
   public loads: Array<Load> = [
@@ -651,15 +775,14 @@ class MockData {
       id: 1,
       companyId: 1,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 1,
+      customerLocation: this.locations[0],
+      customerBillingLocation: this.locations[2],
       customerLoadNo: '726457361',
       systemLoadNo: '209282402',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
       contactId: 1,
-      customerBillingAddressId: 3,
+      customerBillingLocationId: 3,
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -667,7 +790,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[1], this.dropoffs[0]],
+      stops: [this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },
@@ -675,14 +798,13 @@ class MockData {
       id: 2,
       companyId: 2,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 2,
+      customerLocation: this.locations[1],
+      customerBillingLocation: this.locations[3],
       customerLoadNo: '234457361',
       systemLoadNo: '7367707',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 4,
+      customerBillingLocationId: 4,
       contactId: 2,
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
@@ -691,7 +813,7 @@ class MockData {
       specialRequirments: '#141',
       trips: this.trips,
       currentTrips: [this.trips[1], this.trips[2]],
-      stops: [this.pickups[2], this.pickups[3], this.dropoffs[1], this.dropoffs[2]],
+      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -699,14 +821,13 @@ class MockData {
       id: 3,
       companyId: 3,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 3,
+      customerLocation: this.locations[0],
+      customerBillingLocation: this.locations[2],
       customerLoadNo: '111557361',
       systemLoadNo: '104579538',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 5,
+      customerBillingLocationId: 5,
       contactId: 3,
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
@@ -715,7 +836,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[2], this.trips[3]],
-      stops: [this.pickups[4], this.dropoffs[3], this.dropoffs[4]],
+      stops: [this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -723,14 +844,13 @@ class MockData {
       id: 4,
       companyId: 4,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 4,
+      customerLocation: this.locations[1],
+      customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 6,
+      customerBillingLocationId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
@@ -739,7 +859,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[3], this.trips[0]],
-      stops: [this.pickups[5], this.dropoffs[5]],
+      stops: [this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
     },
@@ -747,14 +867,13 @@ class MockData {
       id: 5,
       companyId: 1,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 1,
+      customerLocation: this.locations[0],
+      customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 6,
+      customerBillingLocationId: 6,
       contactId: 4,
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
@@ -763,7 +882,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[6], this.pickups[7], this.dropoffs[6], this.dropoffs[7]],
+      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -771,14 +890,13 @@ class MockData {
       id: 6,
       companyId: 2,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 2,
+      customerLocation: this.locations[1],
+      customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 6,
+      customerBillingLocationId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
@@ -787,7 +905,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[8], this.pickups[9], this.dropoffs[8]],
+      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
     },
@@ -795,14 +913,13 @@ class MockData {
       id: 7,
       companyId: 3,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 3,
+      customerLocation: this.locations[0],
+      customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 6,
+      customerBillingLocationId: 6,
       contactId: 4,
       status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
@@ -811,7 +928,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[10], this.dropoffs[9]],
+      stops: [this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0]]
     },
@@ -819,14 +936,13 @@ class MockData {
       id: 8,
       companyId: 4,
       customer: null,
-      customerAddress: null,
-      customerBillingAddress: null,
-      addressId: 4,
+      customerLocation: this.locations[1],
+      customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingAddressId: 6,
+      customerBillingLocationId: 6,
       contactId: 4,
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
@@ -835,7 +951,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[11], this.pickups[12], this.dropoffs[10]],
+      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[1]]
     },
@@ -845,7 +961,7 @@ class MockData {
     {
       id: 1,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -857,7 +973,7 @@ class MockData {
     {
       id: 2,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[1], this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -869,7 +985,7 @@ class MockData {
     {
       id: 3,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -881,7 +997,7 @@ class MockData {
     {
       id: 4,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -892,7 +1008,7 @@ class MockData {
     {
       id: 5,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -904,7 +1020,7 @@ class MockData {
     {
       id: 6,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -916,7 +1032,7 @@ class MockData {
     {
       id: 7,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -928,7 +1044,7 @@ class MockData {
     {
       id: 8,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -940,7 +1056,7 @@ class MockData {
     {
       id: 9,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -951,7 +1067,7 @@ class MockData {
     {
       id: 10,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -963,7 +1079,7 @@ class MockData {
     {
       id: 11,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -975,7 +1091,7 @@ class MockData {
     {
       id: 12,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -987,7 +1103,7 @@ class MockData {
     {
       id: 13,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -999,7 +1115,7 @@ class MockData {
     {
       id: 14,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1010,7 +1126,7 @@ class MockData {
     {
       id: 15,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1022,7 +1138,7 @@ class MockData {
     {
       id: 16,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1034,7 +1150,7 @@ class MockData {
     {
       id: 17,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1046,7 +1162,7 @@ class MockData {
     {
       id: 18,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1058,7 +1174,7 @@ class MockData {
     {
       id: 19,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1069,7 +1185,7 @@ class MockData {
     {
       id: 20,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1081,7 +1197,7 @@ class MockData {
     {
       id: 21,
       name: 'CH ROBINSON COMPANY INC',
-      addresses: [this.addresses[0], this.customerBillingAddresses[0]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.Active,
@@ -1093,7 +1209,7 @@ class MockData {
     {
       id: 22,
       name: 'M W LOGISTICS LLC',
-      addresses: [this.addresses[1], this.customerBillingAddresses[1]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.Active,
@@ -1105,7 +1221,7 @@ class MockData {
     {
       id: 23,
       name: 'United Freight Service UFS',
-      addresses: [this.addresses[2], this.customerBillingAddresses[2]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
       email: 'albert@ufs.net',
       status: CompanyStatuses.Active,
@@ -1117,7 +1233,7 @@ class MockData {
     {
       id: 24,
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
-      addresses: [this.addresses[3], this.customerBillingAddresses[3]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
       email: 'stmcarrier@schneider.com',
       status: CompanyStatuses.Active,
@@ -1128,7 +1244,7 @@ class MockData {
     {
       id: 25,
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
-      addresses: [this.addresses[4], this.customerBillingAddresses[4]],
+      locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
       email: 'havetoadd@rrdonelley.com',
       status: CompanyStatuses.Active,
@@ -1137,6 +1253,24 @@ class MockData {
       mc: '283221',
       loads: [this.loads[0], this.loads[1]]
     }
+  ];
+
+  public states: Array<string> = [
+    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+    'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+    'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+    'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
+    'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI',
+    'WY'
+  ];
+
+  public endorsements: Array<string> = [
+    'P', 'H', 'M', 'N', 'T', 'X', 'L', 'S'
+  ];
+
+  public restrictions: Array<string> = [
+    'B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N',
+    'O', 'T', 'Z'
   ];
 }
 

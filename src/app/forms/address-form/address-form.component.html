@@ -6,10 +6,6 @@
 			</div>
     </div>
 </template>
-<bd-validator [component]="addressForm.controls.name" [errorDefs]="{required: 'Name is required'}">
-  <bd-input class="bd-form-control" formControlName="name" placeholder="Name">
-  </bd-input>
-</bd-validator>
 <bd-typeahead
 	class="bd-form-control"
 	formControlName="streetAddress1"
@@ -54,18 +50,4 @@
 			</google-map>
 		</div>
 	</div>
-  	<bd-validator [component]="addressForm.controls.phone" [errorDefs]="{required: 'Phone is required'}">
-      <div class="section">
-        <bd-input class="bd-form-control left-control left-side" [labelText]="'Phone'" formControlName="phone">
-        </bd-input>
-        <bd-input class="bd-form-control right-control right-side" placeholder="Extension" formControlName="phoneExtension">
-        </bd-input>
-    	</div>
-    </bd-validator>
-    <div class="section">
-			<bd-input class="bd-form-control left-control left-side" [labelText]="'Fax'" *ngIf='isExpanded' formControlName="fax">
-			</bd-input>
-			<bd-input class="bd-form-control right-control right-side" placeholder="Extension" formControlName="faxExtension" *ngIf='isExpanded'>
-			</bd-input>
-    </div>
 </form>

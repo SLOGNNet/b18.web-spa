@@ -1,5 +1,5 @@
 <div
-class="equipment-card-section"
+class="card-section"
 (mouseover)="onEnter()"
 (mouseleave)="onLeave()">
   <div class="left">
@@ -9,28 +9,28 @@ class="equipment-card-section"
       [lastName]="lastLetter">
     </bd-initials-circle>
     <div class="equipment-make ellipsis">
-      {{equipment.make}}
+      {{item.make}}
     </div>
-    <div>{{equipment.number}}</div>
+    <div>{{item.number}}</div>
   </div>
   <div class="middle">
-    <span class="driver-name">{{equipment.driverFirstName}} {{equipment.driverLastName}}</span>
-    <span class="driver-type ellipsis">{{driverType}}</span>
-  <div class="changes ellipsis">{{this.equipment.equipmentNotification?.date | date:'MM/dd'}}</div>
+    <span class="driver-name">{{item.driverFirstName}} {{item.driverLastName}}</span>
+    <span class="driver-type ellipsis">{{equipmentTypeText}}</span>
+  <div class="changes ellipsis">{{this.item.itemNotification?.date | date:'MM/dd'}}</div>
   </div>
   <div class="right">
       <div class="tr-city">
         <span style="background: rgb(133, 209, 131)" class="tr-city-circle"></span>
-        <span class="tr-city-name">TR{{equipment.lastTripNumber}}</span>
+        <span class="tr-city-name">TR{{item.lastTripNumber}}</span>
       </div>
       <div class="tr-city">
         <span style="background: red" class="tr-city-circle"></span>
-        <span class="tr-city-name">{{equipment.lastAddress}}</span>
+        <span class="tr-city-name">{{item.lastAddress}}</span>
   </div>
-      <span *ngIf="statusText" [style.color]="equipmentStatusColor" class="status-text">{{equipmentStatusText}}</span>
-      <span
-      [style.background]="equipmentStatusColor"
-      class="status">
-      </span>
   </div>
+  <span *ngIf="statusText" [style.color]="itemStatusColor()" class="status-text">{{itemStatusText()}}</span>
+  <span
+  [style.background]="itemStatusColor()"
+  class="status">
+  </span>
 </div>

@@ -1,12 +1,12 @@
 import { Stop } from './stop';
 import { Company } from './company';
 import { Commodity } from './commodity';
-import { Address } from './address';
+import { Location } from './location';
 import { Trip } from './trip';
 import { Document } from './document';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
 import { generateNewId } from './utils';
 import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
+import { Type } from 'class-transformer';
 
 // Colors
 function createStatusColors() {
@@ -39,51 +39,35 @@ function createStatusTexts() {
 
 const statusTexts = createStatusTexts();
 
-@JsonObject
 export class Load {
-  @JsonMember
   id: number;
-  @JsonMember
   companyId: number;
-  @JsonMember
-  addressId: number;
-  @JsonMember
   systemLoadNo: string;
-  @JsonMember
   customerLoadNo: string;
-  @JsonMember
   type: LoadType;
-  @JsonMember
   freightType: FreightType;
-  @JsonMember
-  customerBillingAddressId: number;
-  @JsonMember({ elements: Address })
-  customerAddress: Address = new Address();
-  @JsonMember({ elements: Address })
-  customerBillingAddress: Address;
-  @JsonMember({ elements: Commodity })
+  customerBillingLocationId: number;
+  @Type(() => Location)
+  customerLocation: Location = new Location();
+  @Type(() => Location)
+  customerBillingLocation: Location;
+  @Type(() => Commodity)
   commodities: Array<Commodity>;
-  @JsonMember
   contactId: number;
-  @JsonMember
   status: LoadStatuses;
-  @JsonMember({ elements: Company })
+  @Type(() => Company)
   customer: Company;
-  @JsonMember
   driverRequirment: DriverRequirements;
-  @JsonMember
   requiredPowerUnitType: PowerUnitTypes;
-  @JsonMember
   requiredTrailerType: TrailerTypes;
-  @JsonMember
   specialRequirments: string;
-  @JsonMember({ elements: Trip })
+  @Type(() => Trip)
   trips: Array<Trip>;
-  @JsonMember({ elements: Trip })
+  @Type(() => Trip)
   currentTrips: Array<Trip>;
-  @JsonMember({ elements: Stop })
+  @Type(() => Stop)
   stops: Array<Stop>;
-  @JsonMember({ elements: Document })
+  @Type(() => Document)
   documents: Array<Document>;
 
   static create(): Load {

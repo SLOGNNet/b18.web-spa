@@ -1,6 +1,6 @@
 import { Component, Input, Optional, Output, TemplateRef, EventEmitter,
   HostBinding, HostListener, forwardRef,
-  ChangeDetectionStrategy, Renderer, ElementRef } from '@angular/core';
+  ChangeDetectionStrategy, Renderer, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { DropdownModule } from 'ng2-bootstrap/components/dropdown';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isNil } from 'lodash';
@@ -26,6 +26,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   @Input() dropdownItemTemplate: TemplateRef<any>;
   @Input() toogleTemplate: TemplateRef<any>;
   @Input() items: any[];
+  @Input() disabled: boolean = false;
   @Input() clearLabel: string = '';
   @Input() defaultTitleText: string = 'Select Item';
   @Input() labelText: string;
@@ -42,7 +43,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   private _onChangeCallback: (_: any) => void = noop;
   private _selectedValue: any;
 
-  constructor(private renderer: Renderer, private elementRef: ElementRef) {
+  constructor(private renderer: Renderer, private elementRef: ElementRef, private _cdr: ChangeDetectorRef) {
   }
 
   get currentDisplayText(){
@@ -69,7 +70,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
   }
 
   @Input() set selectedValue(value: any) {
-    this._selectedValue = value;
+    this.writeValue(value);
     this._onChangeCallback(this._selectedValue);
   }
 
@@ -91,7 +92,6 @@ export class BdDropdownComponent implements ControlValueAccessor {
   onToggle(isOpen) {
     this._isOpen = isOpen;
     this.focusChange.emit(this._isOpen);
-
     if (!isOpen) {
       const blurEvent = new Event('blur', { bubbles: true });
       this.renderer.invokeElementMethod(
@@ -101,6 +101,7 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   writeValue(value: any) {
     this._selectedValue = value;
+    this._cdr.markForCheck();
   }
 
   registerOnChange(fn: any) {
@@ -109,6 +110,11 @@ export class BdDropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
-    }
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this._cdr.markForCheck();
+  }
 
 }

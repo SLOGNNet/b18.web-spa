@@ -19,6 +19,8 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   providers: [BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR]
 })
 export class BdFormDatePicker implements ControlValueAccessor {
+  @Input() labelText: string;
+  @Input() disabled: boolean = false;
   @Input() dateFormat: string = 'MM/DD/YYYY';
   @ViewChild('datepicker') datepicker: BdDatePicker;
   private dateValue;
@@ -38,10 +40,12 @@ export class BdFormDatePicker implements ControlValueAccessor {
   onDateChange(value: string) {
     if (value !== this.dateValue) {
       const newDate = moment(value, this.dateFormat);
-      this.value = newDate ? moment(this.value)
+      this.value = newDate ? moment()
         .year(newDate.year())
         .month(newDate.month())
         .date(newDate.date()).toDate() : null;
+
+        this._onChangeCallback(this.value);
     }
   }
 
@@ -58,4 +62,10 @@ export class BdFormDatePicker implements ControlValueAccessor {
       this.datepicker.close();
     }, 0);
   }
+
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
 }

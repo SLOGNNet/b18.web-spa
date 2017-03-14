@@ -1,16 +1,19 @@
-<div class="load-stop-card-section" (click)="onClick()">
+<div class="card-section"
+(mouseenter)="onEnter()"
+(mouseleave)="onLeave()"
+(click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.systemLoadNo}}</span>
     <span class="company-name">
       <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
-        {{load.customer.name}}
+        {{load.customer?.name}}
         <bd-popover-content
           #companyPopover
           placement="auto"
           [width]="popupWidth"
           [horizontalOffset]="-10"
           [closeOnClickOutside]="closeOnClickOutside">
-          <company-popover [company]="load.customer" [companyBillingAddress]="load.customerBillingAddress" [companyAddress]="load.customerAddress"></company-popover>
+          <company-popover [company]="load.customer" [companyBillingLocation]="load.customerBillingLocation" [companyLocation]="load.customerLocation"></company-popover>
         </bd-popover-content>
       </span>
     </span>
@@ -34,7 +37,7 @@
     </div>
   </div>
   <div *ngIf="load.currentTrips && load.currentTrips.length" class="bottom">
-    <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].contact.firstName}}</span>
+    <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].firstName}}</span>
     <span class="link">|</span>
     <span class="link truckNumber" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
       Tk{{currentTrip.truck.number}}
@@ -61,7 +64,10 @@
         </bd-popover-content>
       </span>
     </span>
-    <span class="status" [style.background]="loadStatusColor">
-        {{loadStatusText}}
-    </span>
   </div>
+  <span *ngIf="statusText" [style.color]="loadStatusColor" class="status-text">{{loadStatusText}}</span>
+  <span
+  [style.background]="loadStatusColor"
+  class="status">
+  </span>
+</div>

@@ -2,14 +2,21 @@
 
 :host {
   display: block;
-  padding-top: 20px;
 
   .bd-section-title {
-    margin: 10px 17px 20px;
-    font-size: $small-font-size;
+    margin: 25px $default-margin 15px;
+    font-size: $tiny-font-size;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     word-spacing: 3px;
+  }
+
+  .bd-disabled {
+    color: $label-default-color;
+  }
+
+  &:first-of-type {
+    padding-top: 20px;
   }
 }

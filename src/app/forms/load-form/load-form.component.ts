@@ -25,6 +25,7 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   requiredTrailerTypesNames: Array<any>;
   loadTypesNames: Array<any>;
   freightTypesNames: Array<any>;
+  @Input() public isLoading: boolean = false;
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
@@ -85,8 +86,7 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
     this.companyViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
       customer: [this.load.customer, Validators.required],
-      addressId: [this.load.addressId],
-      customerBillingAddressId: [this.load.customerBillingAddressId],
+      customerBillingLocationId: [this.load.customerBillingLocationId],
       contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],

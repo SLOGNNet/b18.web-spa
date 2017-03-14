@@ -9,25 +9,29 @@ import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 
 // Components
 import { MainComponent } from './main.component';
-import { CompaniesComponent, CompanyDetailComponent } from '../companies';
+import { CompaniesComponent, CompanyEditComponent } from '../companies';
 import { CompanyCardComponent } from '../companies/components/company-card';
+import { CompanyDetailComponent } from '../companies/components/company-detail';
 import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
-import { DriversComponent, DriverCardsComponent, DriverCardComponent } from '../drivers';
-import { MultiPaneLayoutComponent } from '../multi-pane-layout';
+import { DriversModule } from '../drivers';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
 import { MessageComponent } from '../drivers/messages/message';
+
 import {
   LoadsComponent,
-  LoadDetailComponent,
+  LoadEditComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
   CompanyPopoverComponent,
-  DriverPopoverComponent
+  DriverPopoverComponent,
+  LoadViewModeCardComponent,
+  CommodityDetailsComponent,
+  TripViewComponent
 } from '../loads';
 
 
@@ -38,35 +42,37 @@ import {
     SharedModule,
     BdFormsModule,
     NavigationBarModule,
-    MainRoutingModule
+    MainRoutingModule,
+    DriversModule
   ],
   declarations: [
     MainComponent,
     TopPanelComponent,
-    MultiPaneLayoutComponent,
     HomeComponent,
-    DriversComponent,
-    DriverCardsComponent,
-    DriverCardComponent,
     MessagesComponent,
     MessageComponent,
     LoadsComponent,
-    LoadDetailComponent,
+    LoadEditComponent,
     CompaniesComponent,
+    CompanyEditComponent,
     CompanyDetailComponent,
     CompanyCardComponent,
     CompanyCardsComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
+    LoadViewModeCardComponent,
+    TripViewComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,
+    CommodityDetailsComponent,
     BdToastManagerComponent,
     EquipmentComponent,
     EquipmentCardComponent,
     EquipmentCardsComponent
   ],
   exports: [
+    BdFormsModule
   ]
 })
 export class MainModule { }

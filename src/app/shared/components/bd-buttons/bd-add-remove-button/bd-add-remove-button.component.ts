@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'bd-add-remove-button',
@@ -11,5 +11,13 @@ export class BdAddRemoveButtonComponent {
   @Input() prefixLabel: string = '';
   @Input() suffixLabel: string = '';
 
-  protected iconUrl: string = '';
+  @Output() onClick: EventEmitter<any> = new EventEmitter();
+
+  protected iconClass: string = '';
+
+  @HostListener('click', ['$event'])
+  handleClick(event): void {
+    if (!event.target.classList.contains('btn-icon') || this.disabled) return;
+    this.onClick.emit(event);
+  }
 }

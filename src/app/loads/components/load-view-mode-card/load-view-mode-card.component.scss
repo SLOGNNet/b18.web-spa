@@ -1,0 +1,165 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/font-icons';
+
+$element-height: 18px;
+$element-width: 16px;
+$text-margin: 5px;
+
+.stop-view-mode-section {
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  span {
+    line-height: $element-height;
+  }
+
+  display: flex;
+  border: $border;
+  background: $light-blue;
+  font-size: $tiny-font-size;
+  flex-direction: column;
+  border-radius: $default-border-radius;
+
+  .trip-view-container {
+
+    .trip-view-item {
+      display: none;
+
+      &:first-of-type {
+        display: block;
+      }
+    }
+  }
+
+  &.expanded-view {
+    .trip-view-container {
+      .trip-view-item {
+        display: block;
+      }
+    }
+  }
+
+  .stop-info-container {
+    position: relative;
+    display: flex;
+    background: $white;
+    border-bottom: $border;
+    border-left: 4px solid $grey;
+    border-top-left-radius: $default-border-radius;
+    border-top-right-radius: $default-border-radius;
+
+    &.pickup {
+      border-left-color: $pickup-view-mode-color;
+    }
+
+    &.dropoff {
+      border-left-color: $dropoff-view-mode-color;
+    }
+
+    .stripped-border {
+      position: absolute;
+      top: 0;
+      display: none;
+      width: 4px;
+      height: 100%;
+      background-image: url('assets/img/stripped-line.svg');
+      background-repeat: repeat-y;
+      left: -1px;
+    }
+
+    &.combined {
+      border-left: 0;
+
+      .stripped-border {
+        display: block;
+      }
+    }
+
+    .facility-info {
+      display: flex;
+      width: 50%;
+      padding: $default-margin;
+      color: $dark-grey;
+      border-right: 1px dashed $grey;
+      flex-direction: column;
+
+      .title {
+        color: $black;
+        line-height: 12px;
+        margin-left: $element-width;
+        font-weight: bold;
+        max-height: $element-height;
+        margin-bottom: 10px;
+      }
+
+      .info-item {
+        display: flex;
+        margin-bottom: 15px;
+
+        .item-icon {
+          color: $dark-grey;
+          line-height: 13px;
+          margin-right: $text-margin;
+        }
+
+        .facility-address {
+          line-height: 14px;
+        }
+      }
+    }
+
+    .business-hours-container {
+      width: 50%;
+      padding: $default-margin;
+      color: $dark-grey;
+
+      .hours-string {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-container {
+        position: absolute;
+        top: $default-margin - 1px;
+        right: $default-margin;
+        display: none;
+        height: $default-margin + 2px;
+        background: $white;
+
+        button {
+          color: $blue;
+          padding-left: $default-margin;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .notes {
+        overflow: hidden;
+        color: $black;
+        line-height: $element-height;
+        margin-top: 15px;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  &:hover {
+    .stop-info-container {
+      .business-hours-container {
+        .btn-container {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,15 @@
 import { Equipment } from './equipment';
-import { Contact } from './contact';
-import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
-import { JsonMember, JsonObject } from 'typedjson-npm/src/typed-json';
+import { Member } from './member';
+import { Address } from './address';
+import { License } from './license';
+import { ContactInfo } from './contact-info';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes, ContactInfoType } from './enums';
 
+import { generateNewId } from './utils';
+import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
- let result = {};
+  let result = {};
   result[DriverStatuses.Unavaliable] = '#ffbe4d';
   result[DriverStatuses.Active] = '#85d183';
   result[DriverStatuses.Inactive] = '#fb3a3a';
@@ -15,7 +19,7 @@ function createStatusColors() {
 
 // Status Text
 function createStatusText() {
- let result = {};
+  let result = {};
   result[DriverStatuses.None] = 'none';
   result[DriverStatuses.Unavaliable] = 'unavaliable';
   result[DriverStatuses.Active] = 'active';
@@ -26,7 +30,7 @@ function createStatusText() {
 
 // Type Text
 function createTypeText() {
- let result = {};
+  let result = {};
   result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company driver';
   result[DriverTypes.OwnerOperator] = 'Owner operator';
@@ -38,53 +42,42 @@ const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
 
-@JsonObject
-export class Driver {
-  @JsonMember
-  id: number = 0;
-  @JsonMember
+export class Driver extends Member {
   dateOfBirth: Date = null;
-  @JsonMember
   ssn: string = '';
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTruck: Equipment = new Equipment();
-  @JsonMember({ elements: Equipment })
+  @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
-  @JsonMember
-  paymentOption: DriverPaymentOptions;
-  @JsonMember
-  rate: number;
-  @JsonMember({ elements: Contact })
-  contact: Contact = new Contact();
-  @JsonMember
+  @Type(() => Equipment)
+  associatedEquipment: Array<Equipment>;
+  paymentType: DriverPaymentTypes;
+  rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;
-  @JsonMember
   hireDate: Date = null;
-  @JsonMember
   terminationDate: Date = null;
-  @JsonMember
   status: DriverStatuses = DriverStatuses.Active;
-  @JsonMember
   notes: string = '';
-  @JsonMember
-  phone: string = '';
-  @JsonMember
-  lastTripNumber: number;
-  @JsonMember
+  lastTripNumber: number = 0;
   lastAddress: string = '';
-
+  @Type(() => License)
+  license: License;
 
   static create(): Driver {
     const result = new Driver();
+    result.id = generateNewId();
+    result.address = Address.create();
+    result.contactInfo = ContactInfo.сreateDefaultList();
+    result.license = License.create();
     result.dateOfBirth = new Date();
     result.hireDate = new Date();
     result.terminationDate = new Date();
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentOption = DriverPaymentOptions.PerMile;
-    result.contact = Contact.create();
+    result.paymentType = DriverPaymentTypes.PerMile;
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
+
     return result;
   }
 

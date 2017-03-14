@@ -19,6 +19,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
   @Input() public itemTemplate: TemplateRef<any>;
   @Input() public labelText: string = '';
+  @Input() disabled: boolean = false;
   @Input() placeholder: string;
   @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
@@ -46,7 +47,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
     this.value = v;
     // fire change callback only for selected from list items
     // if user change input value - consider it as empty result
-    this._onChangeCallback('');
+
     this.valueChange.emit(v);
   }
 
@@ -64,14 +65,17 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   remove(event): void {
+    if (this.disabled) return;
+
     event.stopPropagation();
     this.changeValue('');
-
+    this._onChangeCallback('');
     this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
     this.changeValue('');
+    this._onChangeCallback('');
     this.onFooterButtonClick.emit();
   }
 
@@ -89,5 +93,9 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 }

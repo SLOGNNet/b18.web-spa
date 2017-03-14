@@ -1,10 +1,12 @@
 @import '../../../../assets/styles/variables';
 
+$checkbox-size: 14px;
+
 .checkbox-container {
   position: relative;
   overflow: hidden;
-  width: 16px;
-  height: 16px;
+  width: $checkbox-size;
+  height: $checkbox-size;
   border: $border;
   background: $white;
   border-radius: $default-border-radius;
@@ -26,7 +28,7 @@
       border: 2px solid $white;
       transform: rotate(45deg);
       bottom: 8px;
-      left: -12px;
+      left: -11px;
     }
   }
 }

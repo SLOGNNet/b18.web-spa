@@ -21,7 +21,7 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   }
 
   ngOnChanges(changes: any) {
-    if (changes.items) {
+    if (changes.items || changes.formArray) {
       this.items = this.items || [];
       this.initForm();
     }
@@ -58,6 +58,7 @@ export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   }
 
   protected removeItem(removeData) {
+
     this.remove.emit(removeData.item);
     this.renderFormData = this.renderFormData.filter(data => data !== removeData);
   }

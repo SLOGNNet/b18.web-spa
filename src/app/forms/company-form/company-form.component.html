@@ -1,12 +1,13 @@
 <bd-form-expand (changed)="onExpandChanged($event)" [viewMode]="viewMode">
 	<form [formGroup]="companyForm" novalidate (ngSubmit)="submit(companyForm.value, companyForm.valid)">
 		<navigation-anchor id="company-basic-information" [isNestedForm]="isNestedForm"></navigation-anchor>
-		<bd-form-section [labelText]="'COMPANY > BASIC INFORMATION'" [isExpanded]='isExpanded'>
+		<bd-form-section [disabled]="disabled" [labelText]="'COMPANY > BASIC INFORMATION'" [isExpanded]='isExpanded'>
 			<bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name" *ngIf="isExpanded">
 			</bd-input>
 			<bd-dropdown class="bd-form-control" [labelText]="'Company type'" formControlName="type" [items]="companyTypes">
 			</bd-dropdown>
-			<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status" [items]="companyStatuses">
+			<bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="isEditMode" formControlName="status"
+			 [items]="companyStatuses">
 			</bd-form-switch>
 			<bd-validator [component]="companyForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
 				<bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">
@@ -16,25 +17,20 @@
 			</bd-input>
 		</bd-form-section>
 		<navigation-anchor id="company-addresses" [isNestedForm]="isNestedForm"></navigation-anchor>
-		<bd-form-section [labelText]="'COMPANY > ADDRESSES'" [isExpanded]='isExpanded' *ngIf='isExpanded' >
-			<addresses-form [formArray]='companyForm.controls.addresses' (update)="onAddressUpdate($event)" (updatePlace)="onAddressPlaceUpdate($event)" (remove)="onAddressRemove($event)" (add)="onAddressAdd($event)"  [items]='addresses$ | async' [viewMode]="viewMode"></addresses-form>
+		<bd-form-section [disabled]="disabled" [labelText]="'COMPANY > LOCATIONS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
+			<locations-form [formArray]='companyForm.controls.locations' (update)="onLocationUpdate($event)" [disabled]="disabled" (remove)="onLocationRemove($event)"
+			 (add)="onLocationAdd($event)" [items]='locations$ | async' [viewMode]="viewMode"></locations-form>
 		</bd-form-section>
 		<navigation-anchor id="company-contacts" [isNestedForm]="isNestedForm"></navigation-anchor>
-		<bd-form-section [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
-			<contacts-form [formArray]='companyForm.controls.contacts' [addresses]='addresses$ | async' [items]='company.contacts' [viewMode]="viewMode"></contacts-form>
+		<bd-form-section [disabled]="disabled" [labelText]="'CONTACTS'" [isExpanded]='isExpanded' *ngIf='isExpanded'>
+			<contacts-form [formArray]='companyForm.controls.contacts' [disabled]="disabled" [locations]='locations$ | async' [items]='company.contacts'
+			 [viewMode]="viewMode"></contacts-form>
 		</bd-form-section>
 		<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
 			<div class="button-group">
-				<bd-button
-					(click)="onCancel()"
-					[text]="'Cancel'"
-					class="button">
+				<bd-button [disabled]="disabled" (click)="onCancel()" [text]="'Cancel'" class="button">
 				</bd-button>
-				<bd-button
-					type="submit"
-					color="primary"
-					class="button"
-					[text]="submitButtonText">
+				<bd-button [disabled]="disabled" type="submit" color="primary" class="button" [text]="submitButtonText">
 				</bd-button>
 			</div>
 		</form-sticky-bottom-container>

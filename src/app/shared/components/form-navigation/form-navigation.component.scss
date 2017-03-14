@@ -1,5 +1,4 @@
 @import '../../../../assets/styles/variables';
-
 $container-height: $horizontal-scroll-container-height;
 
 form-navigation {
@@ -12,11 +11,13 @@ form-navigation {
   max-height: $form-navigation-height;
 
   .form-navigation {
-    padding: 10px 17px 0;
+    padding: $default-margin $default-margin 0;
     background-color: $white;
 
     .title {
-      font-size: $large-font-size;
+      display: inline-block;
+      font-size: $default-font-size;
+      line-height: $default-font-size;
       font-weight: bold;
     }
 
@@ -51,6 +52,28 @@ form-navigation {
 
         &:last-child {
           margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.bd-disabled {
+  .title {
+    color: $label-default-color;
+  }
+
+  .container {
+    .content {
+      span {
+        color: $label-default-color;
+
+        &.active {
+          color: $label-default-color;
+        }
+
+        &:hover {
+          color: $label-default-color;
         }
       }
     }

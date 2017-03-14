@@ -13,7 +13,7 @@ import { CompanyService } from './index';
 import MockData from './mock-data';
 import { HttpService } from '../http.service';
 import { TypedJSON } from 'typedjson-npm/src/typed-json';
-
+import { plainToClass } from 'class-transformer';
 @Injectable()
 export class LoadService {
 
@@ -22,13 +22,12 @@ export class LoadService {
   }
 
   getAll(): Observable<Load[]> {
-    return Observable.create((observer: any) => {
-      this.http.get(this.config.apiUrl + 'load/cards').subscribe(res => {
-        const data = res.json();
-        let arr = data.map(item => TypedJSON.parse(item, Load));
-        observer.next(arr);
-      });
-    });
+    return Observable.from(MockData.loads)
+      .flatMap(
+      (load) => this.companyService
+        .getDetails(load.companyId)
+        .map(customer => Object.assign(load, { customer }))
+      ).toArray();
   };
 
   getDetails(loadId: number): Observable<Load> {
@@ -36,7 +35,7 @@ export class LoadService {
       .flatMap((load) =>
         this.companyService
           .getDetails(load.companyId)
-          .map(company => Object.assign(load, { company: company }))
+          .map(customer => Object.assign(load, { customer }))
       );
   };
 
