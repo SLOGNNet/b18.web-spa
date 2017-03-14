@@ -1,6 +1,6 @@
 import { Component, Input, Output, Optional, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
-  ElementRef, ViewChild, ChangeDetectorRef, Renderer } from '@angular/core';
+  ElementRef, ViewChild, ChangeDetectorRef, Renderer, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 const noop = () => { };
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
@@ -18,7 +18,8 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
   host: { '(click)': 'focus($event)' },
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdInputComponent {
 
@@ -161,6 +162,7 @@ export class BdInputComponent {
    */
   writeValue(value: any) {
     this._value = value;
+    this.changeDetectionRef.markForCheck();
   }
 
   /**
