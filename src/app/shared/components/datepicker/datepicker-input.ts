@@ -174,10 +174,12 @@ export class NgbInputDatepicker {
 
       // date selection event handling
       this._cRef.instance.registerOnChange((selectedDate) => {
-        this._model =
-          selectedDate ? this._service.toValidDate({year: selectedDate.year, month: selectedDate.month, day: selectedDate.day}, null) : null;
-        this._writeModelValue(this._model);
+        this._onDateChange(selectedDate);
         this.close();
+      });
+
+      this._cRef.instance.onNavigateSelect.subscribe((selectedDate) => {
+        this._onDateChange(selectedDate);
       });
     }
   }
@@ -253,5 +255,11 @@ export class NgbInputDatepicker {
     if (this.isOpen()) {
       this._cRef.instance.writeValue(model);
     }
+  }
+
+  private _onDateChange(date) {
+    this._model =
+      date ? this._service.toValidDate({year: date.year, month: date.month, day: date.day}, null) : null;
+    this._writeModelValue(this._model);
   }
 }

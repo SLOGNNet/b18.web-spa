@@ -16,7 +16,7 @@ function createTestData() {
 
   // test contact info
   testContactInfo.value = '213123123';
-  testContactInfo.label = 'primaryPhone';
+  testContactInfo.label = 'Primary Phone';
 
   // test contact
   testContact.firstName = 'Emma';
