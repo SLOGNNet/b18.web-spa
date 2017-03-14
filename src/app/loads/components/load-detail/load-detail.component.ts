@@ -20,8 +20,6 @@ import MockData from '../../../shared/services/data-services/mock-data';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadDetailComponent extends BaseDetailComponent<Load> {
-
-  private selectedContact: Contact;
   private anchors = [{
     id: 'customer',
     title: 'Customer'
@@ -40,7 +38,10 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(state => state.loads.selected), router, route);
-      this.selectedContact = Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
   }
+
+    get selectedContact(): Contact{
+      return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
+    };
 
 }
