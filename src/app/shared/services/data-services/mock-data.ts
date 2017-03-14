@@ -769,7 +769,6 @@ class MockData {
   // }
   ];
 
-
   public loads: Array<Load> = [
     {
       id: 1,
@@ -968,7 +967,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1], this.loads[3]]
+      loads: []
     },
     {
       id: 2,
@@ -980,7 +979,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '392137',
-      loads: [this.loads[2], this.loads[3]]
+      loads: []
     },
     {
       id: 3,
@@ -992,7 +991,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '',
-      loads: [this.loads[4], this.loads[5]]
+      loads: []
     },
     {
       id: 4,
@@ -1003,7 +1002,7 @@ class MockData {
       status: CompanyStatuses.Active,
       type: CompanyTypes.Broker,
       taxId: '', mc: '133655',
-      loads: [this.loads[6], this.loads[7]]
+      loads: []
     },
     {
       id: 5,
@@ -1015,7 +1014,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '283221',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 6,
@@ -1027,7 +1026,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 7,
@@ -1039,7 +1038,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '392137',
-      loads: [this.loads[2], this.loads[3]]
+      loads: []
     },
     {
       id: 8,
@@ -1051,7 +1050,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '',
-      loads: [this.loads[4], this.loads[5]]
+      loads: []
     },
     {
       id: 9,
@@ -1062,7 +1061,7 @@ class MockData {
       status: CompanyStatuses.Active,
       type: CompanyTypes.Broker,
       taxId: '', mc: '133655',
-      loads: [this.loads[6], this.loads[7]]
+      loads: []
     },
     {
       id: 10,
@@ -1074,7 +1073,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '283221',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 11,
@@ -1086,7 +1085,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 12,
@@ -1098,7 +1097,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '392137',
-      loads: [this.loads[2], this.loads[3]]
+      loads: []
     },
     {
       id: 13,
@@ -1110,7 +1109,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '',
-      loads: [this.loads[4], this.loads[5]]
+      loads: []
     },
     {
       id: 14,
@@ -1121,7 +1120,7 @@ class MockData {
       status: CompanyStatuses.Active,
       type: CompanyTypes.Broker,
       taxId: '', mc: '133655',
-      loads: [this.loads[6], this.loads[7]]
+      loads: []
     },
     {
       id: 15,
@@ -1133,7 +1132,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '283221',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 16,
@@ -1145,7 +1144,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 17,
@@ -1157,7 +1156,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '392137',
-      loads: [this.loads[2], this.loads[3]]
+      loads: []
     },
     {
       id: 18,
@@ -1169,7 +1168,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '',
-      loads: [this.loads[4], this.loads[5]]
+      loads: []
     },
     {
       id: 19,
@@ -1180,7 +1179,7 @@ class MockData {
       status: CompanyStatuses.Active,
       type: CompanyTypes.Broker,
       taxId: '', mc: '133655',
-      loads: [this.loads[6], this.loads[7]]
+      loads: []
     },
     {
       id: 20,
@@ -1192,7 +1191,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '283221',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 21,
@@ -1204,7 +1203,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '384859',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     },
     {
       id: 22,
@@ -1216,7 +1215,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '392137',
-      loads: [this.loads[2], this.loads[3]]
+      loads: []
     },
     {
       id: 23,
@@ -1228,7 +1227,7 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '',
-      loads: [this.loads[4], this.loads[5]]
+      loads: []
     },
     {
       id: 24,
@@ -1239,7 +1238,7 @@ class MockData {
       status: CompanyStatuses.Active,
       type: CompanyTypes.Broker,
       taxId: '', mc: '133655',
-      loads: [this.loads[6], this.loads[7]]
+      loads: []
     },
     {
       id: 25,
@@ -1251,9 +1250,10 @@ class MockData {
       type: CompanyTypes.Broker,
       taxId: '',
       mc: '283221',
-      loads: [this.loads[0], this.loads[1]]
+      loads: []
     }
   ];
+
 
   public states: Array<string> = [
     'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',

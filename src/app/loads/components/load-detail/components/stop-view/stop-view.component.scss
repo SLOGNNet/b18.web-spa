@@ -1,11 +1,32 @@
-@import '../../../../assets/styles/variables';
-@import '../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
 
 $element-height: 18px;
 $element-width: 16px;
 $text-margin: 5px;
 
+
+:host {
+  display: block;
+  margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
 .stop-view-mode-section {
+  display: flex;
+  border: $border;
+  background: $light-blue;
+  font-size: $tiny-font-size;
+  margin-bottom: 10px;
+  flex-direction: column;
+  border-radius: $default-border-radius;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+    
   button {
     padding: 0;
     border: 0;
@@ -19,13 +40,6 @@ $text-margin: 5px;
   span {
     line-height: $element-height;
   }
-
-  display: flex;
-  border: $border;
-  background: $light-blue;
-  font-size: $tiny-font-size;
-  flex-direction: column;
-  border-radius: $default-border-radius;
 
   .trip-view-container {
 

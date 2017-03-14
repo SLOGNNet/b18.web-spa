@@ -2,7 +2,7 @@ import { MainComponent } from './main.component';
 import { DriversComponent, DriverEditComponent, DriverDetailComponent } from '../drivers';
 import { MessagesComponent } from '../drivers/messages';
 import { HomeComponent } from '../home';
-import { LoadsComponent, LoadEditComponent } from '../loads';
+import { LoadsComponent, LoadEditComponent, LoadDetailComponent } from '../loads';
 import { CompaniesComponent, CompanyEditComponent, CompanyDetailComponent } from '../companies';
 import { EquipmentComponent } from '../equipment';
 import { NgModule } from '@angular/core';
@@ -23,7 +23,24 @@ const routes: Routes = [{
       path: 'drivers', loadChildren: () => DriversModule
     },
     {
-      path: 'loads', component: LoadsComponent
+      path: 'loads', component: LoadsComponent,
+      children: [
+    {
+      path: ':id',
+      children: [
+      {
+          path: '',
+          component: LoadDetailComponent,
+          outlet: 'detailOutlet',
+      },
+      {
+          path: 'edit',
+          component: EmptyComponent,
+          canDeactivate: [CanDeactivateGuard]
+      }
+      ]
+    }
+  ]
     },
     {
       path: 'companies', component: CompaniesComponent, children: [{

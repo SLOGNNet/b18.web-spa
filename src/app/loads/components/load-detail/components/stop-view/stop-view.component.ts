@@ -1,18 +1,26 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Stop, ContactInfo, TripStop, Address, StopActionTypes } from '../../../models';
+import { Component, Input } from '@angular/core';
+import { Load,
+  Trip,
+  StopTypes,
+  Commodity,
+  AppointmentTypes,
+  Appointment,
+  TripStop,
+  StopActionTypes,
+  StopAction,
+  Stop,
+  ContactInfo  } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
-import { CommoditiesHeaderComponent } from '../../../forms';
-import MockData from '../../../shared/services/data-services/mock-data';
+import { CommoditiesHeaderComponent } from '../../../../forms';
 import { find, map } from 'lodash';
 
 @Component({
-  selector: 'load-view-mode-card',
-  templateUrl: './load-view-mode-card.component.html',
-  styleUrls: ['./load-view-mode-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'stop-view',
+  templateUrl: './stop-view.component.html',
+  styleUrls: ['./stop-view.component.scss']
 })
-export class LoadViewModeCardComponent {
-  @Input() stop: Stop = MockData.loads[0].stops[0];
+export class StopViewComponent {
+  @Input() stop: Stop;
   public isExpanded: boolean = false;
   public pickups: Array<any> = [];
   public dropoffs: Array<any> = [];

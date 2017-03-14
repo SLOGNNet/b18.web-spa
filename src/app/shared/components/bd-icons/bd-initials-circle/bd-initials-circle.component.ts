@@ -9,8 +9,8 @@ const DEFAULT_INITIALS = 'B18';
 })
 export class BdInitialsCircleComponent {
 
-      @Input() private firstName: string;
-      @Input() private lastName: string;
+      @Input() private firstName: string = '';
+      @Input() private lastName: string = '';
       @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials(){
