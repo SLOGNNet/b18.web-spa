@@ -1,0 +1,31 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+
+$element-height: 18px;
+
+.equipment-associations-container {
+  @include driver-view-form-container;
+
+  .left {
+
+    .make-model-circle-wrapper {
+      display: flex;
+
+      .status-circle {
+        width: 10px;
+        height: 10px;
+        margin: 3px 5px 0 0;
+        border-radius: $circle-radius;
+      }
+
+      .make-model {
+        font-weight: bold;
+      }
+    }
+
+    .number {
+      color: $dark-grey;
+    }
+  }
+
+}

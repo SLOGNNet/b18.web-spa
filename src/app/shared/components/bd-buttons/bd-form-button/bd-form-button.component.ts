@@ -7,7 +7,6 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
   templateUrl: './bd-form-button.component.html'
 })
 export class BdFormButtonComponent {
-
   @Input() buttonText: string;
   @Input() private buttonType: 'default' | 'small' = 'default';
 }

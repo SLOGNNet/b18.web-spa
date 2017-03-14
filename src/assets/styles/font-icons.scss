@@ -179,15 +179,14 @@
   }
 }
 
+.icon-mail {
+  &:before {
+    content: '\e916';
+  }
+}
+
 .icon-up-arrow-bold {
   &:before {
     content: '\e91d';
   }
 }
-
-.icon-down-arrow-bold {
-  &:before {
-    content: '\e91c';
-  }
-}
-
