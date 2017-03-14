@@ -49,4 +49,8 @@ export class BdFormSwitchComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
   }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

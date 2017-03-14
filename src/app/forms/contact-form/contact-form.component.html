@@ -1,14 +1,13 @@
 <form [formGroup]="contactForm">
-  <bd-input class="bd-form-control" [disabled]="disabled" formControlName="firstName" [labelText]="'First Name'">
+  <bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'">
   </bd-input>
-  <bd-input class="bd-form-control" [disabled]="disabled" formControlName="lastName" [labelText]="'Last Name'">
+  <bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'">
   </bd-input>
-  <bd-input class="bd-form-control" [disabled]="disabled" formControlName="email" [labelText]="'Personal Email'">
+  <bd-input class="bd-form-control" formControlName="email" [labelText]="'Personal Email'">
   </bd-input>
-  <bd-input class="bd-form-control" [disabled]="disabled" formControlName="position" [labelText]="'Position'">
+  <bd-input class="bd-form-control" formControlName="position" [labelText]="'Position'">
   </bd-input>
   <bd-dropdown
-    [disabled]="disabled"
     clearLabel='Leave Empty'
     class="bd-form-control"
     labelText='Location'

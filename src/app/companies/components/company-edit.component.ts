@@ -11,8 +11,7 @@ import { CompanyForm } from '../../forms';
 
 @Component({
   selector: 'company-edit',
-  templateUrl: './company-edit.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './company-edit.component.html'
 })
 export class CompanyEditComponent extends BaseEditComponent<Company> {
   @Input() disabled: boolean = false;
@@ -28,10 +27,6 @@ export class CompanyEditComponent extends BaseEditComponent<Company> {
     title: 'Contacts'
   }];
 
-
-  isDetailsChanged() {
-    return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
-  }
   constructor(
     private cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
@@ -41,5 +36,9 @@ export class CompanyEditComponent extends BaseEditComponent<Company> {
     ngRedux: NgRedux<IAppState>) {
       super(companyActions, ngRedux.select(state => state.companies.selected),
         ngRedux.select(state => state.companies.isLoading), route, router, location);
+  }
+
+  isDetailsChanged() {
+    return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
   }
 }

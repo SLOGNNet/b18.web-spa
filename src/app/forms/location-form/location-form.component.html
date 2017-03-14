@@ -1,6 +1,6 @@
 <form [formGroup]="locationForm">
 	  <bd-validator [component]="locationForm.controls.name" [errorDefs]="{required: 'Name is required'}">
-			<bd-input class="bd-form-control" formControlName="name" [disabled]="disabled" placeholder="Name">
+			<bd-input class="bd-form-control" formControlName="name" placeholder="Name">
 			</bd-input>
 		</bd-validator>
 		<address-form [group]='locationForm.controls.address' [address]='location.address' [viewMode]="viewMode" [disabled]="disabled"></address-form>
