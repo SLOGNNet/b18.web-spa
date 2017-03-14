@@ -16,7 +16,6 @@ import { DriverForm } from '../../../forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
-
   private anchors = [{
     id: 'information',
     title: 'Information'
@@ -28,6 +27,10 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
       title: 'License'
     }];
 
+    get driverFullName() {
+      return this.selectedItem.firstName + ' ' + this.selectedItem.lastName;
+    }
+
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -36,9 +39,5 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
     super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
-  }
-
-  get driverType() {
-    return Driver.getTypeText(this.selectedItem.type);
   }
 }
