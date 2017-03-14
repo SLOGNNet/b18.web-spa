@@ -11,7 +11,7 @@ import { NgbCalendar } from './ngb-calendar';
     <table class="w-100" class="header" [class.collapsed]="!showSelect">
       <tr>
         <td class="text-sm-left">
-          <button type="button" (click)="doNavigate(navigation.PREV)" class="btn btn-sm btn-secondary arrow-left btn-inline"
+          <button type="button" (click)="doNavigate(navigation.PREV)" class="btn btn-sm btn-secondary arrow-left icon-left-arrow btn-inline"
             [disabled]="prevDisabled()"></button>
         </td>
 
@@ -26,7 +26,7 @@ import { NgbCalendar } from './ngb-calendar';
         </td>
 
         <td class="text-sm-right">
-          <button type="button" (click)="doNavigate(navigation.NEXT)" class="next btn btn-sm btn-secondary arrow-right btn-inline"
+          <button type="button" (click)="doNavigate(navigation.NEXT)" class="next btn btn-sm btn-secondary arrow-right icon-right-arrow btn-inline"
             [disabled]="nextDisabled()"></button>
         </td>
       </tr>

@@ -12,15 +12,25 @@
   padding-right: $default-margin;
   border-bottom: $border;
 
+  tr {
+    td {
+      button {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: $dark-grey;
+        outline: 0;
+      }
+    }
+  }
+
   .arrow-left {
     height: 20px;
-    background: url('../../../../../assets/img/arrow-left.svg') no-repeat;
     margin-left: $default-margin;
   }
 
   .arrow-right {
     height: 20px;
-    background: url('../../../../../assets/img/arrow-right.svg') no-repeat;
     float: right;
     margin-right: $default-margin;
    }
