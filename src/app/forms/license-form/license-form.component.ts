@@ -52,7 +52,7 @@ export class LicenseForm extends BaseForm {
     fields.forEach(field => {
       this.licenseForm.addControl(
         field.name,
-        this._formBuilder.control(this.license[field.name], field.validators)
+        this._formBuilder.control({value: this.license[field.name], disabled: this.disabled}, field.validators)
       );
     });
   }

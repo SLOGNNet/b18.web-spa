@@ -1,16 +1,11 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Driver } from '../models';
 import { DriverActions } from '../actions';
-import { DriverService } from '../shared';
-import { MessagesComponent } from './messages/messages';
-import { LoadingBtn } from '../../directives/loading_btn';
-import { ViewMode } from '../shared/enums';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
 import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../store';
-import { CanDeactivateGuard } from '../guards';
+
 @Component({
   selector: 'drivers',
   templateUrl: './drivers.component.html',

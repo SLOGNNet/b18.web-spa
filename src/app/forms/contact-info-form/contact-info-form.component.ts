@@ -30,7 +30,7 @@ export class ContactInfoForm extends BaseForm {
 
     keys.forEach(key => {
       this.contactInfoForm.addControl(
-        key, this._formBuilder.control(this.contactInfo[key], [])
+        key, this._formBuilder.control({value: this.contactInfo[key], disabled: this.disabled}, [])
       );
     });
   }

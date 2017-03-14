@@ -46,7 +46,7 @@ export class AddressForm extends BaseForm {
     fields.forEach(field => {
       this.addressForm.addControl(
         field.name,
-        this._formBuilder.control(this.address[field.name], field.validators)
+        this._formBuilder.control({value: this.address[field.name], disabled: this.disabled}, field.validators)
       );
     });
     this.addressForm.valueChanges.subscribe((value) => {
