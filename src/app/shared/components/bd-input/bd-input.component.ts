@@ -179,7 +179,7 @@ export class BdInputComponent {
     this._onTouchedCallback = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this._disabled = isDisabled;
   }
 

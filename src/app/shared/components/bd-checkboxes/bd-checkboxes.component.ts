@@ -56,7 +56,7 @@ export class BdCheckboxes implements ControlValueAccessor {
     this._onTouchedCallback = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
