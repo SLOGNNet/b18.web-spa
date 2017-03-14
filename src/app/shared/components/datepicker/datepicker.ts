@@ -164,6 +164,7 @@ export class NgbDatepicker implements OnChanges,
    * See NgbDatepickerNavigateEvent for the payload info.
    */
   @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
+  @Output() onDaySelect = new EventEmitter<any>();
 
   disabled = false;
 
@@ -228,6 +229,8 @@ export class NgbDatepicker implements OnChanges,
     if (this._date.month !== this.months[0].number && this.displayMonths === 1) {
       this._updateData();
     }
+
+    this.onDaySelect.emit();
   }
 
   onNavigateDateSelect(date: NgbDate) {

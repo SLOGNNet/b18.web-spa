@@ -177,6 +177,9 @@ export class NgbInputDatepicker {
         this._model =
           selectedDate ? this._service.toValidDate({year: selectedDate.year, month: selectedDate.month, day: selectedDate.day}, null) : null;
         this._writeModelValue(this._model);
+      });
+
+      this._cRef.instance.onDaySelect.subscribe(() => {
         this.close();
       });
     }
