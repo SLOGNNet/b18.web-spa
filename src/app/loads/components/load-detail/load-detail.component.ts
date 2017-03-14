@@ -11,7 +11,7 @@ import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle'
 import { BdViewDetailComponent } from './common/bd-view-detail';
 import { CommoditiesHeaderComponent } from '../../../forms';
 import MockData from '../../../shared/services/data-services/mock-data';
-import { find, map } from 'lodash';
+
 
 @Component({
   selector: 'load-detail',
@@ -20,7 +20,6 @@ import { find, map } from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadDetailComponent extends BaseDetailComponent<Load> {
-  private load: Load = MockData.loads[0];
 
   private anchors = [{
     id: 'customer',
