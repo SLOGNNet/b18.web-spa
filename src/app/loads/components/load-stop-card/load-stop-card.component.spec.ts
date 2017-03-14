@@ -36,17 +36,17 @@ function createTestData() {
     testStop2 = new Stop(),
     testContactInfo: Array<ContactInfo> = [
       {
-        label: 'primaryPhone',
+        label: 'Primary Phone',
         value: '213123123',
         type: ContactInfoType.Phone
       },
       {
-        label: 'alternativePhone',
+        label: 'Alternative Phone',
         value: '12424234',
         type: ContactInfoType.Phone
       },
       {
-        label: 'fax',
+        label: 'Fax',
         value: 'fax@gmail.comj',
         type: ContactInfoType.Fax
       }
