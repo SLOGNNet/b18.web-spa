@@ -24,22 +24,7 @@ const routes: Routes = [{
     },
     {
       path: 'loads', component: LoadsComponent,
-      children: [{
-      path: '0',
       children: [
-        {
-          path: '',
-          component: EmptyComponent,
-          outlet: 'detailOutlet',
-        },
-        {
-          path: 'edit',
-          component: LoadEditComponent,
-          data: { new: true },
-          canDeactivate: [CanDeactivateGuard]
-        }
-      ]
-    },
     {
       path: ':id',
       children: [
@@ -50,7 +35,7 @@ const routes: Routes = [{
       },
       {
           path: 'edit',
-          component: LoadEditComponent,
+          component: EmptyComponent,
           canDeactivate: [CanDeactivateGuard]
       }
       ]
