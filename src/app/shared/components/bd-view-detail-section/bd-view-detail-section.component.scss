@@ -11,10 +11,23 @@
       font-size: $tiny-font-size;
       text-transform: uppercase;
       font-weight: bold;
+      margin-bottom: 0;
       letter-spacing: 2px;
       word-spacing: 3px;
     }
     
-    .buttons-panel {}
+    .buttons-panel {
+      position: relative;
+      display: flex;
+      height: 100%;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .add-button,
+      .change-button {
+        display: flex;
+        margin-left: 5px;
+      }
+    }
   }
 }
