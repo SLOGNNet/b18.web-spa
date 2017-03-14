@@ -190,3 +190,27 @@
     content: '\e91d';
   }
 }
+
+.icon-left-arrow {
+  &:before {
+    content: '\e920';
+  }
+}
+
+.icon-right-arrow {
+  &:before {
+    content: '\e921';
+  }
+}
+
+.icon-left-arrow-bold {
+  &:before {
+    content: '\e91e';
+  }
+}
+
+.icon-right-arrow-bold {
+  &:before {
+    content: '\e91f';
+  }
+}
