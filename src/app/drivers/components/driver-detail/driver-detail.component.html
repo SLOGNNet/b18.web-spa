@@ -48,11 +48,8 @@
     <driver-equipment-associations
     *ngFor="let associatedEquipment of selectedItem.associatedEquipment"
     [associatedEquipment]="associatedEquipment"
+    [driver]="selectedItem"
     ></driver-equipment-associations>
-  <div class="price">
-    <span>{{paymentTypeText}}:</span>
-    <span class="rate">$ {{selectedItem.rate}}</span>
-  </div>
   <navigation-anchor id="license"></navigation-anchor>
   <bd-form-section [labelText]="'License'">
   </bd-form-section>

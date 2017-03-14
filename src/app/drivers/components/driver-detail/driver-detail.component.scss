@@ -44,22 +44,6 @@ $element-height: 18px;
   }
 }
 
-.price {
-  display: flex;
-  width: 100%;
-  height: 34px;
-  padding: 0 $default-margin;
-  background: $white;
-  font-size: $tiny-font-size;
-  align-items: center;
-  margin-top: 10px;
-  border-bottom: $border;
-
-  .rate {
-    margin-left: 10px;
-  }
-}
-
 .license-container {
   width: 100%;
   background: $white;
