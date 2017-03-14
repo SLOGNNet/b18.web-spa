@@ -10,7 +10,7 @@ import { TimePickerComponent } from '../timepicker';
 })
 export class BdFormTimePicker implements OnChanges {
 
-  @Input() timeFormat: string = 'HH:MM';
+  @Input() timeFormat: string = 'HH:mm';
   @Input() timePlaceholder: string = 'HH:MM';
   @Input() date: any;
   @Output() valueChange = new EventEmitter();
@@ -21,7 +21,7 @@ export class BdFormTimePicker implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.date && changes.date.currentValue) {
-      this.time = moment(changes.date.currentValue).format('HH:mm');
+      this.time = moment(changes.date.currentValue).format(this.timeFormat);
     }
   }
 
