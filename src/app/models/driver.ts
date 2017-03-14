@@ -62,7 +62,7 @@ export class Driver extends Member {
   @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
-  associatedEquipment: Array<Equipment>;
+  associatedEquipments: Array<Equipment>;
   paymentType: DriverPaymentTypes;
   rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;

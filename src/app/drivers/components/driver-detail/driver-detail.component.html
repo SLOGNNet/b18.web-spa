@@ -10,7 +10,7 @@
     </driver-information>
     <navigation-anchor id="equipment-associations"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EQUIPMENT ASSOCIATIONS'"></bd-view-detail-section>
-    <driver-equipment-associations *ngFor="let associatedEquipment of selectedItem.associatedEquipment" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
+    <driver-equipment-associations *ngFor="let associatedEquipment of selectedItem.associatedEquipments" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
     <driver-payment-type [driver]="selectedItem"></driver-payment-type>
     <navigation-anchor id="license"></navigation-anchor>
     <bd-view-detail-section [addButton]="false" [labelText]="'License'"></bd-view-detail-section>
