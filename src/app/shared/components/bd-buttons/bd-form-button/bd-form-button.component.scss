@@ -3,7 +3,21 @@
 .form-button {
   border: 0;
   background: transparent;
-  color: $blue;
+
+  &.default {
+    color: $blue;
+    font-size: $small-font-size;
+  }
+
+  &.small {
+    padding: 0;
+    color: $dark-grey;
+    font-size: $tiny-font-size;
+
+    &:hover {
+      color: $blue;
+    }
+  }
 
   &:focus {
     outline: 0;

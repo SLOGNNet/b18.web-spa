@@ -164,6 +164,7 @@ export class NgbDatepicker implements OnChanges,
    * See NgbDatepickerNavigateEvent for the payload info.
    */
   @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
+  @Output() onNavigateSelect = new EventEmitter<any>();
 
   disabled = false;
 
@@ -232,7 +233,7 @@ export class NgbDatepicker implements OnChanges,
 
   onNavigateDateSelect(date: NgbDate) {
     this._setViewWithinLimits(date);
-    this.onChange({year: date.year, month: date.month, day: date.day});
+    this.onNavigateSelect.emit({year: date.year, month: date.month, day: date.day});
     this._updateData();
   }
 

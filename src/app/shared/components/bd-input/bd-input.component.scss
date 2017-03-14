@@ -56,6 +56,7 @@
     height: $form-control-height;
     color: $label-default-color;
     font-size: $input-label-font-size;
+    text-transform: capitalize;
     align-self: flex-start;
     margin-left: -$default-margin;
     margin-right: $default-margin * 2;

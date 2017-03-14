@@ -11,10 +11,12 @@ import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 import { MainComponent } from './main.component';
 import { CompaniesComponent, CompanyEditComponent } from '../companies';
 import { CompanyCardComponent } from '../companies/components/company-card';
+import { CompanyDetailComponent } from '../companies/components/company-detail';
 import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
+import { MultiPaneLayoutComponent } from '../multi-pane-layout';
 import { DriversModule } from '../drivers';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
@@ -28,9 +30,12 @@ import {
   TripPopoverComponent,
   CompanyPopoverComponent,
   DriverPopoverComponent,
-  LoadViewModeCardComponent,
+  LoadDetailComponent,
   CommodityDetailsComponent,
-  TripViewComponent
+  TripViewComponent,
+  StopViewComponent,
+  CustomerDetailComponent,
+  RequirementsDetailComponent
 } from '../loads';
 
 
@@ -54,12 +59,16 @@ import {
     LoadEditComponent,
     CompaniesComponent,
     CompanyEditComponent,
+    CompanyDetailComponent,
     CompanyCardComponent,
     CompanyCardsComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
-    LoadViewModeCardComponent,
+    LoadDetailComponent,
     TripViewComponent,
+    StopViewComponent,
+    CustomerDetailComponent,
+    RequirementsDetailComponent,
     TripPopoverComponent,
     CompanyPopoverComponent,
     DriverPopoverComponent,

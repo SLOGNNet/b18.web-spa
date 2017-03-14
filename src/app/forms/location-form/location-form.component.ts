@@ -32,7 +32,7 @@ export class LocationForm extends BaseForm {
       this.location.id, []
     ));
     this.locationForm.addControl('name', this.formBuilder.control(
-      this.location.name, []
+      {value: this.location.name, disabled: this.disabled}, []
     ));
     this.locationForm.addControl('address', this.formBuilder.group({ }));
     this.locationForm.addControl('contactInfo', this.formBuilder.array([]));

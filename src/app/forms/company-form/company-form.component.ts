@@ -61,14 +61,14 @@ export class CompanyForm extends BaseForm {
   initForm() {
     this.companyForm = this.formBuilder.group({
       id: [this.company.id],
-      name: [this.company.name],
-      type: [this.company.type],
-      status: [this.company.status, Validators.required],
-      mc: [this.company.mc, Validators.required],
-      taxId: [this.company.taxId],
+      name: [{value: this.company.name, disabled: this.disabled}],
+      type: [{value: this.company.type, disabled: this.disabled}],
+      status: [{value: this.company.status, disabled: this.disabled}, Validators.required],
+      mc: [{value: this.company.mc, disabled: this.disabled}, Validators.required],
+      taxId: [{value: this.company.taxId, disabled: this.disabled}],
+      email: [{value: this.company.email, disabled: this.disabled}],
       contacts: this.formBuilder.array([]),
-      locations: this.formBuilder.array([]),
-      email: [this.company.email]
+      locations: this.formBuilder.array([])
     });
   }
 

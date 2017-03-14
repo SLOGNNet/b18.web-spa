@@ -94,4 +94,8 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
     this._onTouchedCallback = fn;
   }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

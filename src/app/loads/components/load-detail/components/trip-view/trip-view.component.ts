@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
+import { Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
 import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { BdContactInfoComponent } from './common/bd-icons/bd-contact-info';
 import { CommoditiesHeaderComponent } from '../../../../../forms/commodities-forms';
@@ -36,7 +36,7 @@ export class TripViewComponent {
 
   ngOnInit() {
     this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
-    this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'primaryPhone').value;
+    this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'Primary Phone').value;
 
     this.pickupCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Pickup);
     this.dropoffCommodities = filter(this.tripData.stopActions, item => item.type === StopActionTypes.Dropoff);

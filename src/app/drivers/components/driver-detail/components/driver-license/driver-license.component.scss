@@ -1,0 +1,57 @@
+@import '../../../../../../assets/styles/variables';
+
+$element-height: 18px;
+
+.license-container {
+  width: 100%;
+  background: $white;
+  font-size: $tiny-font-size;
+  line-height: $element-height;
+  border-bottom: $border;
+
+  .top {
+    display: flex;
+    width: 100%;
+    height: 34px;
+    border-bottom: $border;
+
+    .left {
+      display: flex;
+      width: 50%;
+      height: 34px;
+      padding: $default-margin;
+      border-right: $border;
+      align-items: center;
+
+      .license-number {
+        flex: 1;
+        font-weight: bold;
+      }
+    }
+
+    .right {
+      display: flex;
+      width: 50%;
+      height: 34px;
+      padding: $default-margin;
+      color: $dark-grey;
+      align-items: center;
+
+      .date {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .bottom {
+    padding: $default-margin;
+
+    .bottom-label {
+      color: $dark-grey;
+    }
+
+    .types {
+      margin-left: 10px;
+    }
+  }
+}
