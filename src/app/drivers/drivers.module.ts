@@ -4,7 +4,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
-import { DriverEditComponent, DriverCardsComponent, DriverCardComponent, DriverDetailComponent, DriverViewComponent } from './components';
+import { DriverEditComponent, DriverCardsComponent, DriverCardComponent, DriverDetailComponent, DriverEquipmentAssociationsComponent } from './components';
 import { DriversComponent } from './drivers.component';
 import { DriverRoutingModule } from './drivers.routing';
 import { BdFormsModule } from '../forms/forms.module';
@@ -22,7 +22,7 @@ import { BdFormsModule } from '../forms/forms.module';
     DriverCardComponent,
     DriverCardsComponent,
     DriverDetailComponent,
-    DriverViewComponent
+    DriverEquipmentAssociationsComponent
   ]
 })
 export class DriversModule { }

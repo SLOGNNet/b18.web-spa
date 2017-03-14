@@ -1,30 +1,9 @@
 @import '../../../../assets/styles/form-control';
 @import '../../../../assets/styles/styles';
+@import '../../../../assets/styles/mixins';
 @import '../../../../assets/styles/font-icons';
 
 $element-height: 18px;
-
-@mixin driver-view-form-container {
-  display: flex;
-  width: 100%;
-  padding: 0 $default-margin;
-  background: $white;
-  font-size: $tiny-font-size;
-  line-height: $element-height;
-  border-bottom: $border;
-
-  .left {
-    width: 50%;
-    padding: $default-margin 0;
-    border-right: $border;
-  }
-
-  .right {
-    width: 50%;
-    padding: $default-margin;
-    color: $dark-grey;
-  }
-}
 
 .information-container {
   @include driver-view-form-container;
@@ -63,33 +42,6 @@ $element-height: 18px;
       }
     }
   }
-}
-
-.equipment-associations-container {
-  @include driver-view-form-container;
-
-  .left {
-
-    .make-model-circle-wrapper {
-      display: flex;
-
-      .status-circle {
-        width: 10px;
-        height: 10px;
-        margin: 3px 5px 0 0;
-        border-radius: $circle-radius;
-      }
-
-      .make-model {
-        font-weight: bold;
-      }
-    }
-
-    .number {
-      color: $dark-grey;
-    }
-  }
-
 }
 
 .price {
