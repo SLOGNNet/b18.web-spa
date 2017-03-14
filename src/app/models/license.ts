@@ -13,8 +13,8 @@ export class License {
 
   static create(): License {
     const result = new License();
-    result.expiration = new Date();
-    result.dateIssued = new Date();
+    result.expiration = null;
+    result.dateIssued = null;
     result.class = LicenseClassTypes.None;
     return result;
   }

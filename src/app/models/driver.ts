@@ -69,9 +69,9 @@ export class Driver extends Member {
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();
-    result.dateOfBirth = new Date();
-    result.hireDate = new Date();
-    result.terminationDate = new Date();
+    result.dateOfBirth = null;
+    result.hireDate = null;
+    result.terminationDate = null;
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
     result.paymentType = DriverPaymentTypes.PerMile;
