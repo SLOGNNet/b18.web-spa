@@ -1,0 +1,13 @@
+<div *ngIf="display" class="bd-timepicker-container">
+  <table>
+    <tbody>
+      <tr *ngFor="let hourRow of hours">
+        <td *ngFor="let hour of hourRow"
+          [class.selected]="isSelected(hour)"
+          (click)="onSelected(hour)">
+          <div>{{ hour.label }}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -48,7 +48,10 @@ import { BdRemoveButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
+import { BdFormDateTimePicker } from './components/bd-form-datetimepicker';
 import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
+import { BdFormTimePicker } from './components/bd-form-timepicker';
+import { TimePickerComponent } from './components/timepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { BdPopoverModule } from './directives/bd-popover/index';
@@ -116,8 +119,10 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BlurForwarderDirective,
     ClickOutsideDirective,
     FormStickyBottomContainerComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
     BdDatePicker,
+    BdFormTimePicker,
     StopsLineComponent,
     StopPopoverComponent,
     BdResizerComponent,
@@ -138,9 +143,11 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
+    TimePickerComponent,
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
     EmptyComponent,
+    BdContactInfoComponent,
     MultiPaneLayoutComponent
   ],
   imports: [
@@ -182,7 +189,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdButtonComponent,
     BdRemoveButtonComponent,
     BdAddButtonComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
+    BdFormTimePicker,
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,
