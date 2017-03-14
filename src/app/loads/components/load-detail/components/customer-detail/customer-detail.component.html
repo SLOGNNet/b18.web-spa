@@ -13,13 +13,13 @@
     </section>
     <section class="contact-info">
         <bd-initials-circle
-            [firstName]="company.contacts[0].firstName"
-            [lastName]="company.contacts[0].lastName"
+            [firstName]="selectedContact.firstName"
+            [lastName]="selectedContact.lastName"
             class="circle"
             size='default'>
         </bd-initials-circle>
         <div class="info-container">
-            <span class="contact-name ellipsis">{{company.contacts[0].firstName}} {{company.contacts[0].middleName}} {{company.contacts[0].lastName}}</span>
+            <span class="contact-name ellipsis">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
             <span class="buttons-panel">
                 <button class="icon-fax"></button>
                 <button class="icon-call"></button>

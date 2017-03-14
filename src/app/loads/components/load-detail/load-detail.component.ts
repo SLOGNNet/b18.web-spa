@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Load, Stop, ContactInfo, TripStop, Address, StopActionTypes } from '../../../models';
+import { Load, Stop, ContactInfo, TripStop, Address, StopActionTypes, Contact } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -21,6 +21,7 @@ import MockData from '../../../shared/services/data-services/mock-data';
 })
 export class LoadDetailComponent extends BaseDetailComponent<Load> {
 
+  private selectedContact: Contact;
   private anchors = [{
     id: 'customer',
     title: 'Customer'
@@ -39,6 +40,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(state => state.loads.selected), router, route);
+      this.selectedContact = Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
   }
 
 }

@@ -3,7 +3,7 @@
 <form>
     <navigation-anchor id="customer"></navigation-anchor>
     <bd-view-detail-section [labelText]="'Customer'" [changeButton]="true" [addButton]="true">
-        <customer-detail [company]="selectedItem.customer"></customer-detail>
+        <customer-detail [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
     </bd-view-detail-section>
     <navigation-anchor id="requirements"></navigation-anchor>
     <bd-view-detail-section [labelText]="'Requirements'" [changeButton]="true" [addButton]="true">
