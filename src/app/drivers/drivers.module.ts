@@ -9,6 +9,9 @@ import {
   DriverCardsComponent,
   DriverCardComponent,
   DriverDetailComponent,
+  DriverLicenseComponent,
+  DriverInformationComponent,
+  DriverPaymentTypeComponent,
   DriverEquipmentAssociationsComponent } from './components';
 import { DriversComponent } from './drivers.component';
 import { DriverRoutingModule } from './drivers.routing';
@@ -27,7 +30,10 @@ import { BdFormsModule } from '../forms/forms.module';
     DriverCardComponent,
     DriverCardsComponent,
     DriverDetailComponent,
-    DriverEquipmentAssociationsComponent
+    DriverEquipmentAssociationsComponent,
+    DriverInformationComponent,
+    DriverLicenseComponent,
+    DriverPaymentTypeComponent
   ]
 })
 export class DriversModule { }

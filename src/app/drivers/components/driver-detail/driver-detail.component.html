@@ -3,76 +3,27 @@
   </bd-button>
   <form-navigation [title]="'Driver'" [anchors]="anchors">
   </form-navigation>
-
   <navigation-anchor id="information"></navigation-anchor>
   <bd-form-section [labelText]="'INFORMATION'">
-    <div class="information-container">
-      <div class="left">
-        <div class="top">
-          <bd-initials-circle class="initials-circle" [firstName]="selectedItem.firstName" [lastName]="selectedItem.lastName">
-          </bd-initials-circle>
-          <div class="top-right">
-            <div class="full-name">
-              {{selectedItem.firstName}} {{selectedItem.lastName}}
-            </div>
-            <div class="top-icons">
-              <span class="icon-mail"></span>
-              <span class="icon-call"></span>
-              <span class="icon-message"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bottom">
-          <div class="birth">
-            <span class="bottom-label">Birth:</span>
-            <span class="date-of-birth">{{selectedItem?.dateOfBirth | date: 'dd/MM/yyyy'}}</span>
-          </div>
-          <div class="ssn">
-            <span class="bottom-label">SSN:</span>
-            <span class="ssn">{{selectedItem.ssn}}</span>
-          </div>
-          <div class="driver-type">
-            {{driverType}}
-          </div>
-        </div>
-      </div>
-      <div class="right">
-        <bd-contact-info [contactCollection]="selectedItem.contactInfo"></bd-contact-info>
-      </div>
-    </div>
-  </bd-form-section>
+    </bd-form-section>
+  <driver-information
+  [driver]="selectedItem"
+  >
+  </driver-information>
   <navigation-anchor id="equipment-associations"></navigation-anchor>
   <bd-form-section [labelText]="'EQUIPMENT ASSOCIATIONS'">
   </bd-form-section>
     <driver-equipment-associations
     *ngFor="let associatedEquipment of selectedItem.associatedEquipment"
     [associatedEquipment]="associatedEquipment"
-    [driver]="selectedItem"
     ></driver-equipment-associations>
+    <driver-payment-type
+    [driver]="selectedItem"
+    ></driver-payment-type>
   <navigation-anchor id="license"></navigation-anchor>
   <bd-form-section [labelText]="'License'">
   </bd-form-section>
-  <div class="license-container">
-    <div class="top">
-      <div class="left">
-        <span class="license-number">{{selectedItem.license.number}}</span>
-        <span class="license-class">{{licenseClassText}}</span>
-      </div>
-      <div class="right">
-        <span class="state-issued">{{selectedItem.license.stateIssued}}</span>
-        <span class="date">{{selectedItem.license.dateIssued | date: 'dd/MM/yyyy'}} - {{selectedItem.license.expiration | date: 'dd/MM/yyyy'}}</span>
-      </div>
-    </div>
-    <div class="bottom">
-      <div class="restrictions-container">
-        <span class="bottom-label">Restrict:</span>
-        <span class="types">{{restrictionsTypes}}</span>
-      </div>
-      <div class="endorsments-container">
-        <span class="bottom-label">Endors:</span>
-        <span class="types">{{endorsmentsTypes}}</span>
-      </div>
-    </div>
-  </div>
+  <driver-license
+  [driver]="selectedItem"
+  ></driver-license>
 </div>

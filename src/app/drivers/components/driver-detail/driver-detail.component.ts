@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Driver, DriverTypes, DriverPaymentTypes, License } from '../../../models';
+import { Driver, DriverTypes, DriverPaymentTypes } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -16,8 +16,6 @@ import { DriverForm } from '../../../forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
-  public restrictionsTypes: string;
-  public endorsmentsTypes: string;
 
   private anchors = [{
     id: 'information',
@@ -40,20 +38,7 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
   }
 
-  ngOnInit() {
-      this.restrictionsTypes = this.selectedItem.license.restrictions.split(' ').join(', ');
-      this.endorsmentsTypes = this.selectedItem.license.endorsments.split(' ').join(', ');
-  }
-
   get driverType() {
     return Driver.getTypeText(this.selectedItem.type);
-  }
-
-  get paymentTypeText() {
-    return Driver.getPaymentTypeText(this.selectedItem.paymentType);
-  }
-
-  get licenseClassText() {
-    return License.getLicenseClassText(this.selectedItem.license.class);
   }
 }
