@@ -56,8 +56,4 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
   get licenseClassText() {
     return License.getLicenseClassText(this.selectedItem.license.class);
   }
-
-  // ngOnInit() {
-  //   console.log(this.selectedItem);
-  // }
 }
