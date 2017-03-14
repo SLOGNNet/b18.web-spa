@@ -3,27 +3,17 @@
   </bd-button>
   <form-navigation [title]="'Driver'" [anchors]="anchors">
   </form-navigation>
-  <navigation-anchor id="information"></navigation-anchor>
-  <bd-form-section [labelText]="'INFORMATION'">
-    </bd-form-section>
-  <driver-information
-  [driver]="selectedItem"
-  >
-  </driver-information>
-  <navigation-anchor id="equipment-associations"></navigation-anchor>
-  <bd-form-section [labelText]="'EQUIPMENT ASSOCIATIONS'">
-  </bd-form-section>
-    <driver-equipment-associations
-    *ngFor="let associatedEquipment of selectedItem.associatedEquipment"
-    [associatedEquipment]="associatedEquipment"
-    ></driver-equipment-associations>
-    <driver-payment-type
-    [driver]="selectedItem"
-    ></driver-payment-type>
-  <navigation-anchor id="license"></navigation-anchor>
-  <bd-form-section [labelText]="'License'">
-  </bd-form-section>
-  <driver-license
-  [driver]="selectedItem"
-  ></driver-license>
+  <div class="driver-detail-container">
+    <navigation-anchor id="information"></navigation-anchor>
+    <bd-view-detail-section [addButton]="false" [labelText]="'INFORMATION'"></bd-view-detail-section>
+    <driver-information [driver]="selectedItem">
+    </driver-information>
+    <navigation-anchor id="equipment-associations"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'EQUIPMENT ASSOCIATIONS'"></bd-view-detail-section>
+    <driver-equipment-associations *ngFor="let associatedEquipment of selectedItem.associatedEquipment" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
+    <driver-payment-type [driver]="selectedItem"></driver-payment-type>
+    <navigation-anchor id="license"></navigation-anchor>
+    <bd-view-detail-section [addButton]="false" [labelText]="'License'"></bd-view-detail-section>
+    <driver-license [driver]="selectedItem"></driver-license>
+  </div>
 </div>
