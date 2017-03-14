@@ -19,7 +19,7 @@ export class ContactInfo {
 
   public static getPrimaryPhone(contactInfoList: Array<ContactInfo>): ContactInfo {
     const info = contactInfoList.filter(item => {
-      return item.label === 'primaryPhone';
+      return item.label === 'Primary Phone';
     });
 
     return info[0];
@@ -31,22 +31,22 @@ export class ContactInfo {
 
   public static сreateDefaultList() {
     return [{
-      label: 'primaryPhone',
+      label: 'Primary Phone',
       value: '',
       type: ContactInfoType.Phone
     },
     {
-      label: 'alternativePhone',
+      label: 'Alternative Phone',
       value: '',
       type: ContactInfoType.Phone
     },
     {
-      label: 'fax',
+      label: 'Fax',
       value: '',
       type: ContactInfoType.Fax
     },
     {
-      label: 'email',
+      label: 'Email',
       value: '',
       type: ContactInfoType.Email
     }];
