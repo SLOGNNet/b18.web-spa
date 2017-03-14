@@ -1,0 +1,35 @@
+<div class="information-container">
+  <div class="left">
+    <div class="top">
+      <bd-initials-circle class="initials-circle" [firstName]="driver.firstName" [lastName]="driver.lastName">
+      </bd-initials-circle>
+      <div class="top-right">
+        <div class="full-name">
+          {{driver.firstName}} {{driver.lastName}}
+        </div>
+        <div class="top-icons">
+          <span class="icon-mail"></span>
+          <span class="icon-call"></span>
+          <span class="icon-message"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="birth">
+        <span class="bottom-label">Birth:</span>
+        <span class="date-of-birth">{{driver?.dateOfBirth | date: 'dd/MM/yyyy'}}</span>
+      </div>
+      <div class="ssn">
+        <span class="bottom-label">SSN:</span>
+        <span class="ssn">{{driver.ssn}}</span>
+      </div>
+      <div class="driver-type">
+        {{driverType}}
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <bd-contact-info [contactCollection]="driver.contactInfo"></bd-contact-info>
+  </div>
+</div>

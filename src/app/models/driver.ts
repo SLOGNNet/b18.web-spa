@@ -38,9 +38,21 @@ function createTypeText() {
   return result;
 };
 
+// Payment Type Text
+function createPaymentTypeText() {
+  let result = {};
+  result[DriverPaymentTypes.PerMile] = 'Per Miles';
+  result[DriverPaymentTypes.Percentage] = 'Percentage';
+  result[DriverPaymentTypes.Hourly] = 'Hourly';
+  result[DriverPaymentTypes.Flat] = 'Flat';
+
+  return result;
+};
+
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
+const paymentTypeText = createPaymentTypeText();
 
 export class Driver extends Member {
   dateOfBirth: Date = null;
@@ -50,7 +62,7 @@ export class Driver extends Member {
   @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
-  associatedEquipment: Array<Equipment>;
+  associatedEquipments: Array<Equipment>;
   paymentType: DriverPaymentTypes;
   rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;
@@ -92,4 +104,10 @@ export class Driver extends Member {
   public static getTypeText(type: DriverTypes): string {
     return typeText[type];
   }
+
+  public static getPaymentTypeText(paymentType: DriverPaymentTypes): string {
+    return paymentTypeText[paymentType];
+  }
+
+
 };

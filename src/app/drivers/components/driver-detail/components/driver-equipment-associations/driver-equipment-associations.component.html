@@ -1,0 +1,19 @@
+<div class="equipment-associations-container">
+  <div class="left">
+    <div class="make-model-circle-wrapper">
+      <span [style.background]="equipmentStatusColor(associatedEquipment.status)" class="status-circle"></span>
+      <span class="make-model">{{associatedEquipment.make}} {{associatedEquipment.model}}</span>
+    </div>
+    <div class="number">
+      {{associatedEquipment.number}}
+    </div>
+  </div>
+  <div class="right">
+    <div class="equipment">
+      {{equipmentModeText(associatedEquipment.mode)}}
+    </div>
+    <div class="pover-unit">
+      {{equipmentTypeText(associatedEquipment.status)}}
+    </div>
+  </div>
+</div>

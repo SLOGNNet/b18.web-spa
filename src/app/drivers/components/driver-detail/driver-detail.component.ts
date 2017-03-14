@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Driver } from '../../../models';
+import { Driver, DriverTypes, DriverPaymentTypes } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,14 +12,25 @@ import { DriverForm } from '../../../forms';
 @Component({
   selector: 'driver-detail',
   templateUrl: './driver-detail.component.html',
+  styleUrls: ['./driver-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverDetailComponent extends BaseDetailComponent<Driver> {
-
- private anchors = [{
-    id: 'driver-personal-information',
+  private anchors = [{
+    id: 'information',
     title: 'Information'
-  }];
+  }, {
+      id: 'equipment-associations',
+      title: 'Equipment Associations'
+    }, {
+      id: 'license',
+      title: 'License'
+    }];
+
+    get driverFullName() {
+      return this.selectedItem.firstName + ' ' + this.selectedItem.lastName;
+    }
+
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -27,6 +38,6 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
+    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
   }
 }
