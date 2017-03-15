@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Driver, License } from '../../../../../models';
+import { Constants } from '../../../../../shared';
 
 @Component({
   selector: 'driver-license',
@@ -10,6 +11,10 @@ export class DriverLicenseComponent {
   public restrictionsTypes: string;
   public endorsmentsTypes: string;
   @Input() driver: Driver;
+
+  constructor(private constants: Constants) {
+
+  }
 
   ngOnChanges(changes) {
     if (changes.driver) {
