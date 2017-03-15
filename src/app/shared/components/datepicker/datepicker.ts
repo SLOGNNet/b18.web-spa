@@ -266,12 +266,12 @@ export class NgbDatepicker implements OnChanges,
     this._date = this._service.toValidDate(this.startDate);
 
     if (!this._calendar.isValid(this._minDate)) {
-      this._minDate = this._calendar.getPrev(this._date, 'y', 10);
+      this._minDate = this._calendar.getPrev(this._date, 'y', 50);
       this.minDate = {year: this._minDate.year, month: this._minDate.month, day: this._minDate.day};
     }
 
     if (!this._calendar.isValid(this._maxDate)) {
-      this._maxDate = this._calendar.getNext(this._date, 'y', 11);
+      this._maxDate = this._calendar.getNext(this._date, 'y', 51);
       this._maxDate = this._calendar.getPrev(this._maxDate);
       this.maxDate = {year: this._maxDate.year, month: this._maxDate.month, day: this._maxDate.day};
     }
