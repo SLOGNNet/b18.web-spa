@@ -18,7 +18,8 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
   host: { '(click)': 'focus($event)' },
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdInputComponent {
 
@@ -86,6 +87,7 @@ export class BdInputComponent {
   private _focusEmitter: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
   ngAfterViewInit() {
+    this.changeDetectionRef.markForCheck();
     this._prefixEmpty = this.prefixContainer.nativeElement.children.length === 0;
     this._suffixEmpty = this.suffixContainer.nativeElement.children.length === 0;
     this.changeDetectionRef.detectChanges();
