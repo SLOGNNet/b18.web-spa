@@ -22,7 +22,11 @@ export class GoogleService {
 
   getPredictions(query: string): Observable<any[]> {
     return Observable.create((observer: any) => {
-      this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []));
+      if (query.trim().length) {
+        this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []));
+      } else {
+        observer.next([]);
+      }
     });
   }
 
@@ -33,7 +37,7 @@ export class GoogleService {
   }
 
   private formatDetails(place) {
-    if (!place.geometry) {
+    if (!place || !place.geometry) {
       return null;
     }
 
@@ -55,9 +59,14 @@ export class GoogleService {
 
     let streetAddress1 = place.formatted_address;
     const stateIdx = streetAddress1.indexOf(details.administrative_area_level_1) - 2;
+    const cityIdx = streetAddress1.indexOf(details.locality) - 2;
 
     if (stateIdx > 0) {
       streetAddress1 = streetAddress1.substring(0, stateIdx);
+    }
+
+    if (cityIdx > 0) {
+      streetAddress1 = streetAddress1.substring(0, cityIdx);
     }
 
     return {
