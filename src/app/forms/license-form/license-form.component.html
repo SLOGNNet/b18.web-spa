@@ -1,9 +1,9 @@
 <form [formGroup]="licenseForm">
 		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Number'">
 		</bd-input>
-		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
-		</bd-form-datepicker>
 		<bd-form-datepicker class="bd-form-control" formControlName="dateIssued" [labelText]="'Date Issued'">
+		</bd-form-datepicker>
+		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
 		</bd-form-datepicker>
 		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [labelText]="'State issued'" [items]="states">
 		</bd-dropdown>
