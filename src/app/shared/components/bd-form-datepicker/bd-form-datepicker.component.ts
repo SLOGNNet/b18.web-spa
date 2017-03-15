@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, forwardRef, Optional, ChangeDetectionStrategy } from '@angular/core';
 import { NgbInputDatepicker, NgbDate } from '../datepicker';
 import { BdDatePicker } from './components';
+import { NgbDateStruct } from '../datepicker';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
 import { Constants } from '../../constants/constants';
@@ -23,6 +24,8 @@ export class BdFormDatePicker implements ControlValueAccessor {
   @Input() labelText: string;
   @Input() disabled: boolean = false;
   @Input() dateFormat: string = this.constants.DATE_FORMAT;
+  @Input() minDate: NgbDateStruct;
+  @Input() maxDate: NgbDateStruct;
   @ViewChild('datepicker') datepicker: BdDatePicker;
   private dateValue;
 

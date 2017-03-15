@@ -202,23 +202,23 @@ describe('ngb-datepicker', () => {
 
     fixture.componentInstance.minDate = null;
     fixture.detectChanges();
-    expectMinDate(990, 1);
+    expectMinDate(950, 1);
 
     fixture.componentInstance.minDate = undefined;
     fixture.detectChanges();
-    expectMinDate(990, 1);
+    expectMinDate(950, 1);
 
     fixture.componentInstance.minDate = <any>{};
     fixture.detectChanges();
-    expectMinDate(990, 1);
+    expectMinDate(950, 1);
 
     fixture.componentInstance.minDate = <any>new Date();
     fixture.detectChanges();
-    expectMinDate(990, 1);
+    expectMinDate(950, 1);
 
     fixture.componentInstance.minDate = new NgbDate(3000000, 1, 1);
     fixture.detectChanges();
-    expectMinDate(990, 1);
+    expectMinDate(950, 1);
   });
 
   it('should handle incorrect maxDate values', () => {
@@ -247,23 +247,23 @@ describe('ngb-datepicker', () => {
 
     fixture.componentInstance.maxDate = null;
     fixture.detectChanges();
-    expectMaxDate(3010, 12);
+    expectMaxDate(3050, 12);
 
     fixture.componentInstance.maxDate = undefined;
     fixture.detectChanges();
-    expectMaxDate(3010, 12);
+    expectMaxDate(3050, 12);
 
     fixture.componentInstance.maxDate = <any>{};
     fixture.detectChanges();
-    expectMaxDate(3010, 12);
+    expectMaxDate(3050, 12);
 
     fixture.componentInstance.maxDate = <any>new Date();
     fixture.detectChanges();
-    expectMaxDate(3010, 12);
+    expectMaxDate(3050, 12);
 
     fixture.componentInstance.maxDate = new NgbDate(3000000, 1, 1);
     fixture.detectChanges();
-    expectMaxDate(3010, 12);
+    expectMaxDate(3050, 12);
   });
 
   it('should support disabling dates via callback', () => {
