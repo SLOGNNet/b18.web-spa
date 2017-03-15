@@ -6,11 +6,16 @@ import { Component, Input, AfterViewInit, ElementRef, HostListener, ChangeDetect
   styleUrls: ['./form-sticky-bottom-container.component.scss']
 })
 export class FormStickyBottomContainerComponent implements AfterViewInit {
+  public timout = null;
   public height: string;
   @Input() sticky = true;
 
   ngAfterViewInit() {
-    setTimeout(() => this.update(), 0);
+    this.timout = setTimeout(() => this.update(), 0);
+  }
+
+  ngOnDestroy() {
+    clearTimeout(this.timout);
   }
 
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
