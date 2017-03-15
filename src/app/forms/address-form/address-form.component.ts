@@ -79,12 +79,10 @@ export class AddressForm extends BaseForm {
   }
 
   onAddressUpdate(address: Address) {
-    this.addressForm.setValue(Object.assign(
-      {},
-      this.addressForm.value, address
-    ));
+    const newAddress = Object.assign({}, this.addressForm.value, address);
+    this.addressForm.setValue(newAddress);
 
-    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress1);
+    this._updateMap(newAddress.latitude, newAddress.longitude, newAddress.streetAddress1);
   }
 
   public onPlaceSelect(place) {
