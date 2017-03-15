@@ -34,7 +34,8 @@ export class BdFormDatePicker implements ControlValueAccessor {
 
   writeValue(value: any) {
     this.value = value;
-    this.dateValue = moment(value).format(this.dateFormat);
+    const date = moment(value);
+    this.dateValue = date.isValid() ? date.format(this.dateFormat) : null;
   }
 
   onDateChange(value: string) {

@@ -34,6 +34,11 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
       },
       {
+        path: '',
+        component: EmptyComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+      {
           path: 'edit',
           component: EmptyComponent,
           canDeactivate: [CanDeactivateGuard]
@@ -66,6 +71,11 @@ const routes: Routes = [{
           path: '',
           component: CompanyDetailComponent,
           outlet: 'detailOutlet',
+      },
+      {
+        path: '',
+        component: EmptyComponent,
+        canDeactivate: [CanDeactivateGuard]
       },
       {
           path: 'edit',

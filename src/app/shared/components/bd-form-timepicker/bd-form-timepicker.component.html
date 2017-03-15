@@ -1,0 +1,7 @@
+<div class="bd-form-timepicker-container" (clickOutside)="onClickOutside($event)">
+  <bd-input [placeholder]="timePlaceholder"
+    [value]="time"
+    (focus)="onFocus()">
+  </bd-input>
+  <timepicker (valueChange)="onTimeChange($event)" #timepicker></timepicker>
+</div>

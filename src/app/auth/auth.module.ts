@@ -11,7 +11,8 @@ import {
   EmailWasSentComponent,
   EmailConfirmationComponent,
   AuthGeneralFormErrorComponent,
-  AuthFormMessageHelperComponent
+  AuthFormMessageHelperComponent,
+  TestFormComponent
  } from './components';
 import {
   LoginFormComponent,
@@ -40,7 +41,8 @@ import { AuthRoutingModule } from './auth.routing';
     EmailConfirmationComponent,
     EmailWasSentComponent,
     AuthGeneralFormErrorComponent,
-    AuthFormMessageHelperComponent
+    AuthFormMessageHelperComponent,
+    TestFormComponent
   ],
   providers: [
     AuthGuard,

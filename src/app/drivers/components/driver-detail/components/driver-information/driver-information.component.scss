@@ -1,0 +1,44 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/font-icons';
+
+$element-height: 18px;
+
+.information-container {
+  @include driver-view-form-container;
+
+  .left {
+
+    .top {
+      display: flex;
+
+      .top-right {
+        margin-left: $default-margin;
+
+        .full-name {
+          font-weight: bold;
+        }
+
+        .top-icons {
+          color: $dark-grey;
+
+          .icon-call,
+          .icon-message {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .bottom {
+      .birth,
+      .ssn {
+        color: $dark-grey;
+
+        .bottom-label {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

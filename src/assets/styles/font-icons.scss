@@ -179,15 +179,38 @@
   }
 }
 
+.icon-mail {
+  &:before {
+    content: '\e916';
+  }
+}
+
 .icon-up-arrow-bold {
   &:before {
     content: '\e91d';
   }
 }
 
-.icon-down-arrow-bold {
+.icon-left-arrow {
   &:before {
-    content: '\e91c';
+    content: '\e920';
   }
 }
 
+.icon-right-arrow {
+  &:before {
+    content: '\e921';
+  }
+}
+
+.icon-left-arrow-bold {
+  &:before {
+    content: '\e91e';
+  }
+}
+
+.icon-right-arrow-bold {
+  &:before {
+    content: '\e91f';
+  }
+}

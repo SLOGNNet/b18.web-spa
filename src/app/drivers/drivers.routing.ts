@@ -34,6 +34,11 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
       },
       {
+        path: '',
+        component: EmptyComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+      {
           path: 'edit',
           component: DriverEditComponent,
           canDeactivate: [CanDeactivateGuard]
