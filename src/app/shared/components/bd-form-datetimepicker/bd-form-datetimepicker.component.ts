@@ -22,7 +22,7 @@ export const BD_FORM_DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BdFormDateTimePicker implements ControlValueAccessor {
 
-  @Input() dateFormat: string = this.constants.DATE_FORMAT.toUpperCase();
+  @Input() dateFormat: string = this.constants.DATE_FORMAT;
   @ViewChild('datepicker') datepicker: BdDatePicker;
 
   private dateValue;

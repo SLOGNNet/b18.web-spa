@@ -6,7 +6,7 @@
     </div>
     <div class="right">
       <span class="state-issued">{{driver.license.stateIssued}}</span>
-      <span class="date">{{driver.license.dateIssued | date:constants.DATE_FORMAT}} - {{driver.license.expiration | date:constants.DATE_FORMAT}}</span>
+      <span class="date">{{driver.license.dateIssued | bdDate:constants.DATE_FORMAT}} - {{driver.license.expiration | bdDate:constants.DATE_FORMAT}}</span>
     </div>
   </div>
   <div class="bottom">
