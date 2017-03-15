@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef }
 import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
 import { BdFormBuilder, BdFormGroup, FormValidationService, GoogleService } from '../../shared';
+import { NgbDateStruct } from '../../shared/components/datepicker';
 import { EnumHelperService } from '../../shared/helpers';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
@@ -87,5 +88,17 @@ export class DriverForm extends BaseForm {
       contactInfo: this.formBuilder.array([]),
       license: this.formBuilder.group({})
     });
+  }
+
+  get minBirthDate(): NgbDateStruct {
+    return { year: 1870, month: 1, day: 1 };
+  }
+
+  get maxBirthDate(): NgbDateStruct {
+    let date: Date = new Date(),
+      year: number = date.getFullYear(),
+      month: number = date.getMonth() + 1,
+      day: number = date.getDate();
+    return { year: year, month: month, day: day };
   }
 }
