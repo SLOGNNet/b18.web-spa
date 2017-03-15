@@ -1,6 +1,6 @@
 import { Component, Optional, ElementRef, TemplateRef,
   ViewEncapsulation, Input, Output, EventEmitter,
-  forwardRef, HostBinding, ViewChild } from '@angular/core';
+  forwardRef, HostBinding, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';
@@ -13,7 +13,8 @@ const noop = () => { };
   selector: 'bd-typeahead',
   templateUrl: './bd-form-typeahead.component.html',
   styleUrls: ['./bd-form-typeahead.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() removeButtonHidden = false;
@@ -37,7 +38,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor(@Optional() ngControl: NgControl) {
+  constructor(@Optional() ngControl: NgControl, private changeDetectionRef: ChangeDetectorRef) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -85,6 +86,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
 
   writeValue(value: any) {
     this.value = value;
+    this.changeDetectionRef.markForCheck();
   }
 
   registerOnChange(fn: any) {

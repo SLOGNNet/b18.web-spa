@@ -90,7 +90,7 @@ export class AddressForm extends BaseForm {
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
       this._googleService.getDetails(place.place_id).subscribe(detail => {
-        this.onAddressUpdate(Object.assign({}, this.address, detail));
+        this.onAddressUpdate(detail || {});
       });
     }
   }

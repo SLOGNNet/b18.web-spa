@@ -33,7 +33,7 @@ export class GoogleService {
   }
 
   private formatDetails(place) {
-    if (!place.geometry) {
+    if (!place || !place.geometry) {
       return null;
     }
 
