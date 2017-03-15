@@ -18,6 +18,11 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
         },
         {
+          path: '',
+          component: EmptyComponent,
+          canDeactivate: [CanDeactivateGuard]
+        },
+        {
           path: 'edit',
           component: DriverEditComponent,
           data: { new: true },
@@ -32,6 +37,11 @@ const routes: Routes = [{
           path: '',
           component: DriverDetailComponent,
           outlet: 'detailOutlet',
+      },
+      {
+        path: '',
+        component: EmptyComponent,
+        canDeactivate: [CanDeactivateGuard]
       },
       {
           path: 'edit',
