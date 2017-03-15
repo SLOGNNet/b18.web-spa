@@ -6,17 +6,17 @@
   <div class="driver-detail-container">
     <navigation-anchor id="information"></navigation-anchor>
     <bd-view-detail-section [labelText]="'INFORMATION'" [addButton]="false" [changeButton]="false">
-      <driver-information [driver]="selectedItem">
+      <driver-information [driver]="selected$ | async">
       </driver-information>
     </bd-view-detail-section>
     <navigation-anchor id="equipment-associations"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EQUIPMENT ASSOCIATIONS'" [addButton]="false" [changeButton]="false">
-      <driver-equipment-associations *ngFor="let associatedEquipment of selectedItem.associatedEquipments" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
-      <driver-payment-type [driver]="selectedItem"></driver-payment-type>
+      <driver-equipment-associations *ngFor="let associatedEquipment of (selected$ | async).associatedEquipments" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
+      <driver-payment-type [driver]="selected$ | async"></driver-payment-type>
     </bd-view-detail-section>
     <navigation-anchor id="license"></navigation-anchor>
     <bd-view-detail-section [labelText]="'License'" [addButton]="false" [changeButton]="false">
-      <driver-license [driver]="selectedItem"></driver-license>
+      <driver-license [driver]="selected$ | async"></driver-license>
     </bd-view-detail-section>
   </div>
 </div>
