@@ -10,9 +10,11 @@ export class GoogleService {
   private componentForm = {
     route: 'long_name',
     locality: 'long_name',
+    sublocality_level_1: 'long_name',
     administrative_area_level_1: 'short_name',
     country: 'long_name',
-    postal_code: 'short_name'
+    postal_code: 'short_name',
+    street_number: 'short_name'
   };
 
   constructor() {
@@ -44,9 +46,11 @@ export class GoogleService {
     let details = {
       route: '',
       locality: '',
+      sublocality_level_1: '',
       administrative_area_level_1: '',
       country: '',
-      postal_code: ''
+      postal_code: '',
+      street_number: ''
     };
 
     for (let i = 0; i < place.address_components.length; i++) {
@@ -57,20 +61,11 @@ export class GoogleService {
       }
     }
 
-    let streetAddress1 = place.formatted_address;
-    const stateIdx = streetAddress1.indexOf(details.administrative_area_level_1) - 2;
-    const cityIdx = streetAddress1.indexOf(details.locality) - 2;
-
-    if (stateIdx > 0) {
-      streetAddress1 = streetAddress1.substring(0, stateIdx);
-    }
-
-    if (cityIdx > 0) {
-      streetAddress1 = streetAddress1.substring(0, cityIdx);
-    }
+    let streetAddress1 = [details.street_number, details.route].filter(v => v).join(' ');
+    let city = [details.locality, details.sublocality_level_1].filter(v => v)[0];
 
     return {
-      city: details.locality,
+      city: city,
       zip: details.postal_code,
       streetAddress1: streetAddress1,
       state: details.administrative_area_level_1,
