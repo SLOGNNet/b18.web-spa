@@ -18,8 +18,7 @@ export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   templateUrl: './bd-input.component.html',
   providers: [BD_INPUT_CONTROL_VALUE_ACCESSOR],
   host: { '(click)': 'focus($event)' },
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class BdInputComponent {
 
