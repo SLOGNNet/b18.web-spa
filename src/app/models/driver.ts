@@ -109,5 +109,9 @@ export class Driver extends Member {
     return paymentTypeText[paymentType];
   }
 
+  public static getDriverTypes(): any {
+    return typeText;
+  }
+
 
 };

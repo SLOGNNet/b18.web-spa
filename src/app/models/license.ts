@@ -35,4 +35,8 @@ export class License {
   public static getLicenseClassText(licenseClass: LicenseClassTypes): string {
     return licenseClassText[licenseClass];
   }
+
+  public static getClassesCollection(): any {
+    return licenseClassText;
+  }
 }

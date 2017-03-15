@@ -23,6 +23,7 @@ export class DriverForm extends BaseForm {
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   driverForm: FormGroup;
   paymentsTypes: Array<any>;
+  driverTypes: Array<any>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +35,7 @@ export class DriverForm extends BaseForm {
     super(elementRef);
 
     this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
+    this.driverTypes = enumHelperService.getDropdownKeyValues(Driver.getDriverTypes());
   }
 
   ngOnChanges(changes: any) {
@@ -76,6 +78,7 @@ export class DriverForm extends BaseForm {
       id: [this.driver.id],
       firstName: [{value: this.driver.firstName, disabled: this.disabled}],
       lastName: [{value: this.driver.lastName, disabled: this.disabled}],
+      type: [{value: this.driver.type, disabled: this.disabled}],
       dateOfBirth: [{value: this.driver.dateOfBirth, disabled: this.disabled}],
       paymentType: [{value: this.driver.paymentType, disabled: this.disabled}],
       ssn: [{value: this.driver.ssn, disabled: this.disabled}],

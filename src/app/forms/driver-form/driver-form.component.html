@@ -5,6 +5,8 @@
 		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
 		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'"></bd-form-datepicker>
 		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
+		<bd-dropdown class="bd-form-control" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
+		</bd-dropdown>
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
