@@ -4,6 +4,7 @@ import { BdDatePicker } from './components';
 import { NgbDateStruct } from '../datepicker';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
+import { Constants } from '../../constants/constants';
 const noop = () => { };
 
 export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
@@ -22,7 +23,7 @@ export const BD_FORM_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 export class BdFormDatePicker implements ControlValueAccessor {
   @Input() labelText: string;
   @Input() disabled: boolean = false;
-  @Input() dateFormat: string = 'MM/DD/YYYY';
+  @Input() dateFormat: string = this.constants.DATE_FORMAT;
   @Input() minDate: NgbDateStruct;
   @Input() maxDate: NgbDateStruct;
   @ViewChild('datepicker') datepicker: BdDatePicker;
@@ -32,7 +33,7 @@ export class BdFormDatePicker implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor() {
+  constructor(private constants: Constants) {
   }
 
   writeValue(value: any) {

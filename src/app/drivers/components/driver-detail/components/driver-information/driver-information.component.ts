@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Driver, License } from '../../../../../models';
+import { Constants } from '../../../../../shared';
 
 @Component({
   selector: 'driver-information',
@@ -8,6 +9,10 @@ import { Driver, License } from '../../../../../models';
 })
 export class DriverInformationComponent {
   @Input() driver: Driver;
+
+  constructor(private constants: Constants) {
+
+  }
 
   get driverType() {
     return Driver.getTypeText(this.driver.type);

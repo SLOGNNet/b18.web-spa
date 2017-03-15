@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
+import { Constants } from '../../constants/constants';
 
 import { BdDatePicker } from '../bd-form-datepicker/components';
 
@@ -21,7 +22,7 @@ export const BD_FORM_DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class BdFormDateTimePicker implements ControlValueAccessor {
 
-  @Input() dateFormat: string = 'MM/DD/YYYY';
+  @Input() dateFormat: string = this.constants.DATE_FORMAT;
   @ViewChild('datepicker') datepicker: BdDatePicker;
 
   private dateValue;
@@ -29,6 +30,9 @@ export class BdFormDateTimePicker implements ControlValueAccessor {
 
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
+
+  constructor(private constants: Constants) {
+  }
 
   writeValue(value: any) {
     if (value) {

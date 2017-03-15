@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { BdTimeAgoPipe } from './time-ago/time-ago.pipe';
+import { BdTimeAgoPipe, BdDatePipe } from './index';
 
 @NgModule({
-  declarations: [BdTimeAgoPipe],
-  exports: [BdTimeAgoPipe]
+  declarations: [BdTimeAgoPipe, BdDatePipe],
+  exports: [BdTimeAgoPipe, BdDatePipe]
 })
 export class BdPipesModule { }
