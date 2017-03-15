@@ -40,7 +40,7 @@ export class LicenseForm extends BaseForm {
     this.licenseService.getAllEndorsements().subscribe(endorsements => this.endorsmentList = endorsements);
     this.licenseService.getAllRestrictions().subscribe(restrictions => this.restrictionList = restrictions);
 
-    this.licenseClasses = enumHelperService.getDropdownKeyValues(LicenseClassTypes);
+    this.licenseClasses = enumHelperService.getDropdownKeyValues(License.getClassesCollection());
   }
 
   ngOnChanges(changes: any) {
