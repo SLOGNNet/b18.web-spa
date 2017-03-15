@@ -32,12 +32,12 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     loadActions: LoadActions,
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected), router, route);
+      super(loadActions, ngRedux.select(state => state.loads.selected), router, route, cdr);
   }
 
     get selectedContact(): Contact {
