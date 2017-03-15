@@ -35,7 +35,6 @@ function createStatusText() {
 // Driver Text
 function createEquipmentDriverText() {
   let result = {};
-  result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company Driver';
   result[DriverTypes.OwnerOperator] = 'Owner Operator';
 

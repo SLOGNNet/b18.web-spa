@@ -15,7 +15,6 @@ export enum CompanyStatuses {
 
 // driver enums
 export enum DriverTypes {
-  None = 0,
   CompanyDriver = 1,
   OwnerOperator = 2
 };
