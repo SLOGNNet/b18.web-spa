@@ -57,11 +57,6 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
         },
         {
-          path: '',
-          component: EmptyComponent,
-          canDeactivate: [CanDeactivateGuard]
-        },
-        {
           path: 'edit',
           component: CompanyEditComponent,
           data: { new: true },
