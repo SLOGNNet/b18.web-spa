@@ -11,9 +11,11 @@ export class DriverLicenseComponent {
   public endorsmentsTypes: string;
   @Input() driver: Driver;
 
-  ngOnInit() {
+  ngOnChanges(changes) {
+    if (changes.driver) {
       this.restrictionsTypes = this.driver.license.restrictions.split(' ').join(', ');
       this.endorsmentsTypes = this.driver.license.endorsments.split(' ').join(', ');
+    }
   }
 
   get licenseClassText() {
