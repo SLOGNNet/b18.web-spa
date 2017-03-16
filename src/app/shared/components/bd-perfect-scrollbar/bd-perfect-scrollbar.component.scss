@@ -1,15 +1,7 @@
 @import '../../../../assets/styles/variables';
 
 bd-perfect-scrollbar {
-
   //sass-lint:disable no-important
-
-  .scroll-container {
-    width: 100%;
-    height: $horizontal-scroll-container-height;
-    padding: 0;
-  }
-
   /deep/ .content {
     white-space: nowrap;
   }
@@ -18,7 +10,21 @@ bd-perfect-scrollbar {
     min-height: 0 !important;
   }
 
-  .ps-active-x {
+  .scroll-container {
+    width: 100%;
+    height: $horizontal-scroll-container-height;
+    padding: 0;
+
+    &:not(.ps-active-x) {
+      .ps-scrollbar-x {
+        max-width: 0;
+      }
+
+      & > .ps-scrollbar-x-rail {
+        min-width: 100%;
+      }
+    }
+
     &.ps-in-scrolling {
       .ps-scrollbar-x-rail {
         .ps-scrollbar-x {
