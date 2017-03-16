@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -12,7 +12,6 @@ import { NotificationService,
   CommodityService,
   ContactService,
   FormValidationService,
-  FileUploadService,
   HttpService,
   StateService,
   LicenseService
@@ -38,7 +37,7 @@ import { FormNavigationComponent, NavigationAnchorComponent } from './components
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
-import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
+import { BdFormBuilder } from './forms';
 import { BdDropdownModule } from './components/bd-dropdown';
 import { NgbDatepickerModule } from './components/datepicker';
 import { EmptyComponent } from './components/empty';

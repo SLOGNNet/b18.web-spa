@@ -1,11 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Driver, Contact, Equipment, DriverTypes, DriverStatuses, DriverPaymentTypes } from './models';
-import { List } from 'immutable';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Driver } from './models';
 import { Observable } from 'rxjs/Observable';
-import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
-import { plainToClass, classToPlain } from 'class-transformer';
 import { generatePersistId } from '../../helpers';
 
 @Injectable()

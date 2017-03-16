@@ -1,11 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, URLSearchParams } from '@angular/http';
-import { Company, Address, CompanyStatuses, CompanyTypes, Contact } from './models';
-import { List } from 'immutable';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Company } from './models';
 import { Observable } from 'rxjs/Observable';
-import { delay } from 'rxjs/Delay';
 import MockData from './mock-data';
-import { slice, take } from 'lodash';
 import { getPaginated } from '../../helpers';
 
 @Injectable()

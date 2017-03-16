@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './messages.routes';
 
 import { MessagesComponent } from '../app/drivers/messages';
-import { MessageComponent } from '../app/drivers/messages/message';
 import { HybridAppFactory } from '../app/app.hybrid.module.factory';
 
 const hybridMessagesModule = HybridAppFactory({

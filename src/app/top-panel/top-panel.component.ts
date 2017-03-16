@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Contact } from '../models';
 import { Notification, NotificationType } from '../models';
 import { NotificationService } from '../shared';
