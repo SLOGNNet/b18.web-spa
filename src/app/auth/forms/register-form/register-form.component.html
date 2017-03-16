@@ -1,7 +1,7 @@
-<form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" class="register-form edit">
+<form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" class="auth-form">
   <bd-auth-general-form-error *ngIf="isRegisterFailed && registerForm.pristine"
     [headerText]="'Unable to registering.'">
-    Something wrong.
+    {{ errorDescription }}
   </bd-auth-general-form-error>
   <div class="section">
     <bd-input
@@ -74,6 +74,7 @@
     type="submit"
     color="primary"
     class="button"
+    [(disabled)]="!registerForm.valid"
     [text]="'Next'">
   </bd-button>
   <bd-spinner *ngIf="isLoading"></bd-spinner>

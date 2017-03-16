@@ -11,12 +11,14 @@ import {
   EmailWasSentComponent,
   EmailConfirmationComponent,
   AuthGeneralFormErrorComponent,
-  AuthFormMessageHelperComponent
+  AuthFormMessageHelperComponent,
+  PasswordRecoveryComponent
  } from './components';
 import {
   LoginFormComponent,
   RegisterFormComponent,
-  PhoneConfirmationFormComponent
+  PhoneConfirmationFormComponent,
+  PasswordRecoveryFormComponent
 } from './forms';
 import { AuthGuard } from './guards';
 import { AuthenticationService } from './services';
@@ -40,7 +42,9 @@ import { AuthRoutingModule } from './auth.routing';
     EmailConfirmationComponent,
     EmailWasSentComponent,
     AuthGeneralFormErrorComponent,
-    AuthFormMessageHelperComponent
+    AuthFormMessageHelperComponent,
+    PasswordRecoveryComponent,
+    PasswordRecoveryFormComponent
   ],
   providers: [
     AuthGuard,

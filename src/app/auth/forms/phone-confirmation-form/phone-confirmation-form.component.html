@@ -1,4 +1,4 @@
-<form [formGroup]="phoneForm" novalidate (ngSubmit)="onSubmit(phoneForm)" class="edit">
+<form [formGroup]="phoneForm" novalidate (ngSubmit)="onSubmit(phoneForm)" class="auth-form">
   <bd-auth-general-form-error *ngIf="isConfirmationFailed && phoneForm.pristine"
     [headerText]="'Incorrect number.'">
     Please enter the code that you just got.
@@ -22,4 +22,5 @@
     [(disabled)]="!phoneForm.valid"
     [text]="'Confirm'">
   </bd-button>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
 </form>

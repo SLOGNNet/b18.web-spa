@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpService {
@@ -16,7 +17,8 @@ export class HttpService {
     this.createAuthorizationHeader(headers);
     return this.http.get(url, {
       headers: headers
-    });
+    })
+    .catch(this.handleError);
   }
 
   post(url, data) {
@@ -24,7 +26,8 @@ export class HttpService {
     this.createAuthorizationHeader(headers);
     return this.http.post(url, data, {
       headers: headers
-    });
+    })
+    .catch(this.handleError);
   }
 
   put(url, data) {
@@ -32,7 +35,8 @@ export class HttpService {
     this.createAuthorizationHeader(headers);
     return this.http.put(url, data, {
       headers: headers
-    });
+    })
+    .catch(this.handleError);
   }
 
   delete(url, data) {
@@ -40,6 +44,18 @@ export class HttpService {
     this.createAuthorizationHeader(headers);
     return this.http.delete(url, {
       headers: headers
-    });
+    })
+    .catch(this.handleError);
+  }
+
+  private handleError (error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      errMsg = body;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    return Observable.throw(errMsg);
   }
 }

@@ -5,8 +5,7 @@ import { AuthenticationService } from '../../services';
 
 @Component({
   selector: 'bd-email-confirmation',
-  templateUrl: './email-confirmation.component.html',
-  styleUrls: ['./email-confirmation.component.scss', '../auth-wrapper/spinner.scss']
+  templateUrl: './email-confirmation.component.html'
 })
 
 export class EmailConfirmationComponent implements OnInit, OnDestroy {

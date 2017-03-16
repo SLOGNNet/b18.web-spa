@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../services';
 @Component(Object.assign({
   selector: 'bd-phone-confirmation-form',
   templateUrl: './phone-confirmation-form.component.html',
-  styleUrls: ['./phone-confirmation-form.component.scss']
+  styleUrls: ['../../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class PhoneConfirmationFormComponent extends BaseForm implements OnInit {
 

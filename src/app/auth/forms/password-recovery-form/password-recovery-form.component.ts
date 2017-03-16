@@ -1,19 +1,20 @@
-import { Component, ElementRef, OnInit, ChangeDetectorRef  } from '@angular/core';
+import { Component, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';
 
 @Component(Object.assign({
-  selector: 'bd-login-form',
-  templateUrl: './login-form.component.html',
+  selector: 'bd-password-recovery-form',
+  templateUrl: './password-recovery-form.component.html',
   styleUrls: ['../../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
-export class LoginFormComponent extends BaseForm implements OnInit {
+export class PasswordRecoveryFormComponent extends BaseForm implements OnInit {
 
-  isLoginFailed: boolean;
+  isRecoveryFailed: boolean;
   isLoading: boolean = false;
-  loginForm: FormGroup;
+  passwordRecoveryForm: FormGroup;
+  errorDescription: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -23,10 +24,8 @@ export class LoginFormComponent extends BaseForm implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoginFailed = false;
-    this.loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+    this.passwordRecoveryForm = new FormGroup({
+      username: new FormControl('', [Validators.required])
     });
   }
 
@@ -35,13 +34,14 @@ export class LoginFormComponent extends BaseForm implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authenticationService.login(form.value).subscribe(
+    this.authenticationService.passwordRecovery(form.value).subscribe(
       response => {
         this.isLoading = false;
       },
       error => {
-        this.isLoginFailed = true;
-        this.loginForm.markAsPristine();
+        this.errorDescription = error.description || error.message;
+        this.isRecoveryFailed = true;
+        this.passwordRecoveryForm.markAsPristine();
         this.cd.markForCheck();
         this.isLoading = false;
       }

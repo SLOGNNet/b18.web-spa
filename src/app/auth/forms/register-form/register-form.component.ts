@@ -8,7 +8,7 @@ import { EmailValidator } from '../../../shared/validators';
 @Component(Object.assign({
   selector: 'bd-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss', '../../components/auth-wrapper/spinner.scss']
+  styleUrls: ['./register-form.component.scss', '../../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class RegisterFormComponent extends BaseForm implements OnInit {
 
@@ -16,6 +16,7 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
   registerTypes: Array<any>;
   isLoading: boolean = false;
   isRegisterFailed: boolean;
+  errorDescription: string;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -60,6 +61,7 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
         this.isLoading = false;
       },
       error => {
+        this.errorDescription = error.description || error.message;
         this.isRegisterFailed = true;
         this.registerForm.markAsPristine();
         this.cd.markForCheck();

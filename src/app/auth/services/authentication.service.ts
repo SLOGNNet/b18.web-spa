@@ -84,6 +84,21 @@ export class AuthenticationService {
     });
   }
 
+  passwordRecovery(model) {
+    model.cellphone = model.username;
+    model.email = model.username;
+    return Observable.create((observer) => {
+      this.http.post(`${this.config.authUrl}auth/passwords}`, model).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          observer.error(error);
+        }
+      );
+    });
+  }
+
   logout() {
     this.loggedIn = false;
     localStorage.removeItem('currentUser');
