@@ -1,30 +1,47 @@
-import { Directive, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
+import { Directive, ElementRef, Input, HostListener, ChangeDetectorRef } from '@angular/core';
+import { getScrollbarWidth } from '../helpers';
 
 @Directive({
   selector: '[sticky]'
 })
 export class StickyDirective {
   @Input() top = true;
+  @Input() insideScroll: boolean = true;
 
+  private scrollbarWidth;
+  private isParentScrollable = false;
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
+  }
+
+  ngAfterViewInit() {
+    if (this.insideScroll) {
+      this.scrollbarWidth = getScrollbarWidth();
+    }
   }
 
   ngAfterViewChecked() {
     this.update();
   }
 
+  @HostListener('window:resize')
   private update() {
-    this._updateWidth();
+    if (this.insideScroll) {
+      this._updateWidth();
+    }
+
     this._updateTop();
   }
 
   private _updateWidth() {
-    let parentWidth = this._getParentWidth();
-    parentWidth += 'px';
+    const scrollableContainer = this._getScrollableParent(this.elementRef.nativeElement.parentNode);
 
-    if (this.elementRef.nativeElement.style.width !== parentWidth) {
-      this.elementRef.nativeElement.style.width = parentWidth;
-      this.cdr.detectChanges();
+    if (!!scrollableContainer !== this.isParentScrollable) {
+      this.isParentScrollable = !!scrollableContainer;
+      if (this.isParentScrollable) {
+        this.elementRef.nativeElement.style.width = `calc(100% - ${this.scrollbarWidth}px)`;
+      } else {
+        this.elementRef.nativeElement.style.width = '100%';
+      }
     }
   }
 
@@ -47,7 +64,7 @@ export class StickyDirective {
   }
 
   private _getScrollableParent(node) {
-    if (node === null || node.nodeName === 'BODY') {
+    if (node === null || node.nodeName === 'BODY' || node.nodeName === 'APP-MAIN') {
       return null;
     }
 
