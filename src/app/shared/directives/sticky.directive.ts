@@ -6,7 +6,7 @@ import { getScrollbarWidth } from '../helpers';
 })
 export class StickyDirective {
   @Input() top = true;
-  @Input() insideScroll: boolean = true;
+  @Input() stickyPositionInsideScroll: boolean = false;
 
   private scrollbarWidth;
   private isParentScrollable = false;
@@ -14,7 +14,7 @@ export class StickyDirective {
   }
 
   ngAfterViewInit() {
-    if (this.insideScroll) {
+    if (this.stickyPositionInsideScroll) {
       this.scrollbarWidth = getScrollbarWidth();
     }
   }
@@ -25,7 +25,7 @@ export class StickyDirective {
 
   @HostListener('window:resize')
   private update() {
-    if (this.insideScroll) {
+    if (this.stickyPositionInsideScroll) {
       this._updateWidth();
     }
 

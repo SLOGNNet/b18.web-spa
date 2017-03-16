@@ -26,7 +26,7 @@
 			<contacts-form [formArray]='companyForm.controls.contacts' [disabled]="disabled" [locations]='locations$ | async' [items]='company.contacts'
 			 [viewMode]="viewMode"></contacts-form>
 		</bd-form-section>
-		<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
+		<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">
 			<div class="button-group">
 				<bd-button [disabled]="disabled" (click)="onCancel()" [text]="'Cancel'" class="button">
 				</bd-button>

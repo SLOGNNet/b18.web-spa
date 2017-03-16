@@ -2,6 +2,7 @@
   <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
   <form-navigation
     sticky
+    [stickyPositionInsideScroll]="true"
     [disabled]="isLoading"
     [title]="'Company'"
     [anchors]="anchors">
