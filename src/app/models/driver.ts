@@ -3,7 +3,7 @@ import { Member } from './member';
 import { Address } from './address';
 import { License } from './license';
 import { ContactInfo } from './contact-info';
-import { DriverTypes, DriverStatuses, DriverPaymentTypes, ContactInfoType } from './enums';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';

@@ -1,12 +1,11 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Company, CompanyStatuses, CompanyTypes, Address, Location } from '../../models';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Company, CompanyStatuses, CompanyTypes, Location } from '../../models';
 import { LocationActions } from '../../actions';
-import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
+import { FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
-import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { NgRedux, select } from 'ng2-redux';
+import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({

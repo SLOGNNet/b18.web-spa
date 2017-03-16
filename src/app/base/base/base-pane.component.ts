@@ -1,5 +1,4 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Injectable } from '@angular/core';
 
 export abstract class BasePane {
 

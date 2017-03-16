@@ -1,9 +1,5 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Load } from '../models';
 import { IListDataActions } from '../../actions';
-import { ViewMode } from '../../shared/enums';
-import { cloneDeep } from 'lodash';
-import { ActivatedRoute, Router, Params, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { BasePane } from '../base';
 

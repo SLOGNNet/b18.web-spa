@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../services/message.service';
-import { MessageComponent } from './message/message';
 import {  ActivatedRoute, Params } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'messages',
@@ -14,7 +13,6 @@ import { Observable, Subscription } from 'rxjs';
 export class MessagesComponent implements OnInit {
     private messages: Array<any> = new Array<any>();
     private messagesSubscribtion: Subscription;
-    private message: string;
 
     constructor(public messageService: MessageService, private route: ActivatedRoute) {
 

@@ -8,13 +8,12 @@ import {
   ComponentFactoryResolver,
   NgZone,
   TemplateRef,
-  forwardRef,
   EventEmitter,
   Output,
   Optional
 } from '@angular/core';
 import { isEqual } from 'lodash';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, NgControl } from '@angular/forms';
+import { FormControl, NgControl } from '@angular/forms';
 
 import { NgbDate } from './ngb-date';
 import { NgbDatepicker, NgbDatepickerNavigateEvent } from './datepicker';

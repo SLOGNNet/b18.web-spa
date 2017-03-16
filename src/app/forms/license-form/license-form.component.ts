@@ -1,10 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { License, LicenseClassTypes } from '../../models';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { License } from '../../models';
 import { EnumHelperService } from '../../shared/helpers';
 import { StateService, LicenseService } from '../../shared/services';
-import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({

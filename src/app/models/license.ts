@@ -1,5 +1,4 @@
 import { LicenseClassTypes } from './enums';
-import { Type } from 'class-transformer';
 
 // License Class Text
 function createLicenseClassText() {

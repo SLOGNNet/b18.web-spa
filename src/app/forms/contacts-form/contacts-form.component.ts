@@ -1,8 +1,8 @@
-import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Contact } from '../../models';
 import { Location } from '../../models';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
   selector: 'contacts-form',

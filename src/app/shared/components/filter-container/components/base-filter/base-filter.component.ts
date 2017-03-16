@@ -1,5 +1,5 @@
-import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
-import { includes, without, some } from 'lodash';
+import { Input, Output, HostBinding, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { includes, without } from 'lodash';
 
 export class BaseFilter {
 

@@ -1,12 +1,9 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../models';
 import { EquipmentActions } from '../actions';
-import { EquipmentService } from '../shared';
-import { ViewMode } from '../shared/enums';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 
 @Component({

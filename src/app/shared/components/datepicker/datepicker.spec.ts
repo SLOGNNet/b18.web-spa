@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
 import { createGenericTestComponent } from '../../test/common';
-import { getMonthSelect, getYearSelect, getNavigationLinks } from '../../test/datepicker/common';
+import { getNavigationLinks } from '../../test/datepicker/common';
 
 import { Component, TemplateRef } from '@angular/core';
 import { By } from '@angular/platform-browser';

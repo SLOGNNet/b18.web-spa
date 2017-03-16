@@ -1,7 +1,6 @@
-import { Component, Input, ViewChild, forwardRef, Optional, ChangeDetectionStrategy } from '@angular/core';
-import { NgbInputDatepicker, NgbDate } from '../datepicker';
+import { Component, Input, ViewChild, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { BdDatePicker } from './components';
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
 const noop = () => { };
 

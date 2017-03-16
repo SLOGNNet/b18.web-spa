@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ViewMode } from '../../enums';
-import { ExpandablePanelComponent } from '../expandable-panel';
 @Component({
   selector: 'bd-form-section',
   templateUrl: './bd-form-section.component.html',

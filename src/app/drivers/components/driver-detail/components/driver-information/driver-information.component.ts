@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Driver, License } from '../../../../../models';
+import { Driver } from '../../../../../models';
 
 @Component({
   selector: 'driver-information',

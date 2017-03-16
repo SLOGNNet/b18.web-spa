@@ -1,6 +1,4 @@
 import { generateNewId } from './utils';
-import { Stop } from './stop';
-import { StopActionTypes } from './enums';
 
 export class Commodity {
   id: number;

@@ -1,7 +1,7 @@
-import { Component, Output, Input, EventEmitter, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Output, Input, EventEmitter, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { BaseForm } from '../../../../base-form';
-import { Commodity, StopTypes } from '../../../../../models';
+import { Commodity } from '../../../../../models';
 
 export class CommodityField {
   name: string;

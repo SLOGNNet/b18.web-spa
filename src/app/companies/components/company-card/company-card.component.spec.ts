@@ -1,17 +1,15 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
 import { CompanyCardComponent } from './index';
 import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { SharedModule } from '../../../shared/shared.module';
-import { Load, Company, Address, Contact, CompanyStatuses, CompanyTypes, LoadStatuses, ContactInfo } from '../../../models';
+import { Load, Company, Contact, CompanyStatuses, LoadStatuses, ContactInfo } from '../../../models';
 import { fireMouseEvent } from '../../../shared/test/helpers/domHelper';
 
 function createTestData() {
   let resultCompany = new Company(),
     testContact = new Contact(),
     testLoad = new Load(),
-    testAddress = new Address(),
     testContactInfo = new ContactInfo();
 
   // test contact info

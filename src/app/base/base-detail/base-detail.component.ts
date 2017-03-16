@@ -1,12 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-import { Load } from '../models';
 import { IDetailDataActions } from '../../actions';
-import { ViewMode } from '../../shared/enums';
-import { cloneDeep, merge } from 'lodash';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { cloneDeep } from 'lodash';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { CanComponentDeactivate } from '../../guards';
-import { Location } from '@angular/common';
 import { BasePane } from '../base';
 
 export abstract class BaseDetailComponent<T> extends BasePane {

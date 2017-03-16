@@ -1,18 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Load,
-  Trip,
-  StopTypes,
-  Commodity,
-  AppointmentTypes,
-  Appointment,
+import {
   TripStop,
   StopActionTypes,
-  StopAction,
   Stop,
   ContactInfo  } from '../../../../../models';
-import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
-import { CommoditiesHeaderComponent } from '../../../../forms';
-import { find, map } from 'lodash';
+import { map } from 'lodash';
 
 @Component({
   selector: 'stop-view',

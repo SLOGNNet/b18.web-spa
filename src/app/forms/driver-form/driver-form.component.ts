@@ -1,12 +1,9 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
-import { BdFormBuilder, BdFormGroup, FormValidationService, GoogleService } from '../../shared';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Driver, DriverPaymentTypes } from '../../models';
+import { FormValidationService, GoogleService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
-import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
   selector: 'driver-form',

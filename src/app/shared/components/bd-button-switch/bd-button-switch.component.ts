@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, forwardRef, OnChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 const noop = () => { };
 
 @Component({

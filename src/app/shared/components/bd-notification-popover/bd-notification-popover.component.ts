@@ -1,6 +1,4 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { BdMessageCardComponent, BdTaskCardComponent } from './notification-cards';
-import { BdPopoverContent } from './directives/bd-popover';
 import { Notification, NotificationType } from '../../../models';
 import { forEach, difference } from 'lodash';
 
