@@ -27,7 +27,7 @@
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
 		<license-form [group]='driverForm.controls.license' [disabled]="disabled" [license]='driver.license' [viewMode]="viewMode"></license-form>
 	</bd-form-section>
-	<form-sticky-bottom-container [sticky]="!isNestedForm" *ngIf="isEditMode">
+	<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">
 		<div class="button-group">
 			<bd-button
         [disabled]="disabled"

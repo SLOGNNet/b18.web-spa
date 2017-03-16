@@ -1,5 +1,5 @@
 <div *ngIf="selectedItem">
-  <form-navigation [title]="driverFullName" [anchors]="anchors">
+  <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="driverFullName" [anchors]="anchors">
       <bd-form-button [buttonText]="'change'" buttonType="small" (click)="onEdit()">
       </bd-form-button>
   </form-navigation>
