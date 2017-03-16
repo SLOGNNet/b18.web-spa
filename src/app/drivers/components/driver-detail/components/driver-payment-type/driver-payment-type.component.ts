@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Driver } from '../../../../../models';
+import { Driver, DriverPaymentTypes } from '../../../../../models';
 
 @Component({
   selector: 'driver-payment-type',
@@ -11,5 +11,9 @@ export class DriverPaymentTypeComponent {
 
   get paymentTypeText() {
     return Driver.getPaymentTypeText(this.driver.paymentType);
+  }
+
+  get paymentTypeIcon() {
+    return this.driver.paymentType === DriverPaymentTypes.Percentage ? '%' : '$';
   }
 }
