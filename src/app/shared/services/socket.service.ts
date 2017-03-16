@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
-import { URLSearchParams } from '@angular/http';
 
 @Injectable()
 export class SocketService {

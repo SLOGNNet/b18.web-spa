@@ -1,16 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Load, Stop, ContactInfo, TripStop, Address, StopActionTypes, Contact } from '../../../models';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Load, Contact } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadActions } from '../../../actions';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
-import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
-import { BdViewDetailComponent } from './common/bd-view-detail';
-import { CommoditiesHeaderComponent } from '../../../forms';
-import MockData from '../../../shared/services/data-services/mock-data';
 
 
 @Component({
@@ -32,12 +26,12 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     loadActions: LoadActions,
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected), router, route);
+      super(loadActions, ngRedux.select(state => state.loads.selected), router, route, cdr);
   }
 
     get selectedContact(): Contact {

@@ -1,8 +1,7 @@
 import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Location } from '../../models';
 import { ViewMode } from '../../shared/enums';
-import { GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({

@@ -3,7 +3,7 @@ import { Company } from '../models';
 import { CompanyActions } from '../actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 
 @Component({

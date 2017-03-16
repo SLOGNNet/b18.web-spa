@@ -1,7 +1,7 @@
 import { LocationActions, CompanyActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Location } from './models';
-import { addItem, updateListItem, updateItem, removeItem } from './utils';
+import { addItem, updateListItem, removeItem } from './utils';
 
 export interface ILocationState {
   items: Location[];

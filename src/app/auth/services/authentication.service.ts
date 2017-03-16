@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Headers, Response, URLSearchParams } from '@angular/http';
+import { URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../../shared';

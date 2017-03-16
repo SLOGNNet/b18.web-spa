@@ -1,4 +1,4 @@
-import { Input, Output, ChangeDetectionStrategy, ElementRef
+import { ChangeDetectionStrategy, ElementRef
 } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
@@ -13,7 +13,6 @@ export class BaseForm {
     },
     changeDetection: ChangeDetectionStrategy.OnPush
   };
-  private _isExpanded: boolean = false;
   private _viewMode: ViewMode = ViewMode.View;
   constructor(protected elementRef: ElementRef) {
 

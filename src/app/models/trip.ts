@@ -1,4 +1,3 @@
-import { Driver } from './driver';
 import { DriverTeam } from './driverTeam';
 import { Equipment } from './equipment';
 import { generateNewId } from './utils';

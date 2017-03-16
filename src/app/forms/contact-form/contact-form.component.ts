@@ -1,9 +1,7 @@
-import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, Input, ElementRef } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Contact } from '../../models';
 import { Location } from '../../models';
-import { ViewMode } from '../../shared/enums';
 import { BdFormGroup, BdFormBuilder } from '../../shared';
 import { BaseForm } from '../base-form';
 

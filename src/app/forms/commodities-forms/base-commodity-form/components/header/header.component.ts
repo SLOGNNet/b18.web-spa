@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'commodities-header',

@@ -1,11 +1,11 @@
 import { AutocompleteFilter, FilterItem } from '../index';
-import { TestBed, ComponentFixture, fakeAsync, tick, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement, Input, Output, EventEmitter, Directive, TemplateRef } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { getPaginated } from '../../../../helpers';
 import { fireEvent } from '../../../../test/helpers/domHelper';
-import { isEqualWith, chain, isEqual, identity, curry, isEmpty, differenceBy } from 'lodash';
+import { isEqualWith, identity, curry, isEmpty, differenceBy } from 'lodash';
 import { SharedModule } from '../../../../shared.module';
 describe('autocomplete-filter', () => {
 
@@ -358,4 +358,3 @@ describe('autocomplete-filter', () => {
    }
    return isEmpty(differenceBy(x, y, 'id'));
 };
-

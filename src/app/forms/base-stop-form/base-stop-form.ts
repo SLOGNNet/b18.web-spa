@@ -1,15 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
-import { ViewMode } from '../../shared/enums';
+import { Component, Input, OnChanges, ElementRef } from '@angular/core';
 import { BaseForm } from '../base-form';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Stop, StopTypes, Commodity } from '../../models';
-import { NgRedux, select } from 'ng2-redux';
+import { Stop, Commodity } from '../../models';
+import { select } from 'ng2-redux';
 import { CommodityActions } from '../../actions';
 import { Observable } from 'rxjs/Observable';
-import {
-  ICommodityState
-} from '../../store';
 @Component(Object.assign({
   inputs: ['viewMode', 'isNestedForm', 'group', 'stop'],
 }, BaseForm.metaData))
@@ -19,7 +15,6 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
   @Input('group') formGroup: FormGroup;
   @Input()
   public stop: Stop;
-  private  stopTypes = StopTypes;
 
 
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,

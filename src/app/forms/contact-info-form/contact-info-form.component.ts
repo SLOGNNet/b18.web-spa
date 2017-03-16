@@ -1,6 +1,5 @@
-import { Component, Input, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Component, Input, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ContactInfo } from '../../models';
 import { BaseForm } from '../base-form';
 

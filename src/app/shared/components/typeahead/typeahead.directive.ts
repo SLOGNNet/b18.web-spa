@@ -17,7 +17,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/toArray';
 
-import { ComponentsHelper } from '../utils/components-helper.service';
 import { TypeaheadMatch } from './typeahead-match.class';
 
 /* tslint:disable-next-line */

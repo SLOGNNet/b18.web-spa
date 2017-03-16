@@ -1,7 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 // Modules
-import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import {

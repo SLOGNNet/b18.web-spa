@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 
 @Component({
   selector: 'bd-form-button',

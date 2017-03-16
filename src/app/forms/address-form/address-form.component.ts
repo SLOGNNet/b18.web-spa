@@ -1,8 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Address } from '../../models';
-import { ViewMode } from '../../shared/enums';
 import { GoogleService } from '../../shared';
 import { BaseForm } from '../base-form';
 @Component(Object.assign({
@@ -79,18 +78,16 @@ export class AddressForm extends BaseForm {
   }
 
   onAddressUpdate(address: Address) {
-    this.addressForm.setValue(Object.assign(
-      {},
-      this.addressForm.value, address
-    ));
+    const newAddress = Object.assign({}, this.addressForm.value, address);
+    this.addressForm.setValue(newAddress);
 
-    this._updateMap(this.address.latitude, this.address.longitude, this.address.streetAddress1);
+    this._updateMap(newAddress.latitude, newAddress.longitude, newAddress.streetAddress1);
   }
 
   public onPlaceSelect(place) {
     if (place && typeof place.place_id === 'string') {
       this._googleService.getDetails(place.place_id).subscribe(detail => {
-        this.onAddressUpdate(Object.assign({}, this.address, detail));
+        this.onAddressUpdate(detail || {});
       });
     }
   }

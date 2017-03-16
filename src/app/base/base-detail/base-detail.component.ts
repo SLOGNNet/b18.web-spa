@@ -1,24 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
-import { Load } from '../models';
+import { ChangeDetectorRef } from '@angular/core';
 import { IDetailDataActions } from '../../actions';
-import { ViewMode } from '../../shared/enums';
-import { cloneDeep, merge } from 'lodash';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { cloneDeep } from 'lodash';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { CanComponentDeactivate } from '../../guards';
-import { Location } from '@angular/common';
 import { BasePane } from '../base';
 
 export abstract class BaseDetailComponent<T> extends BasePane {
   protected selectedItem: T = null;
 
-  constructor(private actions: IDetailDataActions<T>,
+  constructor(
+    private actions: IDetailDataActions<T>,
     private selected$: Observable<T>,
     router: Router,
-    route: ActivatedRoute) {
+    route: ActivatedRoute,
+    protected cdr: ChangeDetectorRef) {
     super(router, route);
     selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
+      this.cdr.markForCheck();
     });
     this.route.params.subscribe(params => {
       this.onQueryParams(params);

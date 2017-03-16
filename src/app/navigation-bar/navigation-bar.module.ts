@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { NavigationBarComponent } from './navigation-bar.component';
 import { MenuItemComponent, LayoutSwitchComponent } from './components';

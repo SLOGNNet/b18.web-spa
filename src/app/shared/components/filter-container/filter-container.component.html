@@ -1,5 +1,5 @@
 <div class="filter-container" (clickOutside)="deactivateFilters()">
-  <div sticky #popoverParent class="filter-header" [class.opened]="opened">
+  <div sticky [stickyPositionInsideScroll]="true" #popoverParent class="filter-header" [class.opened]="opened">
     <bd-perfect-scrollbar class="filter-scrollbar">
       <div class="content">
         <span *ngFor="let filter of filters; let i = index" (click)="_toggleFilter(filter, i)" (mouseover)="onFilterItemHover(filter)"

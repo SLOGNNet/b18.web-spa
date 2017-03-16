@@ -7,3 +7,4 @@ export { EmailWasSentComponent } from './email-was-sent';
 export { AuthGeneralFormErrorComponent } from './auth-general-form-error';
 export { AuthFormMessageHelperComponent } from './auth-form-message-helper';
 export { PasswordRecoveryComponent } from './password-recovery';
+export { TestFormComponent } from './test-form';

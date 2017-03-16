@@ -1,0 +1,13 @@
+<form [formGroup]="testForm" novalidate (ngSubmit)="onSubmit(testForm)">
+  <bd-form-datetimepicker
+    class="bd-form-control"
+    formControlName="date"
+  >
+  </bd-form-datetimepicker>
+  <bd-button
+    type="submit"
+    color="primary"
+    class="button"
+    [text]="'Submit'">
+  </bd-button>
+</form>

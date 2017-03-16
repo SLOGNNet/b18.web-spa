@@ -1,5 +1,5 @@
-import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, ViewChild, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { chain, sortBy, findLastIndex } from 'lodash';
+import { Component, Input, ViewEncapsulation, ElementRef, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { chain, findLastIndex } from 'lodash';
 
 @Component({
   selector: 'form-navigation',

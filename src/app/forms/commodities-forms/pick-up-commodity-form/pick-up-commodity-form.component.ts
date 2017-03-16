@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Output, ViewChild, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Commodity } from '../../../models';
+import { Component, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { BaseCommodityFormComponent } from '../base-commodity-form';
-import { BaseForm } from '../../base-form';
 
 @Component(Object.assign({
   selector: 'pick-up-commodity-form',

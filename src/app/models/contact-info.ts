@@ -1,4 +1,3 @@
-import { Address } from './index';
 import { ContactInfoType } from './enums';
 
 const contactInfoTypes = createInfoTypes();

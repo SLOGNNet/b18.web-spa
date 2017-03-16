@@ -8,9 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbDatepickerModule } from './datepicker.module';
 import { NgbInputDatepicker } from './datepicker-input';
 import { NgbDatepicker } from './datepicker';
-import { NgbDateStruct } from './ngb-date-struct';
 import { NgbDate } from './ngb-date';
-import { fireEvent } from '../../test/helpers/domHelper';
 
 const createTestCmpt = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;

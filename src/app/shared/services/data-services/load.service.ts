@@ -1,19 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, URLSearchParams } from '@angular/http';
-import {
-  Load, Company, LoadStatuses,
-  DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, Commodity,
-  LoadType, FreightType
-} from './models';
-import { List } from 'immutable';
+import { Load } from './models';
 import { Observable } from 'rxjs/Observable';
-import { delay } from 'rxjs/Delay';
 import { CompanyService } from './index';
 import MockData from './mock-data';
 import { HttpService } from '../http.service';
-import { TypedJSON } from 'typedjson-npm/src/typed-json';
-import { plainToClass } from 'class-transformer';
 @Injectable()
 export class LoadService {
 

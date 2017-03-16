@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 declare var google: any;
@@ -10,9 +10,11 @@ export class GoogleService {
   private componentForm = {
     route: 'long_name',
     locality: 'long_name',
+    sublocality_level_1: 'long_name',
     administrative_area_level_1: 'short_name',
     country: 'long_name',
-    postal_code: 'short_name'
+    postal_code: 'short_name',
+    street_number: 'short_name'
   };
 
   constructor() {
@@ -22,7 +24,11 @@ export class GoogleService {
 
   getPredictions(query: string): Observable<any[]> {
     return Observable.create((observer: any) => {
-      this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []));
+      if (query.trim().length) {
+        this.predictionsService.getQueryPredictions({ input: query }, data => observer.next(data || []));
+      } else {
+        observer.next([]);
+      }
     });
   }
 
@@ -33,16 +39,18 @@ export class GoogleService {
   }
 
   private formatDetails(place) {
-    if (!place.geometry) {
+    if (!place || !place.geometry) {
       return null;
     }
 
     let details = {
       route: '',
       locality: '',
+      sublocality_level_1: '',
       administrative_area_level_1: '',
       country: '',
-      postal_code: ''
+      postal_code: '',
+      street_number: ''
     };
 
     for (let i = 0; i < place.address_components.length; i++) {
@@ -53,15 +61,11 @@ export class GoogleService {
       }
     }
 
-    let streetAddress1 = place.formatted_address;
-    const stateIdx = streetAddress1.indexOf(details.administrative_area_level_1) - 2;
-
-    if (stateIdx > 0) {
-      streetAddress1 = streetAddress1.substring(0, stateIdx);
-    }
+    let streetAddress1 = [details.street_number, details.route].filter(v => v).join(' ');
+    let city = [details.locality, details.sublocality_level_1].filter(v => v)[0];
 
     return {
-      city: details.locality,
+      city: city,
       zip: details.postal_code,
       streetAddress1: streetAddress1,
       state: details.administrative_area_level_1,

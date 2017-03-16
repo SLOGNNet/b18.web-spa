@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import * as io from 'socket.io-client';
+import { BehaviorSubject } from 'rxjs';
 import { URLSearchParams } from '@angular/http';
 import { SocketService } from './socket.service';
-import { Notification, NotificationType, TaskType, NotificationPriority, NotificationStatus, Contact } from '../../models';
+import { Notification, TaskType, NotificationPriority, NotificationStatus } from '../../models';
 
 @Injectable()
 export class NotificationService {

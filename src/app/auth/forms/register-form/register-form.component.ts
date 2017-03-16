@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';

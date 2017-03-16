@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -12,7 +12,6 @@ import { NotificationService,
   CommodityService,
   ContactService,
   FormValidationService,
-  FileUploadService,
   HttpService,
   StateService,
   LicenseService
@@ -38,7 +37,7 @@ import { FormNavigationComponent, NavigationAnchorComponent } from './components
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
-import { BdFormBuilder, BdFormGroup, BdFormControl } from './forms';
+import { BdFormBuilder } from './forms';
 import { BdDropdownModule } from './components/bd-dropdown';
 import { NgbDatepickerModule } from './components/datepicker';
 import { EmptyComponent } from './components/empty';
@@ -48,7 +47,10 @@ import { BdRemoveButtonComponent,
   BdButtonComponent,
   BdFormButtonComponent
 } from './components/bd-buttons';
+import { BdFormDateTimePicker } from './components/bd-form-datetimepicker';
 import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
+import { BdFormTimePicker } from './components/bd-form-timepicker';
+import { TimePickerComponent } from './components/timepicker';
 import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { BdPopoverModule } from './directives/bd-popover/index';
@@ -65,6 +67,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
 import { EmailValidator } from './validators';
+import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
 
@@ -86,7 +89,8 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     HttpService,
     EmailValidator,
     StateService,
-    LicenseService
+    LicenseService,
+    Constants
   ],
   declarations: [
     BdFormButtonComponent,
@@ -116,8 +120,10 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BlurForwarderDirective,
     ClickOutsideDirective,
     FormStickyBottomContainerComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
     BdDatePicker,
+    BdFormTimePicker,
     StopsLineComponent,
     StopPopoverComponent,
     BdResizerComponent,
@@ -138,9 +144,11 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     FilterItem,
     BdInfiniteScrollComponent,
     ComplexityPasswordMessengerComponent,
+    TimePickerComponent,
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
     EmptyComponent,
+    BdContactInfoComponent,
     MultiPaneLayoutComponent
   ],
   imports: [
@@ -182,7 +190,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdButtonComponent,
     BdRemoveButtonComponent,
     BdAddButtonComponent,
+    BdFormDateTimePicker,
     BdFormDatePicker,
+    BdFormTimePicker,
     FormNavigationComponent,
     NavigationAnchorComponent,
     StickyDirective,

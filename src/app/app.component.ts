@@ -3,13 +3,6 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { IAppState, rootReducer } from './store';
-import {
-  applyMiddleware,
-  Store,
-  combineReducers,
-  compose,
-  createStore
-} from 'redux';
 import { NgRedux } from 'ng2-redux';
 
 /*

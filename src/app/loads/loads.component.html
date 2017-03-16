@@ -2,7 +2,7 @@
   <first-pane>
     <bd-infinite-scroll (scrolledDown)="onScrolledDown()" (scrolledUp)="onScrolledUp()">
       <div class="data-panel">
-        <div sticky class="bd-filter-container">
+        <div class="bd-filter-container">
           <filter-container (visibilityChange)="onFilterVisibilityChange($event)">
             <autocomplete-filter
               [itemTemplate]="companyItemTemplate"

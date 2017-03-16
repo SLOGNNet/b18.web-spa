@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Location, Address } from '../models';
+import { Location } from '../models';
 import { GoogleService } from '../shared';
 
 @Injectable()

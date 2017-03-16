@@ -1,4 +1,4 @@
-import { Component, EventEmitter, ElementRef } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 declare let THREE: any;
 
 @Component({

@@ -1,4 +1,4 @@
-import { Component, Optional, Input, ViewChild, OnChanges, QueryList, ViewChildren, ChangeDetectorRef } from '@angular/core';
+import { Component, Optional, Input, ViewChild, OnChanges } from '@angular/core';
 import { NgControl, AbstractControl } from '@angular/forms';
 import { FormValidationService } from '../..';
 @Component({

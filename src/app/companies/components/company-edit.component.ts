@@ -1,10 +1,9 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { Company } from '../../models';
 import { BaseEditComponent } from '../../base';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyActions } from '../../actions';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../store';
 import { Location } from '@angular/common';
 import { CompanyForm } from '../../forms';

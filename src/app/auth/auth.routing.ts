@@ -7,7 +7,8 @@ import {
   EmailConfirmationComponent,
   EmailWasSentComponent,
   AuthWrapperComponent,
-  PasswordRecoveryComponent
+  PasswordRecoveryComponent,
+  TestFormComponent
 } from './';
 import { NoContentComponent } from '../no-content';
 
@@ -21,6 +22,7 @@ const routes: Routes = [{
     { path: 'email-was-sent', component: EmailWasSentComponent },
     { path: 'email-confirmation/:invitationToken/:verificationToken', component: EmailConfirmationComponent },
     { path: 'password-recovery', component: PasswordRecoveryComponent },
+    { path: 'test-form', component: TestFormComponent },
     { path: '**', component: NoContentComponent }
   ]
 }];

@@ -1,5 +1,4 @@
 import { LicenseClassTypes } from './enums';
-import { Type } from 'class-transformer';
 
 // License Class Text
 function createLicenseClassText() {
@@ -34,5 +33,9 @@ export class License {
 
   public static getLicenseClassText(licenseClass: LicenseClassTypes): string {
     return licenseClassText[licenseClass];
+  }
+
+  public static getClassesCollection(): any {
+    return licenseClassText;
   }
 }

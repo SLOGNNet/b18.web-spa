@@ -13,7 +13,6 @@ export class LoadStopCardsComponent {
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   onCardSelect(item) {
-    this.selected = [item];
     this.select.emit({selected: [item]});
   }
 

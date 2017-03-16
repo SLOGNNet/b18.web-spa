@@ -1,12 +1,10 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { Driver, DriverTypes, DriverPaymentTypes } from '../../models';
-import { BdFormBuilder, BdFormGroup, FormValidationService, GoogleService } from '../../shared';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Driver, DriverPaymentTypes } from '../../models';
+import { FormValidationService, GoogleService } from '../../shared';
+import { NgbDateStruct } from '../../shared/components/datepicker';
 import { EnumHelperService } from '../../shared/helpers';
-import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
   selector: 'driver-form',
@@ -23,6 +21,7 @@ export class DriverForm extends BaseForm {
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   driverForm: FormGroup;
   paymentsTypes: Array<any>;
+  driverTypes: Array<any>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +33,7 @@ export class DriverForm extends BaseForm {
     super(elementRef);
 
     this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
+    this.driverTypes = enumHelperService.getDropdownKeyValues(Driver.getDriverTypes());
   }
 
   ngOnChanges(changes: any) {
@@ -76,6 +76,7 @@ export class DriverForm extends BaseForm {
       id: [this.driver.id],
       firstName: [{value: this.driver.firstName, disabled: this.disabled}],
       lastName: [{value: this.driver.lastName, disabled: this.disabled}],
+      type: [{value: this.driver.type, disabled: this.disabled}],
       dateOfBirth: [{value: this.driver.dateOfBirth, disabled: this.disabled}],
       paymentType: [{value: this.driver.paymentType, disabled: this.disabled}],
       ssn: [{value: this.driver.ssn, disabled: this.disabled}],
@@ -84,5 +85,17 @@ export class DriverForm extends BaseForm {
       contactInfo: this.formBuilder.array([]),
       license: this.formBuilder.group({})
     });
+  }
+
+  get minBirthDate(): NgbDateStruct {
+    return { year: 1870, month: 1, day: 1 };
+  }
+
+  get maxBirthDate(): NgbDateStruct {
+    let date: Date = new Date(),
+      year: number = date.getFullYear(),
+      month: number = date.getMonth() + 1,
+      day: number = date.getDate();
+    return { year: year, month: month, day: day };
   }
 }

@@ -1,13 +1,10 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Driver, DriverTypes, DriverPaymentTypes } from '../../../models';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Driver } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DriverActions } from '../../../actions';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
-import { DriverForm } from '../../../forms';
 
 @Component({
   selector: 'driver-detail',
@@ -31,13 +28,12 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
       return this.selectedItem.firstName + ' ' + this.selectedItem.lastName;
     }
 
-
   constructor(
-    private cdr: ChangeDetectorRef,
     driverActions: DriverActions,
     route: ActivatedRoute,
     router: Router,
-    ngRedux: NgRedux<IAppState>) {
-    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
+    ngRedux: NgRedux<IAppState>,
+    protected cdr: ChangeDetectorRef) {
+    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route, cdr);
   }
 }

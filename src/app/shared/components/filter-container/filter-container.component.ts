@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ChangeDetectorRef, ChangeDetectionStrategy, ContentChildren, QueryList } from '@angular/core';
-import { BaseFilter, AutocompleteFilter } from './components';
+import { BaseFilter } from './components';
 
 @Component({
   selector: 'filter-container',

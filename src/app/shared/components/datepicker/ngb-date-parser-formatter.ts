@@ -1,5 +1,4 @@
 import { NgbDateStruct } from './ngb-date-struct';
-import { isNumber, toInteger, padNumber } from './utils';
 import * as moment from 'moment';
 /**
  * Abstract type serving as a DI token for the service parsing and formatting dates for the NgbInputDatepicker

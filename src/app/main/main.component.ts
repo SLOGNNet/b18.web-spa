@@ -1,10 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { NotificationService } from '../shared';
-import { IAppState, rootReducer } from '../store';
 import { SwitchState } from '../shared/enums/switchState';
-import { Notification, NotificationType } from '../models';
 import { AppState } from '../app.service';
 
 @Component({

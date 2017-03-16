@@ -185,6 +185,12 @@
   }
 }
 
+.icon-down-arrow-bold {
+  &:before {
+    content: '\e91c';
+  }
+}
+
 .icon-up-arrow-bold {
   &:before {
     content: '\e91d';

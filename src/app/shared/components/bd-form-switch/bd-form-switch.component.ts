@@ -1,5 +1,5 @@
-import { Component, Input, Optional, ChangeDetectorRef, forwardRef, HostBinding } from '@angular/core';
-import { NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, forwardRef, HostBinding } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => { };
 
 export const BD_FORM_SWITCHL_VALUE_ACCESSOR: any = {

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Driver, License } from '../../../../../models';
+import { Constants } from '../../../../../shared';
 
 @Component({
   selector: 'driver-license',
@@ -11,9 +12,15 @@ export class DriverLicenseComponent {
   public endorsmentsTypes: string;
   @Input() driver: Driver;
 
-  ngOnInit() {
+  constructor(private constants: Constants) {
+
+  }
+
+  ngOnChanges(changes) {
+    if (changes.driver) {
       this.restrictionsTypes = this.driver.license.restrictions.split(' ').join(', ');
       this.endorsmentsTypes = this.driver.license.endorsments.split(' ').join(', ');
+    }
   }
 
   get licenseClassText() {

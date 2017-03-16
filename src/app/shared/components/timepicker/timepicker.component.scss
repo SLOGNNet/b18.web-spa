@@ -1,0 +1,53 @@
+@import '../../../../assets/styles/variables';
+
+.bd-timepicker-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+
+  table {
+    width: 100%;
+
+    td {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid $grey;
+      cursor: pointer;
+
+      &:first-child {
+        border-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      &.selected {
+        div {
+          background: $light-blue;
+          color: $black;
+        }
+      }
+
+      div {
+        display: flex;
+        height: 100%;
+        background: $white;
+        color: $grey;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    tr {
+      &:first-child {
+        td {
+          border-top: 0;
+        }
+      }
+    }
+  }
+}

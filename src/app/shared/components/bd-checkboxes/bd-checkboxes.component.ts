@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { includes, without, some } from 'lodash';
+import { Component, Input, forwardRef } from '@angular/core';
+import { without } from 'lodash';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 const noop = () => { };
 
@@ -20,10 +20,10 @@ export class BdCheckboxes implements ControlValueAccessor {
   @Input() disabled: boolean = false;
   @Input() items: Array<any>;
   @Input()
-  set value(v: any) {
-    this._value = v.split(' ');
+  set value(v: string) {
+    this._value = v.trim().length ? v.split(' ') : [];
   }
-  get value(): any {
+  get value(): string {
     return this._value.join(' ');
   }
   private _value: Array<any> = [];
@@ -45,7 +45,7 @@ export class BdCheckboxes implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this._value = value.split(' ');
+    this.value = value;
   }
 
   registerOnChange(fn: any) {

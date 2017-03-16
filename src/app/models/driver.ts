@@ -3,7 +3,7 @@ import { Member } from './member';
 import { Address } from './address';
 import { License } from './license';
 import { ContactInfo } from './contact-info';
-import { DriverTypes, DriverStatuses, DriverPaymentTypes, ContactInfoType } from './enums';
+import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
@@ -31,7 +31,6 @@ function createStatusText() {
 // Type Text
 function createTypeText() {
   let result = {};
-  result[DriverTypes.None] = 'None';
   result[DriverTypes.CompanyDriver] = 'Company driver';
   result[DriverTypes.OwnerOperator] = 'Owner operator';
 
@@ -107,6 +106,10 @@ export class Driver extends Member {
 
   public static getPaymentTypeText(paymentType: DriverPaymentTypes): string {
     return paymentTypeText[paymentType];
+  }
+
+  public static getDriverTypes(): any {
+    return typeText;
   }
 
 
