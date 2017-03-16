@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Company } from '../../../../../models';
+import { Company, CompanyTypes } from '../../../../../models';
 
 @Component({
   selector: 'company-basic-information',
@@ -7,13 +7,15 @@ import { Company } from '../../../../../models';
   styleUrls: ['./company-basic-information.component.scss'],
 })
 export class CompanyBasicInformation {
-
   @Input() company: Company;
-
   croppedCompanyName: string;
 
   ngOnInit() {
     this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
+  }
+
+  get typeText() {
+    return Company.getTypeText(this.company.type);
   }
 
 }

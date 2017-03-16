@@ -11,7 +11,6 @@ $element-height: 18px;
   font-size: $tiny-font-size;
   line-height: $element-height;
   border-bottom: $border;
-  margin-top: 50px;
 
   .left {
     display: flex;
@@ -38,11 +37,24 @@ $element-height: 18px;
       .name {
         font-weight: bold;
       }
+
+      .type {
+        color: $dark-grey;
+      }
     }
   }
 
   .right {
     width: 50%;
-    padding: 13px;
+    padding: $default-margin;
+
+    .right-label {
+      color: $dark-grey;
+    }
+
+    .mc,
+    .tax-id {
+      margin-left: 5px;
+    }
   }
 }

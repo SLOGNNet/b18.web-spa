@@ -1,10 +1,12 @@
 <div *ngIf="selectedItem">
+  <!-- <bd-button class="add-button" [color]="'primary'" [text]="'Edit'" (click)="onEdit()">
+  </bd-button> -->
   <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="selectedItem.name" [anchors]="anchors">
   </form-navigation>
   <div class="company-detail-container">
-    <bd-button class="add-button" [color]="'primary'" [text]="'Edit'" (click)="onEdit()">
-    </bd-button>
     <navigation-anchor id="basic-information"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'BASIC INFORMATION'" [addButton]="false">
     <company-basic-information [company]="selectedItem"></company-basic-information>
+  </bd-view-detail-section>
   </div>
 </div>
