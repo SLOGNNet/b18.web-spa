@@ -14,7 +14,15 @@ import { CompanyCardComponent } from '../companies/components/company-card';
 import { CompanyDetailComponent } from '../companies/components/company-detail';
 import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
-import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
+import {
+  EquipmentComponent,
+  EquipmentCardComponent,
+  EquipmentCardsComponent,
+  EquipmentDetailComponent,
+  EquipmentEmploymentComponent,
+  EquipmentDetailsComponent,
+  EquipmentAssignmentComponent
+ } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
 import { DriversModule } from '../drivers';
 import { HomeComponent } from '../home';
@@ -75,7 +83,11 @@ import {
     BdToastManagerComponent,
     EquipmentComponent,
     EquipmentCardComponent,
-    EquipmentCardsComponent
+    EquipmentCardsComponent,
+    EquipmentDetailComponent,
+    EquipmentEmploymentComponent,
+    EquipmentDetailsComponent,
+    EquipmentAssignmentComponent
   ],
   exports: [
     BdFormsModule

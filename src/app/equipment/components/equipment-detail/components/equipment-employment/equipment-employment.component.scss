@@ -1,0 +1,17 @@
+@import '../../../../../../assets/styles/variables';
+
+.employment-container {
+  color: $dark-grey;
+  font-size: $tiny-font-size;
+  border-radius: $default-border-radius;
+  border-bottom: bottom;
+
+  section {
+    width: 50%;
+    padding: $default-margin;
+
+    &:first-of-type {
+      border-right: $border;
+    }
+  }
+}

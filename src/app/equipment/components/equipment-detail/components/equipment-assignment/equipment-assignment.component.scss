@@ -1,0 +1,14 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+
+.assignment-container {
+  color: $dark-grey;
+  font-size: $tiny-font-size;
+  border-radius: $default-border-radius;
+  border-bottom: bottom;
+  
+  section {
+    width: 50%;
+    padding: $default-margin;
+  }
+}
