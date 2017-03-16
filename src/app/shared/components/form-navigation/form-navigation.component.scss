@@ -12,7 +12,9 @@ form-navigation {
 
   .form-navigation {
     padding: $default-margin $default-margin 0;
+    border-radius: $default-border-radius;
     background-color: $white;
+    border-bottom: $border;
 
     .top-panel {
       display: flex;
