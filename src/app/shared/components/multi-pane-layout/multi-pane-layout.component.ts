@@ -88,7 +88,7 @@ export class MultiPaneLayoutComponent {
         }
 
         this.panesWidth = widths;
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
     }
 
     getSecondPane() {
