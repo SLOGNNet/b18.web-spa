@@ -88,6 +88,7 @@ export class MultiPaneLayoutComponent {
         }
 
         this.panesWidth = widths;
+        this.cdr.markForCheck();
         this.cdr.detectChanges();
     }
 
