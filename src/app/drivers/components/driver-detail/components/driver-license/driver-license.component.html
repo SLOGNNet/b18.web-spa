@@ -6,17 +6,17 @@
     </div>
     <div class="right">
       <span class="state-issued">{{driver.license.stateIssued}}</span>
-      <span class="date">{{driver.license.dateIssued | date: 'dd/MM/yyyy'}} - {{driver.license.expiration | date: 'dd/MM/yyyy'}}</span>
+      <span class="date">{{driver.license.dateIssued | bdDate:constants.DATE_FORMAT}} - {{driver.license.expiration | bdDate:constants.DATE_FORMAT}}</span>
     </div>
   </div>
   <div class="bottom">
-    <div class="restrictions-container">
-      <span class="bottom-label">Restrict:</span>
-      <span class="types">{{restrictionsTypes}}</span>
-    </div>
     <div class="endorsments-container">
       <span class="bottom-label">Endors:</span>
       <span class="types">{{endorsmentsTypes}}</span>
+    </div>
+    <div class="restrictions-container">
+      <span class="bottom-label">Restrict:</span>
+      <span class="types">{{restrictionsTypes}}</span>
     </div>
   </div>
 </div>

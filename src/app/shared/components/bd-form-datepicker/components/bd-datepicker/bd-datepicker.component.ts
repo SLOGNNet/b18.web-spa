@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, forwardRef, EventEmitter, Output } from '@angular/core';
 import { NgbInputDatepicker } from '../../../datepicker';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgbDateStruct } from '../../../datepicker';
 const noop = () => { };
 
 export const BD_DATE_PICKER_CONTROL_VALUE_ACCESSOR: any = {
@@ -25,6 +26,9 @@ export class BdDatePicker implements ControlValueAccessor {
     }
   }
   @Input() format: string;
+  @Input() minDate: NgbDateStruct;
+  @Input() maxDate: NgbDateStruct;
+
   @ViewChild('datepicker') datepicker: NgbInputDatepicker;
   @Output() valueChange = new EventEmitter();
 

@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import * as moment from 'moment';
+import { Constants } from '../../constants/constants';
 
-const DEFAULT_ELEMENT_WIDTH = 100, DATE_FORMAT = 'MM/DD/YYYY' ;
+const DEFAULT_ELEMENT_WIDTH = 100;
 
 @Component({
   selector: 'bd-file-preview',
@@ -21,12 +22,12 @@ export class BdFilePreviewComponent {
 
       @Output() private removeFile: EventEmitter<any> = new EventEmitter();
 
-      constructor(private _cdr: ChangeDetectorRef){
+      constructor(private _cdr: ChangeDetectorRef, private constants: Constants){
       }
 
       ngOnInit(){
         this.titleText = this.documentType + ' (' + this.itemIndex + ')';
-        this.documentIssueDate = moment(new Date()).format(DATE_FORMAT);
+        this.documentIssueDate = moment(new Date()).format(this.constants.DATE_FORMAT);
       }
 
       ngOnChanges(){

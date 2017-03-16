@@ -1,5 +1,9 @@
 @import '../../../../../assets/styles/variables';
 
+:host {
+  display: flex;
+}
+
 .form-button {
   border: 0;
   background: transparent;

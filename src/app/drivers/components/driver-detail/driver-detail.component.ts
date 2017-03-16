@@ -28,13 +28,12 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
       return this.selectedItem.firstName + ' ' + this.selectedItem.lastName;
     }
 
-
   constructor(
-    private cdr: ChangeDetectorRef,
     driverActions: DriverActions,
     route: ActivatedRoute,
     router: Router,
-    ngRedux: NgRedux<IAppState>) {
-    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route);
+    ngRedux: NgRedux<IAppState>,
+    protected cdr: ChangeDetectorRef) {
+    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route, cdr);
   }
 }

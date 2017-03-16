@@ -14,11 +14,11 @@ import { IAppState } from '../../../store';
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), router, route);
+      super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
   }
 }
