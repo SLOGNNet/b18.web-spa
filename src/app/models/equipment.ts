@@ -92,14 +92,16 @@ export class Equipment {
   @Type(() => Driver)
   driver: Driver;
   status: EquipmentStatuses = EquipmentStatuses.Active;
-  driverType: DriverTypes;
   type: EquipmentTypes = EquipmentTypes.Trailer;
   subType: PowerUnitTypes | TrailerTypes;
-  mode: EquipmentModes = EquipmentModes.Company;
+  ownership: EquipmentModes = EquipmentModes.Company;
   vehicleOperating: EquipmentVehicleOperatings;
   lastTripNumber: number = 0;
   lastAddress: string = '';
   equipmentNotification: EquipmentNotification;
+  licensePlateState: string = '';
+  licensePlateNumber: string = '';
+  licensePlateExpiration: Date = null;
 
   static create(): Equipment {
     const result = new Equipment();
@@ -107,9 +109,8 @@ export class Equipment {
     result.status = EquipmentStatuses.Active;
     result.type = EquipmentTypes.Trailer;
     result.subType = TrailerTypes.DryVan53;
-    result.mode = EquipmentModes.Company;
+    result.ownership = EquipmentModes.Company;
     result.vehicleOperating = EquipmentVehicleOperatings.InterState;
-    result.driverType = DriverTypes.CompanyDriver;
     result.equipmentNotification = {
       message: '',
       date: new Date()

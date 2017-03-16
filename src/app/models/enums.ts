@@ -42,7 +42,8 @@ export enum EquipmentTypes {
 
 export enum EquipmentModes {
   None = 0,
-  Company = 1
+  Company = 1,
+  OwnerOperator = 2
 };
 
 export enum EquipmentStatuses {
