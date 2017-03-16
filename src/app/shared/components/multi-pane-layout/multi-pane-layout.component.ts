@@ -87,7 +87,7 @@ export class MultiPaneLayoutComponent {
         if (!this.bdResizeComponents) {
             return;
         }
-console.log(widths);
+
         this.panesWidth = widths;
         this.cdr.detectChanges();
     }

@@ -14,7 +14,6 @@ export class BdResizeContainerComponent {
 
   ngOnChanges(changes) {
     if (changes.width) {
-      console.log('ngOnChanges', this.width);
       this.element.nativeElement.style.width = this.width + '%';
     }
   }
