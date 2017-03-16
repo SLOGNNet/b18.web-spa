@@ -1,18 +1,10 @@
-import { Component, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { BdInputComponent } from './common/bd-input/bd-input.component';
-import { BdDropdownComponent } from './common/bd-dropdown/bd-dropdown.component';
-import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
-import { BdPerfectScrollbarComponent } from './common/bd-perfect-scrollbar/bd-perfect-scrollbar.component';
-import { FilterContainer } from './components/filter-container/filter-container.component';
+import { Component } from '@angular/core';
 import { Load } from '../models';
 import { LoadActions } from '../actions';
 import { LoadService, CompanyService } from '../shared';
-import { ViewMode } from '../shared/enums';
-import { cloneDeep } from 'lodash';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 
 @Component({

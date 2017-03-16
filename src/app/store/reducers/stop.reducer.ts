@@ -1,6 +1,6 @@
 import { StopActions, LoadActions } from './actions';
 import { createReducer } from './create-reducer';
-import { Stop, Load } from './models';
+import { Stop } from './models';
 import { addItem, updateListItem, removeItem } from './utils';
 
 export interface IStopState {

@@ -1,7 +1,6 @@
 import { Input, Output, EventEmitter, OnChanges, ElementRef } from '@angular/core';
-import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder } from '@angular/forms';
 
 export abstract class BaseListForm<T> extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;

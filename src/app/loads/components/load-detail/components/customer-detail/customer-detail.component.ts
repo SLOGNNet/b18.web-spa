@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Load, AppointmentTypes, Appointment, Company, Contact } from '../../../../../models';
-import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
+import { Company, Contact } from '../../../../../models';
 
 @Component({
   selector: 'customer-detail',

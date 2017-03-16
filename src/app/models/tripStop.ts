@@ -2,9 +2,7 @@ import { Facility } from './facility';
 import { StopAction } from './stopAction';
 import { Type } from 'class-transformer';
 import { Appointment } from './appointment';
-import { Commodity } from './commodity';
 import { generateNewId } from './utils';
-import { StopActionTypes } from './enums';
 import { Trip } from './trip';
 
 export class TripStop {

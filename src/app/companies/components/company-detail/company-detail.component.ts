@@ -1,13 +1,10 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Company } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyActions } from '../../../actions';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
-import { CompanyForm } from '../../../forms';
 
 @Component({
   selector: 'company-detail',
@@ -16,7 +13,7 @@ import { CompanyForm } from '../../../forms';
 })
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
- private anchors = [{
+  private anchors = [{
     id: 'company-personal-information',
     title: 'Information'
   }];
@@ -27,6 +24,6 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
+    super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
   }
 }

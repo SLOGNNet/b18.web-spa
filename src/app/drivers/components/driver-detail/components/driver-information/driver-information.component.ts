@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Driver, License } from '../../../../../models';
+import { Driver } from '../../../../../models';
 import { Constants } from '../../../../../shared';
+
 
 @Component({
   selector: 'driver-information',

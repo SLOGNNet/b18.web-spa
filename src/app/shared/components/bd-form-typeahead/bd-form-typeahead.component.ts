@@ -1,10 +1,7 @@
-import { Component, Optional, ElementRef, TemplateRef,
-  ViewEncapsulation, Input, Output, EventEmitter,
-  forwardRef, HostBinding, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Optional, TemplateRef,
+  ViewEncapsulation, HostBinding, Input, Output, EventEmitter,
+  ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { TypeaheadOptions } from './typeahead-options.class';
-import { TypeaheadDirective } from './typeahead.directive';
-import { TypeaheadMatch } from './typeahead-match.class';
 import { Observable } from 'rxjs/Observable';
 import { BdInputComponent } from '../bd-input';
 const noop = () => { };

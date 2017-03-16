@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs/Observable';
-
 export interface IDetailDataActions<T> {
   select(id: number);
   createNew();

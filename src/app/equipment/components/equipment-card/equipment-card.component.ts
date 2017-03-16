@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../../../models';
-import { BdInitialsCircleComponent } from './common/bd-icons/bd-initials-circle';
 import { BaseCardComponent } from '../../../base';
 
 @Component({

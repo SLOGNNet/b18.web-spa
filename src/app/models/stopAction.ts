@@ -1,4 +1,3 @@
-import { Facility } from './facility';
 import { Commodity } from './commodity';
 import { StopActionTypes } from './enums';
 import { Type } from 'class-transformer';

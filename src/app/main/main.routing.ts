@@ -1,13 +1,10 @@
 import { MainComponent } from './main.component';
-import { DriversComponent, DriverEditComponent, DriverDetailComponent } from '../drivers';
-import { MessagesComponent } from '../drivers/messages';
 import { HomeComponent } from '../home';
-import { LoadsComponent, LoadEditComponent, LoadDetailComponent } from '../loads';
+import { LoadsComponent, LoadDetailComponent } from '../loads';
 import { CompaniesComponent, CompanyEditComponent, CompanyDetailComponent } from '../companies';
 import { EquipmentComponent } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../auth';
 import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
 import { DriversModule } from '../drivers';

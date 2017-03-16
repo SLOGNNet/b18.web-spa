@@ -1,18 +1,16 @@
 import { Component, Input, Output, OnChanges, EventEmitter, ElementRef } from '@angular/core';
-import { Validators, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-import { CompanyService, BdFormBuilder, BdFormGroup, ContactService } from '../../shared';
+import { CompanyService, ContactService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import {
   Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
-  Stop, StopTypes, Contact, Commodity,
-  LoadType, FreightType } from '../../models';
-import { BdFormButtonComponent } from './common/bd-form-button/bd-form-button.component';
+  Stop, StopTypes, LoadType, FreightType } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { StopActions } from '../../actions';
-import { NgRedux, select } from 'ng2-redux';
+import { select } from 'ng2-redux';
 
 @Component(Object.assign({
   selector: 'load-form',

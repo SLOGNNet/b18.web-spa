@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, ElementRef } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { CommodityComponent, CommodityField } from './commodity.component';
 import { FormBuilder } from '@angular/forms';
 

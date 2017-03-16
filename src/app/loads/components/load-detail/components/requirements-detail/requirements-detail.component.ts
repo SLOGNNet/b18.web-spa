@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load, DriverRequirements, FreightType, PowerUnitTypes, TrailerTypes } from '../../../../../models';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Load, FreightType } from '../../../../../models';
 
 
 @Component({

@@ -1,4 +1,4 @@
-import { Commodity, Address, Driver, Contact } from './index';
+import { Contact } from './index';
 import { generateNewId } from './utils';
 import { NotificationStatus, NotificationType, NotificationPriority, TaskType } from './enums';
 

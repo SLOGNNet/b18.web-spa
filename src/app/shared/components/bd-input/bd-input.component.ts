@@ -1,9 +1,9 @@
-import { Component, Input, Output, Optional, EventEmitter,
+import { Component, Input, Output, EventEmitter,
   HostBinding, forwardRef, ViewEncapsulation,
   ElementRef, ViewChild, ChangeDetectorRef, Renderer, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 const noop = () => { };
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgControl } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 let nextUniqueId = 0;
 
 export const BD_INPUT_CONTROL_VALUE_ACCESSOR: any = {

@@ -1,12 +1,7 @@
-import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
-import { BdFormBuilder, BdFormGroup, FormValidationService } from '../../shared';
-import { EnumHelperService } from '../../shared/helpers';
-import { ViewMode } from '../../shared/enums';
+import { Component, Input, ElementRef } from '@angular/core';
 import { Document } from '../../models';
 import { BaseForm } from '../base-form';
 import { FileUploadService } from '../../shared';
-import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { without } from 'lodash';
 

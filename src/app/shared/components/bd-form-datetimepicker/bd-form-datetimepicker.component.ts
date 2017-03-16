@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, forwardRef, ChangeDetectionStrategy } from '@angular/core';
-import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as moment from 'moment';
 import { Constants } from '../../constants/constants';
 

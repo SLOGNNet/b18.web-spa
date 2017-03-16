@@ -1,4 +1,4 @@
-import { Component, ElementRef, TemplateRef, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ElementRef, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { position } from '../../helpers/positioning';
 import { TypeaheadOptions } from './typeahead-options.class';
 import { TypeaheadDirective } from './typeahead.directive';

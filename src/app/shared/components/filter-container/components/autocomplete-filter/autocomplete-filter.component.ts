@@ -2,9 +2,8 @@ import { Component, Input, forwardRef,
   EventEmitter, ChangeDetectionStrategy,
   ChangeDetectorRef, TemplateRef, ElementRef, ViewChild } from '@angular/core';
 import { BaseFilter } from '../base-filter';
-import { FilterContainer } from '../../filter-container.component';
 import { Observable } from 'rxjs/Observable';
-import { difference, without } from 'lodash';
+import { difference } from 'lodash';
 
 class PageQuery {
   page: number;

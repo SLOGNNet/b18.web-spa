@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output,
-   ChangeDetectorRef, EventEmitter, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Commodity } from '../../../models';
 import { BaseListForm } from '../../base-list-form';
 

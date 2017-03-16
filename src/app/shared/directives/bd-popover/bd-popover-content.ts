@@ -1,5 +1,5 @@
 import { Component, Input, AfterViewInit, ElementRef, ChangeDetectorRef,
-    OnDestroy, ViewChild, EventEmitter, HostListener, ComponentRef } from '@angular/core';
+    OnDestroy, ViewChild, EventEmitter, HostListener } from '@angular/core';
 import { BdPopover } from './bd-popover.directive';
 import { offsetParent, getElementPosition, getEffectivePlacement } from '../../helpers/positioning';
 

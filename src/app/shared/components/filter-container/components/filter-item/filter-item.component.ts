@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'filter-item',

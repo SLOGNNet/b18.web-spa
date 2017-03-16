@@ -1,11 +1,9 @@
-import { async, TestBed, inject, ComponentFixture } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { SharedModule } from '../../shared.module';
 import { BdInputComponent } from './bd-input.component';
-import { PlatformModule } from '../core/platform/index';
-import { fireMouseEvent, fireEvent } from '../../test/helpers/domHelper';
+import { fireEvent } from '../../test/helpers/domHelper';
 
 
 

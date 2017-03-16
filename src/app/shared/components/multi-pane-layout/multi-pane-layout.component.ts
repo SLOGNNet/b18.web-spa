@@ -16,7 +16,6 @@
  */
 
 import { Component, ViewChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { SwitchState } from '../../enums/switchState';
 import { BdResizeContainerComponent } from '../bd-resizer';
 import { AppState } from '../../../app.service';

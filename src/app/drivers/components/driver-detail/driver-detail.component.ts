@@ -1,13 +1,10 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Driver, DriverTypes, DriverPaymentTypes } from '../../../models';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Driver } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DriverActions } from '../../../actions';
-import { NgRedux, select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
+import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
-import { DriverForm } from '../../../forms';
 
 @Component({
   selector: 'driver-detail',

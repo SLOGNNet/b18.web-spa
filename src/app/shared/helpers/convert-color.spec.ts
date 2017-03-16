@@ -1,5 +1,3 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { hexToRgb, getRGBString } from '.';
 
 describe('Convert color helper', () => {

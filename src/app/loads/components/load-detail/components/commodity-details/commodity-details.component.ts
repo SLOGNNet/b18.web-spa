@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Load, Trip, StopTypes, Commodity, AppointmentTypes, Appointment, TripStop, StopActionTypes } from '../../../../../models';
+import { Commodity } from '../../../../../models';
 
 @Component({
   selector: 'commodity-details',

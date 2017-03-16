@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { Driver, Notification, Address } from '../models';
+import { Driver } from '../models';
 import { DriverService, NotificationService, GoogleService } from '../shared';
 import { IListDataActions, IDetailDataActions } from './intefaces';
 
