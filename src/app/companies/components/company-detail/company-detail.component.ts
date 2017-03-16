@@ -14,9 +14,15 @@ import { IAppState } from '../../../store';
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
   private anchors = [{
-    id: 'company-personal-information',
-    title: 'Information'
-  }];
+    id: 'basic-information',
+    title: 'Basic Information'
+  }, {
+      id: 'address',
+      title: 'Address'
+    }, {
+      id: 'contacts',
+      title: 'Contacts'
+    }];
 
   constructor(
     cdr: ChangeDetectorRef,
@@ -25,5 +31,9 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
+  }
+
+  ngOnInit() {
+    console.log(this.selectedItem, 'selectedItem');
   }
 }
