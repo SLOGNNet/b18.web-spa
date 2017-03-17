@@ -12,11 +12,12 @@ class MockData {
   public addresses: Array<Address> = [{
     id: 1,
     streetAddress1: '14701 Charlson Road, United States',
-    streetAddress2: '',
+    streetAddress2: 'SUITE 550',
     city: 'Eden Prairie',
     state: 'MN',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 3,
@@ -34,7 +36,8 @@ class MockData {
     city: 'Phoenix',
     state: 'AZ',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 4,
@@ -43,7 +46,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 5,
@@ -52,7 +56,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   }
   ];
 
@@ -63,7 +68,8 @@ class MockData {
     city: 'Dallas',
     state: 'MN',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 4,
@@ -72,7 +78,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 5,
@@ -81,7 +88,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 6,
@@ -90,7 +98,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 7,
@@ -99,7 +108,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   ];
 

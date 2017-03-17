@@ -9,14 +9,11 @@ import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 
 // Components
 import { MainComponent } from './main.component';
-import { CompaniesComponent, CompanyEditComponent } from '../companies';
-import { CompanyCardComponent } from '../companies/components/company-card';
-import { CompanyDetailComponent } from '../companies/components/company-detail';
-import { CompanyCardsComponent } from '../companies/components/company-cards';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
 import { EquipmentModule } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
 import { DriversModule } from '../drivers';
+import { CompaniesModule } from '../companies';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
 import { MessageComponent } from '../drivers/messages/message';
@@ -47,6 +44,7 @@ import {
     NavigationBarModule,
     MainRoutingModule,
     DriversModule,
+    CompaniesModule,
     EquipmentModule
   ],
   declarations: [
@@ -57,11 +55,6 @@ import {
     MessageComponent,
     LoadsComponent,
     LoadEditComponent,
-    CompaniesComponent,
-    CompanyEditComponent,
-    CompanyDetailComponent,
-    CompanyCardComponent,
-    CompanyCardsComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
     LoadDetailComponent,

@@ -1,0 +1,29 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/font-icons';
+$element-height: 18px;
+
+.location-container {
+  @include driver-view-form-container;
+
+  .left {
+    display: flex;
+
+    .full-name-icons-container {
+      margin-left: $default-margin;
+
+      .full-name {
+        font-weight: bold;
+      }
+
+      .icons {
+        color: $dark-grey;
+
+        .icon-call,
+        .icon-message {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
