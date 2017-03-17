@@ -287,7 +287,7 @@ class MockData {
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
-    id: 0,
+    id: 1,
     make: 'Kenworth',
     model: 'T610',
     number: '101',
@@ -329,7 +329,7 @@ class MockData {
       license: null
     }
   }, {
-    id: 1,
+    id: 2,
     make: 'Wabash',
     model: 'CA9000(Referer 53)',
     number: '2349',
