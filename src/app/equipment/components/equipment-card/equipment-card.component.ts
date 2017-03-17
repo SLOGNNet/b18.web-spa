@@ -24,7 +24,7 @@ export class EquipmentCardComponent extends BaseCardComponent {
     }
 
     get equipmentTypeText(): string {
-      return Equipment.getDriverText(this.item.driverType);
+      return Equipment.getDriverText(this.item.driver.type);
     }
 
     get equipmentShortTypeText(): string {

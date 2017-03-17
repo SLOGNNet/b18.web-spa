@@ -1,0 +1,59 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/styles';
+
+.details-container {
+  background: $white;
+  color: $dark-grey;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  border-radius: $default-border-radius;
+
+  .info-container {
+    display: flex;
+    border-bottom: $border;
+
+    section {
+      width: 50%;
+      padding: $default-margin;
+
+      &:first-of-type {
+        border-right: $border;
+      }
+    }
+
+    .equipment-info {
+      .name-info {
+        display: flex;
+
+        .circle {
+          margin-right: 10px;
+        }
+
+        .text {
+          overflow: hidden;
+
+          .name {
+            color: $black;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+
+      .value {
+        color: $black;
+      }
+    }
+  }
+
+  .notes {
+    padding: $default-margin;
+    color: $black;
+    min-height: $view-mode-element-height;
+  }
+}
