@@ -7,7 +7,13 @@ import { Equipment } from '../../../../../models';
   styleUrls: ['./equipment-details.component.scss'],
 })
 export class EquipmentDetailsComponent {
-  @Input() test: Equipment;
+  @Input() equipment: Equipment;
 
+  get isSleeperBerthAvailable() {
+    return this.equipment.isSleeperBerthAvailable ? 'Yes' : 'No';
+  }
+
+  get shortTypeText() {
+    return Equipment.getShortTypeText(this.equipment.type);
+  }
 }
-

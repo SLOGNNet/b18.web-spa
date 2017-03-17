@@ -1,0 +1,35 @@
+<div class="details-container">
+    <div class="info-container">
+        <section class="equipment-info">
+            <div class="name-info">
+                <div class="circle">
+                    <bd-initials-circle
+                        [firstName]="shortTypeText.charAt(0)"
+                        [lastName]="shortTypeText.charAt(1)">
+                    </bd-initials-circle>
+                </div>
+                <div class="text">
+                    <div class="name ellipsis">{{equipment.make}} {{equipment.model}}</div>
+                    <div class="number">{{equipment.number}}</div>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="title">Berth Available</span>
+                <span class="value">{{isSleeperBerthAvailable}}</span>
+            </div>
+
+        </section>
+        <section class="license-info">
+            <div class="info-item">
+                <span class="title">License Plate</span>
+                <span class="value">{{equipment.licensePlateState}}</span>
+            </div>
+            <div class="info-item">
+                <span class="title">Expiration</span>
+                <span class="value">{{equipment.licensePlateExpiration | date:'MM/dd/yy'}}</span>
+            </div>
+        </section>
+    </div>
+
+    <div class="notes">{{equipment.notes}}</div>
+</div>
