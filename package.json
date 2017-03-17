@@ -101,7 +101,7 @@
     "zone.js": "^0.7.7"
   },
   "devDependencies": {
-    "@types/jasmine": "~2.5.2",
+    "@types/jasmine": "2.5.45",
     "@types/node": "^6.0.38",
     "@types/selenium-webdriver": "~2.53.39",
     "@types/socket.io-client": "^1.4.28",
