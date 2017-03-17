@@ -12,7 +12,7 @@ export class CompanyBasicInformation {
   typeText: string;
 
   ngOnChanges(changes) {
-    if(changes.company) {
+    if (changes.company) {
       this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
       this.typeText = Company.getTypeText(this.company.type);
     }
