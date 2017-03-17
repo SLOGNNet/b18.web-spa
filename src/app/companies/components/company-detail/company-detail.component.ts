@@ -32,8 +32,4 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
   }
-
-  ngOnInit() {
-    console.log(this.selectedItem, 'selectedItem');
-  }
 }

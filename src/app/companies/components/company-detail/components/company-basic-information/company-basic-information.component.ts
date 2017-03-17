@@ -9,13 +9,13 @@ import { Company, CompanyTypes } from '../../../../../models';
 export class CompanyBasicInformation {
   @Input() company: Company;
   croppedCompanyName: string;
+  typeText: string;
 
-  ngOnInit() {
-    this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
-  }
-
-  get typeText() {
-    return Company.getTypeText(this.company.type);
+  ngOnChanges(changes) {
+    if(changes.company) {
+      this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
+      this.typeText = Company.getTypeText(this.company.type);
+    }
   }
 
 }

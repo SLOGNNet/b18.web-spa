@@ -32,6 +32,7 @@ $element-height: 18px;
     }
 
     .name-type {
+      flex: 1;
       margin-left: $default-margin;
 
       .name {
