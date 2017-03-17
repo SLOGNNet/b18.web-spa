@@ -9,7 +9,8 @@ import {
   CompanyEditComponent,
   CompanyDetailComponent,
   CompanyBasicInformation,
-  CompanyAddress
+  CompanyAddress,
+  CompanyContact
 } from './components';
 import { CompaniesComponent } from './companies.component';
 import { CompanyRoutingModule } from './companies.routing';
@@ -29,7 +30,8 @@ import { BdFormsModule } from '../forms/forms.module';
     CompanyEditComponent,
     CompanyDetailComponent,
     CompanyBasicInformation,
-    CompanyAddress
+    CompanyAddress,
+    CompanyContact
   ]
 })
 export class CompaniesModule { }

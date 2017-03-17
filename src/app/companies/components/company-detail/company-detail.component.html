@@ -8,9 +8,11 @@
     </bd-view-detail-section>
     <navigation-anchor id="address"></navigation-anchor>
     <bd-view-detail-section [labelText]="'Address'" [addContent]="'add address'" [changeButton]="false">
-      <div class="company-address-container">
         <company-address *ngFor="let location of selectedItem.locations" [location]="location"></company-address>
-      </div>
+    </bd-view-detail-section>
+    <navigation-anchor id="contacts"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'Contacts'" [addContent]="'add contact'" [changeButton]="false">
+        <company-contact *ngFor="let contact of selectedItem.contacts" [contact]="contact"></company-contact>
     </bd-view-detail-section>
   </div>
 </div>
