@@ -66,9 +66,41 @@ function createModeText() {
   let result = {};
   result[EquipmentModes.None] = 'None';
   result[EquipmentModes.Company] = 'Company';
+  result[EquipmentModes.OwnerOperator] = 'Owner Operator';
 
   return result;
 };
+
+// Vehicle Operatings Types
+function createVehicleOperatingsText() {
+  let result = {};
+  result[EquipmentVehicleOperatings.InterState] = 'InterState';
+  result[EquipmentVehicleOperatings.IntraState] = 'IntraState';
+  return result;
+}
+
+// Power Unit types
+function createPowerUnitTypes() {
+  let result = {};
+    result[PowerUnitTypes.Tractor] = 'Tractor';
+    result[PowerUnitTypes.StraightTruck25] = 'Straight Truck 25';
+    result[PowerUnitTypes.StraightTruckFlatbed] = 'Straight Truck Flatbed';
+    result[PowerUnitTypes.Bus] = 'Bus';
+    result[PowerUnitTypes.Other] = 'Other';
+  return result;
+}
+
+// Power trailer types
+function createTrailerTypes() {
+  let result = {};
+    result[TrailerTypes.DryVan53] = 'Dry Van 53';
+    result[TrailerTypes.Reefer] = 'Reefer';
+    result[TrailerTypes.DryVan48] = 'Dry Van 48';
+    result[TrailerTypes.Reefer48] = 'Reefer 48';
+    result[TrailerTypes.FlatBed53] = 'FlatBed 53';
+    result[TrailerTypes.Other] = 'Other';
+  return result;
+}
 
 const statusColors = createStatusColors();
 const statusText = createStatusText();
@@ -76,6 +108,9 @@ const equipmentDriverText = createEquipmentDriverText();
 const typeText = createTypeText();
 const shortTypeText = createShortTypeText();
 const modeText = createModeText();
+const vehicleOperatings = createVehicleOperatingsText();
+const powerUnitTypes = createPowerUnitTypes();
+const trailerTypes = createTrailerTypes();
 
 export class EquipmentNotification {
   message: string = '';
@@ -92,14 +127,17 @@ export class Equipment {
   @Type(() => Driver)
   driver: Driver;
   status: EquipmentStatuses = EquipmentStatuses.Active;
-  driverType: DriverTypes;
   type: EquipmentTypes = EquipmentTypes.Trailer;
   subType: PowerUnitTypes | TrailerTypes;
-  mode: EquipmentModes = EquipmentModes.Company;
+  ownership: EquipmentModes = EquipmentModes.Company;
   vehicleOperating: EquipmentVehicleOperatings;
   lastTripNumber: number = 0;
   lastAddress: string = '';
   equipmentNotification: EquipmentNotification;
+  licensePlateState: string = '';
+  licensePlateNumber: string = '';
+  licensePlateExpiration: Date = null;
+  isSleeperBerthAvailable: boolean = true;
 
   static create(): Equipment {
     const result = new Equipment();
@@ -107,9 +145,8 @@ export class Equipment {
     result.status = EquipmentStatuses.Active;
     result.type = EquipmentTypes.Trailer;
     result.subType = TrailerTypes.DryVan53;
-    result.mode = EquipmentModes.Company;
+    result.ownership = EquipmentModes.Company;
     result.vehicleOperating = EquipmentVehicleOperatings.InterState;
-    result.driverType = DriverTypes.CompanyDriver;
     result.equipmentNotification = {
       message: '',
       date: new Date()
@@ -139,5 +176,20 @@ export class Equipment {
 
   public static getModeText(type: EquipmentModes): string {
     return modeText[type];
+  }
+
+  public static getVehicleOperatingsType(type: EquipmentVehicleOperatings): string {
+    return vehicleOperatings[type];
+  }
+
+  public static getEquipmentSubType(type: EquipmentTypes, subType: PowerUnitTypes | TrailerTypes ) {
+    switch (type) {
+      case EquipmentTypes.Trailer:
+        return trailerTypes[subType];
+      case EquipmentTypes.PowerUnit:
+        return powerUnitTypes[subType];
+      default:
+      return;
+    }
   }
 };

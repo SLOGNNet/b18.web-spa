@@ -1,7 +1,6 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
-
 $element-height: 18px;
 
 .basic-information-container {
@@ -32,10 +31,15 @@ $element-height: 18px;
     }
 
     .name-type {
+      overflow: hidden;
+      flex: 1;
       margin-left: $default-margin;
 
       .name {
+        overflow: hidden;
         font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .type {

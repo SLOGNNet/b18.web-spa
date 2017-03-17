@@ -1,0 +1,34 @@
+<div class="assignment-container">
+    <section class="driver-info">
+        <div class="driver-name">
+            <div class="circle-container">
+                <bd-initials-circle
+                    [firstName]="equipment.driver.firstName"
+                    [lastName]="equipment.driver.lastName">
+                </bd-initials-circle>
+            </div>
+            <div class="info-container">
+                <div class="name">
+                    <span class="circle" [style.background-color]="driverStatusColor"></span>
+                    <span class="text">{{equipment.driver.firstName}} {{equipment.driver.lastName}}</span>
+                </div>
+                <div class="buttons-panel">
+                    <button class="icon-mail"></button>
+                    <button class="icon-call"></button>
+                    <button class="icon-message"></button>
+                </div>
+            </div>
+        </div>
+        <div class="driver-type">{{driverType}}</div>
+    </section>
+    <section class="contact-info">
+        <div class="location">
+            <div class="icon-location"></div>
+            <div class="text">{{equipment.driver.address.streetAddress1}}</div>
+        </div>
+        <div class="phone">
+            <div class="icon-phone"></div>
+            <div class="text">{{primaryPhone.value}}</div>
+        </div>
+    </section>
+</div>

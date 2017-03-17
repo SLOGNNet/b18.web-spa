@@ -1,16 +1,16 @@
 <div *ngIf="selectedItem">
-<form-navigation sticky [stickyPositionInsideScroll]="true" [anchors]="anchors"></form-navigation>
+<form-navigation sticky [stickyPositionInsideScroll]="true" [title]="'Load'" [anchors]="anchors"></form-navigation>
 <form>
     <navigation-anchor id="customer"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Customer'" [changeButton]="false" [addButton]="false">
+    <bd-view-detail-section [labelText]="'Customer'" [editButton]="false" [addButton]="false">
         <customer-detail [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
     </bd-view-detail-section>
     <navigation-anchor id="requirements"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Requirements'" [changeButton]="false" [addButton]="false">
+    <bd-view-detail-section [labelText]="'Requirements'" [editButton]="false" [addButton]="false">
         <requirements-detail [load]="selectedItem"></requirements-detail>
     </bd-view-detail-section>
     <navigation-anchor id="itinerary"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Itinerary'" [changeButton]="false" [addButton]="false">
+    <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
         <stop-view 
             *ngFor="let stop of selectedItem.stops"
             [stop]="stop">
