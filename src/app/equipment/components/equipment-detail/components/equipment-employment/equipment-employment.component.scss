@@ -1,10 +1,12 @@
 @import '../../../../../../assets/styles/variables';
 
 .employment-container {
+  display: flex;
+  background: $white;
   color: $dark-grey;
   font-size: $tiny-font-size;
   border-radius: $default-border-radius;
-  border-bottom: bottom;
+  border-bottom: $border;
 
   section {
     width: 50%;
