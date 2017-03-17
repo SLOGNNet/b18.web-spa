@@ -2,13 +2,87 @@
 @import '../../../../../../assets/styles/font-icons';
 
 .assignment-container {
+  display: flex;
+  background: $white;
   color: $dark-grey;
   font-size: $tiny-font-size;
   border-radius: $default-border-radius;
-  border-bottom: bottom;
+  border-bottom: $border;
   
   section {
     width: 50%;
     padding: $default-margin;
+
+    &.driver-info {
+      .driver-name {
+        display: flex;
+
+        .circle-container {
+          margin-right: 12px;
+        }
+
+        .info-container {
+          flex: 1;
+
+          .name {
+            display: flex;
+            height: 18px;
+            align-items: center;
+
+            .circle {
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: $grey;
+              margin-right: 5px;
+            }
+
+            .text {
+              line-height: 12px;
+            }
+          }
+
+          .buttons-panel {
+            button {
+              border: 0;
+              background: transparent;
+
+              &:first-of-type {
+                padding-left: 0;
+              }
+
+              &:hover {
+                color: $blue;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.contact-info {
+      .location,
+      .phone {
+        display: flex;
+
+        div {
+          line-height: 18px;
+
+          &:first-of-type {
+            margin-right: 5px;
+          }
+
+          &:last-of-type {
+            flex: 1;
+          }
+        }
+      }
+
+    }
+
+    &:first-of-type {
+      border-right: $border;
+    }
   }
 }

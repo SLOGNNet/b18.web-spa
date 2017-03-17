@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Equipment } from '../../../../../models';
+import { Equipment, Driver, ContactInfo } from '../../../../../models';
 
 @Component({
   selector: 'equipment-assignment',
@@ -7,8 +7,17 @@ import { Equipment } from '../../../../../models';
   styleUrls: ['./equipment-assignment.component.scss'],
 })
 export class EquipmentAssignmentComponent {
-  @Input() test: Equipment;
+  @Input() equipment: Equipment;
 
+  get driverType() {
+    return Driver.getTypeText(this.equipment.driver.type);
+  }
+
+  get driverStatusColor() {
+    return Driver.getStatusColor(this.equipment.driver.status);
+  }
+
+  get primaryPhone() {
+    return ContactInfo.getPrimaryPhone(this.equipment.driver.contactInfo);
+  }
 }
-
-
