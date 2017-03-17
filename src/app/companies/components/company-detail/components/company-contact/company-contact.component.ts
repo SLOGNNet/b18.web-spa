@@ -9,10 +9,4 @@ import { Contact } from '../../../../../models';
 export class CompanyContact {
   @Input() contact: Contact;
 
-
-  // ngOnChanges(changes) {
-  //   if (changes.location) {
-  //   }
-  // }
-
 }
