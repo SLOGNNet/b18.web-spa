@@ -9,6 +9,7 @@ import {
   CompanyEditComponent,
   CompanyDetailComponent,
   CompanyBasicInformation,
+  CompanyEditInfoComponent,
   CompanyAddress,
   CompanyContact
 } from './components';
@@ -30,6 +31,7 @@ import { BdFormsModule } from '../forms/forms.module';
     CompanyEditComponent,
     CompanyDetailComponent,
     CompanyBasicInformation,
+    CompanyEditInfoComponent,
     CompanyAddress,
     CompanyContact
   ]

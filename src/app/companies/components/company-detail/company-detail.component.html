@@ -5,7 +5,7 @@
   </form-navigation>
   <div class="company-detail-container">
     <navigation-anchor id="basic-information"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'BASIC INFORMATION'" [addButton]="false">
+    <bd-view-detail-section [labelText]="'BASIC INFORMATION'" [addButton]="false" (editClick)="onEditInfoClick()">
       <company-basic-information [company]="selectedItem"></company-basic-information>
     </bd-view-detail-section>
     <navigation-anchor id="address"></navigation-anchor>

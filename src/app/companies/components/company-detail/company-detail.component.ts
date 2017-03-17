@@ -33,4 +33,8 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
   }
+
+  onEditInfoClick() {
+    this.router.navigate(['./edit-info'],  {preserveQueryParams: true, relativeTo: this.route});
+  }
 }
