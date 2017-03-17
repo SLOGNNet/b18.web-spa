@@ -1,18 +1,41 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Equipment } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DriverActions } from '../../../actions';
+import { EquipmentActions } from '../../../actions';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
 
 @Component({
-    selector: 'equipment-detail',
-    templateUrl: './equipment-detail.component.html',
-    styleUrls: ['./equipment-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'equipment-detail',
+  templateUrl: './equipment-detail.component.html',
+  styleUrls: ['./equipment-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
-  @Input() equipment: Equipment;
+  private anchors = [{
+    id: 'employment',
+    title: 'Employment'
+  },
+  {
+    id: 'assignment',
+    title: 'Assignment'
+  }, {
+    id: 'details',
+    title: 'Details'
+  }];
+
+  constructor(
+    equipmentActions: EquipmentActions,
+    route: ActivatedRoute,
+    router: Router,
+    ngRedux: NgRedux<IAppState>,
+    protected cdr: ChangeDetectorRef) {
+    super(equipmentActions, ngRedux.select(state => state.equipments.selected), router, route, cdr);
+  }
+
+  get equipmentInfo(): string {
+    return this.selectedItem.make + ' ' + this.selectedItem.model;
+  }
 
 }
