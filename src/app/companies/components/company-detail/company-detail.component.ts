@@ -9,6 +9,7 @@ import { IAppState } from '../../../store';
 @Component({
   selector: 'company-detail',
   templateUrl: './company-detail.component.html',
+  styleUrls: ['./company-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
