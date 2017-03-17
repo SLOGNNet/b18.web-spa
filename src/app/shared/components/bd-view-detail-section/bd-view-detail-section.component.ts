@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 export class BdViewDetailSectionComponent {
   @Input() private labelText: string = '';
   @Input() private addContent: string = '';
-  @Input() private changeButton: boolean = true;
+  @Input() private editButton: boolean = true;
   @Input() private addButton: boolean = true;
 }
