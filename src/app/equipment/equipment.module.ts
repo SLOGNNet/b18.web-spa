@@ -9,7 +9,8 @@ import {
     EquipmentDetailComponent,
     EquipmentEmploymentComponent,
     EquipmentDetailsComponent,
-    EquipmentAssignmentComponent } from './components';
+    EquipmentAssignmentComponent,
+    EquipmentEditComponent } from './components';
 import { EquipmentComponent } from './equipment.component';
 import { EquipmentRoutingModule } from './equipment.routing';
 import { BdFormsModule } from '../forms/forms.module';
@@ -28,7 +29,8 @@ import { BdFormsModule } from '../forms/forms.module';
     EquipmentDetailComponent,
     EquipmentEmploymentComponent,
     EquipmentDetailsComponent,
-    EquipmentAssignmentComponent
+    EquipmentAssignmentComponent,
+    EquipmentEditComponent
   ]
 })
 export class EquipmentModule { }
