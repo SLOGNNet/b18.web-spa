@@ -9,7 +9,6 @@ import { IAppState } from '../../../store';
 @Component({
   selector: 'equipment-detail',
   templateUrl: './equipment-detail.component.html',
-  styleUrls: ['./equipment-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
