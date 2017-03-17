@@ -1,0 +1,53 @@
+<form [formGroup]="equipmentForm" novalidate (ngSubmit)="submit(equipmentForm.value, equipmentForm.valid)">
+
+	<navigation-anchor id="equipment-employment-information" ></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'EMPLOYMENT'">
+        <bd-input class="bd-form-control" formControlName="vin" [labelText]="'VIN'"></bd-input>
+        <bd-dropdown class="bd-form-control" formControlName="ownership" [labelText]="'Equipment mode'" [items]="equipmentModes">
+		</bd-dropdown>
+        <bd-dropdown class="bd-form-control" formControlName="vehicleOperating" [labelText]="'Operating mode'" [items]="operatingModes">
+		</bd-dropdown>
+        <bd-dropdown 
+            class="bd-form-control" 
+            formControlName="type" 
+            [labelText]="'Equipment type'" 
+            [items]="equipmentTypes" 
+            (onItemClick)="changeEquipmentType($event)">
+		</bd-dropdown>
+        <bd-dropdown 
+            class="bd-form-control" 
+            formControlName="subType" 
+            [labelText]="'Equipment sub type'" 
+            [items]="equipmentSubTypes" >
+		</bd-dropdown>
+	</bd-form-section>
+    
+	<navigation-anchor id="equipment-assignment-information"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'ASSIGNMENT'">
+        <bd-dropdown class="bd-form-control" formControlName="driver" [labelText]="'Assignment to'" [items]="drivers">
+		</bd-dropdown>
+	</bd-form-section>
+
+	<navigation-anchor id="equipment-details-information"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'EQUIPMENT DETAILS'" >
+	
+	</bd-form-section>
+
+	<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">
+		<div class="button-group">
+			<bd-button
+                [disabled]="disabled"
+				(click)="onCancel()"
+				[text]="'Cancel'"
+				class="button">
+			</bd-button>
+			<bd-button
+                [disabled]="disabled"
+				type="submit"
+				color="primary"
+				class="button"
+				[text]="submitButtonText">
+			</bd-button>
+		</div>
+	</form-sticky-bottom-container>
+</form>
