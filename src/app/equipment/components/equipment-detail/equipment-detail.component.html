@@ -3,17 +3,17 @@
   </form-navigation>
   <div class="equipment-detail-container">
 
-    <navigation-anchor id="employment"></navigation-anchor>
+    <navigation-anchor id="equipment-detail-employment"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EMPLOYMENT'" [addButton]="false" [changeButton]="false">
       <equipment-employment [equipment]="selectedItem"></equipment-employment>
     </bd-view-detail-section>
 
-    <navigation-anchor id="assignment"></navigation-anchor>
+    <navigation-anchor id="equipment-detail-assignment"></navigation-anchor>
     <bd-view-detail-section [labelText]="'ASSIGNMENT'" [addButton]="false" [changeButton]="false">
       <equipment-assignment [equipment]="selectedItem"></equipment-assignment>
     </bd-view-detail-section>
 
-    <navigation-anchor id="details"></navigation-anchor>
+    <navigation-anchor id="equipment-detail-details"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EQUIPMENT DETAILS'" [addButton]="false" [changeButton]="false">
       <equipment-details [equipment]="selectedItem"></equipment-details>
     </bd-view-detail-section>

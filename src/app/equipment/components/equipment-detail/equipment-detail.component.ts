@@ -13,14 +13,14 @@ import { IAppState } from '../../../store';
 })
 export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
   private anchors = [{
-    id: 'employment',
+    id: 'equipment-detail-employment',
     title: 'Employment'
   },
   {
-    id: 'assignment',
+    id: 'equipment-detail-assignment',
     title: 'Assignment'
   }, {
-    id: 'details',
+    id: 'equipment-detail-details',
     title: 'Details'
   }];
 
