@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Equipment } from '../../../models';
 
 @Component({
@@ -9,4 +9,18 @@ import { Equipment } from '../../../models';
 })
 export class EquipmentCardsComponent {
   @Input() equipments: Array <Equipment>;
+  @Input() selected: Array<Equipment> = [];
+  @Output() select: EventEmitter<any> = new EventEmitter();
+
+  onCardSelect(item) {
+    this.select.emit({selected: [item]});
+  }
+
+  isActive(id) {
+    const selected = this.selected.find(i => {
+      return i.id === id;
+    });
+
+    return selected;
+  }
 }

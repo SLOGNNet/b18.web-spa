@@ -2,7 +2,7 @@ import { MainComponent } from './main.component';
 import { HomeComponent } from '../home';
 import { LoadsComponent, LoadDetailComponent } from '../loads';
 import { CompaniesComponent, CompanyEditComponent, CompanyDetailComponent } from '../companies';
-import { EquipmentComponent } from '../equipment';
+import { EquipmentComponent, EquipmentDetailComponent } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from '../guards';
@@ -21,7 +21,7 @@ const routes: Routes = [{
     },
     {
       path: 'loads', component: LoadsComponent,
-      children: [
+      children:   [
     {
       path: ':id',
       children: [
@@ -82,7 +82,29 @@ const routes: Routes = [{
       ]
     }]
     },
-    { path: 'equipment', component: EquipmentComponent },
+    { path: 'equipment', component: EquipmentComponent,
+      children:   [
+        {
+          path: ':id',
+          children: [
+          {
+              path: '',
+              component: EquipmentDetailComponent,
+              outlet: 'detailOutlet',
+          },
+          {
+            path: '',
+            component: EmptyComponent,
+            canDeactivate: [CanDeactivateGuard]
+          },
+          {
+              path: 'edit',
+              component: EmptyComponent,
+              canDeactivate: [CanDeactivateGuard]
+          }
+          ]
+        }
+    ]},
     { path: '**', component: NoContentComponent }
   ]
 }];
