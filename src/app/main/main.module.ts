@@ -10,7 +10,7 @@ import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 // Components
 import { MainComponent } from './main.component';
 import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.component';
-import { EquipmentComponent, EquipmentCardComponent, EquipmentCardsComponent } from '../equipment';
+import { EquipmentModule } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
 import { DriversModule } from '../drivers';
 import { CompaniesModule } from '../companies';
@@ -44,7 +44,8 @@ import {
     NavigationBarModule,
     MainRoutingModule,
     DriversModule,
-    CompaniesModule
+    CompaniesModule,
+    EquipmentModule
   ],
   declarations: [
     MainComponent,
@@ -65,10 +66,7 @@ import {
     CompanyPopoverComponent,
     DriverPopoverComponent,
     CommodityDetailsComponent,
-    BdToastManagerComponent,
-    EquipmentComponent,
-    EquipmentCardComponent,
-    EquipmentCardsComponent
+    BdToastManagerComponent
   ],
   exports: [
     BdFormsModule
