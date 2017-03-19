@@ -4,15 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services';
 
 @Component({
-  selector: 'bd-email-confirmation',
-  templateUrl: './email-confirmation.component.html'
+  selector: 'bd-register-email-confirmation',
+  templateUrl: './register-email-confirmation.component.html'
 })
 
-export class EmailConfirmationComponent implements OnInit, OnDestroy {
+export class RegisterEmailConfirmationComponent implements OnInit, OnDestroy {
 
   isLoading: boolean = false;
   isConfirmationFailed: boolean = false;
-  private sub: any;
+  private subscription: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,9 +20,9 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       this.isLoading = true;
-      this.authenticationService.confirmEmail(params).subscribe(
+      this.authenticationService.signUpConfirmEmail(params).subscribe(
         response => {
           this.isLoading = false;
         },
@@ -35,6 +35,6 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

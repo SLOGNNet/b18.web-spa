@@ -1,5 +1,12 @@
 <div class="auth-component">
   <h3>Log In</h3>
+  <bd-auth-form-message-helper *ngIf="queryParams['registration-completed']">
+    Congratulations!<br/>
+    You confirmed your registration in the system.
+  </bd-auth-form-message-helper>
+  <bd-auth-form-message-helper *ngIf="queryParams['password-changed']">
+    Your password was successfully changed.
+  </bd-auth-form-message-helper>
   <bd-login-form [viewMode]="formViewMode"></bd-login-form>
   <div class="auth-component-footer">
     <a [routerLink]="['/auth/register']">Register</a>

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMode } from '../../../shared/enums';
 
 @Component({
-  selector: 'bd-phone-confirmation',
-  templateUrl: './phone-confirmation.component.html'
+  selector: 'bd-new-password',
+  templateUrl: './new-password.component.html'
 })
-
-export class PhoneConfirmationComponent implements OnInit {
+export class NewPasswordComponent implements OnInit {
 
   formViewMode: ViewMode;
 

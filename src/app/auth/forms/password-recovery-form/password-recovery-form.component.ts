@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';
+import { EmailValidator, PhoneValidator } from '../../../shared/validators';
+import { Constants } from '../../../shared';
 
 @Component(Object.assign({
   selector: 'bd-password-recovery-form',
@@ -19,13 +21,36 @@ export class PasswordRecoveryFormComponent extends BaseForm implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
-    element: ElementRef) {
+    private constants: Constants,
+    element: ElementRef)
+  {
     super(element);
   }
 
   ngOnInit() {
     this.passwordRecoveryForm = new FormGroup({
-      username: new FormControl('', [Validators.required])
+      userNameType: new FormControl(this.constants.USER_NAME_TYPES[0].key, [Validators.required]),
+      email: new FormControl('',  [Validators.required, EmailValidator.isValidMailFormat]),
+      cellphone: new FormControl('')
+    });
+    this.subscribeTypeChanges();
+  }
+
+  subscribeTypeChanges() {
+    const typeCtrl = (<any>this.passwordRecoveryForm).controls.userNameType;
+    const emailCtrl = (<any>this.passwordRecoveryForm).controls.email;
+    const cellphoneCtrl = (<any>this.passwordRecoveryForm).controls.cellphone;
+    const changes$ = typeCtrl.valueChanges;
+    changes$.subscribe(type => {
+      if (type === 'email') {
+        emailCtrl.setValidators([Validators.required, EmailValidator.isValidMailFormat]);
+        cellphoneCtrl.setValidators(null);
+      } else {
+        emailCtrl.setValidators(null);
+        cellphoneCtrl.setValidators([Validators.required, PhoneValidator.isValidPhoneFormat]);
+      }
+      emailCtrl.updateValueAndValidity();
+      cellphoneCtrl.updateValueAndValidity();
     });
   }
 
@@ -34,7 +59,7 @@ export class PasswordRecoveryFormComponent extends BaseForm implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authenticationService.passwordRecovery(form.value).subscribe(
+    this.authenticationService.passwordRecoveryGetRecoveryInstructions(form.value).subscribe(
       response => {
         this.isLoading = false;
       },

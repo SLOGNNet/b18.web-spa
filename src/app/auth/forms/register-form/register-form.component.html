@@ -21,12 +21,12 @@
     </bd-input>
   </div>
   <bd-form-switch class="bd-form-control"
-    formControlName="registerType"
+    formControlName="userNameType"
     [hideLabel]="true"
     [enableButtonSwitch]="true"
-    [items]="registerTypes">
+    [items]="constants.USER_NAME_TYPES">
   </bd-form-switch>
-  <bd-validator *ngIf="registerForm.controls.registerType.value === 'email'"
+  <bd-validator *ngIf="registerForm.controls.userNameType.value === 'email'"
     [component]="registerForm.controls.email"
     [errorDefs]="{required: 'This field is required', isValidMailFormat: 'Email entered not correct.'}">
     <bd-input
@@ -35,13 +35,13 @@
       formControlName="email">
     </bd-input>
   </bd-validator>
-  <bd-validator *ngIf="registerForm.controls.registerType.value === 'phone'"
-    [component]="registerForm.controls.phone"
-    [errorDefs]="{required: 'This field is required'}">
+  <bd-validator *ngIf="registerForm.controls.userNameType.value === 'phone'"
+    [component]="registerForm.controls.cellphone"
+    [errorDefs]="{required: 'This field is required', isValidPhoneFormat: 'Phone should consist of 10 numbers.'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Phone'"
-      formControlName="phone">
+      formControlName="cellphone">
     </bd-input>
   </bd-validator>
   <fieldset formGroupName="passwordGroup">

@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BaseForm } from '../../../forms';
 import { AuthenticationService } from '../../services';
-import { EmailValidator } from '../../../shared/validators';
+import { EmailValidator, PhoneValidator } from '../../../shared/validators';
+import { Constants } from '../../../shared';
 
 @Component(Object.assign({
   selector: 'bd-register-form',
@@ -13,7 +14,6 @@ import { EmailValidator } from '../../../shared/validators';
 export class RegisterFormComponent extends BaseForm implements OnInit {
 
   registerForm: FormGroup;
-  registerTypes: Array<any>;
   isLoading: boolean = false;
   isRegisterFailed: boolean;
   errorDescription: string;
@@ -21,18 +21,9 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
+    private constants: Constants,
     element: ElementRef) {
     super(element);
-    this.registerTypes = [
-      {
-        key: 'email',
-        value: 'Email'
-      },
-      {
-        key: 'phone',
-        value: 'Phone'
-      }
-    ];
   }
 
   ngOnInit() {
@@ -40,9 +31,9 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       middleName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      registerType: new FormControl('email', [Validators.required]),
+      userNameType: new FormControl(this.constants.USER_NAME_TYPES[0].key, [Validators.required]),
       email: new FormControl('',  [Validators.required, EmailValidator.isValidMailFormat]),
-      phone: new FormControl(''),
+      cellphone: new FormControl(''),
       passwordGroup: new FormGroup({
         password: new FormControl('',  [Validators.required]),
         retryPassword: new FormControl('',  [Validators.required])
@@ -71,20 +62,20 @@ export class RegisterFormComponent extends BaseForm implements OnInit {
   }
 
   subscribeTypeChanges() {
-    const typeCtrl = (<any>this.registerForm).controls.registerType;
+    const typeCtrl = (<any>this.registerForm).controls.userNameType;
     const emailCtrl = (<any>this.registerForm).controls.email;
-    const phoneCtrl = (<any>this.registerForm).controls.phone;
+    const cellphoneCtrl = (<any>this.registerForm).controls.cellphone;
     const changes$ = typeCtrl.valueChanges;
     changes$.subscribe(type => {
       if (type === 'email') {
         emailCtrl.setValidators([Validators.required, EmailValidator.isValidMailFormat]);
-        phoneCtrl.setValidators(null);
+        cellphoneCtrl.setValidators(null);
       } else {
         emailCtrl.setValidators(null);
-        phoneCtrl.setValidators([Validators.required]);
+        cellphoneCtrl.setValidators([Validators.required, PhoneValidator.isValidPhoneFormat]);
       }
       emailCtrl.updateValueAndValidity();
-      phoneCtrl.updateValueAndValidity();
+      cellphoneCtrl.updateValueAndValidity();
     });
   }
 

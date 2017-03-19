@@ -1,7 +1,7 @@
 <form [formGroup]="phoneForm" novalidate (ngSubmit)="onSubmit(phoneForm)" class="auth-form">
   <bd-auth-general-form-error *ngIf="isConfirmationFailed && phoneForm.pristine"
     [headerText]="'Incorrect number.'">
-    Please enter the code that you just got.
+    {{ errorDescription }}
   </bd-auth-general-form-error>
   <bd-auth-form-message-helper>
     A 5-digit Activation Code will be texted to your phone within a few minutes.<br/>
