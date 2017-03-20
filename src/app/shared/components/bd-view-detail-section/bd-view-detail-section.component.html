@@ -2,9 +2,9 @@
   <div class="title">
     <label for="">{{labelText}}</label>
     <div class="buttons-panel">
-      <bd-form-button *ngIf="addButton" [buttonText]="'add'" buttonType="small" class="add-button">
+      <bd-form-button *ngIf="addButton" [buttonText]="addContent" buttonType="small" class="add-button">
       </bd-form-button>
-      <bd-form-button *ngIf="changeButton" [buttonText]="'change'" buttonType="small" class="change-button">
+      <bd-form-button *ngIf="editButton" [buttonText]="'edit'" buttonType="small" class="edit-button" (click)="onEditClick()">
       </bd-form-button>
     </div>
   </div>

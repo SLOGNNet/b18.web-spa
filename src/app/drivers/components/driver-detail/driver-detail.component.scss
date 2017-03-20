@@ -1,1 +1,8 @@
+driver-equipment-associations {
+  display: block;
 
+  &:first-child {
+    margin-top: 0;
+  }
+  margin-top: 10px;
+}

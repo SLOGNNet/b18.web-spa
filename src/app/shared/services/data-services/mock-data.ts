@@ -12,11 +12,12 @@ class MockData {
   public addresses: Array<Address> = [{
     id: 1,
     streetAddress1: '14701 Charlson Road, United States',
-    streetAddress2: '',
+    streetAddress2: 'SUITE 550',
     city: 'Eden Prairie',
     state: 'MN',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 3,
@@ -34,7 +36,8 @@ class MockData {
     city: 'Phoenix',
     state: 'AZ',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 4,
@@ -43,7 +46,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: 5,
@@ -52,7 +56,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   }
   ];
 
@@ -63,7 +68,8 @@ class MockData {
     city: 'Dallas',
     state: 'MN',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 4,
@@ -72,7 +78,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 5,
@@ -81,7 +88,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 6,
@@ -90,7 +98,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: 7,
@@ -99,7 +108,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   ];
 
@@ -287,21 +297,24 @@ class MockData {
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
-    id: 0,
+    id: 1,
     make: 'Kenworth',
     model: 'T610',
     number: '101',
-    vin: '',
+    vin: '7653463667',
     notes: 'Oil Change',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.PowerUnit,
     subType: PowerUnitTypes.Tractor,
-    mode: EquipmentModes.Company,
+    ownership: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
-    driverType: DriverTypes.CompanyDriver,
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
+    licensePlateState: 'ER24GT45G',
+    licensePlateNumber: '123123',
+    licensePlateExpiration: new Date(),
+    isSleeperBerthAvailable: true,
     driver: {
       id: 5,
       firstName: 'Jason',
@@ -326,21 +339,24 @@ class MockData {
       license: null
     }
   }, {
-    id: 1,
+    id: 2,
     make: 'Wabash',
     model: 'CA9000(Referer 53)',
     number: '2349',
-    vin: '',
-    notes: '',
+    vin: '346474364537',
+    notes: 'test notes',
     status: EquipmentStatuses.Active,
     type: EquipmentTypes.Trailer,
     subType: TrailerTypes.DryVan48,
-    mode: EquipmentModes.Company,
+    ownership: EquipmentModes.Company,
     vehicleOperating: EquipmentVehicleOperatings.InterState,
-    driverType: DriverTypes.OwnerOperator,
     lastTripNumber: 349616,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
+    licensePlateState: 'QYT4567FH5',
+    licensePlateNumber: '123123',
+    licensePlateExpiration: new Date(),
+    isSleeperBerthAvailable: true,
     driver: {
       id: 5,
       firstName: 'Jason',

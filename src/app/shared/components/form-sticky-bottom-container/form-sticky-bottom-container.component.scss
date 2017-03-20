@@ -8,5 +8,6 @@ div {
   &.sticky {
     position: absolute;
     z-index: $sticked-z-index;
+    width: 100%;
   }
 }

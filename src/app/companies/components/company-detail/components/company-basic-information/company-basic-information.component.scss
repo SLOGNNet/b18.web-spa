@@ -1,0 +1,64 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/font-icons';
+$element-height: 18px;
+
+.basic-information-container {
+  display: flex;
+  width: 100%;
+  background: $white;
+  font-size: $tiny-font-size;
+  line-height: $element-height;
+  border-bottom: $border;
+
+  .left {
+    display: flex;
+    width: 50%;
+    padding: $default-margin;
+    border-right: $border;
+
+    .cropped-company-name {
+      display: flex;
+      width: 28px;
+      height: 28px;
+      margin: 4px 0;
+      background: $black;
+      color: $white;
+      font-size: $mini-font-size;
+      border-radius: $circle-radius;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .name-type {
+      overflow: hidden;
+      flex: 1;
+      margin-left: $default-margin;
+
+      .name {
+        overflow: hidden;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .type {
+        color: $dark-grey;
+      }
+    }
+  }
+
+  .right {
+    width: 50%;
+    padding: $default-margin;
+
+    .right-label {
+      color: $dark-grey;
+    }
+
+    .mc,
+    .tax-id {
+      margin-left: 5px;
+    }
+  }
+}
