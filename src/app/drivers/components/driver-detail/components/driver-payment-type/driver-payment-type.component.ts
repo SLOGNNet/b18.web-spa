@@ -14,6 +14,6 @@ export class DriverPaymentTypeComponent {
   }
 
   get paymentTypeIcon() {
-    return this.driver.paymentType === DriverPaymentTypes.Percentage ? '%' : '$';
+    return this.driver.paymentType === DriverPaymentTypes.PERCENTAGE ? '%' : '$';
   }
 }

@@ -27,10 +27,10 @@ export enum DriverStatuses {
 }
 
 export enum DriverPaymentTypes {
-  PerMile = 1,
-  Percentage = 2,
-  Hourly = 3,
-  Flat = 4
+  PER_MILE = 1,
+  PERCENTAGE = 2,
+  HOURLY = 3,
+  FLAT = 4
 }
 
 // equipment enums

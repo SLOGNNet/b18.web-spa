@@ -5,7 +5,7 @@ import { License } from './license';
 import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 import { Type, Transform, Expose } from 'class-transformer';
-import { generateNewId } from './utils';
+import { generateNewId, toEnumTransformer, fromEnumTransformer } from './utils';
 // Colors
 function createStatusColors() {
   let result = {};
@@ -39,10 +39,10 @@ function createTypeText() {
 // Payment Type Text
 function createPaymentTypeText() {
   let result = {};
-  result[DriverPaymentTypes.PerMile] = 'Per Miles';
-  result[DriverPaymentTypes.Percentage] = 'Percentage';
-  result[DriverPaymentTypes.Hourly] = 'Hourly';
-  result[DriverPaymentTypes.Flat] = 'Flat';
+  result[DriverPaymentTypes.PER_MILE] = 'Per Miles';
+  result[DriverPaymentTypes.PERCENTAGE] = 'Percentage';
+  result[DriverPaymentTypes.HOURLY] = 'Hourly';
+  result[DriverPaymentTypes.FLAT] = 'Flat';
 
   return result;
 };
@@ -61,16 +61,8 @@ export class Driver extends Member {
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
   associatedEquipments: Array<Equipment> = [];
-  @Transform(value => {
-    debugger;
-    const result: DriverPaymentTypes = <DriverPaymentTypes> (value ? DriverPaymentTypes[value] : 0);
-    return result;
-  } , { toClassOnly: true })
-  @Transform(value => {
-    debugger;
-    const result: string = (value === 0) ? null : DriverPaymentTypes[value];
-    return result;
-  }, { toPlainOnly: true })
+  @Transform(toEnumTransformer(DriverPaymentTypes), { toClassOnly: true })
+  @Transform(fromEnumTransformer(DriverPaymentTypes), { toPlainOnly: true })
   @Expose({ name: 'paymentOptions' })
   paymentType: DriverPaymentTypes;
   rate: number = 0;
@@ -95,7 +87,7 @@ export class Driver extends Member {
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentType = DriverPaymentTypes.PerMile;
+    result.paymentType = DriverPaymentTypes.PER_MILE;
     result.type = DriverTypes.CompanyDriver;
     result.status = DriverStatuses.Active;
 

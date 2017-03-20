@@ -1,13 +1,33 @@
 export { generateNewId } from '../shared/helpers/data.helper'
+import { isNumber } from 'lodash';
+interface Enum {
+    [id: number]: string;
+}
 
-export declare type ClassType<T> = {
-    new (...args: any[]): T;
-};
-
-export function enumTransformer<T>(cls: ClassType<T>) {
-    return (value) => {
-      const result: T = <T> (value ? cls[value] : 0);
-      return result;
+export function toEnumTransformer<Enum>(enumType: Enum) {
+    return (value: string | number) => {
+            debugger;
+      if (isNumber(value)) {
+        return enumType[value];
+      }
+      else {
+        const parsed  = <Enum> (value && !isNumber(value) ? enumType[value] : 0);
+        return parsed;
+      }
     };
 }
+
+export function fromEnumTransformer<Enum>(enumType: Enum) {
+    return (value: string | number) => {
+      debugger;
+      if (isNumber(value)) {
+        const parsed: string = (value === 0) ? null : enumType[value];
+        return parsed;
+      }
+      else {
+        return value;
+      }
+    };
+}
+
 
