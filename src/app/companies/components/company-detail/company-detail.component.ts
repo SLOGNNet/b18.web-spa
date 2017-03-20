@@ -37,4 +37,8 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
   onEditInfoClick() {
     this.router.navigate(['./edit-info'],  {preserveQueryParams: true, relativeTo: this.route});
   }
+
+  onAddContactClick(contact) {
+    this.router.navigate([`./edit-contact/0`],  {preserveQueryParams: true, relativeTo: this.route});
+  }
 }

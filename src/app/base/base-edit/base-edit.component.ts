@@ -13,8 +13,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
 
-  constructor(private actions: IDetailDataActions<T>,
-    private selected$: Observable<T>,
+  constructor(protected actions: IDetailDataActions<T>,
+    protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
     route: ActivatedRoute,
     router: Router,
@@ -45,7 +45,28 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
 
   protected abstract isDetailsChanged();
 
+  protected onItemSave(item) {
+    const changedItem = cloneDeep(item);
+    if (this.isNew) {
+      this.isNew = false;
+      this.actions.add(changedItem);
+    } else {
+      this.actions.update(changedItem);
+    }
+  }
+
+  protected onItemCancel() {
+    this.location.back();
+    // if (this.isNew) {
+    //   this.isNew = false;
+    //   this.selectedItem = null;
+    // } else {
+    //   this.selectedItem = cloneDeep(this.selectedItem);
+    // }
+  }
+
   redirectIfNewCreated(prevSelected, newSelected) {
+    debugger;
     if (newSelected && prevSelected
      && !prevSelected['prevId']
      && newSelected['prevId']
@@ -61,26 +82,9 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     this.isNew = paramId === 0 || this.route.snapshot.data['new'];
     if (this.isNew) {
       this.actions.createNew();
-    }
-  }
-
-  private onItemSave(item) {
-    const changedItem = cloneDeep(item);
-    if (this.isNew) {
-      this.isNew = false;
-      this.actions.add(changedItem);
     } else {
-      this.actions.update(changedItem);
+      this.actions.select(paramId);
     }
   }
 
-  private onItemCancel() {
-    this.location.back();
-    // if (this.isNew) {
-    //   this.isNew = false;
-    //   this.selectedItem = null;
-    // } else {
-    //   this.selectedItem = cloneDeep(this.selectedItem);
-    // }
-  }
 }

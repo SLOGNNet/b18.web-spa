@@ -1,0 +1,30 @@
+<div class="company-edit-contact" *ngIf="selectedItem">
+  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
+	<form-navigation
+    sticky
+    [stickyPositionInsideScroll]="true"
+    [disabled]="isLoading"
+    [title]="selectedItem.firstName"
+    [anchors]="anchors">
+  </form-navigation>
+  <bd-form-section [disabled]="disabled" [labelText]="'Contact'">
+    <contact-form
+      [contact]="selectedItem"
+      [disabled]="isLoading"
+      [scrollable]="true"
+      [viewMode]="viewMode"
+      [group]="contactForm"
+      [locations]="locations"
+      (save)="onItemSave($event)"
+      (cancel)="onItemCancel()">
+    </contact-form>
+    <form-sticky-bottom-container [sticky]="true" [stickyPositionInsideScroll]="true">
+      <div class="button-group">
+        <bd-button [disabled]="disabled" (click)="onItemCancel()" [text]="'Cancel'" class="button">
+        </bd-button>
+        <bd-button [disabled]="disabled" (click)="onSave()" color="primary" class="button" [text]="'Save'">
+        </bd-button>
+      </div>
+    </form-sticky-bottom-container>
+  </bd-form-section>
+</div>
