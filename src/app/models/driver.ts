@@ -6,7 +6,7 @@ import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
 import { generateNewIdString } from './utils';
-import { Type } from 'class-transformer';
+import { Type, Transform, Expose } from 'class-transformer';
 // Colors
 function createStatusColors() {
   let result = {};
@@ -62,6 +62,17 @@ export class Driver extends Member {
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
   associatedEquipments: Array<Equipment> = [];
+  @Transform(value => {
+    debugger;
+    const result: DriverPaymentTypes = <DriverPaymentTypes> (value ? DriverPaymentTypes[value] : 0);
+    return result;
+  } , { toClassOnly: true })
+  @Transform(value => {
+    debugger;
+    const result: string = (value === 0) ? null : DriverPaymentTypes[value];
+    return result;
+  }, { toPlainOnly: true })
+  @Expose({ name: 'paymentOptions' })
   paymentType: DriverPaymentTypes;
   rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;

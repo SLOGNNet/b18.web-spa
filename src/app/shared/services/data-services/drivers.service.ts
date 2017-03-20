@@ -4,7 +4,7 @@ import { Driver } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
 import { generatePersistId } from '../../helpers';
-import { plainToClass } from 'class-transformer';
+import { plainToClass, classToPlain } from 'class-transformer';
 @Injectable()
 export class DriverService {
 
@@ -15,25 +15,31 @@ export class DriverService {
   getAll(): Observable<any[]> {
     return this.http.get(this.getEquipmentUrl(''))
       .map(this.http.extractData)
-      .map(json => plainToClass(Driver, json.values));
+      .map(json => {
+        const result = plainToClass(Driver, json.values);
+        return result;
+      });
   }
 
   getDetails(id: string): Observable<Driver> {
      return this.http.get(this.getEquipmentUrl(id.toString()))
       .map(this.http.extractData)
-      .map(driver => plainToClass<Driver, Object>(Driver, driver));
+      .map(json => {
+        const result = plainToClass<Driver, Object>(Driver, json);
+        return result;
+      });
   }
 
   create(driver: Driver): Observable<any> {
      return this.http
-      .post(this.getEquipmentUrl(''), driver)
+      .post(this.getEquipmentUrl(''), classToPlain(driver))
       .map(this.http.extractData)
       .map(dr => dr.id);
    }
 
   update(driver: Driver) {
     return this.http
-      .put(this.getEquipmentUrl(''), driver);
+      .put(this.getEquipmentUrl(''), classToPlain(driver));
   }
 
   getEquipmentUrl(entityUrl: String) {

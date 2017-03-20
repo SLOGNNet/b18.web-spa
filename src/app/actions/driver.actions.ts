@@ -4,6 +4,7 @@ import { IAppState } from '../store';
 import { Driver } from '../models';
 import { DriverService, NotificationService, GoogleService } from '../shared';
 import { IListDataActions, IDetailDataActions } from './intefaces';
+import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class DriverActions implements IListDataActions<Driver>, IDetailDataActions<Driver> {
@@ -24,6 +25,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     private ngRedux: NgRedux<IAppState>) { }
 
   add(driver: Driver): void {
+    driver = plainToClass(Driver, driver);
     this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
     this.driverService.create(driver).delay(3000).subscribe((newId) => {
       const prevId = driver.id;
@@ -38,6 +40,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   }
 
   update(driver: Driver): void {
+    driver = plainToClass(Driver, driver);
     this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST, driver });
 
     setTimeout(() => {
