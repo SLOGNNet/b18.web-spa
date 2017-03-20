@@ -18,6 +18,8 @@ import { LoadFormComponent } from './load-form';
 import { LicenseForm } from './license-form';
 import { LocationForm } from './location-form';
 import { EquipmentForm } from './equipment-form';
+import { MileagesForm } from './mileages-form';
+import { MileageForm } from './mileage-form';
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
@@ -45,7 +47,9 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     ContactInfoForm,
     LicenseForm,
     LocationForm,
-    EquipmentForm
+    EquipmentForm,
+    MileagesForm,
+    MileageForm
   ],
   imports: [
     SharedModule
@@ -61,7 +65,9 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     PickupCommodityComponent,
     LicenseForm,
     LocationForm,
-    EquipmentForm
+    EquipmentForm,
+    MileagesForm,
+    MileageForm
   ]
 })
 export class BdFormsModule {

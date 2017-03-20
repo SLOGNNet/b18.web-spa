@@ -121,6 +121,7 @@ export class MileageRecord {
   type: string = '';
   value: string = '';
   date: Date;
+  constructor(){}
 }
 
 export class Equipment {
@@ -144,7 +145,7 @@ export class Equipment {
   licensePlateNumber: string = '';
   licensePlateExpiration: Date = null;
   isSleeperBerthAvailable: boolean = true;
-  mileageRecord: Array<MileageRecord>;
+  mileageRecords: Array<MileageRecord>;
 
   static create(): Equipment {
     const result = new Equipment();

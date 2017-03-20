@@ -22,7 +22,7 @@
 		</bd-dropdown>
 	</bd-form-section>
     
-	<navigation-anchor id="equipment-assignment-information"></navigation-anchor>
+	<!--<navigation-anchor id="equipment-assignment-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'ASSIGNMENT'">
         <bd-dropdown 
 			class="bd-form-control" 
@@ -33,7 +33,7 @@
 			keyField="id"
 			valueField="memberFullName">
 		</bd-dropdown>
-	</bd-form-section>
+	</bd-form-section>-->
 
 	<navigation-anchor id="equipment-details-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'EQUIPMENT DETAILS'" >
@@ -54,12 +54,21 @@
 			formControlName="licensePlateExpiration" 
 			[labelText]="'License Plate Expiration'">
 		</bd-form-datepicker>
-		<bd-unit-log></bd-unit-log>
 		<bd-textarea
 			class="bd-form-control"
 			formControlName="notes"
 			[labelText]="'Notes'">
 		</bd-textarea>
+	</bd-form-section>
+
+	<navigation-anchor id="equipment-assignment-mileage"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'MILEAGE'">
+		<mileages-form 
+			[formArray]='equipmentForm.controls.mileages' 
+			[disabled]="disabled" 
+			[items]='equipment.mileageRecords'
+			[viewMode]="viewMode">
+		</mileages-form>
 	</bd-form-section>
 
 	<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">

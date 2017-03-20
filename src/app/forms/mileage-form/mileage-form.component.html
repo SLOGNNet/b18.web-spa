@@ -1,0 +1,20 @@
+<form [formGroup]="mileageForm" class="mileage-form-container">
+  <bd-input 
+    class="bd-form-control left-control mileage-value" 
+    placeholder="miles" 
+    formControlName="value">
+        <span class="suffix" bd-suffix>miles</span>
+  </bd-input>
+  <bd-form-datepicker 
+    class="bd-form-control middle-control mileage-date" 
+    placeholder="date" 
+    formControlName="date">
+  </bd-form-datepicker>
+  <div class="btn-container">
+    <button
+        class="right-control btn-remove icon-minus" 
+        (onClick)='addNewItem()' 
+        [disabled]="disabled">
+    </button>
+  </div>
+</form>

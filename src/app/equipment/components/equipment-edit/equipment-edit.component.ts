@@ -17,13 +17,15 @@ export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
   private anchors = [{
     id: 'equipment-employment-information',
     title: 'Employment'
-  },
-  {
+  }, {
     id: 'equipment-assignment-information',
     title: 'Assignment'
   }, {
     id: 'equipment-details-information',
     title: 'Equipment details'
+  }, {
+    id: 'equipment-details-mileage',
+    title: 'Mileage'
   }];
 
   constructor(
