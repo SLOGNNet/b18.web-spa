@@ -4,26 +4,22 @@
       </bd-form-button>
   </form-navigation>
   <div class="equipment-detail-container">
-
     <navigation-anchor id="equipment-detail-employment"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EMPLOYMENT'" [addButton]="false" [changeButton]="false">
       <equipment-employment [equipment]="selectedItem"></equipment-employment>
     </bd-view-detail-section>
-
-    <navigation-anchor id="equipment-detail-assignment"></navigation-anchor>
+    <!--<navigation-anchor id="equipment-detail-assignment"></navigation-anchor>
     <bd-view-detail-section [labelText]="'ASSIGNMENT'" [addButton]="false" [changeButton]="false">
       <equipment-assignment [equipment]="selectedItem"></equipment-assignment>
-    </bd-view-detail-section>
-
+    </bd-view-detail-section>-->
     <navigation-anchor id="equipment-detail-details"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EQUIPMENT DETAILS'" [addButton]="false" [changeButton]="false">
       <equipment-details [equipment]="selectedItem"></equipment-details>
     </bd-view-detail-section>
-
     <navigation-anchor id="equipment-detail-mileage"></navigation-anchor>
     <bd-view-detail-section [labelText]="'MILEAGE'" [addButton]="false" [changeButton]="false">
       <equipment-mileage 
-        *ngFor="let record of selectedItem.mileageRecord"
+        *ngFor="let record of selectedItem.mileageRecords"
         [mileageRecord]="record">
       </equipment-mileage>
     </bd-view-detail-section>

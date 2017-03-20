@@ -17,9 +17,6 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
     title: 'Employment'
   },
   {
-    id: 'equipment-detail-assignment',
-    title: 'Assignment'
-  }, {
     id: 'equipment-detail-details',
     title: 'Details'
   }, {
