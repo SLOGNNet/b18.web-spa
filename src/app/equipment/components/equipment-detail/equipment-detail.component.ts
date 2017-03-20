@@ -22,6 +22,9 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
   }, {
     id: 'equipment-detail-details',
     title: 'Details'
+  }, {
+    id: 'equipment-detail-mileage',
+    title: 'Mileage'
   }];
 
   constructor(

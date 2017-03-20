@@ -10,6 +10,7 @@ import {
     EquipmentEmploymentComponent,
     EquipmentDetailsComponent,
     EquipmentAssignmentComponent,
+    EquipmentMileageComponent,
     EquipmentEditComponent } from './components';
 import { EquipmentComponent } from './equipment.component';
 import { EquipmentRoutingModule } from './equipment.routing';
@@ -30,6 +31,7 @@ import { BdFormsModule } from '../forms/forms.module';
     EquipmentEmploymentComponent,
     EquipmentDetailsComponent,
     EquipmentAssignmentComponent,
+    EquipmentMileageComponent,
     EquipmentEditComponent
   ]
 })

@@ -19,5 +19,13 @@
     <bd-view-detail-section [labelText]="'EQUIPMENT DETAILS'" [addButton]="false" [changeButton]="false">
       <equipment-details [equipment]="selectedItem"></equipment-details>
     </bd-view-detail-section>
+
+    <navigation-anchor id="equipment-detail-mileage"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'MILEAGE'" [addButton]="false" [changeButton]="false">
+      <equipment-mileage 
+        *ngFor="let record of selectedItem.mileageRecord"
+        [mileageRecord]="record">
+      </equipment-mileage>
+    </bd-view-detail-section>
   </div>
 </div>
