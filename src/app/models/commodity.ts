@@ -1,9 +1,9 @@
 import { generateNewId } from './utils';
 
 export class Commodity {
-  id: number;
-  pickupId: number;
-  dropoffId?: number;
+  id: string = '';
+  pickupId: string;
+  dropoffId?: string;
   pickupNumber: number;
   dropoffNumber: number;
   po: string = '';

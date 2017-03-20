@@ -34,7 +34,7 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
     this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD_REQUEST, load });
   }
 
-  select(loadId: number): void {
+  select(loadId: string): void {
     this.loadService.getDetails(loadId).subscribe(load => {
       this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD, load });
     });

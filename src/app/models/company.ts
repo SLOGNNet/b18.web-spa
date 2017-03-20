@@ -26,7 +26,7 @@ const statusColors = createStatusColors();
 const statusText = createStatusText();
 
 export class Company {
-  id: number;
+  id: string;
   name: string = '';
   @Type(() => Contact)
   contacts: Contact[];

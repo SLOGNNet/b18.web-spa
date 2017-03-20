@@ -46,7 +46,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     }, 3000);
   }
 
-  select(companyId: number): void {
+  select(companyId: string): void {
     this.companyService.getDetails(companyId).subscribe(company => {
       this.ngRedux.dispatch({ type: CompanyActions.SELECT_COMPANY, company });
     });

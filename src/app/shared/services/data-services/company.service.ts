@@ -18,7 +18,7 @@ export class CompanyService {
     );
   }
 
-  getDetails(id: number): Observable<Company> {
+  getDetails(id: string): Observable<Company> {
     return Observable.of(
       MockData.companies.find((company) => id === company.id)
     );

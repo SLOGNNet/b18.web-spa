@@ -1,7 +1,7 @@
 import { generateNewId } from './utils';
 
 export class Document {
-  id: number = 0;
+  id: string = '';
   type: string = '';
   issueDate: string = '';
   url: string = '';

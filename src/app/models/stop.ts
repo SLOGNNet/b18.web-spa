@@ -42,7 +42,7 @@ function createStopStatusColors() {
 };
 
 export class Stop {
-  id: number;
+  id: string;
   notes: string = '';
   type: StopTypes = StopTypes.None;
   @Type(() => Facility)

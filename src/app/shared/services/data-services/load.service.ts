@@ -20,7 +20,7 @@ export class LoadService {
       ).toArray();
   };
 
-  getDetails(loadId: number): Observable<Load> {
+  getDetails(loadId: string): Observable<Load> {
     return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) =>
         this.companyService

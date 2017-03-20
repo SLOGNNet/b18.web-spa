@@ -3,14 +3,14 @@ import { Location } from './location';
 import { Type } from 'class-transformer';
 
 export class Contact {
-  id: number = 0;
+  id: string = '';
   firstName: string = '';
   middleName: string = '';
   lastName: string = '';
   @Type(() => ContactInfo)
   contactInfo: Array<ContactInfo>;
   position: string = '';
-  locationId: number;
+  locationId: string;
   @Type(() => Location)
   location: Location;
 

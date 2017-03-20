@@ -14,7 +14,7 @@ function createLicenseClassText() {
 const licenseClassText = createLicenseClassText();
 
 export class License {
-  id: number = 0;
+  id: string = '';
   number: string = '';
   expiration: Date;
   dateIssued: Date;
