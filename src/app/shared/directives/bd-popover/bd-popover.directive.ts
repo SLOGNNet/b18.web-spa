@@ -94,9 +94,9 @@ export class BdPopover implements OnChanges {
     @HostListener('mouseleave')
     hideOnHover(): void {
         this.element.nativeElement.style.zIndex = '';
-        clearTimeout(this.showTimeOut);
         if (!this.popoverOnHover) return;
         if (this.popoverDisabled || this.triggeredByClick) return;
+        clearTimeout(this.showTimeOut);
         this.hide();
     }
 

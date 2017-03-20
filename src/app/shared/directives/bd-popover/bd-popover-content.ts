@@ -136,6 +136,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
     adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
         const offsetParentEl = this.offsetParent || offsetParent(popover);
+
         let result = {
             top: position.top,
             left: position.left,
@@ -155,6 +156,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
                 result.arrowLeft = Math.max(elementWidth / 2 + diff, this.horizontalArrowOffset);
             }
         }
+        
         return result;
     }
 
