@@ -156,7 +156,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
                 result.arrowLeft = Math.max(elementWidth / 2 + diff, this.horizontalArrowOffset);
             }
         }
-        
         return result;
     }
 

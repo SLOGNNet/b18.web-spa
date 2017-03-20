@@ -75,7 +75,6 @@ export class BdPopover implements OnChanges {
         } else if (!this.triggeredByClick) {
             this.triggeredByClick = true;
         }
-        
         this.toggle();
     }
 
