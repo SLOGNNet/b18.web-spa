@@ -4,7 +4,7 @@ import { Driver } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
 import { generatePersistId } from '../../helpers';
-import { Type } from 'class-transformer';
+import { plainToClass } from 'class-transformer';
 @Injectable()
 export class DriverService {
 
@@ -13,14 +13,15 @@ export class DriverService {
   }
 
   getAll(): Observable<any[]> {
-    return this.http.get(this.getEquipmentUrl('')).map(list => {
-      return list.json().values;
-    });
+    return this.http.get(this.getEquipmentUrl(''))
+      .map(this.http.extractData)
+      .map(json => plainToClass(Driver, json.values));
   }
 
-  getDetails(id: number): Observable<Driver> {
-       const result = MockData.drivers.find((driver) => id === driver.id);
-    return Observable.of(result);
+  getDetails(id: string): Observable<Driver> {
+     return this.http.get(this.getEquipmentUrl(id.toString()))
+      .map(this.http.extractData)
+      .map(driver => plainToClass<Driver, Object>(Driver, v));
   }
 
   create(driver: Driver): Observable<any> {

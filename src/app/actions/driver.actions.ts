@@ -47,7 +47,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     }, 3000);
   }
 
-  select(driverId: number): void {
+  select(driverId: string): void {
     this.driverService.getDetails(driverId).subscribe(driver => {
       this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, driver });
     });

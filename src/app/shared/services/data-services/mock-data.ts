@@ -303,7 +303,7 @@ class MockData {
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
     driver: {
-      id: 5,
+      id: '5',
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
@@ -342,7 +342,7 @@ class MockData {
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
     driver: {
-      id: 5,
+      id: '5',
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
@@ -387,7 +387,7 @@ class MockData {
   }];
 
   public drivers: Array<Driver> = [{
-    id: 1,
+    id: '1',
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
@@ -409,7 +409,7 @@ class MockData {
     lastAddress: '2229 San Pedro Rd, North Sacramento',
     license: this.licenses[1]
   }, {
-    id: 2,
+    id: '2',
     firstName: 'Emma',
     middleName: 'Chang',
     lastName: 'Watson',

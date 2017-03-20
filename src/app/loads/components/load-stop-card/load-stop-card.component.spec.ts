@@ -66,7 +66,7 @@ function createTestData() {
   testCustomer.status = null;
   testCustomer.type = null;
   // test driver
-  testDriver.id = 1;
+  testDriver.id = '1';
   testDriver.firstName = 'John';
   testDriver.lastName = 'Doe';
   // test driver team

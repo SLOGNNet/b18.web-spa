@@ -8,8 +8,12 @@ export function getPaginated(items: Array<any>, page: number = 0, count: number 
 
 
 let id = 0;
-export function generateNewId() {
+export function generateNewId(): number {
   return --id;
+}
+
+export function generateNewIdString(): string {
+  return (--id).toString();
 }
 
 let pesistId = 1000;

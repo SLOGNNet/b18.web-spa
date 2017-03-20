@@ -5,7 +5,7 @@ import { License } from './license';
 import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
 
-import { generateNewId } from './utils';
+import { generateNewIdString } from './utils';
 import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
@@ -61,7 +61,7 @@ export class Driver extends Member {
   @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
-  associatedEquipments: Array<Equipment>;
+  associatedEquipments: Array<Equipment> = [];
   paymentType: DriverPaymentTypes;
   rate: number = 0;
   type: DriverTypes = DriverTypes.CompanyDriver;
@@ -76,7 +76,7 @@ export class Driver extends Member {
 
   static create(): Driver {
     const result = new Driver();
-    result.id = generateNewId();
+    result.id = generateNewIdString();
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();

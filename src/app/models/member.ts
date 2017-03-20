@@ -1,18 +1,18 @@
-import { generateNewId } from './utils';
+import { generateNewIdString } from './utils';
 import { Address } from './address';
 import { ContactInfo } from './contact-info';
 
 export class Member {
-  id: number;
+  id: string;
   address: Address;
-  contactInfo: Array<ContactInfo>;
+  contactInfo: Array<ContactInfo> = [];
   firstName: string = '';
   middleName: string = '';
   lastName: string = '';
 
   static create(): Member {
     const result = new Member();
-    result.id = generateNewId();
+    result.id = generateNewIdString();
     return result;
   }
 }
