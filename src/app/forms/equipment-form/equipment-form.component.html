@@ -1,0 +1,88 @@
+<form [formGroup]="equipmentForm" novalidate (ngSubmit)="submit(equipmentForm.value, equipmentForm.valid)">
+
+	<navigation-anchor id="equipment-employment-information" ></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'EMPLOYMENT'">
+        <bd-input class="bd-form-control" formControlName="vin" [labelText]="'VIN'"></bd-input>
+        <bd-dropdown class="bd-form-control" formControlName="ownership" [labelText]="'Equipment mode'" [items]="equipmentModes">
+		</bd-dropdown>
+        <bd-dropdown class="bd-form-control" formControlName="vehicleOperating" [labelText]="'Operating mode'" [items]="operatingModes">
+		</bd-dropdown>
+        <bd-dropdown 
+            class="bd-form-control" 
+            formControlName="type" 
+            [labelText]="'Equipment type'" 
+            [items]="equipmentTypes" 
+            (onItemClick)="changeEquipmentType($event)">
+		</bd-dropdown>
+        <bd-dropdown 
+            class="bd-form-control" 
+            formControlName="subType" 
+            [labelText]="'Equipment sub type'" 
+            [items]="equipmentSubTypes">
+		</bd-dropdown>
+	</bd-form-section>
+    
+	<navigation-anchor id="equipment-assignment-information"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'ASSIGNMENT'">
+        <bd-dropdown 
+			class="bd-form-control" 
+			formControlName="driverId" 
+			[labelText]="'Assignment to'" 
+			[items]="drivers"
+			[dropdownItemTemplate]="driverDropdown"
+			keyField="id"
+			valueField="memberFullName">
+		</bd-dropdown>
+	</bd-form-section>
+
+	<navigation-anchor id="equipment-details-information"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'EQUIPMENT DETAILS'" >
+		<bd-input class="bd-form-control" formControlName="make" [labelText]="'Make'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="model" [labelText]="'Model'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Equipment number'"></bd-input>
+		<bd-form-switch 
+			class="bd-form-control" 
+			formControlName="isSleeperBerthAvailable" 
+			[labelText]="'Berth available'" 
+			[enableButtonSwitch]="true"
+			[items]="berthAvailables">
+		</bd-form-switch>
+		<bd-input class="bd-form-control" formControlName="licensePlateNumber" [labelText]="'License Plate Number'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="licensePlateState" [labelText]="'License Plate State'"></bd-input>
+		<bd-form-datepicker 
+			class="bd-form-control" 
+			formControlName="licensePlateExpiration" 
+			[labelText]="'License Plate Expiration'">
+		</bd-form-datepicker>
+		<bd-unit-log></bd-unit-log>
+		<bd-textarea
+			class="bd-form-control"
+			formControlName="notes"
+			[labelText]="'Notes'">
+		</bd-textarea>
+	</bd-form-section>
+
+	<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">
+		<div class="button-group">
+			<bd-button
+                [disabled]="disabled"
+				(click)="onCancel()"
+				[text]="'Cancel'"
+				class="button">
+			</bd-button>
+			<bd-button
+                [disabled]="disabled"
+				type="submit"
+				color="primary"
+				class="button"
+				[text]="submitButtonText">
+			</bd-button>
+		</div>
+	</form-sticky-bottom-container>
+</form>
+
+<template #driverDropdown let-item="item">
+	<div class="driver-item-container">
+  		{{item.firstName}} {{item.lastName}}
+	</div>
+</template>
