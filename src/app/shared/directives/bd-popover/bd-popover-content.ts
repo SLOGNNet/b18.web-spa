@@ -103,6 +103,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement())
             return;
 
+        this.cdr.markForCheck();
         this.updateWidth();
 
         this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
@@ -155,7 +156,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
                 result.arrowLeft = Math.max(elementWidth / 2 + diff, this.horizontalArrowOffset);
             }
         }
-
         return result;
     }
 
