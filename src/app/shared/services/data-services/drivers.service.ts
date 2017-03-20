@@ -21,7 +21,7 @@ export class DriverService {
   getDetails(id: string): Observable<Driver> {
      return this.http.get(this.getEquipmentUrl(id.toString()))
       .map(this.http.extractData)
-      .map(driver => plainToClass<Driver, Object>(Driver, v));
+      .map(driver => plainToClass<Driver, Object>(Driver, driver));
   }
 
   create(driver: Driver): Observable<any> {
