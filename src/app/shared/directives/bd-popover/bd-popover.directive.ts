@@ -63,7 +63,6 @@ export class BdPopover implements OnChanges {
                 protected resolver: ComponentFactoryResolver) {
     }
 
-
     @HostListener('click')
     showOrHideOnClick(): void {
         this.element.nativeElement.style.zIndex = '';
@@ -76,6 +75,7 @@ export class BdPopover implements OnChanges {
         } else if (!this.triggeredByClick) {
             this.triggeredByClick = true;
         }
+        
         this.toggle();
     }
 
