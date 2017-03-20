@@ -13,6 +13,7 @@ import { FormValidationService, DriverService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { BaseForm } from '../base-form';
 
+
 @Component(Object.assign({
   selector: 'equipment-form',
   templateUrl: './equipment-form.component.html',
@@ -33,7 +34,8 @@ export class EquipmentForm extends BaseForm {
   equipmentTypes: Array<any>;
   powerUnitTypes: Array<any>;
   trailerTypes: Array<any>;
-  drivers: Array<any> = [];
+  drivers: Array<Driver> = [];
+  berthAvailables: Array<any> = [{'key': true, 'value': 'Yes'}, {'key': false, 'value': 'No'}];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +46,8 @@ export class EquipmentForm extends BaseForm {
     elementRef: ElementRef) {
     super(elementRef);
 
-    this.driverService.getAll().subscribe(drivers => this.drivers = drivers.map(value => value.firstName));
+    this.driverService.getAll()
+    .subscribe(drivers => this.drivers = drivers.map(value => value));
 
     this.equipmentModes = enumHelperService.getDropdownKeyValues(EquipmentModes);
     this.operatingModes = enumHelperService.getDropdownKeyValues(EquipmentVehicleOperatings);
@@ -74,6 +77,7 @@ export class EquipmentForm extends BaseForm {
   }
 
   submit(equipment: Equipment, isValid: boolean) {
+
     if (!isValid) {
       this.validationService.show();
     }
@@ -96,7 +100,15 @@ export class EquipmentForm extends BaseForm {
       vehicleOperating: [{value: this.equipment.vehicleOperating, disabled: this.disabled}],
       type: [{value: this.equipment.type, disabled: this.disabled}],
       subType: [{value: this.equipment.subType, disabled: this.disabled}],
-      driver: [{value: this.equipment.driver, disabled: this.disabled}],
+      driverId: [{value: this.equipment.driver.id, disabled: this.disabled}],
+      make: [{value: this.equipment.make, disabled: this.disabled}],
+      model: [{value: this.equipment.model, disabled: this.disabled}],
+      number: [{value: this.equipment.number, disabled: this.disabled}],
+      isSleeperBerthAvailable: [{value: this.equipment.isSleeperBerthAvailable, disabled: this.disabled}],
+      licensePlateNumber: [{value: this.equipment.licensePlateNumber, disabled: this.disabled}],
+      licensePlateState: [{value: this.equipment.licensePlateState, disabled: this.disabled}],
+      licensePlateExpiration: [{value: this.equipment.licensePlateExpiration, disabled: this.disabled}],
+      notes: [{value: this.equipment.notes, disabled: this.disabled}],
     });
   }
 

@@ -18,19 +18,48 @@
             class="bd-form-control" 
             formControlName="subType" 
             [labelText]="'Equipment sub type'" 
-            [items]="equipmentSubTypes" >
+            [items]="equipmentSubTypes">
 		</bd-dropdown>
 	</bd-form-section>
     
 	<navigation-anchor id="equipment-assignment-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'ASSIGNMENT'">
-        <bd-dropdown class="bd-form-control" formControlName="driver" [labelText]="'Assignment to'" [items]="drivers">
+        <bd-dropdown 
+			class="bd-form-control" 
+			formControlName="driverId" 
+			[labelText]="'Assignment to'" 
+			[items]="drivers"
+			[dropdownItemTemplate]="driverDropdown"
+			keyField="id"
+			valueField="memberFullName">
 		</bd-dropdown>
 	</bd-form-section>
 
 	<navigation-anchor id="equipment-details-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'EQUIPMENT DETAILS'" >
-	
+		<bd-input class="bd-form-control" formControlName="make" [labelText]="'Make'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="model" [labelText]="'Model'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="number" [labelText]="'Equipment number'"></bd-input>
+		<bd-form-switch 
+			class="bd-form-control" 
+			formControlName="isSleeperBerthAvailable" 
+			[labelText]="'Berth available'" 
+			[enableButtonSwitch]="true"
+			[items]="berthAvailables">
+		</bd-form-switch>
+		<bd-input class="bd-form-control" formControlName="licensePlateNumber" [labelText]="'License Plate Number'"></bd-input>
+		<bd-input class="bd-form-control" formControlName="licensePlateState" [labelText]="'License Plate State'"></bd-input>
+		<bd-form-datepicker 
+			class="bd-form-control" 
+			formControlName="licensePlateExpiration" 
+			[labelText]="'License Plate Expiration'">
+		</bd-form-datepicker>
+		<bd-unit-log></bd-unit-log>
+		<bd-textarea
+			class="bd-form-control"
+			formControlName="notes"
+			[labelText]="'Notes'">
+		</bd-textarea>
 	</bd-form-section>
 
 	<form-sticky-bottom-container [sticky]="!isNestedForm" [stickyPositionInsideScroll]="true" *ngIf="isEditMode">
@@ -51,3 +80,9 @@
 		</div>
 	</form-sticky-bottom-container>
 </form>
+
+<template #driverDropdown let-item="item">
+	<div class="driver-item-container">
+  		{{item.firstName}} {{item.lastName}}
+	</div>
+</template>

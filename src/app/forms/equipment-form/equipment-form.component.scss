@@ -1,1 +1,13 @@
+@import '../../../assets/styles/variables';
 @import '../../../assets/styles/form-control';
+@import '../../../assets/styles/styles';
+
+.driver-item-container {
+  width: 100%;
+  padding: $default-margin;
+  border-bottom: $border;
+
+  &:hover {
+    border-color: $blue;
+  }
+}

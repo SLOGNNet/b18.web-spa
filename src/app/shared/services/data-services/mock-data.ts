@@ -306,7 +306,7 @@ class MockData {
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
     driver: {
-      id: 5,
+      id: 1,
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
@@ -323,6 +323,7 @@ class MockData {
       hireDate: null,
       terminationDate: null,
       status: DriverStatuses.Active,
+      memberFullName: 'Jason Chang',
       notes: 'notes',
       lastTripNumber: 349611,
       lastAddress: '2229 San Pedro Rd, North Sacramento',
@@ -348,10 +349,10 @@ class MockData {
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
     driver: {
-      id: 5,
-      firstName: 'Jason',
+      id: 2,
+      firstName: 'Emma',
       middleName: 'Chang',
-      lastName: 'Chang',
+      lastName: 'Watson',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
       dateOfBirth: null,
@@ -367,6 +368,7 @@ class MockData {
       status: DriverStatuses.Active,
       notes: 'notes',
       lastTripNumber: 349611,
+      memberFullName: 'Emma Watson',
       lastAddress: '2229 San Pedro Rd, North Sacramento',
       license: null
     }
@@ -412,6 +414,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349611,
+    memberFullName: 'Jason Chang',
     lastAddress: '2229 San Pedro Rd, North Sacramento',
     license: this.licenses[1]
   }, {
@@ -434,6 +437,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349777,
+    memberFullName: 'Emma Watson',
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     license: this.licenses[0]
   }];
