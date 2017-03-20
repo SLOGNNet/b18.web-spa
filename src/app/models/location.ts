@@ -3,7 +3,7 @@ import { Address } from './address';
 import { ContactInfo } from './contact-info';
 
 export class Location {
-  id: number;
+  id: string;
   name: string;
   address: Address;
   contactInfo: Array<ContactInfo>;

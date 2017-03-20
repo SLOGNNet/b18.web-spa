@@ -83,7 +83,7 @@ export class EquipmentNotification {
 }
 
 export class Equipment {
-  id: number = 0;
+  id: string = '';
   make: string = 'Kenworth';
   model: string = 'T610';
   number: string = '101';

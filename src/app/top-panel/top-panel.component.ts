@@ -20,7 +20,7 @@ export class TopPanelComponent {
 
   private testNotifications: Array<Notification> = [
     {
-      id: 1,
+      id: '1',
       type: NotificationType.Task,
       title: 'test title',
       date: new Date(),
@@ -32,7 +32,7 @@ export class TopPanelComponent {
       isViewed: false
     },
     {
-      id: 2,
+      id: '2',
       type: NotificationType.Message,
       title: 'test title',
       date: new Date(),
@@ -44,7 +44,7 @@ export class TopPanelComponent {
       isViewed: false
     },
     {
-      id: 3,
+      id: '3',
       type: NotificationType.Notification,
       date: new Date(),
       title: 'test title',
@@ -56,7 +56,7 @@ export class TopPanelComponent {
       isViewed: false
     },
     {
-      id: 4,
+      id: '4',
       type: NotificationType.Message,
       date: new Date(),
       title: 'test title',

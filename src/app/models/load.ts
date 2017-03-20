@@ -23,12 +23,12 @@ powerUnitTypes[PowerUnitTypes.Bus] = 'Bus';
 powerUnitTypes[PowerUnitTypes.Other] = 'Other';
 
 
-// freight types 
+// freight types
 const freightTypes = {};
 freightTypes[FreightType.Dry] = 'Dry';
 freightTypes[FreightType.Reefer] = 'Reefer';
 
-// trailer types 
+// trailer types
 const trailerTypes = {};
 trailerTypes[TrailerTypes.DryVan53] = 'Dry Van 53';
 trailerTypes[TrailerTypes.Reefer] = 'Reefer';
@@ -69,20 +69,20 @@ function createStatusTexts() {
 const statusTexts = createStatusTexts();
 
 export class Load {
-  id: number;
-  companyId: number;
+  id: string;
+  companyId: string;
   systemLoadNo: string;
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
-  customerBillingLocationId: number;
+  customerBillingLocationId: string;
   @Type(() => Location)
   customerLocation: Location = new Location();
   @Type(() => Location)
   customerBillingLocation: Location;
   @Type(() => Commodity)
   commodities: Array<Commodity>;
-  contactId: number;
+  contactId: string;
   status: LoadStatuses;
   @Type(() => Company)
   customer: Company;
@@ -140,7 +140,7 @@ export class Load {
     return freightTypes[fType];
   }
 
-  public static getSelectedContact(contacts: Contact[], id: number): Contact {
+  public static getSelectedContact(contacts: Contact[], id: string): Contact {
     let result = null;
     result = contacts.find(c => c.id === id);
     return result;

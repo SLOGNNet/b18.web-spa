@@ -1,6 +1,6 @@
-import { generateNewIdString } from './utils';
 import { Address } from './address';
 import { ContactInfo } from './contact-info';
+import { generateNewId } from './utils';
 
 export class Member {
   id: string;
@@ -12,7 +12,7 @@ export class Member {
 
   static create(): Member {
     const result = new Member();
-    result.id = generateNewIdString();
+    result.id = generateNewId();
     return result;
   }
 }

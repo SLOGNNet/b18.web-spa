@@ -29,7 +29,7 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
     this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT, equipment });
   }
 
-  select(equipmentId: number): void {
+  select(equipmentId: string): void {
     this.equipmentService.getDetails(equipmentId).subscribe(equipment => {
       this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, equipment });
     });

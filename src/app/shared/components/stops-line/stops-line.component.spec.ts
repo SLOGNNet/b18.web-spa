@@ -11,13 +11,13 @@ function createTestData() {
   let testStopCollection: Array<Stop> = [],
     testStop1 = new Stop(),
     testStop2 = new Stop();
-  testStop1.id = 1;
+  testStop1.id = '1';
   testStop1.type = StopTypes.Pickup;
   testStop1.plannedArrivalAt = new Date(2017, 0, 9);
   testStop1.facility = Facility.create();
   testStop1.facility.address = new Address();
   testStop1.status = StopStatuses.InProgress;
-  testStop2.id = 2;
+  testStop2.id = '2';
   testStop2.type = StopTypes.Pickup;
   testStop2.plannedArrivalAt = new Date(2017, 1, 10);
   testStop2.facility = Facility.create();

@@ -1,1 +1,1 @@
-export { generateNewId, generateNewIdString } from '../shared/helpers/data.helper'
+export { generateNewId } from '../shared/helpers/data.helper'

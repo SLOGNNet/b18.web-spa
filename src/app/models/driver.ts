@@ -4,8 +4,7 @@ import { Address } from './address';
 import { License } from './license';
 import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
-
-import { generateNewIdString } from './utils';
+import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
@@ -76,7 +75,7 @@ export class Driver extends Member {
 
   static create(): Driver {
     const result = new Driver();
-    result.id = generateNewIdString();
+    result.id = generateNewId();
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();

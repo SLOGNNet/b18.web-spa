@@ -51,14 +51,14 @@ function createTestData() {
         type: ContactInfoType.Fax
       }
     ];
-  testAddress.id = 1;
+  testAddress.id = '1';
   testAddress.streetAddress1 = '14701 Char lson Road, United States';
   testAddress.city = 'Eden Prairie';
   testAddress.state = 'MN';
   testAddress.latitude = 40.795675;
   testAddress.longitude = -73.93600099999998;
   // test customer
-  testCustomer.id = 1;
+  testCustomer.id = '1';
   testCustomer.mc = '384859';
   testCustomer.name = 'CH ROBINSON COMPANY INC';
   testCustomer.contacts = [null];
@@ -72,7 +72,7 @@ function createTestData() {
   // test driver team
   testDriverTeam.drivers = [testDriver];
   // test trip
-  testTrip.id = 1;
+  testTrip.id = '1';
   testTrip.number = '1212';
   testTrip.truck = new Equipment();
   testTrip.truck.number = '1010';
@@ -80,13 +80,13 @@ function createTestData() {
   testTrip.trailer.number = '1111';
   testTrip.driverTeams = [testDriverTeam];
   // test stops
-  testStop1.id = 1;
+  testStop1.id = '1';
   testStop1.type = StopTypes.Pickup;
   testStop1.plannedArrivalAt = null;
   testStop1.facility = Facility.create();
   testStop1.facility.address = testAddress;
   testStop1.status = StopStatuses.InProgress;
-  testStop2.id = 2;
+  testStop2.id = '2';
   testStop2.type = StopTypes.Pickup;
   testStop2.plannedArrivalAt = null;
   testStop2.facility = Facility.create();
@@ -94,12 +94,12 @@ function createTestData() {
   testStop2.status = StopStatuses.InProgress;
 
   // test location
-  testLocation.id = 1;
+  testLocation.id = '1';
   testLocation.name = 'Main Office';
   testLocation.address = testAddress;
   testLocation.contactInfo = testContactInfo;
   // test load
-  resultLoad.id = 1;
+  resultLoad.id = '1';
   resultLoad.customer = testCustomer;
   resultLoad.customerLoadNo = '123123';
   resultLoad.customerBillingLocation = testLocation;
@@ -288,7 +288,7 @@ describe('LoadStopCardComponent', () => {
     let testDriverTeam = new DriverTeam();
     let testDriver = Driver.create();
     testDriverTeam.drivers = [testDriver];
-      tripData.id = 1;
+      tripData.id = '1';
       tripData.number = '1212';
       tripData.truck = new Equipment();
       tripData.truck.number = '1010';

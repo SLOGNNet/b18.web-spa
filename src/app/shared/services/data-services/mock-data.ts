@@ -10,7 +10,7 @@ import {
 class MockData {
 
   public addresses: Array<Address> = [{
-    id: 1,
+    id: '1',
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: '',
     city: 'Eden Prairie',
@@ -19,7 +19,7 @@ class MockData {
     longitude: -73.93600099999998
   },
   {
-    id: 2,
+    id: '2',
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
@@ -28,7 +28,7 @@ class MockData {
     longitude: -73.93600099999998
   },
   {
-    id: 3,
+    id: '3',
     streetAddress1: '641 East Watkins Street',
     streetAddress2: '',
     city: 'Phoenix',
@@ -37,7 +37,7 @@ class MockData {
     longitude: -73.93600099999998
   },
   {
-    id: 4,
+    id: '4',
     streetAddress1: '3101 Packerland Drive, Green Bay, WI, United States',
     streetAddress2: '',
     city: 'Green Bay',
@@ -46,7 +46,7 @@ class MockData {
     longitude: -73.93600099999998
   },
   {
-    id: 5,
+    id: '5',
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
@@ -57,7 +57,7 @@ class MockData {
   ];
 
   public customerBillingAddresses: Array<Address> = [{
-    id: 3,
+    id: '3',
     streetAddress1: '14701 Charlson Road, United States',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
@@ -66,7 +66,7 @@ class MockData {
     longitude: 0
   },
   {
-    id: 4,
+    id: '4',
     streetAddress1: '5429 Lyndon B Johnson Freeway',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
@@ -75,7 +75,7 @@ class MockData {
     longitude: 0
   },
   {
-    id: 5,
+    id: '5',
     streetAddress1: 'BROKER_BILLING_ADDRESS',
     streetAddress2: 'SUITE 550',
     city: 'Dallas',
@@ -84,7 +84,7 @@ class MockData {
     longitude: 0
   },
   {
-    id: 6,
+    id: '6',
     streetAddress1: 'PO BOX 2545',
     streetAddress2: '',
     city: 'Green Bay',
@@ -93,7 +93,7 @@ class MockData {
     longitude: 0
   },
   {
-    id: 7,
+    id: '7',
     streetAddress1: '1000 WYNDHAM PKWY',
     streetAddress2: '',
     city: 'BOLINGBROOK',
@@ -123,25 +123,25 @@ class MockData {
 
   public locations: Array<Location> = [
     {
-      id: 1,
+      id: '1',
       name: 'Main Office',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice()
     },
     {
-      id: 2,
+      id: '2',
       name: 'Main Office',
       address: this.addresses[1],
       contactInfo: this.contactInfo.slice()
     },
     {
-      id: 3,
+      id: '3',
       name: 'Billing Address',
       address: this.addresses[2],
       contactInfo: this.contactInfo.slice()
     },
     {
-      id: 4,
+      id: '4',
       name: 'Billing Address',
       address: this.addresses[3],
       contactInfo: this.contactInfo.slice()
@@ -149,50 +149,50 @@ class MockData {
   ];
 
   public contacts: Array<Contact> = [{
-    id: 1,
+    id: '1',
     firstName: 'Jason',
     middleName: 'Chang',
     lastName: 'Chang',
     contactInfo: this.contactInfo.slice(),
     position: 'Sales manager',
-    locationId: 1,
+    locationId: '1',
     location: this.locations[0]
   },
   {
-    id: 2,
+    id: '2',
     firstName: 'Scott',
     middleName: 'Chang',
     lastName: 'Spearow',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    locationId: 2,
+    locationId: '2',
     location: this.locations[1]
   },
   {
-    id: 3,
+    id: '3',
     firstName: 'Emma',
     middleName: 'Chang',
     lastName: 'Watson',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    locationId: 3,
+    locationId: '3',
     location: this.locations[2]
   },
   {
-    id: 4,
+    id: '4',
     firstName: 'Johnny',
     middleName: 'Chang',
     lastName: 'Depp',
     position: 'Sales manager',
     contactInfo: this.contactInfo.slice(),
-    locationId: 4,
+    locationId: '4',
     location: this.locations[3]
   }
   ];
 
   public documents: Array<Document> = [
     {
-      id: 1,
+      id: '1',
       type: 'Rate Sheet',
       issueDate: '20/10/2017',
       url: '',
@@ -201,9 +201,9 @@ class MockData {
   ];
 
   public commodities: Array<Commodity> = [{
-    id: 1,
-    pickupId: 1,
-    dropoffId: 13,
+    id: '1',
+    pickupId: '1',
+    dropoffId: '13',
     pickupNumber: null,
     dropoffNumber: null,
     po: '8055',
@@ -214,9 +214,9 @@ class MockData {
     weight: 0,
   },
   {
-    id: 2,
-    pickupId: 2,
-    dropoffId: 13,
+    id: '2',
+    pickupId: '2',
+    dropoffId: '13',
     pickupNumber: 5009,
     dropoffNumber: null,
     po: '',
@@ -227,9 +227,9 @@ class MockData {
     weight: 0
   },
   {
-    id: 3,
-    pickupId: 3,
-    dropoffId: 13,
+    id: '3',
+    pickupId: '3',
+    dropoffId: '13',
     pickupNumber: null,
     dropoffNumber: null,
     po: '',
@@ -240,9 +240,9 @@ class MockData {
     weight: 0
   },
   {
-    id: 4,
-    pickupId: 4,
-    dropoffId: 8,
+    id: '4',
+    pickupId: '4',
+    dropoffId: '8',
     pickupNumber: null,
     dropoffNumber: null,
     po: '',
@@ -255,28 +255,28 @@ class MockData {
   ];
 
   public facilities: Array<Facility> = [{
-    id: 1,
+    id: '1',
     name: 'Larede, TX',
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
     notes: ''
   }, {
-    id: 2,
+    id: '2',
     name: 'San Francisco, CA',
     address: this.addresses[1],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
     notes: ''
   }, {
-    id: 1,
+    id: '1',
     name: 'Los Angeles, CA',
     address: this.addresses[2],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
     notes: ''
   }, {
-    id: 2,
+    id: '2',
     name: 'Los Altos, CA',
     address: this.addresses[3],
     contactInfo: this.contactInfo.slice(),
@@ -287,7 +287,7 @@ class MockData {
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
-    id: 0,
+    id: '0',
     make: 'Kenworth',
     model: 'T610',
     number: '101',
@@ -326,7 +326,7 @@ class MockData {
       license: null
     }
   }, {
-    id: 1,
+    id: '1',
     make: 'Wabash',
     model: 'CA9000(Referer 53)',
     number: '2349',
@@ -367,7 +367,7 @@ class MockData {
   }];
 
   public licenses: Array<License> = [{
-    id: 0,
+    id: '0',
     number: '21424',
     expiration: new Date(),
     dateIssued: new Date(),
@@ -376,7 +376,7 @@ class MockData {
     endorsments: 'M N',
     restrictions: 'D E',
   }, {
-    id: 1,
+    id: '1',
     number: '21424',
     expiration: new Date(),
     dateIssued: new Date(),
@@ -433,29 +433,29 @@ class MockData {
   }];
 
   public trips: Array<Trip> = [{
-    id: 1,
+    id: '1',
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 1, drivers: [this.drivers[0], this.drivers[0], this.drivers[1]] }]
+    driverTeams: [{ id: '1', drivers: [this.drivers[0], this.drivers[0], this.drivers[1]] }]
   }, {
-    id: 2,
+    id: '2',
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 2, drivers: [this.drivers[1]] }]
+    driverTeams: [{ id: '2', drivers: [this.drivers[1]] }]
   }, {
-    id: 3,
+    id: '3',
     number: '345351',
     truck: this.equipments[1],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 3, drivers: [this.drivers[0]] }]
+    driverTeams: [{ id: '3', drivers: [this.drivers[0]] }]
   }, {
-    id: 4,
+    id: '4',
     number: '345351',
     truck: this.equipments[0],
     trailer: this.equipments[0],
-    driverTeams: [{ id: 4, drivers: [this.drivers[1]] }]
+    driverTeams: [{ id: '4', drivers: [this.drivers[1]] }]
   }];
 
   public stopActionCollection: Array<StopAction> = [{
@@ -473,7 +473,7 @@ class MockData {
   ];
 
   public tripStopCollection: Array<TripStop> = [{
-      id: 1,
+      id: '1',
       appointment: {
         from: new Date(2017, 2, 1, 8),
         to: new Date(2017, 2, 1, 10),
@@ -485,7 +485,7 @@ class MockData {
        trip: this.trips[0]
     },
     {
-      id: 13,
+      id: '13',
       appointment: {
         from: new Date(2017, 2, 2, 8),
         to: new Date(2017, 2, 2, 10),
@@ -502,7 +502,7 @@ class MockData {
   public endDate = new Date(2017, 0, 22);
 
   public pickups: Array<Stop> = [{
-    id: 1,
+    id: '1',
     notes: 'notes',
     type: StopTypes.Pickup,
     departedAt: this.startDate,
@@ -647,7 +647,7 @@ class MockData {
  ];
 
   public dropoffs: Array<Stop> = [{
-    id: 13,
+    id: '13',
     notes: 'notes',
     type: StopTypes.Dropoff,
     departedAt: this.startDate,
@@ -771,8 +771,8 @@ class MockData {
 
   public loads: Array<Load> = [
     {
-      id: 1,
-      companyId: 1,
+      id: '1',
+      companyId: '1',
       customer: null,
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
@@ -780,8 +780,8 @@ class MockData {
       systemLoadNo: '209282402',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      contactId: 1,
-      customerBillingLocationId: 3,
+      contactId: '1',
+      customerBillingLocationId: '3',
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -794,8 +794,8 @@ class MockData {
       commodities: [this.commodities[0], this.commodities[1]]
     },
     {
-      id: 2,
-      companyId: 2,
+      id: '2',
+      companyId: '2',
       customer: null,
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
@@ -803,8 +803,8 @@ class MockData {
       systemLoadNo: '7367707',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 4,
-      contactId: 2,
+      customerBillingLocationId: '4',
+      contactId: '2',
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -817,8 +817,8 @@ class MockData {
       commodities: [this.commodities[2]]
     },
     {
-      id: 3,
-      companyId: 3,
+      id: '3',
+      companyId: '3',
       customer: null,
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
@@ -826,8 +826,8 @@ class MockData {
       systemLoadNo: '104579538',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 5,
-      contactId: 3,
+      customerBillingLocationId: '5',
+      contactId: '3',
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -840,8 +840,8 @@ class MockData {
       commodities: [this.commodities[2]]
     },
     {
-      id: 4,
-      companyId: 4,
+      id: '4',
+      companyId: '4',
       customer: null,
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
@@ -849,8 +849,8 @@ class MockData {
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 6,
-      contactId: 4,
+      customerBillingLocationId: '6',
+      contactId: '4',
       status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -863,8 +863,8 @@ class MockData {
       commodities: [this.commodities[3]]
     },
     {
-      id: 5,
-      companyId: 4,
+      id: '5',
+      companyId: '4',
       customer: null,
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
@@ -872,8 +872,8 @@ class MockData {
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 6,
-      contactId: 4,
+      customerBillingLocationId: '6',
+      contactId: '4',
       status: LoadStatuses.InTransit,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -886,8 +886,8 @@ class MockData {
       commodities: [this.commodities[2]]
     },
     {
-      id: 6,
-      companyId: 2,
+      id: '6',
+      companyId: '2',
       customer: null,
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
@@ -895,8 +895,8 @@ class MockData {
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 6,
-      contactId: 2,
+      customerBillingLocationId: '6',
+      contactId: '2',
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -909,8 +909,8 @@ class MockData {
       commodities: [this.commodities[3]]
     },
     {
-      id: 7,
-      companyId: 3,
+      id: '7',
+      companyId: '3',
       customer: null,
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
@@ -918,8 +918,8 @@ class MockData {
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 6,
-      contactId: 3,
+      customerBillingLocationId: '6',
+      contactId: '3',
       status: LoadStatuses.Pending,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -932,8 +932,8 @@ class MockData {
       commodities: [this.commodities[0]]
     },
     {
-      id: 8,
-      companyId: 4,
+      id: '8',
+      companyId: '4',
       customer: null,
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
@@ -941,8 +941,8 @@ class MockData {
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.Dry,
-      customerBillingLocationId: 6,
-      contactId: 4,
+      customerBillingLocationId: '6',
+      contactId: '4',
       status: LoadStatuses.Completed,
       driverRequirment: DriverRequirements.Solo,
       requiredPowerUnitType: PowerUnitTypes.Tractor,
@@ -958,7 +958,7 @@ class MockData {
 
   public companies: Array<Company> = [
     {
-      id: 1,
+      id: '1',
       name: 'CH ROBINSON COMPANY INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
@@ -970,7 +970,7 @@ class MockData {
       loads: []
     },
     {
-      id: 2,
+      id: '2',
       name: 'M W LOGISTICS LLC',
       locations: [this.locations[1], this.locations[1]],
       contacts: [this.contacts[1]],
@@ -982,7 +982,7 @@ class MockData {
       loads: []
     },
     {
-      id: 3,
+      id: '3',
       name: 'United Freight Service UFS',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
@@ -994,7 +994,7 @@ class MockData {
       loads: []
     },
     {
-      id: 4,
+      id: '4',
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
@@ -1005,7 +1005,7 @@ class MockData {
       loads: []
     },
     {
-      id: 5,
+      id: '5',
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
@@ -1017,7 +1017,7 @@ class MockData {
       loads: []
     },
     {
-      id: 6,
+      id: '6',
       name: 'CH ROBINSON COMPANY INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
@@ -1029,7 +1029,7 @@ class MockData {
       loads: []
     },
     {
-      id: 7,
+      id: '7',
       name: 'M W LOGISTICS LLC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
@@ -1041,7 +1041,7 @@ class MockData {
       loads: []
     },
     {
-      id: 8,
+      id: '8',
       name: 'United Freight Service UFS',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
@@ -1053,7 +1053,7 @@ class MockData {
       loads: []
     },
     {
-      id: 9,
+      id: '9',
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
@@ -1064,7 +1064,7 @@ class MockData {
       loads: []
     },
     {
-      id: 10,
+      id: '10',
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
@@ -1076,7 +1076,7 @@ class MockData {
       loads: []
     },
     {
-      id: 11,
+      id: '11',
       name: 'CH ROBINSON COMPANY INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
@@ -1088,7 +1088,7 @@ class MockData {
       loads: []
     },
     {
-      id: 12,
+      id: '12',
       name: 'M W LOGISTICS LLC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
@@ -1100,7 +1100,7 @@ class MockData {
       loads: []
     },
     {
-      id: 13,
+      id: '13',
       name: 'United Freight Service UFS',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
@@ -1112,7 +1112,7 @@ class MockData {
       loads: []
     },
     {
-      id: 14,
+      id: '14',
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
@@ -1123,7 +1123,7 @@ class MockData {
       loads: []
     },
     {
-      id: 15,
+      id: '15',
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
@@ -1135,7 +1135,7 @@ class MockData {
       loads: []
     },
     {
-      id: 16,
+      id: '16',
       name: 'CH ROBINSON COMPANY INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
@@ -1147,7 +1147,7 @@ class MockData {
       loads: []
     },
     {
-      id: 17,
+      id: '17',
       name: 'M W LOGISTICS LLC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
@@ -1159,7 +1159,7 @@ class MockData {
       loads: []
     },
     {
-      id: 18,
+      id: '18',
       name: 'United Freight Service UFS',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
@@ -1171,7 +1171,7 @@ class MockData {
       loads: []
     },
     {
-      id: 19,
+      id: '19',
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
@@ -1182,7 +1182,7 @@ class MockData {
       loads: []
     },
     {
-      id: 20,
+      id: '20',
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,
@@ -1194,7 +1194,7 @@ class MockData {
       loads: []
     },
     {
-      id: 21,
+      id: '21',
       name: 'CH ROBINSON COMPANY INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[0]],
@@ -1206,7 +1206,7 @@ class MockData {
       loads: []
     },
     {
-      id: 22,
+      id: '22',
       name: 'M W LOGISTICS LLC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[1]],
@@ -1218,7 +1218,7 @@ class MockData {
       loads: []
     },
     {
-      id: 23,
+      id: '23',
       name: 'United Freight Service UFS',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[2]],
@@ -1230,7 +1230,7 @@ class MockData {
       loads: []
     },
     {
-      id: 24,
+      id: '24',
       name: 'SCHNEIDER NATIONAL CARRIERS INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: [this.contacts[3]],
@@ -1241,7 +1241,7 @@ class MockData {
       loads: []
     },
     {
-      id: 25,
+      id: '25',
       name: 'RR DONNELLEY LOGISTICS SERVICES WORLDWIDE INC',
       locations: [this.locations[0], this.locations[2]],
       contacts: this.contacts,

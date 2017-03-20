@@ -51,7 +51,7 @@ function createNotificationsTaskTypeColors() {
 
 export class Notification {
 
-  id: number;
+  id: string;
   title: string;
   type: NotificationType;
   date: Date;
