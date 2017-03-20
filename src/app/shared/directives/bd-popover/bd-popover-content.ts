@@ -103,6 +103,7 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
         if (!this.popover || !this.popover.getElement())
             return;
 
+        this.cdr.markForCheck();
         this.updateWidth();
 
         this.effectivePlacement = getEffectivePlacement(this.placement, this.popover.getElement(), this.popoverDiv.nativeElement);
@@ -135,7 +136,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
 
     adjustHorizontalPositionIfNeeded(position, effectivePlacement, elementWidth, popover: HTMLElement) {
         const offsetParentEl = this.offsetParent || offsetParent(popover);
-
         let result = {
             top: position.top,
             left: position.left,
@@ -155,7 +155,6 @@ export class BdPopoverContent implements AfterViewInit, OnDestroy {
                 result.arrowLeft = Math.max(elementWidth / 2 + diff, this.horizontalArrowOffset);
             }
         }
-
         return result;
     }
 

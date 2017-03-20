@@ -20,6 +20,7 @@ export class BdPopover implements OnChanges {
     protected bdPopover: ComponentRef<BdPopoverContent>;
     protected visible: boolean;
     protected triggeredByClick: boolean = false;
+    showTimeOut = null;
 
     @Input('bd-popover')
     content: string | BdPopoverContent;
@@ -46,6 +47,9 @@ export class BdPopover implements OnChanges {
     popoverCloseOnMouseOutside: boolean;
 
     @Input()
+    popoverShowTimeout: number = 200;
+
+    @Input()
     popoverDismissTimeout: number = 0;
 
     @Output()
@@ -59,6 +63,7 @@ export class BdPopover implements OnChanges {
                 protected resolver: ComponentFactoryResolver) {
     }
 
+
     @HostListener('click')
     showOrHideOnClick(): void {
         this.element.nativeElement.style.zIndex = '';
@@ -71,7 +76,6 @@ export class BdPopover implements OnChanges {
         } else if (!this.triggeredByClick) {
             this.triggeredByClick = true;
         }
-
         this.toggle();
     }
 
@@ -80,15 +84,17 @@ export class BdPopover implements OnChanges {
     showOnHover(): void {
         if (!this.popoverOnHover) return;
         if (this.popoverDisabled) return;
-        this.show();
-        this.element.nativeElement.style.zIndex = 999999;
+        this.showTimeOut = setTimeout( () => {
+          this.show();
+          this.element.nativeElement.style.zIndex = 999999;
+        }, this.popoverShowTimeout);
     }
 
     @HostListener('focusout')
     @HostListener('mouseleave')
     hideOnHover(): void {
         this.element.nativeElement.style.zIndex = '';
-
+        clearTimeout(this.showTimeOut);
         if (!this.popoverOnHover) return;
         if (this.popoverDisabled || this.triggeredByClick) return;
         this.hide();
@@ -110,7 +116,7 @@ export class BdPopover implements OnChanges {
         }
     }
 
-    show() {
+   show() {
         if (this.visible) return;
 
         this.visible = true;
