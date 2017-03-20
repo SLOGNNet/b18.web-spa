@@ -18,9 +18,6 @@ export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
     id: 'equipment-employment-information',
     title: 'Employment'
   }, {
-    id: 'equipment-assignment-information',
-    title: 'Assignment'
-  }, {
     id: 'equipment-details-information',
     title: 'Equipment details'
   }, {
