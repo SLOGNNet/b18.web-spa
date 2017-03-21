@@ -354,7 +354,7 @@ class MockData {
       hireDate: null,
       terminationDate: null,
       status: DriverStatuses.Active,
-      memberFullName: 'Jason Chang',
+      fullName: 'Jason Chang',
       notes: 'notes',
       lastTripNumber: 349611,
       lastAddress: '2229 San Pedro Rd, North Sacramento',
@@ -400,7 +400,7 @@ class MockData {
       status: DriverStatuses.Active,
       notes: 'notes',
       lastTripNumber: 349611,
-      memberFullName: 'Emma Watson',
+      fullName: 'Emma Watson',
       lastAddress: '2229 San Pedro Rd, North Sacramento',
       license: null
     }
@@ -446,7 +446,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349611,
-    memberFullName: 'Jason Chang',
+    fullName: 'Jason Chang',
     lastAddress: '2229 San Pedro Rd, North Sacramento',
     license: this.licenses[1]
   }, {
@@ -469,7 +469,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349777,
-    memberFullName: 'Emma Watson',
+    fullName: 'Emma Watson',
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     license: this.licenses[0]
   }];
