@@ -117,7 +117,7 @@ export class EquipmentNotification {
   date: Date;
 }
 
-export class MileageRecord {
+export class Mileage {
   id: string;
   value: string = '';
   date: Date;
@@ -149,7 +149,7 @@ export class Equipment {
   licensePlateNumber: string = '';
   licensePlateExpiration: Date = null;
   isSleeperBerthAvailable: boolean = true;
-  mileageRecords: Array<MileageRecord>;
+  mileages: Array<Mileage>;
 
   static create(): Equipment {
     const result = new Equipment();

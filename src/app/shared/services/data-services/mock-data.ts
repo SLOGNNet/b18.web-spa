@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location, MileageRecord
+  AppointmentTypes, StopAction, TripStop, Location, Mileage
 } from './models';
 class MockData {
 
@@ -294,7 +294,7 @@ class MockData {
     notes: ''
   }];
 
-  mileageRecords: Array<MileageRecord> = [{
+  mileages: Array<Mileage> = [{
     id: '1',
     value: '2017',
     date: new Date()
@@ -335,7 +335,7 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
-    mileageRecords: [this.mileageRecords[0], this.mileageRecords[1], this.mileageRecords[2]],
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
       id: 1,
       firstName: 'Jason',
@@ -379,7 +379,7 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
-    mileageRecords: [this.mileageRecords[0], this.mileageRecords[1], this.mileageRecords[2]],
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
       id: 2,
       firstName: 'Emma',

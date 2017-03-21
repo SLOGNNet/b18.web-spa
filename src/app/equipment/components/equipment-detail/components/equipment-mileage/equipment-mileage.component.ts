@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MileageRecord } from '../../../../../models';
+import { Mileage } from '../../../../../models';
 
 @Component({
   selector: 'equipment-mileage',
@@ -7,6 +7,6 @@ import { MileageRecord } from '../../../../../models';
   styleUrls: ['./equipment-mileage.component.scss'],
 })
 export class EquipmentMileageComponent {
-  @Input() mileageRecord: MileageRecord;
+  @Input() mileage: Mileage;
 
 }

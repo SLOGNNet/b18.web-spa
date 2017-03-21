@@ -64,9 +64,9 @@
 	<navigation-anchor id="equipment-details-mileage" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'MILEAGE'">
 		<mileages-form 
-			[formArray]='equipmentForm.controls.mileageRecords' 
+			[formArray]='equipmentForm.controls.mileages' 
 			[disabled]="disabled" 
-			[items]='equipment.mileageRecords'
+			[items]='equipment.mileages'
 			[viewMode]="viewMode">
 		</mileages-form>
 	</bd-form-section>

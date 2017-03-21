@@ -107,7 +107,7 @@ export class EquipmentForm extends BaseForm {
       licensePlateNumber: [{value: this.equipment.licensePlateNumber, disabled: this.disabled}],
       licensePlateState: [{value: this.equipment.licensePlateState, disabled: this.disabled}],
       licensePlateExpiration: [{value: this.equipment.licensePlateExpiration, disabled: this.disabled}],
-      mileageRecords: this.formBuilder.array([]),
+      mileages: this.formBuilder.array([]),
       notes: [{value: this.equipment.notes, disabled: this.disabled}],
     });
   }

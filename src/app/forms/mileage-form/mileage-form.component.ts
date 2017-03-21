@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Contact } from '../../models';
-import { Location, MileageRecord } from '../../models';
+import { Location, Mileage } from '../../models';
 import { BdFormGroup, BdFormBuilder } from '../../shared';
 import { BaseForm } from '../base-form';
 
@@ -14,7 +14,7 @@ export class MileageForm extends BaseForm {
   @Input() isLast: boolean = false;
   @Input() disabled: boolean = false;
   @Input()
-  public mileageRecord: MileageRecord;
+  public mileage: Mileage;
   @Input('group')
   public mileageForm: BdFormGroup;
   @Output() addItem = new EventEmitter<any>();
@@ -39,16 +39,16 @@ export class MileageForm extends BaseForm {
     this.fields.forEach(field => {
       this.mileageForm.addControl(
         field.name,
-        this._formBuilder.control({value: this.mileageRecord[field.name], disabled: this.disabled}, field.validators)
+        this._formBuilder.control({value: this.mileage[field.name], disabled: this.disabled}, field.validators)
       );
     });
   }
 
-  addNewMileageRecord() {
+  addNewMileage() {
     this.addItem.emit();
   }
 
-  removeMileageRecord() {
+  removeMileage() {
     this.removeItem.emit();
   }
 }

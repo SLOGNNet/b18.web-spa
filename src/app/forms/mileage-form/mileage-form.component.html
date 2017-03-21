@@ -12,13 +12,13 @@
   <div class="btn-container right-control">
     <button
         class="btn-remove icon-minus" 
-        (click)="removeMileageRecord()"
+        (click)="removeMileage()"
         [disabled]="disabled">
     </button>
     <button
         *ngIf="isLast"
         class="btn-add icon-plus" 
-        (click)="addNewMileageRecord()"
+        (click)="addNewMileage()"
         [disabled]="disabled">
     </button>
   </div>
