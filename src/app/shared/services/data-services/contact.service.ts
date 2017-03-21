@@ -17,7 +17,7 @@ export class ContactService {
     );
   }
 
-  getDetails(id: number): Observable<Contact> {
+  getDetails(id: string): Observable<Contact> {
     return Observable.of(
       MockData.contacts.find((contact) => id === contact.id)
     );

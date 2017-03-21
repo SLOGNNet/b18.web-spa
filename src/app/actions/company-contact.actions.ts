@@ -42,7 +42,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact> {
     }, 3000);
   }
 
-  select(contactId: number): void {
+  select(contactId: string): void {
     this.contactService.getDetails(contactId).subscribe(contact => {
       this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, contact });
     });
