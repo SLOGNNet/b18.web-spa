@@ -14,7 +14,7 @@ export class RequirementsDetailComponent {
   private _isReeferTrailerType: boolean = false;
 
   get isReeferTrailerType () {
-    if (this.load.freightType === FreightType.Reefer) this._isReeferTrailerType = true;
+    if (this.load.freightType === FreightType.REEFER) this._isReeferTrailerType = true;
     return this._isReeferTrailerType;
   }
 

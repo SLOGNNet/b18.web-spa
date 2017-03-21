@@ -7,14 +7,19 @@ export class HttpService {
 
   constructor(private http: Http) {}
 
-  createAuthorizationHeader(headers: Headers) {
+  appendAuthorizationHeader(headers: Headers) {
     headers.append('Authorization', 'Basic ' +
       btoa('b18developer:b18password'));
   }
 
+  appendDefaultHeaders(headers: Headers): void {
+    this.appendAuthorizationHeader(headers);
+   // headers.append('Content-Type', 'application/json');
+  };
+
   get(url) {
     let headers = new Headers();
-    this.createAuthorizationHeader(headers);
+    this.appendDefaultHeaders(headers);
     return this.http.get(url, {
       headers: headers
     })
@@ -23,7 +28,7 @@ export class HttpService {
 
   post(url, data) {
     let headers = new Headers();
-    this.createAuthorizationHeader(headers);
+    this.appendDefaultHeaders(headers);
     return this.http.post(url, data, {
       headers: headers
     })
@@ -32,7 +37,7 @@ export class HttpService {
 
   put(url, data) {
     let headers = new Headers();
-    this.createAuthorizationHeader(headers);
+    this.appendDefaultHeaders(headers);
     return this.http.put(url, data, {
       headers: headers
     })
@@ -41,11 +46,15 @@ export class HttpService {
 
   delete(url, data) {
     let headers = new Headers();
-    this.createAuthorizationHeader(headers);
+    this.appendDefaultHeaders(headers);
     return this.http.delete(url, {
       headers: headers
     })
     .catch(this.handleError);
+  }
+
+  extractData(res: any): any {
+    return res.json();
   }
 
   private handleError (error: Response | any) {

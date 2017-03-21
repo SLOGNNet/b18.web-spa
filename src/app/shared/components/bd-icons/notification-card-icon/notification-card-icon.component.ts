@@ -16,7 +16,7 @@ export class NotificationCardIcon {
   }
 
   updateNotificationStatus() {
-    if (this.eventType === NotificationStatus.Error) {
+    if (this.eventType === NotificationStatus.ERROR) {
       this.isSuccess = false;
     } else {
       this.isSuccess = true;

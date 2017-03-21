@@ -17,7 +17,7 @@ export class StopsLineComponent {
   }
 
   isDropOff(type) {
-    return type === StopTypes.Dropoff;
+    return type === StopTypes.DROPOFF;
   }
 
   getColor(type) {

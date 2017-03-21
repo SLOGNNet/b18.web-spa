@@ -29,8 +29,8 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   @Output() save: EventEmitter<any> = new EventEmitter();
   @select(state => state.stops.items) stops$: Observable<Stop[]>;
   public loadForm: FormGroup;
-  private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Pickup));
-  private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.Dropoff));
+  private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.PICKUP));
+  private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.DROPOFF));
 
   private companySource: any[];
   private companyQuery: string = '';

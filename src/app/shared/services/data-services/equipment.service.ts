@@ -17,7 +17,7 @@ export class EquipmentService {
     );
   }
 
-  getDetails(id: number): Observable<Equipment> {
+  getDetails(id: string): Observable<Equipment> {
     return Observable.of(
       MockData.equipments.find((equipment) => id === equipment.id)
     );

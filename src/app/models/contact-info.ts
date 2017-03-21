@@ -4,10 +4,10 @@ const contactInfoTypes = createInfoTypes();
 
 function createInfoTypes() {
   let result = {};
-    result[ContactInfoType.None] = 'None';
-    result[ContactInfoType.Phone] = 'Phone';
-    result[ContactInfoType.Fax] = 'Fax';
-    result[ContactInfoType.Email] = 'Email';
+    result[ContactInfoType.NONE] = 'None';
+    result[ContactInfoType.PHONE] = 'Phone';
+    result[ContactInfoType.FAX] = 'Fax';
+    result[ContactInfoType.EMAIL] = 'Email';
   return result;
 }
 
@@ -32,22 +32,22 @@ export class ContactInfo {
     return [{
       label: 'Primary Phone',
       value: '',
-      type: ContactInfoType.Phone
+      type: ContactInfoType.PHONE
     },
     {
       label: 'Alternative Phone',
       value: '',
-      type: ContactInfoType.Phone
+      type: ContactInfoType.PHONE
     },
     {
       label: 'Fax',
       value: '',
-      type: ContactInfoType.Fax
+      type: ContactInfoType.FAX
     },
     {
       label: 'Email',
       value: '',
-      type: ContactInfoType.Email
+      type: ContactInfoType.EMAIL
     }];
   }
 }

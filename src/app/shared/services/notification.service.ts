@@ -19,9 +19,9 @@ export class NotificationService {
     return this._notification.asObservable();
   }
 
-  sendNotification(title = '', message = '', status = NotificationStatus.New) {
+  sendNotification(title = '', message = '', status = NotificationStatus.NEW) {
     const notification: Notification = {
-      id: 1,
+      id: '1',
       title,
       message,
       date: new Date(),
@@ -57,24 +57,24 @@ export class NotificationService {
 
   private getNotification() {
     const notification: Notification = {
-      id: new Date().getTime(),
+      id: new Date().getTime() + '',
       title: 'Lorem ipsum',
       type: this.getRandomNotificationType(),
       date: new Date(),
       message: new Date().getMinutes() + ':' + new Date().getSeconds(),
       sender: {
-        id: 1,
+        id: '1',
         firstName: 'Jason',
         lastName: 'Chang',
         middleName: 'Chang',
         position: 'sales',
         contactInfo: [],
-        locationId: 1,
+        locationId: '1',
         location: null
       },
-      taskType: TaskType.New,
-      priority: NotificationPriority.Middle,
-      notificationStatus: NotificationStatus.New,
+      taskType: TaskType.NEW,
+      priority: NotificationPriority.MIDDLE,
+      notificationStatus: NotificationStatus.NEW,
       isViewed: false
     };
 

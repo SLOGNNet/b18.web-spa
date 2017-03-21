@@ -23,11 +23,11 @@ function createTestData() {
   testContact.contactInfo = [testContactInfo];
   // test load
   testLoad.systemLoadNo = '209282402';
-  testLoad.status = LoadStatuses.Completed;
+  testLoad.status = LoadStatuses.COMPLETED;
   // test company
   resultCompany.name = 'CH ROBINSON COMPANY INC';
   resultCompany.contacts = [testContact];
-  resultCompany.status = CompanyStatuses.Active;
+  resultCompany.status = CompanyStatuses.ACTIVE;
   resultCompany.mc = '384859';
   resultCompany.loads = [testLoad];
   return resultCompany;
@@ -105,7 +105,7 @@ describe('CompanyCardComponent', () => {
   });
 
   it('should display load color', () => {
-    let testLoadStatusColor = LoadStatuses.Completed;
+    let testLoadStatusColor = LoadStatuses.COMPLETED;
     component.item = testCompany;
     component.item.loads[0].status = testLoadStatusColor;
     fixture.detectChanges();
@@ -122,7 +122,7 @@ describe('CompanyCardComponent', () => {
   });
 
   it('should display status text', () => {
-    let testCompanyStatus = CompanyStatuses.Active;
+    let testCompanyStatus = CompanyStatuses.ACTIVE;
     component.item = testCompany;
     component.statusText = true;
     component.item.status = testCompanyStatus;

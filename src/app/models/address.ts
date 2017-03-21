@@ -1,7 +1,7 @@
 import { generateNewId } from './utils';
 
 export class Address {
-  id: number = 0;
+  id: string = '';
   streetAddress1: string = '';
   streetAddress2: string = '';
   city: string = '';

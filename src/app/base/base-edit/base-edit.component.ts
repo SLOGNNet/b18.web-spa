@@ -80,8 +80,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
 
   private checkNewItem() {
     const snapshot = this.route.snapshot;
-    const paramId = Number.parseInt(snapshot.params['id']);
-    this.isNew = paramId === 0 || this.route.snapshot.data['new'];
+    const paramId = snapshot.params['id'];
+    this.isNew = paramId === '0' || this.route.snapshot.data['new'];
     if (this.isNew) {
       this.actions.createNew();
     } else {

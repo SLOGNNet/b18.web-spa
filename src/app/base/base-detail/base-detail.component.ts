@@ -33,8 +33,8 @@ export abstract class BaseDetailComponent<T> extends BasePane {
   }
 
   private onQueryParams(params) {
-    const id = Number.parseInt(params['id']);
-    if (!isNaN(id) && id > 0) {
+    const id = params['id'];
+    if (id && id !== '0') {
       this.actions.select(id);
     }
   }

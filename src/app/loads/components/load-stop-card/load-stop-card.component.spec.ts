@@ -38,27 +38,27 @@ function createTestData() {
       {
         label: 'Primary Phone',
         value: '213123123',
-        type: ContactInfoType.Phone
+        type: ContactInfoType.PHONE
       },
       {
         label: 'Alternative Phone',
         value: '12424234',
-        type: ContactInfoType.Phone
+        type: ContactInfoType.PHONE
       },
       {
         label: 'Fax',
         value: 'fax@gmail.comj',
-        type: ContactInfoType.Fax
+        type: ContactInfoType.FAX
       }
     ];
-  testAddress.id = 1;
+  testAddress.id = '1';
   testAddress.streetAddress1 = '14701 Char lson Road, United States';
   testAddress.city = 'Eden Prairie';
   testAddress.state = 'MN';
   testAddress.latitude = 40.795675;
   testAddress.longitude = -73.93600099999998;
   // test customer
-  testCustomer.id = 1;
+  testCustomer.id = '1';
   testCustomer.mc = '384859';
   testCustomer.name = 'CH ROBINSON COMPANY INC';
   testCustomer.contacts = [null];
@@ -66,13 +66,13 @@ function createTestData() {
   testCustomer.status = null;
   testCustomer.type = null;
   // test driver
-  testDriver.id = 1;
+  testDriver.id = '1';
   testDriver.firstName = 'John';
   testDriver.lastName = 'Doe';
   // test driver team
   testDriverTeam.drivers = [testDriver];
   // test trip
-  testTrip.id = 1;
+  testTrip.id = '1';
   testTrip.number = '1212';
   testTrip.truck = new Equipment();
   testTrip.truck.number = '1010';
@@ -80,33 +80,33 @@ function createTestData() {
   testTrip.trailer.number = '1111';
   testTrip.driverTeams = [testDriverTeam];
   // test stops
-  testStop1.id = 1;
-  testStop1.type = StopTypes.Pickup;
+  testStop1.id = '1';
+  testStop1.type = StopTypes.PICKUP;
   testStop1.plannedArrivalAt = null;
   testStop1.facility = Facility.create();
   testStop1.facility.address = testAddress;
-  testStop1.status = StopStatuses.InProgress;
-  testStop2.id = 2;
-  testStop2.type = StopTypes.Pickup;
+  testStop1.status = StopStatuses.IN_PROGRESS;
+  testStop2.id = '2';
+  testStop2.type = StopTypes.PICKUP;
   testStop2.plannedArrivalAt = null;
   testStop2.facility = Facility.create();
   testStop2.facility.address = testAddress;
-  testStop2.status = StopStatuses.InProgress;
+  testStop2.status = StopStatuses.IN_PROGRESS;
 
   // test location
-  testLocation.id = 1;
+  testLocation.id = '1';
   testLocation.name = 'Main Office';
   testLocation.address = testAddress;
   testLocation.contactInfo = testContactInfo;
   // test load
-  resultLoad.id = 1;
+  resultLoad.id = '1';
   resultLoad.customer = testCustomer;
   resultLoad.customerLoadNo = '123123';
   resultLoad.customerBillingLocation = testLocation;
   resultLoad.customerLocation = testLocation;
   resultLoad.systemLoadNo = '121212';
   resultLoad.currentTrips = [testTrip];
-  resultLoad.status = LoadStatuses.Completed;
+  resultLoad.status = LoadStatuses.COMPLETED;
   resultLoad.stops = [testStop1, testStop2];
   return resultLoad;
 }
@@ -288,7 +288,7 @@ describe('LoadStopCardComponent', () => {
     let testDriverTeam = new DriverTeam();
     let testDriver = Driver.create();
     testDriverTeam.drivers = [testDriver];
-      tripData.id = 1;
+      tripData.id = '1';
       tripData.number = '1212';
       tripData.truck = new Equipment();
       tripData.truck.number = '1010';
@@ -303,7 +303,7 @@ describe('LoadStopCardComponent', () => {
   });
 
   it('should send load stops collection to stops-line component', () => {
-    let stopData = Stop.create(StopTypes.Pickup),
+    let stopData = Stop.create(StopTypes.PICKUP),
       stopsCollection = [stopData, stopData];
     component.load = testLoad;
     component.load.stops = stopsCollection;

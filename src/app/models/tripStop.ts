@@ -6,7 +6,7 @@ import { generateNewId } from './utils';
 import { Trip } from './trip';
 
 export class TripStop {
-  id: number;
+  id: string;
   notes: string = '';
   @Type(() => Facility)
   facility: Facility;

@@ -3,16 +3,15 @@ import { Member } from './member';
 import { Address } from './address';
 import { License } from './license';
 import { ContactInfo } from './contact-info';
-import { DriverTypes, DriverStatuses, DriverPaymentTypes } from './enums';
-
-import { generateNewId } from './utils';
-import { Type } from 'class-transformer';
+import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
+import { Type, Transform, Expose } from 'class-transformer';
+import { generateNewId, toEnumTransformer, fromEnumTransformer } from './utils';
 // Colors
 function createStatusColors() {
   let result = {};
-  result[DriverStatuses.Unavaliable] = '#ffbe4d';
-  result[DriverStatuses.Active] = '#85d183';
-  result[DriverStatuses.Inactive] = '#fb3a3a';
+  result[DriverStatuses.UNAVALIABLE] = '#ffbe4d';
+  result[DriverStatuses.ACTIVE] = '#85d183';
+  result[DriverStatuses.INACTIVE] = '#fb3a3a';
 
   return result;
 };
@@ -20,10 +19,10 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
   let result = {};
-  result[DriverStatuses.None] = 'none';
-  result[DriverStatuses.Unavaliable] = 'unavaliable';
-  result[DriverStatuses.Active] = 'active';
-  result[DriverStatuses.Inactive] = 'inactive';
+  result[DriverStatuses.NONE] = 'none';
+  result[DriverStatuses.UNAVALIABLE] = 'unavaliable';
+  result[DriverStatuses.ACTIVE] = 'active';
+  result[DriverStatuses.INACTIVE] = 'inactive';
 
   return result;
 };
@@ -31,8 +30,8 @@ function createStatusText() {
 // Type Text
 function createTypeText() {
   let result = {};
-  result[DriverTypes.CompanyDriver] = 'Company driver';
-  result[DriverTypes.OwnerOperator] = 'Owner operator';
+  result[DriverTypes.COMPANY_DRIVER] = 'Company driver';
+  result[DriverTypes.OWNER_OPERATOR] = 'Owner operator';
 
   return result;
 };
@@ -40,10 +39,10 @@ function createTypeText() {
 // Payment Type Text
 function createPaymentTypeText() {
   let result = {};
-  result[DriverPaymentTypes.PerMile] = 'Per Miles';
-  result[DriverPaymentTypes.Percentage] = 'Percentage';
-  result[DriverPaymentTypes.Hourly] = 'Hourly';
-  result[DriverPaymentTypes.Flat] = 'Flat';
+  result[DriverPaymentOptions.PER_MILE] = 'Per Miles';
+  result[DriverPaymentOptions.PERCENTAGE] = 'Percentage';
+  result[DriverPaymentOptions.HOURLY] = 'Hourly';
+  result[DriverPaymentOptions.FLAT] = 'Flat';
 
   return result;
 };
@@ -61,13 +60,15 @@ export class Driver extends Member {
   @Type(() => Equipment)
   currentTrailer: Equipment = new Equipment();
   @Type(() => Equipment)
-  associatedEquipments: Array<Equipment>;
-  paymentType: DriverPaymentTypes;
+  associatedEquipments: Array<Equipment> = [];
+  @Transform(toEnumTransformer(DriverPaymentOptions), { toClassOnly: true })
+  @Transform(fromEnumTransformer(DriverPaymentOptions), { toPlainOnly: true })
+  paymentOptions: DriverPaymentOptions;
   rate: number = 0;
-  type: DriverTypes = DriverTypes.CompanyDriver;
+  type: DriverTypes = DriverTypes.COMPANY_DRIVER;
   hireDate: Date = null;
   terminationDate: Date = null;
-  status: DriverStatuses = DriverStatuses.Active;
+  status: DriverStatuses = DriverStatuses.ACTIVE;
   notes: string = '';
   lastTripNumber: number = 0;
   lastAddress: string = '';
@@ -85,9 +86,9 @@ export class Driver extends Member {
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentType = DriverPaymentTypes.PerMile;
-    result.type = DriverTypes.CompanyDriver;
-    result.status = DriverStatuses.Active;
+    result.paymentOptions = DriverPaymentOptions.PER_MILE;
+    result.type = DriverTypes.COMPANY_DRIVER;
+    result.status = DriverStatuses.ACTIVE;
 
     return result;
   }
@@ -104,7 +105,7 @@ export class Driver extends Member {
     return typeText[type];
   }
 
-  public static getPaymentTypeText(paymentType: DriverPaymentTypes): string {
+  public static getPaymentTypeText(paymentType: DriverPaymentOptions): string {
     return paymentTypeText[paymentType];
   }
 

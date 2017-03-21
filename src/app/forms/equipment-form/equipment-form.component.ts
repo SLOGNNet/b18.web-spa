@@ -118,9 +118,9 @@ export class EquipmentForm extends BaseForm {
 
   get equipmentSubTypes(): Array<any> {
     switch (this.currentEquipmentType) {
-      case EquipmentTypes.PowerUnit:
+      case EquipmentTypes.POWER_UNIT:
         return this.powerUnitTypes;
-      case EquipmentTypes.Trailer:
+      case EquipmentTypes.TRAILER:
         return this.trailerTypes;
         default:
         return [];
