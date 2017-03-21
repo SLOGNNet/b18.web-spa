@@ -70,7 +70,6 @@ import { EmailValidator } from './validators';
 import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
-import { BdUnitLogComponent } from './components/bd-unit-log';
 
 @NgModule({
   providers: [
@@ -150,8 +149,7 @@ import { BdUnitLogComponent } from './components/bd-unit-log';
     BdViewDetailSectionComponent,
     EmptyComponent,
     BdContactInfoComponent,
-    MultiPaneLayoutComponent,
-    BdUnitLogComponent
+    MultiPaneLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -228,8 +226,7 @@ import { BdUnitLogComponent } from './components/bd-unit-log';
     ComplexityPasswordMessengerComponent,
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
-    MultiPaneLayoutComponent,
-    BdUnitLogComponent
+    MultiPaneLayoutComponent
   ]
 })
 export class SharedModule {
