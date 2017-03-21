@@ -4,7 +4,7 @@ const appointmentTypeText = createAppointmentTypes();
 
 function createAppointmentTypes() {
   let result = {};
-    result[AppointmentTypes.None] = 'None';
+    result[AppointmentTypes.NONE] = 'None';
     result[AppointmentTypes.FCFS] = 'FCFS';
     result[AppointmentTypes.APPT] = 'APPT';
   return result;

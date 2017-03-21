@@ -12,17 +12,17 @@ function createTestData() {
     testStop1 = new Stop(),
     testStop2 = new Stop();
   testStop1.id = '1';
-  testStop1.type = StopTypes.Pickup;
+  testStop1.type = StopTypes.PICKUP;
   testStop1.plannedArrivalAt = new Date(2017, 0, 9);
   testStop1.facility = Facility.create();
   testStop1.facility.address = new Address();
-  testStop1.status = StopStatuses.InProgress;
+  testStop1.status = StopStatuses.IN_PROGRESS;
   testStop2.id = '2';
-  testStop2.type = StopTypes.Pickup;
+  testStop2.type = StopTypes.PICKUP;
   testStop2.plannedArrivalAt = new Date(2017, 1, 10);
   testStop2.facility = Facility.create();
   testStop2.facility.address = new Address();
-  testStop2.status = StopStatuses.InProgress;
+  testStop2.status = StopStatuses.IN_PROGRESS;
   testStopCollection.push(testStop1, testStop2);
   return testStopCollection;
 }
@@ -55,7 +55,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should render expected number of stop items', () => {
-    let testStopData = Stop.create(StopTypes.Pickup);
+    let testStopData = Stop.create(StopTypes.PICKUP);
     component.stops = [testStopData, testStopData, testStopData, testStopData];
     fixture.detectChanges();
     let elements = fixture.debugElement.queryAll(By.css('.stop-icon'));
@@ -63,7 +63,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should have arrow up icon if it\'s pickup', () => {
-    let currentStopType = StopTypes.Pickup;
+    let currentStopType = StopTypes.PICKUP;
     component.stops = stopCollection;
     component.stops[0].type = currentStopType;
     fixture.detectChanges();
@@ -72,7 +72,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should be green if it\'s pickup', () => {
-    let currentStopType = StopTypes.Pickup;
+    let currentStopType = StopTypes.PICKUP;
     component.stops = stopCollection;
     component.stops[0].type = currentStopType;
     fixture.detectChanges();
@@ -82,7 +82,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should have arrow down icon if it\'s dropoff', () => {
-    let currentStopType = StopTypes.Dropoff;
+    let currentStopType = StopTypes.DROPOFF;
     component.stops = stopCollection;
     component.stops[1].type = currentStopType;
     fixture.detectChanges();
@@ -91,7 +91,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should be orange if it\'s dropoff', () => {
-    let currentStopType = StopTypes.Dropoff;
+    let currentStopType = StopTypes.DROPOFF;
     component.stops = stopCollection;
     component.stops[1].type = currentStopType;
     fixture.detectChanges();
@@ -101,7 +101,7 @@ describe('StopsLineComponent', () => {
   });
 
   it('should send stop\'s data to stop popover', () => {
-    let stopData = Stop.create(StopTypes.Pickup);
+    let stopData = Stop.create(StopTypes.PICKUP);
     component.stops = [stopData];
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.directive(StopPopoverComponent)).componentInstance;

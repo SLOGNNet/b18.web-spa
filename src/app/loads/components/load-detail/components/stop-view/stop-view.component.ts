@@ -29,8 +29,8 @@ export class StopViewComponent {
     this.tripStops = this.stop.tripStops;
     this.tripStops.map(item => {
       map(item.stopActions, stopAction => {
-          this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.Pickup);
-          this.dropoffs = item.stopActions.filter(obj => obj.type === StopActionTypes.Dropoff);
+          this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.PICKUP);
+          this.dropoffs = item.stopActions.filter(obj => obj.type === StopActionTypes.DROPOFF);
       });
     });
   }

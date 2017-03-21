@@ -38,17 +38,17 @@ function createTestData() {
       {
         label: 'Primary Phone',
         value: '213123123',
-        type: ContactInfoType.Phone
+        type: ContactInfoType.PHONE
       },
       {
         label: 'Alternative Phone',
         value: '12424234',
-        type: ContactInfoType.Phone
+        type: ContactInfoType.PHONE
       },
       {
         label: 'Fax',
         value: 'fax@gmail.comj',
-        type: ContactInfoType.Fax
+        type: ContactInfoType.FAX
       }
     ];
   testAddress.id = '1';
@@ -81,17 +81,17 @@ function createTestData() {
   testTrip.driverTeams = [testDriverTeam];
   // test stops
   testStop1.id = '1';
-  testStop1.type = StopTypes.Pickup;
+  testStop1.type = StopTypes.PICKUP;
   testStop1.plannedArrivalAt = null;
   testStop1.facility = Facility.create();
   testStop1.facility.address = testAddress;
-  testStop1.status = StopStatuses.InProgress;
+  testStop1.status = StopStatuses.IN_PROGRESS;
   testStop2.id = '2';
-  testStop2.type = StopTypes.Pickup;
+  testStop2.type = StopTypes.PICKUP;
   testStop2.plannedArrivalAt = null;
   testStop2.facility = Facility.create();
   testStop2.facility.address = testAddress;
-  testStop2.status = StopStatuses.InProgress;
+  testStop2.status = StopStatuses.IN_PROGRESS;
 
   // test location
   testLocation.id = '1';
@@ -106,7 +106,7 @@ function createTestData() {
   resultLoad.customerLocation = testLocation;
   resultLoad.systemLoadNo = '121212';
   resultLoad.currentTrips = [testTrip];
-  resultLoad.status = LoadStatuses.Completed;
+  resultLoad.status = LoadStatuses.COMPLETED;
   resultLoad.stops = [testStop1, testStop2];
   return resultLoad;
 }
@@ -303,7 +303,7 @@ describe('LoadStopCardComponent', () => {
   });
 
   it('should send load stops collection to stops-line component', () => {
-    let stopData = Stop.create(StopTypes.Pickup),
+    let stopData = Stop.create(StopTypes.PICKUP),
       stopsCollection = [stopData, stopData];
     component.load = testLoad;
     component.load.stops = stopsCollection;

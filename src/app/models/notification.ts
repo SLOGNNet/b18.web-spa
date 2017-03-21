@@ -10,9 +10,9 @@ const notificationTypeText = createNotificationTypeText();
 // Type Text
 function createNotificationTypeText() {
  let result = {};
-  result[NotificationType.Notification] = 'notification';
-  result[NotificationType.Message] = 'message';
-  result[NotificationType.Task] = 'task';
+  result[NotificationType.NOTIFICATION] = 'notification';
+  result[NotificationType.MESSAGE] = 'message';
+  result[NotificationType.TASK] = 'task';
 
   return result;
 };
@@ -20,9 +20,9 @@ function createNotificationTypeText() {
 // Priority Text
 function createNotificationPriorityText() {
  let result = {};
-  result[NotificationPriority.High] = 'HI';
-  result[NotificationPriority.Middle] = 'ME';
-  result[NotificationPriority.Low] = 'LO';
+  result[NotificationPriority.HIGH] = 'HI';
+  result[NotificationPriority.MIDDLE] = 'ME';
+  result[NotificationPriority.LOW] = 'LO';
 
   return result;
 };
@@ -30,9 +30,9 @@ function createNotificationPriorityText() {
 // Colors for event statuses
 function createNotificationsStatusColors() {
  let result = {};
-  result[NotificationStatus.New] = '#ffbe4d';
-  result[NotificationStatus.Add] = '#85d183';
-  result[NotificationStatus.Error] = '#fb3a3a';
+  result[NotificationStatus.NEW] = '#ffbe4d';
+  result[NotificationStatus.ADD] = '#85d183';
+  result[NotificationStatus.ERROR] = '#fb3a3a';
 
   return result;
 };
@@ -40,10 +40,10 @@ function createNotificationsStatusColors() {
 // Colors for task types
 function createNotificationsTaskTypeColors() {
  let result = {};
-  result[TaskType.New] = '#75b3e1';
-  result[TaskType.InProgress] = '#ffbe4d';
-  result[TaskType.Done] = '#85d183';
-  result[TaskType.Error] = '#fb3a3a';
+  result[TaskType.NEW] = '#75b3e1';
+  result[TaskType.IN_PROGRESS] = '#ffbe4d';
+  result[TaskType.DONE] = '#85d183';
+  result[TaskType.ERROR] = '#fb3a3a';
 
   return result;
 };
@@ -66,7 +66,7 @@ export class Notification {
   static create(): Notification {
     const result = new Notification();
     result.id = generateNewId();
-    result.type = NotificationType.Message;
+    result.type = NotificationType.MESSAGE;
     result.date = new Date();
     return result;
   }

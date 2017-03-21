@@ -19,7 +19,7 @@ export class NotificationService {
     return this._notification.asObservable();
   }
 
-  sendNotification(title = '', message = '', status = NotificationStatus.New) {
+  sendNotification(title = '', message = '', status = NotificationStatus.NEW) {
     const notification: Notification = {
       id: '1',
       title,
@@ -72,9 +72,9 @@ export class NotificationService {
         locationId: '1',
         location: null
       },
-      taskType: TaskType.New,
-      priority: NotificationPriority.Middle,
-      notificationStatus: NotificationStatus.New,
+      taskType: TaskType.NEW,
+      priority: NotificationPriority.MIDDLE,
+      notificationStatus: NotificationStatus.NEW,
       isViewed: false
     };
 

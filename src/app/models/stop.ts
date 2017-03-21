@@ -11,9 +11,9 @@ const stopTypeText = createStopTypeText();
 // Stop type text
 function createStopTypeText() {
  let result = {};
-  result[StopTypes.None] = 'None';
-  result[StopTypes.Pickup] = 'Pickup';
-  result[StopTypes.Dropoff] = 'Dropoff';
+  result[StopTypes.NONE] = 'None';
+  result[StopTypes.PICKUP] = 'Pickup';
+  result[StopTypes.DROPOFF] = 'Dropoff';
 
   return result;
 };
@@ -21,11 +21,11 @@ function createStopTypeText() {
 // Stop status text
 function createStopStatusText() {
  let result = {};
-  result[StopStatuses.None] = 'None';
-  result[StopStatuses.Completed] = 'Complete';
-  result[StopStatuses.InProgress] = 'In progress';
-  result[StopStatuses.Problem] = 'Problem';
-  result[StopStatuses.Pending] = 'Pending';
+  result[StopStatuses.NONE] = 'None';
+  result[StopStatuses.COMPLETED] = 'Complete';
+  result[StopStatuses.IN_PROGRESS] = 'In progress';
+  result[StopStatuses.PROBLEM] = 'Problem';
+  result[StopStatuses.PENDING] = 'Pending';
 
   return result;
 };
@@ -33,10 +33,10 @@ function createStopStatusText() {
 // Stop status colors
 function createStopStatusColors() {
  let result = {};
-  result[StopStatuses.Completed] = '#ffbe4d';
-  result[StopStatuses.InProgress] = '#85d183';
-  result[StopStatuses.Problem] = '#fb3a3a';
-  result[StopStatuses.Pending] = '#75b3e1';
+  result[StopStatuses.COMPLETED] = '#ffbe4d';
+  result[StopStatuses.IN_PROGRESS] = '#85d183';
+  result[StopStatuses.PROBLEM] = '#fb3a3a';
+  result[StopStatuses.PENDING] = '#75b3e1';
 
   return result;
 };
@@ -44,10 +44,10 @@ function createStopStatusColors() {
 export class Stop {
   id: string;
   notes: string = '';
-  type: StopTypes = StopTypes.None;
+  type: StopTypes = StopTypes.NONE;
   @Type(() => Facility)
   facility: Facility;
-  status: StopStatuses.InProgress;
+  status: StopStatuses.IN_PROGRESS;
   arrivedAt: Date = null;
   departedAt: Date = null;
   plannedArrivalAt: Date = null;

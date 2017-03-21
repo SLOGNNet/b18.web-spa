@@ -7,18 +7,18 @@ import { Type } from 'class-transformer';
 // Colors
 function createStatusColors() {
  let result = {};
-  result[CompanyStatuses.Unavaliable] = '#ffbe4d';
-  result[CompanyStatuses.Active] = '#85d183';
-  result[CompanyStatuses.Inactive] = '#fb3a3a';
+  result[CompanyStatuses.UNAVALIABLE] = '#ffbe4d';
+  result[CompanyStatuses.ACTIVE] = '#85d183';
+  result[CompanyStatuses.INACTIVE] = '#fb3a3a';
   return result;
 };
 
 function createStatusText() {
  let result = {};
-  result[CompanyStatuses.None] = 'none';
-  result[CompanyStatuses.Unavaliable] = 'unavaliable';
-  result[CompanyStatuses.Active] = 'active';
-  result[CompanyStatuses.Inactive] = 'inactive';
+  result[CompanyStatuses.NONE] = 'none';
+  result[CompanyStatuses.UNAVALIABLE] = 'unavaliable';
+  result[CompanyStatuses.ACTIVE] = 'active';
+  result[CompanyStatuses.INACTIVE] = 'inactive';
   return result;
 };
 
@@ -42,8 +42,8 @@ export class Company {
   static create(): Company{
     const result = new Company();
     result.id = generateNewId();
-    result.status = CompanyStatuses.Inactive;
-    result.type = CompanyTypes.Broker;
+    result.status = CompanyStatuses.INACTIVE;
+    result.type = CompanyTypes.BROKER;
     return result;
   }
 

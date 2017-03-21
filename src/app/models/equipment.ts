@@ -14,9 +14,9 @@ import { generateNewId } from './utils';
 // Colors
 function createStatusColors() {
   let result = {};
-  result[EquipmentStatuses.NotAvaliable] = '#ffbe4d';
-  result[EquipmentStatuses.Active] = '#85d183';
-  result[EquipmentStatuses.Inactive] = '#fb3a3a';
+  result[EquipmentStatuses.NOT_AVALIABLE] = '#ffbe4d';
+  result[EquipmentStatuses.ACTIVE] = '#85d183';
+  result[EquipmentStatuses.INACTIVE] = '#fb3a3a';
 
   return result;
 };
@@ -24,10 +24,10 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
   let result = {};
-  result[EquipmentStatuses.None] = 'none';
-  result[EquipmentStatuses.NotAvaliable] = 'not avaliable';
-  result[EquipmentStatuses.Active] = 'active';
-  result[EquipmentStatuses.Inactive] = 'inactive';
+  result[EquipmentStatuses.NONE] = 'none';
+  result[EquipmentStatuses.NOT_AVALIABLE] = 'not avaliable';
+  result[EquipmentStatuses.ACTIVE] = 'active';
+  result[EquipmentStatuses.INACTIVE] = 'inactive';
 
   return result;
 };
@@ -35,8 +35,8 @@ function createStatusText() {
 // Driver Text
 function createEquipmentDriverText() {
   let result = {};
-  result[DriverTypes.CompanyDriver] = 'Company Driver';
-  result[DriverTypes.OwnerOperator] = 'Owner Operator';
+  result[DriverTypes.COMPANY_DRIVER] = 'Company Driver';
+  result[DriverTypes.OWNER_OPERATOR] = 'Owner Operator';
 
   return result;
 };
@@ -44,9 +44,9 @@ function createEquipmentDriverText() {
 // Type Text
 function createTypeText() {
   let result = {};
-  result[EquipmentTypes.None] = 'None';
-  result[EquipmentTypes.Trailer] = 'Trailer';
-  result[EquipmentTypes.PowerUnit] = 'PowerUnit';
+  result[EquipmentTypes.NONE] = 'None';
+  result[EquipmentTypes.TRAILER] = 'Trailer';
+  result[EquipmentTypes.POWER_UNIT] = 'PowerUnit';
 
   return result;
 };
@@ -54,9 +54,9 @@ function createTypeText() {
 // Short Type Text
 function createShortTypeText() {
   let result = {};
-  result[EquipmentTypes.None] = 'None';
-  result[EquipmentTypes.Trailer] = 'TL';
-  result[EquipmentTypes.PowerUnit] = 'TK';
+  result[EquipmentTypes.NONE] = 'None';
+  result[EquipmentTypes.TRAILER] = 'TL';
+  result[EquipmentTypes.POWER_UNIT] = 'TK';
 
   return result;
 };
@@ -64,8 +64,8 @@ function createShortTypeText() {
 // Mode Text
 function createModeText() {
   let result = {};
-  result[EquipmentModes.None] = 'None';
-  result[EquipmentModes.Company] = 'Company';
+  result[EquipmentModes.NONE] = 'None';
+  result[EquipmentModes.COMPANY] = 'Company';
 
   return result;
 };
@@ -91,11 +91,11 @@ export class Equipment {
   notes: string = 'Oil Change';
   @Type(() => Driver)
   driver: Driver;
-  status: EquipmentStatuses = EquipmentStatuses.Active;
+  status: EquipmentStatuses = EquipmentStatuses.ACTIVE;
   driverType: DriverTypes;
-  type: EquipmentTypes = EquipmentTypes.Trailer;
+  type: EquipmentTypes = EquipmentTypes.TRAILER;
   subType: PowerUnitTypes | TrailerTypes;
-  mode: EquipmentModes = EquipmentModes.Company;
+  mode: EquipmentModes = EquipmentModes.COMPANY;
   vehicleOperating: EquipmentVehicleOperatings;
   lastTripNumber: number = 0;
   lastAddress: string = '';
@@ -104,12 +104,12 @@ export class Equipment {
   static create(): Equipment {
     const result = new Equipment();
     result.id = generateNewId();
-    result.status = EquipmentStatuses.Active;
-    result.type = EquipmentTypes.Trailer;
-    result.subType = TrailerTypes.DryVan53;
-    result.mode = EquipmentModes.Company;
-    result.vehicleOperating = EquipmentVehicleOperatings.InterState;
-    result.driverType = DriverTypes.CompanyDriver;
+    result.status = EquipmentStatuses.ACTIVE;
+    result.type = EquipmentTypes.TRAILER;
+    result.subType = TrailerTypes.DRY_VAN_53;
+    result.mode = EquipmentModes.COMPANY;
+    result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
+    result.driverType = DriverTypes.COMPANY_DRIVER;
     result.equipmentNotification = {
       message: '',
       date: new Date()

@@ -10,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 }, BaseListForm.metaData))
 export class PickupsFormComponent extends BaseListForm<Stop>  {
 
-  @Input() type: StopTypes = StopTypes.None;
+  @Input() type: StopTypes = StopTypes.NONE;
   @Input() availableCommodities: Array<Commodity> = new Array<Commodity>();
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
