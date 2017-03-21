@@ -3,10 +3,10 @@ import { LicenseClassTypes } from './enums';
 // License Class Text
 function createLicenseClassText() {
   let result = {};
-  result[LicenseClassTypes.None] = 'None';
-  result[LicenseClassTypes.ClassA] = 'Class A';
-  result[LicenseClassTypes.ClassB] = 'Class B';
-  result[LicenseClassTypes.ClassC] = 'Class C';
+  result[LicenseClassTypes.NONE] = 'None';
+  result[LicenseClassTypes.CLASS_A] = 'Class A';
+  result[LicenseClassTypes.CLASS_B] = 'Class B';
+  result[LicenseClassTypes.CLASS_C] = 'Class C';
 
   return result;
 };
@@ -14,7 +14,7 @@ function createLicenseClassText() {
 const licenseClassText = createLicenseClassText();
 
 export class License {
-  id: number = 0;
+  id: string = '';
   number: string = '';
   expiration: Date;
   dateIssued: Date;
@@ -27,7 +27,7 @@ export class License {
     const result = new License();
     result.expiration = null;
     result.dateIssued = null;
-    result.class = LicenseClassTypes.None;
+    result.class = LicenseClassTypes.NONE;
     return result;
   }
 

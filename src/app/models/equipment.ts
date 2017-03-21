@@ -14,9 +14,9 @@ import { generateNewId } from './utils';
 // Colors
 function createStatusColors() {
   let result = {};
-  result[EquipmentStatuses.NotAvaliable] = '#ffbe4d';
-  result[EquipmentStatuses.Active] = '#85d183';
-  result[EquipmentStatuses.Inactive] = '#fb3a3a';
+  result[EquipmentStatuses.NOT_AVALIABLE] = '#ffbe4d';
+  result[EquipmentStatuses.ACTIVE] = '#85d183';
+  result[EquipmentStatuses.INACTIVE] = '#fb3a3a';
 
   return result;
 };
@@ -24,10 +24,10 @@ function createStatusColors() {
 // Status Text
 function createStatusText() {
   let result = {};
-  result[EquipmentStatuses.None] = 'none';
-  result[EquipmentStatuses.NotAvaliable] = 'not avaliable';
-  result[EquipmentStatuses.Active] = 'active';
-  result[EquipmentStatuses.Inactive] = 'inactive';
+  result[EquipmentStatuses.NONE] = 'none';
+  result[EquipmentStatuses.NOT_AVALIABLE] = 'not avaliable';
+  result[EquipmentStatuses.ACTIVE] = 'active';
+  result[EquipmentStatuses.INACTIVE] = 'inactive';
 
   return result;
 };
@@ -35,8 +35,8 @@ function createStatusText() {
 // Driver Text
 function createEquipmentDriverText() {
   let result = {};
-  result[DriverTypes.CompanyDriver] = 'Company Driver';
-  result[DriverTypes.OwnerOperator] = 'Owner Operator';
+  result[DriverTypes.COMPANY_DRIVER] = 'Company Driver';
+  result[DriverTypes.OWNER_OPERATOR] = 'Owner Operator';
 
   return result;
 };
@@ -44,9 +44,9 @@ function createEquipmentDriverText() {
 // Type Text
 function createTypeText() {
   let result = {};
-  result[EquipmentTypes.None] = 'None';
-  result[EquipmentTypes.Trailer] = 'Trailer';
-  result[EquipmentTypes.PowerUnit] = 'PowerUnit';
+  result[EquipmentTypes.NONE] = 'None';
+  result[EquipmentTypes.TRAILER] = 'Trailer';
+  result[EquipmentTypes.POWER_UNIT] = 'PowerUnit';
 
   return result;
 };
@@ -54,9 +54,9 @@ function createTypeText() {
 // Short Type Text
 function createShortTypeText() {
   let result = {};
-  result[EquipmentTypes.None] = 'None';
-  result[EquipmentTypes.Trailer] = 'TL';
-  result[EquipmentTypes.PowerUnit] = 'TK';
+  result[EquipmentTypes.NONE] = 'None';
+  result[EquipmentTypes.TRAILER] = 'TL';
+  result[EquipmentTypes.POWER_UNIT] = 'TK';
 
   return result;
 };
@@ -64,9 +64,9 @@ function createShortTypeText() {
 // Mode Text
 function createModeText() {
   let result = {};
-  result[EquipmentModes.None] = 'None';
-  result[EquipmentModes.Company] = 'Company';
-  result[EquipmentModes.OwnerOperator] = 'Owner Operator';
+  result[EquipmentModes.NONE] = 'None';
+  result[EquipmentModes.COMPANY] = 'Company';
+  result[EquipmentModes.OWNER_OPERATOR] = 'Owner Operator';
 
   return result;
 };
@@ -74,31 +74,31 @@ function createModeText() {
 // Vehicle Operatings Types
 function createVehicleOperatingsText() {
   let result = {};
-  result[EquipmentVehicleOperatings.InterState] = 'InterState';
-  result[EquipmentVehicleOperatings.IntraState] = 'IntraState';
+  result[EquipmentVehicleOperatings.INTER_STATE] = 'InterState';
+  result[EquipmentVehicleOperatings.INTRA_STATE] = 'IntraState';
   return result;
 }
 
 // Power Unit types
 function createPowerUnitTypes() {
   let result = {};
-    result[PowerUnitTypes.Tractor] = 'Tractor';
-    result[PowerUnitTypes.StraightTruck25] = 'Straight Truck 25';
-    result[PowerUnitTypes.StraightTruckFlatbed] = 'Straight Truck Flatbed';
-    result[PowerUnitTypes.Bus] = 'Bus';
-    result[PowerUnitTypes.Other] = 'Other';
+    result[PowerUnitTypes.TRACTOR] = 'Tractor';
+    result[PowerUnitTypes.STRAIGHT_TRUCK_25] = 'Straight Truck 25';
+    result[PowerUnitTypes.STRAIGHT_TRUCK_FLATBED] = 'Straight Truck Flatbed';
+    result[PowerUnitTypes.BUS] = 'Bus';
+    result[PowerUnitTypes.OTHER] = 'Other';
   return result;
 }
 
 // Power trailer types
 function createTrailerTypes() {
   let result = {};
-    result[TrailerTypes.DryVan53] = 'Dry Van 53';
-    result[TrailerTypes.Reefer] = 'Reefer';
-    result[TrailerTypes.DryVan48] = 'Dry Van 48';
-    result[TrailerTypes.Reefer48] = 'Reefer 48';
-    result[TrailerTypes.FlatBed53] = 'FlatBed 53';
-    result[TrailerTypes.Other] = 'Other';
+    result[TrailerTypes.DRY_VAN_53] = 'Dry Van 53';
+    result[TrailerTypes.REEFER] = 'Reefer';
+    result[TrailerTypes.DRY_VAN_48] = 'Dry Van 48';
+    result[TrailerTypes.REEFER_48] = 'Reefer 48';
+    result[TrailerTypes.FLAT_BED_53] = 'FlatBed 53';
+    result[TrailerTypes.OTHER] = 'Other';
   return result;
 }
 
@@ -129,7 +129,7 @@ export class Mileage {
 }
 
 export class Equipment {
-  id: number = 0;
+  id: string = '';
   make: string = 'Kenworth';
   model: string = 'T610';
   number: string = '101';
@@ -137,10 +137,10 @@ export class Equipment {
   notes: string = 'Oil Change';
   @Type(() => Driver)
   driver: Driver;
-  status: EquipmentStatuses = EquipmentStatuses.Active;
-  type: EquipmentTypes = EquipmentTypes.Trailer;
+  status: EquipmentStatuses = EquipmentStatuses.ACTIVE;
+  type: EquipmentTypes = EquipmentTypes.TRAILER;
   subType: PowerUnitTypes | TrailerTypes;
-  ownership: EquipmentModes = EquipmentModes.Company;
+  ownership: EquipmentModes = EquipmentModes.COMPANY;
   vehicleOperating: EquipmentVehicleOperatings;
   lastTripNumber: number = 0;
   lastAddress: string = '';
@@ -154,11 +154,11 @@ export class Equipment {
   static create(): Equipment {
     const result = new Equipment();
     result.id = generateNewId();
-    result.status = EquipmentStatuses.Active;
-    result.type = EquipmentTypes.Trailer;
-    result.subType = TrailerTypes.DryVan53;
-    result.ownership = EquipmentModes.Company;
-    result.vehicleOperating = EquipmentVehicleOperatings.InterState;
+    result.status = EquipmentStatuses.ACTIVE;
+    result.type = EquipmentTypes.TRAILER;
+    result.subType = TrailerTypes.DRY_VAN_53;
+    result.ownership = EquipmentModes.COMPANY;
+    result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
     result.equipmentNotification = {
       message: '',
       date: new Date()
@@ -196,9 +196,9 @@ export class Equipment {
 
   public static getEquipmentSubType(type: EquipmentTypes, subType: PowerUnitTypes | TrailerTypes ) {
     switch (type) {
-      case EquipmentTypes.Trailer:
+      case EquipmentTypes.TRAILER:
         return trailerTypes[subType];
-      case EquipmentTypes.PowerUnit:
+      case EquipmentTypes.POWER_UNIT:
         return powerUnitTypes[subType];
       default:
       return;

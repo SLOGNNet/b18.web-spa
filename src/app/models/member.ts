@@ -1,11 +1,14 @@
-import { generateNewId } from './utils';
 import { Address } from './address';
 import { ContactInfo } from './contact-info';
+import { Type } from 'class-transformer';
+import { generateNewId } from './utils';
 
 export class Member {
-  id: number;
+  id: string;
+  @Type(() => Address)
   address: Address;
-  contactInfo: Array<ContactInfo>;
+  @Type(() => ContactInfo)
+  contactInfo: Array<ContactInfo> = [];
   firstName: string = '';
   middleName: string = '';
   lastName: string = '';

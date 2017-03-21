@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Driver, DriverPaymentTypes } from '../../models';
+import { Driver, DriverPaymentOptions } from '../../models';
 import { FormValidationService, GoogleService } from '../../shared';
 import { NgbDateStruct } from '../../shared/components/datepicker';
 import { EnumHelperService } from '../../shared/helpers';
@@ -32,7 +32,7 @@ export class DriverForm extends BaseForm {
     elementRef: ElementRef) {
     super(elementRef);
 
-    this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentTypes);
+    this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentOptions);
     this.driverTypes = enumHelperService.getDropdownKeyValues(Driver.getDriverTypes());
   }
 
@@ -78,7 +78,7 @@ export class DriverForm extends BaseForm {
       lastName: [{value: this.driver.lastName, disabled: this.disabled}],
       type: [{value: this.driver.type, disabled: this.disabled}],
       dateOfBirth: [{value: this.driver.dateOfBirth, disabled: this.disabled}],
-      paymentType: [{value: this.driver.paymentType, disabled: this.disabled}],
+      paymentOptions: [{value: this.driver.paymentOptions, disabled: this.disabled}],
       ssn: [{value: this.driver.ssn, disabled: this.disabled}],
       rate: [{value: this.driver.rate, disabled: this.disabled}],
       address: this.formBuilder.group({}),

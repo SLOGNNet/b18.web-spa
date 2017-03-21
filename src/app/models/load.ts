@@ -12,38 +12,38 @@ import { Type } from 'class-transformer';
 
 // driver requirements
 const driverRequirements = ['Solo Driver'];
-driverRequirements[DriverRequirements.Solo] = 'Solo Driver';
+driverRequirements[DriverRequirements.SOLO] = 'Solo Driver';
 
 // power unit types
 const powerUnitTypes = {};
-powerUnitTypes[PowerUnitTypes.Tractor] = 'Tractor';
-powerUnitTypes[PowerUnitTypes.StraightTruck25] = 'Straight Truck 25';
-powerUnitTypes[PowerUnitTypes.StraightTruckFlatbed] = 'Straight Truck Flatbed';
-powerUnitTypes[PowerUnitTypes.Bus] = 'Bus';
-powerUnitTypes[PowerUnitTypes.Other] = 'Other';
+powerUnitTypes[PowerUnitTypes.TRACTOR] = 'Tractor';
+powerUnitTypes[PowerUnitTypes.STRAIGHT_TRUCK_25] = 'Straight Truck 25';
+powerUnitTypes[PowerUnitTypes.STRAIGHT_TRUCK_FLATBED] = 'Straight Truck Flatbed';
+powerUnitTypes[PowerUnitTypes.BUS] = 'Bus';
+powerUnitTypes[PowerUnitTypes.OTHER] = 'Other';
 
 
-// freight types 
+// freight types
 const freightTypes = {};
-freightTypes[FreightType.Dry] = 'Dry';
-freightTypes[FreightType.Reefer] = 'Reefer';
+freightTypes[FreightType.DRY] = 'Dry';
+freightTypes[FreightType.REEFER] = 'Reefer';
 
-// trailer types 
+// trailer types
 const trailerTypes = {};
-trailerTypes[TrailerTypes.DryVan53] = 'Dry Van 53';
-trailerTypes[TrailerTypes.Reefer] = 'Reefer';
-trailerTypes[TrailerTypes.DryVan48] = 'Dry Van 48';
-trailerTypes[TrailerTypes.Reefer48] = 'Reefer 48';
-trailerTypes[TrailerTypes.FlatBed53] = 'Flat Bed 53';
-trailerTypes[TrailerTypes.Other] = 'Other';
+trailerTypes[TrailerTypes.DRY_VAN_53] = 'Dry Van 53';
+trailerTypes[TrailerTypes.REEFER] = 'Reefer';
+trailerTypes[TrailerTypes.DRY_VAN_48] = 'Dry Van 48';
+trailerTypes[TrailerTypes.REEFER_48] = 'Reefer 48';
+trailerTypes[TrailerTypes.FLAT_BED_53] = 'Flat Bed 53';
+trailerTypes[TrailerTypes.OTHER] = 'Other';
 
 // Colors
 function createStatusColors() {
  let result = {};
-  result[LoadStatuses.Pending] = result[LoadStatuses.Booked] = result[LoadStatuses.Scheduled] = '#75b3e1';
-  result[LoadStatuses.EnRoute] = result[LoadStatuses.InTransit] = '#ffbe4d';
-  result[LoadStatuses.Delivered] = result[LoadStatuses.Completed] = '#85d183';
-  result[LoadStatuses.Canceled] = '#fb3a3a';
+  result[LoadStatuses.PENDING] = result[LoadStatuses.BOOKED] = result[LoadStatuses.SCHEDULED] = '#75b3e1';
+  result[LoadStatuses.EN_ROUTE] = result[LoadStatuses.IN_TRANSIT] = '#ffbe4d';
+  result[LoadStatuses.DELIVERED] = result[LoadStatuses.COMPLETED] = '#85d183';
+  result[LoadStatuses.CANCELED] = '#fb3a3a';
 
   return result;
 };
@@ -53,15 +53,15 @@ const statusColors = createStatusColors();
 // Texts
 function createStatusTexts() {
  let result = {};
-  result[LoadStatuses.Booked] = 'booked';
-  result[LoadStatuses.Assigned] = 'assigned';
-  result[LoadStatuses.Pending] = 'pending';
-  result[LoadStatuses.Scheduled] = 'scheduled';
-  result[LoadStatuses.EnRoute] = 'en route';
-  result[LoadStatuses.InTransit] = 'in-transit';
-  result[LoadStatuses.Delivered] = 'delivered';
-  result[LoadStatuses.Completed] = 'completed';
-  result[LoadStatuses.Canceled] = 'canceled';
+  result[LoadStatuses.BOOKED] = 'booked';
+  result[LoadStatuses.ASSIGNED] = 'assigned';
+  result[LoadStatuses.PENDING] = 'pending';
+  result[LoadStatuses.SCHEDULED] = 'scheduled';
+  result[LoadStatuses.EN_ROUTE] = 'en route';
+  result[LoadStatuses.IN_TRANSIT] = 'in-transit';
+  result[LoadStatuses.DELIVERED] = 'delivered';
+  result[LoadStatuses.COMPLETED] = 'completed';
+  result[LoadStatuses.CANCELED] = 'canceled';
 
   return result;
 };
@@ -69,20 +69,20 @@ function createStatusTexts() {
 const statusTexts = createStatusTexts();
 
 export class Load {
-  id: number;
-  companyId: number;
+  id: string;
+  companyId: string;
   systemLoadNo: string;
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
-  customerBillingLocationId: number;
+  customerBillingLocationId: string;
   @Type(() => Location)
   customerLocation: Location = new Location();
   @Type(() => Location)
   customerBillingLocation: Location;
   @Type(() => Commodity)
   commodities: Array<Commodity>;
-  contactId: number;
+  contactId: string;
   status: LoadStatuses;
   @Type(() => Company)
   customer: Company;
@@ -102,14 +102,14 @@ export class Load {
   static create(): Load {
     const result = new Load();
     result.id = generateNewId();
-    result.status = LoadStatuses.Booked;
+    result.status = LoadStatuses.BOOKED;
     result.customer = Company.create();
-    result.driverRequirment = DriverRequirements.Solo;
-    result.requiredPowerUnitType = PowerUnitTypes.Tractor;
-    result.requiredTrailerType = TrailerTypes.DryVan53;
+    result.driverRequirment = DriverRequirements.SOLO;
+    result.requiredPowerUnitType = PowerUnitTypes.TRACTOR;
+    result.requiredTrailerType = TrailerTypes.DRY_VAN_53;
     result.trips = [Trip.create()];
     result.currentTrips = [Trip.create()];
-    result.stops = [Stop.create(StopTypes.Dropoff)];
+    result.stops = [Stop.create(StopTypes.DROPOFF)];
     result.documents = [];
     result.commodities = new Array<Commodity>();
 
@@ -140,7 +140,7 @@ export class Load {
     return freightTypes[fType];
   }
 
-  public static getSelectedContact(contacts: Contact[], id: number): Contact {
+  public static getSelectedContact(contacts: Contact[], id: string): Contact {
     let result = null;
     result = contacts.find(c => c.id === id);
     return result;

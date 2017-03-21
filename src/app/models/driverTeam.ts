@@ -4,7 +4,7 @@ import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
 
 export class DriverTeam {
-  id: number = 0;
+  id: string = '';
   @Type(() => Driver)
   drivers: Array<Driver>;
 

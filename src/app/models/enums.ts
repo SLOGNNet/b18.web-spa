@@ -1,78 +1,78 @@
 // company enums
 export enum CompanyTypes {
-  Broker = 1,
-  FreightForwarder = 2,
-  Shipper = 3,
-  Carrier = 4
+  BROKER = 1,
+  FREIGHT_FORWARDER = 2,
+  SHIPPER = 3,
+  CARRIER = 4
 };
 
 export enum CompanyStatuses {
-  None = 0,
-  Inactive = 1,
-  Active = 2,
-  Unavaliable = 3
+  NONE = 0,
+  INACTIVE = 1,
+  ACTIVE = 2,
+  UNAVALIABLE = 3
 }
 
 // driver enums
 export enum DriverTypes {
-  CompanyDriver = 1,
-  OwnerOperator = 2
+  COMPANY_DRIVER = 1,
+  OWNER_OPERATOR = 2
 };
 
 export enum DriverStatuses {
-  None = 0,
-  Inactive = 1,
-  Active = 2,
-  Unavaliable = 3
+  NONE = 0,
+  INACTIVE = 1,
+  ACTIVE = 2,
+  UNAVALIABLE = 3
 }
 
-export enum DriverPaymentTypes {
-  PerMile = 1,
-  Percentage = 2,
-  Hourly = 3,
-  Flat = 4
+export enum DriverPaymentOptions {
+  PER_MILE = 1,
+  PERCENTAGE = 2,
+  HOURLY = 3,
+  FLAT = 4
 }
 
 // equipment enums
 export enum EquipmentTypes {
-  None = 0,
-  Trailer = 1,
-  PowerUnit = 2
+  NONE = 0,
+  TRAILER = 1,
+  POWER_UNIT = 2
 };
 
 export enum EquipmentModes {
-  None = 0,
-  Company = 1,
-  OwnerOperator = 2
+  NONE = 0,
+  COMPANY = 1,
+  OWNER_OPERATOR = 2
 };
 
 export enum EquipmentStatuses {
-  None = 0,
-  Inactive = 1,
-  Active = 2,
-  NotAvaliable = 3
+  NONE = 0,
+  INACTIVE = 1,
+  ACTIVE = 2,
+  NOT_AVALIABLE = 3
 }
 
 export enum EquipmentVehicleOperatings {
-  InterState = 1,
-  IntraState = 2
+  INTER_STATE = 1,
+  INTRA_STATE = 2
 }
 
 // load enums
 export enum LoadStatuses {
-  Booked = 1,
-  Assigned = 2,
-  Pending = 3,
-  Scheduled = 4,
-  EnRoute = 5,
-  InTransit = 6,
-  Delivered = 7,
-  Completed = 8,
-  Canceled = 9,
+  BOOKED = 1,
+  ASSIGNED = 2,
+  PENDING = 3,
+  SCHEDULED = 4,
+  EN_ROUTE = 5,
+  IN_TRANSIT = 6,
+  DELIVERED = 7,
+  COMPLETED = 8,
+  CANCELED = 9,
 }
 
 export enum DriverRequirements {
-  Solo = 1
+  SOLO = 1
 };
 
 export enum LoadType {
@@ -81,90 +81,90 @@ export enum LoadType {
 };
 
 export enum FreightType {
-  Dry = 1,
-  Reefer = 2
+  DRY = 1,
+  REEFER = 2
 }
 
 export enum PowerUnitTypes {
-  Tractor = 1,
-  StraightTruck25 = 2,
-  StraightTruckFlatbed = 3,
-  Bus = 4,
-  Other = 5
+  TRACTOR = 1,
+  STRAIGHT_TRUCK_25 = 2,
+  STRAIGHT_TRUCK_FLATBED = 3,
+  BUS = 4,
+  OTHER = 5
 };
 
 export enum TrailerTypes {
-  DryVan53 = 1,
-  Reefer = 2,
-  DryVan48 = 3,
-  Reefer48 = 4,
-  FlatBed53 = 5,
-  Other = 6,
+  DRY_VAN_53 = 1,
+  REEFER = 2,
+  DRY_VAN_48 = 3,
+  REEFER_48 = 4,
+  FLAT_BED_53 = 5,
+  OTHER = 6,
 };
 
 // notification enums
 export enum NotificationStatus {
-  New = 1,
-  Add = 2,
-  Error = 3
+  NEW = 1,
+  ADD = 2,
+  ERROR = 3
 };
 
 export enum NotificationType {
-  Notification = 1,
-  Message = 2,
-  Task = 3
+  NOTIFICATION = 1,
+  MESSAGE = 2,
+  TASK = 3
 };
 
 export enum NotificationPriority {
-  High = 1,
-  Middle = 2,
-  Low = 3,
+  HIGH = 1,
+  MIDDLE = 2,
+  LOW = 3,
 };
 
 export enum TaskType {
-  New = 1,
-  InProgress = 2,
-  Done = 3,
-  Error = 4
+  NEW = 1,
+  IN_PROGRESS = 2,
+  DONE = 3,
+  ERROR = 4
 }
 
 // stop enums
 export enum StopTypes {
-  None = 0,
-  Pickup = 1,
-  Dropoff = 2
+  NONE = 0,
+  PICKUP = 1,
+  DROPOFF = 2
 };
 
 export enum StopStatuses {
-  None = 0,
-  Pending = 1,
-  InProgress = 2,
-  Completed = 3,
-  Problem = 4
+  NONE = 0,
+  PENDING = 1,
+  IN_PROGRESS = 2,
+  COMPLETED = 3,
+  PROBLEM = 4
 };
 
 export enum ContactInfoType {
-  None = 0,
-  Phone = 1,
-  Fax = 2,
-  Email = 3
+  NONE = 0,
+  PHONE = 1,
+  FAX = 2,
+  EMAIL = 3
 };
 
 export enum LicenseClassTypes {
-  None = 0,
-  ClassA = 1,
-  ClassB = 2,
-  ClassC = 3
+  NONE = 0,
+  CLASS_A = 1,
+  CLASS_B = 2,
+  CLASS_C = 3
 };
 
 export enum AppointmentTypes {
-  None = 0,
+  NONE = 0,
   FCFS = 1,
   APPT = 2
 }
 
 export enum StopActionTypes {
-    None = 0,
-    Pickup = 1,
-    Dropoff = 2
+    NONE = 0,
+    PICKUP = 1,
+    DROPOFF = 2
 }

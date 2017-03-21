@@ -98,7 +98,7 @@ module.exports = function(config) {
     //singleRun: false,
 
     retryLimit: 10,
-    
+
     browserNoActivityTimeout: 0
   };
 

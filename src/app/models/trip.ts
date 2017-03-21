@@ -4,7 +4,7 @@ import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
 
 export class Trip {
-  id: number;
+  id: string;
   number: string = '';
   @Type(() => Equipment)
   truck: Equipment;

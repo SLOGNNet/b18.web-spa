@@ -73,6 +73,7 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
 
 @NgModule({
   providers: [
+    HttpService,
     NotificationService,
     LoadService,
     SocketService,
@@ -86,7 +87,6 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdFormBuilder,
     FormValidationService,
     DatePipe,
-    HttpService,
     EmailValidator,
     PhoneValidator,
     StateService,

@@ -10,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
 }, BaseListForm.metaData))
 export class DropoffsFormComponent extends BaseListForm<Stop>  {
 
-  @Input() type: StopTypes = StopTypes.None;
+  @Input() type: StopTypes = StopTypes.NONE;
 
   constructor(formBuilder: FormBuilder, elementRef: ElementRef) {
     super(formBuilder, elementRef);
