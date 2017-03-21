@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpService } from '../http.service';
-import { Driver } from './models';
+import { Driver, DriverPaymentOptions } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
 import { generatePersistId } from '../../helpers';
@@ -38,8 +38,8 @@ export class DriverService {
    }
 
   update(driver: Driver) {
-    return this.http
-      .put(this.getEquipmentUrl(''), classToPlain(driver));
+     return this.http
+      .put(this.getEquipmentUrl(driver.id), classToPlain(driver));
   }
 
   getEquipmentUrl(entityUrl: String) {

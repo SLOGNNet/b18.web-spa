@@ -63,8 +63,7 @@ export class Driver extends Member {
   associatedEquipments: Array<Equipment> = [];
   @Transform(toEnumTransformer(DriverPaymentOptions), { toClassOnly: true })
   @Transform(fromEnumTransformer(DriverPaymentOptions), { toPlainOnly: true })
-  @Expose({ name: 'paymentOptions' })
-  paymentType: DriverPaymentOptions;
+  paymentOptions: DriverPaymentOptions;
   rate: number = 0;
   type: DriverTypes = DriverTypes.COMPANY_DRIVER;
   hireDate: Date = null;
@@ -87,7 +86,7 @@ export class Driver extends Member {
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentType = DriverPaymentOptions.PER_MILE;
+    result.paymentOptions = DriverPaymentOptions.PER_MILE;
     result.type = DriverTypes.COMPANY_DRIVER;
     result.status = DriverStatuses.ACTIVE;
 

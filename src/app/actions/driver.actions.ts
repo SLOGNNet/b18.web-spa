@@ -43,11 +43,10 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     driver = plainToClass(Driver, driver);
     this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST, driver });
 
-    setTimeout(() => {
-      this.driverService.update(driver);
+    this.driverService.update(driver).subscribe(() => {
       this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_SUCCESS, driver });
       this.notificatonService.sendNotification('Driver updated.', `${driver.firstName} ${driver.lastName} was updated.`);
-    }, 3000);
+    });
   }
 
   select(driverId: string): void {

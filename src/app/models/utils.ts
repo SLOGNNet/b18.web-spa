@@ -6,9 +6,8 @@ interface Enum {
 
 export function toEnumTransformer<Enum>(enumType: Enum) {
     return (value: string | number) => {
-            debugger;
       if (isNumber(value)) {
-        return enumType[value];
+        return value;
       }
       else {
         const parsed  = <Enum> (value && !isNumber(value) ? enumType[value] : 0);
@@ -19,7 +18,6 @@ export function toEnumTransformer<Enum>(enumType: Enum) {
 
 export function fromEnumTransformer<Enum>(enumType: Enum) {
     return (value: string | number) => {
-      debugger;
       if (isNumber(value)) {
         const parsed: string = (value === 0) ? null : enumType[value];
         return parsed;
