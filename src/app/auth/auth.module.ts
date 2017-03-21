@@ -5,19 +5,27 @@ import { BdFormsModule } from '../forms/forms.module';
 
 import {
   AuthWrapperComponent,
-  LoginComponent,
-  RegisterComponent,
-  PhoneConfirmationComponent,
-  EmailWasSentComponent,
-  EmailConfirmationComponent,
   AuthGeneralFormErrorComponent,
   AuthFormMessageHelperComponent,
+  LoginComponent,
+  RegisterComponent,
+  RegisterPhoneConfirmationComponent,
+  RegisterEmailSentComponent,
+  RegisterEmailConfirmationComponent,
+  PasswordRecoveryComponent,
+  PasswordRecoveryPhoneConfirmationComponent,
+  PasswordRecoveryEmailSentComponent,
+  PasswordRecoveryEmailConfirmationComponent,
+  NewPasswordComponent,
   TestFormComponent
  } from './components';
 import {
   LoginFormComponent,
   RegisterFormComponent,
-  PhoneConfirmationFormComponent
+  RegisterPhoneConfirmationFormComponent,
+  PasswordRecoveryFormComponent,
+  PasswordRecoveryPhoneConfirmationFormComponent,
+  NewPasswordFormComponent
 } from './forms';
 import { AuthGuard } from './guards';
 import { AuthenticationService } from './services';
@@ -32,16 +40,24 @@ import { AuthRoutingModule } from './auth.routing';
   ],
   declarations: [
     AuthWrapperComponent,
-    LoginComponent,
-    RegisterComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
-    PhoneConfirmationComponent,
-    PhoneConfirmationFormComponent,
-    EmailConfirmationComponent,
-    EmailWasSentComponent,
     AuthGeneralFormErrorComponent,
     AuthFormMessageHelperComponent,
+    LoginComponent,
+    RegisterComponent,
+    RegisterPhoneConfirmationComponent,
+    RegisterEmailSentComponent,
+    RegisterEmailConfirmationComponent,
+    PasswordRecoveryComponent,
+    PasswordRecoveryPhoneConfirmationComponent,
+    PasswordRecoveryEmailSentComponent,
+    PasswordRecoveryEmailConfirmationComponent,
+    NewPasswordComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
+    RegisterPhoneConfirmationFormComponent,
+    PasswordRecoveryFormComponent,
+    PasswordRecoveryPhoneConfirmationFormComponent,
+    NewPasswordFormComponent,
     TestFormComponent
   ],
   providers: [

@@ -1,0 +1,22 @@
+@import '../../../../../../assets/styles/variables';
+
+.mileage-container {
+  display: flex;
+  height: 35px;
+  padding: 0 $default-margin;
+  background: $white;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  align-items: center;
+  justify-content: space-between;
+
+  .info-container {
+    color: $black;
+  }
+
+  .date-container {
+    .date {
+      color: $dark-grey;
+    }
+  }
+}

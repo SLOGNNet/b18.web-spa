@@ -5,7 +5,7 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentTypes, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location
+  AppointmentTypes, StopAction, TripStop, Location, Mileage
 } from './models';
 class MockData {
 
@@ -294,6 +294,26 @@ class MockData {
     notes: ''
   }];
 
+  mileages: Array<Mileage> = [{
+    id: '1',
+    value: '2017',
+    date: new Date()
+  },
+  {
+    id: '2',
+    value: '1086',
+    date: new Date()
+  },
+  {
+    id: '3',
+    value: '300',
+    date: new Date()
+  },
+  {
+    id: '4',
+    value: '4515',
+    date: new Date()
+  }];
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
@@ -315,8 +335,9 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
-      id: 5,
+      id: 1,
       firstName: 'Jason',
       middleName: 'Chang',
       lastName: 'Chang',
@@ -333,6 +354,7 @@ class MockData {
       hireDate: null,
       terminationDate: null,
       status: DriverStatuses.Active,
+      fullName: 'Jason Chang',
       notes: 'notes',
       lastTripNumber: 349611,
       lastAddress: '2229 San Pedro Rd, North Sacramento',
@@ -357,11 +379,12 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
-      id: 5,
-      firstName: 'Jason',
+      id: 2,
+      firstName: 'Emma',
       middleName: 'Chang',
-      lastName: 'Chang',
+      lastName: 'Watson',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
       dateOfBirth: null,
@@ -377,6 +400,7 @@ class MockData {
       status: DriverStatuses.Active,
       notes: 'notes',
       lastTripNumber: 349611,
+      fullName: 'Emma Watson',
       lastAddress: '2229 San Pedro Rd, North Sacramento',
       license: null
     }
@@ -422,6 +446,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349611,
+    fullName: 'Jason Chang',
     lastAddress: '2229 San Pedro Rd, North Sacramento',
     license: this.licenses[1]
   }, {
@@ -444,6 +469,7 @@ class MockData {
     status: DriverStatuses.Active,
     notes: 'notes',
     lastTripNumber: 349777,
+    fullName: 'Emma Watson',
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     license: this.licenses[0]
   }];

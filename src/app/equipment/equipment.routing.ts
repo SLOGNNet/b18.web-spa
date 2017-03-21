@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { EquipmentDetailComponent } from './components';
+import { EquipmentDetailComponent, EquipmentEditComponent } from './components';
 import { EquipmentComponent } from './equipment.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from '../guards';
@@ -9,6 +9,22 @@ const routes: Routes = [{
   path: '',
   component: EquipmentComponent,
   children: [
+     {
+      path: '0',
+      children: [
+        {
+          path: '',
+          component: EmptyComponent,
+          outlet: 'detailOutlet',
+        },
+        {
+          path: 'edit',
+          component: EquipmentEditComponent,
+          data: { new: true },
+          canDeactivate: [CanDeactivateGuard]
+        }
+      ]
+    },
     {
       path: ':id',
       children: [
@@ -24,7 +40,7 @@ const routes: Routes = [{
       },
       {
           path: 'edit',
-          component: EmptyComponent,
+          component: EquipmentEditComponent,
           canDeactivate: [CanDeactivateGuard]
       }
       ]

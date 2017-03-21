@@ -15,4 +15,8 @@ export class Member {
     result.id = generateNewId();
     return result;
   }
+
+  get fullName() {
+    return [this.firstName, this.lastName].filter(v => v).join(' ');
+  }
 }

@@ -4,8 +4,7 @@ import { ViewMode } from '../../../shared/enums';
 
 @Component({
   selector: 'bd-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
 

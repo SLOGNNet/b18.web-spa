@@ -27,14 +27,14 @@ export class CompanyEditComponent extends BaseEditComponent<Company> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
     route: ActivatedRoute,
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(companyActions, ngRedux.select(state => state.companies.selected),
-        ngRedux.select(state => state.companies.isLoading), route, router, location);
+        ngRedux.select(state => state.companies.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

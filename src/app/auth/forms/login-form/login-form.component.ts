@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../services';
 @Component(Object.assign({
   selector: 'bd-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss', '../../components/auth-wrapper/spinner.scss']
+  styleUrls: ['../../../../assets/styles/form-control.scss']
 }, BaseForm.metaData))
 export class LoginFormComponent extends BaseForm implements OnInit {
 

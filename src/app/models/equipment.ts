@@ -117,6 +117,17 @@ export class EquipmentNotification {
   date: Date;
 }
 
+export class Mileage {
+  id: string;
+  value: string = '';
+  date: Date;
+  constructor(){
+    this.id = generateNewId().toString();
+    this.value = '1234';
+    this.date = new Date();
+  }
+}
+
 export class Equipment {
   id: number = 0;
   make: string = 'Kenworth';
@@ -138,6 +149,7 @@ export class Equipment {
   licensePlateNumber: string = '';
   licensePlateExpiration: Date = null;
   isSleeperBerthAvailable: boolean = true;
+  mileages: Array<Mileage>;
 
   static create(): Equipment {
     const result = new Equipment();
