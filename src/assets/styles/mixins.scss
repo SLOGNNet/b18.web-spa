@@ -21,7 +21,7 @@
 
   .left {
     width: 50%;
-    padding: $default-margin 0;
+    padding: $default-margin $default-margin $default-margin 0;
     border-right: $border;
   }
 
