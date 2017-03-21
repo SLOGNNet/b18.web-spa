@@ -10,7 +10,7 @@
   <equipment-form
     [scrollable]="true"
     [disabled]="isLoading"
-    [equipment]="selected$ | async"
+    [equipment]="selectedItem"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"
     (cancel)="onItemCancel()">

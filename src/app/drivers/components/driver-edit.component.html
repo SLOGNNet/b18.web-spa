@@ -10,7 +10,7 @@
   <driver-form
     [scrollable]="true"
     [disabled]="isLoading"
-    [driver]="selected$ | async"
+    [driver]="selectedItem"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"
     (cancel)="onItemCancel()">
