@@ -53,6 +53,10 @@ export class HttpService {
     .catch(this.handleError);
   }
 
+  extractData(res: any): any {
+    return res.json();
+  }
+
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
@@ -62,9 +66,5 @@ export class HttpService {
       errMsg = error.message ? error.message : error.toString();
     }
     return Observable.throw(errMsg);
-  }
-
-  extractData(res: any): any {
-    return res.json();
   }
 }
