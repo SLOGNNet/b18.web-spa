@@ -45,8 +45,12 @@
       display: flex;
       justify-content: space-between;
 
-      .value {
-        color: $black;
+      span {
+        line-height: 18px;
+
+        &.value {
+          color: $black;
+        }
       }
     }
   }

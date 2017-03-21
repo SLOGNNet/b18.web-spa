@@ -1,0 +1,36 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/form-control';
+@import '../../../assets/styles/font-icons';
+
+.mileage-form-container {
+  display: flex;
+
+  .mileage-value {
+    width: 25%;
+  }
+
+  .mileage-date {
+    flex: 1;
+  }
+
+  .btn-container {
+    display: flex;
+    background: $white;
+    min-width: 40px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: $border;
+
+    button {
+      padding: 0 $default-margin;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      outline: 0;
+
+      &.btn-add {
+        padding-left: 0;
+      }
+    }
+  }
+}

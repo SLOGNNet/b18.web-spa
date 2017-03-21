@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company, CompanyStatuses, CompanyTypes } from '../../../../../models';
@@ -27,13 +27,14 @@ export class CompanyEditInfoComponent extends BaseEditComponent<Company>{
   }];
 
   constructor(
+    cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
     route: ActivatedRoute,
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(state => state.companies.selected),
-      ngRedux.select(state => state.companies.isLoading), route, router, location);
+      ngRedux.select(state => state.companies.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {
