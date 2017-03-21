@@ -22,8 +22,18 @@ function createStatusText() {
   return result;
 };
 
+function createTypeText() {
+ let result = {};
+  result[CompanyTypes.BROKER] = 'Broker';
+  result[CompanyTypes.FREIGHT_FORWARDER] = 'Freight Forwarder';
+  result[CompanyTypes.SHIPPER] = 'Shipper';
+  result[CompanyTypes.CARRIER] = 'Carrier';
+  return result;
+};
+
 const statusColors = createStatusColors();
 const statusText = createStatusText();
+const typeText = createTypeText();
 
 export class Company {
   id: string;
@@ -49,6 +59,10 @@ export class Company {
 
   public static getStatusColor(status: CompanyStatuses): string {
     return statusColors[status];
+  }
+
+  public static getTypeText (type: CompanyTypes): string {
+    return typeText[type];
   }
 
   static getStatusText(status: CompanyStatuses) {

@@ -5,18 +5,19 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location
+  AppointmentTypes, StopAction, TripStop, Location, Mileage
 } from './models';
 class MockData {
 
   public addresses: Array<Address> = [{
     id: '1',
     streetAddress1: '14701 Charlson Road, United States',
-    streetAddress2: '',
+    streetAddress2: 'SUITE 550',
     city: 'Eden Prairie',
     state: 'MN',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: '2',
@@ -25,7 +26,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: '3',
@@ -34,7 +36,8 @@ class MockData {
     city: 'Phoenix',
     state: 'AZ',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: '4',
@@ -43,7 +46,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   },
   {
     id: '5',
@@ -52,7 +56,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 40.795675,
-    longitude: -73.93600099999998
+    longitude: -73.93600099999998,
+    zip: '11111'
   }
   ];
 
@@ -63,7 +68,8 @@ class MockData {
     city: 'Dallas',
     state: 'MN',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: '4',
@@ -72,7 +78,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: '5',
@@ -81,7 +88,8 @@ class MockData {
     city: 'Dallas',
     state: 'TX',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: '6',
@@ -90,7 +98,8 @@ class MockData {
     city: 'Green Bay',
     state: 'WI',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   {
     id: '7',
@@ -99,7 +108,8 @@ class MockData {
     city: 'BOLINGBROOK',
     state: 'IL',
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    zip: '11111'
   },
   ];
 
@@ -284,6 +294,26 @@ class MockData {
     notes: ''
   }];
 
+  mileages: Array<Mileage> = [{
+    id: '1',
+    value: '2017',
+    date: new Date()
+  },
+  {
+    id: '2',
+    value: '1086',
+    date: new Date()
+  },
+  {
+    id: '3',
+    value: '300',
+    date: new Date()
+  },
+  {
+    id: '4',
+    value: '4515',
+    date: new Date()
+  }];
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
@@ -291,17 +321,21 @@ class MockData {
     make: 'Kenworth',
     model: 'T610',
     number: '101',
-    vin: '',
+    vin: '7653463667',
     notes: 'Oil Change',
     status: EquipmentStatuses.ACTIVE,
     type: EquipmentTypes.POWER_UNIT,
     subType: PowerUnitTypes.TRACTOR,
-    mode: EquipmentModes.COMPANY,
+    ownership: EquipmentModes.COMPANY,
     vehicleOperating: EquipmentVehicleOperatings.INTER_STATE,
-    driverType: DriverTypes.COMPANY_DRIVER,
     lastTripNumber: 349611,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
+    licensePlateState: 'ER24GT45G',
+    licensePlateNumber: '123123',
+    licensePlateExpiration: new Date(),
+    isSleeperBerthAvailable: true,
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
       id: '5',
       firstName: 'Jason',
@@ -320,6 +354,7 @@ class MockData {
       hireDate: null,
       terminationDate: null,
       status: DriverStatuses.ACTIVE,
+      memberFullName: 'Jason Chang',
       notes: 'notes',
       lastTripNumber: 349611,
       lastAddress: '2229 San Pedro Rd, North Sacramento',
@@ -330,22 +365,26 @@ class MockData {
     make: 'Wabash',
     model: 'CA9000(Referer 53)',
     number: '2349',
-    vin: '',
-    notes: '',
+    vin: '346474364537',
+    notes: 'test notes',
     status: EquipmentStatuses.ACTIVE,
     type: EquipmentTypes.TRAILER,
     subType: TrailerTypes.DRY_VAN_48,
-    mode: EquipmentModes.COMPANY,
+    ownership: EquipmentModes.COMPANY,
     vehicleOperating: EquipmentVehicleOperatings.INTER_STATE,
-    driverType: DriverTypes.OWNER_OPERATOR,
     lastTripNumber: 349616,
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     equipmentNotification: this.equipmentNotification[0],
+    licensePlateState: 'QYT4567FH5',
+    licensePlateNumber: '123123',
+    licensePlateExpiration: new Date(),
+    isSleeperBerthAvailable: true,
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
     driver: {
-      id: '5',
-      firstName: 'Jason',
+      id: '2',
+      firstName: 'Emma',
       middleName: 'Chang',
-      lastName: 'Chang',
+      lastName: 'Watson',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
       dateOfBirth: null,
@@ -361,6 +400,7 @@ class MockData {
       status: DriverStatuses.ACTIVE,
       notes: 'notes',
       lastTripNumber: 349611,
+      memberFullName: 'Emma Watson',
       lastAddress: '2229 San Pedro Rd, North Sacramento',
       license: null
     }
@@ -406,6 +446,7 @@ class MockData {
     status: DriverStatuses.ACTIVE,
     notes: 'notes',
     lastTripNumber: 349611,
+    memberFullName: 'Jason Chang',
     lastAddress: '2229 San Pedro Rd, North Sacramento',
     license: this.licenses[1]
   }, {
@@ -428,6 +469,7 @@ class MockData {
     status: DriverStatuses.ACTIVE,
     notes: 'notes',
     lastTripNumber: 349777,
+    memberFullName: 'Emma Watson',
     lastAddress: '2229 San Pedro Rd, North Sacramento, California',
     license: this.licenses[0]
   }];

@@ -18,4 +18,8 @@ export class Member {
     result.id = generateNewId();
     return result;
   }
+
+  get memberFullName() {
+    return [this.firstName, this.lastName].filter(v => v).join(' ');
+  }
 }

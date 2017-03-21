@@ -1,0 +1,23 @@
+<div class="location-container">
+  <div class="left">
+      <bd-initials-circle class="initials-circle" [firstName]="contact.firstName" [lastName]="contact.lastName">
+      </bd-initials-circle>
+      <div class="full-name-icons-container">
+        <div class="full-name">
+          {{contact.firstName}} {{contact.lastName}}
+        </div>
+        <div class="icons">
+          <span class="icon-mail"></span>
+          <span class="icon-call"></span>
+          <span class="icon-message"></span>
+        </div>
+      </div>
+  </div>
+  <div class="right">
+    <div class="position">{{contact.position}}</div>
+    <div class="location-name-container">
+      <span class="icon-location"></span>
+      <span>{{contact.location.name}}</span>
+    </div>
+  </div>
+</div>

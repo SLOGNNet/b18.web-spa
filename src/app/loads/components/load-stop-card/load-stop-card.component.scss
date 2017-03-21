@@ -6,6 +6,10 @@
   &.active,
   &:hover {
     background: $light-blue;
+
+    .status-text {
+      background: $light-blue;
+    }
   }
 
   &.active {
@@ -104,8 +108,9 @@
   .status-text {
     position: absolute;
     right: 35px;
+    padding: 5px 0 5px 13px;
     line-height: 1em;
-    bottom: 13px;
+    bottom: 8px;
     justify-content: center;
   }
 

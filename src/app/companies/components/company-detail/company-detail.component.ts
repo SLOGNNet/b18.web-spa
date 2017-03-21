@@ -9,14 +9,21 @@ import { IAppState } from '../../../store';
 @Component({
   selector: 'company-detail',
   templateUrl: './company-detail.component.html',
+  styleUrls: ['./company-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
   private anchors = [{
-    id: 'company-personal-information',
-    title: 'Information'
-  }];
+    id: 'basic-information',
+    title: 'Basic Information'
+  }, {
+      id: 'address',
+      title: 'Address'
+    }, {
+      id: 'contacts',
+      title: 'Contacts'
+    }];
 
   constructor(
     cdr: ChangeDetectorRef,
@@ -25,5 +32,9 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
+  }
+
+  onEditInfoClick() {
+    this.router.navigate(['./edit-info'],  {preserveQueryParams: true, relativeTo: this.route});
   }
 }

@@ -66,7 +66,7 @@ import { FilterContainer, AutocompleteFilter, FilterItem } from './components/fi
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
-import { EmailValidator } from './validators';
+import { EmailValidator, PhoneValidator } from './validators';
 import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
@@ -88,6 +88,7 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     FormValidationService,
     DatePipe,
     EmailValidator,
+    PhoneValidator,
     StateService,
     LicenseService,
     Constants

@@ -5,6 +5,7 @@ export class Address {
   streetAddress1: string = '';
   streetAddress2: string = '';
   city: string = '';
+  zip: string = '';
   state: string = '';
   latitude: number = 0;
   longitude: number = 0;

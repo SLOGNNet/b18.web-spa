@@ -33,14 +33,14 @@ export class DriverEditComponent extends BaseEditComponent<Driver> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     private driverActions: DriverActions,
     route: ActivatedRoute,
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(driverActions, ngRedux.select(state => state.drivers.selected),
-        ngRedux.select(state => state.drivers.isLoading), route, router, location);
+        ngRedux.select(state => state.drivers.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

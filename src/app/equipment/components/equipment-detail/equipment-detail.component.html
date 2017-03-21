@@ -1,0 +1,23 @@
+<div *ngIf="selectedItem">
+  <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="equipmentInfo" [anchors]="anchors">
+      <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
+      </bd-form-button>
+  </form-navigation>
+  <div class="equipment-detail-container">
+    <navigation-anchor id="equipment-detail-employment"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'EMPLOYMENT'" [addButton]="false" [editButton]="false">
+      <equipment-employment [equipment]="selectedItem"></equipment-employment>
+    </bd-view-detail-section>
+    <navigation-anchor id="equipment-detail-details"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'EQUIPMENT DETAILS'" [addButton]="false" [editButton]="false">
+      <equipment-details [equipment]="selectedItem"></equipment-details>
+    </bd-view-detail-section>
+    <navigation-anchor id="equipment-detail-mileage"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'MILEAGE'" [addButton]="false" [editButton]="false">
+      <equipment-mileage 
+        *ngFor="let record of selectedItem.mileages"
+        [mileage]="record">
+      </equipment-mileage>
+    </bd-view-detail-section>
+  </div>
+</div>

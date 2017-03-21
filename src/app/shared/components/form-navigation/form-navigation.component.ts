@@ -17,6 +17,7 @@ export class FormNavigationComponent implements OnChanges {
   private _anchorsButton = [];
   private _activeAnchor: number = 0;
   private _scrollableContainer = null;
+  private _suspendScrollEvent = false;
 
   constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
   }
@@ -67,6 +68,11 @@ export class FormNavigationComponent implements OnChanges {
   }
 
   private _onParentScrolled(e) {
+    if (this._suspendScrollEvent) {
+      this._suspendScrollEvent = false;
+      return;
+    }
+
     let activeIndex = findLastIndex(this._anchorList,
       anchor => anchor.offsetTop - this._anchorOffset <= e.srcElement.scrollTop,
       this._anchorList.length - 1);
@@ -101,6 +107,7 @@ export class FormNavigationComponent implements OnChanges {
 
       if (targetAnchor && targetAnchor.scrollIntoView) {
         this._activeAnchor = index;
+        this._suspendScrollEvent = true;
         targetAnchor.scrollIntoView();
       }
     }

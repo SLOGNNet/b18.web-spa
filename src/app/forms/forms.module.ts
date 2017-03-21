@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CompanyForm } from './company-form';
+import { CompanyInfoForm } from './company-info-form';
 import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
@@ -16,12 +17,16 @@ import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
 import { LicenseForm } from './license-form';
 import { LocationForm } from './location-form';
+import { EquipmentForm } from './equipment-form';
+import { MileagesForm } from './mileages-form';
+import { MileageForm } from './mileage-form';
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
 @NgModule({
   declarations: [
     CompanyForm,
+    CompanyInfoForm,
     AddressForm,
     LocationsForm,
     ContactForm,
@@ -41,13 +46,17 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     ContactsInfoForm,
     ContactInfoForm,
     LicenseForm,
-    LocationForm
+    LocationForm,
+    EquipmentForm,
+    MileagesForm,
+    MileageForm
   ],
   imports: [
     SharedModule
   ],
   exports: [
     CompanyForm,
+    CompanyInfoForm,
     LoadFormComponent,
     DriverForm,
     LoadDocumentFormComponent,
@@ -55,7 +64,10 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DropoffpCommodityComponent,
     PickupCommodityComponent,
     LicenseForm,
-    LocationForm
+    LocationForm,
+    EquipmentForm,
+    MileagesForm,
+    MileageForm
   ]
 })
 export class BdFormsModule {

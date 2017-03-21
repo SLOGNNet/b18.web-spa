@@ -10,7 +10,7 @@
   <company-form
     [disabled]="isLoading"
     [scrollable]="true"
-    [company]="selected$ | async"
+    [company]="selectedItem"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"
     (cancel)="onItemCancel()">

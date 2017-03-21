@@ -1,0 +1,16 @@
+<div class="location-container">
+  <div class="left">
+    <div class="name">
+      {{location.name}}
+    </div>
+
+    <div class="street-address-container">
+      <span class="icon-location"></span>
+      <span>{{streetAddress}}</span>
+    </div>
+    <div class="notes">Notes</div>
+  </div>
+  <div class="right">
+    <bd-contact-info [contactCollection]="location.contactInfo"></bd-contact-info>
+  </div>
+</div>
