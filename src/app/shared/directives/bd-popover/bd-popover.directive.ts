@@ -47,7 +47,7 @@ export class BdPopover implements OnChanges {
     popoverCloseOnMouseOutside: boolean;
 
     @Input()
-    popoverShowTimeout: number = 200;
+    popoverShowTimeout: number = 250;
 
     @Input()
     popoverDismissTimeout: number = 0;
