@@ -1,4 +1,4 @@
-<template let-data ngFor [ngForOf]="renderFormData" let-i="index" let-last="last">
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index" let-last="last" [ngForTrackBy]="trackBy">
     <mileage-form 
         [group]='data.group' 
         [mileageRecord]='data.item' 

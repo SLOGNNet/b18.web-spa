@@ -118,9 +118,11 @@ export class EquipmentNotification {
 }
 
 export class MileageRecord {
+  id: string;
   value: string = '';
   date: Date;
   constructor(){
+    this.id = generateNewId().toString();
     this.value = '1234';
     this.date = new Date();
   }

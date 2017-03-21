@@ -295,18 +295,22 @@ class MockData {
   }];
 
   mileageRecords: Array<MileageRecord> = [{
+    id: '1',
     value: '2017',
     date: new Date()
   },
   {
+    id: '2',
     value: '1086',
     date: new Date()
   },
   {
+    id: '3',
     value: '300',
     date: new Date()
   },
   {
+    id: '4',
     value: '4515',
     date: new Date()
   }];

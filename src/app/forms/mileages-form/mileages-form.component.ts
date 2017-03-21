@@ -21,4 +21,8 @@ export class MileagesForm extends BaseListForm<MileageRecord>  {
   createItem(): MileageRecord {
     return new MileageRecord();
   }
+
+  trackBy(index: number, info: MileageRecord) {
+    return info.id;
+  }
 }
