@@ -19,7 +19,7 @@ export class Member {
     return result;
   }
 
-  get memberFullName() {
+  get fullName() {
     return [this.firstName, this.lastName].filter(v => v).join(' ');
   }
 }

@@ -13,8 +13,11 @@ $element-height: 18px;
     }
 
     .street-address-container {
-      @include multi-line-ellipsis($line-height: 18px, $line-count: 2);
       color: $dark-grey;
+    }
+
+    .notes {
+      word-wrap: break-word;
     }
   }
 }
