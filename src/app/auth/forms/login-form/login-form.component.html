@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm)" class="login-form edit">
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit(loginForm)" class="auth-form">
   <bd-auth-general-form-error *ngIf="isLoginFailed && loginForm.pristine"
     [headerText]="'Unable to login.'">
     Please check that you have entered your Login and Password correctly.

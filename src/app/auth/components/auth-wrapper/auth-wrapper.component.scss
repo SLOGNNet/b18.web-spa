@@ -1,4 +1,71 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/form-control';
+@import '../../../../assets/styles/styles';
+
+:host /deep/ {
+  .auth-component {
+    width: 480px;
+
+    h3 {
+      color: $blue;
+      font-size: $large-font-size;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .auth-component-footer {
+      color: $dark-grey;
+      text-align: center;
+      margin-top: 15px;
+
+      a {
+        color: $dark-grey;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &:before {
+          position: relative;
+          top: 5px;
+          margin: 0 5px;
+          font-size: $extra-large-font-size;
+          content: '\00b7';
+        }
+
+        &:first-child {
+          &:before {
+            content: '';
+          }
+        }
+      }
+    }
+
+    .auth-form {
+      bd-label {
+        font-size: 10px;
+      }
+
+      .divider {
+        min-height: 20px;
+      }
+    }
+
+    bd-spinner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      overflow: hidden;
+      left: 0;
+      bottom: 0;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
 
 .auth-wrapper {
   display: flex;

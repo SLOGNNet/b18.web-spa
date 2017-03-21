@@ -1,0 +1,8 @@
+<div class="auth-component">
+  <h3>Sign Up</h3>
+  <bd-auth-general-form-error *ngIf="isConfirmationFailed"
+    [headerText]="'Email Confirmation Is Failed.'">
+  </bd-auth-general-form-error>
+  <bd-auth-form-message-helper *ngIf="!isConfirmationFailed">Email verification...</bd-auth-form-message-helper>
+  <bd-spinner *ngIf="isLoading"></bd-spinner>
+</div>
