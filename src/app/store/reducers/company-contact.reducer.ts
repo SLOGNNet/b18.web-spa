@@ -12,7 +12,7 @@ const INITIAL_STATE: ICompanyContactState = { items: [], selected: null, isLoadi
 
 export const companyContactReducer = createReducer(INITIAL_STATE, {
   [CompanyActions.SELECT_COMPANY](state, action) {
-    return Object.assign({}, state, { items: action.company.contacts, selected: null, isLoading: false });
+    return Object.assign({}, state, { items: action.company.contacts, isLoading: false });
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {

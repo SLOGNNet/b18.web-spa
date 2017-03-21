@@ -42,7 +42,9 @@ export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
     private ngRedux: NgRedux<IAppState>) {
     super(companyContactActions, ngRedux.select(state => state.contacts.selected),
       ngRedux.select(state => state.contacts.isLoading), route, router, location);
-
+    this.selected$.subscribe(item => {
+      this.resetForm();
+    });
     this.ngRedux.select(state => state.companies.selected).subscribe(selected => {
       this.selectedCompany = selected;
 
@@ -51,8 +53,14 @@ export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
       } else {
         this.locations = [];
       }
+
+      this.resetForm();
     });
+  }
+
+  resetForm() {
     this.contactForm = this.formBuilder.group({});
+    this.cdr.markForCheck();
   }
 
   isDetailsChanged() {

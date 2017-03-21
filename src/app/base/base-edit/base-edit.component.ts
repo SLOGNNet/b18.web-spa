@@ -66,7 +66,6 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   }
 
   redirectIfNewCreated(prevSelected, newSelected) {
-    debugger;
     if (newSelected && prevSelected
      && !prevSelected['prevId']
      && newSelected['prevId']
