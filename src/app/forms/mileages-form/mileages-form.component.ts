@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef } from '@angular/core';
 import { BaseListForm } from '../base-list-form';
 import { Contact } from '../../models';
-import { Location, MileageRecord } from '../../models';
+import { MileageRecord } from '../../models';
 import { FormBuilder } from '@angular/forms';
 
 @Component(Object.assign({
