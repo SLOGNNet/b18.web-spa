@@ -20,7 +20,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     route: ActivatedRoute,
     router: Router,
     private location: Location,
-    private cdr: ChangeDetectorRef) {
+    protected cdr: ChangeDetectorRef) {
     super(router, route);
     isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;

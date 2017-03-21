@@ -33,7 +33,7 @@ export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     companyContactActions: CompanyContactActions,
     route: ActivatedRoute,
@@ -41,7 +41,7 @@ export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
     router: Router,
     private ngRedux: NgRedux<IAppState>) {
     super(companyContactActions, ngRedux.select(state => state.contacts.selected),
-      ngRedux.select(state => state.contacts.isLoading), route, router, location);
+      ngRedux.select(state => state.contacts.isLoading), route, router, location, cdr);
     this.selected$.subscribe(item => {
       this.resetForm();
     });
