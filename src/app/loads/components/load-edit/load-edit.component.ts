@@ -35,14 +35,14 @@ export class LoadEditComponent extends BaseEditComponent<Load> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     loadActions: LoadActions,
     route: ActivatedRoute,
     router: Router,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(state => state.loads.selected),
-        ngRedux.select(state => state.loads.isLoading), route, router, location);
+        ngRedux.select(state => state.loads.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

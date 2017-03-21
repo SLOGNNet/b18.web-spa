@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 import { BasePane } from '../base';
 
 export abstract class BaseEditComponent<T> extends BasePane implements CanComponentDeactivate {
@@ -18,7 +19,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     protected isLoading$: Observable<boolean>,
     route: ActivatedRoute,
     router: Router,
-    private location: Location) {
+    private location: Location,
+    private cdr: ChangeDetectorRef) {
     super(router, route);
     isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;
@@ -26,6 +28,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     selected$.subscribe(item => {
       this.redirectIfNewCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
+      this.cdr.markForCheck();
     });
     this.route.params.subscribe(params => {
       this.checkNewItem();

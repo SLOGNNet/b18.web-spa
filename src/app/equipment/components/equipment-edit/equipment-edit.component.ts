@@ -29,14 +29,14 @@ export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
   }];
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    cdr: ChangeDetectorRef,
     private equipmentActions: EquipmentActions,
     route: ActivatedRoute,
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(equipmentActions, ngRedux.select(state => state.equipments.selected),
-        ngRedux.select(state => state.equipments.isLoading), route, router, location);
+        ngRedux.select(state => state.equipments.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {
