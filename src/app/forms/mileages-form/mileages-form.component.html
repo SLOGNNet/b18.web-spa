@@ -1,4 +1,11 @@
-<template let-data ngFor [ngForOf]="renderFormData" let-i="index">
-    <mileage-form [group]='data.group' [mileageRecord]='data.item' [disabled]="disabled" [viewMode]="viewMode">
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index" let-last="last">
+    <mileage-form 
+        [group]='data.group' 
+        [mileageRecord]='data.item' 
+        [disabled]="disabled" 
+        [viewMode]="viewMode" 
+        [isLast]="last" 
+        (addItem)="createItem()"
+        (removeItem)="removeItem(data)">
     </mileage-form>
 </template>

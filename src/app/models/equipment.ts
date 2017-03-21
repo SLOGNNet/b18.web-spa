@@ -118,10 +118,12 @@ export class EquipmentNotification {
 }
 
 export class MileageRecord {
-  type: string = '';
   value: string = '';
   date: Date;
-  constructor(){}
+  constructor(){
+    this.value = '1234';
+    this.date = new Date();
+  }
 }
 
 export class Equipment {

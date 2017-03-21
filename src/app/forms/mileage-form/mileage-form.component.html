@@ -3,17 +3,22 @@
     class="bd-form-control left-control mileage-value" 
     placeholder="miles" 
     formControlName="value">
-        <span class="suffix" bd-suffix>miles</span>
+        <span class="suffix" bd-suffix>mi</span>
   </bd-input>
   <bd-form-datepicker 
     class="bd-form-control middle-control mileage-date" 
-    placeholder="date" 
     formControlName="date">
   </bd-form-datepicker>
-  <div class="btn-container">
+  <div class="btn-container right-control">
     <button
-        class="right-control btn-remove icon-minus" 
-        (onClick)='addNewItem()' 
+        class="btn-remove icon-minus" 
+        (click)="removeMileageRecord()"
+        [disabled]="disabled">
+    </button>
+    <button
+        *ngIf="isLast"
+        class="btn-add icon-plus" 
+        (click)="addNewMileageRecord()"
         [disabled]="disabled">
     </button>
   </div>

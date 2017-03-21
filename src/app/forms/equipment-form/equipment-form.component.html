@@ -1,6 +1,6 @@
 <form [formGroup]="equipmentForm" novalidate (ngSubmit)="submit(equipmentForm.value, equipmentForm.valid)">
 
-	<navigation-anchor id="equipment-employment-information" ></navigation-anchor>
+	<navigation-anchor id="equipment-employment-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'EMPLOYMENT'">
         <bd-input class="bd-form-control" formControlName="vin" [labelText]="'VIN'"></bd-input>
         <bd-dropdown class="bd-form-control" formControlName="ownership" [labelText]="'Equipment mode'" [items]="equipmentModes">
@@ -61,10 +61,10 @@
 		</bd-textarea>
 	</bd-form-section>
 
-	<navigation-anchor id="equipment-assignment-mileage"></navigation-anchor>
+	<navigation-anchor id="equipment-details-mileage" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'MILEAGE'">
 		<mileages-form 
-			[formArray]='equipmentForm.controls.mileages' 
+			[formArray]='equipmentForm.controls.mileageRecords' 
 			[disabled]="disabled" 
 			[items]='equipment.mileageRecords'
 			[viewMode]="viewMode">

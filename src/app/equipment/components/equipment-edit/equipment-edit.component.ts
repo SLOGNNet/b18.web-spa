@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Equipment } from '../../../models';
 import { BaseEditComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { EquipmentActions } from '../../../actions';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
-import { DriverForm } from '../../../forms';
+import { EquipmentForm } from '../../../forms';
 
 @Component({
   selector: 'equipment-edit',
@@ -14,6 +14,9 @@ import { DriverForm } from '../../../forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
+
+  @ViewChild(EquipmentForm) equipmentFormComponent: EquipmentForm;
+
   private anchors = [{
     id: 'equipment-employment-information',
     title: 'Employment'
@@ -33,11 +36,11 @@ export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
     router: Router,
     ngRedux: NgRedux<IAppState>) {
       super(equipmentActions, ngRedux.select(state => state.equipments.selected),
-        ngRedux.select(state => state.drivers.isLoading), route, router, location);
+        ngRedux.select(state => state.equipments.isLoading), route, router, location);
   }
 
   isDetailsChanged() {
-    return this;
+    return this.equipmentFormComponent && this.equipmentFormComponent.equipmentForm.dirty;
   }
 
 }

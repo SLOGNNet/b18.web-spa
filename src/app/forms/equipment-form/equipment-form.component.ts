@@ -13,7 +13,6 @@ import { FormValidationService, DriverService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { BaseForm } from '../base-form';
 
-
 @Component(Object.assign({
   selector: 'equipment-form',
   templateUrl: './equipment-form.component.html',
@@ -108,7 +107,7 @@ export class EquipmentForm extends BaseForm {
       licensePlateNumber: [{value: this.equipment.licensePlateNumber, disabled: this.disabled}],
       licensePlateState: [{value: this.equipment.licensePlateState, disabled: this.disabled}],
       licensePlateExpiration: [{value: this.equipment.licensePlateExpiration, disabled: this.disabled}],
-      mileages: this.formBuilder.array([]),
+      mileageRecords: this.formBuilder.array([]),
       notes: [{value: this.equipment.notes, disabled: this.disabled}],
     });
   }

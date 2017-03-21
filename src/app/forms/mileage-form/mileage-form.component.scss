@@ -15,17 +15,22 @@
 
   .btn-container {
     display: flex;
-    width: 40px;
     background: $white;
+    min-width: 40px;
     justify-content: center;
     align-items: center;
     border-bottom: $border;
 
     button {
+      padding: 0 $default-margin;
       border: 0;
       background: transparent;
       cursor: pointer;
       outline: 0;
+
+      &.btn-add {
+        padding-left: 0;
+      }
     }
   }
 }
