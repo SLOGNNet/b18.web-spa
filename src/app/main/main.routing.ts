@@ -8,11 +8,12 @@ import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
 import { DriversModule } from '../drivers';
 import { CompaniesModule } from '../companies';
+import { AuthGuard } from '../auth';
 import { EmptyComponent } from '../shared/components/empty';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent,
+  component: MainComponent, canActivate: [AuthGuard],
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
