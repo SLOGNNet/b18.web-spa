@@ -19,7 +19,7 @@ export const companyReducer = createReducer(INITIAL_STATE, {
   [CompanyActions.ADD_COMPANY_SUCCESS](state, action) {
       return Object.assign({}, state, {
         items: addItem(state.items, action.company),
-        selected: updateItem(state.selected, action.company),
+        selected: Object.assign({}, action.company),
         isLoading: false
       });
   },

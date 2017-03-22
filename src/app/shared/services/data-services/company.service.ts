@@ -25,6 +25,7 @@ export class CompanyService {
   }
 
   create(company: Company) {
+    company.id = new Date().getTime().toString();
     MockData.companies.push(company);
   }
 

@@ -27,6 +27,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     });
     selected$.subscribe(item => {
       this.redirectIfNewCreated(this.selectedItem, item);
+      this.redirectIfNewAddedCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
     });
@@ -73,6 +74,17 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
      && !prevSelected['prevId']
      && newSelected['prevId']
      && prevSelected['id'] === newSelected['prevId']) {
+      const newId = newSelected['id'];
+      super.rediretToId(newId);
+    }
+  }
+
+  redirectIfNewAddedCreated(prevSelected, newSelected) {
+    if (newSelected && prevSelected
+     && newSelected['id']
+     && !prevSelected['id']
+     && newSelected['id'].length > 2) {
+    debugger;
       const newId = newSelected['id'];
       super.rediretToId(newId);
     }

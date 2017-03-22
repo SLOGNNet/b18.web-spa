@@ -16,6 +16,7 @@ export class Contact {
 
   static create(): Contact{
     const result = new Contact();
+    result.contactInfo = [];
     return result;
   }
 

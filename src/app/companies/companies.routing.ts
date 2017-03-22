@@ -21,8 +21,8 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
         },
         {
-          path: 'edit',
-          component: CompanyEditComponent,
+          path: 'edit-info',
+          component: CompanyEditInfoComponent,
           data: { new: true },
           canDeactivate: [CanDeactivateGuard]
         }

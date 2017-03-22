@@ -26,7 +26,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST, company });
 
     setTimeout(() => {
-      this.companyService.update(company);
+      this.companyService.create(company);
       this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company });
       this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
     }, 3000);

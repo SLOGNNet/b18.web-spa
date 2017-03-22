@@ -36,6 +36,7 @@ export class ContactService {
   create(company: Company, contact: Contact) {
     MockData.companies.forEach(c => {
       if (c.id === company.id) {
+        contact.id = new Date().getTime().toString();
         c.contacts.push(contact);
       }
     });

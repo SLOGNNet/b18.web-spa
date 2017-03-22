@@ -16,11 +16,12 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {
-      isLoading: true
+      isLoading: true,
+      selected: action.contact
     });
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS](state, action) {
-    return Object.assign({}, state, { items: addItem(state.items, action.contact), isLoading: false });
+    return Object.assign({}, state, { items: addItem(state.items, action.contact), selected: Object.assign({}, action.contact), isLoading: false });
   },
   [CompanyContactActions.SELECT_COMPANY_CONTACT](state, action) {
     return Object.assign({}, state, { selected: action.contact, isLoading: false });
