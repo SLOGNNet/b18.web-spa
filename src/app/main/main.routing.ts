@@ -13,8 +13,7 @@ import { EmptyComponent } from '../shared/components/empty';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent,
-  // canActivate: [AuthGuard],
+  component: MainComponent, canActivate: [AuthGuard],
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },

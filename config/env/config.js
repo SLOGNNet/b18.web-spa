@@ -17,7 +17,7 @@ config = {
     hmr: helpers.hasProcessFlag('hot'),
     socketIoHost: 'http://localhost:5000',
     apiUrl: 'http://localhost:50324/v1/api/expedition/',
-    // authUrl: 'https://dev.bridge18.com/api/'
+    authUrl: 'https://dev.bridge18.com/api/'
   },
   publicdev: {
     socketIoHost: 'https://dev.bridge18.com',
