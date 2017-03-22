@@ -1,1 +1,1 @@
-<bd-input [placeholder]="datePlaceholder" [value]="_value" (valueChange)="onValueChange($event)" [disabled]="disabled" [format]='format' [labelText]="labelText" ngbDatepicker (focus)="onFocus($event)" #datepicker="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate"></bd-input>
+<bd-input [placeholder]="datePlaceholder" [ngModel]="_value" (ngModelChange)="onValueChange($event)" [disabled]="disabled" [format]='format' [labelText]="labelText" ngbDatepicker (focus)="onFocus($event)" #datepicker="ngbDatepicker" [minDate]="minDate" [maxDate]="maxDate"></bd-input>
