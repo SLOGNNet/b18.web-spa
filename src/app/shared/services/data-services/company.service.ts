@@ -20,7 +20,7 @@ export class CompanyService {
 
   getDetails(id: string): Observable<Company> {
     return Observable.of(
-      MockData.companies.find((company) => id === company.id)
+      Object.assign({}, MockData.companies.find((company) => id === company.id))
     );
   }
 

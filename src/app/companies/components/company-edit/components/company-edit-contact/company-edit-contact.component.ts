@@ -16,6 +16,7 @@ import { cloneDeep } from 'lodash';
   styleUrls: ['./company-edit-contact.component.scss']
 })
 export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
+  protected segment = 'edit-contact';
   @ViewChild(ContactForm) companyContactFormComponent: ContactForm;
   private locations$;
   private selectedCompany: Company;
@@ -79,4 +80,5 @@ export class CompanyEditContactComponent extends BaseEditComponent<Contact>{
       }
     }
   }
+
 }

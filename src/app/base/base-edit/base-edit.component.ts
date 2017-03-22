@@ -13,6 +13,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected isNew = false;
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
+  protected segment;
 
   constructor(protected actions: IDetailDataActions<T>,
     protected selected$: Observable<T>,
@@ -75,7 +76,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
      && newSelected['prevId']
      && prevSelected['id'] === newSelected['prevId']) {
       const newId = newSelected['id'];
-      super.rediretToId(newId);
+      super.rediretToId(newId, this.segment);
     }
   }
 
@@ -84,9 +85,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
      && newSelected['id']
      && !prevSelected['id']
      && newSelected['id'].length > 2) {
-    debugger;
       const newId = newSelected['id'];
-      super.rediretToId(newId);
+      super.rediretToId(newId, this.segment);
     }
   }
 

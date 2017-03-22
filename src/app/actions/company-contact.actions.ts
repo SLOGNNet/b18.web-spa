@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 import { Company, Contact } from '../models';
-import { ContactService, NotificationService } from '../shared';
+import { ContactService, CompanyService, NotificationService } from '../shared';
 import { IDetailDataActions } from './intefaces';
+import { CompanyActions } from './company.actions';
 
 @Injectable()
 export class CompanyContactActions implements IDetailDataActions<Contact> {
@@ -13,10 +14,11 @@ export class CompanyContactActions implements IDetailDataActions<Contact> {
   static UPDATE_COMPANY_CONTACT_SUCCESS: string = 'UPDATE_COMPANY_CONTACT_SUCCESS';
   static UPDATE_COMPANY_CONTACT_FAILURE: string = 'UPDATE_COMPANY_CONTACT_FAILURE';
   static SELECT_COMPANY_CONTACT: string = 'SELECT_COMPANY_CONTACT';
-  constructor (
+  constructor(
     private contactService: ContactService,
+    private companyActions: CompanyActions,
     private notificatonService: NotificationService,
-    private ngRedux: NgRedux<IAppState>) {}
+    private ngRedux: NgRedux<IAppState>) { }
 
   addChild(company: Company, contact: Contact): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST, contact });
@@ -24,6 +26,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact> {
     setTimeout(() => {
       this.contactService.create(company, contact);
       this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact });
+      this.companyActions.select(company.id);
       this.notificatonService.sendNotification('Company created.', `${contact.firstName} was created.`);
     }, 3000);
   }
