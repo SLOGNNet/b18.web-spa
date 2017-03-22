@@ -7,7 +7,7 @@ function createInfoTypes() {
     result[ContactInfoType.NONE] = 'None';
     result[ContactInfoType.PHONE] = 'Phone';
     result[ContactInfoType.FAX] = 'Fax';
-    result[ContactInfoType.EMAIL] = 'Email';
+    result[ContactInfoType.EMAIL] = 'mail-icon';
   return result;
 }
 

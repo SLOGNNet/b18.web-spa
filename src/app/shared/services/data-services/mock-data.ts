@@ -126,9 +126,15 @@ class MockData {
     },
     {
       label: 'Fax',
-      value: 'fax@gmail.comj',
+      value: 'fax',
       type: ContactInfoType.FAX
+    },
+    {
+      label: 'Email',
+      value: 'fax@gmail.comj',
+      type: ContactInfoType.EMAIL
     }
+
   ];
 
   public locations: Array<Location> = [
