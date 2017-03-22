@@ -21,4 +21,8 @@ export abstract class BaseCardComponent {
       this.statusText = false;
     }
 
+    ngOnInit() {
+      console.log(this.item);
+    }
+
 }
