@@ -3,7 +3,7 @@
 	<bd-form-section [disabled]="disabled" [labelText]="'PERSONAL INFO'">
 		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>
 		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
-		<bd-form-datepicker class="bd-form-control" formControlName="dateOfBirth" [labelText]="'Date Of Birth'" [minDate]="minBirthDate" [maxDate]="maxBirthDate"></bd-form-datepicker>
+		<bd-form-datepicker class="bd-form-control" formControlName="birthDate" [labelText]="'Date Of Birth'" [minDate]="minBirthDate" [maxDate]="maxBirthDate"></bd-form-datepicker>
 		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
 		<bd-dropdown class="bd-form-control" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
 		</bd-dropdown>

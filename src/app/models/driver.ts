@@ -53,7 +53,7 @@ const typeText = createTypeText();
 const paymentTypeText = createPaymentTypeText();
 
 export class Driver extends Member {
-  dateOfBirth: Date = null;
+  birthDate: Date = null;
   ssn: string = '';
   @Type(() => Equipment)
   currentTruck: Equipment = new Equipment();
@@ -81,7 +81,7 @@ export class Driver extends Member {
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();
-    result.dateOfBirth = null;
+    result.birthDate = null;
     result.hireDate = null;
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
