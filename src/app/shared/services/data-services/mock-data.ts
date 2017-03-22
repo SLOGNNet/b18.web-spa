@@ -126,7 +126,7 @@ class MockData {
     },
     {
       label: 'Fax',
-      value: 'fax',
+      value: '33324234',
       type: ContactInfoType.FAX
     },
     {
