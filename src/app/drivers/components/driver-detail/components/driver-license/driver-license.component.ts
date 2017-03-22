@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Driver, License } from '../../../../../models';
 import { Constants } from '../../../../../shared';
-import { isNil } from 'lodash';
 
 @Component({
   selector: 'driver-license',
@@ -19,10 +18,8 @@ export class DriverLicenseComponent {
 
   ngOnChanges(changes) {
     if (changes.driver) {
-      if (!isNil(this.driver.license.restrictions) && !isNil(this.driver.license.endorsments)) {
-        this.restrictionsTypes = this.driver.license.restrictions.split(' ').join(', ');
-        this.endorsmentsTypes = this.driver.license.endorsments.split(' ').join(', ');
-      }
+      this.restrictionsTypes  = this.driver.license.restrictions &&  this.driver.license.restrictions.split(' ').join(', ');
+      this.endorsmentsTypes = this.driver.license.endorsments && this.driver.license.endorsments.split(' ').join(', ');
     }
   }
 

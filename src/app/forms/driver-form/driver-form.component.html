@@ -18,7 +18,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
-		<bd-dropdown class="bd-form-control" formControlName="paymentOptions" [labelText]="'Payment options'" [items]="paymentsTypes">
+		<bd-dropdown class="bd-form-control" formControlName="paymentOption" [labelText]="'Payment option'" [items]="paymentsTypes">
 		</bd-dropdown>
 		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>

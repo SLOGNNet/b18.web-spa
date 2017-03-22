@@ -37,7 +37,7 @@ function createTypeText() {
 };
 
 // Payment Type Text
-function createPaymentTypeText() {
+function createPaymentOptionText() {
   let result = {};
   result[DriverPaymentOptions.PER_MILE] = 'Per Miles';
   result[DriverPaymentOptions.PERCENTAGE] = 'Percentage';
@@ -50,7 +50,7 @@ function createPaymentTypeText() {
 const statusColors = createStatusColors();
 const statusText = createStatusText();
 const typeText = createTypeText();
-const paymentTypeText = createPaymentTypeText();
+const paymentOptionText = createPaymentOptionText();
 
 export class Driver extends Member {
   birthDate: Date = null;
@@ -63,7 +63,7 @@ export class Driver extends Member {
   associatedEquipments: Array<Equipment> = [];
   @Transform(toEnumTransformer(DriverPaymentOptions), { toClassOnly: true })
   @Transform(fromEnumTransformer(DriverPaymentOptions), { toPlainOnly: true })
-  paymentOptions: DriverPaymentOptions;
+  paymentOption: DriverPaymentOptions;
   rate: number = 0;
   type: DriverTypes = DriverTypes.COMPANY_DRIVER;
   hireDate: Date = null;
@@ -86,7 +86,7 @@ export class Driver extends Member {
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
     result.currentTrailer = Equipment.create();
-    result.paymentOptions = DriverPaymentOptions.PER_MILE;
+    result.paymentOption = DriverPaymentOptions.PER_MILE;
     result.type = DriverTypes.COMPANY_DRIVER;
     result.status = DriverStatuses.ACTIVE;
 
@@ -105,8 +105,8 @@ export class Driver extends Member {
     return typeText[type];
   }
 
-  public static getPaymentTypeText(paymentType: DriverPaymentOptions): string {
-    return paymentTypeText[paymentType];
+  public static getPaymentOptionText(paymentOption: DriverPaymentOptions): string {
+    return paymentOptionText[paymentOption];
   }
 
   public static getDriverTypes(): any {

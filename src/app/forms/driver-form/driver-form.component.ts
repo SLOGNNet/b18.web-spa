@@ -78,7 +78,7 @@ export class DriverForm extends BaseForm {
       lastName: [{value: this.driver.lastName, disabled: this.disabled}],
       type: [{value: this.driver.type, disabled: this.disabled}],
       birthDate: [{value: this.driver.birthDate, disabled: this.disabled}],
-      paymentOptions: [{value: this.driver.paymentOptions, disabled: this.disabled}],
+      paymentOption: [{value: this.driver.paymentOption, disabled: this.disabled}],
       ssn: [{value: this.driver.ssn, disabled: this.disabled}],
       rate: [{value: this.driver.rate, disabled: this.disabled}],
       address: this.formBuilder.group({}),
