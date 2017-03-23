@@ -128,7 +128,7 @@ describe('CompanyCardComponent', () => {
     component.item.status = testCompanyStatus;
     fixture.detectChanges();
     let element = fixture.debugElement.query(By.css('.status-text'));
-    expect(element.nativeElement.textContent).toMatch(Company.getStatusText(testCompanyStatus));
+    expect(element.nativeElement.textContent).toMatch(CompanyStatuses.displayText(testCompanyStatus));
   });
 
   it('should display address phone', () => {
