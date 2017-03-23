@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 // Modules
-import { NgReduxModule } from 'ng2-redux';
+import { NgReduxModule } from '@angular-redux/store';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';

@@ -3,7 +3,7 @@ import { Equipment } from '../models';
 import { EquipmentActions } from '../actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 
 @Component({

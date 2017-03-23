@@ -10,7 +10,7 @@ import {
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { StopActions } from '../../actions';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 
 @Component(Object.assign({
   selector: 'load-form',

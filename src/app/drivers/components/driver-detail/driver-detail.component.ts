@@ -3,7 +3,7 @@ import { Driver } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DriverActions } from '../../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store';
 
 @Component({
