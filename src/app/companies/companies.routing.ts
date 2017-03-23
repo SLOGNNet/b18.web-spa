@@ -21,6 +21,12 @@ const routes: Routes = [{
           outlet: 'detailOutlet',
         },
         {
+          path: 'edit',
+          component: CompanyEditComponent,
+          data: { new: true },
+          canDeactivate: [CanDeactivateGuard]
+        },
+        {
           path: 'edit-info',
           component: CompanyEditInfoComponent,
           data: { new: true },
@@ -39,6 +45,11 @@ const routes: Routes = [{
         {
           path: '',
           component: EmptyComponent,
+          canDeactivate: [CanDeactivateGuard]
+        },
+        {
+          path: 'edit',
+          component: CompanyEditComponent,
           canDeactivate: [CanDeactivateGuard]
         },
         {
