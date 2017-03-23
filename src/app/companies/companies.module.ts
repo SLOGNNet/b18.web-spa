@@ -7,6 +7,7 @@ import {
   CompanyCardComponent,
   CompanyCardsComponent,
   CompanyEditComponent,
+  CompanyEditContactComponent,
   CompanyDetailComponent,
   CompanyBasicInformation,
   CompanyEditInfoComponent,
@@ -32,6 +33,7 @@ import { BdFormsModule } from '../forms/forms.module';
     CompanyDetailComponent,
     CompanyBasicInformation,
     CompanyEditInfoComponent,
+    CompanyEditContactComponent,
     CompanyAddress,
     CompanyContact
   ]

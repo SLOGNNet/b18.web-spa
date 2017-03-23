@@ -1,5 +1,6 @@
 export * from './address.actions';
 export * from './company.actions';
+export * from './company-contact.actions';
 export * from './load.actions';
 export * from './commodity.actions';
 export * from './stop.actions';

@@ -2,12 +2,14 @@ import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/cor
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Company, CompanyStatuses, CompanyTypes } from '../../models';
 import { EnumHelperService } from '../../shared/helpers';
+import { FormValidationService } from '../../shared';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({
   selector: 'company-info-form',
   templateUrl: './company-info-form.component.html',
-  styleUrls: ['./company-info-form.component.scss']
+  styleUrls: ['./company-info-form.component.scss'],
+  providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CompanyInfoForm extends BaseForm {
   @Input() company: Company;
@@ -23,6 +25,7 @@ export class CompanyInfoForm extends BaseForm {
   constructor(
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
+    private validationService: FormValidationService,
     elementRef: ElementRef) {
     super(elementRef);
     this.companyTypes = enumHelperService.getDropdownKeyValues(CompanyTypes);
@@ -66,7 +69,10 @@ export class CompanyInfoForm extends BaseForm {
 
   onSave(value, isValid) {
     if (isValid) {
+      this.companyForm.markAsPristine();
       this.save.emit(value);
+    } else {
+      this.validationService.show();
     }
   }
 
