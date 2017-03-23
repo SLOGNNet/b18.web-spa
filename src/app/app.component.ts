@@ -2,7 +2,6 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-import { IAppState, rootReducer } from './store';
 import { NgRedux } from '@angular-redux/store';
 
 /*
@@ -20,8 +19,6 @@ import { NgRedux } from '@angular-redux/store';
     `
 })
 export class AppComponent {
-  constructor(private ngRedux: NgRedux<IAppState>) {
-    this.ngRedux.configureStore(
-      rootReducer, {}, []);
+  constructor() {
   }
 }
