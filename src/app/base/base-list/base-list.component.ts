@@ -25,7 +25,7 @@ export abstract class BaseListComponent<T> extends BasePane {
 
   protected onAdd() {
     this.deselectRow();
-    this.navigateToDetails(0);
+    this.navigateToDetails('0');
   }
 
   protected abstract routePath(): string;
@@ -35,15 +35,15 @@ export abstract class BaseListComponent<T> extends BasePane {
     this.navigateToDetails(item['id']);
   }
 
-  private navigateToDetails(id: number) {
-    super.rediretToId(id);
+  private navigateToDetails(id: string) {
+    super.redirectToId(id);
   }
 
   private deselectRow() {
     this.selected = [];
   }
 
-  private selectRow(id: number) {
+  private selectRow(id: string) {
     this.selected = this.items.filter(item => item['id'] === id);
   }
 
@@ -70,7 +70,7 @@ export abstract class BaseListComponent<T> extends BasePane {
   }
 
   private onDetailRouteChange(params: any) {
-    const id = Number.parseInt(params['id']);
+    const id = params['id'];
     if (!isNaN(id)) {
       this.selectRow(id);
     } else {
