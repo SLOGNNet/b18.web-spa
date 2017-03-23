@@ -2,7 +2,12 @@
     <div 
         *ngFor="let item of contactCollection"
         class="contact-info-item">
-        <span class="item-icon icon-{{getContactInfoType(item.type) | lowercase}}"></span>
+        <span 
+            class="item-icon"
+            [class.icon-phone]="isPhone(item.type)"
+            [class.icon-fax]="isFax(item.type)"
+            [class.icon-at-sign]="isEmail(item.type)">
+        </span>
         <span class="item-text facility-phone-number">{{item.value}}</span>
     </div>
 </div>

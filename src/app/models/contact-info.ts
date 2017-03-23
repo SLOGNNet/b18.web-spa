@@ -1,4 +1,6 @@
 import { ContactInfoType } from './enums';
+import { Transform } from 'class-transformer';
+import { toEnumTransformer, fromEnumTransformer } from './utils';
 
 const contactInfoTypes = createInfoTypes();
 
@@ -14,6 +16,8 @@ function createInfoTypes() {
 export class ContactInfo {
   label: string = '';
   value: string = '';
+  @Transform(toEnumTransformer(ContactInfoType), { toClassOnly: true })
+  @Transform(fromEnumTransformer(ContactInfoType), { toPlainOnly: true })
   type: ContactInfoType;
 
   public static getPrimaryPhone(contactInfoList: Array<ContactInfo>): ContactInfo {

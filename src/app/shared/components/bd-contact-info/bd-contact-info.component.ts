@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ContactInfo, ContactInfoType } from '../../../models';
+import { isEqual } from 'lodash';
 
 @Component({
   selector: 'bd-contact-info',
@@ -10,7 +11,16 @@ import { ContactInfo, ContactInfoType } from '../../../models';
 export class BdContactInfoComponent {
     @Input() contactCollection: Array<ContactInfo> = [];
 
-    getContactInfoType(type: ContactInfoType) {
-        return ContactInfo.getContactInfoType(type);
+    isPhone(item: ContactInfoType) {
+        return isEqual(item, ContactInfoType.PHONE);
     }
+
+    isFax(item: ContactInfoType) {
+        return isEqual(item, ContactInfoType.FAX);
+    }
+
+    isEmail(item: ContactInfoType) {
+        return isEqual(item, ContactInfoType.EMAIL);
+    }
+
 }
