@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, ContactInfo } from '../../../../../models';
+import { Stop, ContactInfo, StopStatuses, StopTypes } from '../../../../../models';
 
 @Component({
   selector: 'stop-popover',
@@ -11,11 +11,11 @@ export class StopPopoverComponent {
   @Input() stop: Stop;
 
   get statusText() {
-    return Stop.getStatusText(this.stop.status);
+    return StopStatuses.displayText(this.stop.status);
   }
 
   get typeText() {
-    return Stop.getTypeText(this.stop.type);
+    return StopTypes.displayText(this.stop.type);
   }
 
   get phone() {
