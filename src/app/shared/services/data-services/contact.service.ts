@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Company, Contact } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
+import { generatePersistId } from '../../helpers';
 
 @Injectable()
 export class ContactService {
@@ -33,7 +34,8 @@ export class ContactService {
     });
   }
 
-  create(company: Company, contact: Contact) {
+  create(company: Company, contact: Contact): Observable<string> {
+    contact.id = generatePersistId();
     if (company) {
       MockData.companies.forEach(c => {
         if (c.id === company.id) {
@@ -44,5 +46,6 @@ export class ContactService {
     }
 
     MockData.contacts.push(contact);
+    return Observable.of(contact.id);
   }
 }

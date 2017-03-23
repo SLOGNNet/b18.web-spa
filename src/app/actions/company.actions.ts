@@ -24,12 +24,12 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
 
   add(company: Company): void {
     this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST, company });
-
-    setTimeout(() => {
-      this.companyService.create(company);
-      this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company });
-      this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
-    }, 3000);
+      this.companyService.create(company).subscribe(newId => {
+        const prevId = company.id;
+        company.id = newId;
+        this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company, prevId });
+        this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
+      });
   }
 
   remove(company: Company): void {

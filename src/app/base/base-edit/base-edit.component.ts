@@ -30,10 +30,13 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
     });
-    this.route.params.subscribe(params => {
-      this.checkNewItem();
+
+    // http://weblogs.foxite.com/joel_leach/2016/11/18/setting-subclass-properties-in-typescript/
+    setTimeout( () => {
+      this.route.params.subscribe(params => {
+        this.checkNewItem();
+      });
     });
-    this.checkNewItem();
   }
 
   // CanComponentDeactivate inteface

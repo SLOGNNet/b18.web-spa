@@ -1,7 +1,7 @@
 import { CompanyActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Company } from './models';
-import { addItem, updateItem, updateListItem, removeItem } from './utils';
+import { addItem, updateItem, updateListItem, updateNewItem, removeItem } from './utils';
 
 export interface ICompanyState {
     items: Company[];
@@ -19,7 +19,7 @@ export const companyReducer = createReducer(INITIAL_STATE, {
   [CompanyActions.ADD_COMPANY_SUCCESS](state, action) {
       return Object.assign({}, state, {
         items: addItem(state.items, action.company),
-        selected: Object.assign({}, action.company),
+        selected: updateNewItem(state.selected, action.company, action.prevId),
         isLoading: false
       });
   },

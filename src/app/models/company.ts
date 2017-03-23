@@ -51,6 +51,7 @@ export class Company {
 
   static create(): Company{
     const result = new Company();
+    result.id = generateNewId();
     result.contacts = [];
     result.locations = [];
     return result;

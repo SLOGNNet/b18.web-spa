@@ -22,13 +22,14 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
 
   addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST, contact });
-
-    setTimeout(() => {
-      this.contactService.create(company, contact);
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact });
-      this.companyActions.select(company.id);
-      this.notificatonService.sendNotification('Company created.', `${contact.firstName} was created.`);
-    }, 3000);
+    this.contactService.create(company, contact).subscribe(newId => {
+      const prevId = contact.id;
+      contact.id = newId;
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, prevId});
+     //need for detil view refresh
+     // this.companyActions.select(company.id);
+      this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
+    });
   }
 
   updateAssociation(contact: Contact, company: Company): void {
@@ -37,7 +38,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
     setTimeout(() => {
       this.contactService.update(contact);
       this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, contact });
-      this.notificatonService.sendNotification('Company updated.', `${contact.id} was updated.`);
+      this.notificatonService.sendNotification('Contact updated.', `${contact.id} was updated.`);
     }, 3000);
   }
 

@@ -1,7 +1,7 @@
 import { CompanyActions, CompanyContactActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Contact } from './models';
-import { addItem, updateItem, updateListItem, removeItem } from './utils';
+import { addItem, updateItem, updateListItem, updateNewItem, removeItem } from './utils';
 
 export interface ICompanyContactState {
   items: Contact[];
@@ -21,7 +21,12 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
     });
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS](state, action) {
-    return Object.assign({}, state, { items: addItem(state.items, action.contact), selected: Object.assign({}, action.contact), isLoading: false });
+    return Object.assign({}, state,
+      { items:
+        addItem(state.items, action.contact),
+        selected: updateNewItem(state.selected, action.contact, action.prevId),
+        isLoading: false
+     });
   },
   [CompanyContactActions.SELECT_COMPANY_CONTACT](state, action) {
     return Object.assign({}, state, { selected: action.contact, isLoading: false });

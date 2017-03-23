@@ -66,6 +66,7 @@ export class CompanyInfoForm extends BaseForm {
 
   onSave(value, isValid) {
     if (isValid) {
+      this.companyForm.markAsPristine();
       this.save.emit(value);
     }
   }
