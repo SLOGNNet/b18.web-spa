@@ -1,5 +1,12 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Driver, DriverStatuses, DriverTypes, Equipment } from '../../../../../models';
+import {
+  Driver,
+  DriverStatuses,
+  DriverTypes,
+  Equipment,
+  EquipmentModes,
+  EquipmentTypes,
+  EquipmentStatuses } from '../../../../../models';
 
 @Component({
   selector: 'driver-popover',
@@ -19,14 +26,14 @@ export class DriverPopoverComponent {
   }
 
   getEquipmentTypeText(type) {
-    return Equipment.getTypeText(type);
+    return EquipmentTypes.displayText(type);
   }
 
   getEquipmentModeText(mode) {
-    return Equipment.getModeText(mode);
+    return EquipmentModes.displayText(mode);
   }
 
   getEquipmentStatusText(status) {
-    return Equipment.getStatusText(status);
+    return EquipmentStatuses.displayText(status);
   }
 }

@@ -1,16 +1,5 @@
 import { ContactInfoType } from './enums';
 
-const contactInfoTypes = createInfoTypes();
-
-function createInfoTypes() {
-  let result = {};
-    result[ContactInfoType.NONE] = 'None';
-    result[ContactInfoType.PHONE] = 'Phone';
-    result[ContactInfoType.FAX] = 'Fax';
-    result[ContactInfoType.EMAIL] = 'Email';
-  return result;
-}
-
 export class ContactInfo {
   label: string = '';
   value: string = '';
@@ -22,10 +11,6 @@ export class ContactInfo {
     });
 
     return info[0];
-  }
-
-  public static getContactInfoType(type: ContactInfoType): string {
-    return contactInfoTypes[type];
   }
 
   public static сreateDefaultList() {

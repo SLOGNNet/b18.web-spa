@@ -11,6 +11,6 @@ export class BdContactInfoComponent {
     @Input() contactCollection: Array<ContactInfo> = [];
 
     getContactInfoType(type: ContactInfoType) {
-        return ContactInfo.getContactInfoType(type);
+        return ContactInfoType.displayText(type);
     }
 }

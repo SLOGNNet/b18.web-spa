@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Equipment } from '../../../../../models';
+import { Equipment, EquipmentTypes } from '../../../../../models';
 
 @Component({
   selector: 'equipment-details',
@@ -14,6 +14,6 @@ export class EquipmentDetailsComponent {
   }
 
   get shortTypeText() {
-    return Equipment.getShortTypeText(this.equipment.type);
+    return EquipmentTypes.displayShortText(this.equipment.type);
   }
 }
