@@ -126,9 +126,15 @@ class MockData {
     },
     {
       label: 'Fax',
-      value: 'fax@gmail.comj',
+      value: '33324234',
       type: ContactInfoType.FAX
+    },
+    {
+      label: 'Email',
+      value: 'fax@gmail.comj',
+      type: ContactInfoType.EMAIL
     }
+
   ];
 
   public locations: Array<Location> = [
@@ -343,7 +349,7 @@ class MockData {
       lastName: 'Chang',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
-      dateOfBirth: null,
+      birthDate: null,
       ssn: '123144241241242',
       currentTruck: null,
       currentTrailer: null,
@@ -387,7 +393,7 @@ class MockData {
       lastName: 'Watson',
       address: this.addresses[0],
       contactInfo: this.contactInfo.slice(),
-      dateOfBirth: null,
+      birthDate: null,
       ssn: '123144241241242',
       currentTruck: null,
       currentTrailer: null,
@@ -433,7 +439,7 @@ class MockData {
     lastName: 'Chang',
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
-    dateOfBirth: new Date(),
+    birthDate: new Date(),
     ssn: '123144241241242',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
@@ -456,7 +462,7 @@ class MockData {
     lastName: 'Watson',
     contactInfo: this.contactInfo.slice(),
     address: this.addresses[1],
-    dateOfBirth: null,
+    birthDate: null,
     ssn: '123144241241777',
     currentTruck: this.equipments[0],
     currentTrailer: this.equipments[1],
