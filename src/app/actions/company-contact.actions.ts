@@ -3,11 +3,11 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 import { Company, Contact } from '../models';
 import { ContactService, CompanyService, NotificationService } from '../shared';
-import { IDetailDataActions } from './intefaces';
+import { IDetailDataActions, INestedEditDataActions } from './intefaces';
 import { CompanyActions } from './company.actions';
 
 @Injectable()
-export class CompanyContactActions implements IDetailDataActions<Contact> {
+export class CompanyContactActions implements IDetailDataActions<Contact>, INestedEditDataActions<Contact, Company> {
   static ADD_COMPANY_CONTACT_REQUEST: string = 'ADD_COMPANY_CONTACT_REQUEST';
   static ADD_COMPANY_CONTACT_SUCCESS: string = 'ADD_COMPANY_CONTACT_SUCCESS';
   static UPDATE_COMPANY_CONTACT_REQUEST: string = 'UPDATE_COMPANY_CONTACT_REQUEST';
@@ -20,7 +20,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact> {
     private notificatonService: NotificationService,
     private ngRedux: NgRedux<IAppState>) { }
 
-  addChild(company: Company, contact: Contact): void {
+  addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST, contact });
 
     setTimeout(() => {
@@ -31,11 +31,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact> {
     }, 3000);
   }
 
-  remove(contact: Contact): void {
-
-  }
-
-  update(contact: Contact): void {
+  updateAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_REQUEST, contact });
 
     setTimeout(() => {

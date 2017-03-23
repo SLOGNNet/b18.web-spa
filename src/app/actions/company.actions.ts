@@ -3,10 +3,10 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 import { Company } from '../models';
 import { CompanyService, NotificationService } from '../shared';
-import { IListDataActions, IDetailDataActions } from './intefaces';
+import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 
 @Injectable()
-export class CompanyActions implements IListDataActions<Company>, IDetailDataActions<Company> {
+export class CompanyActions implements IListDataActions<Company>, IDetailDataActions<Company>, IRootEditDataActions<Company> {
   static ADD_COMPANY_REQUEST: string = 'ADD_COMPANY_REQUEST';
   static ADD_COMPANY_SUCCESS: string = 'ADD_COMPANY_SUCCESS';
   static ADD_COMPANY_FAILURE: string = 'ADD_COMPANY_FAILURE';

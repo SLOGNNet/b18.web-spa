@@ -15,8 +15,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected viewMode: ViewMode = ViewMode.Edit;
   protected segment;
 
-  constructor(protected actions: IDetailDataActions<T>,
-    protected selected$: Observable<T>,
+  constructor(protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
     route: ActivatedRoute,
     router: Router,
@@ -28,14 +27,13 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     });
     selected$.subscribe(item => {
       this.redirectIfNewCreated(this.selectedItem, item);
-      this.redirectIfNewAddedCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
     });
     this.route.params.subscribe(params => {
       this.checkNewItem();
     });
-     this.checkNewItem();
+    this.checkNewItem();
   }
 
   // CanComponentDeactivate inteface
@@ -49,14 +47,19 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   }
 
   protected abstract isDetailsChanged();
+  protected abstract onAdd(item: T);
+  protected abstract onUpdate(item: T);
+  protected abstract onCreatNew();
+  protected abstract onSelect(id: string)
+
 
   protected onItemSave(item) {
     const changedItem = cloneDeep(item);
     if (this.isNew) {
       this.isNew = false;
-      this.actions.add(changedItem);
+      this.onAdd(item);
     } else {
-      this.actions.update(changedItem);
+      this.onUpdate(item);
     }
   }
 
@@ -80,24 +83,14 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     }
   }
 
-  redirectIfNewAddedCreated(prevSelected, newSelected) {
-    if (newSelected && prevSelected
-     && newSelected['id']
-     && !prevSelected['id']
-     && newSelected['id'].length > 2) {
-      const newId = newSelected['id'];
-      super.rediretToId(newId, this.segment);
-    }
-  }
-
   private checkNewItem() {
     const snapshot = this.route.snapshot;
     const paramId = snapshot.params['id'];
     this.isNew = paramId === '0' || this.route.snapshot.data['new'];
     if (this.isNew) {
-      this.actions.createNew();
+      this.onCreatNew();
     } else {
-      this.actions.select(paramId);
+      this.onSelect(paramId);
     }
   }
 

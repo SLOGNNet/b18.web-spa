@@ -3,10 +3,10 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
 import { Equipment } from '../models';
 import { EquipmentService } from '../shared';
-import { IListDataActions, IDetailDataActions } from './intefaces';
+import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 
 @Injectable()
-export class EquipmentActions implements IListDataActions<Equipment>, IDetailDataActions<Equipment> {
+export class EquipmentActions implements IListDataActions<Equipment>, IDetailDataActions<Equipment>, IRootEditDataActions<Equipment> {
   static ADD_EQUIPMENT: string = 'ADD_EQUIPMENT';
   static REMOVE_EQUIPMENT: string = 'REMOVE_EQUIPMENT';
   static UPDATE_EQUIPMENT: string = 'UPDATE_EQUIPMENT';

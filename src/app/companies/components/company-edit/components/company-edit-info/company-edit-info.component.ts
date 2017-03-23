@@ -2,7 +2,7 @@ import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company, CompanyStatuses, CompanyTypes } from '../../../../../models';
-import { BaseEditComponent } from '../../../../../base';
+import { BaseRootEditComponent } from '../../../../../base';
 import { CompanyActions } from '../../../../../actions';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../../../store';
@@ -13,7 +13,7 @@ import { CompanyInfoForm } from '../../../../../forms';
   templateUrl: './company-edit-info.component.html',
   styleUrls: ['./company-edit-info.component.scss']
 })
-export class CompanyEditInfoComponent extends BaseEditComponent<Company>{
+export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
   @ViewChild(CompanyInfoForm) companyInfoFormComponent: CompanyInfoForm;
   private anchors = [{
     id: '',
