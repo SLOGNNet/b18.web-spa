@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Load, FreightType } from '../../../../../models';
+import { Load, FreightType, DriverRequirements, PowerUnitTypes, TrailerTypes } from '../../../../../models';
 
 
 @Component({
@@ -19,15 +19,15 @@ export class RequirementsDetailComponent {
   }
 
   get driverRequirement() {
-    return Load.getDriverRequirement(this.load.driverRequirment);
+    return DriverRequirements.displayText(this.load.driverRequirment);
   }
 
   get requiredPowerUnitType() {
-    return Load.getPowerUnitType(this.load.requiredPowerUnitType);
+    return PowerUnitTypes.displayText(this.load.requiredPowerUnitType);
   }
 
   get requiredTrailerType() {
-    return Load.getTrailerType(this.load.requiredTrailerType);
+    return TrailerTypes.displayText(this.load.requiredTrailerType);
   }
 
 

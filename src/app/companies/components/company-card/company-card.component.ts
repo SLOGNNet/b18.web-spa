@@ -19,7 +19,7 @@ export class CompanyCardComponent extends BaseCardComponent {
   }
 
   loadStatusColor(status: LoadStatuses): string {
-    return Load.getStatusColor(status);
+    return LoadStatuses.color(status);
   }
 
   itemStatusText() {
