@@ -5,10 +5,9 @@ export abstract class BasePane {
   constructor(protected router: Router, protected route: ActivatedRoute) {
   };
 
-  rediretToId(id: number, segment?: string) {
+  redirectToId(id: string, segment?: string) {
     const urlTree = this.router.parseUrl(this.router.url);
     let idSegment = urlTree.root.children['primary'].segments[1];
-
     if (segment) {
       urlTree.root.children['primary'].segments.forEach((e, i) => {
         if (e.path === segment) {
@@ -19,7 +18,7 @@ export abstract class BasePane {
 
     if (idSegment) {
       // todo find better approach to change id parameter
-      idSegment.path = id.toString();
+      idSegment.path = id;
       this.resetSubChildIfNeed(urlTree, segment);
       this.router.navigateByUrl(urlTree, { preserveFragment: true });
     }
@@ -31,8 +30,7 @@ export abstract class BasePane {
   resetSubChildIfNeed(urlTree, segment) {
     const subChildSegment = urlTree.root.children['primary'].segments[2];
     const subChildIdSegment = urlTree.root.children['primary'].segments[3];
-
-    if (!subChildSegment.path.includes(segment) && subChildSegment.path.includes('edit') && subChildIdSegment) {
+    if (subChildSegment && subChildIdSegment && !subChildSegment.path.includes(segment) && subChildSegment.path.includes('edit')) {
       subChildIdSegment.path = '0';
     }
   }

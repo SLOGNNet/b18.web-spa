@@ -82,7 +82,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
      && newSelected['prevId']
      && prevSelected['id'] === newSelected['prevId']) {
       const newId = newSelected['id'];
-      super.rediretToId(newId, this.segment);
+      super.redirectToId(newId, this.segment);
     }
   }
 
