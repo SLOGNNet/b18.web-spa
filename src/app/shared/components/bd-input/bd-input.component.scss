@@ -107,7 +107,7 @@
 
     .bd-input-suffix {
       @include flex-element;
-      font-size: $form-control-font-size;
+      font-size: $small-font-size;
       flex-grow: 0;
       margin-left: $default-margin;
     }
