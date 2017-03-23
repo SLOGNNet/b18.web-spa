@@ -30,6 +30,6 @@ export class NotificationCardIcon {
   }
 
   get notificationStatusColor(): string {
-    return Notification.notificationStatusColor(this.eventType);
+    return NotificationStatus.color(this.eventType);
   }
 }
