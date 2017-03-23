@@ -37,7 +37,6 @@ import { FormNavigationComponent, NavigationAnchorComponent } from './components
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
 import { BdValidatorComponent } from './components/bd-validator';
-import { BdFormBuilder } from './forms';
 import { BdDropdownModule } from './components/bd-dropdown';
 import { NgbDatepickerModule } from './components/datepicker';
 import { EmptyComponent } from './components/empty';
@@ -84,7 +83,6 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     EnumHelperService,
     GoogleService,
     CommodityService,
-    BdFormBuilder,
     FormValidationService,
     DatePipe,
     EmailValidator,
