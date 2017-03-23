@@ -4,7 +4,7 @@ import { BaseRootEditComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { EquipmentActions } from '../../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store';
 import { EquipmentForm } from '../../../forms';
 

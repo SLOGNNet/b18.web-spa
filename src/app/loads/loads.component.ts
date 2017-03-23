@@ -4,7 +4,7 @@ import { LoadActions } from '../actions';
 import { LoadService, CompanyService } from '../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 
 @Component({

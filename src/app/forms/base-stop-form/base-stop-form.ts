@@ -3,7 +3,7 @@ import { BaseForm } from '../base-form';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Stop, Commodity } from '../../models';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 import { CommodityActions } from '../../actions';
 import { Observable } from 'rxjs/Observable';
 @Component(Object.assign({

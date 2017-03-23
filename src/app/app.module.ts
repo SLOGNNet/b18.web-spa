@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 // Modules
-import { NgReduxModule } from 'ng2-redux';
+import { StoreModule } from './store';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { MainModule } from './main/main.module';
@@ -61,7 +61,7 @@ type StoreType = {
     SharedModule,
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    NgReduxModule,
+    StoreModule,
     AuthModule,
     MainModule
   ],
