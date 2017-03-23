@@ -52,8 +52,8 @@ export class Company {
   static create(): Company{
     const result = new Company();
     result.id = generateNewId();
-    result.status = CompanyStatuses.INACTIVE;
-    result.type = CompanyTypes.BROKER;
+    result.contacts = [];
+    result.locations = [];
     return result;
   }
 

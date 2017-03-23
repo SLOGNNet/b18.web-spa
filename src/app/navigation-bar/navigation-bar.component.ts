@@ -63,7 +63,7 @@ export class NavigationBarComponent {
               link: '/companies'
           }, {
           label: 'New Company',
-          link: '/companies/0'
+          link: '/companies/0/edit-info'
         }]
     },
     {

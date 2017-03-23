@@ -57,6 +57,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
   exports: [
     CompanyForm,
     CompanyInfoForm,
+    ContactForm,
     LoadFormComponent,
     DriverForm,
     LoadDocumentFormComponent,

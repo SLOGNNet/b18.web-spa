@@ -26,6 +26,7 @@ import {
   AddressActions,
   LocationActions,
   CompanyActions,
+  CompanyContactActions,
   EquipmentActions,
   DriverActions,
   StopActions
@@ -72,6 +73,7 @@ type StoreType = {
     AddressActions,
     LocationActions,
     CompanyActions,
+    CompanyContactActions,
     EquipmentActions,
     DriverActions,
     StopActions,

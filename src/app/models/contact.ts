@@ -1,6 +1,7 @@
 import { ContactInfo } from './contact-info';
 import { Location } from './location';
 import { Type } from 'class-transformer';
+import { generateNewId } from './utils';
 
 export class Contact {
   id: string = '';
@@ -16,6 +17,8 @@ export class Contact {
 
   static create(): Contact{
     const result = new Contact();
+    result.id = generateNewId();
+    result.contactInfo = [];
     return result;
   }
 

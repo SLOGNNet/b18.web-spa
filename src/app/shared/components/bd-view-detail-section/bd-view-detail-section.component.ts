@@ -11,8 +11,13 @@ export class BdViewDetailSectionComponent {
   @Input() private editButton: boolean = true;
   @Input() private addButton: boolean = true;
   @Output() private editClick: EventEmitter<any> = new EventEmitter();
+  @Output() private addClick: EventEmitter<any> = new EventEmitter();
 
   onEditClick() {
     this.editClick.emit();
+  }
+
+  onAddClick() {
+    this.addClick.emit();
   }
 }

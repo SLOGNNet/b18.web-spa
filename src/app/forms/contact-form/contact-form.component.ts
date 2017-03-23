@@ -2,7 +2,7 @@ import { Component, Input, ElementRef } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Contact } from '../../models';
 import { Location } from '../../models';
-import { BdFormGroup, BdFormBuilder } from '../../shared';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({
@@ -17,9 +17,10 @@ export class ContactForm extends BaseForm {
   @Input()
   public locations: Array<Location>;
   @Input('group')
-  public contactForm: BdFormGroup;
+  public contactForm: FormGroup = this._formBuilder.group({});
 
   private fields = [
+    { name: 'id', validators: [] },
     { name: 'firstName', validators: [Validators.required] },
     { name: 'lastName', validators: [] },
     { name: 'email', validators: [] },
@@ -31,7 +32,7 @@ export class ContactForm extends BaseForm {
   ];
 
   constructor(
-    private _formBuilder: BdFormBuilder, elementRef: ElementRef){
+    private _formBuilder: FormBuilder, elementRef: ElementRef){
     super(elementRef);
   }
 
