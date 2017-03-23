@@ -1,20 +1,20 @@
 <div [ngSwitch]="notification.type">
     <message-card
-      *ngSwitchCase="notificationTypeEnum.Message"
+      *ngSwitchCase="notificationTypeEnum.MESSAGE"
       [isClosable]="isClosable"
       [notification]="notification"
       (close)="onCloseClick($event)">
     </message-card>
 
     <task-card
-      *ngSwitchCase="notificationTypeEnum.Task"
+      *ngSwitchCase="notificationTypeEnum.TASK"
       [isClosable]="isClosable"
       [notification]="notification"
       (close)="onCloseClick($event)">
     </task-card>
 
     <notification-card
-      *ngSwitchCase="notificationTypeEnum.Notification"
+      *ngSwitchCase="notificationTypeEnum.NOTIFICATION"
       [isClosable]="isClosable"
       [notification]="notification"
       (close)="onCloseClick($event)">
