@@ -5,7 +5,12 @@ import { License } from './license';
 import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { Type, Transform, Expose } from 'class-transformer';
-import { generateNewId, toEnumTransformer, fromEnumTransformer } from './utils';
+import { generateNewId,
+  toEnumTransformer,
+  fromEnumTransformer,
+  fromMiliSecondsToDate,
+  fromDateToMiliSeconds
+} from './utils';
 // Colors
 function createStatusColors() {
   let result = {};
@@ -53,7 +58,9 @@ const typeText = createTypeText();
 const paymentTypeText = createPaymentTypeText();
 
 export class Driver extends Member {
-  dateOfBirth: Date = null;
+  @Transform(fromMiliSecondsToDate(), { toClassOnly: true })
+  @Transform(fromDateToMiliSeconds(), { toClassOnly: true })
+  birthDate: Date = null;
   ssn: string = '';
   @Type(() => Equipment)
   currentTruck: Equipment = new Equipment();
@@ -81,7 +88,7 @@ export class Driver extends Member {
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     result.license = License.create();
-    result.dateOfBirth = null;
+    result.birthDate = null;
     result.hireDate = null;
     result.terminationDate = null;
     result.currentTruck = Equipment.create();
