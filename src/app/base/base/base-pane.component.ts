@@ -28,9 +28,9 @@ export abstract class BasePane {
   }
 
   resetSubChildIfNeed(urlTree, segment) {
-    const subChildSegment = urlTree.root.children['primary'].segments[0];
-    const subChildIdSegment = urlTree.root.children['primary'].segments[1];
-    if (!subChildSegment.path.includes(segment) && subChildSegment.path.includes('edit') && subChildIdSegment) {
+    const subChildSegment = urlTree.root.children['primary'].segments[2];
+    const subChildIdSegment = urlTree.root.children['primary'].segments[3];
+    if (subChildSegment && subChildIdSegment && !subChildSegment.path.includes(segment) && subChildSegment.path.includes('edit')) {
       subChildIdSegment.path = '0';
     }
   }
