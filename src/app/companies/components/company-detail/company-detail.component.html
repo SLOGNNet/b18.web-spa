@@ -1,7 +1,5 @@
 <div *ngIf="selectedItem">
   <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="selectedItem.name" [anchors]="anchors">
-    <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
-    </bd-form-button>
   </form-navigation>
   <div class="company-detail-container">
     <navigation-anchor id="basic-information"></navigation-anchor>
