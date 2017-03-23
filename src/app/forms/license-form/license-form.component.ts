@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { License } from '../../models';
+import { License, LicenseClassTypes } from '../../models';
 import { EnumHelperService } from '../../shared/helpers';
 import { StateService, LicenseService } from '../../shared/services';
 import { BaseForm } from '../base-form';
@@ -38,7 +38,7 @@ export class LicenseForm extends BaseForm {
     this.licenseService.getAllEndorsements().subscribe(endorsements => this.endorsmentList = endorsements);
     this.licenseService.getAllRestrictions().subscribe(restrictions => this.restrictionList = restrictions);
 
-    this.licenseClasses = enumHelperService.getDropdownKeyValues(License.getClassesCollection());
+    this.licenseClasses = enumHelperService.getDropdownKeyValues(LicenseClassTypes);
   }
 
   ngOnChanges(changes: any) {

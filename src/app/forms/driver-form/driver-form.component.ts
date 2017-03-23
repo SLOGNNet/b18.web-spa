@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Driver, DriverPaymentOptions } from '../../models';
+import { Driver, DriverPaymentOptions, DriverTypes } from '../../models';
 import { FormValidationService, GoogleService } from '../../shared';
 import { NgbDateStruct } from '../../shared/components/datepicker';
 import { EnumHelperService } from '../../shared/helpers';
@@ -33,7 +33,7 @@ export class DriverForm extends BaseForm {
     super(elementRef);
 
     this.paymentsTypes = enumHelperService.getDropdownKeyValues(DriverPaymentOptions);
-    this.driverTypes = enumHelperService.getDropdownKeyValues(Driver.getDriverTypes());
+    this.driverTypes = enumHelperService.getDropdownKeyValues(DriverTypes);
   }
 
   ngOnChanges(changes: any) {
