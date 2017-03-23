@@ -3,24 +3,26 @@
 @import '../../../assets/styles/mixins';
 
 
-:host {
-  background: $white;
-
-  &.active,
-  &:hover {
-    background: $light-blue;
-
-    .status-text {
-      background: $light-blue;
-    }
-  }
-
-  &.active {
-    .card-section {
-      border-bottom-color: $blue;
-    }
-  }
-}
+// :host {
+//   background: $white;
+//
+//   &.active,
+//   &:hover {
+//     background: $light-blue;
+//
+//     .status-text {
+//       background: $light-blue;
+//     }
+//   }
+//
+//   &.active {
+//     color: $black;
+//
+//     .card-section {
+//       border-bottom-color: $blue;
+//     }
+//   }
+// }
 
 .card-section {
   position: relative;

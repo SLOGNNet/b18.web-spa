@@ -44,7 +44,7 @@ export abstract class BaseListComponent<T> extends BasePane {
   }
 
   private selectRow(id: number) {
-    this.selected = this.items.filter(item => item['id'] === id);
+    this.selected = this.items.filter(item => { if (item['id'] === id) return true; });
   }
 
 
@@ -70,8 +70,8 @@ export abstract class BaseListComponent<T> extends BasePane {
   }
 
   private onDetailRouteChange(params: any) {
-    const id = Number.parseInt(params['id']);
-    if (!isNaN(id)) {
+    const id = params['id'];
+    if (id) {
       this.selectRow(id);
     } else {
       this.deselectRow();

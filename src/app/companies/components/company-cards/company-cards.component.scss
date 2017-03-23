@@ -1,1 +1,30 @@
+@import '../../../../assets/styles/variables';
 
+ company-card {
+  color: $dark-grey;
+  background: $white;
+
+  &.active {
+    color: $black;
+
+    .card-section {
+      border-bottom-color: $blue;
+    }
+  }
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+
+    .status-text {
+      background: $light-blue;
+    }
+  }
+}
+
+:host-context():hover {
+
+  company-card {
+    color: $black;
+  }
+}

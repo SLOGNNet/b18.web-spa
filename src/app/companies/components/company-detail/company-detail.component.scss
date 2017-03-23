@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables';
+
 company-address,
 company-contact {
   display: block;
@@ -7,4 +9,17 @@ company-contact {
   }
 
   margin-top: 10px;
+}
+
+ div {
+  color: $dark-grey;
+}
+
+:host-context():hover {
+
+   div {
+    color: $black;
+  }
+
+
 }
