@@ -20,6 +20,7 @@ export class ContactForm extends BaseForm {
   public contactForm: FormGroup = this._formBuilder.group({});
 
   private fields = [
+    { name: 'id', validators: [] },
     { name: 'firstName', validators: [Validators.required] },
     { name: 'lastName', validators: [] },
     { name: 'email', validators: [] },

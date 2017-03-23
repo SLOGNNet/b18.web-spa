@@ -26,8 +26,6 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
       const prevId = contact.id;
       contact.id = newId;
       this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, prevId});
-     //need for detil view refresh
-     // this.companyActions.select(company.id);
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }

@@ -4,6 +4,7 @@ import { Company, Contact } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
 import { generatePersistId } from '../../helpers';
+import { cloneDeep } from 'lodash';
 
 @Injectable()
 export class ContactService {
@@ -35,17 +36,16 @@ export class ContactService {
   }
 
   create(company: Company, contact: Contact): Observable<string> {
-    contact.id = generatePersistId();
+    const persistContact: Contact = cloneDeep(contact);
+    persistContact.id = generatePersistId();
     if (company) {
       MockData.companies.forEach(c => {
         if (c.id === company.id) {
-          contact.id = new Date().getTime().toString();
-          c.contacts.push(contact);
+          c.contacts.push(persistContact);
         }
       });
     }
 
-    MockData.contacts.push(contact);
-    return Observable.of(contact.id);
+    return Observable.of(persistContact.id);
   }
 }

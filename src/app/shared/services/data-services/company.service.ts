@@ -22,7 +22,7 @@ export class CompanyService {
 
   getDetails(id: string): Observable<Company> {
     return Observable.of(
-      Object.assign({}, MockData.companies.find((company) => id === company.id))
+      cloneDeep(MockData.companies.find((company) => id === company.id))
     );
   }
 

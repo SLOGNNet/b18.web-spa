@@ -42,18 +42,15 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
     private ngRedux: NgRedux<IAppState>) {
     super(companyContactActions, ngRedux.select(state => state.companies.selected), ngRedux.select(state => state.contacts.selected),
       ngRedux.select(state => state.contacts.isLoading), route, router, location, cdr);
-    this.ngRedux.select(state => state.companies.selected).subscribe(selected => {
-      this.selectedCompany = selected;
-
-      if (selected) {
-        this.locations = selected.locations;
-      } else {
-        this.locations = [];
-      }
-    });
   }
 
   isDetailsChanged() {
     return this.companyContactFormComponent && this.companyContactFormComponent.contactForm.dirty;
+  }
+
+  onFormSave() {
+    if (this.companyContactFormComponent.contactForm.valid) {
+      super.onItemSave(this.companyContactFormComponent.contactForm.value);
+    }
   }
 }

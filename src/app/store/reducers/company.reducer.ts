@@ -2,6 +2,7 @@ import { CompanyActions } from './actions';
 import { createReducer } from './create-reducer';
 import { Company } from './models';
 import { addItem, updateItem, updateListItem, updateNewItem, removeItem } from './utils';
+import { omit } from 'lodash';
 
 export interface ICompanyState {
     items: Company[];
@@ -44,6 +45,6 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: action.items.slice(), selected: null});
   },
   [CompanyActions.SELECT_COMPANY](state, action) {
-    return Object.assign({}, state, { selected: action.company});
+    return Object.assign({}, state, { selected: omit(action.company, 'contacts')});
   },
 });
