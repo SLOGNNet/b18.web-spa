@@ -16,8 +16,7 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {
-      isLoading: true,
-      selected: action.contact
+      isLoading: true
     });
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS](state, action) {
