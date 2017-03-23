@@ -1,8 +1,7 @@
 import { Component, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Contact } from '../../models';
 import { Location, Mileage } from '../../models';
-import { BdFormGroup, BdFormBuilder } from '../../shared';
 import { BaseForm } from '../base-form';
 
 @Component(Object.assign({
@@ -16,7 +15,7 @@ export class MileageForm extends BaseForm {
   @Input()
   public mileage: Mileage;
   @Input('group')
-  public mileageForm: BdFormGroup;
+  public mileageForm: FormGroup;
   @Output() addItem = new EventEmitter<any>();
   @Output() private removeItem = new EventEmitter<any>();
 
@@ -27,7 +26,7 @@ export class MileageForm extends BaseForm {
   ];
 
   constructor(
-    private _formBuilder: BdFormBuilder, elementRef: ElementRef){
+    private _formBuilder: FormBuilder, elementRef: ElementRef){
     super(elementRef);
   }
 

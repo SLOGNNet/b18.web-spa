@@ -49,6 +49,7 @@ export class CompanyForm extends BaseForm {
     }
 
     if (company && isValid) {
+      this.companyForm.markAsPristine();
       this.save.emit(company);
     }
   }

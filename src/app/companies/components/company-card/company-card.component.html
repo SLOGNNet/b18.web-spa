@@ -10,10 +10,10 @@ class="card-section"
     </div>
     <div class="company-mc">MC# {{item.mc}}</div>
   </div>
-  <div class="middle">
+  <div class="middle" *ngIf="item.contacts.length">
     <span class="company-contact-full-name">{{item.contacts[0].firstName}} {{item.contacts[0].lastName}}</span>
     <span class="position ellipsis">{{item.contacts[0].position}}</span>
-  <div class="company-address-phone ellipsis">{{phone}}</div>
+    <div class="company-address-phone ellipsis">{{phone}}</div>
   </div>
   <div class="right">
     <div *ngFor="let load of item.loads" class="load">
@@ -23,7 +23,7 @@ class="card-section"
   </div>
   <span *ngIf="statusText" [style.color]="itemStatusColor()" class="status-text">{{itemStatusText()}}</span>
   <span
-  [style.background]="itemStatusColor()"
-  class="status">
+    [style.background]="itemStatusColor()"
+    class="status">
   </span>
 </div>

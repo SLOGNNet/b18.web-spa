@@ -31,10 +31,15 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-    super(companyActions, ngRedux.select(state => state.companies.selected), router, route, cdr);
+    super(companyActions, ngRedux.select(state => Object.assign({}, state.companies.selected, { contacts: state.contacts.items})),
+      router, route, cdr);
   }
 
   onEditInfoClick() {
     this.router.navigate(['./edit-info'],  {preserveQueryParams: true, relativeTo: this.route});
+  }
+
+  onAddContactClick(contact) {
+    this.router.navigate([`./edit-contact/0`],  {preserveQueryParams: true, relativeTo: this.route});
   }
 }

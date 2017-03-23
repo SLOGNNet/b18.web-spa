@@ -13,14 +13,14 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected isNew = false;
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
+  protected segment;
 
-  constructor(private actions: IDetailDataActions<T>,
-    private selected$: Observable<T>,
+  constructor(protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
     route: ActivatedRoute,
     router: Router,
     private location: Location,
-    private cdr: ChangeDetectorRef) {
+    protected cdr: ChangeDetectorRef) {
     super(router, route);
     isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;
@@ -30,10 +30,13 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
     });
-    this.route.params.subscribe(params => {
-      this.checkNewItem();
+
+    // http://weblogs.foxite.com/joel_leach/2016/11/18/setting-subclass-properties-in-typescript/
+    setTimeout( () => {
+      this.route.params.subscribe(params => {
+        this.checkNewItem();
+      });
     });
-     this.checkNewItem();
   }
 
   // CanComponentDeactivate inteface
@@ -47,37 +50,23 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   }
 
   protected abstract isDetailsChanged();
+  protected abstract onAdd(item: T);
+  protected abstract onUpdate(item: T);
+  protected abstract onCreatNew();
+  protected abstract onSelect(id: string)
 
-  redirectIfNewCreated(prevSelected, newSelected) {
-    if (newSelected && prevSelected
-     && !prevSelected['prevId']
-     && newSelected['prevId']
-     && prevSelected['id'] === newSelected['prevId']) {
-      const newId = newSelected['id'];
-      super.rediretToId(newId);
-    }
-  }
 
-  private checkNewItem() {
-    const snapshot = this.route.snapshot;
-    const paramId = snapshot.params['id'];
-    this.isNew = paramId === '0' || this.route.snapshot.data['new'];
-    if (this.isNew) {
-      this.actions.createNew();
-    }
-  }
-
-  private onItemSave(item) {
+  protected onItemSave(item) {
     const changedItem = cloneDeep(item);
     if (this.isNew) {
       this.isNew = false;
-      this.actions.add(changedItem);
+      this.onAdd(item);
     } else {
-      this.actions.update(changedItem);
+      this.onUpdate(item);
     }
   }
 
-  private onItemCancel() {
+  protected onItemCancel() {
     this.location.back();
     // if (this.isNew) {
     //   this.isNew = false;
@@ -86,4 +75,26 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     //   this.selectedItem = cloneDeep(this.selectedItem);
     // }
   }
+
+  redirectIfNewCreated(prevSelected, newSelected) {
+    if (newSelected && prevSelected
+     && !prevSelected['prevId']
+     && newSelected['prevId']
+     && prevSelected['id'] === newSelected['prevId']) {
+      const newId = newSelected['id'];
+      super.rediretToId(newId, this.segment);
+    }
+  }
+
+  private checkNewItem() {
+    const snapshot = this.route.snapshot;
+    const paramId = snapshot.params['id'];
+    this.isNew = paramId === '0' || this.route.snapshot.data['new'];
+    if (this.isNew) {
+      this.onCreatNew();
+    } else {
+      this.onSelect(paramId);
+    }
+  }
+
 }
