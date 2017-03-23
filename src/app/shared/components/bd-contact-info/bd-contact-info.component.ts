@@ -14,7 +14,6 @@ export class BdContactInfoComponent {
   getContactInfoType(type: ContactInfoType) {
     return ContactInfoType.displayText(type);
   }
-  
   isPhone(item: ContactInfoType) {
     return isEqual(item, ContactInfoType.PHONE);
   }

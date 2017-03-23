@@ -7,7 +7,7 @@ export enum EquipmentVehicleOperatings {
 let displayTexts = {
   [EquipmentVehicleOperatings.INTER_STATE]: 'InterState',
   [EquipmentVehicleOperatings.INTRA_STATE]: 'IntraState'
-}
+};
 
 export namespace EquipmentVehicleOperatings {
   export function displayText(type: EquipmentVehicleOperatings) {
