@@ -15,7 +15,7 @@ export class DriverPopoverComponent {
   }
 
   get type() {
-    return DriverTypes.text(this.driver.type);
+    return DriverTypes.displayText(this.driver.type);
   }
 
   getEquipmentTypeText(type) {

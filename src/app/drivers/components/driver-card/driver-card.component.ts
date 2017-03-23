@@ -18,11 +18,11 @@ export class DriverCardComponent extends BaseCardComponent {
   }
 
   itemStatusText() {
-    return DriverStatuses.text(this.item.status);
+    return DriverStatuses.displayText(this.item.status);
   }
 
   get driverTypeText() {
-    return DriverTypes.text(this.item.type);
+    return DriverTypes.displayText(this.item.type);
   }
 
   get phone(): string {

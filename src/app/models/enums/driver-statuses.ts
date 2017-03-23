@@ -5,26 +5,26 @@ export enum DriverStatuses {
   UNAVALIABLE = 3
 }
 
-let statusText = {};
-let statusColor = {};
 
-(() => {
-  statusText[DriverStatuses.NONE] = 'None';
-  statusText[DriverStatuses.UNAVALIABLE] = 'Unavaliable';
-  statusText[DriverStatuses.ACTIVE] = 'Active';
-  statusText[DriverStatuses.INACTIVE] = 'Inactive';
+let displayTexts = {
+  [DriverStatuses.NONE]: 'None',
+  [DriverStatuses.UNAVALIABLE]: 'Unavaliable',
+  [DriverStatuses.ACTIVE]: 'Active',
+  [DriverStatuses.INACTIVE]: 'Inactive'
+};
 
-  statusColor[DriverStatuses.UNAVALIABLE] = '#ffbe4d';
-  statusColor[DriverStatuses.ACTIVE] = '#85d183';
-  statusColor[DriverStatuses.INACTIVE] = '#fb3a3a';
-})();
+let statusColors = {
+  [DriverStatuses.UNAVALIABLE]: '#ffbe4d',
+  [DriverStatuses.ACTIVE]: '#85d183',
+  [DriverStatuses.INACTIVE]: '#fb3a3a'
+};
 
 export namespace DriverStatuses {
-  export function text(status: DriverStatuses) {
-    return statusText[status];
+  export function displayText(status: DriverStatuses) {
+    return displayTexts[status];
   }
 
   export function color(status: DriverStatuses) {
-    return statusColor[status];
+    return statusColors[status];
   }
 }

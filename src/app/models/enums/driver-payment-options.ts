@@ -5,17 +5,15 @@ export enum DriverPaymentOptions {
   FLAT = 4
 }
 
-let options = {};
-
-(() => {
-  options[DriverPaymentOptions.PER_MILE] = 'Per Miles';
-  options[DriverPaymentOptions.PERCENTAGE] = 'Percentage';
-  options[DriverPaymentOptions.HOURLY] = 'Hourly';
-  options[DriverPaymentOptions.FLAT] = 'Flat';
-})();
+let displayTexts = {
+  [DriverPaymentOptions.PER_MILE]: 'Per Miles',
+  [DriverPaymentOptions.PERCENTAGE]: 'Percentage',
+  [DriverPaymentOptions.HOURLY]: 'Hourly',
+  [DriverPaymentOptions.FLAT]: 'Flat'
+};
 
 export namespace DriverPaymentOptions {
-  export function text(option: DriverPaymentOptions) {
-    return options[option];
+  export function displayText(option: DriverPaymentOptions) {
+    return displayTexts[option];
   }
 }

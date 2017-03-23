@@ -5,17 +5,15 @@ export enum LicenseClassTypes {
   CLASS_C = 3
 };
 
-let types = {};
-
-(() => {
-  types[LicenseClassTypes.NONE] = 'None';
-  types[LicenseClassTypes.CLASS_A] = 'Class A';
-  types[LicenseClassTypes.CLASS_B] = 'Class B';
-  types[LicenseClassTypes.CLASS_C] = 'Class C';
-})();
+let displayTexts = {
+  [LicenseClassTypes.NONE]: 'None',
+  [LicenseClassTypes.CLASS_A]: 'Class A',
+  [LicenseClassTypes.CLASS_B]: 'Class B',
+  [LicenseClassTypes.CLASS_C]: 'Class C'
+};
 
 export namespace LicenseClassTypes {
-  export function text(type: LicenseClassTypes) {
-    return types[type];
+  export function displayText(type: LicenseClassTypes) {
+    return displayTexts[type];
   }
 }

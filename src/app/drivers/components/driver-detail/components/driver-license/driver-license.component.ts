@@ -24,6 +24,6 @@ export class DriverLicenseComponent {
   }
 
   get licenseClassText() {
-    return LicenseClassTypes.text(this.driver.license.class);
+    return LicenseClassTypes.displayText(this.driver.license.class);
   }
 }

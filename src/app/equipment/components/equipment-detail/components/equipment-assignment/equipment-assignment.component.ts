@@ -10,7 +10,7 @@ export class EquipmentAssignmentComponent {
   @Input() equipment: Equipment;
 
   get driverType() {
-    return DriverTypes.text(this.equipment.driver.type);
+    return DriverTypes.displayText(this.equipment.driver.type);
   }
 
   get driverStatusColor() {

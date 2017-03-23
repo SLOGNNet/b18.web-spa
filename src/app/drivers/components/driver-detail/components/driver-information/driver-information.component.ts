@@ -16,6 +16,6 @@ export class DriverInformationComponent {
   }
 
   get driverType() {
-    return DriverTypes.text(this.driver.type);
+    return DriverTypes.displayText(this.driver.type);
   }
 }

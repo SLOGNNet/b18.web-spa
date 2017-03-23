@@ -15,8 +15,8 @@ export class EnumHelperService {
     const keys = Object.keys(e).filter((el) => !isNaN(parseInt(el, 10)));
     for (let i = 0; i < keys.length; i++) {
         const key =  keys[i];
-        // TODO: Remove compatibility with previous vsrsion after refactoring
-        const value = e.text ? e.text(key) : e[key];
+        // TODO: Remove compatibility with previous version after refactoring
+        const value = e.displayText ? e.displayText(key) : e[key];
         keyValues.push({key: parseInt(key, 10), value});
     }
     return keyValues;
