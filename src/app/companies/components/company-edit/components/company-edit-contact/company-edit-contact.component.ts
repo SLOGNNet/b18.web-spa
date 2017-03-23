@@ -50,6 +50,7 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
 
   onFormSave() {
     if (this.companyContactFormComponent.contactForm.valid) {
+      this.companyContactFormComponent.contactForm.markAsPristine();
       super.onItemSave(this.companyContactFormComponent.contactForm.value);
     }
   }
