@@ -59,7 +59,7 @@ const paymentTypeText = createPaymentTypeText();
 
 export class Driver extends Member {
   @Transform(fromMiliSecondsToDate(), { toClassOnly: true })
-  @Transform(fromDateToMiliSeconds(), { toClassOnly: true })
+  @Transform(fromDateToMiliSeconds(), { toPlainOnly: true })
   birthDate: Date = null;
   ssn: string = '';
   @Type(() => Equipment)
