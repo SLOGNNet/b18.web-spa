@@ -28,4 +28,28 @@ export function fromEnumTransformer<Enum>(enumType: Enum) {
     };
 }
 
+export function fromMiliSecondsToDate() {
+    return (value: Date | number) => {
+      if (typeof value === 'number') {
+        const res: Date = (value === 0) ? null : new Date(value);
+        return res;
+      }
+      else {
+        return value;
+      }
+    };
+}
+
+export function fromDateToMiliSeconds() {
+    return (value: Date | number) => {
+      if (typeof value === 'number') {
+        return value;
+      }
+      else {
+        const res: number = (value === null) ? null : value.getTime();
+        return res;
+      }
+    };
+}
+
 
