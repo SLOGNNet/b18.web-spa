@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Driver, License } from '../../../../../models';
+import { Driver, License, LicenseClassTypes } from '../../../../../models';
 import { Constants } from '../../../../../shared';
 
 @Component({
@@ -24,6 +24,6 @@ export class DriverLicenseComponent {
   }
 
   get licenseClassText() {
-    return License.getLicenseClassText(this.driver.license.class);
+    return LicenseClassTypes.displayText(this.driver.license.class);
   }
 }

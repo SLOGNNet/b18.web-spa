@@ -40,7 +40,7 @@ export class TripViewComponent {
   }
 
   getAppointmentType(type: AppointmentTypes) {
-    return Appointment.getAppointmentText(type);
+    return AppointmentTypes.displayText(type);
   }
 
 }

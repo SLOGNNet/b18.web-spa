@@ -10,7 +10,7 @@ export class DriverPaymentTypeComponent {
   @Input() driver: Driver;
 
   get paymentTypeText() {
-    return Driver.getPaymentTypeText(this.driver.paymentOptions);
+    return DriverPaymentOptions.displayText(this.driver.paymentOptions);
   }
 
   get paymentTypeIcon() {

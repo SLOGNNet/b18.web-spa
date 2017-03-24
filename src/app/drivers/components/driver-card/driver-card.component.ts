@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Driver, ContactInfo } from '../../../models';
+import { Driver, ContactInfo, DriverStatuses, DriverTypes } from '../../../models';
 import { BaseCardComponent } from '../../../base';
 
 @Component({
@@ -14,15 +14,15 @@ import { BaseCardComponent } from '../../../base';
 export class DriverCardComponent extends BaseCardComponent {
 
   itemStatusColor() {
-    return Driver.getStatusColor(this.item.status);
+    return DriverStatuses.color(this.item.status);
   }
 
   itemStatusText() {
-    return Driver.getStatusText(this.item.status);
+    return DriverStatuses.displayText(this.item.status);
   }
 
   get driverTypeText() {
-    return Driver.getTypeText(this.item.type);
+    return DriverTypes.displayText(this.item.type);
   }
 
   get phone(): string {

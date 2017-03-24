@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Driver } from '../../../../../models';
+import { Driver, DriverTypes } from '../../../../../models';
 import { Constants } from '../../../../../shared';
 
 
@@ -16,6 +16,6 @@ export class DriverInformationComponent {
   }
 
   get driverType() {
-    return Driver.getTypeText(this.driver.type);
+    return DriverTypes.displayText(this.driver.type);
   }
 }
