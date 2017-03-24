@@ -20,7 +20,3 @@ export namespace TrailerTypes {
     return displayTexts[tType];
   }
 }
-
-// public static getTrailerType(tType: TrailerTypes): string {
-//   return trailerTypes[tType];
-// }
