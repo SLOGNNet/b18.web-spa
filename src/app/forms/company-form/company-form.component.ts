@@ -5,7 +5,7 @@ import { LocationActions } from '../../actions';
 import { FormValidationService } from '../../shared';
 import { EnumHelperService } from '../../shared/helpers';
 import { BaseForm } from '../base-form';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
@@ -49,6 +49,7 @@ export class CompanyForm extends BaseForm {
     }
 
     if (company && isValid) {
+      this.companyForm.markAsPristine();
       this.save.emit(company);
     }
   }

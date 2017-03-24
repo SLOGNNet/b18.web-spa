@@ -3,7 +3,6 @@ import { HttpService } from '../http.service';
 import { Driver, DriverPaymentOptions } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
-import { generatePersistId } from '../../helpers';
 import { plainToClass, classToPlain } from 'class-transformer';
 @Injectable()
 export class DriverService {

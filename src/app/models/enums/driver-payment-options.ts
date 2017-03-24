@@ -4,3 +4,16 @@ export enum DriverPaymentOptions {
   HOURLY = 3,
   FLAT = 4
 }
+
+let displayTexts = {
+  [DriverPaymentOptions.PER_MILE]: 'Per Miles',
+  [DriverPaymentOptions.PERCENTAGE]: 'Percentage',
+  [DriverPaymentOptions.HOURLY]: 'Hourly',
+  [DriverPaymentOptions.FLAT]: 'Flat'
+};
+
+export namespace DriverPaymentOptions {
+  export function displayText(option: DriverPaymentOptions) {
+    return displayTexts[option];
+  }
+}

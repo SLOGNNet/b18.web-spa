@@ -9,8 +9,8 @@ import { Driver, DriverPaymentOptions } from '../../../../../models';
 export class DriverPaymentOptionComponent {
   @Input() driver: Driver;
 
-  get paymentOptionText() {
-    return Driver.getPaymentOptionText(this.driver.paymentOption);
+  get paymentTypeText() {
+    return DriverPaymentOptions.displayText(this.driver.paymentOption);
   }
 
   get paymentOptionIcon() {

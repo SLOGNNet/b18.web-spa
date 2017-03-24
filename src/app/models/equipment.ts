@@ -11,74 +11,6 @@ import {
 } from './enums';
 import { generateNewId } from './utils';
 
-// Colors
-function createStatusColors() {
-  let result = {};
-  result[EquipmentStatuses.NOT_AVALIABLE] = '#ffbe4d';
-  result[EquipmentStatuses.ACTIVE] = '#85d183';
-  result[EquipmentStatuses.INACTIVE] = '#fb3a3a';
-
-  return result;
-};
-
-// Status Text
-function createStatusText() {
-  let result = {};
-  result[EquipmentStatuses.NONE] = 'none';
-  result[EquipmentStatuses.NOT_AVALIABLE] = 'not avaliable';
-  result[EquipmentStatuses.ACTIVE] = 'active';
-  result[EquipmentStatuses.INACTIVE] = 'inactive';
-
-  return result;
-};
-
-// Driver Text
-function createEquipmentDriverText() {
-  let result = {};
-  result[DriverTypes.COMPANY_DRIVER] = 'Company Driver';
-  result[DriverTypes.OWNER_OPERATOR] = 'Owner Operator';
-
-  return result;
-};
-
-// Type Text
-function createTypeText() {
-  let result = {};
-  result[EquipmentTypes.NONE] = 'None';
-  result[EquipmentTypes.TRAILER] = 'Trailer';
-  result[EquipmentTypes.POWER_UNIT] = 'PowerUnit';
-
-  return result;
-};
-
-// Short Type Text
-function createShortTypeText() {
-  let result = {};
-  result[EquipmentTypes.NONE] = 'None';
-  result[EquipmentTypes.TRAILER] = 'TL';
-  result[EquipmentTypes.POWER_UNIT] = 'TK';
-
-  return result;
-};
-
-// Mode Text
-function createModeText() {
-  let result = {};
-  result[EquipmentModes.NONE] = 'None';
-  result[EquipmentModes.COMPANY] = 'Company';
-  result[EquipmentModes.OWNER_OPERATOR] = 'Owner Operator';
-
-  return result;
-};
-
-// Vehicle Operatings Types
-function createVehicleOperatingsText() {
-  let result = {};
-  result[EquipmentVehicleOperatings.INTER_STATE] = 'InterState';
-  result[EquipmentVehicleOperatings.INTRA_STATE] = 'IntraState';
-  return result;
-}
-
 // Power Unit types
 function createPowerUnitTypes() {
   let result = {};
@@ -102,13 +34,6 @@ function createTrailerTypes() {
   return result;
 }
 
-const statusColors = createStatusColors();
-const statusText = createStatusText();
-const equipmentDriverText = createEquipmentDriverText();
-const typeText = createTypeText();
-const shortTypeText = createShortTypeText();
-const modeText = createModeText();
-const vehicleOperatings = createVehicleOperatingsText();
 const powerUnitTypes = createPowerUnitTypes();
 const trailerTypes = createTrailerTypes();
 
@@ -164,34 +89,6 @@ export class Equipment {
       date: new Date()
     };
     return result;
-  }
-
-  public static getStatusText(status: EquipmentStatuses): string {
-    return statusText[status];
-  }
-
-  public static getDriverText(driverType: DriverTypes): string {
-    return equipmentDriverText[driverType];
-  }
-
-  public static getStatusColor(status: EquipmentStatuses): string {
-    return statusColors[status];
-  }
-
-  public static getShortTypeText(type: EquipmentTypes): string {
-    return shortTypeText[type];
-  }
-
-  public static getTypeText(type: EquipmentTypes): string {
-    return typeText[type];
-  }
-
-  public static getModeText(type: EquipmentModes): string {
-    return modeText[type];
-  }
-
-  public static getVehicleOperatingsType(type: EquipmentVehicleOperatings): string {
-    return vehicleOperatings[type];
   }
 
   public static getEquipmentSubType(type: EquipmentTypes, subType: PowerUnitTypes | TrailerTypes ) {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { Company } from '../models';
 import { CompanyService, NotificationService } from '../shared';
-import { IListDataActions, IDetailDataActions } from './intefaces';
+import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 
 @Injectable()
-export class CompanyActions implements IListDataActions<Company>, IDetailDataActions<Company> {
+export class CompanyActions implements IListDataActions<Company>, IDetailDataActions<Company>, IRootEditDataActions<Company> {
   static ADD_COMPANY_REQUEST: string = 'ADD_COMPANY_REQUEST';
   static ADD_COMPANY_SUCCESS: string = 'ADD_COMPANY_SUCCESS';
   static ADD_COMPANY_FAILURE: string = 'ADD_COMPANY_FAILURE';
@@ -24,12 +24,12 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
 
   add(company: Company): void {
     this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST, company });
-
-    setTimeout(() => {
-      this.companyService.update(company);
-      this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company });
-      this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
-    }, 3000);
+      this.companyService.create(company).subscribe(newId => {
+        const prevId = company.id;
+        company.id = newId;
+        this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, company, prevId });
+        this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
+      });
   }
 
   remove(company: Company): void {

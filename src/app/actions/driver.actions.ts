@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { Driver } from '../models';
 import { DriverService, NotificationService, GoogleService } from '../shared';
-import { IListDataActions, IDetailDataActions } from './intefaces';
+import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 import { plainToClass } from 'class-transformer';
 
 @Injectable()
-export class DriverActions implements IListDataActions<Driver>, IDetailDataActions<Driver> {
+export class DriverActions implements IListDataActions<Driver>, IDetailDataActions<Driver>, IRootEditDataActions<Driver> {
   static ADD_DRIVER_REQUEST: string = 'ADD_DRIVER_REQUEST';
   static ADD_DRIVER_SUCCESS: string = 'ADD_DRIVER_SUCCESS';
   static ADD_DRIVER_FAILURE: string = 'ADD_DRIVER_FAILURE';

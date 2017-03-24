@@ -4,6 +4,8 @@ import { Company } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
 import { getPaginated } from '../../helpers';
+import { generatePersistId } from '../../helpers';
+import { cloneDeep } from 'lodash';
 
 @Injectable()
 export class CompanyService {
@@ -20,12 +22,15 @@ export class CompanyService {
 
   getDetails(id: string): Observable<Company> {
     return Observable.of(
-      MockData.companies.find((company) => id === company.id)
+      cloneDeep(MockData.companies.find((company) => id === company.id))
     );
   }
 
-  create(company: Company) {
-    MockData.companies.push(company);
+  create(company: Company): Observable<string> {
+    const persistCompany = cloneDeep(company);
+    persistCompany.id = generatePersistId();
+    MockData.companies.push(persistCompany);
+    return Observable.of(persistCompany.id);
   }
 
   update(company: Company) {

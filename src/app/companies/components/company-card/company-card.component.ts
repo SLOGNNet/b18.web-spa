@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Company, ContactInfo } from '../../../models';
+import { Company, ContactInfo, CompanyStatuses } from '../../../models';
 import { Load, LoadStatuses } from '../../../models';
 import { BaseCardComponent } from '../../../base';
 
@@ -19,15 +19,15 @@ export class CompanyCardComponent extends BaseCardComponent {
   }
 
   loadStatusColor(status: LoadStatuses): string {
-    return Load.getStatusColor(status);
+    return LoadStatuses.color(status);
   }
 
   itemStatusText() {
-    return Company.getStatusText(this.item.status);
+    return CompanyStatuses.displayText(this.item.status);
   }
 
   itemStatusColor(): string {
-    return Company.getStatusColor(this.item.status);
+    return CompanyStatuses.color(this.item.status);
   }
 
   get phone() {

@@ -1,9 +1,9 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Load } from '../../../models';
 import { LoadActions } from '../../../actions';
-import { BaseEditComponent } from '../../../base';
+import { BaseRootEditComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store';
 import { Location } from '@angular/common';
 import { LoadFormComponent } from '../../../forms';
@@ -12,7 +12,7 @@ import { LoadFormComponent } from '../../../forms';
   selector: 'load-edit',
   templateUrl: './load-edit.component.html'
 })
-export class LoadEditComponent extends BaseEditComponent<Load> {
+export class LoadEditComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
   private anchors = [{
     id: 'info',

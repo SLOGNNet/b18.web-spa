@@ -1,19 +1,12 @@
 import { ContactInfoType } from './enums';
-
-const contactInfoTypes = createInfoTypes();
-
-function createInfoTypes() {
-  let result = {};
-    result[ContactInfoType.NONE] = 'None';
-    result[ContactInfoType.PHONE] = 'Phone';
-    result[ContactInfoType.FAX] = 'Fax';
-    result[ContactInfoType.EMAIL] = 'Email';
-  return result;
-}
+import { Transform } from 'class-transformer';
+import { toEnumTransformer, fromEnumTransformer } from './utils';
 
 export class ContactInfo {
   label: string = '';
   value: string = '';
+  @Transform(toEnumTransformer(ContactInfoType), { toClassOnly: true })
+  @Transform(fromEnumTransformer(ContactInfoType), { toPlainOnly: true })
   type: ContactInfoType;
 
   public static getPrimaryPhone(contactInfoList: Array<ContactInfo>): ContactInfo {
@@ -22,10 +15,6 @@ export class ContactInfo {
     });
 
     return info[0];
-  }
-
-  public static getContactInfoType(type: ContactInfoType): string {
-    return contactInfoTypes[type];
   }
 
   public static сreateDefaultList() {

@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Equipment } from '../../../models';
-import { BaseEditComponent } from '../../../base';
+import { BaseRootEditComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { EquipmentActions } from '../../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store';
 import { EquipmentForm } from '../../../forms';
 
@@ -13,7 +13,7 @@ import { EquipmentForm } from '../../../forms';
   templateUrl: './equipment-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EquipmentEditComponent extends BaseEditComponent<Equipment> {
+export class EquipmentEditComponent extends BaseRootEditComponent<Equipment> {
 
   @ViewChild(EquipmentForm) equipmentFormComponent: EquipmentForm;
 

@@ -1,9 +1,9 @@
 import { Component, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { Company } from '../../models';
-import { BaseEditComponent } from '../../base';
+import { BaseRootEditComponent } from '../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyActions } from '../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { Location } from '@angular/common';
 import { CompanyForm } from '../../forms';
@@ -12,7 +12,7 @@ import { CompanyForm } from '../../forms';
   selector: 'company-edit',
   templateUrl: './company-edit.component.html'
 })
-export class CompanyEditComponent extends BaseEditComponent<Company> {
+export class CompanyEditComponent extends BaseRootEditComponent<Company> {
   @Input() disabled: boolean = false;
   @ViewChild(CompanyForm) companyFormComponent: CompanyForm;
   private anchors = [{

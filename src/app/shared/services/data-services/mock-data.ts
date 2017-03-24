@@ -126,9 +126,15 @@ class MockData {
     },
     {
       label: 'Fax',
-      value: 'fax@gmail.comj',
+      value: '33324234',
       type: ContactInfoType.FAX
+    },
+    {
+      label: 'Email',
+      value: 'fax@gmail.comj',
+      type: ContactInfoType.EMAIL
     }
+
   ];
 
   public locations: Array<Location> = [
@@ -412,7 +418,7 @@ class MockData {
     expiration: new Date(),
     dateIssued: new Date(),
     stateIssued: 'AL',
-    class: LicenseClassTypes.CLASS_B,
+    licenseClass: LicenseClassTypes.CLASS_B,
     endorsments: 'M N',
     restrictions: 'D E',
   }, {
@@ -421,7 +427,7 @@ class MockData {
     expiration: new Date(),
     dateIssued: new Date(),
     stateIssued: 'AL',
-    class: LicenseClassTypes.CLASS_A,
+    licenseClass: LicenseClassTypes.CLASS_A,
     endorsments: 'X L',
     restrictions: 'C Z',
   }];

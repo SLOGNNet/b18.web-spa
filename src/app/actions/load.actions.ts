@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { Load } from '../models';
-import { IListDataActions, IDetailDataActions } from './intefaces';
+import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 import { LoadService } from '../shared';
 
 @Injectable()
-export class LoadActions implements IListDataActions<Load>, IDetailDataActions<Load> {
+export class LoadActions implements IListDataActions<Load>, IDetailDataActions<Load>, IRootEditDataActions<Load> {
   static ADD_LOAD_REQUEST: string = 'ADD_LOAD_REQUEST';
   static ADD_LOAD_SUCCESS: string = 'ADD_LOAD_SUCCESS';
   static ADD_LOAD_FAILURE: string = 'ADD_LOAD_FAILURE';

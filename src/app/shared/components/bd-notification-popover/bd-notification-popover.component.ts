@@ -64,7 +64,7 @@ setNotificationsAsViewed(): Array <Notification> {
 }
 
 setNotificationsVariables(val: NotificationType) {
-  const typeText = Notification.getTypeText(val);
+  const typeText = NotificationType.displayText(val);
   this.topIconClassName = this.itemsName = this.titleText = typeText;
   this._notificationType = val;
 }

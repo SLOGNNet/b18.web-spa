@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, StopTypes } from '../../../models';
+import { Stop, StopTypes, StopStatuses } from '../../../models';
 
 @Component({
   selector: 'stops-line',
@@ -21,6 +21,6 @@ export class StopsLineComponent {
   }
 
   getColor(type) {
-    return Stop.getStatusColor(type);
+    return StopStatuses.color(type);
   }
 }

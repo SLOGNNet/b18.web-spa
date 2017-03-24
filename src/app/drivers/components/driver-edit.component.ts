@@ -1,10 +1,10 @@
 import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Driver } from '../../models';
-import { BaseEditComponent } from '../../base';
+import { BaseRootEditComponent } from '../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DriverActions } from '../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { DriverForm } from '../../forms';
 
@@ -12,7 +12,7 @@ import { DriverForm } from '../../forms';
   selector: 'driver-edit',
   templateUrl: './driver-edit.component.html'
 })
-export class DriverEditComponent extends BaseEditComponent<Driver> {
+export class DriverEditComponent extends BaseRootEditComponent<Driver> {
   @ViewChild(DriverForm) driverFormComponent: DriverForm;
 
   private anchors = [{

@@ -1,7 +1,5 @@
 <div *ngIf="selectedItem">
   <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="selectedItem.name" [anchors]="anchors">
-    <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
-    </bd-form-button>
   </form-navigation>
   <div class="company-detail-container">
     <navigation-anchor id="basic-information"></navigation-anchor>
@@ -13,7 +11,7 @@
         <company-address *ngFor="let location of selectedItem.locations" [location]="location"></company-address>
     </bd-view-detail-section>
     <navigation-anchor id="contacts"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Contacts'" [addContent]="'add contact'" [editButton]="false">
+    <bd-view-detail-section [labelText]="'Contacts'" [addContent]="'add contact'" [editButton]="false" (addClick)="onAddContactClick()">
         <company-contact *ngFor="let contact of selectedItem.contacts" [contact]="contact"></company-contact>
     </bd-view-detail-section>
   </div>
