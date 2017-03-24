@@ -20,7 +20,7 @@ const routes: Routes = [{
         {
           path: 'edit',
           component: DriverEditComponent,
-          data: { new: true },
+          data: { new: true,  title: 'New Driver'},
           canDeactivate: [CanDeactivateGuard]
         }
       ]

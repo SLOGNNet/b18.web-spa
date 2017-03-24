@@ -61,7 +61,7 @@ export class Equipment {
   vin: string = '';
   notes: string = 'Oil Change';
   @Type(() => Driver)
-  driver: Driver;
+  driver: Driver = Driver.create();
   status: EquipmentStatuses = EquipmentStatuses.ACTIVE;
   type: EquipmentTypes = EquipmentTypes.TRAILER;
   subType: PowerUnitTypes | TrailerTypes;
@@ -84,6 +84,7 @@ export class Equipment {
     result.subType = TrailerTypes.DRY_VAN_53;
     result.ownership = EquipmentModes.COMPANY;
     result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
+    result.driver = Driver.create();
     result.equipmentNotification = {
       message: '',
       date: new Date()

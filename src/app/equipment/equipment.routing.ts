@@ -20,7 +20,7 @@ const routes: Routes = [{
         {
           path: 'edit',
           component: EquipmentEditComponent,
-          data: { new: true },
+          data: { new: true, title: 'New Equipment' },
           canDeactivate: [CanDeactivateGuard]
         }
       ]

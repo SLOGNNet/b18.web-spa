@@ -23,7 +23,7 @@ const routes: Routes = [{
         {
           path: 'edit-info',
           component: CompanyEditInfoComponent,
-          data: { new: true },
+          data: { new: true, title: 'New Company' },
           canDeactivate: [CanDeactivateGuard]
         }
       ]

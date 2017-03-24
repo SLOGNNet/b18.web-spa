@@ -69,7 +69,14 @@ export class NavigationBarComponent {
     {
         label: 'Equipment',
         icon: 'icon',
-        link: '/equipment'
+        link: '/equipment',
+        items: [{
+              label: 'Equipment',
+              link: '/equipment'
+          }, {
+          label: 'New Equipment',
+          link: '/equipment/0/edit'
+        }]
     }];
 
     onSwitchStateChange(switchState: SwitchState) {
