@@ -14,7 +14,7 @@ export class BdInitialsCircleComponent {
       @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials(){
-        if (!this.firstName && !this.lastName) return DEFAULT_INITIALS;
+        if (!this.firstName || !this.lastName) return DEFAULT_INITIALS;
         return this.firstName.charAt(0) + this.lastName.charAt(0);
       }
 }

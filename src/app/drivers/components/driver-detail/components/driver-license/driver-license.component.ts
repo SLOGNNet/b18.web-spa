@@ -9,7 +9,7 @@ import { Constants } from '../../../../../shared';
 })
 export class DriverLicenseComponent {
   public restrictionsTypes: string;
-  public endorsmentsTypes: string;
+  public endorsementsTypes: string;
   @Input() driver: Driver;
 
   constructor(private constants: Constants) {
@@ -18,12 +18,12 @@ export class DriverLicenseComponent {
 
   ngOnChanges(changes) {
     if (changes.driver) {
-      this.restrictionsTypes = this.driver.license.restrictions.split(' ').join(', ');
-      this.endorsmentsTypes = this.driver.license.endorsments.split(' ').join(', ');
+      this.restrictionsTypes  = this.driver.license.restrictions &&  this.driver.license.restrictions.split(' ').join(', ');
+      this.endorsementsTypes = this.driver.license.endorsements && this.driver.license.endorsements.split(' ').join(', ');
     }
   }
 
   get licenseClassText() {
-    return LicenseClassTypes.displayText(this.driver.license.class);
+    return LicenseClassTypes.displayText(this.driver.license.licenseClass);
   }
 }

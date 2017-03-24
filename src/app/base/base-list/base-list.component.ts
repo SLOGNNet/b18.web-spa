@@ -44,9 +44,8 @@ export abstract class BaseListComponent<T> extends BasePane {
   }
 
   private selectRow(id: string) {
-    this.selected = this.items.filter(item => item['id'] === id);
+    this.selected = this.items.filter(item => { if (item['id'] === id) return true; });
   }
-
 
   private subscribeToDetailsChildRoute() {
     // child route subscribtion approach taken from https://github.com/angular/angular/issues/11692
@@ -71,7 +70,7 @@ export abstract class BaseListComponent<T> extends BasePane {
 
   private onDetailRouteChange(params: any) {
     const id = params['id'];
-    if (!isNaN(id)) {
+    if (id) {
       this.selectRow(id);
     } else {
       this.deselectRow();
