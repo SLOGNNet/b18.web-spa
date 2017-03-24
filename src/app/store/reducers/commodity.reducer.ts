@@ -12,7 +12,7 @@ const INITIAL_STATE: ICommodityState = { items: [] };
 
 export const commodityReducer = createReducer(INITIAL_STATE, {
   [CommodityActions.ADD_COMMODITY](state, action) {
-      return Object.assign({}, state, { items: addItem(state.items, action.commodity)});
+      return Object.assign({}, state, { items: addItem(state.items, action.commodity, action.commodity.id)});
   },
   [CommodityActions.REMOVE_COMMODITY](state, action) {
     return Object.assign({}, state, { items: removeItem(state.items, action.commodity)});

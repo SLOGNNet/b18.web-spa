@@ -18,7 +18,7 @@ export const loadReducer = createReducer(INITIAL_STATE, {
   },
   [LoadActions.ADD_LOAD_SUCCESS](state, action) {
       return Object.assign({}, state, {
-        items: addItem(state.items, action.load),
+        items: addItem(state.items, action.load, action.load.id),
         isLoading: false
       });
   },

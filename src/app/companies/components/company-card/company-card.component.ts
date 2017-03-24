@@ -31,7 +31,8 @@ export class CompanyCardComponent extends BaseCardComponent {
   }
 
   get phone() {
-    const phoneInfo = ContactInfo.getPrimaryPhone(this.item.contacts[0].contactInfo);
+    const firstContact = this.item.contacts[0];
+    const phoneInfo = firstContact && ContactInfo.getPrimaryPhone(firstContact.contactInfo);
     return phoneInfo ? phoneInfo.value : '';
   }
 }
