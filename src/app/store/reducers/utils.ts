@@ -18,5 +18,5 @@ export function removeItem(list: any[], removed: any) {
 }
 
 export function addItem(list: any[], added: any, id: any) {
-  return [...list, Object.assign(added, {id: id})];
+  return [...list, Object.assign({}, added, {id: id})];
 }
