@@ -7,7 +7,7 @@ export enum CompanyTypes {
 
 let displayTexts = {
   [CompanyTypes.BROKER]: 'Broker',
-  [CompanyTypes.FREIGHT_FORWARDER]: 'Freight Forwarder',
+  [CompanyTypes.FREIGHT_FORWARDER]: 'Freight_Forwarder',
   [CompanyTypes.SHIPPER]: 'Shipper',
   [CompanyTypes.CARRIER]: 'Carrier'
 };
