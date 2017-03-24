@@ -419,7 +419,7 @@ class MockData {
     dateIssued: new Date(),
     stateIssued: 'AL',
     licenseClass: LicenseClassTypes.CLASS_B,
-    endorsments: 'M N',
+    endorsements: 'M N',
     restrictions: 'D E',
   }, {
     id: '1',
@@ -428,7 +428,7 @@ class MockData {
     dateIssued: new Date(),
     stateIssued: 'AL',
     licenseClass: LicenseClassTypes.CLASS_A,
-    endorsments: 'X L',
+    endorsements: 'X L',
     restrictions: 'C Z',
   }];
 

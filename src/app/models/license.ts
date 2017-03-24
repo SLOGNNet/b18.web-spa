@@ -1,13 +1,26 @@
 import { LicenseClassTypes } from './enums';
+import { generateNewId,
+  toEnumTransformer,
+  fromEnumTransformer,
+  fromMiliSecondsToDate,
+  fromDateToMiliSeconds
+} from './utils';
+import { Type, Transform, Expose } from 'class-transformer';
 
 export class License {
   id: string = '';
   number: string = '';
-  expiration: Date;
-  dateIssued: Date;
+  @Transform(fromMiliSecondsToDate(), { toClassOnly: true })
+  @Transform(fromDateToMiliSeconds(), { toPlainOnly: true })
+  expiration: Date = null;
+  @Transform(fromMiliSecondsToDate(), { toClassOnly: true })
+  @Transform(fromDateToMiliSeconds(), { toPlainOnly: true })
+  dateIssued: Date = null;
   stateIssued: string = '';
+  @Transform(toEnumTransformer(LicenseClassTypes), { toClassOnly: true })
+  @Transform(fromEnumTransformer(LicenseClassTypes), { toPlainOnly: true })
   licenseClass: LicenseClassTypes;
-  endorsments: string = '';
+  endorsements: string = '';
   restrictions: string = '';
 
   static create(): License {

@@ -27,9 +27,15 @@ export class Driver extends Member {
   @Transform(fromEnumTransformer(DriverPaymentOptions), { toPlainOnly: true })
   paymentOption: DriverPaymentOptions;
   rate: number = 0;
+  @Transform(toEnumTransformer(DriverTypes), { toClassOnly: true })
+  @Transform(fromEnumTransformer(DriverTypes), { toPlainOnly: true })
   type: DriverTypes = DriverTypes.COMPANY_DRIVER;
+  @Transform(fromMiliSecondsToDate(), { toClassOnly: true })
+  @Transform(fromDateToMiliSeconds(), { toPlainOnly: true })
   hireDate: Date = null;
   terminationDate: Date = null;
+  @Transform(toEnumTransformer(DriverStatuses), { toClassOnly: true })
+  @Transform(fromEnumTransformer(DriverStatuses), { toPlainOnly: true })
   status: DriverStatuses = DriverStatuses.ACTIVE;
   notes: string = '';
   lastTripNumber: number = 0;
