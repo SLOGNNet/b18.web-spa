@@ -6,6 +6,7 @@
 
   &.active {
     color: $black;
+    border-bottom-color: $blue;
 
     .card-section {
       border-bottom-color: $blue;
@@ -26,5 +27,22 @@
 
   company-card {
     color: $black;
+    transition: all .5s ease-in-out;
+  }
+}
+
+:host-context() {
+
+  company-card {
+    transition: all .5s;
+
+    .card-section {
+      background: red;
+      .left {
+        .cropped-company-name {
+          color: red;
+        }
+      }
+    }
   }
 }

@@ -7,19 +7,35 @@ company-contact {
   &:first-child {
     margin-top: 0;
   }
-
   margin-top: 10px;
 }
 
- div {
+div {
   color: $dark-grey;
 }
 
 :host-context():hover {
-
-   div {
+  div {
     color: $black;
   }
+}
 
-
+:host-context()  {
+  form-navigation {
+    .form-navigation {
+      color: red;
+      bd-perfect-scrollbar {
+        perfect-scrollbar {
+          background: red;
+          .ps-content {
+            .content {
+              span {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
