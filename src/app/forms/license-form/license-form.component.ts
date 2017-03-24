@@ -62,8 +62,8 @@ export class LicenseForm extends BaseForm {
       { name: 'expiration', validators: [] },
       { name: 'dateIssued', validators: [] },
       { name: 'stateIssued', validators: [] },
-      { name: 'class', validators: [] },
-      { name: 'endorsments', validators: [] },
+      { name: 'licenseClass', validators: [] },
+      { name: 'endorsements', validators: [] },
       { name: 'restrictions', validators: [] }
     ];
 
