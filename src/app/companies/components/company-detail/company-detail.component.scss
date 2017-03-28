@@ -9,33 +9,3 @@ company-contact {
   }
   margin-top: 10px;
 }
-
-div {
-  color: $dark-grey;
-}
-
-:host-context():hover {
-  div {
-    color: $black;
-  }
-}
-
-:host-context()  {
-  form-navigation {
-    .form-navigation {
-      color: red;
-      bd-perfect-scrollbar {
-        perfect-scrollbar {
-          background: red;
-          .ps-content {
-            .content {
-              span {
-                color: red;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}

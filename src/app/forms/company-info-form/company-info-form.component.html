@@ -1,19 +1,19 @@
 <form [formGroup]="companyForm" novalidate (ngSubmit)="onSave(companyForm.value, companyForm.valid)">
-    <bd-form-section [disabled]="disabled" [labelText]="'BASIC INFORMATION'">
-      <bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name">
+    <bd-form-section [class.parent-hover]="parentHover" [disabled]="disabled" [labelText]="'BASIC INFORMATION'">
+      <bd-input class="bd-form-control" [labelText]="'Company Name'" [class.parent-hover]="parentHover" formControlName="name">
       </bd-input>
-      <bd-dropdown class="bd-form-control" [labelText]="'Company type'" formControlName="type" [items]="companyTypes">
+      <bd-dropdown class="bd-form-control" [labelText]="'Company type'" [class.parent-hover]="parentHover" formControlName="type" [items]="companyTypes">
       </bd-dropdown>
       <bd-validator [component]="companyForm.controls.status" [errorDefs]="{required: 'Status is required'}">
-        <bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="true" formControlName="status"
+        <bd-form-switch class="bd-form-control" [parentHover]="parentHover" [labelText]="'Status'" [enableButtonSwitch]="true" formControlName="status"
         [items]="companyStatuses">
         </bd-form-switch>
       </bd-validator>
       <bd-validator [component]="companyForm.controls.mc" [errorDefs]="{required: 'MC# is required'}">
-        <bd-input class="bd-form-control" [labelText]="'MC #'" formControlName="mc">
+        <bd-input class="bd-form-control" [class.parent-hover]="parentHover" [labelText]="'MC #'" formControlName="mc">
         </bd-input>
       </bd-validator>
-      <bd-input class="bd-form-control" [labelText]="'Tax ID (W9)'" formControlName="taxId">
+      <bd-input class="bd-form-control" [class.parent-hover]="parentHover" [labelText]="'Tax ID (W9)'" formControlName="taxId">
       </bd-input>
     </bd-form-section>
     <form-sticky-bottom-container [sticky]="true" [stickyPositionInsideScroll]="true">

@@ -6,7 +6,7 @@ $small-size: 10px;
 .circle {
   display: flex;
   margin: 4px 0;
-  background: $black;
+  background: $nevada;
   color: $white;
   font-size: $mini-font-size;
   border-radius: $circle-radius;
@@ -25,4 +25,8 @@ $small-size: 10px;
     margin: 0;
     font-size: $small-size - 4px;
   }
+}
+
+.parent-hover {
+  background: $black;
 }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company, CompanyStatuses, CompanyTypes } from '../../../../../models';
@@ -14,6 +14,8 @@ import { CompanyInfoForm } from '../../../../../forms';
   styleUrls: ['./company-edit-info.component.scss']
 })
 export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
+  public parentHover: boolean = false;
+  
   @ViewChild(CompanyInfoForm) companyInfoFormComponent: CompanyInfoForm;
   private anchors = [{
     id: '',
@@ -36,6 +38,14 @@ export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
     super(companyActions, ngRedux.select(state => state.companies.selected),
       ngRedux.select(state => state.companies.isLoading), route, router, location, cdr);
   }
+
+  @HostListener('mouseenter') mouseover() {
+   this.parentHover = true;
+ };
+
+ @HostListener('mouseleave') mouseleave() {
+   this.parentHover = false;
+ }
 
   isDetailsChanged() {
     return this.companyInfoFormComponent && this.companyInfoFormComponent.companyForm.dirty;

@@ -1,9 +1,9 @@
-<div class="location-container">
+<div class="location-container hovered-bg">
   <div class="left">
-      <bd-initials-circle class="initials-circle" [firstName]="contact.firstName" [lastName]="contact.lastName">
+      <bd-initials-circle class="initials-circle" [parentHover]="parentHover" [firstName]="contact.firstName" [lastName]="contact.lastName">
       </bd-initials-circle>
       <div class="full-name-icons-container">
-        <div class="full-name">
+        <div class="full-name hovered-text">
           {{contact.firstName}} {{contact.lastName}}
         </div>
         <div class="icons">

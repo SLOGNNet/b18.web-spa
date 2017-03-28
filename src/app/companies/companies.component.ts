@@ -12,6 +12,7 @@ import { IAppState } from '../store';
   styleUrls: ['./companies.component.scss']
 })
 export class CompaniesComponent extends BaseListComponent<Company> {
+
   constructor(
     companyActions: CompanyActions,
     router: Router,

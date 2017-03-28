@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./bd-view-detail-section.component.scss']
 })
 export class BdViewDetailSectionComponent {
+  @Input() private parentHover: boolean = false;
   @Input() private labelText: string = '';
   @Input() private addContent: string = '';
   @Input() private editButton: boolean = true;

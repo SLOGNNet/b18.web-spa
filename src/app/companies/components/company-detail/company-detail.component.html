@@ -1,18 +1,18 @@
-<div *ngIf="selectedItem">
-  <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="selectedItem.name" [anchors]="anchors">
+<div [class.parent-hover]="parentHover" class="form-navigation-container" *ngIf="selectedItem">
+  <form-navigation sticky [class.parent-hover]="parentHover" [stickyPositionInsideScroll]="true" [title]="selectedItem.name" [anchors]="anchors">
   </form-navigation>
   <div class="company-detail-container">
     <navigation-anchor id="basic-information"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'BASIC INFORMATION'" [addButton]="false" (editClick)="onEditInfoClick()">
-      <company-basic-information [company]="selectedItem"></company-basic-information>
+    <bd-view-detail-section class="bd-view-detail-section" [parentHover]="parentHover" [class.parent-hover]="parentHover" [labelText]="'BASIC INFORMATION'" [addButton]="false" (editClick)="onEditInfoClick()">
+      <company-basic-information class="company-basic-information" [class.parent-hover]="parentHover" [company]="selectedItem"></company-basic-information>
     </bd-view-detail-section>
     <navigation-anchor id="address"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Address'" [addContent]="'add address'" [editButton]="false">
-        <company-address *ngFor="let location of selectedItem.locations" [location]="location"></company-address>
+    <bd-view-detail-section [labelText]="'Address'" [parentHover]="parentHover" [class.parent-hover]="parentHover" [addContent]="'add address'" [editButton]="false">
+        <company-address *ngFor="let location of selectedItem.locations" [class.parent-hover]="parentHover" [location]="location"></company-address>
     </bd-view-detail-section>
     <navigation-anchor id="contacts"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Contacts'" [addContent]="'add contact'" [editButton]="false" (addClick)="onAddContactClick()">
-        <company-contact *ngFor="let contact of selectedItem.contacts" [contact]="contact"></company-contact>
+    <bd-view-detail-section [labelText]="'Contacts'" [parentHover]="parentHover" [class.parent-hover]="parentHover" [addContent]="'add contact'" [editButton]="false" (addClick)="onAddContactClick()">
+        <company-contact *ngFor="let contact of selectedItem.contacts" [parentHover]="parentHover" [class.parent-hover]="parentHover" [contact]="contact"></company-contact>
     </bd-view-detail-section>
   </div>
 </div>

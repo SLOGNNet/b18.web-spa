@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { Company } from '../../../models';
 
 @Component({
@@ -8,6 +8,8 @@ import { Company } from '../../../models';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyCardsComponent {
+  public parentHover: boolean = false;
+  
   @Input() companies: Array<Company>;
   @Input() selected: Array<Company> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();
@@ -23,4 +25,12 @@ export class CompanyCardsComponent {
 
     return selected;
   }
+
+  @HostListener('mouseenter') mouseover() {
+   this.parentHover = true;
+ };
+
+ @HostListener('mouseleave') mouseleave() {
+   this.parentHover = false;
+ }
 }

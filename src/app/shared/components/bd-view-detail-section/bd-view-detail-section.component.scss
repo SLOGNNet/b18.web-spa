@@ -1,6 +1,22 @@
 @import '../../../../assets/styles/variables';
 
 :host {
+  &.parent-hover {
+    .detail-container {
+      .title {
+        label {
+          color: $black;
+        }
+
+        .buttons-panel {
+          bd-form-button {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
   .detail-container {
     .title {
       display: flex;
@@ -9,6 +25,7 @@
       justify-content: space-between;
 
       label {
+        color: $nevada;
         font-size: $tiny-font-size;
         text-transform: uppercase;
         font-weight: bold;
@@ -26,7 +43,7 @@
 
         .add-button,
         .edit-button {
-          display: flex;
+          display: none;
           margin-left: 5px;
         }
       }

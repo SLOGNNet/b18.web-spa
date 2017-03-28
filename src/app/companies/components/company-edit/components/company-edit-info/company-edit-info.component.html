@@ -1,8 +1,9 @@
-<div *ngIf="selectedItem">
+<div [class.parent-hover]="parentHover" *ngIf="selectedItem">
   <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
 	<form-navigation
     sticky
     [stickyPositionInsideScroll]="true"
+    [class.parent-hover]="parentHover"
     [disabled]="isLoading"
     [title]="selectedItem.name"
     [anchors]="anchors">
@@ -10,6 +11,7 @@
 	<company-info-form
     [company]="selectedItem"
     [disabled]="isLoading"
+    [parentHover]="parentHover"
     [scrollable]="true"
     [viewMode]="viewMode"
     (save)="onItemSave($event)"

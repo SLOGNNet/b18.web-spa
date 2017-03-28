@@ -27,3 +27,7 @@ $element-height: 18px;
     }
   }
 }
+
+:host() {
+  @include hovered;
+}

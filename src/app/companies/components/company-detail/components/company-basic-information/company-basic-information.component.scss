@@ -6,23 +6,20 @@ $element-height: 18px;
 .basic-information-container {
   display: flex;
   width: 100%;
-  background: $white;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
 
   .left {
     display: flex;
     width: 50%;
     padding: $default-margin;
-    border-right: $border;
 
     .cropped-company-name {
       display: flex;
       width: 28px;
       height: 28px;
       margin: 4px 0;
-      background: $black;
+      background: $nevada;
       color: $white;
       font-size: $mini-font-size;
       border-radius: $circle-radius;
@@ -61,4 +58,16 @@ $element-height: 18px;
       margin-left: 5px;
     }
   }
+}
+
+:host() {
+  @include hovered;
+
+    &.parent-hover {
+      .basic-information-container {
+          .cropped-company-name {
+            background: $black;
+          }
+      }
+    }
 }

@@ -5,6 +5,7 @@
 
   .bd-section-title {
     margin: 25px $default-margin 15px;
+    color: $nevada;
     font-size: $tiny-font-size;
     text-transform: uppercase;
     font-weight: bold;
@@ -18,5 +19,11 @@
 
   &:first-of-type {
     padding-top: 10px;
+  }
+
+  &.parent-hover {
+    .bd-section-title {
+      color: $black;
+    }
   }
 }
