@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Equipment } from '../../../models';
+import { Equipment, EquipmentStatuses, EquipmentTypes, DriverTypes } from '../../../models';
 import { BaseCardComponent } from '../../../base';
 
 @Component({
@@ -16,19 +16,19 @@ export class EquipmentCardComponent extends BaseCardComponent {
     public lastLetter: string;
 
     itemStatusColor(): string {
-      return Equipment.getStatusColor(this.item.status);
+      return EquipmentStatuses.color(this.item.status);
     }
 
      itemStatusText(): string {
-      return Equipment.getStatusText(this.item.status);
+      return EquipmentStatuses.displayText(this.item.status);
     }
 
-    get equipmentTypeText(): string {
-      return Equipment.getDriverText(this.item.driver.type);
+    get driverTypeText(): string {
+      return DriverTypes.displayText(this.item.driver.type);
     }
 
     get equipmentShortTypeText(): string {
-      return Equipment.getShortTypeText(this.item.type);
+      return EquipmentTypes.displayShortText(this.item.type);
     }
 
     ngOnInit() {

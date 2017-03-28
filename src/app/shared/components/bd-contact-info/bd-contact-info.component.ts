@@ -9,18 +9,21 @@ import { isEqual } from 'lodash';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdContactInfoComponent {
-    @Input() contactCollection: Array<ContactInfo> = [];
+  @Input() contactCollection: Array<ContactInfo> = [];
 
-    isPhone(item: ContactInfoType) {
-        return isEqual(item, ContactInfoType.PHONE);
-    }
+  getContactInfoType(type: ContactInfoType) {
+    return ContactInfoType.displayText(type);
+  }
+  isPhone(item: ContactInfoType) {
+    return isEqual(item, ContactInfoType.PHONE);
+  }
 
-    isFax(item: ContactInfoType) {
-        return isEqual(item, ContactInfoType.FAX);
-    }
+  isFax(item: ContactInfoType) {
+    return isEqual(item, ContactInfoType.FAX);
+  }
 
-    isEmail(item: ContactInfoType) {
-        return isEqual(item, ContactInfoType.EMAIL);
-    }
+  isEmail(item: ContactInfoType) {
+    return isEqual(item, ContactInfoType.EMAIL);
+  }
 
 }

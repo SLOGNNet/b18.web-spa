@@ -6,14 +6,14 @@ import { Driver, DriverPaymentOptions } from '../../../../../models';
   templateUrl: './driver-payment-type.component.html',
   styleUrls: ['./driver-payment-type.component.scss']
 })
-export class DriverPaymentTypeComponent {
+export class DriverPaymentOptionComponent {
   @Input() driver: Driver;
 
   get paymentTypeText() {
-    return Driver.getPaymentTypeText(this.driver.paymentOptions);
+    return DriverPaymentOptions.displayText(this.driver.paymentOption);
   }
 
-  get paymentTypeIcon() {
-    return this.driver.paymentOptions === DriverPaymentOptions.PERCENTAGE ? '%' : '$';
+  get paymentOptionIcon() {
+    return this.driver.paymentOption === DriverPaymentOptions.PERCENTAGE ? '%' : '$';
   }
 }

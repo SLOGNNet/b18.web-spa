@@ -39,6 +39,6 @@ config = {
 
 module.exports = {
   getConfig(env) {
-    return Object.assign({}, config.base, config[env]);
+    return Object.assign({}, config.base, config[env], { env: env });
   }
 }

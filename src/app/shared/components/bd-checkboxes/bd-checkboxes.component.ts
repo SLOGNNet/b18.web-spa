@@ -1,6 +1,7 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { without } from 'lodash';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isNil } from 'lodash';
 const noop = () => { };
 
 const BD_CHECKBOXES_CONTROL_VALUE_ACCESSOR: any = {
@@ -21,7 +22,7 @@ export class BdCheckboxes implements ControlValueAccessor {
   @Input() items: Array<any>;
   @Input()
   set value(v: string) {
-    this._value = v.trim().length ? v.split(' ') : [];
+    if (!isNil(v)) this._value = v.trim().length ? v.split(' ') : [];
   }
   get value(): string {
     return this._value.join(' ');

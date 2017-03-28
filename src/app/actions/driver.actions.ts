@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { Driver } from '../models';
 import { DriverService, NotificationService, GoogleService } from '../shared';
@@ -28,9 +28,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     driver = plainToClass(Driver, driver);
     this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
     this.driverService.create(driver).delay(3000).subscribe((newId) => {
-      const prevId = driver.id;
-      driver.id = newId;
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, prevId });
+      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, newId });
       this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
     });
   }

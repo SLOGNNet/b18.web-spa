@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Load } from '../../../models';
+import { Load, LoadStatuses } from '../../../models';
 
 @Component({
   selector: 'load-stop-card',
@@ -19,11 +19,11 @@ export class LoadStopCardComponent {
   private closeOnClickOutside = true;
 
   get loadStatusColor() {
-    return Load.getStatusColor(this.load.status);
+    return LoadStatuses.color(this.load.status);
   }
 
   get loadStatusText() {
-    return Load.getStatusText(this.load.status);
+    return LoadStatuses.displayText(this.load.status);
   }
 
   get currentTrip() {

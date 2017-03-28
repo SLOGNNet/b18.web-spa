@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { Company, Contact } from '../models';
 import { ContactService, CompanyService, NotificationService } from '../shared';
@@ -23,9 +23,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST });
     this.contactService.create(company, contact).subscribe(newId => {
-      const prevId = contact.id;
-      contact.id = newId;
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, prevId});
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, newId});
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }

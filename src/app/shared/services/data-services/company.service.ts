@@ -28,6 +28,7 @@ export class CompanyService {
 
   create(company: Company): Observable<string> {
     const persistCompany = cloneDeep(company);
+    persistCompany.contacts = [];
     persistCompany.id = generatePersistId();
     MockData.companies.push(persistCompany);
     return Observable.of(persistCompany.id);

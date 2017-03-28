@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Company, CompanyStatuses, CompanyTypes } from '../../../../../models';
 import { BaseRootEditComponent } from '../../../../../base';
 import { CompanyActions } from '../../../../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../../../store';
 import { CompanyInfoForm } from '../../../../../forms';
 

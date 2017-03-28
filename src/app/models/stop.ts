@@ -4,43 +4,6 @@ import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { Type } from 'class-transformer';
 
-const stopStatusColor = createStopStatusColors();
-const stopStatusText = createStopStatusText();
-const stopTypeText = createStopTypeText();
-
-// Stop type text
-function createStopTypeText() {
- let result = {};
-  result[StopTypes.NONE] = 'None';
-  result[StopTypes.PICKUP] = 'Pickup';
-  result[StopTypes.DROPOFF] = 'Dropoff';
-
-  return result;
-};
-
-// Stop status text
-function createStopStatusText() {
- let result = {};
-  result[StopStatuses.NONE] = 'None';
-  result[StopStatuses.COMPLETED] = 'Complete';
-  result[StopStatuses.IN_PROGRESS] = 'In progress';
-  result[StopStatuses.PROBLEM] = 'Problem';
-  result[StopStatuses.PENDING] = 'Pending';
-
-  return result;
-};
-
-// Stop status colors
-function createStopStatusColors() {
- let result = {};
-  result[StopStatuses.COMPLETED] = '#ffbe4d';
-  result[StopStatuses.IN_PROGRESS] = '#85d183';
-  result[StopStatuses.PROBLEM] = '#fb3a3a';
-  result[StopStatuses.PENDING] = '#75b3e1';
-
-  return result;
-};
-
 export class Stop {
   id: string;
   notes: string = '';
@@ -66,18 +29,6 @@ export class Stop {
     result.facility = Facility.create();
     result.tripStops = [];
     return result;
-  }
-
-  public static getStatusColor(status: StopStatuses): string {
-    return stopStatusColor[status];
-  }
-
-  public static getStatusText(status: StopStatuses): string {
-    return stopStatusText[status];
-  }
-
-  public static getTypeText(type: StopTypes): string {
-    return stopTypeText[type];
   }
 
 }

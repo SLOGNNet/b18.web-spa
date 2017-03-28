@@ -10,14 +10,14 @@ export class DriverEquipmentAssociationsComponent {
   @Input() associatedEquipment: Equipment;
 
   equipmentModeText(mode: EquipmentModes) {
-    return Equipment.getModeText(mode);
+    return EquipmentModes.displayText(mode);
   }
 
   equipmentTypeText(status: EquipmentTypes) {
-    return Equipment.getTypeText(status);
+    return EquipmentTypes.displayText(status);
   }
 
   equipmentStatusColor(status: EquipmentStatuses) {
-    return Equipment.getStatusColor(status);
+    return EquipmentStatuses.color(status);
   }
 }

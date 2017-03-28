@@ -3,7 +3,7 @@ import { Company } from '../../models';
 import { BaseRootEditComponent } from '../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyActions } from '../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { Location } from '@angular/common';
 import { CompanyForm } from '../../forms';

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Contact, Company } from '../../../../../models';
 import { BaseNestedEditComponent } from '../../../../../base';
 import { CompanyContactActions } from '../../../../../actions';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../../../store';
 import { ContactForm } from '../../../../../forms';
 import { FormBuilder, FormGroup } from '@angular/forms';

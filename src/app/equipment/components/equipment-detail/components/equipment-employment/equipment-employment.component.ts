@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Equipment } from '../../../../../models';
+import { Equipment, EquipmentModes, EquipmentTypes, EquipmentVehicleOperatings } from '../../../../../models';
 
 @Component({
   selector: 'equipment-employment',
@@ -10,11 +10,11 @@ export class EquipmentEmploymentComponent {
   @Input() equipment: Equipment;
 
   get equipmentOwnership() {
-    return Equipment.getModeText(this.equipment.ownership);
+    return EquipmentModes.displayText(this.equipment.ownership);
   }
 
   get equipmentType() {
-    return Equipment.getTypeText(this.equipment.type);
+    return EquipmentTypes.displayText(this.equipment.type);
   }
 
   get equipmentSubType() {
@@ -22,6 +22,6 @@ export class EquipmentEmploymentComponent {
   }
 
   get vehicleOperating() {
-    return Equipment.getVehicleOperatingsType(this.equipment.vehicleOperating);
+    return EquipmentVehicleOperatings.displayText(this.equipment.vehicleOperating);
   }
 }
