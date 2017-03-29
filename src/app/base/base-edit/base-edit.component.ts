@@ -14,6 +14,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected selectedItem: T = null;
   protected viewMode: ViewMode = ViewMode.Edit;
   protected segment;
+  protected defaultNavigationTitle;
 
   constructor(protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
@@ -53,7 +54,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected abstract onAdd(item: T);
   protected abstract onUpdate(item: T);
   protected abstract onCreatNew();
-  protected abstract onSelect(id: string)
+  protected abstract onSelect(id: string);
+  protected abstract getItemName()
 
 
   protected onItemSave(item) {

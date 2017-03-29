@@ -43,4 +43,7 @@ export class EquipmentEditComponent extends BaseRootEditComponent<Equipment> {
     return this.equipmentFormComponent && this.equipmentFormComponent.equipmentForm.dirty;
   }
 
+  getItemName() {
+    return 'Equipment';
+  }
 }

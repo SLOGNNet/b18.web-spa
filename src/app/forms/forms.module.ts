@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CompanyForm } from './company-form';
 import { CompanyInfoForm } from './company-info-form';
 import { AddressForm } from './address-form';
 import { ContactsForm } from './contacts-form';
@@ -25,7 +24,6 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
 
 @NgModule({
   declarations: [
-    CompanyForm,
     CompanyInfoForm,
     AddressForm,
     LocationsForm,
@@ -55,7 +53,6 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     SharedModule
   ],
   exports: [
-    CompanyForm,
     CompanyInfoForm,
     ContactForm,
     LoadFormComponent,

@@ -84,6 +84,7 @@ export class Equipment {
     result.subType = TrailerTypes.DRY_VAN_53;
     result.ownership = EquipmentModes.COMPANY;
     result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
+    result.driver = new Driver();
     result.equipmentNotification = {
       message: '',
       date: new Date()

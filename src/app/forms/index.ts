@@ -1,5 +1,4 @@
 export * from './contact-form';
-export * from './company-form';
 export * from './company-info-form';
 export * from './address-form';
 export * from './load-form';
