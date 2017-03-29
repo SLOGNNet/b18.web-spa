@@ -10,7 +10,7 @@ class="card-section"
     </div>
     <div class="company-mc">MC# {{item.mc}}</div>
   </div>
-  <div class="middle" *ngIf="item.contacts.length">
+  <div class="middle" *ngIf="item.contacts">
     <span class="company-contact-full-name">{{item.contacts[0].firstName}} {{item.contacts[0].lastName}}</span>
     <span class="position ellipsis">{{item.contacts[0].position}}</span>
     <div class="company-address-phone ellipsis">{{phone}}</div>

@@ -12,7 +12,7 @@ const INITIAL_STATE: IEquipmentState = { items: [], selected: null, isLoading: f
 
 export const equipmentReducer = createReducer(INITIAL_STATE, {
   [EquipmentActions.ADD_EQUIPMENT](state, action) {
-      return Object.assign({}, state, { items: addItem(state.equipments, action.equipment)});
+      return Object.assign({}, state, { items: addItem(state.equipments, action.equipment, action.equipment.id)});
   },
   [EquipmentActions.REMOVE_EQUIPMENT](state, action) {
     return Object.assign({}, state, { items: removeItem(state.equipments, action.equipment)});

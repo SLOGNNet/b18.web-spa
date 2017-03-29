@@ -22,8 +22,8 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   [CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS](state, action) {
     return Object.assign({}, state,
       { items:
-        addItem(state.items, action.contact),
-        selected: updateNewItem(state.selected, action.contact, action.prevId),
+        addItem(state.items, action.contact, action.contact.id),
+        selected: updateNewItem(state.selected, action.contact, action.newId),
         isLoading: false
      });
   },

@@ -23,9 +23,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST });
     this.contactService.create(company, contact).subscribe(newId => {
-      const prevId = contact.id;
-      contact.id = newId;
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, prevId});
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, newId});
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }

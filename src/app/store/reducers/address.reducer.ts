@@ -10,7 +10,7 @@ const INITIAL_STATE: IAddressState = { items: [] };
 
 export const addressReducer = createReducer(INITIAL_STATE, {
   [AddressActions.ADD_ADDRESS](state, action) {
-    return Object.assign({}, state, { items: addItem(state.items, action.address)});
+    return Object.assign({}, state, { items: addItem(state.items, action.address, action.address.id)});
   },
   [AddressActions.REMOVE_ADDRESS](state, action) {
     return Object.assign({}, state, { items: removeItem(state.items, action.address)});
