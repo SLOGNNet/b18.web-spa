@@ -41,10 +41,13 @@ export class DriverEditComponent extends BaseRootEditComponent<Driver> {
     ngRedux: NgRedux<IAppState>) {
       super(driverActions, ngRedux.select(state => state.drivers.selected),
         ngRedux.select(state => state.drivers.isLoading), route, router, location, cdr);
-         this.route.snapshot.data['new'] ? this.defaultNavigationTitle = 'New Driver' : this.defaultNavigationTitle = 'Driver';
   }
 
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
+  }
+
+  getItemName() {
+    return 'Driver';
   }
 }

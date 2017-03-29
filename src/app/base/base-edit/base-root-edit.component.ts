@@ -35,4 +35,12 @@ export abstract class BaseRootEditComponent<T> extends BaseEditComponent<T> {
   protected onSelect(id: string) {
     this.actions.select(id);
   }
+
+  protected getItemName() {
+    return typeof this.selectedItem;
+  }
+
+  get actionName() {
+    return this.isNew ? 'New ' + this.getItemName() : this.getItemName();
+  }
 }

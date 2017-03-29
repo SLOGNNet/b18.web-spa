@@ -41,4 +41,7 @@ export abstract class BaseNestedEditComponent<T, Y> extends BaseEditComponent<T>
   protected onSelect(id: string) {
     this.actions.select(id);
   }
+  protected getItemName() {
+    return typeof this.selectedItem;
+  }
 }

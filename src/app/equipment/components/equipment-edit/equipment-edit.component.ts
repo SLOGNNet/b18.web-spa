@@ -37,11 +37,13 @@ export class EquipmentEditComponent extends BaseRootEditComponent<Equipment> {
     ngRedux: NgRedux<IAppState>) {
       super(equipmentActions, ngRedux.select(state => state.equipments.selected),
         ngRedux.select(state => state.equipments.isLoading), route, router, location, cdr);
-        this.route.snapshot.data['new'] ? this.defaultNavigationTitle = 'New Equipment' : this.defaultNavigationTitle = 'Equipment';
   }
 
   isDetailsChanged() {
     return this.equipmentFormComponent && this.equipmentFormComponent.equipmentForm.dirty;
   }
 
+  getItemName() {
+    return 'Equipment';
+  }
 }

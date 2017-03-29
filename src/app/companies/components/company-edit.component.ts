@@ -40,4 +40,8 @@ export class CompanyEditComponent extends BaseRootEditComponent<Company> {
   isDetailsChanged() {
     return this.companyFormComponent && this.companyFormComponent.companyForm.dirty;
   }
+
+  getItemName() {
+    return 'Company';
+  }
 }

@@ -54,7 +54,8 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected abstract onAdd(item: T);
   protected abstract onUpdate(item: T);
   protected abstract onCreatNew();
-  protected abstract onSelect(id: string)
+  protected abstract onSelect(id: string);
+  protected abstract getItemName()
 
 
   protected onItemSave(item) {

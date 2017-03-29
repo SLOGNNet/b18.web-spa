@@ -43,10 +43,13 @@ export class LoadEditComponent extends BaseRootEditComponent<Load> {
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(state => state.loads.selected),
         ngRedux.select(state => state.loads.isLoading), route, router, location, cdr);
-        this.route.snapshot.data['new'] ? this.defaultNavigationTitle = 'New Load' : this.defaultNavigationTitle = 'Load';
   }
 
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
+  }
+
+  getItemName() {
+    return 'Load';
   }
 }
