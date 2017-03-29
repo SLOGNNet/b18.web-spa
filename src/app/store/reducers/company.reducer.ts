@@ -28,10 +28,11 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: removeItem(state.companies, action.company)});
   },
   [CompanyActions.UPDATE_COMPANY_REQUEST](state, action) {
-    return Object.assign({}, state,
-      {
-        isLoading: true
-      });
+     return Object.assign({}, state, {
+      items: updateListItem(state.items, action.company),
+      selected: updateItem(state.selected, action.company),
+      isLoading: false
+    });
   },
   [CompanyActions.UPDATE_COMPANY_SUCCESS](state, action) {
     return Object.assign({}, state,
