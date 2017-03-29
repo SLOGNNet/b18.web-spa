@@ -26,7 +26,8 @@
             </div>
             <div class="info-item">
                 <span class="title">Expiration</span>
-                <span class="value">{{equipment.licensePlateExpiration | date:'MM/dd/yy'}}</span>
+
+                <span class="value">{{equipment.licensePlateExpiration | bdDate: constants.DATE_FORMAT}}</span>
             </div>
         </section>
     </div>

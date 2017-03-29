@@ -7,7 +7,7 @@ const momentConstructor: (value?: any) => moment.Moment = (<any>moment).default 
 @Pipe({ name: 'bdDate' })
 export class BdDatePipe implements PipeTransform {
   transform(value: Date | moment.Moment | string | number, ...args: any[]): string {
-    if (!value) return '';
+    if (!value || !moment(value).isValid()) return '';
     return momentConstructor(value).format(args[0]);
   }
 }
