@@ -20,6 +20,8 @@ export abstract class BaseRootEditComponent<T> extends BaseEditComponent<T> {
     super(selected$, isLoading$, route, router, location, cdr);
   }
 
+  protected abstract getItemName();
+
   protected onAdd(item: T) {
     this.actions.add(item);
   }
