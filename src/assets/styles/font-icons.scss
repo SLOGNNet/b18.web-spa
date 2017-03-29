@@ -226,3 +226,15 @@
     content: '\e922';
   }
 }
+
+.icon-caret-up {
+  &:before {
+    content: '\e925';
+  }
+}
+
+.icon-caret-down {
+  &:before {
+    content: '\e926';
+  }
+}
