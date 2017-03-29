@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Equipment, EquipmentTypes } from '../../../../../models';
+import { Constants } from '../../../../../shared';
 
 @Component({
   selector: 'equipment-details',
@@ -8,6 +9,8 @@ import { Equipment, EquipmentTypes } from '../../../../../models';
 })
 export class EquipmentDetailsComponent {
   @Input() equipment: Equipment;
+
+  constructor(private constants: Constants) {}
 
   get isSleeperBerthAvailable() {
     return this.equipment.isSleeperBerthAvailable ? 'Yes' : 'No';
