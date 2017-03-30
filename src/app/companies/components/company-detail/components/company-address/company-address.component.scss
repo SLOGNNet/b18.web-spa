@@ -22,6 +22,6 @@ $element-height: 18px;
   }
 }
 
-:host() {
+:host {
   @include hovered;
 }

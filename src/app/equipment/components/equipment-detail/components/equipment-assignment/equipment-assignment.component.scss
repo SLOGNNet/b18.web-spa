@@ -8,12 +8,13 @@
   font-size: $tiny-font-size;
   border-radius: $default-border-radius;
   border-bottom: $border;
-  
+
   section {
     width: 50%;
     padding: $default-margin;
 
     &.driver-info {
+
       .driver-name {
         display: flex;
 
