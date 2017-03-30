@@ -1,9 +1,10 @@
-<div [class.parent-hover]="parentHover">
-  <company-card
+<company-card
     *ngFor="let company of this.companies; trackBy:trackBy"
     [item]="company"
+    [class.parent-hover]="parentHover"
+    [parentHover]="parentHover"
+    [active]="isActive(company.id)"
     class="company-card"
     [class.active]="isActive(company.id)"
     (select)="onCardSelect($event)">
-  </company-card>
-</div>
+</company-card>

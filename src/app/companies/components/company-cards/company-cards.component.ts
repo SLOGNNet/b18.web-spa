@@ -9,7 +9,7 @@ import { Company } from '../../../models';
 })
 export class CompanyCardsComponent {
   public parentHover: boolean = false;
-  
+
   @Input() companies: Array<Company>;
   @Input() selected: Array<Company> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();

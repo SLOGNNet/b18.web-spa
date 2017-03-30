@@ -2,6 +2,8 @@ import { Input, Output, EventEmitter } from '@angular/core';
 
 export abstract class BaseCardComponent {
     @Input() item: any;
+    @Input() parentHover: boolean = false;
+    @Input() active: any;
     public statusText: boolean = false;
     @Output() select: EventEmitter<any> = new EventEmitter();
 
@@ -19,6 +21,10 @@ export abstract class BaseCardComponent {
 
     onLeave() {
       this.statusText = false;
+    }
+
+    get initials() {
+        return this.item.firstName + ' ' + this.item.lastName;
     }
 
 }

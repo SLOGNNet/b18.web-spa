@@ -5,11 +5,10 @@ class="card-section"
 (click)="onClick()">
   <div class="left">
     <div>
-      <bd-initials-circle
+      <bd-user-circle
         class="initials-circle"
-        [firstName]="item.firstName"
-        [lastName]="item.lastName">
-      </bd-initials-circle>
+        [initials]="initials">
+      </bd-user-circle>
     </div>
     <div class="driver-full-name ellipsis">
       {{item.firstName}} {{item.lastName}}

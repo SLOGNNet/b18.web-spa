@@ -18,4 +18,8 @@ export class DriverInformationComponent {
   get driverType() {
     return DriverTypes.displayText(this.driver.type);
   }
+
+  get driverInitials() {
+    return this.driver.firstName + ' ' + this.driver.lastName;
+  }
 }

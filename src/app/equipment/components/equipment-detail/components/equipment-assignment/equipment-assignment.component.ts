@@ -20,4 +20,8 @@ export class EquipmentAssignmentComponent {
   get primaryPhone() {
     return ContactInfo.getPrimaryPhone(this.equipment.driver.contactInfo);
   }
+
+  get initials() {
+    return this.equipment.driver.firstName + ' ' + this.equipment.driver.lastName;
+  }
 }

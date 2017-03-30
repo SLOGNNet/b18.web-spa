@@ -2,29 +2,6 @@
 
 .card-section {
   .left {
-    .cropped-company-name-container {
-      display: flex;
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: transparent;
-      border-radius: $circle-radius;
-      align-items: center;
-      justify-content: center;
-
-      .cropped-company-name {
-        display: flex;
-        width: 28px;
-        height: 28px;
-        margin: 4px 0;
-        background: $nevada;
-        color: $white;
-        font-size: $mini-font-size;
-        border-radius: $circle-radius;
-        justify-content: center;
-        align-items: center;
-      }
-    }
     .company-name {
       font-weight: bold;
     }
@@ -87,18 +64,6 @@
     .card-section {
       border-radius: $default-border-radius;
 
-      .left {
-        .cropped-company-name-container {
-          border: 1px solid $white;
-          background: $black;
-
-          .cropped-company-name {
-            background: $white;
-            color: $mako;
-            font-weight: bold;
-          }
-        }
-      }
       .status {
         opacity: 1;
       }

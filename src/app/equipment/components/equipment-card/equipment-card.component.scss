@@ -21,6 +21,22 @@
   }
 }
 
+:host-context(.parent-hover) {
+  background: $white;
+
+  &.equipment-card {
+    color: $black;
+    transition: all .5s;
+
+    .card-section {
+
+      .status {
+        opacity: 1;
+      }
+    }
+  }
+}
+
 :host-context(.active) {
   &.equipment-card {
     background: $mako;
