@@ -16,7 +16,7 @@ export class CompanyService {
 
   getAll(): Observable<Company[]> {
     return Observable.of(
-      MockData.companies
+      cloneDeep(MockData.companies)
     );
   }
 
@@ -35,11 +35,12 @@ export class CompanyService {
   }
 
   update(company: Company) {
-    const id = company.id;
+    const persistCompany = cloneDeep(company);
+    const id = persistCompany.id;
 
     MockData.companies.forEach(c => {
       if (id === c.id) {
-        c = Object.assign(c, company);
+        c = Object.assign(c, persistCompany);
       }
     });
   }
