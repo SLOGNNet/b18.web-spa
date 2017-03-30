@@ -9,6 +9,7 @@ export class BdUserCircleComponent {
 
       @Input() initials: string = '';
       @Input() parentHover: boolean = false;
+      @Input() active: any;
       @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials() {

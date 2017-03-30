@@ -4,6 +4,7 @@
   class="card"
   [parentHover]="parentHover"
   [class.parent-hover]="parentHover"
+  [active]="isActive(equipment.id)"
   [class.active]="isActive(equipment.id)"
   (select)="onCardSelect($event)">
 </equipment-card>
