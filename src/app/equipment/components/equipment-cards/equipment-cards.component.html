@@ -1,7 +1,7 @@
 <equipment-card
   *ngFor="let equipment of this.equipments; trackBy: trackBy;"
   [item]="equipment"
-  class="equipment-card"
+  class="card"
   [parentHover]="parentHover"
   [class.parent-hover]="parentHover"
   [class.active]="isActive(equipment.id)"
