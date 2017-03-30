@@ -48,4 +48,8 @@ export class LoadEditComponent extends BaseRootEditComponent<Load> {
   isDetailsChanged() {
     return this.loadFormComponent && this.loadFormComponent.loadForm.dirty;
   }
+
+  getItemName() {
+    return 'Load';
+  }
 }

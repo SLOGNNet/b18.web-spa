@@ -8,7 +8,7 @@ export enum PowerUnitTypes {
 
 const displayTexts = {};
 displayTexts[PowerUnitTypes.TRACTOR] = 'Tractor';
-displayTexts[PowerUnitTypes.STRAIGHT_TRUCK_25] = 'Straight Truck 25';
+displayTexts[PowerUnitTypes.STRAIGHT_TRUCK_25] = 'Straight Truck 25\'';
 displayTexts[PowerUnitTypes.STRAIGHT_TRUCK_FLATBED] = 'Straight Truck Flatbed';
 displayTexts[PowerUnitTypes.BUS] = 'Bus';
 displayTexts[PowerUnitTypes.OTHER] = 'Other';

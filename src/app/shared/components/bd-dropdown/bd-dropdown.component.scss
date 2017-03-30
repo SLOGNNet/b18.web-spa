@@ -122,6 +122,12 @@
       .bd-dropdown-label {
         color: $label-active-color;
       }
+
+      .bd-dropdown-icon {
+        i {
+          color: $label-active-color;
+        }
+      }
     }
   }
 }

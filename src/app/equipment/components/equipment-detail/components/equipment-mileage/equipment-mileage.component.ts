@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Mileage } from '../../../../../models';
+import { Constants } from '../../../../../shared';
 
 @Component({
   selector: 'equipment-mileage',
@@ -9,4 +10,5 @@ import { Mileage } from '../../../../../models';
 export class EquipmentMileageComponent {
   @Input() mileage: Mileage;
 
+  constructor(private constants: Constants) {}
 }

@@ -40,7 +40,6 @@
         [optionField]="'name'">
       </bd-typeahead>
     </bd-validator>
-    <company-form *ngIf='load.customer' [isNestedForm]="true" [submitButtonText]="'Add Customer'" [company]='load.customer' (save)="onCompanySave($event)" (cancel)="onCompanyEditCancel()" [viewMode]="companyViewMode"> </company-form>
     <bd-form-section>
       <bd-dropdown
         *ngIf='load.customer'

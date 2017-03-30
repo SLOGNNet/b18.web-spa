@@ -14,7 +14,8 @@
         </span>
       </div>
       <div class="bd-dropdown-icon">
-        <i class="icon-dropdown"></i>
+        <i [class.icon-caret-down]="!_isOpen"
+           [class.icon-caret-up]="_isOpen"></i>
       </div>
   </div>
   <div dropdownToggle *ngIf="toogleTemplate">

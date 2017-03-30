@@ -46,4 +46,8 @@ export class DriverEditComponent extends BaseRootEditComponent<Driver> {
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
   }
+
+  getItemName() {
+    return 'Driver';
+  }
 }

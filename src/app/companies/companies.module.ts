@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import {
   CompanyCardComponent,
   CompanyCardsComponent,
-  CompanyEditComponent,
   CompanyEditContactComponent,
   CompanyDetailComponent,
   CompanyBasicInformation,
@@ -29,7 +28,6 @@ import { BdFormsModule } from '../forms/forms.module';
     CompanyCardComponent,
     CompanyCardsComponent,
     CompaniesComponent,
-    CompanyEditComponent,
     CompanyDetailComponent,
     CompanyBasicInformation,
     CompanyEditInfoComponent,

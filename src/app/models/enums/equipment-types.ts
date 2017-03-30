@@ -1,19 +1,16 @@
 export enum EquipmentTypes {
-  NONE = 0,
-  TRAILER = 1,
-  POWER_UNIT = 2
+  POWER_UNIT = 1,
+  TRAILER = 2
 };
 
 let displayShortTexts = {
-  [EquipmentTypes.NONE]: 'None',
-  [EquipmentTypes.TRAILER]: 'TL',
-  [EquipmentTypes.POWER_UNIT]: 'TK'
+  [EquipmentTypes.POWER_UNIT]: 'TK',
+  [EquipmentTypes.TRAILER]: 'TL'
 };
 
 let displayTexts = {
-  [EquipmentTypes.NONE]: 'None',
-  [EquipmentTypes.TRAILER]: 'Trailer',
-  [EquipmentTypes.POWER_UNIT]: 'PowerUnit'
+  [EquipmentTypes.POWER_UNIT]: 'Power Unit',
+  [EquipmentTypes.TRAILER]: 'Trailer'
 };
 
 export namespace EquipmentTypes {

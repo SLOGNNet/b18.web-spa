@@ -20,6 +20,8 @@ export abstract class BaseRootEditComponent<T> extends BaseEditComponent<T> {
     super(selected$, isLoading$, route, router, location, cdr);
   }
 
+  protected abstract getItemName();
+
   protected onAdd(item: T) {
     this.actions.add(item);
   }
@@ -34,5 +36,9 @@ export abstract class BaseRootEditComponent<T> extends BaseEditComponent<T> {
 
   protected onSelect(id: string) {
     this.actions.select(id);
+  }
+
+  get actionName() {
+    return this.isNew ? 'New ' + this.getItemName() : this.getItemName();
   }
 }
