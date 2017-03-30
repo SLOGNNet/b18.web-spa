@@ -20,3 +20,18 @@
     }
   }
 }
+
+:host-context(.active) {
+  &.equipment-card {
+    background: $mako;
+    color: $silver;
+
+    .card-section {
+      border-radius: $default-border-radius;
+
+      .status {
+        opacity: 1;
+      }
+    }
+  }
+}
