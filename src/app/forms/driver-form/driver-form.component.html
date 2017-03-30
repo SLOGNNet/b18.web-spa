@@ -12,20 +12,20 @@
 		<bd-dropdown class="bd-form-control" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
 		</bd-dropdown>
 	</bd-form-section>
-	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
-    <contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [disabled]="disabled" [viewMode]="viewMode"></contacts-info-form>
-	</bd-form-section>
-	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
-		<address-form [group]='driverForm.controls.address' [disabled]="disabled" [address]='driver.address' [viewMode]="viewMode" ></address-form>
-	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
 		<bd-dropdown class="bd-form-control" formControlName="paymentOption" [labelText]="'Payment option'" [items]="paymentsTypes">
 		</bd-dropdown>
 		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>
+	</bd-form-section>
+	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
+    	<contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [disabled]="disabled" [viewMode]="viewMode"></contacts-info-form>
+	</bd-form-section>
+	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
+		<address-form [group]='driverForm.controls.address' [disabled]="disabled" [address]='driver.address' [viewMode]="viewMode" ></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
