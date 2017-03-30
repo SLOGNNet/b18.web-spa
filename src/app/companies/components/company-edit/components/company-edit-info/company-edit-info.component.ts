@@ -15,7 +15,6 @@ import { CompanyInfoForm } from '../../../../../forms';
 })
 export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
   public parentHover: boolean = false;
-  
   @ViewChild(CompanyInfoForm) companyInfoFormComponent: CompanyInfoForm;
   private anchors = [{
     id: '',

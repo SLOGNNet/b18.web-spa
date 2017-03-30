@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
 export class BdUserCircleComponent {
 
       @Input() initials: string = '';
-      @Input() private size: 'default' | 'small' = 'default';
       @Input() parentHover: boolean = false;
+      @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials() {
           return this.initials.substr(0, this.initials.indexOf(' ')).charAt(0) + this.initials.substr(this.initials.indexOf(' ') + 1).charAt(0);

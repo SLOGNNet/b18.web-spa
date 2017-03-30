@@ -8,10 +8,10 @@ import { Component, Input } from '@angular/core';
 export class BdCompanyCircleComponent {
 
       @Input() companyName: string = '';
-      @Input() private size: 'default' | 'small' = 'default';
       @Input() parentHover: boolean = false;
       @Input() active: any;
       croppedCompanyName: string;
+      @Input() private size: 'default' | 'small' = 'default';
 
       ngOnInit() {
         this.croppedCompanyName = this.companyName.replace(/ /g, '').substr(0, 3).toUpperCase();
