@@ -18,8 +18,4 @@ export class BdCircleComponent {
         if (!this.initials) return DEFAULT_INITIALS;
         return this.initials;
       }
-
-      ngOnInit() {
-        console.log(this.parentHover, 'parentHover');
-      }
 }
