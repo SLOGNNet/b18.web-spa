@@ -5,9 +5,9 @@
 		</bd-form-datepicker>
 		<bd-form-datepicker class="bd-form-control" formControlName="expiration" [labelText]="'Expiration'">
 		</bd-form-datepicker>
-		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [labelText]="'State issued'" [items]="states">
+		<bd-dropdown class="bd-form-control" formControlName="stateIssued" [defaultTitleText]="'Select State'" [labelText]="'State issued'" [items]="states">
 		</bd-dropdown>
-		<bd-dropdown class="bd-form-control" formControlName="licenseClass" [labelText]="'Class'" [items]="licenseClasses">
+		<bd-dropdown class="bd-form-control" formControlName="licenseClass" [defaultTitleText]="'Select Class'" [labelText]="'Class'" [items]="licenseClasses">
 		</bd-dropdown>
 		<bd-checkboxes class="bd-form-control" [labelText]="'Endors.'" formControlName="endorsements" [items]="endorsmentList">
 		</bd-checkboxes>
