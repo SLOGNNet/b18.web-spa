@@ -80,7 +80,7 @@ export class Equipment {
     const result = new Equipment();
     result.id = generateNewId();
     result.status = EquipmentStatuses.ACTIVE;
-    result.type = EquipmentTypes.TRAILER;
+    result.type = EquipmentTypes.POWER_UNIT;
     result.subType = TrailerTypes.DRY_VAN_53;
     result.ownership = EquipmentModes.COMPANY;
     result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
