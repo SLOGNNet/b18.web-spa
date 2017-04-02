@@ -5,7 +5,7 @@ import { Company, CompanyStatuses, CompanyTypes } from '../../../../../models';
 import { BaseRootEditComponent } from '../../../../../base';
 import { CompanyActions } from '../../../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../../../store';
+import { IAppState, selectDetailCompany } from '../../../../../store';
 import { CompanyInfoForm } from '../../../../../forms';
 
 @Component({
@@ -33,8 +33,8 @@ export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-    super(companyActions, ngRedux.select(state => state.companies.selected),
-      ngRedux.select(state => state.companies.isLoading), route, router, location, cdr);
+    super(companyActions, ngRedux.select(selectDetailCompany),
+      ngRedux.select(state => state.companyPage.companies.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

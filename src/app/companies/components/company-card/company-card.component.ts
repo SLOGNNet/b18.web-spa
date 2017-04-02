@@ -15,6 +15,7 @@ export class CompanyCardComponent extends BaseCardComponent {
   croppedCompanyName: string;
 
   ngOnInit() {
+    debugger;
     this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
   }
 

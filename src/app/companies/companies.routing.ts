@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
-  CompanyEditComponent, CompanyDetailComponent, CompanyEditInfoComponent,
+  CompanyDetailComponent, CompanyEditInfoComponent,
   CompanyEditContactComponent
 } from './components';
 import { CompaniesComponent } from './companies.component';

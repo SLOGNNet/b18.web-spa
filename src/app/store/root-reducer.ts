@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
-import { loadReducer, ILoadState, companyReducer, companyContactReducer, ICompanyState, ICompanyContactState,
+import { loadReducer, ILoadState, companyPageReducer, ICompanyPageState,
   commodityReducer, ICommodityState, addressReducer, IAddressState, stopReducer, IStopState,
   driverReducer, IDriverState, IEquipmentState, equipmentReducer, locationReducer, ILocationState } from './reducers';
 
 export class IAppState {
   loads?: ILoadState;
-  companies?: ICompanyState;
-  contacts?: ICompanyContactState;
+  companyPage?: ICompanyPageState;
   commodities?: ICommodityState;
   addresses?: IAddressState;
   stops?: IStopState;
@@ -17,8 +16,7 @@ export class IAppState {
 
 export const rootReducer = combineReducers<IAppState>({
   loads: loadReducer,
-  companies: companyReducer,
-  contacts: companyContactReducer,
+  companyPage: companyPageReducer,
   commodities: commodityReducer,
   addresses: addressReducer,
   stops: stopReducer,

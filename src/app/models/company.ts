@@ -4,6 +4,15 @@ import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+
+const contact = new schema.Entity('contacts');
+export const companySchema = new schema.Entity('companies', {
+  contacts: [ contact ]
+});
+export const companyListSchema = [companySchema];
+
+
 
 export class Company {
   id: string;
