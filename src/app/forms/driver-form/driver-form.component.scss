@@ -1,6 +1,12 @@
 @import '../../../assets/styles/form-control';
-@import '../../../assets/styles/styles'; 
+@import '../../../assets/styles/styles';
 
 .section {
   display: flex;
+
+  .left-control,
+  .middle-control,
+  .right-control {
+    flex: 1;
+  }
 }
