@@ -8,23 +8,21 @@ import { Constants } from '../../../../../shared';
   styleUrls: ['./driver-license.component.scss']
 })
 export class DriverLicenseComponent {
-  public restrictionsTypes: string;
-  public endorsementsTypes: string;
+  public restrictions: string;
+  public endorsements: string;
+  public licenseType: any;
+  public restrictionsArr: any;
+  public endorsementsArr: any;
   @Input() driver: Driver;
 
   constructor(private constants: Constants) {
 
   }
 
-  licenseType: any;
-  licencesArr: any;
-  restrictions: any;
 
-
-  sortEndorsementsByTypes(a) {
+  sortEndorsementsByTypes(endorsements) {
     let sortedStr = '';
-    if (this.driver.license.endorsements) {
-      this.licencesArr = a.split(" ");
+      this.endorsementsArr = endorsements.split(' ');
       const endorsementsConfig = {
         P: [],
         H: [],
@@ -34,52 +32,50 @@ export class DriverLicenseComponent {
         X: [],
         L: [],
         S: []
-      }
+      };
 
-      this.licencesArr.forEach((licenseType) => {
+      this.endorsementsArr.forEach((licenseType) => {
         switch (licenseType.charAt(0)) {
-          case "P":
-            endorsementsConfig["P"].push(licenseType);
+          case 'P':
+            endorsementsConfig['P'].push(licenseType);
             break;
-          case "H":
-            endorsementsConfig["H"].push(licenseType);
+          case 'H':
+            endorsementsConfig['H'].push(licenseType);
             break;
-          case "M":
-            endorsementsConfig["M"].push(licenseType);
+          case 'M':
+            endorsementsConfig['M'].push(licenseType);
             break;
-          case "N":
-            endorsementsConfig["N"].push(licenseType);
+          case 'N':
+            endorsementsConfig['N'].push(licenseType);
             break;
-          case "T":
-            endorsementsConfig["T"].push(licenseType);
+          case 'T':
+            endorsementsConfig['T'].push(licenseType);
             break;
-          case "X":
-            endorsementsConfig["X"].push(licenseType);
+          case 'X':
+            endorsementsConfig['X'].push(licenseType);
             break;
-          case "L":
-            endorsementsConfig["L"].push(licenseType);
+          case 'L':
+            endorsementsConfig['L'].push(licenseType);
             break;
-          case "S":
-            endorsementsConfig["S"].push(licenseType);
+          case 'S':
+            endorsementsConfig['S'].push(licenseType);
+            break;
+          default:
             break;
         }
       });
       for (this.licenseType in endorsementsConfig) {
         if (endorsementsConfig[this.licenseType].length) {
-          sortedStr += endorsementsConfig[this.licenseType][0] + " ";
+          sortedStr += endorsementsConfig[this.licenseType][0] + ' ';
         }
       }
       sortedStr = sortedStr.slice(0, -1);
       return sortedStr.split(' ').join(', ');
-    } else {
-      return;
-    }
   }
 
   sortRestrictionsByTypes(restrictions) {
-    var sortedStr = '';
-    if (this.driver.license.endorsements) {
-      this.restrictions = restrictions.split(" ");
+    let sortedStr = '';
+      this.restrictionsArr = restrictions.split(' ');
       const restrictionsConfig = {
         B: [],
         C: [],
@@ -94,69 +90,68 @@ export class DriverLicenseComponent {
         O: [],
         Z: [],
         T: []
-      }
+      };
 
-      this.restrictions.forEach((licenseType) => {
+      this.restrictionsArr.forEach((licenseType) => {
         switch (licenseType.charAt(0)) {
-          case "B":
-            restrictionsConfig["B"].push(licenseType);
+          case 'B':
+            restrictionsConfig['B'].push(licenseType);
             break;
-          case "C":
-            restrictionsConfig["C"].push(licenseType);
+          case 'C':
+            restrictionsConfig['C'].push(licenseType);
             break;
-          case "D":
-            restrictionsConfig["D"].push(licenseType);
+          case 'D':
+            restrictionsConfig['D'].push(licenseType);
             break;
-          case "E":
-            restrictionsConfig["E"].push(licenseType);
+          case 'E':
+            restrictionsConfig['E'].push(licenseType);
             break;
-          case "F":
-            restrictionsConfig["F"].push(licenseType);
+          case 'F':
+            restrictionsConfig['F'].push(licenseType);
             break;
-          case "G":
-            restrictionsConfig["G"].push(licenseType);
+          case 'G':
+            restrictionsConfig['G'].push(licenseType);
             break;
-          case "K":
-            restrictionsConfig["K"].push(licenseType);
+          case 'K':
+            restrictionsConfig['K'].push(licenseType);
             break;
-          case "L":
-            restrictionsConfig["L"].push(licenseType);
+          case 'L':
+            restrictionsConfig['L'].push(licenseType);
             break;
-          case "M":
-            restrictionsConfig["M"].push(licenseType);
+          case 'M':
+            restrictionsConfig['M'].push(licenseType);
             break;
-          case "N":
-            restrictionsConfig["N"].push(licenseType);
+          case 'N':
+            restrictionsConfig['N'].push(licenseType);
             break;
-          case "O":
-            restrictionsConfig["O"].push(licenseType);
+          case 'O':
+            restrictionsConfig['O'].push(licenseType);
             break;
-          case "Z":
-            restrictionsConfig["Z"].push(licenseType);
+          case 'Z':
+            restrictionsConfig['Z'].push(licenseType);
             break;
-          case "T":
-            restrictionsConfig["T"].push(licenseType);
+          case 'T':
+            restrictionsConfig['T'].push(licenseType);
+            break;
+          default:
             break;
         }
       });
       for (this.licenseType in restrictionsConfig) {
         if (restrictionsConfig[this.licenseType].length) {
-          sortedStr += restrictionsConfig[this.licenseType][0] + " ";
+          sortedStr += restrictionsConfig[this.licenseType][0] + ' ';
         }
       }
       sortedStr = sortedStr.slice(0, -1);
       return sortedStr.split(' ').join(', ');
-    } else {
-      return;
-    }
   }
 
-  // ngOnChanges(changes) {
-  //   if (changes.driver) {
-  //     this.restrictionsTypes  = this.driver.license.restrictions &&  this.driver.license.restrictions.split(' ').join(', ');
-  //     this.endorsementsTypes = this.driver.license.endorsements && this.driver.license.endorsements.split(' ').join(', ');
-  //   }
-  // }
+  ngOnChanges(changes) {
+    if (changes.driver) {
+      this.restrictions  = this.sortRestrictionsByTypes(this.driver.license.restrictions);
+      this.endorsements = this.sortEndorsementsByTypes(this.driver.license.endorsements);
+    }
+  }
 
   get licenseClassText() {
     return LicenseClassTypes.displayText(this.driver.license.licenseClass);
