@@ -51,3 +51,18 @@ $small-size: 10px;
     }
   }
 }
+
+// :host-context(.parent-hover) {
+//
+//   &.card {
+//     background: green!important;
+//
+//     .card-section {
+//       background: red!important;
+//
+//       .left {
+//         background: red;
+//       }
+//     }
+//   }
+// }

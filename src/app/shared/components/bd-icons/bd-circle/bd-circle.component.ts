@@ -10,8 +10,6 @@ const DEFAULT_INITIALS = 'B18';
 export class BdCircleComponent {
 
       @Input() initials: string = '';
-      @Input() parentHover: boolean = false;
-      @Input() active: any;
       @Input() private size: 'default' | 'small' = 'default';
 
       get dataInitials(){
