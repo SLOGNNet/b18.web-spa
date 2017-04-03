@@ -10,6 +10,7 @@ import { Constants } from '../../../../../shared';
 })
 export class DriverInformationComponent {
   @Input() driver: Driver;
+  streetAddress: string;
 
   constructor(private constants: Constants) {
 
@@ -21,5 +22,15 @@ export class DriverInformationComponent {
 
   get driverInitials() {
     return this.driver.firstName + ' ' + this.driver.lastName;
+  }
+
+  ngOnChanges(changes) {
+    if (changes.driver) {
+      const stateAndZip = [this.driver.address.state, this.driver.address.zip].filter(v => v).join(' ').trim();
+      this.streetAddress = [
+        this.driver.address.streetAddress1,
+        this.driver.address.streetAddress2,
+        this.driver.address.city, stateAndZip].filter(v => v).join(', ');
+    }
   }
 }

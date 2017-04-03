@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Driver, DriverPaymentOptions, DriverTypes } from '../../models';
 import { FormValidationService, GoogleService } from '../../shared';
 import { NgbDateStruct } from '../../shared/components/datepicker';
@@ -74,8 +74,9 @@ export class DriverForm extends BaseForm {
   initForm() {
     this.driverForm = this.formBuilder.group({
       id: [this.driver.id],
-      firstName: [{value: this.driver.firstName, disabled: this.disabled}],
-      lastName: [{value: this.driver.lastName, disabled: this.disabled}],
+      firstName: [{value: this.driver.firstName, disabled: this.disabled}, Validators.required],
+      middleName: [{value: this.driver.middleName, disabled: this.disabled}],
+      lastName: [{value: this.driver.lastName, disabled: this.disabled}, Validators.required],
       type: [{value: this.driver.type, disabled: this.disabled}],
       birthDate: [{value: this.driver.birthDate, disabled: this.disabled}],
       paymentOption: [{value: this.driver.paymentOption, disabled: this.disabled}],

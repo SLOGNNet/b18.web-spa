@@ -20,6 +20,9 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
       id: 'equipment-associations',
       title: 'Equipment Associations'
     }, {
+        id: 'payment',
+        title: 'Payment'
+      }, {
       id: 'license',
       title: 'License'
     }];

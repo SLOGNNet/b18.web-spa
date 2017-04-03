@@ -1,7 +1,7 @@
 <div *ngIf="selectedItem">
   <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="driverFullName" [anchors]="anchors">
-      <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
-      </bd-form-button>
+    <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
+    </bd-form-button>
   </form-navigation>
   <div class="driver-detail-container">
     <navigation-anchor id="information"></navigation-anchor>
@@ -12,6 +12,9 @@
     <navigation-anchor id="equipment-associations"></navigation-anchor>
     <bd-view-detail-section [labelText]="'EQUIPMENT ASSOCIATIONS'" [addButton]="false" [editButton]="false">
       <driver-equipment-associations *ngFor="let associatedEquipment of selectedItem.associatedEquipments" [associatedEquipment]="associatedEquipment"></driver-equipment-associations>
+    </bd-view-detail-section>
+    <navigation-anchor id="payment"></navigation-anchor>
+    <bd-view-detail-section [labelText]="'PAYMENT'" [addButton]="false" [editButton]="false">
       <driver-payment-type [driver]="selectedItem"></driver-payment-type>
     </bd-view-detail-section>
     <navigation-anchor id="license"></navigation-anchor>

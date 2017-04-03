@@ -13,7 +13,7 @@ displayTexts[TrailerTypes.REEFER] = 'Reefer 53\'';
 displayTexts[TrailerTypes.DRY_VAN_48] = 'Dry Van 48\'';
 displayTexts[TrailerTypes.REEFER_48] = 'Reefer 48\'';
 displayTexts[TrailerTypes.FLAT_BED_53] = 'Flat Bed 53\'';
-displayTexts[TrailerTypes.OTHER] = 'Other\'';
+displayTexts[TrailerTypes.OTHER] = 'Other';
 
 export namespace TrailerTypes {
   export function displayText(tType: TrailerTypes) {
