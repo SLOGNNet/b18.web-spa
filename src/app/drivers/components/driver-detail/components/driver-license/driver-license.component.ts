@@ -25,8 +25,7 @@ export class DriverLicenseComponent {
     let sortedStr = '';
     if (this.driver.license.endorsements) {
       this.licencesArr = a.split(" ");
-      console.log(this.licencesArr, 'this.licencesArr')
-      const licensesConfig = {
+      const endorsementsConfig = {
         P: [],
         H: [],
         M: [],
@@ -40,39 +39,38 @@ export class DriverLicenseComponent {
       this.licencesArr.forEach((licenseType) => {
         switch (licenseType.charAt(0)) {
           case "P":
-            licensesConfig["P"].push(licenseType);
+            endorsementsConfig["P"].push(licenseType);
             break;
           case "H":
-            licensesConfig["H"].push(licenseType);
+            endorsementsConfig["H"].push(licenseType);
             break;
           case "M":
-            licensesConfig["M"].push(licenseType);
+            endorsementsConfig["M"].push(licenseType);
             break;
           case "N":
-            licensesConfig["N"].push(licenseType);
+            endorsementsConfig["N"].push(licenseType);
             break;
           case "T":
-            licensesConfig["T"].push(licenseType);
+            endorsementsConfig["T"].push(licenseType);
             break;
           case "X":
-            licensesConfig["X"].push(licenseType);
+            endorsementsConfig["X"].push(licenseType);
             break;
           case "L":
-            licensesConfig["L"].push(licenseType);
+            endorsementsConfig["L"].push(licenseType);
             break;
           case "S":
-            licensesConfig["S"].push(licenseType);
+            endorsementsConfig["S"].push(licenseType);
             break;
         }
       });
-      for (this.licenseType in licensesConfig) {
-        if (licensesConfig[this.licenseType].length) {
-          sortedStr += licensesConfig[this.licenseType][0] + " ";
+      for (this.licenseType in endorsementsConfig) {
+        if (endorsementsConfig[this.licenseType].length) {
+          sortedStr += endorsementsConfig[this.licenseType][0] + " ";
         }
       }
       sortedStr = sortedStr.slice(0, -1);
-      console.log(sortedStr, 'this.sortedStr');
-      return sortedStr;
+      return sortedStr.split(' ').join(', ');
     } else {
       return;
     }
@@ -82,7 +80,6 @@ export class DriverLicenseComponent {
     var sortedStr = '';
     if (this.driver.license.endorsements) {
       this.restrictions = restrictions.split(" ");
-      console.log(this.licencesArr, 'this.licencesArr')
       const restrictionsConfig = {
         B: [],
         C: [],
@@ -148,16 +145,10 @@ export class DriverLicenseComponent {
         }
       }
       sortedStr = sortedStr.slice(0, -1);
-      console.log(sortedStr, 'this.sortedStr');
-      return sortedStr;
+      return sortedStr.split(' ').join(', ');
     } else {
       return;
     }
-  }
-
-
-  ngOnInit() {
-    console.log(this.driver.license.endorsements);
   }
 
   // ngOnChanges(changes) {
