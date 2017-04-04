@@ -1,8 +1,6 @@
 <company-card
     *ngFor="let company of this.companies; trackBy:trackBy"
     [item]="company"
-    [class.parent-hover]="parentHover"
-    [parentHover]="parentHover"
     [active]="isActive(company.id)"
     class="card"
     [class.active]="isActive(company.id)"

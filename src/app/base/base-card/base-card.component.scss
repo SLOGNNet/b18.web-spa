@@ -70,7 +70,7 @@
   }
 }
 
-:host-context():hover {
+:host-context(.interactive-panel:hover) {
   background: red;
 
   &.card {
@@ -83,19 +83,24 @@
       }
     }
   }
-}
 
-:host-context(.active) {
-  &.card {
-    background: $mako;
-    color: $silver;
-
-    .card-section {
-      border-radius: $default-border-radius;
-
-      .status {
-        opacity: 1;
-      }
-    }
+  &:hover {
+    background: green;
   }
 }
+
+// :host(:hover) {
+
+//   background: green !important;
+
+//   &.card {
+//     color: $black;
+//     transition: all 0.5s;
+
+//     .card-section {
+//       .status {
+//         opacity: 1;
+//       }
+//     }
+//   }
+// }
