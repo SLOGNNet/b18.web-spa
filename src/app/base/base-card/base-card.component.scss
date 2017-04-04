@@ -71,7 +71,7 @@
 }
 
 :host-context(.interactive-panel:hover) {
-  background: red;
+  background: $white;
 
   &.card {
     color: $black;
@@ -82,25 +82,40 @@
         opacity: 1;
       }
     }
+
+    &:hover {
+      background: $light-blue;
+    }
   }
 
-  &:hover {
-    background: green;
+  &.active {
+    &.card {
+      color: $silver;
+      transition: all 0.5s;
+
+      .card-section {
+        .status {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        background: $mako;
+      }
+    }
   }
 }
 
-// :host(:hover) {
+:host-context(.active) {
+  &.card {
+    background: $mako;
+    color: $silver;
+    transition: all 0.5s;
 
-//   background: green !important;
-
-//   &.card {
-//     color: $black;
-//     transition: all 0.5s;
-
-//     .card-section {
-//       .status {
-//         opacity: 1;
-//       }
-//     }
-//   }
-// }
+    .card-section {
+      .status {
+        opacity: 1;
+      }
+    }
+  }
+}
