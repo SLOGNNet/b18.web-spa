@@ -1012,7 +1012,7 @@ class MockData {
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.ACTIVE,
-      type: CompanyTypes.BROKER,
+      type: null,
       taxId: '',
       mc: '384859',
       loads: []
