@@ -59,15 +59,3 @@ $element-height: 18px;
     }
   }
 }
-
-:host {
-  @include hovered;
-
-  &.parent-hover {
-    .basic-information-container {
-      .cropped-company-name {
-        background: $black;
-      }
-    }
-  }
-}

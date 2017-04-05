@@ -1,4 +1,4 @@
-<div class="bd-input-wrapper hovered-bg"
+<div class="bd-input-wrapper"
      [class.bd-focused]="_focused"
      [class.bd-collapsed-input]="isCollapsed"
      [class.bd-expanded-input]="!isCollapsed"
@@ -16,7 +16,7 @@
         </div>
         <div class="bd-input">
 
-          <div #prefix class="bd-input-prefix hovered-text" *ngIf='!_prefixEmpty'>
+          <div #prefix class="bd-input-prefix" *ngIf='!_prefixEmpty'>
             <ng-content select="[bd-prefix]"></ng-content>
           </div>
 
@@ -37,7 +37,7 @@
               (blur)="_handleBlur($event)"
               [attr.name]="name"
               [type]="type"
-              class="bd-input-element hovered-text {{_invalidClass}}"
+              class="bd-input-element {{_invalidClass}}"
               [id]="inputId"
               autocomplete="off"
             >
@@ -49,7 +49,7 @@
               [disabled]="disabled"
               [(ngModel)]="value"
               [attr.maxlength]="maxlength"
-              class="bd-input-element hovered-text {{_invalidClass}}"
+              class="bd-input-element {{_invalidClass}}"
               (focus)="_handleFocus($event)"
               (change)="_handleChange($event)"
               (keydown)="_handleKeyDown($event)"
@@ -58,7 +58,7 @@
               [id]="inputId"
             ></textarea>
           </div>
-          <div #suffix class="bd-input-suffix hovered-text" *ngIf='!_suffixEmpty'>
+          <div #suffix class="bd-input-suffix" *ngIf='!_suffixEmpty'>
             <ng-content select="[bd-suffix]"></ng-content>
           </div>
         </div>
