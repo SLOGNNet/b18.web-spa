@@ -16,7 +16,7 @@ export class DriverLicenseComponent {
 
   }
 
-  updateRestrictions() {
+  updateRestrictionsAndEndorsements() {
     if (this.driver.license.restrictions) {
       this.restrictions = this.constants.ORDERED_RESTRICTIONS.filter(restriction => this.driver.license.restrictions.includes((restriction))).join(', ');
     } else {
@@ -32,7 +32,7 @@ export class DriverLicenseComponent {
 
   ngOnChanges(changes) {
     if (changes.driver) {
-      this.updateRestrictions();
+      this.updateRestrictionsAndEndorsements();
     }
   }
 
