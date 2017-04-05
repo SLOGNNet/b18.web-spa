@@ -12,7 +12,6 @@ import { BaseCardComponent } from '../../../base';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentCardComponent extends BaseCardComponent {
-    @Input() parentHover: boolean = false;
     public firstLetter: string;
     public lastLetter: string;
 

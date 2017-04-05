@@ -8,8 +8,6 @@ import { Component, Input } from '@angular/core';
 export class BdCompanyCircleComponent {
 
       @Input() companyName: string = '';
-      @Input() parentHover: boolean = false;
-      @Input() active: any;
       croppedCompanyName: string;
       @Input() private size: 'default' | 'small' = 'default';
 

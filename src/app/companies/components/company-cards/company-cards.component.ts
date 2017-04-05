@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Company } from '../../../models';
 import { BaseCardListComponent } from '../../../base';
 
@@ -8,8 +8,7 @@ import { BaseCardListComponent } from '../../../base';
     styleUrls: ['./company-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CompanyCardsComponent extends BaseCardListComponent{
-  public parentHover: boolean = false;
+export class CompanyCardsComponent extends BaseCardListComponent {
 
   @Input() companies: Array<Company>;
   @Input() selected: Array<Company> = [];
@@ -26,12 +25,4 @@ export class CompanyCardsComponent extends BaseCardListComponent{
 
     return selected;
   }
-
-  @HostListener('mouseenter') mouseover() {
-   this.parentHover = true;
- };
-
- @HostListener('mouseleave') mouseleave() {
-   this.parentHover = false;
- }
 }

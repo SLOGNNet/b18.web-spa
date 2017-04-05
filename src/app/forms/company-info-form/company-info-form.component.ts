@@ -12,7 +12,6 @@ import { BaseForm } from '../base-form';
   providers: [FormValidationService]
 }, BaseForm.metaData))
 export class CompanyInfoForm extends BaseForm {
-  @Input() parentHover: boolean = false;
   @Input() company: Company;
   @Input() disabled: boolean = false;
   @Input() scrollable: boolean = false;

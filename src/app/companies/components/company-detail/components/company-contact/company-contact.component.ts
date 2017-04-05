@@ -8,7 +8,6 @@ import { Contact } from '../../../../../models';
 })
 export class CompanyContact {
   @Input() contact: Contact;
-  @Input() parentHover: boolean = false;
 
   get contactInitials() {
     return this.contact.firstName + ' ' + this.contact.lastName;

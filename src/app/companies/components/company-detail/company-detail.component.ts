@@ -13,7 +13,6 @@ import { IAppState } from '../../../store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompanyDetailComponent extends BaseDetailComponent<Company> {
-  public parentHover: boolean = false;
 
   private anchors = [{
     id: 'basic-information',
@@ -35,14 +34,6 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     super(companyActions, ngRedux.select(state => Object.assign({}, state.companies.selected, { contacts: state.contacts.items})),
       router, route, cdr);
   }
-
-  @HostListener('mouseenter') mouseover() {
-   this.parentHover = true;
- };
-
- @HostListener('mouseleave') mouseleave() {
-   this.parentHover = false;
- }
 
   onEditInfoClick() {
     this.router.navigate(['./edit-info'],  {preserveQueryParams: true, relativeTo: this.route});

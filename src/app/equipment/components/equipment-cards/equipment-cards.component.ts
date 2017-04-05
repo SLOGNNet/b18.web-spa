@@ -8,7 +8,6 @@ import { Equipment } from '../../../models';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentCardsComponent {
-  public parentHover: boolean = false;
   @Input() equipments: Array <Equipment>;
   @Input() selected: Array<Equipment> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();
@@ -24,12 +23,4 @@ export class EquipmentCardsComponent {
 
     return selected;
   }
-
-  @HostListener('mouseenter') mouseover() {
-   this.parentHover = true;
- };
-
- @HostListener('mouseleave') mouseleave() {
-   this.parentHover = false;
- }
 }
