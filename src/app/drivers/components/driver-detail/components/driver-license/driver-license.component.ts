@@ -8,8 +8,6 @@ import { Constants } from '../../../../../shared';
   styleUrls: ['./driver-license.component.scss']
 })
 export class DriverLicenseComponent {
-  public orderedEndorsments = ['P', 'H', 'M', 'N', 'T', 'X', 'L', 'S'];
-  public orderedRestrictions = ['B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N', 'O', 'Z', 'T'];
   public restrictions: string;
   public endorsements: string;
   @Input() driver: Driver;
@@ -18,10 +16,23 @@ export class DriverLicenseComponent {
 
   }
 
+  updateRestrictions() {
+    if (this.driver.license.restrictions) {
+      this.restrictions = this.constants.ORDERED_RESTRICTIONS.filter(restriction => this.driver.license.restrictions.includes((restriction))).join(', ');
+    } else {
+      this.restrictions = '';
+    }
+
+    if (this.driver.license.endorsements) {
+      this.endorsements = this.constants.ORDERED_ENDORSEMENTS.filter(endorsment => this.driver.license.endorsements.includes((endorsment))).join(', ');
+    } else {
+      this.endorsements = '';
+    }
+  }
+
   ngOnChanges(changes) {
     if (changes.driver) {
-      this.restrictions  = this.orderedRestrictions.filter(restriction => this.driver.license.restrictions.includes((restriction))).join(', ');
-      this.endorsements = this.orderedEndorsments.filter(endorsment => this.driver.license.endorsements.includes((endorsment))).join(', ');
+      this.updateRestrictions();
     }
   }
 
