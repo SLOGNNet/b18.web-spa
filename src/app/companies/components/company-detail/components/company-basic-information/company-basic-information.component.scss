@@ -59,3 +59,9 @@ $element-height: 18px;
     }
   }
 }
+
+@include hovered-text;
+
+:host-context(.interactive-panel:hover) {
+  @include hovered-bg;
+}

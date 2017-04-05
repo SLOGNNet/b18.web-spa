@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 
 :host {
   display: block;
@@ -20,10 +21,13 @@
   &:first-of-type {
     padding-top: 10px;
   }
+}
 
-  &.parent-hover {
-    .bd-section-title {
-      color: $black;
-    }
+@include hovered-text;
+
+:host-context(.interactive-panel:hover) {
+  .bd-section-title {
+    color: $black;
+    transition: all 500ms;
   }
 }

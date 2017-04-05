@@ -30,3 +30,27 @@
     color: $dark-grey;
   }
 }
+@mixin hovered-text {
+  .hovered-text {
+    color: $dark-grey;
+    transition: all 500ms;
+  }
+}
+
+@mixin hovered-bg {
+  .hovered-text {
+    color: $black;
+    transition: all 500ms;
+  }
+
+  .hovered-bg {
+    background: $white;
+    border-bottom: $border;
+    transition: all 500ms;
+
+    .left {
+      border-right: $border;
+      transition: all 500ms;
+    }
+  }
+}

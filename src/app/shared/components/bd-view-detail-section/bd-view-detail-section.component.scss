@@ -1,22 +1,6 @@
 @import '../../../../assets/styles/variables';
 
 :host {
-  &.parent-hover {
-    .detail-container {
-      .title {
-        label {
-          color: $black;
-        }
-
-        .buttons-panel {
-          bd-form-button {
-            display: flex;
-          }
-        }
-      }
-    }
-  }
-
   .detail-container {
     .title {
       display: flex;
@@ -53,6 +37,22 @@
   &:first-of-type {
     .detail-container {
       padding-top: 10px;
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+  .detail-container {
+    .title {
+      label {
+        color: $black;
+      }
+
+      .buttons-panel {
+        bd-form-button {
+          display: flex;
+        }
+      }
     }
   }
 }
