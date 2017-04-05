@@ -1,4 +1,57 @@
+@import '../../../../assets/styles/variables';
+
 :host {
   display: block;
   margin-top: 20px;
+}
+
+:host-context(.interactive-panel:hover) {
+  background: $white;
+  transition: all 500ms;
+
+  &.card {
+    color: $black;
+    transition: all 0.5s;
+
+    .card-section {
+      .status {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background: $light-blue;
+    }
+  }
+
+  &.active {
+    &.card {
+      color: $silver;
+      transition: all 0.5s;
+
+      .card-section {
+        .status {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        background: $mako;
+      }
+    }
+  }
+}
+
+:host-context(.active) {
+  &.card {
+    background: $mako;
+    color: $silver;
+    transition: all 0.5s;
+
+    .card-section {
+      .status {
+        opacity: 1;
+      }
+    }
+  }
 }

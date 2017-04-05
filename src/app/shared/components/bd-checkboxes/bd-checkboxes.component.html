@@ -5,7 +5,7 @@
   <div class="checkboxes">
     <div class="bd-checkbox" *ngFor="let item of items">
       <bd-checkbox [checked]="isChecked(item)" [disabled]="disabled" (checkedChange)="onCheckedChange(item)"></bd-checkbox>
-      <span (click)="onCheckedChange(item)">{{item}}</span>
+      <span class="hovered-text" (click)="onCheckedChange(item)">{{item}}</span>
     </div>
   </div>
 </div>
