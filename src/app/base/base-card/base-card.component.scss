@@ -72,6 +72,7 @@
 
 :host-context(.interactive-panel:hover) {
   background: $white;
+  transition: all 500ms;
 
   &.card {
     color: $black;

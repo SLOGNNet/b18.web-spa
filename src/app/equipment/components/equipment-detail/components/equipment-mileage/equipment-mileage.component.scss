@@ -1,12 +1,12 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 .mileage-container {
   display: flex;
   height: 35px;
   padding: 0 $default-margin;
-  background: $white;
   font-size: $tiny-font-size;
-  border-bottom: $border;
+  border-bottom: $default-border;
   align-items: center;
   justify-content: space-between;
 
@@ -19,4 +19,10 @@
       color: $dark-grey;
     }
   }
+}
+
+@include hovered-text;
+
+:host-context(.interactive-panel:hover) {
+  @include hovered-bg;
 }
