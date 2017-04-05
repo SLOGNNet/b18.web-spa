@@ -90,20 +90,25 @@ form-navigation {
 }
 
 :host-context(.interactive-panel:hover) {
+
   form-navigation {
+    background: red;
 
     .form-navigation {
+      background: red;
 
       .top-panel {
-
-        .title {
-          color: red;
-        }
+        background: red;
       }
     }
   }
+  background: red;
 
   .title {
     color: red;
+  }
+
+  .top-panel {
+    background: red;
   }
 }

@@ -17,21 +17,3 @@ equipment-card {
     }
   }
 }
-
-:host() {
-  &:hover {
-    background: red;
-
-    &.card {
-      color: $black;
-      background: red;
-      transition: all 0.5s;
-
-      .card-section {
-        .status {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}

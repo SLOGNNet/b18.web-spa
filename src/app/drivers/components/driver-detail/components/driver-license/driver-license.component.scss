@@ -1,26 +1,26 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 $element-height: 18px;
 
 .license-container {
   width: 100%;
-  background: $white;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
+  border-bottom: $default-border;
 
   .top {
     display: flex;
     width: 100%;
     height: 34px;
-    border-bottom: $border;
+    border-bottom: $default-border;
 
     .left {
       display: flex;
       width: 50%;
       height: 34px;
       padding: $default-margin;
-      border-right: $border;
+      border-right: $default-border;
       align-items: center;
 
       .license-number {
@@ -54,4 +54,10 @@ $element-height: 18px;
       margin-left: 5px;
     }
   }
+}
+
+@include hovered-text;
+
+:host-context(.interactive-panel:hover) {
+  @include hovered-bg;
 }
