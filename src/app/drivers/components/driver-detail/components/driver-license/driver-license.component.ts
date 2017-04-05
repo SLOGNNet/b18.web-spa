@@ -18,13 +18,15 @@ export class DriverLicenseComponent {
 
   updateRestrictionsAndEndorsements() {
     if (this.driver.license.restrictions) {
-      this.restrictions = this.constants.ORDERED_RESTRICTIONS.filter(restriction => this.driver.license.restrictions.includes((restriction))).join(', ');
+      this.restrictions = this.constants.ORDERED_RESTRICTIONS.filter(restriction =>
+        this.driver.license.restrictions.includes((restriction))).join(', ');
     } else {
       this.restrictions = '';
     }
 
     if (this.driver.license.endorsements) {
-      this.endorsements = this.constants.ORDERED_ENDORSEMENTS.filter(endorsment => this.driver.license.endorsements.includes((endorsment))).join(', ');
+      this.endorsements = this.constants.ORDERED_ENDORSEMENTS.filter(endorsment =>
+        this.driver.license.endorsements.includes((endorsment))).join(', ');
     } else {
       this.endorsements = '';
     }
