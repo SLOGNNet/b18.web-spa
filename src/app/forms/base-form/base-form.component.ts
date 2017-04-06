@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, ElementRef, HostBinding
-} from '@angular/core';
+import { ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
-  @HostBinding('class.interactive-panel') v: boolean = true;
   public static metaData: Object = {
     inputs: ['viewMode', 'isNestedForm'],
     host: {

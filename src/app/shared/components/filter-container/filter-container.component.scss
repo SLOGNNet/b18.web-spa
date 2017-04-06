@@ -119,3 +119,10 @@ $filter-header-max-width: 85px;
     font-size: $tiny-font-size;
   }
 }
+
+:host-context(.interactive-panel:hover) {
+  .filter-header {
+    background: red !important;
+  }
+}
+

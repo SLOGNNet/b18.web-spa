@@ -2,7 +2,7 @@
 @import '../../../../assets/styles/mixins';
 $container-height: $horizontal-scroll-container-height;
 
-form-navigation {
+:host {
   position: absolute;
   z-index: $sticked-z-index;
   top: 0;
@@ -91,24 +91,11 @@ form-navigation {
 
 :host-context(.interactive-panel:hover) {
 
-  form-navigation {
+  .form-navigation {
     background: red;
-
-    .form-navigation {
-      background: red;
-
-      .top-panel {
-        background: red;
-      }
-    }
   }
-  background: red;
 
   .title {
     color: red;
-  }
-
-  .top-panel {
-    background: red;
   }
 }

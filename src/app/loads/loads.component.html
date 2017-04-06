@@ -1,7 +1,7 @@
 <multi-pane-layout>
   <first-pane>
     <bd-infinite-scroll (scrolledDown)="onScrolledDown()" (scrolledUp)="onScrolledUp()">
-      <div class="data-panel">
+      <div class="data-panel interactive-panel">
         <div class="bd-filter-container">
           <filter-container (visibilityChange)="onFilterVisibilityChange($event)">
             <autocomplete-filter
@@ -43,13 +43,13 @@
   </third-pane>
   </multi-pane-layout>
 
-  <template #companyItemTemplate let-item="item">
-    <div class="filter-item-content">
-      <div class="left">
-    <span class="item-name">{{item.name}}</span>
+<template #companyItemTemplate let-item="item">
+  <div class="filter-item-content">
+    <div class="left">
+      <span class="item-name">{{item.name}}</span>
+    </div>
+    <div class="right">
+      MC# {{item.mc}}
+    </div>
   </div>
-  <div class="right">
-    MC# {{item.mc}}
-  </div>
-</div>
-  </template>
+</template>
