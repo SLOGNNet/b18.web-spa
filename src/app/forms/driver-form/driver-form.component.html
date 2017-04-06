@@ -3,11 +3,11 @@
 	<bd-form-section [disabled]="disabled" [labelText]="'PERSONAL INFO'">
 		<div class="section">
 			 <bd-validator [component]="driverForm.controls.firstName" [errorDefs]="{required: 'Firstname is required'}">
-				<bd-input class="bd-form-control left-control" formControlName="firstName" [placeholder]="'First Name *'"></bd-input>
+				<bd-input class="bd-form-control left-control" [required]="true" formControlName="firstName" [placeholder]="'First Name'"></bd-input>
 			</bd-validator>
 			<bd-input class="bd-form-control middle-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
 			<bd-validator [component]="driverForm.controls.lastName" [errorDefs]="{required: 'Lastname is required'}">
-				<bd-input class="bd-form-control right-control" formControlName="lastName" [placeholder]="'Last Name *'"></bd-input>
+				<bd-input class="bd-form-control right-control" [required]="true" formControlName="lastName" [placeholder]="'Last Name'"></bd-input>
 			</bd-validator>
 		</div>
 		<bd-form-datepicker
