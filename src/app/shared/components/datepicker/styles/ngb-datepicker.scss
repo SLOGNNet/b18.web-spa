@@ -15,7 +15,7 @@
 
 :host(.ngb-datepicker-popup-container) {
   position: absolute;
-  z-index: $form-control-popup-z-index;
+  z-index: $calendar-z-index;
   display: block;
   width: 100%;
   padding: 0;
