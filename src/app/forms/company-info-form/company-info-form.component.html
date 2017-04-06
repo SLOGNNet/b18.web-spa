@@ -2,7 +2,7 @@
     <bd-form-section [disabled]="disabled" [labelText]="'BASIC INFORMATION'">
       <bd-input class="bd-form-control" [labelText]="'Company Name'" formControlName="name">
       </bd-input>
-      <bd-dropdown class="bd-form-control" [labelText]="'Company type'" formControlName="type" [items]="companyTypes">
+      <bd-dropdown class="bd-form-control" [defaultTitleText]="'Select Company Type'" [labelText]="'Company type'" formControlName="type" [items]="companyTypes">
       </bd-dropdown>
       <bd-validator [component]="companyForm.controls.status" [errorDefs]="{required: 'Status is required'}">
         <bd-form-switch class="bd-form-control" [labelText]="'Status'" [enableButtonSwitch]="true" formControlName="status"

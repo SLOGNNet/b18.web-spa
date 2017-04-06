@@ -8,18 +8,33 @@ import { Constants } from '../../../../../shared';
   styleUrls: ['./driver-license.component.scss']
 })
 export class DriverLicenseComponent {
-  public restrictionsTypes: string;
-  public endorsementsTypes: string;
+  public restrictions: string;
+  public endorsements: string;
   @Input() driver: Driver;
 
   constructor(private constants: Constants) {
 
   }
 
+  updateRestrictionsAndEndorsements() {
+    if (this.driver.license.restrictions) {
+      this.restrictions = this.constants.ORDERED_RESTRICTIONS.filter(restriction =>
+        this.driver.license.restrictions.includes((restriction))).join(', ');
+    } else {
+      this.restrictions = '';
+    }
+
+    if (this.driver.license.endorsements) {
+      this.endorsements = this.constants.ORDERED_ENDORSEMENTS.filter(endorsment =>
+        this.driver.license.endorsements.includes((endorsment))).join(', ');
+    } else {
+      this.endorsements = '';
+    }
+  }
+
   ngOnChanges(changes) {
     if (changes.driver) {
-      this.restrictionsTypes  = this.driver.license.restrictions &&  this.driver.license.restrictions.split(' ').join(', ');
-      this.endorsementsTypes = this.driver.license.endorsements && this.driver.license.endorsements.split(' ').join(', ');
+      this.updateRestrictionsAndEndorsements();
     }
   }
 

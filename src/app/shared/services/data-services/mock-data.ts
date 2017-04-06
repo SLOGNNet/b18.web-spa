@@ -1012,7 +1012,7 @@ class MockData {
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.ACTIVE,
-      type: CompanyTypes.BROKER,
+      type: null,
       taxId: '',
       mc: '384859',
       loads: []
@@ -1318,7 +1318,7 @@ class MockData {
 
   public restrictions: Array<string> = [
     'B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N',
-    'O', 'T', 'Z'
+    'O', 'Z', 'T'
   ];
 }
 
