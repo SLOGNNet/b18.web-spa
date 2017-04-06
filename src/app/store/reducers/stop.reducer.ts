@@ -10,7 +10,7 @@ const INITIAL_STATE: IStopState = { items: [] };
 
 export const stopReducer = createReducer(INITIAL_STATE, {
   [StopActions.ADD_STOP](state, action) {
-    return Object.assign({}, state, { items: addItem(state.items, action.stop)});
+    return Object.assign({}, state, { items: addItem(state.items, action.stop, action.stop.id)});
   },
   [StopActions.REMOVE_STOP](state, action) {
     return Object.assign({}, state, { items: removeItem(state.items, action.stop)});

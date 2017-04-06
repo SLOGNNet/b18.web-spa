@@ -54,4 +54,8 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
       super.onItemSave(this.companyContactFormComponent.contactForm.value);
     }
   }
+
+  getItemName() {
+    return 'Company';
+  }
 }

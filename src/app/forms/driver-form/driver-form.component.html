@@ -1,24 +1,27 @@
 <form [formGroup]="driverForm" novalidate (ngSubmit)="submit(driverForm.value, driverForm.valid)">
 	<navigation-anchor id="driver-personal-information" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PERSONAL INFO'">
-		<bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'"></bd-input>
-		<bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'"></bd-input>
+    <bd-validator-summary>
+      <div class="name-section">
+        <bd-validator [component]="driverForm.controls.firstName" [errorDefs]="{required: 'Firstname is required'}">
+          <bd-input class="bd-form-control left-control" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
+        </bd-validator>
+        <bd-input class="bd-form-control middle-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
+        <bd-validator [component]="driverForm.controls.lastName" [errorDefs]="{required: 'Lastname is required'}">
+          <bd-input class="bd-form-control right-control" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
+        </bd-validator>
+      </div>
+    </bd-validator-summary>
 		<bd-form-datepicker
-		class="bd-form-control"
-		formControlName="birthDate"
-		[labelText]="'Date Of Birth'"
-		[minDate]="minBirthDate" [maxDate]="maxBirthDate"></bd-form-datepicker>
+			class="bd-form-control"
+			formControlName="birthDate"
+			[labelText]="'Date Of Birth'"
+			[minDate]="minBirthDate"
+			[maxDate]="maxBirthDate">
+		</bd-form-datepicker>
 		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
 		<bd-dropdown class="bd-form-control" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
 		</bd-dropdown>
-	</bd-form-section>
-	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
-    <contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [disabled]="disabled" [viewMode]="viewMode"></contacts-info-form>
-	</bd-form-section>
-	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
-	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
-		<address-form [group]='driverForm.controls.address' [disabled]="disabled" [address]='driver.address' [viewMode]="viewMode" ></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
@@ -26,6 +29,14 @@
 		</bd-dropdown>
 		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>
+	</bd-form-section>
+	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'CONTACT'" >
+    	<contacts-info-form [items]="driver.contactInfo" [formArray]='driverForm.controls.contactInfo' [disabled]="disabled" [viewMode]="viewMode"></contacts-info-form>
+	</bd-form-section>
+	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
+	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
+	
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">

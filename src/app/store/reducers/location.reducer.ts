@@ -10,7 +10,7 @@ const INITIAL_STATE: ILocationState = { items: [] };
 
 export const locationReducer = createReducer(INITIAL_STATE, {
   [LocationActions.ADD_LOCATION](state, action) {
-    return Object.assign({}, state, { items: addItem(state.items, action.location) });
+    return Object.assign({}, state, { items: addItem(state.items, action.location, action.location.id) });
   },
   [LocationActions.REMOVE_LOCATION](state, action) {
     return Object.assign({}, state, { items: removeItem(state.items, action.location) });

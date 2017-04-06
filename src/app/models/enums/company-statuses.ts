@@ -1,19 +1,17 @@
 export enum CompanyStatuses {
-  NONE = 0,
-  INACTIVE = 1,
-  ACTIVE = 2,
-  UNAVALIABLE = 3
+  ACTIVE= 1,
+  INACTIVE = 2,
+  UNAVAILABLE = 3
 }
 
 let statusColors = {
-  [CompanyStatuses.UNAVALIABLE]: '#ffbe4d',
+  [CompanyStatuses.UNAVAILABLE]: '#ffbe4d',
   [CompanyStatuses.ACTIVE]: '#85d183',
   [CompanyStatuses.INACTIVE]: '#fb3a3a'
 };
 
 let displayTexts = {
-  [CompanyStatuses.NONE]: 'None',
-  [CompanyStatuses.UNAVALIABLE]: 'Unavaliable',
+  [CompanyStatuses.UNAVAILABLE]: 'Unavailable',
   [CompanyStatuses.ACTIVE]: 'Active',
   [CompanyStatuses.INACTIVE]: 'Inactive'
 };

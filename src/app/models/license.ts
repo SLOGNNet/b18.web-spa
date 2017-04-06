@@ -27,7 +27,6 @@ export class License {
     const result = new License();
     result.expiration = null;
     result.dateIssued = null;
-    result.licenseClass = LicenseClassTypes.NONE;
     return result;
   }
 }

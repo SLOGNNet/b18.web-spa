@@ -19,14 +19,14 @@ export class DriverEditComponent extends BaseRootEditComponent<Driver> {
     id: 'driver-personal-information',
     title: 'Personal Info'
   }, {
+    id: 'driver-payment',
+    title: 'Payment'
+  }, {
     id: 'driver-contact',
     title: 'Contact'
   }, {
     id: 'driver-address',
     title: 'Address'
-  }, {
-    id: 'driver-payment',
-    title: 'Payment'
   }, {
     id: 'driver-license',
     title: 'License'
@@ -45,5 +45,9 @@ export class DriverEditComponent extends BaseRootEditComponent<Driver> {
 
   isDetailsChanged() {
     return this.driverFormComponent && this.driverFormComponent.driverForm.dirty;
+  }
+
+  getItemName() {
+    return 'Driver';
   }
 }

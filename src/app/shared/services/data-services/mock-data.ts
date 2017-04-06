@@ -323,7 +323,7 @@ class MockData {
   equipmentNotification: Array<EquipmentNotification> = [];
 
   public equipments: Array<Equipment> = [{
-    id: '0',
+    id: '1',
     make: 'Kenworth',
     model: 'T610',
     number: '101',
@@ -367,7 +367,7 @@ class MockData {
       license: null
     }
   }, {
-    id: '1',
+    id: '2',
     make: 'Wabash',
     model: 'CA9000(Referer 53)',
     number: '2349',
@@ -1012,7 +1012,7 @@ class MockData {
       contacts: [this.contacts[0]],
       email: 'carrier.services@chrobinson.com',
       status: CompanyStatuses.ACTIVE,
-      type: CompanyTypes.BROKER,
+      type: null,
       taxId: '',
       mc: '384859',
       loads: []
@@ -1318,7 +1318,7 @@ class MockData {
 
   public restrictions: Array<string> = [
     'B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N',
-    'O', 'T', 'Z'
+    'O', 'Z', 'T'
   ];
 }
 

@@ -26,6 +26,8 @@ export abstract class BaseNestedEditComponent<T, Y> extends BaseEditComponent<T>
     });
   }
 
+  protected abstract getItemName();
+
   protected onAdd(item: T) {
     this.actions.addAssociation(item, this.parentItem);
   }

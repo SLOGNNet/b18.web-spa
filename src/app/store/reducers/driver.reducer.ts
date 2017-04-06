@@ -18,8 +18,8 @@ export const driverReducer = createReducer(INITIAL_STATE, {
   },
   [DriverActions.ADD_DRIVER_SUCCESS](state, action) {
     return Object.assign({}, state, {
-      items: addItem(state.items, action.driver),
-      selected: updateNewItem(state.selected, action.driver, action.prevId),
+      items: addItem(state.items, action.driver, action.newId),
+      selected: updateNewItem(state.selected, action.driver, action.newId),
       isLoading: false
     });
   },
@@ -41,7 +41,7 @@ export const driverReducer = createReducer(INITIAL_STATE, {
       });
   },
   [DriverActions.GET_ALL_DRIVERS](state, action) {
-    return Object.assign({}, state, { items: action.items.slice(), selected: null });
+    return Object.assign({}, state, { items: action.items.slice() });
   },
   [DriverActions.SELECT_DRIVER](state, action) {
     return Object.assign({}, state, { selected: action.driver, isLoading: false});
