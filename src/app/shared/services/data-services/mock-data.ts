@@ -1318,7 +1318,7 @@ class MockData {
 
   public restrictions: Array<string> = [
     'B', 'C', 'D', 'E', 'F', 'G', 'K', 'L', 'M', 'N',
-    'O', 'T', 'Z'
+    'O', 'Z', 'T'
   ];
 }
 
