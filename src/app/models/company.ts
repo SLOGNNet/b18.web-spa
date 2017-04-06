@@ -1,14 +1,13 @@
 import { Location } from './location';
-import { Contact } from './contact';
+import { Contact, contactSchema } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
 import { Type } from 'class-transformer';
 import { schema } from 'normalizr';
 
-const contact = new schema.Entity('contacts');
 export const companySchema = new schema.Entity('companies', {
-  contacts: [ contact ]
+  contacts: [ contactSchema ]
 });
 export const companyListSchema = [companySchema];
 

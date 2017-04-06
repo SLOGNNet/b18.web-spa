@@ -23,4 +23,3 @@ export const selectDetailCompany = (state: IAppState): Company => {
   const res = selectCompany(state, state.companyPage.companies.selected);
   return res;
 }
-

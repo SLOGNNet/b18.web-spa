@@ -1,12 +1,11 @@
 import { CompanyActions, CompanyContactActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Contact } from '../models';
-import { mergeLists } from '../normalizerUtils';
-import { addItem, updateListItem, updateItem, updateNewItem } from '../utils';
+import { mergeLists, deleteItem } from '../normalizerUtils';
 
 export interface ICompanyContactState {
   items: Contact[];
-  selected: Contact;
+  selected: string;
   isLoading: boolean;
 }
 const INITIAL_STATE: ICompanyContactState = { items: [], selected: null, isLoading: false };
@@ -16,7 +15,7 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: mergeLists(state.items, action.data.entities.contacts) });
   },
   [CompanyActions.GET_ALL_COMPANIES](state, action) {
-    return Object.assign({}, state, { items: action.data.entities.contacts, selected: null});
+    return Object.assign({}, state, { items: mergeLists(state.items, action.data.entities.contacts)});
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {
@@ -25,14 +24,14 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   },
   [CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS](state, action) {
     return Object.assign({}, state,
-      { items:
-        addItem(state.items, action.contact),
-        selected: updateNewItem(state.selected, action.contact, action.prevId),
+      {
+        items: deleteItem(mergeLists(state.items, action.data.entities.companies), action.prevId),
+        selected: action.prevId = state.selected ? action.data.result : state.selected,
         isLoading: false
      });
   },
   [CompanyContactActions.SELECT_COMPANY_CONTACT](state, action) {
-    return Object.assign({}, state, { selected: action.contact, isLoading: false });
+    return Object.assign({}, state, { selected: action.data.result, isLoading: false });
   },
   [CompanyContactActions.UPDATE_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state,
@@ -43,8 +42,7 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   [CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS](state, action) {
     return Object.assign({}, state,
       {
-        items: updateListItem(state.items, action.contact),
-        selected: updateItem(state.selected, action.contact),
+        items: mergeLists(state.items, action.data.entities.contacts),
         isLoading: false
       });
   },

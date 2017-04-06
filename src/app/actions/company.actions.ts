@@ -5,6 +5,7 @@ import { Company, companySchema, companyListSchema } from '../models';
 import { CompanyService, NotificationService } from '../shared';
 import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class CompanyActions implements IListDataActions<Company>, IDetailDataActions<Company>, IRootEditDataActions<Company> {
@@ -27,8 +28,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST });
       this.companyService.create(company).subscribe(newId => {
         const prevId = company.id;
-        company.id = newId;
-        const normalizedCompany = normalize(company, companySchema);
+        const normalizedCompany = normalize(createPeristEnity(company, newId), companySchema);
         this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, data: normalizedCompany, prevId });
         this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
       });
