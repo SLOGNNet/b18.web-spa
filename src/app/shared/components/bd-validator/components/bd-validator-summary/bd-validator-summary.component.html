@@ -1,0 +1,4 @@
+<ng-content></ng-content>
+<template ngFor let-message [ngForOf]="messages">
+  <bd-validator-message [message]='message'></bd-validator-message>
+</template>

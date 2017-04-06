@@ -36,7 +36,7 @@ import { GoogleMapComponent } from './components/google-map';
 import { FormNavigationComponent, NavigationAnchorComponent } from './components/form-navigation';
 import { BdFormSectionComponent } from './components/bd-form-section';
 import { BdFormTypeaheadComponent } from './components/bd-form-typeahead';
-import { BdValidatorComponent } from './components/bd-validator';
+import { BdValidatorModule } from './components/bd-validator';
 import { BdDropdownModule } from './components/bd-dropdown';
 import { NgbDatepickerModule } from './components/datepicker';
 import { EmptyComponent } from './components/empty';
@@ -110,7 +110,6 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
-    BdValidatorComponent,
     GoogleMapComponent,
     FormNavigationComponent,
     NavigationAnchorComponent,
@@ -161,7 +160,8 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdDropdownModule,
     BdPopoverModule,
     InfiniteScrollModule,
-    BdPipesModule
+    BdPipesModule,
+    BdValidatorModule
   ],
   exports: [
     BdFormButtonComponent,
@@ -179,7 +179,6 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdCheckboxes,
     BdFormCheckbox,
     BdFormSwitchComponent,
-    BdValidatorComponent,
     TypeaheadModule,
     CommonModule,
     FormsModule,
@@ -225,7 +224,8 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     ComplexityPasswordMessengerComponent,
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
-    MultiPaneLayoutComponent
+    MultiPaneLayoutComponent,
+    BdValidatorModule
   ]
 })
 export class SharedModule {

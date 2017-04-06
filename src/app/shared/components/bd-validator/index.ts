@@ -1,1 +1,1 @@
-export * from './bd-validator.component';
+export * from './bd-validator.module';
