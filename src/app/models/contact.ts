@@ -2,6 +2,9 @@ import { ContactInfo } from './contact-info';
 import { Location } from './location';
 import { Type } from 'class-transformer';
 import { generateNewId } from './utils';
+import { schema } from 'normalizr';
+
+export const contactSchema = new schema.Entity('contacts');
 
 export class Contact {
   id: string = '';

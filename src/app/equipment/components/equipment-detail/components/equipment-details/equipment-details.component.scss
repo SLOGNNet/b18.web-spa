@@ -53,6 +53,7 @@
   .notes {
     padding: $default-margin;
     min-height: $view-mode-element-height;
+    white-space: pre-line;
   }
 }
 

@@ -8,3 +8,5 @@ export * from './equipment.actions';
 export * from './driver.actions';
 export * from './location.actions';
 export * from './intefaces';
+export * from './common.actions';
+

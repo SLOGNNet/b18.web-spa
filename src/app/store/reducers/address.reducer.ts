@@ -17,8 +17,5 @@ export const addressReducer = createReducer(INITIAL_STATE, {
   },
   [AddressActions.UPDATE_ADDRESS](state, action) {
     return Object.assign({}, state, { items: updateListItem(state.items, action.address)});
-  },
-  [CompanyActions.SELECT_COMPANY](state, action) {
-    return Object.assign({}, state, { items: action.company.addresses});
   }
 });

@@ -8,10 +8,8 @@ export function updateItem(item: any, updated: any) {
 }
 
 export function updateNewItem(item: any, updated: any, newId: any) {
-  const prevId = updated['id'];
-  return  item['id'] === updated['id'] ? Object.assign({}, item, updated, { id: newId, prevId: prevId}) : item;
+   return  item['id'] === item.id ? Object.assign({}, item, updated, { prevId: item.id, id: newId}) : item;
 }
-
 
 export function removeItem(list: any[], removed: any) {
   return list.filter(item => item.id !== removed.id);

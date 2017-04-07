@@ -4,7 +4,7 @@ import { CompanyActions } from '../actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../store';
+import { IAppState, selectCompanies } from '../store';
 
 @Component({
   selector: 'companies',
@@ -18,7 +18,7 @@ export class CompaniesComponent extends BaseListComponent<Company> {
     router: Router,
     route: ActivatedRoute,
     private ngRedux: NgRedux<IAppState>) {
-    super(companyActions, ngRedux.select(state => state.companies.items), router, route);
+    super(companyActions, ngRedux.select(selectCompanies), router, route);
   }
 
   protected routePath(): string {

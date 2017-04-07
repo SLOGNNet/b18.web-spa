@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CompanyDetailComponent, CompanyEditInfoComponent, CompanyEditContactComponent } from './components';
+import {
+  CompanyDetailComponent, CompanyEditInfoComponent,
+  CompanyEditContactComponent
+} from './components';
 import { CompaniesComponent } from './companies.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from '../guards';

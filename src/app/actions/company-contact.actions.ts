@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Company, Contact } from '../models';
+import { Company, Contact, contactSchema } from '../models';
 import { ContactService, CompanyService, NotificationService } from '../shared';
 import { IDetailDataActions, INestedEditDataActions } from './intefaces';
 import { CompanyActions } from './company.actions';
+import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class CompanyContactActions implements IDetailDataActions<Contact>, INestedEditDataActions<Contact, Company> {
@@ -23,7 +25,9 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST });
     this.contactService.create(company, contact).subscribe(newId => {
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, newId});
+      const prevId = contact.id;
+      const normalizedData = normalize(createPeristEnity(contact, newId), contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id});
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }
@@ -33,18 +37,21 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
 
     setTimeout(() => {
       this.contactService.update(contact);
-      this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, contact });
+      const normalizedData = normalize(contact, contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Contact updated.', `${contact.id} was updated.`);
     }, 3000);
   }
 
   select(contactId: string): void {
     this.contactService.getDetails(contactId).subscribe(contact => {
-      this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, contact });
+      const normalizedData = normalize(contact, contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData  });
     });
   }
 
   createNew(): void {
-    this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, contact: Contact.create() });
+    const normalizedData = normalize(Contact.create(), contactSchema);
+    this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData  });
   }
 }
