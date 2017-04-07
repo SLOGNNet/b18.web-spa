@@ -32,7 +32,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
     this.driverService.create(driver).delay(3000).subscribe((newId) => {
       const prevId = driver.id;
       const normalizedCompany = normalize(createPeristEnity(driver, newId), driverSchema);
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, prevId });
+      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, data: normalizedCompany, prevId });
       this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
     });
   }
@@ -60,7 +60,7 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
 
   createNew(): void {
     const normalizedData = normalize(Driver.create(), driverSchema);
-    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, data: Driver.create() });
+    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, data: normalizedData });
   }
 
   getAll(): void {
