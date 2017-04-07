@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
   CompanyDetailComponent, CompanyEditInfoComponent,
-  CompanyEditContactComponent
+  CompanyEditContactComponent, CompanyEditLocationComponent
 } from './components';
 import { CompaniesComponent } from './companies.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -49,6 +49,11 @@ const routes: Routes = [{
         {
           path: 'edit-contact/:id',
           component: CompanyEditContactComponent,
+          canDeactivate: [CanDeactivateGuard]
+        },
+        {
+          path: 'edit-location/:id',
+          component: CompanyEditLocationComponent,
           canDeactivate: [CanDeactivateGuard]
         }
       ]

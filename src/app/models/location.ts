@@ -1,6 +1,9 @@
 import { generateNewId } from './utils';
 import { Address } from './address';
 import { ContactInfo } from './contact-info';
+import { schema } from 'normalizr';
+
+export const locationSchema = new schema.Entity('locations');
 
 export class Location {
   id: string;

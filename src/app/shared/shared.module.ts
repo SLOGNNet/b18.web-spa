@@ -14,7 +14,8 @@ import { NotificationService,
   FormValidationService,
   HttpService,
   StateService,
-  LicenseService
+  LicenseService,
+  LocationService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -89,6 +90,7 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     PhoneValidator,
     StateService,
     LicenseService,
+    LocationService,
     Constants
   ],
   declarations: [

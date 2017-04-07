@@ -42,4 +42,9 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
   onAddContactClick(contact) {
     this.router.navigate([`./edit-contact/0`],  {preserveQueryParams: true, relativeTo: this.route});
   }
+
+  onAddLocationClick(contact) {
+    debugger;
+    this.router.navigate([`./edit-location/0`],  {preserveQueryParams: true, relativeTo: this.route});
+  }
 }
