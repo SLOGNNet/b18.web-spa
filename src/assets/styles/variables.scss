@@ -82,6 +82,9 @@ $status-opacity: .5;
 
 $top-panel-icon-size: 19px;
 
+// animation duration
+$interactive-animation-time: 500ms;
+
 @font-face {
   font-family: 'SFUIText-Regular';
   src: ('../assets/fonts/sf-regular.woff');

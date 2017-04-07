@@ -28,6 +28,6 @@
 :host-context(.interactive-panel:hover) {
   .bd-section-title {
     color: $black;
-    transition: all 500ms;
+    transition: all $interactive-animation-time;
   }
 }

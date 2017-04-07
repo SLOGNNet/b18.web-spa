@@ -72,11 +72,11 @@
 
 :host-context(.interactive-panel:hover) {
   background: $white;
-  transition: all 500ms;
+  transition: all $interactive-animation-time;
 
   &.card {
     color: $black;
-    transition: all 0.5s;
+    transition: all $interactive-animation-time;
 
     .card-section {
       .status {
@@ -92,7 +92,7 @@
   &.active {
     &.card {
       color: $silver;
-      transition: all 0.5s;
+      transition: all $interactive-animation-time;
 
       .card-section {
         .status {
@@ -111,7 +111,7 @@
   &.card {
     background: $mako;
     color: $silver;
-    transition: all 0.5s;
+    transition: all $interactive-animation-time;
 
     .card-section {
       .status {

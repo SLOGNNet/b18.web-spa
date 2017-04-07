@@ -28,6 +28,10 @@ $container-height: $horizontal-scroll-container-height;
         line-height: $default-font-size;
         font-weight: bold;
       }
+
+      .top-panel-content {
+        display: none;
+      }
     }
 
     .container {
@@ -92,10 +96,31 @@ $container-height: $horizontal-scroll-container-height;
 :host-context(.interactive-panel:hover) {
 
   .form-navigation {
-    background: red;
+    background: $white;
+    transition: all $interactive-animation-time;
+
+    .top-panel {
+
+      .title {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+
+      .top-panel-content {
+        display: block;
+        transition: all $interactive-animation-time;
+      }
+    }
   }
 
-  .title {
-    color: red;
+  .content {
+
+    span {
+
+      &.active {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+    }
   }
 }
