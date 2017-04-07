@@ -46,6 +46,7 @@ export class BdInputComponent {
   @ViewChild('prefix') prefixContainer: ElementRef;
   @ViewChild('suffix') suffixContainer: ElementRef;
 
+  @Input() required: boolean = false;
   @Input() collapsibleInput: boolean = true;
   @Input() labelText: any;
   @Input() placeholder: string;

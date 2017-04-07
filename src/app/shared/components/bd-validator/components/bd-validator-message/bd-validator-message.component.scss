@@ -1,0 +1,15 @@
+@import '../../../../../../assets/styles/variables';
+
+.error-message {
+  display: flex;
+  height: 35px;
+  background: $light-red;
+  color: $label-warning-color;
+  text-align: left;
+  align-items: center;
+  border-bottom: $border;
+
+  i {
+    margin: 0 15px 0 $default-margin;
+  }
+}

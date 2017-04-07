@@ -11,7 +11,7 @@
           <label
             class="bd-input-placeholder"
             for="company-input-id">
-              {{labelText}}
+              {{labelText}} {{required ? '*': ''}}
           </label>
         </div>
         <div class="bd-input">
@@ -30,7 +30,7 @@
               [disabled]="disabled"
               [attr.maxlength]="maxlength"
               (focus)="_handleFocus($event)"
-              placeholder="{{placeholder}}"
+              placeholder="{{placeholder}} {{required ? '*': ''}}"
               (change)="_handleChange($event)"
               (keydown)="_handleKeyDown($event)"
               (keyup)="_handleKeyUp($event)"
@@ -54,7 +54,7 @@
               (change)="_handleChange($event)"
               (keydown)="_handleKeyDown($event)"
               (blur)="_handleBlur($event)"
-              placeholder="{{placeholder}}"
+              placeholder="{{placeholder}} {{required ? '*': ''}}"
               [id]="inputId"
             ></textarea>
           </div>
