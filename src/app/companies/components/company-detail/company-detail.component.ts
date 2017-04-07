@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Company } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
