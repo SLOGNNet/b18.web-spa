@@ -38,7 +38,7 @@
 }
 
 @mixin interactive-background {
-  .hovered-text {
+  .interactive-text {
     color: $black;
     transition: all 500ms;
   }
