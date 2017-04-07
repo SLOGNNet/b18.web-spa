@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
+import { selectDrivers } from '../store';
 
 @Component({
   selector: 'drivers',
@@ -17,7 +18,7 @@ export class DriversComponent extends BaseListComponent<Driver> {
     router: Router,
     route: ActivatedRoute,
     private ngRedux: NgRedux<IAppState>) {
-    super(driverActions, ngRedux.select(state => state.drivers.items), router, route);
+    super(driverActions, ngRedux.select(selectDrivers), router, route);
   }
 
   protected routePath(): string {
