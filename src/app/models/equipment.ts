@@ -55,17 +55,18 @@ export class Mileage {
 
 export class Equipment {
   id: string = '';
-  make: string = 'Kenworth';
-  model: string = 'T610';
-  number: string = '101';
+  make: string = '';
+  model: string = '';
+  number: string = '';
   vin: string = '';
-  notes: string = 'Oil Change';
+  notes: string = '';
+  driverId: string = '';
   @Type(() => Driver)
   driver: Driver;
-  status: EquipmentStatuses = EquipmentStatuses.ACTIVE;
-  type: EquipmentTypes = EquipmentTypes.TRAILER;
+  status: EquipmentStatuses;
+  type: EquipmentTypes;
   subType: PowerUnitTypes | TrailerTypes;
-  ownership: EquipmentModes = EquipmentModes.COMPANY;
+  ownership: EquipmentModes;
   vehicleOperating: EquipmentVehicleOperatings;
   lastTripNumber: number = 0;
   lastAddress: string = '';
@@ -73,22 +74,14 @@ export class Equipment {
   licensePlateState: string = '';
   licensePlateNumber: string = '';
   licensePlateExpiration: Date = null;
-  isSleeperBerthAvailable: boolean = true;
-  mileages: Array<Mileage>;
+  isSleeperBerthAvailable: boolean;
+  mileages: Array<Mileage> = [];
 
   static create(): Equipment {
     const result = new Equipment();
     result.id = generateNewId();
-    result.status = EquipmentStatuses.ACTIVE;
-    result.type = EquipmentTypes.POWER_UNIT;
-    result.subType = TrailerTypes.DRY_VAN_53;
-    result.ownership = EquipmentModes.COMPANY;
-    result.vehicleOperating = EquipmentVehicleOperatings.INTER_STATE;
+    result.driverId = '';
     result.driver = new Driver();
-    result.equipmentNotification = {
-      message: '',
-      date: new Date()
-    };
     return result;
   }
 

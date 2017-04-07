@@ -342,6 +342,7 @@ class MockData {
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
     mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
+    driverId: '5',
     driver: {
       id: '5',
       firstName: 'Jason',
@@ -386,6 +387,7 @@ class MockData {
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
     mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
+    driverId: '2',
     driver: {
       id: '2',
       firstName: 'Emma',
