@@ -4,7 +4,7 @@ import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EquipmentActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store';
+import { IAppState, selectDetailEquipment } from '../../../store';
 
 @Component({
   selector: 'equipment-detail',
@@ -30,7 +30,7 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
     router: Router,
     ngRedux: NgRedux<IAppState>,
     protected cdr: ChangeDetectorRef) {
-    super(equipmentActions, ngRedux.select(state => state.equipments.selected), router, route, cdr);
+    super(equipmentActions, ngRedux.select(selectDetailEquipment), router, route, cdr);
   }
 
   get equipmentInfo(): string {
