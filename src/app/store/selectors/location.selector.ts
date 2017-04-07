@@ -7,7 +7,6 @@ export const selectLocation = (state: IAppState, id: string): Location => denorm
   state.entities);
 
 export const selectDetailLocation = (state: IAppState): Location => {
-  debugger;
   const res = selectLocation(state, state.ui.locations.selected);
   return res;
 };

@@ -50,7 +50,6 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
   }
 
   select(companyId: string): void {
-    debugger;
     this.companyService.getDetails(companyId).subscribe(company => {
       const normalizedData = normalize(company, companySchema);
       this.ngRedux.dispatch({ type: CompanyActions.SELECT_COMPANY, data: normalizedData });
@@ -58,7 +57,6 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
   }
 
   createNew(): void {
-    debugger;
     const normalizedCompany = normalize(Company.create(), companySchema);
     this.ngRedux.dispatch({ type: CompanyActions.SELECT_COMPANY, data: normalizedCompany });
   }

@@ -37,10 +37,14 @@
     </div>
   </div>
   <div *ngIf="load.currentTrips && load.currentTrips.length" class="bottom">
-    <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].firstName}}</span>
-    <span class="link">|</span>
-    <span class="link truckNumber" [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
-      Tk{{currentTrip.truck.number}}
+    <span [bd-popover]="driverPopover" [popoverOnHover]="popoverOnHover">
+      <span class="link firstName">{{currentTrip.driverTeams[0].drivers[0].firstName}}</span>
+      <span class="link">|</span>
+      <span class="link truckNumber">
+        Tk{{currentTrip.truck.number}}
+      </span>
+      <span class="link">|</span>
+      <span class="link trailerNumber">TI{{currentTrip.trailer.number}}</span>
       <bd-popover-content
         #driverPopover
         placement="auto"
@@ -49,9 +53,7 @@
         [closeOnClickOutside]="closeOnClickOutside">
         <driver-popover [driver]="currentTrip.driverTeams[0].drivers[0]"></driver-popover>
       </bd-popover-content>
-      </span>
-    <span class="link">|</span>
-    <span class="link trailerNumber">TI{{currentTrip.trailer.number}}</span>
+    </span>
     <span class="current-trip">
       <span class="tripNumber" [bd-popover]="tripPopover" [popoverOnHover]="popoverOnHover">
         TR{{currentTrip.number}}

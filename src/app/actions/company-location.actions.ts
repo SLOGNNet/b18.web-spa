@@ -26,7 +26,6 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
     this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_REQUEST });
     this.locationService.create(company, location).subscribe(newId => {
       const prevId = location.id;
-      debugger;
       const normalizedData = normalize(createPeristEnity(location, newId), locationSchema);
       this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id});
       this.notificatonService.sendNotification('Location created.', `Location was created.`);
@@ -53,7 +52,6 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
 
   createNew(): void {
     const normalizedData = normalize(Location.create(), locationSchema);
-    debugger;
     this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData  });
   }
 }
