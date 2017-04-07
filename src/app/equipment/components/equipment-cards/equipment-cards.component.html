@@ -1,7 +1,7 @@
 <equipment-card
   *ngFor="let equipment of this.equipments; trackBy: trackBy;"
   [item]="equipment"
+  [active]="isActive(equipment.id)"
   class="card"
-  [class.active]="isActive(equipment.id)"
   (select)="onCardSelect($event)">
 </equipment-card>

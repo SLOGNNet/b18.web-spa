@@ -1,9 +1,13 @@
-import { Input, Output, EventEmitter } from '@angular/core';
+import { Input, Output, EventEmitter, HostBinding } from '@angular/core';
 
 export abstract class BaseCardComponent {
     @Input() item: any;
+    @Input() active: boolean;
     public statusText: boolean = false;
     @Output() select: EventEmitter<any> = new EventEmitter();
+    @HostBinding('class.active') get isActive() {
+      return this.active;
+    }
 
     protected abstract itemStatusText();
 
