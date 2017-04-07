@@ -39,6 +39,7 @@ export class ContactService {
     const persistContact: Contact = cloneDeep(contact);
     persistContact.id = generatePersistId();
     if (company) {
+      MockData.contacts.push(contact);
       MockData.companies.forEach(c => {
         if (c.id === company.id) {
           c.contacts.push(persistContact);

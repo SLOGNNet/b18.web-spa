@@ -1,4 +1,4 @@
-import { assign } from 'lodash';
+import { merge } from 'lodash';
 
 export function updateItem(byId: any, updated: any) {
     return { ...byId, [updated.id]: {
@@ -26,7 +26,7 @@ export function updateNewItem(byId: any, updated: any, prevId: any) {
 }
 
 export function mergeLists(listById: any, newListById: any) {
-   return assign({}, listById, newListById);
+   return merge({}, listById, newListById);
 }
 
 export function addItem(byId: any, added: any) {

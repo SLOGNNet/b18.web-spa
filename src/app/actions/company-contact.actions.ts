@@ -25,9 +25,9 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   addAssociation(contact: Contact, company: Company): void {
     this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST });
     this.contactService.create(company, contact).subscribe(newId => {
-      const prevId = company.id;
-      const normalizedCompany = normalize(createPeristEnity(company, newId), contactSchema);
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, prevId});
+      const prevId = contact.id;
+      const normalizedData = normalize(createPeristEnity(contact, newId), contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id});
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }
@@ -44,8 +44,10 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   }
 
   select(contactId: string): void {
+    debugger;
     this.contactService.getDetails(contactId).subscribe(contact => {
       const normalizedData = normalize(contact, contactSchema);
+      debugger;
       this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData  });
     });
   }

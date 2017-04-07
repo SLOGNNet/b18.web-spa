@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
 import { companyReducer, ICompanyState } from './company.reducer';
-import { companyContactReducer, ICompanyContactState } from './contacts.reducer';
-import { Company, companyListSchema } from '../models';
+import { companyContactReducer, ICompanyContactState } from './contact.reducer';
 
-export interface ICompanyPageState {
+export interface IUiState {
   companies: ICompanyState;
   contacts: ICompanyContactState;
 }
 
-export const companyPageReducer = combineReducers({
+export const uiReducer = combineReducers({
   companies: companyReducer,
   contacts: companyContactReducer
 });

@@ -8,7 +8,7 @@ export function updateItem(item: any, updated: any) {
 }
 
 export function updateNewItem(item: any, updated: any, newId: any) {
-   return  item['id'] === prevId ? Object.assign({}, item, updated, { prevId: prevId}) : item;
+   return  item['id'] === item.id ? Object.assign({}, item, updated, { prevId: item.id, id: newId}) : item;
 }
 
 export function removeItem(list: any[], removed: any) {

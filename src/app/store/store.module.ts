@@ -16,7 +16,7 @@ export class StoreModule {
     const middlewares =  isDev ? [reduxImmutableStateInvariant()] : [];
     store.configureStore(
       rootReducer,
-      { },
+      {},
       middlewares);
   }
 }

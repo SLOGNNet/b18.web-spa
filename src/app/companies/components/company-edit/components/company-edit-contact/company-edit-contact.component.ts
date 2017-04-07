@@ -5,7 +5,7 @@ import { Contact, Company } from '../../../../../models';
 import { BaseNestedEditComponent } from '../../../../../base';
 import { CompanyContactActions } from '../../../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState, selectDetailCompany } from '../../../../../store';
+import { IAppState, selectDetailCompany, selectDetailContact } from '../../../../../store';
 import { ContactForm } from '../../../../../forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { cloneDeep } from 'lodash';
@@ -40,8 +40,8 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
     location: Location,
     router: Router,
     private ngRedux: NgRedux<IAppState>) {
-    super(companyContactActions, ngRedux.select(selectDetailCompany), ngRedux.select(state => state.companyPage.contacts.selected),
-      ngRedux.select(state => state.companyPage.contacts.isLoading), route, router, location, cdr);
+    super(companyContactActions, ngRedux.select(selectDetailCompany), ngRedux.select(selectDetailContact),
+      ngRedux.select(state => state.ui.contacts.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

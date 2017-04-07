@@ -34,7 +34,7 @@ export class CompanyEditInfoComponent extends BaseRootEditComponent<Company>{
     router: Router,
     ngRedux: NgRedux<IAppState>) {
     super(companyActions, ngRedux.select(selectDetailCompany),
-      ngRedux.select(state => state.companyPage.companies.isLoading), route, router, location, cdr);
+      ngRedux.select(state => state.ui.companies.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {
