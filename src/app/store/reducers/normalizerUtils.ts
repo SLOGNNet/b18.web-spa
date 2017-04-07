@@ -10,9 +10,7 @@ export function updateItem(byId: any, updated: any) {
 
 export function deleteItem(byId: any, deletedId: string) {
      const result = {...byId};
-       debugger;
      delete result[deletedId];
-     debugger;
      return result;
 }
 

@@ -19,6 +19,6 @@ export function generatePersistId() {
 
 export function createPeristEnity(item: any, newId: string) {
   const prevId = item.id;
-  const newObj = Object.assign(item, { id: newId, prevId: prevId})
+  const newObj = Object.assign(item, { id: newId, prevId: prevId});
   return newObj;
 }
