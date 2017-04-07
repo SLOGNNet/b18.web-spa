@@ -52,8 +52,8 @@ export class Mileage {
   date: Date;
   constructor(){
     this.id = generateNewId().toString();
-    this.value = '1234';
-    this.date = new Date();
+    this.value = '';
+    this.date = null;
   }
 }
 
