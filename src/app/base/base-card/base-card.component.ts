@@ -21,7 +21,7 @@ export abstract class BaseCardComponent {
       this.statusText = false;
     }
 
-    get initials() {
+    get fullName() {
         return this.item.firstName + ' ' + this.item.lastName;
     }
 
