@@ -1,11 +1,11 @@
-<div class="bd-checkboxes hovered-bg" [class.bd-disabled]="disabled">
+<div class="bd-checkboxes interactive-background" [class.bd-disabled]="disabled">
   <div class="bd-label">
     {{labelText}}
   </div>
   <div class="checkboxes">
     <div class="bd-checkbox" *ngFor="let item of items">
       <bd-checkbox [checked]="isChecked(item)" [disabled]="disabled" (checkedChange)="onCheckedChange(item)"></bd-checkbox>
-      <span class="hovered-text" (click)="onCheckedChange(item)">{{item}}</span>
+      <span class="interactive-text" (click)="onCheckedChange(item)">{{item}}</span>
     </div>
   </div>
 </div>

@@ -23,7 +23,7 @@
   }
 }
 
-@include hovered-text;
+@include interactive-text;
 
 :host-context(.interactive-panel:hover) {
   .bd-section-title {

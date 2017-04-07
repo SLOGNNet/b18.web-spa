@@ -1,5 +1,5 @@
-<div class="details-container hovered-bg">
-    <div class="info-container hovered-bg">
+<div class="details-container interactive-background">
+    <div class="info-container interactive-background">
         <section class="equipment-info left">
             <div class="name-info">
                 <div class="circle">
@@ -8,28 +8,28 @@
                     </bd-user-circle>
                 </div>
                 <div class="text">
-                    <div class="name ellipsis hovered-text">{{equipment.make}} {{equipment.model}}</div>
+                    <div class="name ellipsis interactive-text">{{equipment.make}} {{equipment.model}}</div>
                     <div class="number">{{equipment.number}}</div>
                 </div>
             </div>
             <div class="info-item">
                 <span class="title">Berth Available</span>
-                <span class="value hovered-text">{{isSleeperBerthAvailable}}</span>
+                <span class="value interactive-text">{{isSleeperBerthAvailable}}</span>
             </div>
 
         </section>
         <section class="license-info">
             <div class="info-item">
                 <span class="title">License Plate</span>
-                <span class="value hovered-text">{{equipment.licensePlateState}}</span>
+                <span class="value interactive-text">{{equipment.licensePlateState}}</span>
             </div>
             <div class="info-item">
                 <span class="title">Expiration</span>
 
-                <span class="value hovered-text">{{equipment.licensePlateExpiration | bdDate: constants.DATE_FORMAT}}</span>
+                <span class="value interactive-text">{{equipment.licensePlateExpiration | bdDate: constants.DATE_FORMAT}}</span>
             </div>
         </section>
     </div>
 
-    <div class="notes hovered-text">{{equipment.notes}}</div>
+    <div class="notes interactive-text">{{equipment.notes}}</div>
 </div>
