@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Equipment } from '../models';
+import { Equipment, equipmentSchema, equipmentListSchema } from '../models';
 import { EquipmentService, NotificationService } from '../shared';
 import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
-import { plainToClass } from 'class-transformer';
-import { cloneDeep } from 'lodash';
+import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class EquipmentActions implements IListDataActions<Equipment>, IDetailDataActions<Equipment>, IRootEditDataActions<Equipment> {
   static ADD_EQUIPMENT_REQUEST: string = 'ADD_EQUIPMENT_REQUEST';
   static ADD_EQUIPMENT_SUCCESS: string = 'ADD_EQUIPMENT_SUCCESS';
   static REMOVE_EQUIPMENT: string = 'REMOVE_EQUIPMENT';
-  static UPDATE_EQUIPMENT: string = 'UPDATE_EQUIPMENT';
+  static UPDATE_EQUIPMENT_REQUEST: string = 'UPDATE_EQUIPMENT_REQUEST';
+  static UPDATE_EQUIPMENT_SUCCESS: string = 'UPDATE_EQUIPMENT_SUCCESS';
+  static UPDATE_EQUIPMENT_FAILURE: string = 'UPDATE_EQUIPMENT_FAILURE';
   static SELECT_EQUIPMENT: string = 'SELECT_EQUIPMENT';
   static CREATE_NEW_EQUIPMENT: string = 'CREATE_NEW_EQUIPMENT';
-  static GET_ALL_EQUIPMENT: string = 'GET_ALL_EQUIPMENT';
+  static GET_ALL_EQUIPMENTS: string = 'GET_ALL_EQUIPMENTS';
   constructor (
     private equipmentService: EquipmentService,
     private notificatonService: NotificationService,
@@ -23,8 +25,10 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
 
   add(equipment: Equipment): void {
     this.ngRedux.dispatch({ type: EquipmentActions.ADD_EQUIPMENT_REQUEST, equipment });
-    this.equipmentService.create(equipment).subscribe((newId) => {
-      this.ngRedux.dispatch({ type: EquipmentActions.ADD_EQUIPMENT_SUCCESS, equipment: cloneDeep(equipment), newId });
+    this.equipmentService.create(equipment).delay(2000).subscribe((newId) => {
+      const prevId = equipment.id;
+      const normalizedData = normalize(createPeristEnity(equipment, newId), equipmentSchema);
+      this.ngRedux.dispatch({ type: EquipmentActions.ADD_EQUIPMENT_SUCCESS, data: normalizedData, prevId });
       this.notificatonService.sendNotification('Equipment created.', `${equipment.number} was created.`);
     });
   }
@@ -34,23 +38,31 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
   }
 
   update(equipment: Equipment): void {
-    this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT, equipment });
+    this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_REQUEST});
+      this.equipmentService.update(equipment).delay(2000).subscribe(() => {
+        const normalizedData = normalize(equipment, equipmentSchema);
+        this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_SUCCESS, data: normalizedData });
+        this.notificatonService.sendNotification('Driver updated.', `${equipment.make} was updated.`);
+      });
   }
 
   select(equipmentId: string): void {
     this.equipmentService.getDetails(equipmentId).subscribe(equipment => {
-      this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, equipment });
+      const normalizedData = normalize(equipment, equipmentSchema);
+      this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, data: normalizedData });
     });
 
   }
 
   createNew(): void {
-    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, equipment: Equipment.create() });
+    const normalizedData = normalize(Equipment.create(), equipmentSchema);
+    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, data: normalizedData });
   }
 
   getAll(): void {
     this.equipmentService.getAll().subscribe(equipments => {
-      this.ngRedux.dispatch({ type: EquipmentActions.GET_ALL_EQUIPMENT, items: equipments });
+      const normalizedData = normalize(equipments, equipmentListSchema);
+      this.ngRedux.dispatch({ type: EquipmentActions.GET_ALL_EQUIPMENTS, data: normalizedData });
     });
   }
 }
