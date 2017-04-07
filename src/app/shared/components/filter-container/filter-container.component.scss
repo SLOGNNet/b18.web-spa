@@ -13,7 +13,7 @@ $filter-header-max-width: 85px;
     width: 100%;
     height: 58px;
     padding: 0 $default-margin;
-    background: $white;
+    background: $serenity;
     align-items: center;
     border-bottom: $border;
     border-radius: $default-border-radius;
@@ -117,5 +117,12 @@ $filter-header-max-width: 85px;
   .selected-item {
     color: $black;
     font-size: $tiny-font-size;
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+  .filter-header {
+    background: $white;
+    transition: all $interactive-animation-time;
   }
 }

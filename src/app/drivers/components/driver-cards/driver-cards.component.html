@@ -1,7 +1,8 @@
 <driver-card
 *ngFor="let driver of this.drivers; trackBy: trackBy;"
 [item]="driver"
-[class.active]="isActive(driver.id)"
+[active]="isActive(driver.id)"
+class="card"
 (select)="onCardSelect($event)"
 >
 </driver-card>

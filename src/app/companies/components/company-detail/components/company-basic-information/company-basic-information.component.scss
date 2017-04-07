@@ -6,29 +6,15 @@ $element-height: 18px;
 .basic-information-container {
   display: flex;
   width: 100%;
-  background: $white;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
+  border-bottom: $default-border;
 
   .left {
     display: flex;
     width: 50%;
     padding: $default-margin;
-    border-right: $border;
-
-    .cropped-company-name {
-      display: flex;
-      width: 28px;
-      height: 28px;
-      margin: 4px 0;
-      background: $black;
-      color: $white;
-      font-size: $mini-font-size;
-      border-radius: $circle-radius;
-      justify-content: center;
-      align-items: center;
-    }
+    border-right: $default-border;
 
     .name-type {
       overflow: hidden;
@@ -61,4 +47,10 @@ $element-height: 18px;
       margin-left: 5px;
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

@@ -1,4 +1,4 @@
-<div class="bd-switch-container" [class.bd-disabled]="disabled">
+<div class="bd-switch-container interactive-background" [class.bd-disabled]="disabled">
   <div class="bd-switch-label" *ngIf="!hideLabel">
     {{labelText}}
   </div>
@@ -6,6 +6,7 @@
     <button
       *ngFor="let item; of:items; let i=index"
       type='button'
+      class="interactive-text"
       [class.active]="isActive(item)"
       (click)="_handleItemClick($event, item)">
         {{displayText(item)}}

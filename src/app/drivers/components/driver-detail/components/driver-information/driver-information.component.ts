@@ -20,6 +20,10 @@ export class DriverInformationComponent {
     return DriverTypes.displayText(this.driver.type);
   }
 
+  get driverInitials() {
+    return this.driver.firstName + ' ' + this.driver.lastName;
+  }
+
   ngOnChanges(changes) {
     if (changes.driver) {
       const stateAndZip = [this.driver.address.state, this.driver.address.zip].filter(v => v).join(' ').trim();

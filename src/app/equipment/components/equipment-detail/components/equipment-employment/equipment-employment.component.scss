@@ -1,19 +1,23 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 .employment-container {
   display: flex;
-  background: $white;
   color: $dark-grey;
   font-size: $tiny-font-size;
   border-radius: $default-border-radius;
-  border-bottom: $border;
+  border-bottom: $default-border;
 
   section {
     width: 50%;
     padding: $default-margin;
 
     &:first-of-type {
-      border-right: $border;
+      border-right: $default-border;
     }
   }
+}
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

@@ -1,23 +1,56 @@
 @import '../../../../assets/styles/variables';
 
-:host {
+:host-context(.interactive-panel:hover) {
   background: $white;
+  transition: all $interactive-animation-time;
 
-  &.active,
-  &:hover {
-    background: $light-blue;
+  &.card {
+    color: $black;
+    transition: all $interactive-animation-time;
 
-    .status-text {
+    .card-section {
+      .status {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
       background: $light-blue;
     }
   }
 
   &.active {
-    .card-section {
-      border-bottom-color: $blue;
+    &.card {
+      color: $silver;
+      transition: all $interactive-animation-time;
+
+      .card-section {
+        .status {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        background: $mako;
+      }
     }
   }
 }
+
+:host-context(.active) {
+  &.card {
+    background: $mako;
+    color: $silver;
+    transition: all $interactive-animation-time;
+
+    .card-section {
+      .status {
+        opacity: 1;
+      }
+    }
+  }
+}
+
 
 .card-section {
   position: relative;
@@ -120,6 +153,7 @@
     width: 12px;
     height: 12px;
     background: $black;
+    opacity: $status-opacity;
     bottom: 13px;
     border-radius: $form-control-height;
   }

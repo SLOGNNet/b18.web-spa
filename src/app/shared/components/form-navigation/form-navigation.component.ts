@@ -4,8 +4,7 @@ import { chain, findLastIndex } from 'lodash';
 @Component({
   selector: 'form-navigation',
   templateUrl: './form-navigation.component.html',
-  styleUrls: ['./form-navigation.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./form-navigation.component.scss']
 })
 export class FormNavigationComponent implements OnChanges {
   @Input() title: string = '';

@@ -1,4 +1,4 @@
-<div *ngIf="selectedItem">
+<div class="interactive-panel" *ngIf="selectedItem">
   <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
   <form-navigation
     [disabled]="isLoading"

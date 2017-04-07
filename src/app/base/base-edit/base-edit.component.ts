@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, HostBinding } from '@angular/core';
 import { BasePane } from '../base';
 
 export abstract class BaseEditComponent<T> extends BasePane implements CanComponentDeactivate {
@@ -15,6 +15,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected viewMode: ViewMode = ViewMode.Edit;
   protected segment;
   protected defaultNavigationTitle;
+  @HostBinding('class.interactive-panel') v: boolean = true;
 
   constructor(protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
