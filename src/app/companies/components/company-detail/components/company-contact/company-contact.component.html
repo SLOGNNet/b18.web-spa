@@ -1,9 +1,9 @@
-<div class="location-container">
+<div class="location-container interactive-background">
   <div class="left">
-      <bd-initials-circle class="initials-circle" [firstName]="contact.firstName" [lastName]="contact.lastName">
-      </bd-initials-circle>
+      <bd-user-circle class="initials-circle" [initials]="fullName">
+      </bd-user-circle>
       <div class="full-name-icons-container">
-        <div class="full-name">
+        <div class="full-name interactive-text">
           {{contact.firstName}} {{contact.lastName}}
         </div>
         <div class="icons">

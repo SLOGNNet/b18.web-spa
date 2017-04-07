@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables';
+
 company-address,
 company-contact {
   display: block;
@@ -5,6 +7,5 @@ company-contact {
   &:first-child {
     margin-top: 0;
   }
-
   margin-top: 10px;
 }

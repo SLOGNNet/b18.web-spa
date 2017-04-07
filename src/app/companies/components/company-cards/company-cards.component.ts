@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Company } from '../../../models';
+import { BaseCardListComponent } from '../../../base';
 
 @Component({
     selector: 'company-cards',
@@ -7,7 +8,8 @@ import { Company } from '../../../models';
     styleUrls: ['./company-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CompanyCardsComponent {
+export class CompanyCardsComponent extends BaseCardListComponent {
+
   @Input() companies: Array<Company>;
   @Input() selected: Array<Company> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();

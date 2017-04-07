@@ -1,6 +1,6 @@
 <multi-pane-layout>
   <first-pane>
-    <equipment-cards [selected]="selected" (select)='onSelect($event)' [equipments]="items"></equipment-cards>
+    <equipment-cards [selected]="selected" (select)='onSelect($event)' class="cards" [equipments]="items"></equipment-cards>
   </first-pane>
   <second-pane>
     <router-outlet name="detailOutlet"></router-outlet>

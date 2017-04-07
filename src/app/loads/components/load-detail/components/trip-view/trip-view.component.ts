@@ -43,4 +43,8 @@ export class TripViewComponent {
     return AppointmentTypes.displayText(type);
   }
 
+  driverInitials(driver) {
+    return driver.firstName + ' ' + driver.lastName;
+  }
+
 }

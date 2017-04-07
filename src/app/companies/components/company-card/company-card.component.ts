@@ -12,11 +12,6 @@ import { BaseCardComponent } from '../../../base';
   ]
 })
 export class CompanyCardComponent extends BaseCardComponent {
-  croppedCompanyName: string;
-
-  ngOnInit() {
-    this.croppedCompanyName = this.item.name.replace(/ /g, '').substr(0, 3).toUpperCase();
-  }
 
   loadStatusColor(status: LoadStatuses): string {
     return LoadStatuses.color(status);

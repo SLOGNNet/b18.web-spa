@@ -140,15 +140,6 @@ describe('CompanyCardComponent', () => {
     expect(element.nativeElement.textContent).toBe(testCompanyAddressPhone);
   });
 
-  it('should display crooped company name', () => {
-    let testCroopedCompanyName = 'CHR';
-    component.item = testCompany;
-    component.item.name = 'CH ROBINSON COMPANY INC';
-    fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.cropped-company-name'));
-    expect(element.nativeElement.textContent).toBe(testCroopedCompanyName);
-  });
-
   it('should display system load number', () => {
     let testSystemLoadNumber = '209282402';
     component.item = testCompany;
