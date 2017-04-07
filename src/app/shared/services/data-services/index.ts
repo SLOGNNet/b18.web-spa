@@ -7,3 +7,4 @@ export * from './equipment.service';
 export * from './drivers.service';
 export * from './state.service';
 export * from './license.service';
+export * from './location.service';
