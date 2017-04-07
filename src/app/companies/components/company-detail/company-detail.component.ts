@@ -4,7 +4,7 @@ import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store';
+import { IAppState, selectDetailCompany } from '../../../store';
 
 @Component({
   selector: 'company-detail',
@@ -31,7 +31,7 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-    super(companyActions, ngRedux.select(state => Object.assign({}, state.companies.selected, { contacts: state.contacts.items})),
+    super(companyActions, ngRedux.select(selectDetailCompany),
       router, route, cdr);
   }
 
