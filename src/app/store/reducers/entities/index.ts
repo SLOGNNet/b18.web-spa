@@ -7,7 +7,7 @@ import { equipmentReducer } from './equipment.reducer';
 export interface IEntitiesState {
   companies: Array<any>;
   contacts: Array<any>;
-  equipment: Array<any>;
+  drivers: Array<any>;
   equipments: Array<any>;
 }
 
