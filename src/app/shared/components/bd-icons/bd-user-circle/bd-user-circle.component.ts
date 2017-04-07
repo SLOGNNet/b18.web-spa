@@ -11,6 +11,6 @@ export class BdUserCircleComponent {
       @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials() {
-          return this.initials.substr(0, this.initials.indexOf(' ')).charAt(0) + this.initials.substr(this.initials.indexOf(' ') + 1).charAt(0);
+        return this.initials.split(' ').reduce((fst, snd) => fst + snd[0], '');
       }
 }
