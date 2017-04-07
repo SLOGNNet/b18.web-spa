@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { Equipment } from './models';
 import { Observable } from 'rxjs/Observable';
 import MockData from './mock-data';
+import { generatePersistId } from '../../helpers';
+import { cloneDeep } from 'lodash';
 
 @Injectable()
 export class EquipmentService {
@@ -23,8 +25,11 @@ export class EquipmentService {
     );
   }
 
-  create(equipment: Equipment) {
-    MockData.equipments.push(equipment);
+  create(equipment: Equipment): Observable<string> {
+    const persistEquipment = cloneDeep(equipment);
+    persistEquipment.id = generatePersistId();
+    MockData.equipments.push(persistEquipment);
+    return Observable.of(persistEquipment.id);
   }
 
   update(equipment: Equipment) {

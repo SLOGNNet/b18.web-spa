@@ -99,7 +99,7 @@ export class EquipmentForm extends BaseForm {
       vehicleOperating: [{value: this.equipment.vehicleOperating, disabled: this.disabled}],
       type: [{value: this.equipment.type, disabled: this.disabled}],
       subType: [{value: this.equipment.subType, disabled: this.disabled}],
-      driverId: [{value: this.equipment.driver.id, disabled: this.disabled}],
+      driverId: [{value: this.equipment.driverId, disabled: this.disabled}],
       make: [{value: this.equipment.make, disabled: this.disabled}],
       model: [{value: this.equipment.model, disabled: this.disabled}],
       number: [{value: this.equipment.number, disabled: this.disabled}],
