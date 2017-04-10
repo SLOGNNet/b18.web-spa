@@ -1,20 +1,23 @@
 <div *ngIf="selectedItem">
-<form-navigation sticky [stickyPositionInsideScroll]="true" [title]="'Load'" [anchors]="anchors"></form-navigation>
-<form>
-    <navigation-anchor id="customer"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Customer'" [editButton]="false" [addButton]="false">
-        <customer-detail [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
-    </bd-view-detail-section>
-    <navigation-anchor id="requirements"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Requirements'" [editButton]="false" [addButton]="false">
-        <requirements-detail [load]="selectedItem"></requirements-detail>
-    </bd-view-detail-section>
-    <navigation-anchor id="itinerary"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
-        <stop-view 
-            *ngFor="let stop of selectedItem.stops"
-            [stop]="stop">
-        </stop-view>
-    </bd-view-detail-section>
-</form>
+    <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="'Load'" [anchors]="anchors">
+        <bd-form-button [buttonText]="'edit'" buttonType="small" (click)="onEdit()">
+        </bd-form-button>
+    </form-navigation>
+    <form>
+        <navigation-anchor id="customer"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Customer'" [editButton]="false" [addButton]="false">
+            <customer-detail [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
+        </bd-view-detail-section>
+        <navigation-anchor id="requirements"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Requirements'" [editButton]="false" [addButton]="false">
+            <requirements-detail [load]="selectedItem"></requirements-detail>
+        </bd-view-detail-section>
+        <navigation-anchor id="itinerary"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
+            <stop-view 
+                *ngFor="let stop of selectedItem.stops"
+                [stop]="stop">
+            </stop-view>
+        </bd-view-detail-section>
+    </form>
 </div>

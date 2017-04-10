@@ -35,7 +35,7 @@ export const commodityReducer = createReducer(INITIAL_STATE, {
         });
   },
   [LoadActions.SELECT_LOAD](state, action) {
-    const load: Load = action.load;
+    const load: Load = action.data.entities.loads[action.data.result];
     const commodities = chain(load.commodities)
       .uniqBy(commodity => commodity.id)
       .value();

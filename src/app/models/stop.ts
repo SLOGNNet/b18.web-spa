@@ -3,6 +3,10 @@ import { TripStop } from './tripStop';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+
+export const stopSchema = new schema.Entity('stops');
+export const stopListSchema = [stopSchema];
 
 export class Stop {
   id: string;

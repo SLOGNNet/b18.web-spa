@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Commodity, Stop } from '../models';
+import { Commodity, Stop, commoditySchema, stopSchema } from '../models';
+import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class CommodityActions {
@@ -15,7 +17,8 @@ export class CommodityActions {
     private ngRedux: NgRedux<IAppState>) {}
 
   add(commodity: Commodity): void {
-    this.ngRedux.dispatch({ type: CommodityActions.ADD_COMMODITY, commodity });
+    const normalizedData = normalize(commodity, commoditySchema);
+    this.ngRedux.dispatch({ type: CommodityActions.ADD_COMMODITY, data: normalizedData });
   }
 
   remove(commodity: Commodity): void {
@@ -23,14 +26,18 @@ export class CommodityActions {
   }
 
   update(commodity: Commodity): void {
-    this.ngRedux.dispatch({ type: CommodityActions.UPDATE_COMMODITY, commodity });
+    const normalizedData = normalize(commodity, commoditySchema);
+    this.ngRedux.dispatch({ type: CommodityActions.UPDATE_COMMODITY, data: normalizedData });
   }
 
   select(commodity: Commodity, stop: Stop): void {
-    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, commodity, stop });
+    const normalizedCommodity = normalize(commodity, commoditySchema);
+    const normalizedStop = normalize(stop, stopSchema);
+    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity, stop: normalizedStop });
   }
 
   deselect(commodity: Commodity): void {
-    this.ngRedux.dispatch({ type: CommodityActions.DESELECT_COMMODITY, commodity });
+    const normalizedData = normalize(commodity, commoditySchema);
+    this.ngRedux.dispatch({ type: CommodityActions.DESELECT_COMMODITY, data: normalizedData });
   }
 }

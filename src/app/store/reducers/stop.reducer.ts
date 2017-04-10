@@ -19,6 +19,8 @@ export const stopReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { items: updateListItem(state.items, action.stop)});
   },
   [LoadActions.SELECT_LOAD](state, action) {
-    return Object.assign({}, state, { items: action.load.stops});
+    debugger;
+    const load = action.data.entities.loads[action.data.result];
+    return Object.assign({}, state, { items: load.stops});
   }
 });
