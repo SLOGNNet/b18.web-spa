@@ -1,13 +1,13 @@
-<div class="customer-view-container">
-    <section class="company-info">
+<div class="customer-view-container interactive-background">
+    <section class="company-info left">
         <bd-company-circle
             [companyName]="company.name"
             class="circle"
             size='default'>
         </bd-company-circle>
         <div class="info-container">
-            <span class="company-name ellipsis">{{company.name}}</span>
-            <span class="company-mc ellipsis">MC# {{company.mc}}</span>
+            <span class="company-name ellipsis interactive-text">{{company.name}}</span>
+            <span class="company-mc ellipsis interactive-text">MC# {{company.mc}}</span>
         </div>
     </section>
     <section class="contact-info">
@@ -17,7 +17,7 @@
             size='default'>
         </bd-user-circle>
         <div class="info-container">
-            <span class="contact-name ellipsis">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
+            <span class="contact-name ellipsis interactive-text">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
             <span class="buttons-panel">
                 <button class="icon-fax"></button>
                 <button class="icon-call"></button>

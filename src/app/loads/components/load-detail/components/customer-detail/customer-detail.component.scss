@@ -1,12 +1,12 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/font-icons';
+@import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/styles';
 
 .customer-view-container {
   display: flex;
-  background: $white;
   font-size: $tiny-font-size;
-  border-bottom: $border;
+  border-bottom: $default-border;
   border-radius: $default-border-radius;
   flex-direction: row;
 
@@ -16,7 +16,7 @@
     padding: 11px $default-margin;
 
     &:first-of-type {
-      border-right: $border;
+      border-right: $default-border;
     }
 
     .circle {
@@ -56,4 +56,10 @@
       }
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

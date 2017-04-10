@@ -1,24 +1,24 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 $element-height: 35px;
 
 .requirements-container {
-  background: $white;
   font-size: $tiny-font-size;
   line-height: $tiny-font-size;
-  border-bottom: $border;
+  border-bottom: $default-border;
   border-radius: $default-border-radius;
 
   .main-requirements {
     display: flex;
     height: $element-height;
-    border-bottom: $border;
+    border-bottom: $default-border;
 
     section {
       display: flex;
       width: calc(100% / 3);
       padding: 0 $default-margin;
-      border-right: $border;
+      border-right: $default-border;
       align-items: center;
 
       &:last-of-type {
@@ -60,4 +60,10 @@ $element-height: 35px;
       }
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

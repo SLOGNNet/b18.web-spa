@@ -1,12 +1,12 @@
-<div class="requirements-container">
-    <div class="main-requirements">
-        <section class="driver-count">{{driverRequirement}}</section>
-        <section class="power-unit-type">{{requiredPowerUnitType}}</section>
-        <section class="trailer-type">{{requiredTrailerType}}</section>
+<div class="requirements-container interactive-background">
+    <div class="main-requirements interactive-background">
+        <section class="driver-count left interactive-text">{{driverRequirement}}</section>
+        <section class="power-unit-type left interactive-text">{{requiredPowerUnitType}}</section>
+        <section class="trailer-type interactive-text">{{requiredTrailerType}}</section>
     </div>
     <div class="additional-requirements"
          [class.is-additional-requirements]="isReeferTrailerType">
-        <div class="special-requirements">{{load.specialRequirments}}</div>
+        <div class="special-requirements interactive-text">{{load.specialRequirments}}</div>
         <div class="reefer-options">
             <div class="option temperature">57 F</div>
             <div class="option refrigerating-type">Cycle</div>
