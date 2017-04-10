@@ -14,9 +14,8 @@ export class LocationService {
   }
 
   getDetails(id: string): Observable<Location> {
-    return Observable.of(
-      MockData.locations.find((location) => id === location.id)
-    );
+    const details = cloneDeep(MockData.locations.find((location) => id === location.id));
+    return details ?  Observable.of(details) : Observable.throw('error');
   }
 
   update(location: Location) {

@@ -21,9 +21,8 @@ export class CompanyService {
   }
 
   getDetails(id: string): Observable<Company> {
-    return Observable.of(
-      cloneDeep(MockData.companies.find((company) => id === company.id))
-    );
+    const details = cloneDeep(MockData.companies.find((company) => id === company.id));
+    return details ?  Observable.of(details) : Observable.throw('error');
   }
 
   create(company: Company): Observable<string> {

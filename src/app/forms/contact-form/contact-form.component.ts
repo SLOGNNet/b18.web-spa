@@ -42,7 +42,7 @@ export class ContactForm extends BaseForm {
 
   initForm() {
     this.fields.forEach(field => {
-      this.contactForm.addControl(
+      this.contactForm.setControl(
         field.name,
         this._formBuilder.control({value: this.contact[field.name], disabled: this.disabled}, field.validators)
       );

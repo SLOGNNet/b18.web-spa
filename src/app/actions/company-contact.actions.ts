@@ -47,7 +47,7 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
     this.contactService.getDetails(contactId).subscribe(contact => {
       const normalizedData = normalize(contact, contactSchema);
       this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData  });
-    });
+    }, (error) => {});
   }
 
   createNew(): void {
