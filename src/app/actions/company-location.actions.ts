@@ -47,7 +47,7 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
     this.locationService.getDetails(locationId).subscribe(contact => {
       const normalizedData = normalize(contact, locationSchema);
       this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData  });
-    });
+    }, (error) => {});
   }
 
   createNew(): void {
