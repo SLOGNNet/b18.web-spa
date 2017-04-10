@@ -40,6 +40,7 @@ $small-size: 10px;
 :host-context(.interactive-panel:hover) {
   .circle {
     background: $black;
+    transition: all $interactive-animation-time;
   }
 
 }
@@ -48,11 +49,13 @@ $small-size: 10px;
   .circle-container {
     border: 1px solid $silver;
     background: $black;
+    transition: all $interactive-animation-time;
   }
 
   .circle {
     background: $silver;
     color: $mako;
     font-weight: bold;
+    transition: all $interactive-animation-time;
   }
 }
