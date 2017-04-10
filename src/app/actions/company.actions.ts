@@ -53,7 +53,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     this.companyService.getDetails(companyId).subscribe(company => {
       const normalizedData = normalize(company, companySchema);
       this.ngRedux.dispatch({ type: CompanyActions.SELECT_COMPANY, data: normalizedData });
-    });
+    }, (error) => {});
   }
 
   createNew(): void {

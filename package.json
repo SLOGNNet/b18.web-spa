@@ -104,6 +104,7 @@
   "devDependencies": {
     "@types/jasmine": "2.5.45",
     "@types/node": "^6.0.38",
+    "@types/normalizr": "^2.0.18",
     "@types/selenium-webdriver": "~2.53.39",
     "@types/socket.io-client": "^1.4.28",
     "@types/source-map": "^0.1.27",

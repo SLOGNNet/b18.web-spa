@@ -38,7 +38,6 @@ export const loadReducer = createReducer(INITIAL_STATE, {
     return Object.assign({}, state, { list: action.data.result });
   },
   [LoadActions.SELECT_LOAD](state, action) {
-    debugger;
     return Object.assign({}, state, { selected: action.data.result, isLoading: false});
   },
 });

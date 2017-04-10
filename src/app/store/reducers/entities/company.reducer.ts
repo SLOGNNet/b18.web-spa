@@ -12,10 +12,10 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     const result =
     {
       ...state,
-        [companyId]: {
-          ...state[companyId],
-          contacts: [contactId, ...state[companyId].contacts]
-        }
+      [companyId]: {
+        ...state[companyId],
+        contacts: [contactId, ...state[companyId].contacts]
+      }
     };
     return result;
   },
@@ -25,10 +25,10 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     const result =
     {
       ...state,
-        [companyId]: {
-          ...state[companyId],
-          locations: [locationId, ...state[companyId].locations]
-        }
+      [companyId]: {
+        ...state[companyId],
+        locations: [locationId, ...state[companyId].locations]
+      }
     };
     return result;
   },

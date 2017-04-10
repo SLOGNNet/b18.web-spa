@@ -9,7 +9,7 @@ export interface ICommodityState {
 }
 const INITIAL_STATE: ICommodityState = { list: [], selected: null, isLoading: false};
 
-export const loadReducer = createReducer(INITIAL_STATE, {
+export const commodityReducer = createReducer(INITIAL_STATE, {
   [CommodityActions.ADD_COMMODITY](state, action) {
     return Object.assign({}, state, {
       list: [action.data.result, ...state.list]
@@ -28,7 +28,6 @@ export const loadReducer = createReducer(INITIAL_STATE, {
       });
   },
   [CommodityActions.SELECT_COMMODITY](state, action) {
-    debugger;
     const selected = action.result;
     selected.dropoffId = action.stop.id;
     return Object.assign({}, state, { selected: action.data.result, isLoading: false});
