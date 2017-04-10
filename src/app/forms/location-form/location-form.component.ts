@@ -27,15 +27,14 @@ export class LocationForm extends BaseForm {
   }
 
   initForm() {
-    this.locationForm.addControl('id', this.formBuilder.control(
+    this.locationForm.setControl('id', this.formBuilder.control(
       this.location.id, []
     ));
-    this.locationForm.addControl('name', this.formBuilder.control(
+    this.locationForm.setControl('name', this.formBuilder.control(
       {value: this.location.name, disabled: this.disabled}, []
     ));
-    this.locationForm.addControl('address', this.formBuilder.group({ }));
-    this.locationForm.addControl('contactInfo', this.formBuilder.array([]));
-
+    this.locationForm.setControl('address', this.formBuilder.group({ }));
+    this.locationForm.setControl('contactInfo', this.formBuilder.array([]));
     this.locationForm.valueChanges.subscribe((value) => {
       if (this.locationForm.valid && this.locationForm.dirty) {
         this.update.emit(value);
