@@ -1,12 +1,11 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
-
 $element-height: 18px;
 $element-width: 16px;
 $text-margin: 5px;
 
 .trip-container {
-
   &.expanded {
     .trip-info-container {
       border-bottom-right-radius: 0;
@@ -23,13 +22,12 @@ $text-margin: 5px;
               }
             }
           }
-      }
+        }
       }
     }
   }
 
   .trip-info-container {
-
     button {
       padding: 0;
       border: 0;
@@ -43,11 +41,9 @@ $text-margin: 5px;
     span {
       line-height: $element-height;
     }
-
     display: flex;
-    border: $border;
+    border: $default-border;
     margin: 10px;
-    background: $white;
     border-radius: $default-border-radius;
     flex-direction: row;
 
@@ -56,6 +52,7 @@ $text-margin: 5px;
       width: 50%;
       padding: $default-margin;
       flex-direction: row;
+      border-right: $default-border;
 
       .info-panel {
         flex: 1;
@@ -66,13 +63,11 @@ $text-margin: 5px;
           justify-content: space-between;
 
           .trip-number {
-            color: $black;
             margin-left: $element-width;
           }
         }
 
         .driver-container {
-
           .driver-info {
             display: none;
             color: $dark-grey;
@@ -106,7 +101,7 @@ $text-margin: 5px;
         display: flex;
         color: $dark-grey;
         flex-direction: column;
-        
+
         button {
           padding: 3px 0;
 
@@ -120,7 +115,6 @@ $text-margin: 5px;
     .right-panel {
       width: 50%;
       padding: $default-margin;
-      border-left: $border;
 
       .appointment-type {
         display: flex;
@@ -139,6 +133,7 @@ $text-margin: 5px;
               width: 10px;
               height: 10px;
               background: $blue;
+              opacity: $status-opacity;
               border-radius: 50%;
               margin-right: $text-margin;
             }
@@ -165,7 +160,7 @@ $text-margin: 5px;
       }
     }
   }
-  
+
   .commodities-section {
     margin: 10px;
 
@@ -193,6 +188,29 @@ $text-margin: 5px;
       &:last-of-type {
         border-bottom-right-radius: $default-border-radius;
         border-bottom-left-radius: $default-border-radius;
+      }
+    }
+  }
+}
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+
+  .trip-info-container {
+    border: $border;
+    transition: all $interactive-animation-time;
+
+    .right-panel {
+      .appointment-type {
+        .type-container {
+          span {
+            &.circle {
+              opacity: 1;
+              transition: all $interactive-animation-time;
+            }
+          }
+        }
       }
     }
   }
