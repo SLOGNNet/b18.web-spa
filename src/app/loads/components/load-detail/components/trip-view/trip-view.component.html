@@ -6,15 +6,14 @@
         <span class="trip-number">TR{{tripData.trip.number}}</span>
       </div>
       <div class="driver-container">
-        <div 
+        <div
           *ngFor="let driver of tripData.trip.driverTeams[0].drivers"
           class="driver-info">
           <span class="initials-circle">
-                  <bd-initials-circle
-                      [firstName]="driver.firstName"
-                      [lastName]="driver.lastName"
+                  <bd-user-circle
+                      [initials]="driverInitials(driver)"
                       size='small'>
-                  </bd-initials-circle>
+                  </bd-user-circle>
             </span>
           <span class="driver-name">{{driver.firstName}} {{driver.lastName}}</span>
           <span class="driver-count" *ngIf="tripData.trip.driverTeams[0].drivers.length > 1">
@@ -54,32 +53,32 @@
     </div>
   </div>
   <div class="commodities-section" *ngIf="isExpanded">
-    <div 
+    <div
         *ngIf="hasDropoffCommodities"
         class="commodities-container dropoff-border">
-        <commodities-header 
+        <commodities-header
           size='small'
           [titles]="commodityHeaders">
         </commodities-header>
           <commodity-details
-              *ngFor="let data of dropoffCommodities; let i = index;" 
-              [commodity]="data.commodity" 
+              *ngFor="let data of dropoffCommodities; let i = index;"
+              [commodity]="data.commodity"
               [index]="i">
           </commodity-details>
           <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
             {{tripData.notes}}
           </div>
     </div>
-    <div 
+    <div
       *ngIf="hasPickupCommodities"
       class="commodities-container pickup-border">
-      <commodities-header 
+      <commodities-header
         *ngIf="!hasDropoffCommodities"
          size='small'
         [titles]="commodityHeaders">
       </commodities-header>
         <commodity-details
-          *ngFor="let data of pickupCommodities; let i = index;" 
+          *ngFor="let data of pickupCommodities; let i = index;"
           [commodity]="data.commodity"
           [index]="i">
         </commodity-details>

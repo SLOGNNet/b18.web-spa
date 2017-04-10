@@ -1,4 +1,4 @@
-import { CommonActions, CompanyContactActions } from '../actions';
+import { CommonActions, CompanyContactActions, CompanyLocationActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Company, Contact } from '../models';
 import { Equipment } from '../models';
@@ -11,14 +11,28 @@ export const companyReducer = createReducer(INITIAL_STATE, {
     const contactId = action.data.result;
     const result =
     {
-        ...state,
-          [companyId]: {
-            ...state[companyId],
-            contacts: [contactId, ...state[companyId].contacts]
-          }
+      ...state,
+        [companyId]: {
+          ...state[companyId],
+          contacts: [contactId, ...state[companyId].contacts]
+        }
     };
     return result;
   },
+  [CompanyLocationActions.ADD_LOCATION_CONTACT_SUCCESS](state, action) {
+    const companyId = action.companyId;
+    const locationId = action.data.result;
+    const result =
+    {
+      ...state,
+        [companyId]: {
+          ...state[companyId],
+          locations: [locationId, ...state[companyId].locations]
+        }
+    };
+    return result;
+  },
+
   [CommonActions.DEFAULT](state, action) {
     return mergeEntities(state, action, 'companies');
   }

@@ -14,7 +14,8 @@ import { NotificationService,
   FormValidationService,
   HttpService,
   StateService,
-  LicenseService
+  LicenseService,
+  LocationService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -58,7 +59,12 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
 import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdNotificationCardComponent } from './components/bd-notification-card';
-import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
+import { BdCircleComponent,
+  IconWithCountIndicatorComponent,
+  NotificationIcon,
+  NotificationCardIcon,
+  BdCompanyCircleComponent,
+  BdUserCircleComponent } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
@@ -89,6 +95,7 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     PhoneValidator,
     StateService,
     LicenseService,
+    LocationService,
     Constants
   ],
   declarations: [
@@ -126,7 +133,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     StopPopoverComponent,
     BdResizerComponent,
     BdResizeContainerComponent,
-    BdInitialsCircleComponent,
+    BdCircleComponent,
+    BdUserCircleComponent,
+    BdCompanyCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     NotificationIcon,
@@ -206,7 +215,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdPopoverModule,
     BdResizerComponent,
     BdResizeContainerComponent,
-    BdInitialsCircleComponent,
+    BdCircleComponent,
+    BdUserCircleComponent,
+    BdCompanyCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     MessageCardComponent,

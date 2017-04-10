@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { CompanyService } from './index';
 import MockData from './mock-data';
 import { HttpService } from '../http.service';
+import { cloneDeep } from 'lodash';
 @Injectable()
 export class LoadService {
 
@@ -12,7 +13,7 @@ export class LoadService {
   }
 
   getAll(): Observable<Load[]> {
-    return Observable.from(MockData.loads)
+    return Observable.from(cloneDeep(MockData.loads))
       .flatMap(
       (load) => this.companyService
         .getDetails(load.companyId)
@@ -34,11 +35,12 @@ export class LoadService {
   }
 
   update(load: Load) {
-    const id = load.id;
+    const persistLoad = cloneDeep(load);
+    const id = persistLoad.id;
 
     MockData.loads.forEach(l => {
       if (id === l.id) {
-        Object.assign(l, load);
+        Object.assign(l, persistLoad);
         return;
       }
     });

@@ -27,3 +27,9 @@ $element-height: 18px;
     }
   }
 }
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+}

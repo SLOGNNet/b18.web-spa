@@ -9,4 +9,8 @@ import { Contact } from '../../../../../models';
 export class CompanyContact {
   @Input() contact: Contact;
 
+  get fullName() {
+    return `${this.contact.firstName} ${this.contact.lastName}`;
+  }
+
 }

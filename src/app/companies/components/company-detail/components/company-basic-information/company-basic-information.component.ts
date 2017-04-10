@@ -8,12 +8,10 @@ import { Company, CompanyTypes } from '../../../../../models';
 })
 export class CompanyBasicInformation {
   @Input() company: Company;
-  croppedCompanyName: string;
   typeText: string;
 
   ngOnChanges(changes) {
     if (changes.company) {
-      this.croppedCompanyName = this.company.name.replace(/ /g, '').substr(0, 3).toUpperCase();
       this.typeText = CompanyTypes.displayText(this.company.type);
     }
   }

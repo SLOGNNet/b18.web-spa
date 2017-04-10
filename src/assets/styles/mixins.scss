@@ -3,31 +3,54 @@
   display: -webkit-box;
   overflow: hidden;
   line-height: $line-height;
-  max-height: $line-height * $line-count; /* Fallback for non-webkit */
+  max-height: $line-height * $line-count;
+  /* Fallback for non-webkit */
   -webkit-line-clamp: $line-count;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   //sass-lint:enable no-vendor-prefixes
 }
-
 @mixin driver-view-form-container {
   display: flex;
   width: 100%;
   padding: 0 $default-margin;
-  background: $white;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
+  border-bottom: $default-border;
 
   .left {
     width: 50%;
     padding: $default-margin $default-margin $default-margin 0;
-    border-right: $border;
+    border-right: $default-border;
   }
 
   .right {
     width: 50%;
     padding: $default-margin;
     color: $dark-grey;
+  }
+}
+@mixin interactive-text {
+  .interactive-text {
+    color: $dark-grey;
+    transition: all 500ms;
+  }
+}
+
+@mixin interactive-background {
+  .interactive-text {
+    color: $black;
+    transition: all 500ms;
+  }
+
+  .interactive-background {
+    background: $white;
+    border-bottom: $border;
+    transition: all 500ms;
+
+    .left {
+      border-right: $border;
+      transition: all 500ms;
+    }
   }
 }

@@ -17,6 +17,6 @@ export class EquipmentDetailsComponent {
   }
 
   get shortTypeText() {
-    return EquipmentTypes.displayShortText(this.equipment.type);
+    return EquipmentTypes.displayShortText(this.equipment.type).split('').join(' ');
   }
 }

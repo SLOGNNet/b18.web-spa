@@ -1,29 +1,13 @@
 @import '../../../../assets/styles/variables';
 
 .card-section {
-
   .left {
-
-    .cropped-company-name {
-      display: flex;
-      width: 28px;
-      height: 28px;
-      margin: 4px 0;
-      background: $black;
-      color: $white;
-      font-size: $mini-font-size;
-      border-radius: $circle-radius;
-      justify-content: center;
-      align-items: center;
-    }
-
     .company-name {
       font-weight: bold;
     }
   }
 
   .middle {
-
     .company-contact-full-name {
       overflow: hidden;
       font-weight: bold;
@@ -31,7 +15,6 @@
   }
 
   .right {
-
     .load {
       display: flex;
 
