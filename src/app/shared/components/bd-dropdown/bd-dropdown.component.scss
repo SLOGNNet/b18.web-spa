@@ -43,6 +43,7 @@
 
       span {
         color: $label-default-color;
+        transition: all $interactive-animation-time;
       }
     }
 
