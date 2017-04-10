@@ -40,6 +40,10 @@
     .bd-dropdown-value {
       font-size: $form-control-font-size;
       flex-grow: 1;
+
+      span {
+        color: $label-default-color;
+      }
     }
 
     .bd-dropdown-icon {
@@ -168,4 +172,20 @@
 
 :host-context(.interactive-panel:hover) {
   @include interactive-background;
+
+  .bd-dropdown-wrapper {
+
+    .bd-dropdown-value {
+
+      .item-selected {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+    }
+
+    .bd-dropdown-icon {
+      color: $black;
+      transition: all $interactive-animation-time;
+    }
+  }
 }
