@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -75,8 +75,15 @@ import { EmailValidator, PhoneValidator } from './validators';
 import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
+import { ComponentActionPanelComponent,
+  ListButtonsControlComponent,
+  DefaultListButtonsComponent,
+  DefaultEditRemoveButtonComponent,
+  DefaultDragNDropButtonComponent } from './components/component-action-panel';
+import { DefaultComponentActionPanelComponent } from './components/default-component-action-panel';
 
 @NgModule({
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [
     HttpService,
     NotificationService,
@@ -156,7 +163,13 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdViewDetailSectionComponent,
     EmptyComponent,
     BdContactInfoComponent,
-    MultiPaneLayoutComponent
+    MultiPaneLayoutComponent,
+    ComponentActionPanelComponent,
+    ListButtonsControlComponent,
+    DefaultListButtonsComponent,
+    DefaultEditRemoveButtonComponent,
+    DefaultDragNDropButtonComponent,
+    DefaultComponentActionPanelComponent
   ],
   imports: [
     CommonModule,
@@ -236,7 +249,12 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
     MultiPaneLayoutComponent,
-    BdValidatorModule
+    BdValidatorModule,
+    ComponentActionPanelComponent,
+    DefaultListButtonsComponent,
+    DefaultEditRemoveButtonComponent,
+    DefaultDragNDropButtonComponent,
+    DefaultComponentActionPanelComponent
   ]
 })
 export class SharedModule {

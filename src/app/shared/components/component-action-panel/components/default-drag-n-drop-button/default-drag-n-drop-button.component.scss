@@ -1,0 +1,13 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+
+.control {
+  margin: 3px 0;
+  color: $dark-grey;
+  font-size: 12px;
+  cursor: move;
+
+  &:hover {
+    color: $blue;
+  }
+}
