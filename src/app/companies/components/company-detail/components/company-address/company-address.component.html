@@ -1,16 +1,18 @@
-<div class="location-container interactive-background">
-  <div class="left">
-    <div class="name interactive-text">
-      {{location.name}}
-    </div>
+<list-item-control [showDefaultButtons]="true" (edit)="onEdit()">
+  <div class="location-container interactive-background">
+    <div class="left">
+      <div class="name interactive-text">
+        {{location.name}}
+      </div>
 
-    <div class="street-address-container">
-      <span class="icon-location"></span>
-      <span>{{streetAddress}}</span>
+      <div class="street-address-container">
+        <span class="icon-location"></span>
+        <span>{{streetAddress}}</span>
+      </div>
+      <div class="notes interactive-text">Notes</div>
     </div>
-    <div class="notes interactive-text">Notes</div>
+    <div class="right">
+      <bd-contact-info [contactCollection]="location.contactInfo"></bd-contact-info>
+    </div>
   </div>
-  <div class="right">
-    <bd-contact-info [contactCollection]="location.contactInfo"></bd-contact-info>
-  </div>
-</div>
+</list-item-control>

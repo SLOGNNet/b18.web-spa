@@ -1,0 +1,9 @@
+<div class="list-buttons-control">
+  <default-list-buttons
+    *ngIf="showDefaultButtons"
+    (edit)="onEditClick()"
+    (remove)="onRemoveClick()">
+  </default-list-buttons>
+
+  <ng-content></ng-content>
+</div>

@@ -75,6 +75,11 @@ import { EmailValidator, PhoneValidator } from './validators';
 import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
+import { ListItemControlComponent,
+  ListButtonsControlComponent,
+  DefaultListButtonsComponent,
+  DefaultEditRemoveButtonComponent,
+  DefaultDragNDropButtonComponent } from './components/list-item-control';
 
 @NgModule({
   providers: [
@@ -156,7 +161,12 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdViewDetailSectionComponent,
     EmptyComponent,
     BdContactInfoComponent,
-    MultiPaneLayoutComponent
+    MultiPaneLayoutComponent,
+    ListItemControlComponent,
+    ListButtonsControlComponent,
+    DefaultListButtonsComponent,
+    DefaultEditRemoveButtonComponent,
+    DefaultDragNDropButtonComponent
   ],
   imports: [
     CommonModule,
@@ -236,7 +246,8 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
     MultiPaneLayoutComponent,
-    BdValidatorModule
+    BdValidatorModule,
+    ListItemControlComponent
   ]
 })
 export class SharedModule {

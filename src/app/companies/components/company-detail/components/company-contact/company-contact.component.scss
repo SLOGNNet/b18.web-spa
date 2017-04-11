@@ -5,6 +5,7 @@ $element-height: 18px;
 
 .location-container {
   @include driver-view-form-container;
+  position: relative;
 
   .left {
     display: flex;
