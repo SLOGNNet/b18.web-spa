@@ -8,7 +8,7 @@
   display: block;
 }
 
-:host-context(.list-item-control:hover) {
+:host-context(.component-action-panel:hover) {
   .list-buttons-control {
     opacity: .5;
   }
