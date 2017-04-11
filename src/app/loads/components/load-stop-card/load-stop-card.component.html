@@ -67,7 +67,7 @@
       </span>
     </span>
   </div>
-  <span [style.color]="loadStatusColor" class="status-text">{{loadStatusText}}</span>
+  <span *ngIf="statusText" [style.color]="loadStatusColor" class="status-text">{{loadStatusText}}</span>
   <span
   [style.background]="loadStatusColor"
   class="status">
