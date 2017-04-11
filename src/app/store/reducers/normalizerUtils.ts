@@ -31,3 +31,25 @@ export function mergeLists(listById: any, newListById: any) {
 export function addItem(byId: any, added: any) {
   return {...byId, [added.id]: { added }};
 }
+
+export function addChild(entityState: any, entityId: string, childName: string, childId: string) {
+   const result = {
+      ...entityState,
+      [entityId]: {
+        ...entityState[entityId],
+        associationName: [childId, ...entityState[entityId][childName]]
+      }
+    };
+    return result;
+}
+
+export function removeChild(entityState: any, entityId: string, childName: string, childId: string) {
+   const result = {
+      ...entityState,
+      [entityId]: {
+        ...entityState[entityId],
+        associationName: entityState[entityId][childName].filter(id => id !== childId)
+      }
+    };
+    return result;
+}

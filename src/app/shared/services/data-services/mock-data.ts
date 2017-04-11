@@ -509,16 +509,19 @@ class MockData {
   }];
 
   public stopActionCollection: Array<StopAction> = [{
+        id: '1',
         type: StopActionTypes.PICKUP,
-        commodity: this.commodities[0]
+        commodities: [this.commodities[0]]
        },
        {
+        id: '2',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[1]
+        commodities: [this.commodities[1]]
        },
        {
+        id: '3',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[2]
+        commodities: [this.commodities[2]]
        }
   ];
 
@@ -561,6 +564,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
   }
   // {
@@ -706,6 +710,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0]]
   }
   // {

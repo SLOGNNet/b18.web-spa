@@ -32,8 +32,7 @@ export class CommodityActions {
 
   select(commodity: Commodity, stop: Stop): void {
     const normalizedCommodity = normalize(commodity, commoditySchema);
-    const normalizedStop = normalize(stop, stopSchema);
-    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity, stop: normalizedStop });
+    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity});
   }
 
   deselect(commodity: Commodity): void {

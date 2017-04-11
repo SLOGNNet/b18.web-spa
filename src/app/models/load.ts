@@ -1,6 +1,6 @@
-import { Stop } from './stop';
-import { Company } from './company';
-import { Commodity } from './commodity';
+import { Stop, stopSchema } from './stop';
+import { Company, companySchema } from './company';
+import { Commodity, commoditySchema } from './commodity';
 import { Location } from './location';
 import { Contact } from './contact';
 import { Trip } from './trip';
@@ -10,7 +10,10 @@ import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, Pow
 import { Type, Transform, Expose } from 'class-transformer';
 import { schema } from 'normalizr';
 
-export const loadSchema = new schema.Entity('loads');
+export const loadSchema = new schema.Entity('loads', {
+  stops: [stopSchema],
+  commodities: [commoditySchema]
+});
 export const loadListSchema = [loadSchema];
 
 export class Load {
