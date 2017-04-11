@@ -3,21 +3,23 @@
 	<navigation-anchor id="equipment-employment-information"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'EMPLOYMENT'">
         <bd-input class="bd-form-control" formControlName="vin" [labelText]="'VIN'"></bd-input>
-        <bd-dropdown class="bd-form-control" formControlName="ownership" [labelText]="'Equipment mode'" [items]="equipmentModes">
+        <bd-dropdown class="bd-form-control" formControlName="ownership" [labelText]="'Equipment mode'" [items]="equipmentModes" [defaultTitleText]="'Select Equipment Mode'">
 		</bd-dropdown>
-        <bd-dropdown class="bd-form-control" formControlName="vehicleOperating" [labelText]="'Operating mode'" [items]="operatingModes">
+        <bd-dropdown class="bd-form-control" formControlName="vehicleOperating" [labelText]="'Operating mode'" [items]="operatingModes" [defaultTitleText]="'Select Operating Mode'">
 		</bd-dropdown>
         <bd-dropdown 
             class="bd-form-control" 
             formControlName="type" 
             [labelText]="'Equipment type'" 
-            [items]="equipmentTypes" 
+            [items]="equipmentTypes"
+			[defaultTitleText]="'Select Equipment Type'"
             (onItemClick)="changeEquipmentType($event)">
 		</bd-dropdown>
         <bd-dropdown 
             class="bd-form-control" 
             formControlName="subType" 
-            [labelText]="'Equipment sub type'" 
+            [labelText]="'Equipment sub type'"
+			[defaultTitleText]="'Select Equipment Sub Type'"
             [items]="equipmentSubTypes">
 		</bd-dropdown>
 	</bd-form-section>
