@@ -4,12 +4,9 @@
 $element-height: 18px;
 
 .license-container {
+  @include default-view-container;
   width: 100%;
-  font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
-  background-color: $default-background;
-  transition: background-color $interactive-animation-time;
 
   .top {
     display: flex;

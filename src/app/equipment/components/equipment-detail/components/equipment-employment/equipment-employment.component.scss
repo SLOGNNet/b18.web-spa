@@ -2,13 +2,10 @@
 @import '../../../../../../assets/styles/mixins';
 
 .employment-container {
+  @include default-view-container;
   display: flex;
-  background: $default-background;
   color: $dark-grey;
-  font-size: $tiny-font-size;
   border-radius: $default-border-radius;
-  border-bottom: $border;
-  transition: background-color $interactive-animation-time;
 
   section {
     width: 50%;

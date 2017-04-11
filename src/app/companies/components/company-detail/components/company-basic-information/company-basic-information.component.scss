@@ -4,13 +4,10 @@
 $element-height: 18px;
 
 .basic-information-container {
+  @include default-view-container;
   display: flex;
   width: 100%;
-  background: $default-background;
-  font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
-  transition: background-color $interactive-animation-time;
 
   .left {
     display: flex;

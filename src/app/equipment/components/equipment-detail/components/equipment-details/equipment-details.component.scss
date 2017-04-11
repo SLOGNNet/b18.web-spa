@@ -4,12 +4,9 @@
 @import '../../../../../../assets/styles/styles';
 
 .details-container {
-  background: $default-background;
+  @include default-view-container;
   color: $dark-grey;
-  font-size: $tiny-font-size;
-  border-bottom: $border;
   border-radius: $default-border-radius;
-  transition: background-color $interactive-animation-time;
 
   .info-container {
     display: flex;

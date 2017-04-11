@@ -37,7 +37,6 @@
     transition: all 500ms;
   }
 }
-
 @mixin interactive-background {
   .interactive-text {
     color: $black;
@@ -48,4 +47,10 @@
     background: $white;
     transition: all 500ms;
   }
+}
+@mixin default-view-container {
+  background: $default-background;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 }

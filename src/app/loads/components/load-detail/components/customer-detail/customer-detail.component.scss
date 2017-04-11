@@ -4,13 +4,10 @@
 @import '../../../../../../assets/styles/styles';
 
 .customer-view-container {
+  @include default-view-container;
   display: flex;
-  font-size: $tiny-font-size;
-  border-bottom: $border;
-  background-color: $default-background;
   border-radius: $default-border-radius;
   flex-direction: row;
-  transition: background-color $interactive-animation-time;
 
   section {
     display: flex;

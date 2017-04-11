@@ -4,12 +4,9 @@
 $element-height: 35px;
 
 .requirements-container {
-  font-size: $tiny-font-size;
+  @include default-view-container;
   line-height: $tiny-font-size;
-  border-bottom: $border;
-  background-color: $default-background;
   border-radius: $default-border-radius;
-  transition: background-color $interactive-animation-time;
 
   .main-requirements {
     display: flex;

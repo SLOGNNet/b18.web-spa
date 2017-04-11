@@ -2,15 +2,12 @@
 @import '../../../../../../assets/styles/mixins';
 
 .mileage-container {
+  @include default-view-container;
   display: flex;
   height: 35px;
   padding: 0 $default-margin;
-  background: $default-background;
-  font-size: $tiny-font-size;
-  border-bottom: $border;
   align-items: center;
   justify-content: space-between;
-  transition: background-color $interactive-animation-time;
 
   .info-container {
     color: $black;

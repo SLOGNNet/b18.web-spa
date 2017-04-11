@@ -7,20 +7,20 @@
 
   .status-text {
     background: $default-background;
-    transition: all $interactive-animation-time;
+    transition: inherit;
   }
 
   &.active {
     background: $white;
     color: $black;
-    transition: all $interactive-animation-time;
+    transition: inherit;
 
     .card-section {
       border-bottom-color: $blue;
 
       .status-text {
         background: $white;
-        transition: all $interactive-animation-time;
+        transition: inherit;
       }
     }
   }

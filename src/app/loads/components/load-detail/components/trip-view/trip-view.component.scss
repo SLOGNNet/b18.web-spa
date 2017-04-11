@@ -138,6 +138,7 @@ $text-margin: 5px;
               opacity: $status-opacity;
               border-radius: 50%;
               margin-right: $text-margin;
+              transition: all $interactive-animation-time;
             }
           }
         }

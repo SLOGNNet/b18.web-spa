@@ -63,14 +63,12 @@ $text-margin: 5px;
   }
 
   .stop-info-container {
+    @include default-view-container;
     position: relative;
     display: flex;
-    background: $default-background;
-    border-bottom: $border;
     border-left: 4px solid $grey;
     border-top-left-radius: $default-border-radius;
     border-top-right-radius: $default-border-radius;
-    transition: background-color $interactive-animation-time;
 
     &.pickup {
       border-left-color: $pickup-view-mode-color;
