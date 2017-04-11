@@ -9,6 +9,7 @@ $element-height: 18px;
   line-height: $element-height;
   border-bottom: $border;
   background-color: $default-background;
+  transition: background-color $interactive-animation-time;
 
   .top {
     display: flex;

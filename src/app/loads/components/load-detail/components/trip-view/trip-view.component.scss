@@ -47,6 +47,7 @@ $text-margin: 5px;
     background: $default-background;
     border-radius: $default-border-radius;
     flex-direction: row;
+    transition: background-color $interactive-animation-time;
 
     .left-panel {
       display: flex;

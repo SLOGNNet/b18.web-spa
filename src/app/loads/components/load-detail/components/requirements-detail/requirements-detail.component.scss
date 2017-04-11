@@ -9,6 +9,7 @@ $element-height: 35px;
   border-bottom: $border;
   background-color: $default-background;
   border-radius: $default-border-radius;
+  transition: background-color $interactive-animation-time;
 
   .main-requirements {
     display: flex;

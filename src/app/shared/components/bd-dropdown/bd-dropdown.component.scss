@@ -16,6 +16,7 @@
     outline: 0;
     align-items: center;
     justify-content: space-between;
+    transition: background-color $interactive-animation-time;
 
     .bd-dropdown-label {
       width: 24%;

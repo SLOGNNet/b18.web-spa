@@ -50,6 +50,7 @@
   flex-flow: row wrap;
   background-color: $default-background;
   box-shadow: inherit;
+  transition: background-color $interactive-animation-time;
 
   .bd-label {
     display: flex;

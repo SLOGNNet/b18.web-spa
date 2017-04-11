@@ -16,6 +16,7 @@ $container-height: $horizontal-scroll-container-height;
     background: $default-background;
     border-radius: $default-border-radius;
     border-bottom: $border;
+    transition: background $interactive-animation-time;
 
     .top-panel {
       display: flex;

@@ -11,6 +11,7 @@
   background-color: $default-background;
   margin-top: 10px;
   border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 
   .rate {
     margin-left: 5px;

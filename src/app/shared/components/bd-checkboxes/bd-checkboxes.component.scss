@@ -14,6 +14,7 @@
   border-bottom: 1px solid $grey;
   margin-bottom: 0;
   box-shadow: inherit;
+  transition: background-color $interactive-animation-time;
 
   .bd-label {
     display: flex;

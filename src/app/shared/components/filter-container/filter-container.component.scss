@@ -17,6 +17,7 @@ $filter-header-max-width: 85px;
     align-items: center;
     border-bottom: $border;
     border-radius: $default-border-radius;
+    transition: background-color $interactive-animation-time;
 
     /deep/ .filter-scrollbar {
       width: 100%;

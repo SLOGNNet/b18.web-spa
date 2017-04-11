@@ -10,6 +10,7 @@
   border-bottom: $border;
   align-items: center;
   justify-content: space-between;
+  transition: background-color $interactive-animation-time;
 
   .info-container {
     color: $black;

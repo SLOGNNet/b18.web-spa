@@ -9,6 +9,7 @@
   font-size: $tiny-font-size;
   border-bottom: $border;
   border-radius: $default-border-radius;
+  transition: background-color $interactive-animation-time;
 
   .info-container {
     display: flex;

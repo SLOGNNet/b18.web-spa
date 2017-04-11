@@ -10,6 +10,7 @@
   background-color: $default-background;
   border-radius: $default-border-radius;
   flex-direction: row;
+  transition: background-color $interactive-animation-time;
 
   section {
     display: flex;

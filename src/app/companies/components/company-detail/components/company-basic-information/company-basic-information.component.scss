@@ -10,6 +10,7 @@ $element-height: 18px;
   font-size: $tiny-font-size;
   line-height: $element-height;
   border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 
   .left {
     display: flex;

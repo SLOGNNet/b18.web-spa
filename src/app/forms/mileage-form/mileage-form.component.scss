@@ -21,6 +21,7 @@
     background-color: $default-background;
     align-items: center;
     border-bottom: $border;
+    transition: background-color $interactive-animation-time;
 
     button {
       padding: 0 $default-margin;

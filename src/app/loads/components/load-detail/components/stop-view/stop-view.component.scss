@@ -70,6 +70,7 @@ $text-margin: 5px;
     border-left: 4px solid $grey;
     border-top-left-radius: $default-border-radius;
     border-top-right-radius: $default-border-radius;
+    transition: background-color $interactive-animation-time;
 
     &.pickup {
       border-left-color: $pickup-view-mode-color;
