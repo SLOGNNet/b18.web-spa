@@ -14,6 +14,7 @@ $small-size: 10px;
   text-transform: uppercase;
   align-items: center;
   justify-content: center;
+  transition: all $interactive-animation-time;
 
   &.default {
     width: $default-size;

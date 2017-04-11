@@ -29,6 +29,7 @@
         .edit-button {
           display: none;
           margin-left: 5px;
+          transition: all $interactive-animation-time;
         }
       }
     }
@@ -46,11 +47,13 @@
     .title {
       label {
         color: $black;
+        transition: all $interactive-animation-time;
       }
 
       .buttons-panel {
         bd-form-button {
           display: flex;
+          transition: all $interactive-animation-time;
         }
       }
     }

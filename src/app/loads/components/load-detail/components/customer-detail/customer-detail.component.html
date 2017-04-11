@@ -11,11 +11,11 @@
         </div>
     </section>
     <section class="contact-info">
-        <bd-circle
-            [initials]="selectedContactInitials"
+        <bd-user-circle
+            [fullName]="fullName"
             class="circle"
             size='default'>
-        </bd-circle>
+        </bd-user-circle>
         <div class="info-container">
             <span class="contact-name ellipsis interactive-text">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
             <span class="buttons-panel">

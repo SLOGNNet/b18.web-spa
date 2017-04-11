@@ -3,17 +3,21 @@
 equipment-card {
   background: $default-background;
   color: $dark-grey;
+  transition: all $interactive-animation-time;
 
   .status-text {
     background: $default-background;
+    transition: all $interactive-animation-time;
   }
 
   &.active {
     background: $white;
     color: $black;
+    transition: all $interactive-animation-time;
 
     .status-text {
       background: $white;
+      transition: all $interactive-animation-time;
     }
   }
 }
