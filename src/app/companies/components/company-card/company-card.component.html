@@ -4,7 +4,11 @@ class="card-section"
 (mouseleave)="onLeave()"
 (click)="onClick()">
   <div class="left">
-    <span class="cropped-company-name">{{this.croppedCompanyName}}</span>
+    <bd-company-circle
+      class="initials-circle"
+      [companyName]="item.name"
+      >
+    </bd-company-circle>
     <div class="company-name ellipsis">
       {{item.name}}
     </div>

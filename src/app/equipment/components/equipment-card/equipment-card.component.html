@@ -4,11 +4,11 @@ class="card-section"
 (mouseleave)="onLeave()"
 (click)="onClick()">
   <div class="left">
-    <bd-initials-circle
+    <bd-user-circle
       class="initials-circle"
-      [firstName]="firstLetter"
-      [lastName]="lastLetter">
-    </bd-initials-circle>
+      [initials]="equipmentShortTypeText"
+      >
+    </bd-user-circle>
     <div class="equipment-make ellipsis">
       {{item.make}}
     </div>

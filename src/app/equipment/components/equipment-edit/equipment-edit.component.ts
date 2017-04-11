@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { EquipmentActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store';
+import { IAppState, selectDetailEquipment } from '../../../store';
 import { EquipmentForm } from '../../../forms';
 
 @Component({
@@ -35,8 +35,8 @@ export class EquipmentEditComponent extends BaseRootEditComponent<Equipment> {
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(equipmentActions, ngRedux.select(state => state.equipments.selected),
-        ngRedux.select(state => state.equipments.isLoading), route, router, location, cdr);
+      super(equipmentActions, ngRedux.select(selectDetailEquipment),
+        ngRedux.select(state => state.ui.equipments.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

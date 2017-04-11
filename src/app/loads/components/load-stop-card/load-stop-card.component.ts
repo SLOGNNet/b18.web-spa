@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 import { Load, LoadStatuses } from '../../../models';
 
 @Component({
@@ -10,8 +10,12 @@ import { Load, LoadStatuses } from '../../../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadStopCardComponent {
+  @Input() active: boolean;
   @Input() load: Load;
   @Output() select: EventEmitter<any> = new EventEmitter();
+  @HostBinding('class.active') get isActive() {
+    return this.active;
+  }
   public statusText: boolean = false;
 
   private popupWidth = 220;

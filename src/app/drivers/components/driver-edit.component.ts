@@ -7,6 +7,7 @@ import { DriverActions } from '../../actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 import { DriverForm } from '../../forms';
+import { selectDetailDriver } from '../../store';
 
 @Component({
   selector: 'driver-edit',
@@ -39,8 +40,8 @@ export class DriverEditComponent extends BaseRootEditComponent<Driver> {
     location: Location,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(driverActions, ngRedux.select(state => state.drivers.selected),
-        ngRedux.select(state => state.drivers.isLoading), route, router, location, cdr);
+      super(driverActions, ngRedux.select(selectDetailDriver),
+        ngRedux.select(state => state.ui.drivers.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

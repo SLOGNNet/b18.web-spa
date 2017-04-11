@@ -1,13 +1,14 @@
 <div dropdown [autoClose]="autoClose" class="bd-dropdown-container" [class.bd-disabled]="disabled" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
   <div *ngIf="!toogleTemplate" dropdownToggle [isDisabled]="disabled"
     id="bd-dropdown"
-    class="bd-dropdown-wrapper"
+    class="bd-dropdown-wrapper interactive-background"
     name="bd-dropdown-wrapper">
       <div *ngIf="labelText" class="bd-dropdown-label">
         <label>{{labelText}}</label>
       </div>
       <div class="bd-dropdown-value" name="bd-dropdown-value">
         <span
+          class="interactive-text"
           [class.item-selected]="isSelectedValue">
             {{currentDisplayText}}
         </span>
@@ -29,7 +30,7 @@
     <ul>
       <li
         *ngIf="dropdownHeaderTemplate"
-        class="dropdown-header"
+        class="dropdown-header interactive-text"
         (click)="_handleDropdownHeaderClick($event)">
           <template
             [ngTemplateOutlet]="dropdownHeaderTemplate">
@@ -41,7 +42,7 @@
         (click)="_handleDropdownHeaderClick($event)">
           {{clearLabel}}
       </li>
-      <li *ngFor="let item of items" [ngClass]="{'template-item': dropdownItemTemplate}"
+      <li *ngFor="let item of items" class="interactive-text" [ngClass]="{'template-item': dropdownItemTemplate}"
           (click)="_handleDropdownItemClick($event, item)">
         <template *ngIf="dropdownItemTemplate"
           [ngTemplateOutlet]="dropdownItemTemplate"
@@ -54,7 +55,7 @@
      <li
        *ngIf="dropdownFooterTemplate"
        dropdownFooter="dropdownFooter"
-       class="dropdown-footer"
+       class="dropdown-footer interactive-text"
        (click)="_handleFooterClick($event)">
          <template [ngTemplateOutlet]="dropdownFooterTemplate">
          </template>

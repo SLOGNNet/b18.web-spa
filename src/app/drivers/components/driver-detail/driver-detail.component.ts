@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DriverActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../../store';
+import { selectDetailDriver } from '../../../store';
 
 @Component({
   selector: 'driver-detail',
@@ -37,6 +38,6 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
     router: Router,
     ngRedux: NgRedux<IAppState>,
     protected cdr: ChangeDetectorRef) {
-    super(driverActions, ngRedux.select(state => state.drivers.selected), router, route, cdr);
+    super(driverActions, ngRedux.select(selectDetailDriver), router, route, cdr);
   }
 }

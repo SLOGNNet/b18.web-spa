@@ -9,10 +9,9 @@
     </button>
   </div>
   <div class="bottom">
-    <bd-initials-circle
-      [firstName]="notification.sender.firstName"
-      [lastName]="notification.sender.lastName">
-    </bd-initials-circle>
+    <bd-user-circle
+      [initials]="initials">
+    </bd-user-circle>
     <div class="right">
       <div class="title">{{notification.sender.firstName}} {{notification.sender.lastName}}</div>
       <div class="message">

@@ -238,3 +238,15 @@
     content: '\e926';
   }
 }
+
+.icon-menu {
+  &:before {
+    content: '\e924';
+  }
+}
+
+.icon-reorder {
+  &:before {
+    content: '\e923';
+  }
+}

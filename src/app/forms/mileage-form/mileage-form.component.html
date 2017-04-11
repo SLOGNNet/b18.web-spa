@@ -1,23 +1,23 @@
 <form [formGroup]="mileageForm" class="mileage-form-container">
-  <bd-input 
-    class="bd-form-control left-control mileage-value" 
-    placeholder="miles" 
+  <bd-input
+    class="bd-form-control left-control mileage-value"
+    placeholder="miles"
     formControlName="value">
         <span class="suffix" bd-suffix>mi</span>
   </bd-input>
-  <bd-form-datepicker 
-    class="bd-form-control middle-control mileage-date" 
+  <bd-form-datepicker
+    class="bd-form-control middle-control mileage-date"
     formControlName="date">
   </bd-form-datepicker>
-  <div class="btn-container right-control">
+  <div class="btn-container interactive-background right-control">
     <button
-        class="btn-remove icon-minus" 
+        class="btn-remove icon-minus"
         (click)="removeMileage()"
         [disabled]="disabled">
     </button>
     <button
         *ngIf="isLast"
-        class="btn-add icon-plus" 
+        class="btn-add icon-plus"
         (click)="addNewMileage()"
         [disabled]="disabled">
     </button>

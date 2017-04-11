@@ -5,6 +5,7 @@ $element-height: 18px;
 
 .location-container {
   @include driver-view-form-container;
+  position: relative;
 
   .left {
     display: flex;
@@ -26,4 +27,10 @@ $element-height: 18px;
       }
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

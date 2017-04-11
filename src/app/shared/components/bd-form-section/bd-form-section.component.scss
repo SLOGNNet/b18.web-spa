@@ -1,10 +1,12 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 
 :host {
   display: block;
 
   .bd-section-title {
     margin: 25px $default-margin 15px;
+    color: $nevada;
     font-size: $tiny-font-size;
     text-transform: uppercase;
     font-weight: bold;
@@ -18,5 +20,14 @@
 
   &:first-of-type {
     padding-top: 10px;
+  }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  .bd-section-title {
+    color: $black;
+    transition: all $interactive-animation-time;
   }
 }

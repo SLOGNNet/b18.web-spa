@@ -2,7 +2,6 @@ import { CommonActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Contact } from '../models';
 import { Equipment } from '../models';
-import { mergeLists } from '../normalizerUtils';
 import { mergeEntities } from './utils';
 const INITIAL_STATE = [];
 

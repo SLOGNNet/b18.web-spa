@@ -1,19 +1,23 @@
-<div class="basic-information-container">
+<div class="basic-information-container interactive-background">
   <div class="left">
-    <div class="cropped-company-name">{{this.croppedCompanyName}}</div>
-    <div class="name-type">
-      <div class="name">{{company.name}}</div>
+    <bd-company-circle
+      class="initials-circle"
+      [companyName]="company.name"
+      >
+    </bd-company-circle>
+    <div class="name-type interactive-text">
+      <div class="name interactive-text">{{company.name}}</div>
         <div class="type">{{typeText}}</div>
     </div>
   </div>
   <div class="right">
     <div class="mc-container">
       <span class="right-label">MC#:</span>
-      <span class="mc">{{company.mc}}</span>
+      <span class="mc interactive-text">{{company.mc}}</span>
     </div>
     <div class="tax-id-container">
       <span class="right-label">Tax-ID (W9):</span>
-      <span class="tax-id">{{company.taxId}}</span>
+      <span class="tax-id interactive-text">{{company.taxId}}</span>
     </div>
   </div>
 </div>

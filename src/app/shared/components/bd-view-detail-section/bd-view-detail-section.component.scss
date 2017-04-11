@@ -9,6 +9,7 @@
       justify-content: space-between;
 
       label {
+        color: $nevada;
         font-size: $tiny-font-size;
         text-transform: uppercase;
         font-weight: bold;
@@ -26,7 +27,7 @@
 
         .add-button,
         .edit-button {
-          display: flex;
+          display: none;
           margin-left: 5px;
         }
       }
@@ -36,6 +37,22 @@
   &:first-of-type {
     .detail-container {
       padding-top: 10px;
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+  .detail-container {
+    .title {
+      label {
+        color: $black;
+      }
+
+      .buttons-panel {
+        bd-form-button {
+          display: flex;
+        }
+      }
     }
   }
 }

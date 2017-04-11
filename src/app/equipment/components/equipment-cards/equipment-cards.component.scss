@@ -1,0 +1,19 @@
+@import '../../../../assets/styles/variables';
+
+equipment-card {
+  background: transparent;
+  color: $dark-grey;
+
+  &.active {
+    color: $black;
+  }
+
+  &.active,
+  &:hover {
+    background: $light-blue;
+
+    .status-text {
+      background: $light-blue;
+    }
+  }
+}

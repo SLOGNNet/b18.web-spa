@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Equipment, EquipmentStatuses, EquipmentTypes, DriverTypes } from '../../../models';
 import { BaseCardComponent } from '../../../base';
 
@@ -28,12 +28,7 @@ export class EquipmentCardComponent extends BaseCardComponent {
     }
 
     get equipmentShortTypeText(): string {
-      return EquipmentTypes.displayShortText(this.item.type);
-    }
-
-    ngOnInit() {
-      this.firstLetter = this.equipmentShortTypeText.charAt(0);
-      this.lastLetter = this.equipmentShortTypeText.charAt(1);
+      return EquipmentTypes.displayShortText(this.item.type).split('').join(' ');
     }
 
 }

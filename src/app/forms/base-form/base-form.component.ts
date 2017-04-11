@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, ElementRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {

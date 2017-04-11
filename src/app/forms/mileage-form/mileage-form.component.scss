@@ -1,4 +1,5 @@
 @import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
 @import '../../../assets/styles/form-control';
 @import '../../../assets/styles/font-icons';
 
@@ -15,7 +16,6 @@
 
   .btn-container {
     display: flex;
-    background: $white;
     min-width: 40px;
     justify-content: center;
     align-items: center;
@@ -33,4 +33,8 @@
       }
     }
   }
+}
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

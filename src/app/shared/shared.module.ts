@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -14,7 +14,8 @@ import { NotificationService,
   FormValidationService,
   HttpService,
   StateService,
-  LicenseService
+  LicenseService,
+  LocationService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -58,7 +59,12 @@ import { StopsLineComponent, StopPopoverComponent } from './components/stops-lin
 import { BdResizerComponent, BdResizeContainerComponent } from './components/bd-resizer';
 import { BdNotificationPopoverComponent } from './components/bd-notification-popover';
 import { MessageCardComponent, TaskCardComponent, NotificationCardComponent, BdNotificationCardComponent } from './components/bd-notification-card';
-import { BdInitialsCircleComponent, IconWithCountIndicatorComponent, NotificationIcon, NotificationCardIcon } from './components/bd-icons';
+import { BdCircleComponent,
+  IconWithCountIndicatorComponent,
+  NotificationIcon,
+  NotificationCardIcon,
+  BdCompanyCircleComponent,
+  BdUserCircleComponent } from './components/bd-icons';
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
@@ -69,8 +75,15 @@ import { EmailValidator, PhoneValidator } from './validators';
 import { Constants } from './constants/constants';
 import { BdContactInfoComponent } from './components/bd-contact-info';
 import { BdViewDetailSectionComponent } from './components/bd-view-detail-section';
+import { ComponentActionPanelComponent,
+  ListButtonsControlComponent,
+  DefaultListButtonsComponent,
+  DefaultEditRemoveButtonComponent,
+  DefaultDragNDropButtonComponent } from './components/component-action-panel';
+import { DefaultComponentActionPanelComponent } from './components/default-component-action-panel';
 
 @NgModule({
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [
     HttpService,
     NotificationService,
@@ -89,6 +102,7 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     PhoneValidator,
     StateService,
     LicenseService,
+    LocationService,
     Constants
   ],
   declarations: [
@@ -126,7 +140,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     StopPopoverComponent,
     BdResizerComponent,
     BdResizeContainerComponent,
-    BdInitialsCircleComponent,
+    BdCircleComponent,
+    BdUserCircleComponent,
+    BdCompanyCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     NotificationIcon,
@@ -147,7 +163,13 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdViewDetailSectionComponent,
     EmptyComponent,
     BdContactInfoComponent,
-    MultiPaneLayoutComponent
+    MultiPaneLayoutComponent,
+    ComponentActionPanelComponent,
+    ListButtonsControlComponent,
+    DefaultListButtonsComponent,
+    DefaultEditRemoveButtonComponent,
+    DefaultDragNDropButtonComponent,
+    DefaultComponentActionPanelComponent
   ],
   imports: [
     CommonModule,
@@ -206,7 +228,9 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdPopoverModule,
     BdResizerComponent,
     BdResizeContainerComponent,
-    BdInitialsCircleComponent,
+    BdCircleComponent,
+    BdUserCircleComponent,
+    BdCompanyCircleComponent,
     IconWithCountIndicatorComponent,
     BdNotificationPopoverComponent,
     MessageCardComponent,
@@ -225,7 +249,12 @@ import { BdViewDetailSectionComponent } from './components/bd-view-detail-sectio
     BdContactInfoComponent,
     BdViewDetailSectionComponent,
     MultiPaneLayoutComponent,
-    BdValidatorModule
+    BdValidatorModule,
+    ComponentActionPanelComponent,
+    DefaultListButtonsComponent,
+    DefaultEditRemoveButtonComponent,
+    DefaultDragNDropButtonComponent,
+    DefaultComponentActionPanelComponent
   ]
 })
 export class SharedModule {
