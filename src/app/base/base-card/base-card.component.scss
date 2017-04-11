@@ -96,10 +96,9 @@
 }
 
 :host-context(.interactive-panel:hover) {
-  background: $white;
-  transition: all $interactive-animation-time;
 
   &.card {
+    background: $white;
     color: $black;
     transition: all $interactive-animation-time;
 
