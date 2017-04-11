@@ -1,4 +1,4 @@
-import { Location } from './location';
+import { Location, locationSchema } from './location';
 import { Contact, contactSchema } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
@@ -7,7 +7,8 @@ import { Type } from 'class-transformer';
 import { schema } from 'normalizr';
 
 export const companySchema = new schema.Entity('companies', {
-  contacts: [ contactSchema ]
+  contacts: [ contactSchema ],
+  locations: [ locationSchema ]
 });
 export const companyListSchema = [companySchema];
 

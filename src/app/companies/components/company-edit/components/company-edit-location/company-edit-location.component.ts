@@ -42,7 +42,7 @@ export class CompanyEditLocationComponent extends BaseNestedEditComponent<Locati
     router: Router,
     private ngRedux: NgRedux<IAppState>) {
     super(companyLocationActions, ngRedux.select(selectDetailCompany), ngRedux.select(selectDetailLocation),
-      ngRedux.select(state => state.ui.contacts.isLoading), route, router, location, cdr);
+      ngRedux.select(state => state.ui.locations.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

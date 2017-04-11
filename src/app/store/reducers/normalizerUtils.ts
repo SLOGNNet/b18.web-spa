@@ -24,7 +24,8 @@ export function updateNewItem(byId: any, updated: any, prevId: any) {
 }
 
 export function mergeLists(listById: any, newListById: any) {
-   return merge({}, listById, newListById);
+   const result = Object.assign({}, listById, newListById);
+   return result;
 }
 
 export function addItem(byId: any, added: any) {

@@ -14,6 +14,7 @@ export class Location {
   static create(): Location {
     const result = new Location();
     result.id = generateNewId();
+    result.name = '';
     result.address = Address.create();
     result.contactInfo = ContactInfo.сreateDefaultList();
     return result;

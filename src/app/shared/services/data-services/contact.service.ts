@@ -20,9 +20,8 @@ export class ContactService {
   }
 
   getDetails(id: string): Observable<Contact> {
-    return Observable.of(
-      MockData.contacts.find((contact) => id === contact.id)
-    );
+    const details = cloneDeep(MockData.contacts.find((contact) => id === contact.id));
+    return details ?  Observable.of(details) : Observable.throw('error');
   }
 
   update(contact: Contact) {
