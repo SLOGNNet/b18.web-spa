@@ -42,8 +42,9 @@ $text-margin: 5px;
       line-height: $element-height;
     }
     display: flex;
-    border: $default-border;
+    border: $border;
     margin: 10px;
+    background: $default-background;
     border-radius: $default-border-radius;
     flex-direction: row;
 
@@ -52,7 +53,7 @@ $text-margin: 5px;
       width: 50%;
       padding: $default-margin;
       flex-direction: row;
-      border-right: $default-border;
+      border-right: $border;
 
       .info-panel {
         flex: 1;
@@ -198,8 +199,6 @@ $text-margin: 5px;
   @include interactive-background;
 
   .trip-info-container {
-    border: $border;
-    transition: all $interactive-animation-time;
 
     .right-panel {
       .appointment-type {

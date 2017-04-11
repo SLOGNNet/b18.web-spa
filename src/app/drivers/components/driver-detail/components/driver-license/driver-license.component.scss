@@ -7,20 +7,21 @@ $element-height: 18px;
   width: 100%;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $default-border;
+  border-bottom: $border;
+  background-color: $default-background;
 
   .top {
     display: flex;
     width: 100%;
     height: 34px;
-    border-bottom: $default-border;
+    border-bottom: $border;
 
     .left {
       display: flex;
       width: 50%;
       height: 34px;
       padding: $default-margin;
-      border-right: $default-border;
+      border-right: $border;
       align-items: center;
 
       .license-number {

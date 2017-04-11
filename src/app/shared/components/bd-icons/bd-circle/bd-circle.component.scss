@@ -2,38 +2,29 @@
 $default-size: 28px;
 $small-size: 10px;
 
-.circle-container {
+.circle {
   display: flex;
   width: 32px;
   height: 32px;
-  border: none;
-  background: transparent;
+  margin: 4px 0;
+  background: $nevada;
+  color: $white;
+  font-size: $mini-font-size;
   border-radius: $circle-radius;
+  text-transform: uppercase;
   align-items: center;
   justify-content: center;
 
-  .circle {
-    display: flex;
-    margin: 4px 0;
-    background: $nevada;
-    color: $white;
-    font-size: $mini-font-size;
-    border-radius: $circle-radius;
-    text-transform: uppercase;
-    align-items: center;
-    justify-content: center;
+  &.default {
+    width: $default-size;
+    height: $default-size;
+  }
 
-    &.default {
-      width: $default-size;
-      height: $default-size;
-    }
-
-    &.small {
-      width: $small-size;
-      height: $small-size;
-      margin: 0;
-      font-size: $small-size - 4px;
-    }
+  &.small {
+    width: $small-size;
+    height: $small-size;
+    margin: 0;
+    font-size: $small-size - 4px;
   }
 }
 
@@ -45,17 +36,10 @@ $small-size: 10px;
 
 }
 
-:host-context(.interactive-panel .active) {
-  .circle-container {
-    border: 1px solid $silver;
-    background: $black;
-    transition: all $interactive-animation-time;
-  }
 
+:host-context(.interactive-panel .active) {
   .circle {
-    background: $silver;
-    color: $mako;
-    font-weight: bold;
+    background: $black;
     transition: all $interactive-animation-time;
   }
 }

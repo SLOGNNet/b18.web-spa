@@ -1,19 +1,19 @@
 @import '../../../../assets/styles/variables';
 
 equipment-card {
-  background: transparent;
+  background: $default-background;
   color: $dark-grey;
 
-  &.active {
-    color: $black;
+  .status-text {
+    background: $default-background;
   }
 
-  &.active,
-  &:hover {
-    background: $light-blue;
+  &.active {
+    background: $white;
+    color: $black;
 
     .status-text {
-      background: $light-blue;
+      background: $white;
     }
   }
 }

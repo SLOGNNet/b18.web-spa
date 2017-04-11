@@ -6,7 +6,8 @@
 .customer-view-container {
   display: flex;
   font-size: $tiny-font-size;
-  border-bottom: $default-border;
+  border-bottom: $border;
+  background-color: $default-background;
   border-radius: $default-border-radius;
   flex-direction: row;
 
@@ -16,7 +17,7 @@
     padding: 11px $default-margin;
 
     &:first-of-type {
-      border-right: $default-border;
+      border-right: $border;
     }
 
     .circle {

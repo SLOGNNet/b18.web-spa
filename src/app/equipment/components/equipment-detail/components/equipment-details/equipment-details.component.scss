@@ -4,21 +4,22 @@
 @import '../../../../../../assets/styles/styles';
 
 .details-container {
+  background: $default-background;
   color: $dark-grey;
   font-size: $tiny-font-size;
-  border-bottom: $default-border;
+  border-bottom: $border;
   border-radius: $default-border-radius;
 
   .info-container {
     display: flex;
-    border-bottom: $default-border;
+    border-bottom: $border;
 
     section {
       width: 50%;
       padding: $default-margin;
 
       &:first-of-type {
-        border-right: $default-border;
+        border-right: $border;
       }
     }
 

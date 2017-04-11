@@ -14,14 +14,15 @@
   display: flex;
   width: 100%;
   padding: 0 $default-margin;
+  background: $default-background;
   font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $default-border;
+  border-bottom: $border;
 
   .left {
     width: 50%;
     padding: $default-margin $default-margin $default-margin 0;
-    border-right: $default-border;
+    border-right: $border;
   }
 
   .right {
@@ -45,12 +46,6 @@
 
   .interactive-background {
     background: $white;
-    border-bottom: $border;
     transition: all 500ms;
-
-    .left {
-      border-right: $border;
-      transition: all 500ms;
-    }
   }
 }

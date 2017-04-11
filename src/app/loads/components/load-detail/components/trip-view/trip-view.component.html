@@ -1,6 +1,6 @@
 <div class="trip-container" [class.expanded]="isExpanded">
   <div class="trip-info-container interactive-background">
-    <div class="left-panel left">
+    <div class="left-panel">
       <div class="info-panel">
         <div class="trip-info-header">
         <span class="trip-number interactive-text">TR{{tripData.trip.number}}</span>
@@ -10,10 +10,10 @@
           *ngFor="let driver of tripData.trip.driverTeams[0].drivers"
           class="driver-info">
           <span class="initials-circle">
-                  <bd-user-circle
+                  <bd-circle
                       [initials]="driverInitials(driver)"
                       size='small'>
-                  </bd-user-circle>
+                  </bd-circle>
             </span>
           <span class="driver-name">{{driver.firstName}} {{driver.lastName}}</span>
           <span class="driver-count" *ngIf="tripData.trip.driverTeams[0].drivers.length > 1">

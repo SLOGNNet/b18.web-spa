@@ -15,9 +15,11 @@ $text-margin: 5px;
     margin-bottom: 0;
   }
 }
+
 .stop-view-mode-section {
   display: flex;
-  border: $default-border;
+  border: $border;
+  background: $light-blue;
   font-size: $tiny-font-size;
   margin-bottom: 10px;
   flex-direction: column;
@@ -63,7 +65,8 @@ $text-margin: 5px;
   .stop-info-container {
     position: relative;
     display: flex;
-    border-bottom: $default-border;
+    background: $default-background;
+    border-bottom: $border;
     border-left: 4px solid $grey;
     border-top-left-radius: $default-border-radius;
     border-top-right-radius: $default-border-radius;
@@ -100,7 +103,7 @@ $text-margin: 5px;
       width: 50%;
       padding: $default-margin;
       color: $dark-grey;
-      border-right: $default-border;
+      border-right: 1px dashed $grey;
       flex-direction: column;
 
       .title {
@@ -180,15 +183,4 @@ $text-margin: 5px;
 
 :host-context(.interactive-panel:hover) {
   @include interactive-background;
-
-  .stop-view-mode-section {
-    border: $border;
-    background: $light-blue;
-    transition: all $interactive-animation-time;
-
-    .facility-info {
-      border-right: 1px dashed $grey;
-      transition: all $interactive-animation-time;
-    }
-  }
 }

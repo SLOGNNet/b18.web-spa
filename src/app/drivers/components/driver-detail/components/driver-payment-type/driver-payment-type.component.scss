@@ -8,8 +8,9 @@
   padding: 0 $default-margin;
   font-size: $tiny-font-size;
   align-items: center;
+  background-color: $default-background;
   margin-top: 10px;
-  border-bottom: $default-border;
+  border-bottom: $border;
 
   .rate {
     margin-left: 5px;

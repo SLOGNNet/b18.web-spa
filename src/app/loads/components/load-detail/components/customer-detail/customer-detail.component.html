@@ -1,5 +1,5 @@
 <div class="customer-view-container interactive-background">
-    <section class="company-info left">
+    <section class="company-info">
         <bd-company-circle
             [companyName]="company.name"
             class="circle"
@@ -11,11 +11,11 @@
         </div>
     </section>
     <section class="contact-info">
-        <bd-user-circle
+        <bd-circle
             [initials]="selectedContactInitials"
             class="circle"
             size='default'>
-        </bd-user-circle>
+        </bd-circle>
         <div class="info-container">
             <span class="contact-name ellipsis interactive-text">{{selectedContact.firstName}} {{selectedContact.middleName}} {{selectedContact.lastName}}</span>
             <span class="buttons-panel">
