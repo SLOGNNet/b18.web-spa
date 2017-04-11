@@ -27,10 +27,13 @@ $container-height: $horizontal-scroll-container-height;
         font-size: $default-font-size;
         line-height: $default-font-size;
         font-weight: bold;
+        transition: all $interactive-animation-time;
       }
 
       .top-panel-content {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        transition: all $interactive-animation-time;
       }
     }
 
@@ -57,6 +60,7 @@ $container-height: $horizontal-scroll-container-height;
         &.active {
           color: $nevada;
           font-weight: bold;
+          transition: all $interactive-animation-time;
         }
 
         &:first-child {
@@ -107,7 +111,8 @@ $container-height: $horizontal-scroll-container-height;
       }
 
       .top-panel-content {
-        display: block;
+        opacity: 1;
+        visibility: visible;
         transition: all $interactive-animation-time;
       }
     }
