@@ -14,21 +14,21 @@
   }
 }
 
-.list-buttons-control {
-  display: flex;
-  width: 35px;
-  padding: 5px 0;
-  background: $grey;
-  border-radius: $default-border-radius;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  opacity: 0;
-  transition: all $interactive-animation-time;
+:host-context(.component-action-panel) {
+  .list-buttons-control {
+    display: flex;
+    width: 35px;
+    padding: 5px 0;
+    background: $grey;
+    border-radius: $default-border-radius;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: all $interactive-animation-time;
 
-  &:hover {
-    // sass-lint:disable no-important
-    opacity: 1 !important;
-    // sass-lint:enable no-important
+    &:hover {
+      opacity: 1;
+    }
   }
 }
