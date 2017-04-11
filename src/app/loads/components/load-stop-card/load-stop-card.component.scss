@@ -1,13 +1,26 @@
 @import '../../../../assets/styles/variables';
 
 :host {
+  background: $default-background;
+  color: $dark-grey;
+  transition: all $interactive-animation-time;
+
+  .status-text {
+    background: $default-background;
+    transition: all $interactive-animation-time;
+  }
 
   &.active {
+    background: $white;
+    color: $black;
+    transition: all $interactive-animation-time;
+
     .card-section {
       border-bottom-color: $blue;
 
       .status-text {
         background: $white;
+        transition: all $interactive-animation-time;
       }
     }
   }

@@ -4,21 +4,3 @@
   display: block;
   margin-top: 20px;
 }
-
-load-stop-card {
-  background: $default-background;
-  color: $dark-grey;
-
-  .status-text {
-    background: $default-background;
-  }
-
-  &.active {
-    background: $white;
-    color: $black;
-
-    .status-text {
-      background: $white;
-    }
-  }
-}
