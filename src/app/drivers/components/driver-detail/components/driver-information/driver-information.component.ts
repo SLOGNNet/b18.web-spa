@@ -20,8 +20,8 @@ export class DriverInformationComponent {
     return DriverTypes.displayText(this.driver.type);
   }
 
-  get driverInitials() {
-    return this.driver.firstName + ' ' + this.driver.lastName;
+  get fullName() {
+    return `${this.driver.firstName} ${this.driver.lastName}`;
   }
 
   ngOnChanges(changes) {

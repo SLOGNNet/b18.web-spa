@@ -2,6 +2,32 @@
 @import '../../../assets/styles/styles';
 @import '../../../assets/styles/mixins';
 
+:host {
+  background: $default-background;
+  color: $dark-grey;
+  transition: all $interactive-animation-time;
+
+  .status-text {
+    background: $default-background;
+    transition: inherit;
+  }
+
+  &.active {
+    background: $white;
+    color: $black;
+    transition: inherit;
+
+    .card-section {
+      border-bottom-color: $blue;
+
+      .status-text {
+        background: $white;
+        transition: inherit;
+      }
+    }
+  }
+}
+
 .card-section {
   position: relative;
   display: flex;
@@ -64,25 +90,17 @@
     width: 12px;
     height: 12px;
     background: $black;
-    opacity: $status-opacity;
     bottom: 13px;
     border-radius: $form-control-height;
   }
 }
 
 :host-context(.interactive-panel:hover) {
-  background: $white;
-  transition: all $interactive-animation-time;
 
   &.card {
+    background: $white;
     color: $black;
     transition: all $interactive-animation-time;
-
-    .card-section {
-      .status {
-        opacity: 1;
-      }
-    }
 
     &:hover {
       background: $light-blue;
@@ -91,32 +109,8 @@
 
   &.active {
     &.card {
-      color: $silver;
+      background: $light-blue;
       transition: all $interactive-animation-time;
-
-      .card-section {
-        .status {
-          opacity: 1;
-        }
-      }
-
-      &:hover {
-        background: $mako;
-      }
-    }
-  }
-}
-
-:host-context(.active) {
-  &.card {
-    background: $mako;
-    color: $silver;
-    transition: all $interactive-animation-time;
-
-    .card-section {
-      .status {
-        opacity: 1;
-      }
     }
   }
 }

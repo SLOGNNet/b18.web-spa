@@ -4,17 +4,16 @@
 $element-height: 18px;
 
 .basic-information-container {
+  @include default-view-container;
   display: flex;
   width: 100%;
-  font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $default-border;
 
   .left {
     display: flex;
     width: 50%;
     padding: $default-margin;
-    border-right: $default-border;
+    border-right: $border;
 
     .name-type {
       overflow: hidden;

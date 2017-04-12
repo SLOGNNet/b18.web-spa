@@ -2,11 +2,10 @@
 @import '../../../../../../assets/styles/mixins';
 
 .mileage-container {
+  @include default-view-container;
   display: flex;
   height: 35px;
   padding: 0 $default-margin;
-  font-size: $tiny-font-size;
-  border-bottom: $default-border;
   align-items: center;
   justify-content: space-between;
 
