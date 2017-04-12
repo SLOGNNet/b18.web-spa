@@ -189,7 +189,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '14',
       title: '',
       type: 2,
@@ -209,7 +209,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '15',
       title: '',
       type: 2,
@@ -229,7 +229,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '16',
       title: '',
       type: 2,
@@ -249,7 +249,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '17',
       title: '',
       type: 2,
@@ -269,7 +269,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '18',
       title: '',
       type: 2,
@@ -289,7 +289,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '19',
       title: '',
       type: 2,
@@ -309,7 +309,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '20',
       title: '',
       type: 2,
@@ -329,7 +329,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '21',
       title: '',
       type: 2,
@@ -349,7 +349,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '22',
       title: '',
       type: 2,
@@ -369,7 +369,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '23',
       title: '',
       type: 2,
@@ -389,7 +389,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '24',
       title: '',
       type: 2,
@@ -409,7 +409,7 @@ class MockData {
       priority: null,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '25',
       title: 'Confirm Pick-up',
       type: 3,
@@ -420,7 +420,7 @@ class MockData {
       priority: 1,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '26',
       title: 'Call up a Customer',
       type: 3,
@@ -431,7 +431,7 @@ class MockData {
       priority: 3,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '27',
       title: 'Scheduled Maintenance',
       type: 3,
@@ -442,7 +442,7 @@ class MockData {
       priority: 2,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '28',
       title: 'Confirm Pick-up',
       type: 3,
@@ -453,7 +453,7 @@ class MockData {
       priority: 1,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '29',
       title: 'Reschedule Trip Stops',
       type: 3,
@@ -464,7 +464,7 @@ class MockData {
       priority: 1,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '30',
       title: 'Renew Driver License',
       type: 3,
@@ -475,7 +475,7 @@ class MockData {
       priority: 2,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '31',
       title: 'Call up a Customer',
       type: 3,
@@ -486,7 +486,7 @@ class MockData {
       priority: 3,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '32',
       title: 'Scheduled Maintenance',
       type: 3,
@@ -497,7 +497,7 @@ class MockData {
       priority: 2,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '33',
       title: 'Call up a Customer',
       type: 3,
@@ -508,7 +508,7 @@ class MockData {
       priority: 3,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '34',
       title: 'Call up a Customer',
       type: 3,
@@ -519,7 +519,7 @@ class MockData {
       priority: 3,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '35',
       title: 'Confirm Load',
       type: 3,
@@ -530,7 +530,7 @@ class MockData {
       priority: 3,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '36',
       title: 'Scheduled Maintenance',
       type: 3,
@@ -541,7 +541,7 @@ class MockData {
       priority: 2,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '37',
       title: 'Confirm Drop-off',
       type: 3,
@@ -552,7 +552,7 @@ class MockData {
       priority: 1,
       notificationStatus: 1,
       isViewed: false
-    },{
+    }, {
       id: '38',
       title: 'Confirm Load',
       type: 3,
@@ -1065,16 +1065,19 @@ class MockData {
     }];
 
   public stopActionCollection: Array<StopAction> = [{
+    id: '1',
     type: StopActionTypes.PICKUP,
-    commodity: this.commodities[0]
+    commodities: [this.commodities[0]]
   },
     {
+      id: '2',
       type: StopActionTypes.DROPOFF,
-      commodity: this.commodities[1]
+      commodities: [this.commodities[1]]
     },
     {
+      id: '3',
       type: StopActionTypes.DROPOFF,
-      commodity: this.commodities[2]
+      commodities: [this.commodities[2]]
     }
   ];
 
@@ -1117,6 +1120,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
   }
     // {
@@ -1262,6 +1266,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0]]
   }
     // {
@@ -1380,6 +1385,7 @@ class MockData {
       id: '1',
       companyId: '1',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '726457361',
@@ -1403,6 +1409,7 @@ class MockData {
       id: '2',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '234457361',
@@ -1426,6 +1433,7 @@ class MockData {
       id: '3',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '111557361',
@@ -1449,6 +1457,7 @@ class MockData {
       id: '4',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
@@ -1472,6 +1481,7 @@ class MockData {
       id: '5',
       companyId: '4',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
@@ -1495,6 +1505,7 @@ class MockData {
       id: '6',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
@@ -1518,6 +1529,7 @@ class MockData {
       id: '7',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
@@ -1541,6 +1553,7 @@ class MockData {
       id: '8',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
@@ -1578,7 +1591,7 @@ class MockData {
     {
       id: '2',
       name: 'M W LOGISTICS LLC',
-      locations: [this.locations[1], this.locations[1]],
+      locations: [this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.ACTIVE,

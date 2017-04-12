@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, forwardRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ViewChild, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BdDatePicker } from './components';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbDateStruct } from '../datepicker';
@@ -32,13 +32,14 @@ export class BdFormDatePicker implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor(private constants: Constants) {
+  constructor(private constants: Constants, private cdr: ChangeDetectorRef) {
   }
 
   writeValue(value: any) {
     this.value = value;
     const date = moment(value);
     this.dateValue = date.isValid() ? date.format(this.dateFormat) : null;
+    this.cdr.markForCheck();
   }
 
   onDateChange(value: string) {

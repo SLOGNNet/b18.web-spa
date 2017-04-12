@@ -1,7 +1,7 @@
 import { CompanyActions, CompanyLocationActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Contact } from '../models';
-import { mergeLists, deleteItem } from '../normalizerUtils';
+import { mergeLists } from '../utils';
 
 export interface ICompanyLocationState {
   selected: string;
@@ -17,14 +17,21 @@ export const companyLocationReducer = createReducer(INITIAL_STATE, {
   },
   [CompanyLocationActions.ADD_LOCATION_CONTACT_SUCCESS](state, action) {
     const res = Object.assign({}, state,
-      {
-        selected: action.prevId = state.selected ? action.data.result : state.selected,
+    {
+        selected: action.prevId === state.selected ? action.data.result : state.selected,
         isLoading: false
-     });
-     return res;
+    });
+    return res;
   },
   [CompanyLocationActions.SELECT_LOCATION_CONTACT](state, action) {
     return Object.assign({}, state, { selected: action.data.result, isLoading: false });
+  },
+  [CompanyLocationActions.REMOVE_LOCATION_CONTACT_SUCCESS](state, action) {
+    const res = Object.assign({}, state,
+    {
+        selected: action.data.result === state.selected ? null : state.selected,
+    });
+    return res;
   },
   [CompanyLocationActions.UPDATE_LOCATION_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state,

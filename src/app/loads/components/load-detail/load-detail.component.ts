@@ -4,8 +4,7 @@ import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store';
-
+import { IAppState, selectDetailLoad } from '../../../store';
 
 @Component({
   selector: 'load-detail',
@@ -31,7 +30,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected), router, route, cdr);
+      super(loadActions, ngRedux.select(selectDetailLoad), router, route, cdr);
   }
 
     get selectedContact(): Contact {

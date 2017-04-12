@@ -15,6 +15,7 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
   static UPDATE_LOCATION_CONTACT_REQUEST: string = 'UPDATE_LOCATION_CONTACT_REQUEST';
   static UPDATE_LOCATION_CONTACT_SUCCESS: string = 'UPDATE_LOCATION_CONTACT_SUCCESS';
   static UPDATE_LOCATION_CONTACT_FAILURE: string = 'UPDATE_LOCATION_CONTACT_FAILURE';
+  static REMOVE_LOCATION_CONTACT_SUCCESS: string = 'REMOVE_LOCATION_CONTACT_SUCCESS';
   static SELECT_LOCATION_CONTACT: string = 'SELECT_LOCATION_CONTACT';
   constructor(
     private locationService: LocationService,
@@ -41,6 +42,13 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
       this.ngRedux.dispatch({ type: CompanyLocationActions.UPDATE_LOCATION_CONTACT_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Location updated.', `Location was updated.`);
     }, 3000);
+  }
+
+  removeAssociation(location: Location, company: Company): void {
+    this.locationService.remove(company, location).subscribe(_ => {
+      const normalizedData = normalize(location, locationSchema);
+      this.ngRedux.dispatch({ type: CompanyLocationActions.REMOVE_LOCATION_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
+    });
   }
 
   select(locationId: string): void {

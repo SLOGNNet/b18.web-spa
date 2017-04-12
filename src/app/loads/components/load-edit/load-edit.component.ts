@@ -4,7 +4,7 @@ import { LoadActions } from '../../../actions';
 import { BaseRootEditComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../../store';
+import { IAppState, selectDetailLoad } from '../../../store';
 import { Location } from '@angular/common';
 import { LoadFormComponent } from '../../../forms';
 
@@ -41,8 +41,8 @@ export class LoadEditComponent extends BaseRootEditComponent<Load> {
     router: Router,
     location: Location,
     ngRedux: NgRedux<IAppState>) {
-      super(loadActions, ngRedux.select(state => state.loads.selected),
-        ngRedux.select(state => state.loads.isLoading), route, router, location, cdr);
+      super(loadActions, ngRedux.select(selectDetailLoad),
+        ngRedux.select(state => state.ui.loads.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

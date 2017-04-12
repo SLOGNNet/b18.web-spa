@@ -48,8 +48,9 @@
   border-bottom: $border;
   margin-bottom: 0;
   flex-flow: row wrap;
-  background-color: $serenity;
+  background-color: $default-background;
   box-shadow: inherit;
+  transition: background-color $interactive-animation-time;
 
   .bd-label {
     display: flex;
