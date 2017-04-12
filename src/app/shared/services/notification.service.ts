@@ -62,7 +62,7 @@ export class NotificationService {
     }
   }
 
-  public getNotification() {
+  private getNotification() {
     return MockData.notifications.splice(Math.floor(Math.random() * MockData.notifications.length), 1)[0];
   }
 
