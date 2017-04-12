@@ -10,7 +10,7 @@ export class CustomerDetailComponent {
   @Input() company: Company;
   @Input() selectedContact: Contact;
 
-  get selectedContactInitials() {
-    return this.selectedContact.firstName + ' ' + this.selectedContact.lastName;
+  get fullName() {
+    return `${this.selectedContact.firstName} ${this.selectedContact.lastName}`;
   }
 }

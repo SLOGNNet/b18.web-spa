@@ -5,7 +5,6 @@ import { BaseCardListComponent } from '../../../base';
 @Component({
     selector: 'equipment-cards',
     templateUrl: './equipment-cards.component.html',
-    styleUrls: ['./equipment-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentCardsComponent extends BaseCardListComponent {

@@ -1,11 +1,11 @@
 <div class="information-container interactive-background">
   <div class="left">
     <div class="top">
-      <bd-user-circle class="initials-circle" [initials]="driverInitials">
+      <bd-user-circle class="initials-circle" [fullName]="fullName">
       </bd-user-circle>
       <div class="top-right">
         <div class="full-name interactive-text">
-          {{driver.firstName}} {{driver.lastName}}
+          {{fullName}}
         </div>
         <div class="top-icons">
           <span class="icon-mail"></span>

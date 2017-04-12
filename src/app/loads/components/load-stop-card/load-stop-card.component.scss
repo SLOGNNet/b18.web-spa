@@ -1,56 +1,62 @@
 @import '../../../../assets/styles/variables';
 
-:host-context(.interactive-panel:hover) {
-  background: $white;
+:host {
+  background: $default-background;
+  color: $dark-grey;
   transition: all $interactive-animation-time;
 
+  .status-text {
+    background: $default-background;
+    transition: inherit;
+  }
+
+  &.active {
+    background: $white;
+    color: $black;
+    transition: inherit;
+
+    .card-section {
+      border-bottom-color: $blue;
+
+      .status-text {
+        background: $white;
+        transition: inherit;
+      }
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+
   &.card {
+    background: $white;
     color: $black;
     transition: all $interactive-animation-time;
 
-    .card-section {
-      .status {
-        opacity: 1;
-      }
+    .status-text {
+      background: $white;
     }
 
     &:hover {
       background: $light-blue;
+
+      .status-text {
+        background: $light-blue;
+      }
     }
   }
 
   &.active {
     &.card {
-      color: $silver;
+      background: $light-blue;
       transition: all $interactive-animation-time;
 
-      .card-section {
-        .status {
-          opacity: 1;
-        }
-      }
-
-      &:hover {
-        background: $mako;
+      .status-text {
+        background: $light-blue;
       }
     }
   }
 }
-
-:host-context(.active) {
-  &.card {
-    background: $mako;
-    color: $silver;
-    transition: all $interactive-animation-time;
-
-    .card-section {
-      .status {
-        opacity: 1;
-      }
-    }
-  }
-}
-
 
 .card-section {
   position: relative;
@@ -97,7 +103,7 @@
       margin-top: 5px;
 
       .start-date {
-        color: $grey;
+        color: $dark-grey;
       }
 
       .schedule {
@@ -106,7 +112,7 @@
       }
 
       .end-date {
-        color: $grey;
+        color: $dark-grey;
       }
     }
   }
@@ -142,6 +148,7 @@
     position: absolute;
     right: 35px;
     padding: 5px 0 5px 13px;
+    background: $default-background;
     line-height: 1em;
     bottom: 8px;
     justify-content: center;
@@ -153,7 +160,6 @@
     width: 12px;
     height: 12px;
     background: $black;
-    opacity: $status-opacity;
     bottom: 13px;
     border-radius: $form-control-height;
   }
