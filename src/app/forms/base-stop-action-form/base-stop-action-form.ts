@@ -2,19 +2,18 @@ import { Component, Input, OnChanges, ElementRef } from '@angular/core';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Stop, Commodity } from '../../models';
+import { StopAction, Commodity } from '../../models';
 import { select } from '@angular-redux/store';
 import { CommodityActions } from '../../actions';
 import { Observable } from 'rxjs/Observable';
 @Component(Object.assign({
   inputs: ['viewMode', 'isNestedForm', 'group', 'stop'],
 }, BaseForm.metaData))
-export abstract class BaseStopForm extends BaseForm implements OnChanges{
+export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;
-  @select(state => state.commodities.items) commodities$: Observable<Commodity[]>;
   @Input('group') formGroup: FormGroup;
   @Input()
-  public stop: Stop;
+  public stopAction: StopAction;
 
 
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
@@ -34,14 +33,13 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
 
   onCommodityAdd() {
     const newCommodity = Commodity.create();
-    newCommodity.pickupId = this.stop.id;
     this.commodityActions.add(newCommodity);
   }
 
   private initForm() {
     this.formGroup.addControl(
       'date',
-      this.formBuilder.control(this.stop['date'])
+      this.formBuilder.control(this.stopAction['date'])
     );
     this.formGroup.addControl(
       'commodities',
@@ -49,7 +47,7 @@ export abstract class BaseStopForm extends BaseForm implements OnChanges{
     );
     this.formGroup.addControl(
       'notes',
-      this.formBuilder.control(this.stop['notes'])
+      this.formBuilder.control(this.stopAction['notes'])
     );
   }
 }

@@ -4,14 +4,15 @@
     formControlName="date"
   >
   </bd-form-datepicker>
-  <pick-up-commodity-form
+  <drop-off-commodity-form
     [formArray]="formGroup.controls.commodities"
+    [items]="stopAction.commodities"
+    [availablePickups]="availableCommodities$ | async"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
-    (add)="onCommodityAdd()"
-    [items]="pickupCommodities$ | async"
+    (select)="onCommoditySelect($event)"
     [viewMode]="viewMode">
-  </pick-up-commodity-form>
+  </drop-off-commodity-form>
   <bd-textarea
     class="bd-form-control"
     formControlName="notes"

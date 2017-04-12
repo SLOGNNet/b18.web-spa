@@ -15,7 +15,8 @@ import { NotificationService,
   HttpService,
   StateService,
   LicenseService,
-  LocationService
+  LocationService,
+  StopService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -103,6 +104,7 @@ import { DefaultComponentActionPanelComponent } from './components/default-compo
     StateService,
     LicenseService,
     LocationService,
+    StopService,
     Constants
   ],
   declarations: [

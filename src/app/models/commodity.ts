@@ -6,8 +6,6 @@ export const commodityListSchema = [commoditySchema];
 
 export class Commodity {
   id: string = '';
-  pickupId: string;
-  dropoffId?: string;
   pickupNumber: number;
   dropoffNumber: number;
   po: string = '';

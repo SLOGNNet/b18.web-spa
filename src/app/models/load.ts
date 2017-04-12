@@ -58,7 +58,7 @@ export class Load {
     result.requiredTrailerType = TrailerTypes.DRY_VAN_53;
     result.trips = [Trip.create()];
     result.currentTrips = [Trip.create()];
-    result.stops = [Stop.create(StopTypes.DROPOFF)];
+    result.stops = [Stop.create()];
     result.documents = [];
     result.commodities = new Array<Commodity>();
 

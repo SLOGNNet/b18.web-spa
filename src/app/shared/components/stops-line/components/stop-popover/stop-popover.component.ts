@@ -15,7 +15,8 @@ export class StopPopoverComponent {
   }
 
   get typeText() {
-    return StopTypes.displayText(this.stop.type);
+    //todo get type info from stop types
+    return "some type";//StopTypes.displayText(this.stop.type);
   }
 
   get phone() {

@@ -5,10 +5,6 @@ import { ContactsForm } from './contacts-form';
 import { ContactForm } from './contact-form';
 import { LocationsForm } from './locations-form';
 import { DriverForm } from './driver-form';
-import { DropoffFormComponent } from './dropoff-form';
-import { DropoffsFormComponent } from './dropoffs-form';
-import { PickupFormComponent } from './pickup-form';
-import { PickupsFormComponent } from './pickups-form';
 import { LoadDocumentFormComponent } from './load-document-form';
 import { SharedModule } from '../shared/shared.module';
 import { ContactInfoForm } from './contact-info-form';
@@ -19,6 +15,11 @@ import { LocationForm } from './location-form';
 import { EquipmentForm } from './equipment-form';
 import { MileagesForm } from './mileages-form';
 import { MileageForm } from './mileage-form';
+import { StopFormComponent } from './stop-form';
+import { StopActionsFormComponent } from './stop-actions-form';
+import { StopActionPickupFormComponent } from './stop-action-pickup-form';
+import { StopActonDropoffFormComponent } from './stop-action-dropoff-form';
+
 import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
@@ -34,10 +35,6 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
     DriverForm,
-    DropoffFormComponent,
-    DropoffsFormComponent,
-    PickupFormComponent,
-    PickupsFormComponent,
     PickUpCommodityFormComponent,
     DropOffCommodityFormComponent,
     LoadDocumentFormComponent,
@@ -47,7 +44,11 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     LocationForm,
     EquipmentForm,
     MileagesForm,
-    MileageForm
+    MileageForm,
+    StopFormComponent,
+    StopActionsFormComponent,
+    StopActionPickupFormComponent,
+    StopActonDropoffFormComponent
   ],
   imports: [
     SharedModule
@@ -65,7 +66,8 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     LocationForm,
     EquipmentForm,
     MileagesForm,
-    MileageForm
+    MileageForm,
+    StopFormComponent
   ]
 })
 export class BdFormsModule {
