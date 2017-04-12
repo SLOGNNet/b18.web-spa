@@ -37,7 +37,7 @@
   </bd-validator>
   <bd-validator *ngIf="registerForm.controls.userNameType.value === 'phone'"
     [component]="registerForm.controls.cellphone"
-    [errorDefs]="{required: 'This field is required', isValidPhoneFormat: 'Phone should consist of 10 numbers.'}">
+    [errorDefs]="{required: 'This field is required', isValidPhoneFormat: 'Phone number does not comply with standard format.'}">
     <bd-input
       class="bd-form-control"
       [labelText]="'Phone'"
