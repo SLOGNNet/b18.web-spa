@@ -1,9 +1,8 @@
 import { CommonActions, CommodityActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Load } from '../models';
-import { mergeEntities } from './utils';
+import { mergeEntities, addChild, removeChild } from './utils';
 const INITIAL_STATE = [];
-import { addChild, removeChild } from '../normalizerUtils';
 
 export const loadReducer = createReducer(INITIAL_STATE, {
  [CommodityActions.ADD_COMMODITY](state, action) {

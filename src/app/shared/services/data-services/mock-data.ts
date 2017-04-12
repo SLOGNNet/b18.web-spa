@@ -1035,7 +1035,7 @@ class MockData {
     {
       id: '2',
       name: 'M W LOGISTICS LLC',
-      locations: [this.locations[1], this.locations[1]],
+      locations: [this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.ACTIVE,
