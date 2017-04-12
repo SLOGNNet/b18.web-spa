@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Load, Contact } from '../../../models';
+import { Load, Stop, Contact } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadActions } from '../../../actions';
@@ -33,8 +33,15 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
       super(loadActions, ngRedux.select(selectDetailLoad), router, route, cdr);
   }
 
-    get selectedContact(): Contact {
-      return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
-    };
+  get selectedContact(): Contact {
+    return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
+  };
 
+  onStopRemove(stop: Stop) {
+
+  }
+
+  onStopEdit(stop: Stop) {
+     this.router.navigate([`edit-stop`], { preserveQueryParams: true, relativeTo: this.route });
+  }
 }

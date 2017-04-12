@@ -16,7 +16,7 @@ export class StopsLineComponent {
     this.select.emit(selected);
   }
 
-  //todo refactore to support pickup dropodd at same time
+  // todo refactore to support pickup dropodd at same time
   isDropOff(stop: Stop) {
     return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF);
   }
