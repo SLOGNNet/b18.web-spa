@@ -11,7 +11,7 @@ export class NotificationService {
   private timeouts = [1000, 2000, 5000, 9000, 1000, 1000, 1000, 10000, 90000, 500000];
   private _notification: BehaviorSubject<Notification>;
   private nextNotification = 0;
-  private notificationCount = 39;
+  private notificationCount = 38;
 
   constructor(private socketService: SocketService) {
     this._notification = <BehaviorSubject<Notification>>new BehaviorSubject(this.getNotification());
@@ -50,17 +50,20 @@ export class NotificationService {
     const me = this;
     function generate() {
       setTimeout(() => {
-        generate();
-        me._notification.next(me.getNotification());
+        let notification = me.getNotification();
+        if (notification) {
+          me._notification.next(notification);
+          generate();
+        }
       }, me.getRandomTimeout());
     }
-    if(this.nextNotification <= this.notificationCount) {
+    if (this.nextNotification <= this.notificationCount) {
       generate();
     }
   }
 
-  private getNotification() {
-    return MockData.notifications[this.nextNotification++];
+  public getNotification() {
+    return MockData.notifications.splice(Math.floor(Math.random() * MockData.notifications.length), 1)[0];
   }
 
   private getRandomTimeout() {

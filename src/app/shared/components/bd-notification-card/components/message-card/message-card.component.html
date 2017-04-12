@@ -10,10 +10,10 @@
   </div>
   <div class="bottom">
     <bd-user-circle
-      [initials]="initials">
+      [fullName]="fullName">
     </bd-user-circle>
     <div class="right">
-      <div class="title">{{notification.sender.firstName}} {{notification.sender.lastName}}</div>
+      <div class="title">{{fullName}}</div>
       <div class="message">
         {{notification.message}}
       </div>
