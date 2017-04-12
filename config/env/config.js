@@ -31,7 +31,9 @@ config = {
     socketIoHost: 'https://qa.bridge18.com'
   },
   stage: {
-    socketIoHost: 'https://stage.bridge18.com'
+    socketIoHost: 'https://stage.bridge18.com',
+    apiUrl: 'https://stage.bridge18.com/v1/api/expedition/',
+    authUrl: 'https://stage.bridge18.com/api/'
   },
   production: {
   }
