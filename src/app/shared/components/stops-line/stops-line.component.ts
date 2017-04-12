@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, StopTypes, StopStatuses } from '../../../models';
+import { Stop, StopStatuses, StopActionTypes } from '../../../models';
 
 @Component({
   selector: 'stops-line',
@@ -16,11 +16,12 @@ export class StopsLineComponent {
     this.select.emit(selected);
   }
 
-  isDropOff(type) {
-    return type === StopTypes.DROPOFF;
+  // todo refactore to support pickup dropodd at same time
+  isDropOff(stop: Stop) {
+    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF);
   }
 
-  getColor(type) {
-    return StopStatuses.color(type);
+  getColor(stopStatus: StopStatuses) {
+    return StopStatuses.color(stopStatus);
   }
 }

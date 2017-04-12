@@ -29,8 +29,6 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   @Output() save: EventEmitter<any> = new EventEmitter();
   @select(state => state.stops.items) stops$: Observable<Stop[]>;
   public loadForm: FormGroup;
-  private pickups$: Observable<Stop[]> = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.PICKUP));
-  private dropoffs$ = this.stops$.map(list => list.filter(stop => stop.type === StopTypes.DROPOFF));
 
   private companySource: any[];
   private companyQuery: string = '';
@@ -39,7 +37,6 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   private documents: Array<Document>;
 
   public constructor(
-    private stopActions: StopActions,
     private companyService: CompanyService,
     private formBuilder: FormBuilder,
     private enumHelperService: EnumHelperService,
@@ -91,8 +88,6 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
       requiredPowerUnitType: [this.load.requiredPowerUnitType],
       requiredTrailerType: [this.load.requiredTrailerType],
       specialRequirments: [this.load.specialRequirments],
-      pickups: this.formBuilder.array([]),
-      dropoffs: this.formBuilder.array([]),
       systemLoadNo: [this.load.systemLoadNo],
       customerLoadNo: [this.load.customerLoadNo],
       type: [this.load.type],
@@ -121,17 +116,5 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
       let result = this.loadForm.value;
       this.save.emit(this.loadForm.value);
     }
-  }
-
-  private onStopAdd(stop: Stop) {
-    this.stopActions.add(stop);
-  }
-
-  private onStopUpdate(stop: Stop) {
-    this.stopActions.update(stop);
-  }
-
-  private onStopRemove(stop: Stop) {
-    this.stopActions.remove(stop);
   }
 }

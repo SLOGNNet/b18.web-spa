@@ -6,6 +6,7 @@ import { equipmentReducer, IEquipmentState } from './equipment.reducer';
 import { companyLocationReducer, ICompanyLocationState } from './location.reducer';
 import { loadReducer, ILoadState } from './load.reducer';
 import { commodityReducer, ICommodityState } from './commodity.reducer';
+import { loadStopReducer, ILoadStopState } from './stop.reducer';
 
 export interface IUiState {
   companies: ICompanyState;
@@ -15,6 +16,7 @@ export interface IUiState {
   locations: ICompanyLocationState;
   loads: ILoadState;
   commodities: ICommodityState;
+  stops: ILoadStopState;
 }
 
 export const uiReducer = combineReducers({
@@ -24,5 +26,6 @@ export const uiReducer = combineReducers({
   equipments: equipmentReducer,
   locations: companyLocationReducer,
   loads: loadReducer,
-  commodities: commodityReducer
+  commodities: commodityReducer,
+  stops: loadStopReducer
 });
