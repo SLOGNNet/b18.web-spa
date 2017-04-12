@@ -509,16 +509,19 @@ class MockData {
   }];
 
   public stopActionCollection: Array<StopAction> = [{
+        id: '1',
         type: StopActionTypes.PICKUP,
-        commodity: this.commodities[0]
+        commodities: [this.commodities[0]]
        },
        {
+        id: '2',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[1]
+        commodities: [this.commodities[1]]
        },
        {
+        id: '3',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[2]
+        commodities: [this.commodities[2]]
        }
   ];
 
@@ -561,6 +564,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
   }
   // {
@@ -706,6 +710,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
+    stopActions: [],
     tripStops: [this.tripStopCollection[0]]
   }
   // {
@@ -824,6 +829,7 @@ class MockData {
       id: '1',
       companyId: '1',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '726457361',
@@ -847,6 +853,7 @@ class MockData {
       id: '2',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '234457361',
@@ -870,6 +877,7 @@ class MockData {
       id: '3',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '111557361',
@@ -893,6 +901,7 @@ class MockData {
       id: '4',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
@@ -916,6 +925,7 @@ class MockData {
       id: '5',
       companyId: '4',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
@@ -939,6 +949,7 @@ class MockData {
       id: '6',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
@@ -962,6 +973,7 @@ class MockData {
       id: '7',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
@@ -985,6 +997,7 @@ class MockData {
       id: '8',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',

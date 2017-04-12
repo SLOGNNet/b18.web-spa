@@ -5,7 +5,7 @@ import { LoadService, CompanyService } from '../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../store';
+import { IAppState, selectLoads } from '../store';
 
 @Component({
   selector: 'loads',
@@ -22,7 +22,7 @@ export class LoadsComponent extends BaseListComponent<Load>{
     router: Router,
     route: ActivatedRoute,
     private ngRedux: NgRedux<IAppState>) {
-    super(loadActions, ngRedux.select(state => state.loads.items), router, route);
+    super(loadActions, ngRedux.select(selectLoads), router, route);
     this.autocompleteSearchSource = this.autocompleteSearchSource.bind(this);
   }
 
