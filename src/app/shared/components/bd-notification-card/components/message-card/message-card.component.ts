@@ -20,8 +20,8 @@ export class MessageCardComponent {
     this.close.emit(event);
   }
 
-  get initials() {
-    return this.notification.sender.firstName + ' ' + this.notification.sender.lastName;
+  get fullName() {
+    return `${this.notification.sender.firstName} ${this.notification.sender.lastName}`;
   }
 
 }

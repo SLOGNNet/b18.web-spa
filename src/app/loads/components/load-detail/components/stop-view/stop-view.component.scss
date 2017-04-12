@@ -1,4 +1,5 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
 
 $element-height: 18px;
@@ -14,6 +15,7 @@ $text-margin: 5px;
     margin-bottom: 0;
   }
 }
+
 .stop-view-mode-section {
   display: flex;
   border: $border;
@@ -26,7 +28,7 @@ $text-margin: 5px;
   &:last-of-type {
     margin-bottom: 0;
   }
-    
+
   button {
     padding: 0;
     border: 0;
@@ -61,10 +63,9 @@ $text-margin: 5px;
   }
 
   .stop-info-container {
+    @include default-view-container;
     position: relative;
     display: flex;
-    background: $white;
-    border-bottom: $border;
     border-left: 4px solid $grey;
     border-top-left-radius: $default-border-radius;
     border-top-right-radius: $default-border-radius;
@@ -105,7 +106,6 @@ $text-margin: 5px;
       flex-direction: column;
 
       .title {
-        color: $black;
         line-height: 12px;
         margin-left: $element-width;
         font-weight: bold;
@@ -176,4 +176,10 @@ $text-margin: 5px;
       }
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

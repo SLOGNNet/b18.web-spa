@@ -42,4 +42,17 @@ export class LocationService {
 
     return Observable.of(persitLocation.id);
   }
+
+  remove(company: Company, location: Location): Observable<string> {
+    if (company && location) {
+      MockData.locations = MockData.locations.filter(l => l.id !== location.id);
+      MockData.companies.forEach(c => {
+        if (c.id === company.id) {
+          c.locations = c.locations.filter(l => l.id !== location.id);
+        }
+      });
+    }
+
+    return Observable.of(location.id);
+  }
 }

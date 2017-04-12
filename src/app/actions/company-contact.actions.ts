@@ -46,8 +46,10 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   }
 
   removeAssociation(contact: Contact, company: Company): void {
-    const normalizedData = normalize(contact, contactSchema);
-    this.ngRedux.dispatch({ type: CompanyContactActions.REMOVE_COMPANY_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
+    this.contactService.remove(company, contact).subscribe(_ => {
+      const normalizedData = normalize(contact, contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.REMOVE_COMPANY_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
+    });
   }
 
   select(contactId: string): void {

@@ -47,6 +47,10 @@ export class AuthenticationService {
     if (formModel.userNameType === 'phone') {
       delete formModel.email;
     }
+    // if email chosed, phone key - should be removed for backend correct validation
+    if (formModel.userNameType === 'email') {
+      delete formModel.cellphone;
+    }
     formModel.password = formModel.passwordGroup.password;
     formModel.retryPassword = formModel.passwordGroup.retryPassword;
     return Observable.create((observer) => {
@@ -96,6 +100,10 @@ export class AuthenticationService {
     // if cellphone chosed, email key - should be removed for backend correct validation
     if (formModel.userNameType === 'phone') {
       delete formModel.email;
+    }
+    // if email chosed, phone key - should be removed for backend correct validation
+    if (formModel.userNameType === 'email') {
+      delete formModel.cellphone;
     }
     return Observable.create((observer) => {
       this.http.post(`${this.config.authUrl}auth/passwords`, formModel).subscribe(

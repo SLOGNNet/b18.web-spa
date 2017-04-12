@@ -5,8 +5,9 @@
   display: flex;
   height: $form-control-height;
   padding: 0 $default-margin;
-  background: $serenity;
+  background: $default-background;
   border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 
   .bd-switch-label {
     display: flex;
