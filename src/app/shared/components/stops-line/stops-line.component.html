@@ -5,11 +5,11 @@
       class="stop-icon stop{{i}}"
       [bd-popover]="stopPopover"
       [popoverOnHover]="true"
-      [style.color]="getColor(stop.type)"
+      [style.color]="getColor(stop.status)"
       [style.left.px]="stop.left"
       [style.position]="stop.left ? 'absolute' : ''"
-      [class.icon-dropoff]="isDropOff(stop.type)"
-      [class.icon-pickup]="!isDropOff(stop.type)"
+      [class.icon-dropoff]="isDropOff(stop)"
+      [class.icon-pickup]="!isDropOff(stop)"
       (click)="onStopSelect(stop)">
       <bd-popover-content
         #stopPopover

@@ -14,7 +14,7 @@
         </bd-view-detail-section>
         <navigation-anchor id="itinerary"></navigation-anchor>
         <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
-            <stop-view 
+            <stop-view (remove)="onStopRemove($event)" (edit)="onStopEdit($event)"
                 *ngFor="let stop of selectedItem.stops"
                 [stop]="stop">
             </stop-view>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Commodity, Stop, commoditySchema, stopSchema } from '../models';
+import { Commodity, StopAction, commoditySchema, stopSchema } from '../models';
 import { normalize } from 'normalizr';
 import { createPeristEnity } from './utils';
 
@@ -30,7 +30,7 @@ export class CommodityActions {
     this.ngRedux.dispatch({ type: CommodityActions.UPDATE_COMMODITY, data: normalizedData });
   }
 
-  select(commodity: Commodity, stop: Stop): void {
+  select(commodity: Commodity, stopAction: StopAction): void {
     const normalizedCommodity = normalize(commodity, commoditySchema);
     this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity});
   }

@@ -13,26 +13,11 @@ import { BdToastManagerComponent } from '../bd-toast-manager/bd-toast-manager.co
 import { EquipmentModule } from '../equipment';
 import { TopPanelComponent } from '../top-panel';
 import { DriversModule } from '../drivers';
+import { LoadsModule } from '../loads';
 import { CompaniesModule } from '../companies';
 import { HomeComponent } from '../home';
 import { MessagesComponent } from '../drivers/messages';
 import { MessageComponent } from '../drivers/messages/message';
-
-import {
-  LoadsComponent,
-  LoadEditComponent,
-  LoadStopCardComponent,
-  LoadStopCardsComponent,
-  TripPopoverComponent,
-  CompanyPopoverComponent,
-  DriverPopoverComponent,
-  LoadDetailComponent,
-  CommodityDetailsComponent,
-  TripViewComponent,
-  StopViewComponent,
-  CustomerDetailComponent,
-  RequirementsDetailComponent
-} from '../loads';
 
 
 @NgModule({
@@ -45,7 +30,8 @@ import {
     MainRoutingModule,
     DriversModule,
     CompaniesModule,
-    EquipmentModule
+    EquipmentModule,
+    LoadsModule
   ],
   declarations: [
     MainComponent,
@@ -53,19 +39,6 @@ import {
     HomeComponent,
     MessagesComponent,
     MessageComponent,
-    LoadsComponent,
-    LoadEditComponent,
-    LoadStopCardComponent,
-    LoadStopCardsComponent,
-    LoadDetailComponent,
-    TripViewComponent,
-    StopViewComponent,
-    CustomerDetailComponent,
-    RequirementsDetailComponent,
-    TripPopoverComponent,
-    CompanyPopoverComponent,
-    DriverPopoverComponent,
-    CommodityDetailsComponent,
     BdToastManagerComponent
   ],
   exports: [

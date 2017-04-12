@@ -3,20 +3,17 @@ import { Component, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/co
 import { FormBuilder } from '@angular/forms';
 import { Commodity } from '../../models';
 import { BaseForm } from '../base-form';
-import { BaseStopForm } from '../base-stop-form';
+import { BaseStopActionForm } from '../base-stop-action-form';
 import { CommodityActions } from '../../actions';
-
-
+import { Observable } from 'rxjs/Observable';
 
 @Component(Object.assign({
-  selector: 'dropoff-form',
-  styleUrls: ['dropoff-form.component.scss'],
-  templateUrl: './dropoff-form.component.html'
+  selector: 'stop-action-dropoff-form',
+  styleUrls: ['./stop-action-dropoff-form.component.scss'],
+  templateUrl: './stop-action-dropoff-form.component.html'
 }, BaseForm.metaData))
-export class DropoffFormComponent extends BaseStopForm implements OnChanges {
-  private availablePickups: Array<Commodity> = new Array<Commodity>();
-  private dropoffCommodities$ = this.commodities$.map(list => list.filter(c => c.dropoffId === this.stop.id));
-  private availableCommodities$ = this.commodities$.map(list => list.filter(c => !c.dropoffId));
+export class StopActonDropoffFormComponent extends BaseStopActionForm implements OnChanges {
+  private availableCommodities$ = Observable.of([]);
   constructor(formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions, datePipe: DatePipe) {
     super(elementRef, formBuilder, commodityActions, datePipe);
@@ -31,6 +28,6 @@ export class DropoffFormComponent extends BaseStopForm implements OnChanges {
   }
 
   onCommoditySelect(commodity: Commodity) {
-    this.commodityActions.select(commodity, this.stop);
+    this.commodityActions.select(commodity, this.stopAction);
   }
 }

@@ -14,7 +14,6 @@ export const stopListSchema = [stopSchema];
 export class Stop {
   id: string;
   notes: string = '';
-  type: StopTypes = StopTypes.NONE;
   @Type(() => Facility)
   facility: Facility;
   status: StopStatuses.IN_PROGRESS;
@@ -27,14 +26,13 @@ export class Stop {
   @Type(() => StopAction)
   stopActions: Array<StopAction>;
 
-  static create(type: StopTypes): Stop{
+  static create(): Stop{
     const result = new Stop();
     result.id = generateNewId();
     result.arrivedAt = new Date();
     result.departedAt = new Date();
     result.plannedArrivalAt = new Date();
     result.plannedDepartureAt = new Date();
-    result.type = type;
     result.facility = Facility.create();
     result.tripStops = [];
     return result;
