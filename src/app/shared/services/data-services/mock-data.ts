@@ -5,9 +5,22 @@ import {
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location, Mileage
+  AppointmentTypes, StopAction, TripStop, Location, Mileage, Notification
 } from './models';
 class MockData {
+
+  public notifications: Array<Notification> = [{
+    id: '1',
+    title: 'CH Robinson: Invoices paid',
+    type: null,
+    date: new Date(),
+    message: 'Invoice #01857/11 to CH Robinson paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+    sender: null,
+    taskType: 1,
+    priority: null,
+    notificationStatus: 1,
+    isViewed: false
+  }];
 
   public addresses: Array<Address> = [{
     id: '1',
