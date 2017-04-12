@@ -1,13 +1,20 @@
-import { Stop } from './stop';
-import { Company } from './company';
-import { Commodity } from './commodity';
+import { Stop, stopSchema } from './stop';
+import { Company, companySchema } from './company';
+import { Commodity, commoditySchema } from './commodity';
 import { Location } from './location';
 import { Contact } from './contact';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
 import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
-import { Type } from 'class-transformer';
+import { Type, Transform, Expose } from 'class-transformer';
+import { schema } from 'normalizr';
+
+export const loadSchema = new schema.Entity('loads', {
+  stops: [stopSchema],
+  commodities: [commoditySchema]
+});
+export const loadListSchema = [loadSchema];
 
 export class Load {
   id: string;
@@ -16,6 +23,7 @@ export class Load {
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
+  customerLocationId: string;
   customerBillingLocationId: string;
   @Type(() => Location)
   customerLocation: Location = new Location();

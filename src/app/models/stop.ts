@@ -2,7 +2,14 @@ import { Facility } from './facility';
 import { TripStop } from './tripStop';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
+import { StopAction, stopActionSchema } from './stopAction';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+import { Commodity, commoditySchema } from './commodity';
+export const stopSchema = new schema.Entity('stops', {
+  stopActions: [stopActionSchema]
+});
+export const stopListSchema = [stopSchema];
 
 export class Stop {
   id: string;
@@ -17,6 +24,8 @@ export class Stop {
   plannedDepartureAt: Date = null;
   @Type(() => TripStop)
   tripStops: Array<TripStop>;
+  @Type(() => StopAction)
+  stopActions: Array<StopAction>;
 
   static create(type: StopTypes): Stop{
     const result = new Stop();

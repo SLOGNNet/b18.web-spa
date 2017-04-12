@@ -44,12 +44,12 @@
       <bd-dropdown
         *ngIf='load.customer'
         class="bd-form-control"
-        labelText='Address'
+        labelText='Location'
         clearLabel='Leave Empty'
-        formControlName="addressId"
-        defaultTitleText="Select address"
+        formControlName="customerLocationId"
+        defaultTitleText="Select location"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.customer.addresses"
+        [items]="load.customer.locations"
         keyField="id"
         valueField="name">
       </bd-dropdown>
@@ -59,11 +59,11 @@
         *ngIf='load.customer'
         clearLabel='Leave Empty'
         class="bd-form-control"
-        labelText='Billing Address'
-        formControlName="customerBillingAddressId"
-        defaultTitleText="Select Billing Address"
+        labelText='Billing Location'
+        formControlName="customerBillingLocationId"
+        defaultTitleText="Select Billing Location"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.customer.addresses"
+        [items]="load.customer.locations"
         keyField="id"
         valueField="name">
       </bd-dropdown>

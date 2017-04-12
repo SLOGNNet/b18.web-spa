@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Stop } from '../models';
+import { Stop, stopSchema } from '../models';
+import { normalize } from 'normalizr';
 
 @Injectable()
 export class StopActions {
@@ -13,7 +14,8 @@ export class StopActions {
     private ngRedux: NgRedux<IAppState>) {}
 
   add(stop: Stop): void {
-    this.ngRedux.dispatch({ type: StopActions.ADD_STOP, stop });
+    const normalizedData = normalize(stop, stopSchema);
+    this.ngRedux.dispatch({ type: StopActions.ADD_STOP, data: normalizedData });
   }
 
   remove(stop: Stop): void {
@@ -21,6 +23,7 @@ export class StopActions {
   }
 
   update(stop: Stop): void {
-    this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP, stop });
+    const normalizedData = normalize(stop, stopSchema);
+    this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP, data: normalizedData });
   }
 }

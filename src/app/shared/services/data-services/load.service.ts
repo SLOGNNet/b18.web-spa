@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { CompanyService } from './index';
 import MockData from './mock-data';
 import { HttpService } from '../http.service';
+import { generatePersistId } from '../../helpers';
 import { cloneDeep } from 'lodash';
 @Injectable()
 export class LoadService {
@@ -30,11 +31,14 @@ export class LoadService {
       );
   };
 
-  create(load: Load) {
-    MockData.loads.push(load);
+  create(load: Load): Observable<string> {
+    const persistLoad = cloneDeep(load);
+    persistLoad.id = generatePersistId();
+    MockData.loads.push(persistLoad);
+    return Observable.of(persistLoad.id);
   }
 
-  update(load: Load) {
+  update(load: Load): Observable<string> {
     const persistLoad = cloneDeep(load);
     const id = persistLoad.id;
 
@@ -44,5 +48,7 @@ export class LoadService {
         return;
       }
     });
+
+    return Observable.of(id);
   }
 }

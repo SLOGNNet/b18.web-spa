@@ -2,6 +2,10 @@ import { DriverTeam } from './driverTeam';
 import { Equipment } from './equipment';
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+
+export const tripSchema = new schema.Entity('trips');
+export const tripListSchema = [tripSchema];
 
 export class Trip {
   id: string;
