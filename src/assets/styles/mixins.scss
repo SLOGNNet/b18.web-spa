@@ -34,18 +34,18 @@
 @mixin interactive-text {
   .interactive-text {
     color: $dark-grey;
-    transition: all 500ms;
+    transition: all $interactive-animation-time;
   }
 }
 @mixin interactive-background {
   .interactive-text {
     color: $black;
-    transition: all 500ms;
+    transition: all $interactive-animation-time;
   }
 
   .interactive-background {
     background: $white;
-    transition: all 500ms;
+    transition: all $interactive-animation-time;
   }
 }
 @mixin default-view-container {
