@@ -33,7 +33,7 @@ function createCollection(): Stop[] {
   return [createStopWithPickup(), createStopWithDropoff()];
 }
 
-describe('StopsLineComponent', () => {
+xdescribe('StopsLineComponent', () => {
   let fixture: ComponentFixture<StopsLineComponent>,
     component: StopsLineComponent,
     stopCollection: Array<Stop>;
