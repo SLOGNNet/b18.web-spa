@@ -104,6 +104,10 @@
 
     &:hover {
       background: $light-blue;
+
+      .status-text {
+        background: $light-blue;
+      }
     }
   }
 
