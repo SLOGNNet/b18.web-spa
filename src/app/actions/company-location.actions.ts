@@ -45,8 +45,10 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
   }
 
   removeAssociation(location: Location, company: Company): void {
-    const normalizedData = normalize(location, locationSchema);
-    this.ngRedux.dispatch({ type: CompanyLocationActions.REMOVE_LOCATION_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
+    this.locationService.remove(company, location).subscribe(_ => {
+      const normalizedData = normalize(location, locationSchema);
+      this.ngRedux.dispatch({ type: CompanyLocationActions.REMOVE_LOCATION_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
+    });
   }
 
   select(locationId: string): void {

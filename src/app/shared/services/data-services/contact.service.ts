@@ -48,4 +48,17 @@ export class ContactService {
 
     return Observable.of(persistContact.id);
   }
+
+  remove(company: Company, contact: Contact): Observable<string> {
+    if (company && contact) {
+      MockData.contacts = MockData.contacts.filter(l => l.id !== contact.id);
+      MockData.companies.forEach(c => {
+        if (c.id === company.id) {
+          c.contacts = c.contacts.filter(l => l.id !== contact.id);
+        }
+      });
+    }
+
+    return Observable.of(contact.id);
+  }
 }
