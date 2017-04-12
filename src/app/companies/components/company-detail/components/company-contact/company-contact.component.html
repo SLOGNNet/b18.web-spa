@@ -1,11 +1,11 @@
-<default-component-action-panel (edit)="onEdit()">
+<default-component-action-panel (edit)="onEdit()" (remove)="onRemove()">
   <div class="location-container interactive-background">
     <div class="left">
-        <bd-user-circle class="initials-circle" [initials]="fullName">
+        <bd-user-circle class="initials-circle" [fullName]="fullName">
         </bd-user-circle>
         <div class="full-name-icons-container">
           <div class="full-name interactive-text">
-            {{contact.firstName}} {{contact.lastName}}
+            {{fullName}}
           </div>
           <div class="icons">
             <span class="icon-mail"></span>

@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Company } from '../../../models';
+import { Company, Location, Contact } from '../../../models';
 import { BaseDetailComponent } from '../../../base';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CompanyActions } from '../../../actions';
+import { CompanyActions, CompanyLocationActions, CompanyContactActions } from '../../../actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, selectDetailCompany } from '../../../store';
 
@@ -28,6 +28,8 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
   constructor(
     cdr: ChangeDetectorRef,
     companyActions: CompanyActions,
+    private companyLocationActions: CompanyLocationActions,
+    private companyContactActions: CompanyContactActions,
     route: ActivatedRoute,
     router: Router,
     ngRedux: NgRedux<IAppState>) {
@@ -45,5 +47,13 @@ export class CompanyDetailComponent extends BaseDetailComponent<Company> {
 
   onAddLocationClick(contact) {
     this.router.navigate([`./edit-location/0`],  {preserveQueryParams: true, relativeTo: this.route});
+  }
+
+  onLocationRemove(location: Location) {
+    this.companyLocationActions.removeAssociation(location, this.selectedItem);
+  }
+
+  onContactRemove(contact: Contact) {
+    this.companyContactActions.removeAssociation(contact, this.selectedItem);
   }
 }

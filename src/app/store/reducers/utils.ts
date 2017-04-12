@@ -1,20 +1,30 @@
-export function updateListItem(list: any[], updated: any) {
-  return list.map(item => updateItem(item, updated));
+export function mergeLists(listById: any, newListById: any) {
+   const result = Object.assign({}, listById, newListById);
+   return result;
 }
 
-export function updateItem(item: any, updated: any) {
-  const updatedId = updated['id'];
-  return item['id'] === updatedId ? Object.assign({}, item, updated) : item;
+export function addItem(byId: any, added: any) {
+  return {...byId, [added.id]: { added }};
 }
 
-export function updateNewItem(item: any, updated: any, newId: any) {
-   return  item['id'] === item.id ? Object.assign({}, item, updated, { prevId: item.id, id: newId}) : item;
+export function addChild(entityState: any, entityId: string, childName: string, childId: string) {
+   const result = {
+      ...entityState,
+      [entityId]: {
+        ...entityState[entityId],
+        [childName]: [childId, ...entityState[entityId][childName]]
+      }
+    };
+    return result;
 }
 
-export function removeItem(list: any[], removed: any) {
-  return list.filter(item => item.id !== removed.id);
-}
-
-export function addItem(list: any[], added: any, id: any) {
-  return [...list, Object.assign({}, added, {id: id})];
+export function removeChild(entityState: any, entityId: string, childName: string, childId: string) {
+   const result = {
+      ...entityState,
+      [entityId]: {
+        ...entityState[entityId],
+        [childName]: entityState[entityId][childName].filter(id => id !== childId)
+      }
+    };
+    return result;
 }

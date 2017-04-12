@@ -10,12 +10,13 @@
     width: 100%;
     height: $form-control-height;
     padding: 0 $default-margin;
-    background-color: $serenity;
+    background-color: $default-background;
     box-shadow: inherit;
     border-bottom: $border;
     outline: 0;
     align-items: center;
     justify-content: space-between;
+    transition: background-color $interactive-animation-time;
 
     .bd-dropdown-label {
       width: 24%;
@@ -40,6 +41,11 @@
     .bd-dropdown-value {
       font-size: $form-control-font-size;
       flex-grow: 1;
+
+      span {
+        color: $label-default-color;
+        transition: all $interactive-animation-time;
+      }
     }
 
     .bd-dropdown-icon {
@@ -168,4 +174,20 @@
 
 :host-context(.interactive-panel:hover) {
   @include interactive-background;
+
+  .bd-dropdown-wrapper {
+
+    .bd-dropdown-value {
+
+      .item-selected {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+    }
+
+    .bd-dropdown-icon {
+      color: $black;
+      transition: all $interactive-animation-time;
+    }
+  }
 }

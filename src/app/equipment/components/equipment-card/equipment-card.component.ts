@@ -28,7 +28,7 @@ export class EquipmentCardComponent extends BaseCardComponent {
     }
 
     get equipmentShortTypeText(): string {
-      return EquipmentTypes.displayShortText(this.item.type).split('').join(' ');
+      return EquipmentTypes.displayShortText(this.item.type);
     }
 
 }
