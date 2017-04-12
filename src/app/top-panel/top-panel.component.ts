@@ -20,7 +20,6 @@ export class TopPanelComponent {
               private cdr: ChangeDetectorRef,
               private authenticationService: AuthenticationService) {
     notificationService.notification.subscribe(notif => {
-
       this.testNotifications.push(notif);
       this.testNotifications = this.testNotifications.slice();
       this.cdr.markForCheck();
