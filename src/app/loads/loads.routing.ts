@@ -44,7 +44,7 @@ const routes: Routes = [{
         canDeactivate: [CanDeactivateGuard]
       },
       {
-        path: 'edit-stop',
+        path: 'edit-stop/:id',
         component: LoadEditStopComponent,
         canDeactivate: [CanDeactivateGuard]
       },

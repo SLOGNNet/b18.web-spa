@@ -25,7 +25,7 @@ export abstract class BaseDetailComponent<T> extends BasePane {
     });
   }
 
-  private onEdit() {
+  protected onEdit() {
     this.navigateToEdit();
   }
 
