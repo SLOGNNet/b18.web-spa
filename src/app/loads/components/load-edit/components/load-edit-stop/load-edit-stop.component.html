@@ -7,14 +7,13 @@
     [anchors]="anchors">
   </form-navigation>
   <bd-form-section [disabled]="disabled" [labelText]="'Contact'">
-    <contact-form
+    <stop-form
       [contact]="selectedItem"
       [disabled]="isLoading"
       [scrollable]="true"
       [viewMode]="viewMode"
-      [locations]="(parent$ | async)?.locations"
    >
-    </contact-form>
+    </stop-form>
     <form-sticky-bottom-container [sticky]="true" [stickyPositionInsideScroll]="true">
       <div class="button-group">
         <bd-button [disabled]="disabled" (click)="onItemCancel()" [text]="'Cancel'" class="button">

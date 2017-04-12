@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {
   TripStop,
   StopActionTypes,
@@ -13,6 +13,8 @@ import { map } from 'lodash';
 })
 export class StopViewComponent {
   @Input() stop: Stop;
+  @Output() remove = new EventEmitter();
+  @Output() edit = new EventEmitter();
   public isExpanded: boolean = false;
   public pickups: Array<any> = [];
   public dropoffs: Array<any> = [];
@@ -43,5 +45,13 @@ export class StopViewComponent {
     let result: Array<ContactInfo> = [];
     this.isExpanded ? result = contactItems : result.push(ContactInfo.getPrimaryPhone(contactItems));
     return result;
+  }
+
+  onEdit() {
+    this.edit.emit(this.stop);
+  }
+
+  onRemove() {
+    this.remove.emit(this.stop);
   }
 }

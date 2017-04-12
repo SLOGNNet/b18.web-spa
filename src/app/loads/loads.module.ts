@@ -14,6 +14,7 @@ import {
   CommodityDetailsComponent,
   TripViewComponent,
   StopViewComponent,
+  LoadEditStopComponent,
   CustomerDetailComponent,
   RequirementsDetailComponent
 } from './components';
@@ -41,6 +42,7 @@ import { BdFormsModule } from '../forms/forms.module';
     CommodityDetailsComponent,
     TripViewComponent,
     StopViewComponent,
+    LoadEditStopComponent,
     CustomerDetailComponent,
     RequirementsDetailComponent
   ]

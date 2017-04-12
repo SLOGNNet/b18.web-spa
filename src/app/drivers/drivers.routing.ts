@@ -9,22 +9,7 @@ const routes: Routes = [{
   path: '',
   component: DriversComponent,
   children: [
-    {
-      path: '0',
-      children: [
-        {
-          path: '',
-          component: EmptyComponent,
-          outlet: 'detailOutlet',
-        },
-        {
-          path: 'edit',
-          component: DriverEditComponent,
-          data: { new: true },
-          canDeactivate: [CanDeactivateGuard]
-        }
-      ]
-    },
+
     {
       path: ':id',
       children: [

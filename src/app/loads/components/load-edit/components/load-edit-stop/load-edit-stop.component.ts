@@ -6,20 +6,20 @@ import { BaseNestedEditComponent } from '../../../../../base';
 import { StopActions } from '../../../../../actions';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState, selectDetailLoad, selectDetailStop } from '../../../../../store';
-import { ContactForm } from '../../../../../forms';
+import { StopFormComponent } from '../../../../../forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'company-edit-contact',
-  templateUrl: './company-edit-contact.component.html',
-  styleUrls: ['./company-edit-contact.component.scss']
+  selector: 'load-edit-stop',
+  templateUrl: './load-edit-stop.component.html',
+  styleUrls: ['./load-edit-stop.component.scss']
 })
 export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   protected segment = 'edit-stop';
-  @ViewChild(ContactForm) companyContactFormComponent: ContactForm;
   private locations$;
   private selectedLoad: Load;
+  private form: FormGroup = this.formBuilder.group({});
   private locations: Array<any>;
   private anchors = [{
     id: '',
@@ -39,17 +39,17 @@ export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   }
 
   isDetailsChanged() {
-    return this.companyContactFormComponent && this.companyContactFormComponent.contactForm.dirty;
+    return this.form && this.form.dirty;
   }
 
   onFormSave() {
-    if (this.companyContactFormComponent.contactForm.valid) {
-      this.companyContactFormComponent.contactForm.markAsPristine();
-      super.onItemSave(this.companyContactFormComponent.contactForm.value);
+    if (this.form.valid) {
+      this.form.markAsPristine();
+      super.onItemSave(this.form.value);
     }
   }
 
   getItemName() {
-    return 'Company';
+    return 'Stop';
   }
 }

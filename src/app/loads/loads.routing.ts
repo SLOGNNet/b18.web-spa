@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
   LoadEditComponent,
-  LoadDetailComponent
+  LoadDetailComponent,
+  LoadEditStopComponent
 } from './components';
 
 import { LoadsComponent } from './loads.component';
@@ -43,10 +44,15 @@ const routes: Routes = [{
         canDeactivate: [CanDeactivateGuard]
       },
       {
-          path: 'edit',
-          component: LoadEditComponent,
-          canDeactivate: [CanDeactivateGuard]
-      }
+        path: 'edit-stop',
+        component: LoadEditStopComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+       {
+        path: 'edit',
+        component: LoadEditComponent,
+        canDeactivate: [CanDeactivateGuard]
+       }
       ]
     }
   ]
