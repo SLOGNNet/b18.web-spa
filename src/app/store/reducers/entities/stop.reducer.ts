@@ -1,8 +1,7 @@
 import { CommonActions, StopActionActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Stop } from '../models';
-import { mergeEntities } from './utils';
-import { addChild, removeChild } from '../normalizerUtils';
+import { mergeEntities, addChild, removeChild } from './utils';
 const INITIAL_STATE = [];
 
 export const stopReducer = createReducer(INITIAL_STATE, {

@@ -18,7 +18,7 @@ export const equipmentReducer = createReducer(INITIAL_STATE, {
   [EquipmentActions.ADD_EQUIPMENT_SUCCESS](state, action) {
     return Object.assign({}, state, {
       list: [action.data.result, ...state.list],
-      selected: action.prevId = state.selected ? action.data.result : state.selected,
+      selected: action.prevId === state.selected ? action.data.result : state.selected,
       isLoading: false
     });
   },

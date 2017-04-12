@@ -18,7 +18,7 @@ export const loadReducer = createReducer(INITIAL_STATE, {
   [LoadActions.ADD_LOAD_SUCCESS](state, action) {
     return Object.assign({}, state, {
       list: [action.data.result, ...state.list],
-      selected: action.prevId = state.selected ? action.data.result : state.selected,
+      selected: action.prevId === state.selected ? action.data.result : state.selected,
       isLoading: false
     });
   },

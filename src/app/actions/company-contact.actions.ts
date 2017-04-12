@@ -16,6 +16,8 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   static UPDATE_COMPANY_CONTACT_SUCCESS: string = 'UPDATE_COMPANY_CONTACT_SUCCESS';
   static UPDATE_COMPANY_CONTACT_FAILURE: string = 'UPDATE_COMPANY_CONTACT_FAILURE';
   static SELECT_COMPANY_CONTACT: string = 'SELECT_COMPANY_CONTACT';
+  static REMOVE_COMPANY_CONTACT_SUCCESS: string = 'REMOVE_COMPANY_CONTACT_SUCCESS';
+
   constructor(
     private contactService: ContactService,
     private companyActions: CompanyActions,
@@ -41,6 +43,11 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
       this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Contact updated.', `${contact.id} was updated.`);
     }, 3000);
+  }
+
+  removeAssociation(contact: Contact, company: Company): void {
+    const normalizedData = normalize(contact, contactSchema);
+    this.ngRedux.dispatch({ type: CompanyContactActions.REMOVE_COMPANY_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
   }
 
   select(contactId: string): void {

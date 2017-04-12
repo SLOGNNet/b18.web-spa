@@ -1,7 +1,7 @@
 import { CompanyActions, CompanyContactActions, CommonActions } from '../actions';
 import { createReducer } from '../create-reducer';
 import { Company, Contact, IEntity } from '../models';
-import { updateItem, deleteItem, addItem, mergeLists } from '../normalizerUtils';
+import { mergeLists } from '../utils';
 import { omit } from 'lodash';
 export interface ICompanyState {
     list: string[];
