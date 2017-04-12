@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { cloneDeep } from 'lodash';
 
 @Component({
-  selector: 'company-edit-lcoation',
+  selector: 'company-edit-location',
   templateUrl: './company-edit-location.component.html',
   styleUrls: ['./company-edit-location.component.scss']
 })
