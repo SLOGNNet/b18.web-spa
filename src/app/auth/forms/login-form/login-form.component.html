@@ -5,14 +5,14 @@
   </bd-auth-general-form-error>
   <bd-validator [component]="loginForm.controls.username" [errorDefs]="{required: 'This field is required'}">
     <bd-input
-      class="bd-form-control"
+      class="bd-form-control username"
       [labelText]="'Phone or Email'"
       formControlName="username">
     </bd-input>
   </bd-validator>
   <bd-validator [component]="loginForm.controls.password" [errorDefs]="{required: 'This field is required'}">
     <bd-input
-      class="bd-form-control"
+      class="bd-form-control password"
       [type]="'password'"
       [labelText]="'Password'"
       formControlName="password">
@@ -22,7 +22,7 @@
   <bd-button
     type="submit"
     color="primary"
-    class="button"
+    class="button login"
     [(disabled)]="!loginForm.valid"
     [text]="'Login'">
   </bd-button>
