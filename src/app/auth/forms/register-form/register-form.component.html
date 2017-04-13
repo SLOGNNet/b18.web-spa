@@ -3,23 +3,31 @@
     [headerText]="'Unable to registering.'">
     {{ errorDescription }}
   </bd-auth-general-form-error>
+<bd-validator-summary>
   <div class="section">
+      <bd-validator [component]="registerForm.controls.firstName" [errorDefs]="{required: 'First name is required'}">
+        <bd-input
+          class="bd-form-control section-control first-name left-control"
+          placeholder="First Name"
+          [required]="true"
+          formControlName="firstName">
+        </bd-input>
+    </bd-validator>
     <bd-input
-      class="bd-form-control section-control first-name"
-      placeholder="First Name"
-      formControlName="firstName">
-    </bd-input>
-    <bd-input
-      class="bd-form-control section-control middle-name"
+      class="bd-form-control section-control middle-name middle-control"
       placeholder="Middle Name"
       formControlName="middleName">
     </bd-input>
+  <bd-validator [component]="registerForm.controls.lastName" [errorDefs]="{required: 'Last name is required'}">
     <bd-input
-      class="bd-form-control section-control last-name"
+      class="bd-form-control section-control last-name right-control"
       placeholder="Last Name"
+      [required]="true"
       formControlName="lastName">
     </bd-input>
+  </bd-validator>
   </div>
+</bd-validator-summary>
   <bd-form-switch class="bd-form-control"
     formControlName="userNameType"
     class="user-name-type"
