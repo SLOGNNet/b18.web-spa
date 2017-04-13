@@ -6,10 +6,11 @@
     sticky 
     [stickyPositionInsideScroll]="true">
   </form-navigation>
-  <load-form
+  <load-info-form
     (save)="onItemSave($event)"
     (cancel)="onItemCancel($event)"
+    (addCustomer)="onAddCustomer()"
     [load]="selectedItem"
     [viewMode]="viewMode">
-  </load-form>
+  </load-info-form>
 </div>

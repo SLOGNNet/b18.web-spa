@@ -10,9 +10,9 @@ import { LoadFormComponent } from '../../../../../forms';
 
 @Component({
   selector: 'load-edit-info',
-  templateUrl: './load-edit.component.html'
+  templateUrl: './load-edit-info.component.html'
 })
-export class LoadEditComponent extends BaseRootEditComponent<Load> {
+export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
   private anchors = [{
     id: 'info',
@@ -39,5 +39,9 @@ export class LoadEditComponent extends BaseRootEditComponent<Load> {
 
   getItemName() {
     return 'Load';
+  }
+
+  onAddCustomer() {
+    
   }
 }

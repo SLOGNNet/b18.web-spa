@@ -27,14 +27,8 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   @Output() save: EventEmitter<any> = new EventEmitter();
-  @select(state => state.stops.items) stops$: Observable<Stop[]>;
+  @Output() addCustomer: EventEmitter<any> = new EventEmitter();
   public loadForm: FormGroup;
-
-  private companySource: any[];
-  private companyQuery: string = '';
-  private companyViewMode: ViewMode = ViewMode.None;
-  private stopTypes = StopTypes;
-  private documents: Array<Document>;
 
   public constructor(
     private companyService: CompanyService,
@@ -57,33 +51,14 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
   }
 
   public initForm() {
-    this.companyViewMode = ViewMode.ViewCollapsed;
     this.loadForm = this.formBuilder.group({
-      customer: [this.load.customer, Validators.required],
-      customerLocationId: [this.load.customerLocationId],
-      customerBillingLocationId: [this.load.customerBillingLocationId],
-      contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],
       requiredTrailerType: [this.load.requiredTrailerType],
       specialRequirments: [this.load.specialRequirments],
-      systemLoadNo: [this.load.systemLoadNo],
-      customerLoadNo: [this.load.customerLoadNo],
       type: [this.load.type],
       freightType: [this.load.freightType]
     });
-  }
-
-  public onCompanySelect(company: Company) {
-   this.load.customer = company;
-   this.companyViewMode = ViewMode.ViewCollapsed;
-  }
-
-  private initCustomerTypeahead(customer) {
-    this.companyQuery = customer && customer.name;
-    this.companySource = Observable.create((observer: any) => {
-      observer.next(this.companyQuery);
-    }).mergeMap((token: string) => this.companyService.search(token));
   }
 
   private onLoadCancel() {
@@ -95,5 +70,9 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
       let result = this.loadForm.value;
       this.save.emit(this.loadForm.value);
     }
+  }
+
+  private onAddCustomer() {
+    this.addCustomer.emit();
   }
 }

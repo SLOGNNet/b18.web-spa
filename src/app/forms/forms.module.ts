@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactInfoForm } from './contact-info-form';
 import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
+import { LoadInfoFormComponent } from './load-info-form';
 import { LicenseForm } from './license-form';
 import { LocationForm } from './location-form';
 import { EquipmentForm } from './equipment-form';
@@ -31,6 +32,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     ContactForm,
     ContactsForm,
     LoadFormComponent,
+    LoadInfoFormComponent,
     DropoffpCommodityComponent,
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
@@ -57,6 +59,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     CompanyInfoForm,
     ContactForm,
     LoadFormComponent,
+    LoadInfoFormComponent,
     DriverForm,
     LoadDocumentFormComponent,
     CommoditiesHeaderComponent,
