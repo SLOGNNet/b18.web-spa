@@ -26,7 +26,7 @@ export abstract class BaseCardComponent {
     }
 
     get fullName() {
-        return `${this.item.firstName} ${this.item.lastName}`;
+      return `${this.item.firstName} ${this.item.middleName} ${this.item.lastName}`;
     }
 
 }

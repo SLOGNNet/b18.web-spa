@@ -14,13 +14,16 @@ import { IAppState, selectDetailLoad } from '../../../store';
 })
 export class LoadDetailComponent extends BaseDetailComponent<Load> {
   private anchors = [{
-    id: 'customer',
-    title: 'Customer'
-  },  {
-    id: 'requirements',
+    id: 'load-view',
+    title: 'Load'
+  }, {
+    id: 'requirements-view',
     title: 'Requirements'
-  },  {
-    id: 'itinerary',
+  }, {
+    id: 'customer-view',
+    title: 'Customer'
+  }, {
+    id: 'itinerary-view',
     title: 'Itinerary'
   }];
 
@@ -48,5 +51,9 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
 
   private trackBy(index: number, stop: Stop) {
     return stop.id;
+  }
+
+  onLoadEditClick() {
+    this.router.navigate(['edit-info'], { preserveQueryParams: true, relativeTo: this.route });
   }
 }
