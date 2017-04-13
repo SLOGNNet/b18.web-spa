@@ -16,13 +16,13 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   private anchors = [{
     id: 'load-view',
     title: 'Load'
-  },{
+  }, {
     id: 'requirements-view',
     title: 'Requirements'
-  },  {
+  }, {
     id: 'customer-view',
     title: 'Customer'
-  },  {
+  }, {
     id: 'itinerary-view',
     title: 'Itinerary'
   }];
