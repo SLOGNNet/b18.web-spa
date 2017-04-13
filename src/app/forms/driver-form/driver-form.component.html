@@ -4,11 +4,11 @@
     <bd-validator-summary>
       <div class="name-section">
         <bd-validator [component]="driverForm.controls.firstName" [errorDefs]="{required: 'Firstname is required'}">
-          <bd-input class="bd-form-control left-control" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
+          <bd-input class="bd-form-control" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
         </bd-validator>
-        <bd-input class="bd-form-control middle-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
+        <bd-input class="bd-form-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
         <bd-validator [component]="driverForm.controls.lastName" [errorDefs]="{required: 'Lastname is required'}">
-          <bd-input class="bd-form-control right-control" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
+          <bd-input class="bd-form-control" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
         </bd-validator>
       </div>
     </bd-validator-summary>
@@ -36,7 +36,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
-	
+
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
