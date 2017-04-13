@@ -9,7 +9,7 @@
   </bd-auth-form-message-helper>
   <bd-validator [component]="phoneForm.controls.code" [errorDefs]="{required: 'This field is required'}">
     <bd-input
-      class="bd-form-control"
+      class="bd-form-control code"
       [labelText]="'Confirmation Code'"
       formControlName="code">
     </bd-input>
@@ -18,7 +18,7 @@
   <bd-button
     type="submit"
     color="primary"
-    class="button"
+    class="button confirm-button"
     [(disabled)]="!phoneForm.valid"
     [text]="'Confirm'">
   </bd-button>
