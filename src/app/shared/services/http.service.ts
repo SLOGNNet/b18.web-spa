@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class HttpService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, @Inject('AppConfig') private config) {}
 
   appendAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Basic ' +
-      btoa('b18developer:b18password'));
+    if (this.config.environmentCredentials) {
+      const { username, password } = this.config.environmentCredentials;
+      headers.append('Authorization', 'Basic ' +
+        btoa('${username}:${password}'));
+    }
   }
 
   appendDefaultHeaders(headers: Headers): void {
