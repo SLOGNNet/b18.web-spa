@@ -16,7 +16,7 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
   private anchors = [{
     id: 'info',
-    title: 'Info'
+    title: 'Load'
   },  {
     id: 'requirements',
     title: 'Requirements'
