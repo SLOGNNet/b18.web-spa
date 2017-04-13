@@ -28,8 +28,8 @@ export class DriverDetailComponent extends BaseDetailComponent<Driver> {
       title: 'License'
     }];
 
-    get driverFullName() {
-      return this.selectedItem.firstName + ' ' + this.selectedItem.lastName;
+    get fullName() {
+      return `${this.selectedItem.firstName} ${this.selectedItem.middleName} ${this.selectedItem.lastName}`;
     }
 
   constructor(

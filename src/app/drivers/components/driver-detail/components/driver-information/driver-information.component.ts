@@ -21,7 +21,7 @@ export class DriverInformationComponent {
   }
 
   get fullName() {
-    return `${this.driver.firstName} ${this.driver.lastName}`;
+    return `${this.driver.firstName} ${this.driver.middleName} ${this.driver.lastName}`;
   }
 
   ngOnChanges(changes) {
