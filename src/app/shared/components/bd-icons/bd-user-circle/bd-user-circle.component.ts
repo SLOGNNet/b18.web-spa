@@ -10,6 +10,6 @@ export class BdUserCircleComponent {
       @Input() private size: 'default' | 'small' = 'default';
 
       get userInitials() {
-        return this.fullName.replace('(', '').split(' ').filter(v => v).reduce((previousValue, currentValue) => previousValue + currentValue[0], '');
+        return this.fullName.split(' ').filter(v => v).reduce((previousValue, currentValue) => previousValue + currentValue[0], '');
       }
 }
