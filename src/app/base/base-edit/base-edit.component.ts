@@ -60,12 +60,13 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
 
 
   protected onItemSave(item) {
-    const changedItem = cloneDeep(item);
+    const changedItem = Object.assign({}, this.selectedItem, item);
+
     if (this.isNew) {
       this.isNew = false;
-      this.onAdd(item);
+      this.onAdd(changedItem);
     } else {
-      this.onUpdate(item);
+      this.onUpdate(changedItem);
     }
   }
 

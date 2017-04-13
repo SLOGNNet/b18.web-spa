@@ -1,11 +1,7 @@
+@import '../../../assets/styles/variables';
 @import '../../../assets/styles/form-control';
 @import '../../../assets/styles/styles';
 
-.name-section {
-  display: flex;
-
-  bd-validator,
-  bd-input {
-    flex: 1;
-  }
+:host {
+  display: block;
 }
