@@ -7,20 +7,20 @@
   <div class="section">
       <bd-validator [component]="registerForm.controls.firstName" [errorDefs]="{required: 'First name is required'}">
         <bd-input
-          class="bd-form-control section-control left-control"
+          class="bd-form-control section-control first-name left-control"
           placeholder="First Name"
           [required]="true"
           formControlName="firstName">
         </bd-input>
     </bd-validator>
     <bd-input
-      class="bd-form-control section-control middle-control"
+      class="bd-form-control section-control middle-name middle-control"
       placeholder="Middle Name"
       formControlName="middleName">
     </bd-input>
   <bd-validator [component]="registerForm.controls.lastName" [errorDefs]="{required: 'Last name is required'}">
     <bd-input
-      class="bd-form-control section-control right-control"
+      class="bd-form-control section-control last-name right-control"
       placeholder="Last Name"
       [required]="true"
       formControlName="lastName">
@@ -30,6 +30,7 @@
 </bd-validator-summary>
   <bd-form-switch class="bd-form-control"
     formControlName="userNameType"
+    class="user-name-type"
     [hideLabel]="true"
     [enableButtonSwitch]="true"
     [items]="constants.USER_NAME_TYPES">
@@ -38,7 +39,7 @@
     [component]="registerForm.controls.email"
     [errorDefs]="{required: 'This field is required', isValidMailFormat: 'Email entered not correct.'}">
     <bd-input
-      class="bd-form-control"
+      class="bd-form-control email"
       [labelText]="'Email'"
       formControlName="email">
     </bd-input>
@@ -47,7 +48,7 @@
     [component]="registerForm.controls.cellphone"
     [errorDefs]="{required: 'This field is required', isValidPhoneFormat: 'Phone number does not comply with standard format.'}">
     <bd-input
-      class="bd-form-control"
+      class="bd-form-control cellphone"
       [labelText]="'Phone'"
       formControlName="cellphone">
     </bd-input>
@@ -56,7 +57,7 @@
     <bd-validator [component]="registerForm.controls.passwordGroup.controls.password"
       [errorDefs]="{required: 'This field is required'}">
       <bd-input
-        class="bd-form-control"
+        class="bd-form-control password"
         [type]="'password'"
         [labelText]="'Password'"
         formControlName="password">
@@ -66,7 +67,7 @@
     <bd-validator [component]="registerForm.controls.passwordGroup.controls.retryPassword"
       [errorDefs]="{required: 'This field is required'}">
       <bd-input
-        class="bd-form-control"
+        class="bd-form-control retry-password"
         [type]="'password'"
         [labelText]="'Retry Password'"
         formControlName="retryPassword">
@@ -81,7 +82,7 @@
   <bd-button
     type="submit"
     color="primary"
-    class="button"
+    class="button next-button"
     [(disabled)]="!registerForm.valid"
     [text]="'Next'">
   </bd-button>
