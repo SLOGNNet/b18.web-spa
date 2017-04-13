@@ -19,7 +19,6 @@ export class RequirementsDetailComponent {
   }
 
   get driverRequirement() {
-    console.log(this.load.driverRequirment);
     return DriverRequirements.displayText(this.load.driverRequirment);
   }
 
