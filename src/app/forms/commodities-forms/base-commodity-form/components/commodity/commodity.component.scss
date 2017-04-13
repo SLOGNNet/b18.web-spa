@@ -6,31 +6,38 @@
 }
 
 .c-row {
-  display: flex;
+  position: relative;
+  height: $form-control-height;
 
-  .c-col {
-    height: $form-control-height;
-    font-size: $mini-font-size;
-    text-align: center;
-    flex: 1;
-    min-width: 0;
-    border-color: $grey;
-    background-color: inherit;
-    border-width: 0 1px 1px 0;
-    outline: none;
-    box-shadow: none;
+  .c-cols {
+    position: absolute;
+    display: flex;
+    max-width: 100%;
 
-    &:active,
-    &:focus {
-      border-bottom-color: $blue;
-    }
-
-    &:disabled {
+    .c-col {
+      height: $form-control-height;
+      font-size: $mini-font-size;
+      text-align: center;
+      flex: 1;
+      min-width: 0;
       border-color: $grey;
-    }
+      background-color: inherit;
+      border-width: 0 1px 1px 0;
+      outline: none;
+      box-shadow: none;
 
-    &:last-child {
-      border-right-width: 0;
+      &:active,
+      &:focus {
+        border-bottom-color: $blue;
+      }
+
+      &:disabled {
+        border-color: $grey;
+      }
+
+      &:last-child {
+        border-right-width: 0;
+      }
     }
   }
 }
