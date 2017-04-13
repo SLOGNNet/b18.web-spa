@@ -42,6 +42,6 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   }
 
   onAddCustomer() {
-    
+
   }
 }
