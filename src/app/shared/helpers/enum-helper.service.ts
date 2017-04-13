@@ -13,4 +13,8 @@ export class EnumHelperService {
 
     return keyValues;
   }
+
+  public getValueByKey(e, key): string {
+    return e[key];
+  }
 }

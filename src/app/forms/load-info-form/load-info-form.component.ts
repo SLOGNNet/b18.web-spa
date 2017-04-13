@@ -52,12 +52,28 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
 
   public initForm() {
     this.loadForm = this.formBuilder.group({
-      driverRequirement: [this.load.driverRequirment],
+      id: [this.load.id],
+      companyId: [this.load.companyId],
+      customer: [this.load.customer],
+      customerLocationId: [this.load.customerLocationId],
+      customerBillingLocationId: [this.load.customerBillingLocationId],
+      customerLocation: [this.load.customerLocation],
+      customerBillingLocation: [this.load.customerBillingLocation],
+      contactId: [this.load.contactId],
+      driverRequirment: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],
       requiredTrailerType: [this.load.requiredTrailerType],
       specialRequirments: [this.load.specialRequirments],
+      systemLoadNo: [this.load.systemLoadNo],
+      customerLoadNo: [this.load.customerLoadNo],
       type: [this.load.type],
-      freightType: [this.load.freightType]
+      freightType: [this.load.freightType],
+      stops: [this.load.stops],
+      status: [this.load.status],
+      commodities: [this.load.commodities],
+      trips: [this.load.trips],
+      currentTrips: [this.load.currentTrips],
+      documents: [this.load.documents]
     });
   }
 
