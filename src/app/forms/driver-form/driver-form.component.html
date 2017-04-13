@@ -36,7 +36,7 @@
 	</bd-form-section>
 	<navigation-anchor id="driver-address" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'ADDRESS'" >
-	
+	   <address-form [group]='driverForm.controls.address' [disabled]="disabled" [address]='driver.address' [viewMode]="viewMode" ></address-form>
 	</bd-form-section>
 	<navigation-anchor id="driver-license" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'LICENSE'">
