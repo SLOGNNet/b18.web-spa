@@ -35,6 +35,7 @@ export class Stop {
     result.plannedDepartureAt = new Date();
     result.facility = Facility.create();
     result.tripStops = [];
+    result.stopActions = [];
     return result;
   }
 

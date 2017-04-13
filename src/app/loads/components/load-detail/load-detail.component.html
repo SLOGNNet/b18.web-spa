@@ -13,7 +13,7 @@
             <requirements-detail [load]="selectedItem"></requirements-detail>
         </bd-view-detail-section>
         <navigation-anchor id="itinerary"></navigation-anchor>
-        <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
+        <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addContent]="'add itinerary'" (addClick)="onStopEdit()">
             <stop-view (remove)="onStopRemove($event)" (edit)="onStopEdit($event)"
               *ngFor="let stop of selectedItem.stops; trackBy: trackBy;"
               [stop]="stop">

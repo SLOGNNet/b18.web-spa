@@ -42,7 +42,8 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }
 
   onStopEdit(stop: Stop) {
-    this.router.navigate(['edit-stop', stop.id], { preserveQueryParams: true, relativeTo: this.route });
+    const id = stop ? stop.id : 0;
+    this.router.navigate(['edit-stop', id], { preserveQueryParams: true, relativeTo: this.route });
   }
 
   private trackBy(index: number, stop: Stop) {

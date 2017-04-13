@@ -28,7 +28,7 @@ export class StopViewComponent {
   get isCombined() { return this.pickups.length && this.dropoffs.length; }
 
   ngOnInit() {
-    this.tripStops = this.stop.tripStops;
+    this.tripStops = this.stop.tripStops || [];
     this.tripStops.map(item => {
       map(item.stopActions, stopAction => {
           this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.PICKUP);
@@ -42,8 +42,8 @@ export class StopViewComponent {
   }
 
   getContactInfoCollection(contactItems: Array<ContactInfo>) {
-    let result: Array<ContactInfo> = [];
-    this.isExpanded ? result = contactItems : result.push(ContactInfo.getPrimaryPhone(contactItems));
+    contactItems = contactItems || [];
+    const result: Array<ContactInfo> = this.isExpanded ?  contactItems : [ContactInfo.getPrimaryPhone(contactItems)];
     return result;
   }
 
