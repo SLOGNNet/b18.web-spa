@@ -17,7 +17,7 @@ export class StopFormComponent extends BaseForm {
   public stopForm: FormGroup = this.formBuilder.group({});
 
   private fields = [
-    { name: 'id', validators: [] },
+    { name: 'id', validators: [] }
   ];
 
   constructor(
@@ -30,9 +30,12 @@ export class StopFormComponent extends BaseForm {
   }
 
   initForm() {
-   this.stopForm = this.formBuilder.group({
-      id: [this.stop.id],
-      stopActions: this.formBuilder.array([]),
+    this.fields.forEach(field => {
+      this.stopForm.setControl(
+        field.name,
+        this.formBuilder.control({value: this.stop[field.name], disabled: this.disabled}, field.validators)
+      );
     });
+    this.stopForm.setControl('stopActions', this.formBuilder.array([]));
   }
 }

@@ -8,7 +8,8 @@
   </form-navigation>
   <bd-form-section [disabled]="disabled" [labelText]="'Contact'">
     <stop-form
-      [contact]="selectedItem"
+      [stop]="selectedItem"
+      [group]="form"
       [disabled]="isLoading"
       [scrollable]="true"
       [viewMode]="viewMode"

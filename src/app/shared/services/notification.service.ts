@@ -3,12 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import { URLSearchParams } from '@angular/http';
 import { SocketService } from './socket.service';
 import { Notification, TaskType, NotificationPriority, NotificationStatus } from '../../models';
+import MockData from './data-services/mock-data';
 
 @Injectable()
 export class NotificationService {
   private timeoutPosition = 0;
   private timeouts = [1000, 2000, 5000, 9000, 1000, 1000, 1000, 10000, 90000, 500000];
   private _notification: BehaviorSubject<Notification>;
+  private nextNotification = 0;
+  private notificationCount = 38;
 
   constructor(private socketService: SocketService) {
     this._notification = <BehaviorSubject<Notification>>new BehaviorSubject(this.getNotification());
@@ -47,38 +50,20 @@ export class NotificationService {
     const me = this;
     function generate() {
       setTimeout(() => {
-        generate();
-        me._notification.next(me.getNotification());
+        let notification = me.getNotification();
+        if (notification) {
+          me._notification.next(notification);
+          generate();
+        }
       }, me.getRandomTimeout());
     }
-
-    generate();
+    if (this.nextNotification <= this.notificationCount) {
+      generate();
+    }
   }
 
   private getNotification() {
-    const notification: Notification = {
-      id: new Date().getTime() + '',
-      title: 'Lorem ipsum',
-      type: this.getRandomNotificationType(),
-      date: new Date(),
-      message: new Date().getMinutes() + ':' + new Date().getSeconds(),
-      sender: {
-        id: '1',
-        firstName: 'Jason',
-        lastName: 'Chang',
-        middleName: 'Chang',
-        position: 'sales',
-        contactInfo: [],
-        locationId: '1',
-        location: null
-      },
-      taskType: TaskType.NEW,
-      priority: NotificationPriority.MIDDLE,
-      notificationStatus: NotificationStatus.NEW,
-      isViewed: false
-    };
-
-    return notification;
+    return MockData.notifications.splice(Math.floor(Math.random() * MockData.notifications.length), 1)[0];
   }
 
   private getRandomTimeout() {

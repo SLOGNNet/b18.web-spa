@@ -4,10 +4,567 @@ import {
   TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, Notification, License, LicenseClassTypes,
   AppointmentTypes, StopAction, TripStop, Location, Mileage
 } from './models';
 class MockData {
+
+  public notifications: Array<Notification> = [{
+    id: '1',
+    title: 'CH Robinson: Invoices paid',
+    type: 1,
+    date: new Date(),
+    message: 'Invoice #01857/11 to CH Robinson paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+    sender: null,
+    taskType: 1,
+    priority: null,
+    notificationStatus: 1,
+    isViewed: false
+  },
+    {
+      id: '2',
+      title: 'Trip #0900117: Drop-off #2 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver George Clan has checked out from Wal Mart San Jose, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '3',
+      title: 'REED Transportation: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/12 to REED Transportation paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '4',
+      title: 'Trip #0900118: Drop-off #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Sanjit Singh has checked out from Wal Mart San Jose, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '5',
+      title: 'Trip #0900129: Pickup #3 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Viktor Medov has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '6',
+      title: 'REED Transportation: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/13 to REED Transportation paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '7',
+      title: 'Trip #0900121: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: '',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '8',
+      title: 'Trip #0900125: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Dale Karson has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '9',
+      title: 'CH Robinson: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/14 to CH Robinson paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '10',
+      title: 'Trip #0900131: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Vim Yang has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '11',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Hey Govind, hurray payment from CH Robinson went through instantly',
+      sender: {
+        id: '1',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '1',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '12',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Hey Govind did you actually receive that letter from Jason? I never saw it if you ask.',
+      sender: {
+        id: '2',
+        firstName: 'Dan',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Driver Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '13',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I am pretty sure it went smooth.',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '14',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Text him',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '15',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Are we open to get more loads?',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '16',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'They did it through Bridge18 this time :)',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '17',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I am booking more loads',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '18',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Inderjit is fine, he always reports on time',
+      sender: {
+        id: '2',
+        firstName: 'Dan',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Driver Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '19',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Rescheduled appointment, all ok',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '20',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'JFYI, I\'ll send TK202 on maintenance.',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '21',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Reed paid too right away',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '22',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'You\'ll receive a notification when the last one is done :)',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '23',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I stepped out I\'m on B18 mobile app now',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '24',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Those guys confirmed weekly loads, you\'ll see them shortly',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '25',
+      title: 'Confirm Pick-up',
+      type: 3,
+      date: new Date(),
+      message: 'Driver George Clan is reaching facility in 12 hours. Confirm pick-up #3209 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '26',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Jim Boyle from CH Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '27',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK202 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '28',
+      title: 'Confirm Pick-up',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Sanjit Singh is reaching facility in 12 hours. Confirm pick-up #3223 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '29',
+      title: 'Reschedule Trip Stops',
+      type: 3,
+      date: new Date(),
+      message: 'Driver John Randall is running 5 hours late. Reschedule pick-up #3209.',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '30',
+      title: 'Renew Driver License',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Gale Johnson\'s CDL is expired in 3 months. Apply with DMV.',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '31',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Jim Boyle from Ch Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '32',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK190 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '33',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Dan Falk from CH Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '34',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Rodrigo Fuentes from REED Transportation hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '35',
+      title: 'Confirm Load',
+      type: 3,
+      date: new Date(),
+      message: 'Load #7826 needs your confirmation before it is scheduled.',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '36',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK218 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '37',
+      title: 'Confirm Drop-off',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Viktor Medov is reaching facility in 12 hours. Confirm pick-up #3257 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '38',
+      title: 'Confirm Load',
+      type: 3,
+      date: new Date(),
+      message: 'Load #7827 needs your confirmation before it is scheduled.',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }];
+
 
   public addresses: Array<Address> = [{
     id: '1',
