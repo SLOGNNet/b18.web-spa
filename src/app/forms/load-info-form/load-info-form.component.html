@@ -1,0 +1,44 @@
+<form [formGroup]="loadForm" class="edit">
+  <navigation-anchor id="info"></navigation-anchor>
+  <bd-form-section labelText="LOAD">
+    <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
+    </bd-form-switch>
+    <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
+    </bd-form-switch>
+  </bd-form-section>
+  <navigation-anchor id="requirements"></navigation-anchor>
+  <bd-form-section labelText="REQUIREMENTS">
+    <bd-form-switch class="bd-form-control" [labelText]="'Driver'" [enableButtonSwitch]="isEditMode" formControlName="driverRequirment" [items]="driverRequirementsNames">
+    </bd-form-switch>
+    <bd-dropdown class="bd-form-control" [labelText]="'Power unit'" formControlName="requiredPowerUnitType" [items]="requiredPowerUnitTypesNames">
+    </bd-dropdown>
+    <bd-dropdown class="bd-form-control" [labelText]="'Trailer'" formControlName="requiredTrailerType" [items]="requiredTrailerTypesNames">
+    </bd-dropdown>
+    <bd-textarea
+      class="bd-form-control"
+      formControlName="specialRequirments"
+      [labelText]="'Special Requirements'">
+    </bd-textarea>
+  </bd-form-section>
+  <form-sticky-bottom-container>
+    <div class="button-group">
+      <bd-button
+        [text]="'Cancel'"
+        class="bd-button button"
+        (click)="onLoadCancel()">
+      </bd-button>
+      <bd-button
+        color="primary"
+        class="bd-button button"
+        [text]="'Done'"
+        (click)="onLoadSave()">
+      </bd-button>
+      <bd-button
+        color="primary"
+        class="bd-button button"
+        [text]="'+ Customer >'"
+        (click)="onAddCustomer()">
+      </bd-button>
+    </div>
+  </form-sticky-bottom-container>
+</form>
