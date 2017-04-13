@@ -18,9 +18,9 @@ import { cloneDeep } from 'lodash';
 export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   protected segment = 'edit-stop';
   private locations$;
-  private selectedLoad: Load;
   private form: FormGroup = this.formBuilder.group({});
   private locations: Array<any>;
+  private parentLoad: Load;
   private anchors = [{
     id: '',
     title: 'Itinerary'

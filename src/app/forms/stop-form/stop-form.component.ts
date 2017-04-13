@@ -1,8 +1,9 @@
 import { Component, Input, ElementRef } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { Stop } from '../../models';
+import { Stop, Load, StopAction } from '../../models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BaseForm } from '../base-form';
+import { StopActionActions } from '../../actions';
 
 @Component(Object.assign({
   selector: 'stop-form',
@@ -11,8 +12,8 @@ import { BaseForm } from '../base-form';
 }, BaseForm.metaData))
 export class StopFormComponent extends BaseForm {
   @Input() disabled: boolean = false;
-  @Input()
-  public stop: Stop;
+  @Input() public load: Load;
+  @Input() public stop: Stop;
   @Input('group')
   public stopForm: FormGroup = this.formBuilder.group({});
 
@@ -21,6 +22,7 @@ export class StopFormComponent extends BaseForm {
   ];
 
   constructor(
+    private stopActionActions: StopActionActions,
     private formBuilder: FormBuilder, elementRef: ElementRef){
     super(elementRef);
   }
@@ -37,5 +39,17 @@ export class StopFormComponent extends BaseForm {
       );
     });
     this.stopForm.setControl('stopActions', this.formBuilder.array([]));
+  }
+
+  onStopActionUpdate(stopAction: StopAction) {
+    this.stopActionActions.update(stopAction);
+  }
+
+  onStopActionAdd(stopAction: StopAction) {
+    this.stopActionActions.add(stopAction, this.stop);
+  }
+
+  onStopActionRemove(stopAction: StopAction) {
+    this.stopActionActions.remove(stopAction, this.stop);
   }
 }

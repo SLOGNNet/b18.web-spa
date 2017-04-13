@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Commodity, StopAction, commoditySchema, stopSchema } from '../models';
+import { Commodity, StopAction, Load, commoditySchema, stopSchema } from '../models';
 import { normalize } from 'normalizr';
 import { createPeristEnity } from './utils';
 
@@ -16,9 +16,9 @@ export class CommodityActions {
   constructor (
     private ngRedux: NgRedux<IAppState>) {}
 
-  add(commodity: Commodity): void {
+  add(commodity: Commodity, stopAction: StopAction, load: Load): void {
     const normalizedData = normalize(commodity, commoditySchema);
-    this.ngRedux.dispatch({ type: CommodityActions.ADD_COMMODITY, data: normalizedData });
+    this.ngRedux.dispatch({ type: CommodityActions.ADD_COMMODITY, data: normalizedData, loadId: load.id, stopActionId: stopAction.id });
   }
 
   remove(commodity: Commodity): void {

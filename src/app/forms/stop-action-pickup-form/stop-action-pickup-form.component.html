@@ -8,8 +8,8 @@
     [formArray]="formGroup.controls.commodities"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
-    (add)="onCommodityAdd()"
-    [items]="stopAction.commodities"
+    (add)="onCommodityAdd($event)"
+    [items]="stopAction?.commodities"
     [viewMode]="viewMode">
   </pick-up-commodity-form>
   <bd-textarea

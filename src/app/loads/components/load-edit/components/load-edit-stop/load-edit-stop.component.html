@@ -1,4 +1,4 @@
-<div *ngIf="selectedItem">
+<div class="load-edit-stop" *ngIf="selectedItem">
   <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
 	<form-navigation
     sticky
@@ -9,6 +9,7 @@
   <bd-form-section [disabled]="disabled" [labelText]="'Contact'">
     <stop-form
       [stop]="selectedItem"
+      [load]="parentItem"
       [group]="form"
       [disabled]="isLoading"
       [scrollable]="true"

@@ -1,1 +1,2 @@
- <stop-actions-form [formArray]="stopForm.controls.stopActions" [items]="stop.stopActions" [viewMode]="viewMode"></stop-actions-form>
+ <stop-actions-form [formArray]="stopForm.controls.stopActions" [items]="stop.stopActions" [load]="load" 
+   [viewMode]="viewMode" (update)="onStopActionUpdate($event)" (remove)="onStopActionRemove($event)" (add)="onStopActionAdd($event)"></stop-actions-form>
