@@ -1126,7 +1126,8 @@ class MockData {
     status: StopStatuses.IN_PROGRESS,
     stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
     tripStops: [this.tripStopCollection[0]]
-  },{
+  },
+  {
     id: '2',
     notes: 'notes',
     departedAt: this.startDate,

@@ -16,6 +16,7 @@ export class StopAction {
   static create(type: StopActionTypes): StopAction{
     const result = new StopAction();
     result.id = generateNewId();
+    result.type = type;
     result.commodities = [];
     return result;
   }

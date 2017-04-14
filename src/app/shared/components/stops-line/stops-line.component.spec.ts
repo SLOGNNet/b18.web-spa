@@ -25,7 +25,7 @@ function createStopWithDropoff(): Stop {
   stop.plannedArrivalAt = new Date(2017, 0, 9);
   stop.facility = Facility.create();
   stop.facility.address = new Address();
-  stop.status = StopStatuses.IN_PROGRESS;
+  stop.status = StopStatuses.COMPLETED;
   return stop;
 }
 
@@ -33,7 +33,7 @@ function createCollection(): Stop[] {
   return [createStopWithPickup(), createStopWithDropoff()];
 }
 
-xdescribe('StopsLineComponent', () => {
+describe('StopsLineComponent', () => {
   let fixture: ComponentFixture<StopsLineComponent>,
     component: StopsLineComponent,
     stopCollection: Array<Stop>;
@@ -74,28 +74,28 @@ xdescribe('StopsLineComponent', () => {
     expect(element.classList.contains('icon-pickup')).toBe(true);
   });
 
-  // it('should be green if it\'s pickup', () => {
-  //   component.stops = [createStopWithPickup()];
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.stop0')).nativeElement,
-  //       pickupColor = hexToRgb(component.getColor(StopTypes.PICKUP));
-  //   expect(element.style.color).toBe(getRGBString(pickupColor));
-  // });
+  it('should be green if it\'s status in progress', () => {
+    component.stops = [createStopWithPickup()];
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.stop0')).nativeElement,
+        inProgressColor = hexToRgb(component.getColor(StopStatuses.IN_PROGRESS));
+    expect(element.style.color).toBe(getRGBString(inProgressColor));
+  });
 
   it('should have arrow down icon if it\'s dropoff', () => {
     component.stops = [createStopWithDropoff()];
     fixture.detectChanges();
-    let element = fixture.debugElement.query(By.css('.stop1')).nativeElement;
+    let element = fixture.debugElement.query(By.css('.stop0')).nativeElement;
     expect(element.classList.contains('icon-dropoff')).toBe(true);
   });
 
-  // it('should be orange if it\'s dropoff', () => {
-  //   component.stops = [createStopWithDropoff()];
-  //   fixture.detectChanges();
-  //   let element = fixture.debugElement.query(By.css('.stop0')).nativeElement,
-  //       dropoffColor = hexToRgb(component.getColor(StopTypes.DROPOFF));
-  //   expect(element.style.color).toBe(getRGBString(dropoffColor));
-  // });
+  it('should be orange if it\'s status completed', () => {
+    component.stops = [createStopWithDropoff()];
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.stop0')).nativeElement,
+        completedColor = hexToRgb(component.getColor(StopStatuses.COMPLETED));
+    expect(element.style.color).toBe(getRGBString(completedColor));
+  });
 
   it('should send stop\'s data to stop popover', () => {
     let stopData = createStopWithPickup();

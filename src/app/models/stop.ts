@@ -16,7 +16,7 @@ export class Stop {
   notes: string = '';
   @Type(() => Facility)
   facility: Facility;
-  status: StopStatuses.IN_PROGRESS;
+  status: StopStatuses;
   arrivedAt: Date = null;
   departedAt: Date = null;
   plannedArrivalAt: Date = null;
