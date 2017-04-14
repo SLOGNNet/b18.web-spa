@@ -74,7 +74,7 @@ export class NgbDatepickerNavigationSelect implements OnChanges {
       this._generateMonths();
     }
 
-    if (changes['date'] && changes['date'].currentValue.year !== changes['date'].previousValue.year) {
+    if (changes['date'] && (!changes['date'].previousValue || changes['date'].currentValue.year !== changes['date'].previousValue.year)) {
       this._generateMonths();
     }
   }

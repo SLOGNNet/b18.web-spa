@@ -1,5 +1,5 @@
-<div dropdown [autoClose]="autoClose" class="bd-dropdown-container" [class.bd-disabled]="disabled" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
-  <div *ngIf="!toogleTemplate" dropdownToggle [isDisabled]="disabled"
+<div dropdown [autoClose]="autoClose" [isDisabled]="disabled" class="bd-dropdown-container" [class.bd-disabled]="disabled" name="bd-dropdown-container" (onToggle)="onToggle($event)" [class.bd-focused]="_isOpen">
+  <div *ngIf="!toogleTemplate" dropdownToggle
     id="bd-dropdown"
     class="bd-dropdown-wrapper interactive-background"
     name="bd-dropdown-wrapper">
@@ -22,11 +22,8 @@
       [ngTemplateOutlet]="toogleTemplate">
     </template>
   </div>
-  <div
-    dropdownMenu
-    class="bd-dropdown-list"
-    aria-labelledby="bd-dropdown">
-    <ul>
+
+    <ul *dropdownMenu role="menu" class="bd-dropdown-list" aria-labelledby="bd-dropdown">
       <li
         *ngIf="dropdownHeaderTemplate"
         class="dropdown-header interactive-text"
@@ -60,5 +57,4 @@
          </template>
      </li>
     </ul>
-  </div>
 </div>
