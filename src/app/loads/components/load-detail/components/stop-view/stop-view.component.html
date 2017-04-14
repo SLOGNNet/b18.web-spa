@@ -1,6 +1,17 @@
 <div class="stop-view-mode-section"
     [class.expanded-view]="isExpanded">
-    <default-component-action-panel (edit)="onEdit()" (remove)="onRemove()">
+    <component-action-panel>
+      <buttons>
+        <div class="btn-container">
+          <button
+              [class.icon-down-arrow-bold]="!isExpanded"
+              [class.icon-up-arrow-bold]="isExpanded"
+              (click)="onExpand()">
+          </button>
+         </div>
+        <default-list-buttons (edit)="onEdit()" (remove)="onRemove()">
+        </default-list-buttons>
+      </buttons>
       <div class="stop-info-container interactive-background"
       [class.pickup]="isPickup"
       [class.dropoff]="isDropoff"
@@ -15,13 +26,6 @@
               <bd-contact-info [contactCollection]="getContactInfoCollection(stop.facility?.contactInfo)"></bd-contact-info>
           </div>
           <div class="business-hours-container">
-              <div class="btn-container">
-                  <button
-                      [class.icon-down-arrow-bold]="!isExpanded"
-                      [class.icon-up-arrow-bold]="isExpanded"
-                      (click)="onClick()">
-                  </button>
-              </div>
               <div class="hours-string">
                   <span class="days">Mo-Fr:</span>
                   <span class="hours">08:00-17:00</span>
@@ -37,14 +41,8 @@
               <div class="notes">{{stop.facility.notes}}</div>
           </div>
       </div>
-    </default-component-action-panel>
+    </component-action-panel>
     <div [ngSwitch]="mode">
-      <div *ngSwitchCase="'stop'" class="stop-detail-view-container">
-        <stop-detail-view
-            [stop]="stop"
-            [isExpanded]="isExpanded">
-        </stop-detail-view>
-      </div>
       <div *ngSwitchCase="'trip'" class="trip-view-container">
         <trip-view
             *ngFor="let tripStop of tripStops"
@@ -52,6 +50,12 @@
             [tripData]="tripStop"
             [isExpanded]="isExpanded">
         </trip-view>
+      </div>
+      <div *ngSwitchCase="'load'" class="stop-detail-view-container">
+        <stop-detail-view
+            [stop]="stop"
+            [isExpanded]="isExpanded">
+        </stop-detail-view>
       </div>
     </div>
 </div>

@@ -18,8 +18,15 @@
         </bd-view-detail-section>
         <navigation-anchor id="itinerary-view"></navigation-anchor>
         <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addContent]="'add itinerary'" (addClick)="onStopEdit()">
+              <a (click)="onStopModeChange('load')">
+              Load
+            </a> | 
+            <a (click)="onStopModeChange('trip')">
+              Trip
+            </a> 
             <stop-view (remove)="onStopRemove($event)" (edit)="onStopEdit($event)"
               *ngFor="let stop of selectedItem.stops; trackBy: trackBy;"
+              [mode]="stopMode"
               [stop]="stop">
             </stop-view>
         </bd-view-detail-section>
