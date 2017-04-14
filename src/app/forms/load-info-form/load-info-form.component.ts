@@ -53,6 +53,7 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
   public initForm() {
     this.loadForm = this.formBuilder.group({
       id: [this.load.id],
+      customerLoadNo: [this.load.customerLoadNo],
       driverRequirment: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],
       requiredTrailerType: [this.load.requiredTrailerType],

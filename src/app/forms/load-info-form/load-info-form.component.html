@@ -1,6 +1,11 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="LOAD">
+    <bd-textarea
+      class="bd-form-control"
+      formControlName="customerLoadNo"
+      [labelText]="'Customer Load Number'">
+    </bd-textarea>
     <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
     <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
