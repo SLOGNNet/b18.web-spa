@@ -23,3 +23,4 @@ export * from './stop-statuses';
 export * from './stop-types';
 export * from './task-type';
 export * from './trailer-types';
+export * from './reefer-types';

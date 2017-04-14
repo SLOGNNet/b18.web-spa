@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Load, FreightType, LoadType } from '../../../../../models';
+import { Load, FreightType, LoadType, ReeferType } from '../../../../../models';
 
 @Component({
   selector: 'load-view',
@@ -16,5 +16,13 @@ export class LoadViewComponent {
 
   get freightType() {
     return FreightType.displayText(this.load.freightType);
+  }
+
+  get reeferType() {
+    return ReeferType.displayText(this.load.reeferType);
+  }
+
+  get isRreefer() {
+    return this.load.freightType === FreightType.REEFER;
   }
 }
