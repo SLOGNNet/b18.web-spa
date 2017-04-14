@@ -18,7 +18,7 @@ config = {
     hmr: helpers.hasProcessFlag('hot'),
     socketIoHost: 'http://localhost:5000',
     apiUrl: 'https://dev.bridge18.com/v1/api/expedition/',
-    authUrl: 'https://stage.bridge18.com/api/',
+    authUrl: 'https://dev.bridge18.com/api/',
     environmentCredentials: { username: 'b18developer', password: 'b18password' }
   },
   publicdev: {

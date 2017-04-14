@@ -10,8 +10,9 @@ export class HttpService {
   appendAuthorizationHeader(headers: Headers) {
     if (this.config.environmentCredentials) {
       const { username, password } = this.config.environmentCredentials;
+      const credentials = `${username}:${password}`;
       headers.append('Authorization', 'Basic ' +
-        btoa('${username}:${password}'));
+        btoa(credentials));
     }
   }
 
