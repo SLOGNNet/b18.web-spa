@@ -17,7 +17,8 @@ console.log(ENV);
 if ('development1' !== ENV) {
   // Production
   console.log('dev tools disabled');
-  disableDebugTools();
+  // https://github.com/qdouble/angular-webpack2-starter/issues/263
+  // disableDebugTools();
   enableProdMode();
 
   PROVIDERS = [
