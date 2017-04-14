@@ -11,6 +11,7 @@ import { ContactInfoForm } from './contact-info-form';
 import { ContactsInfoForm } from './contacts-info-form';
 import { LoadFormComponent } from './load-form';
 import { LoadInfoFormComponent } from './load-info-form';
+import { LoadCompanyFormComponent } from './load-company-form';
 import { LicenseForm } from './license-form';
 import { LocationForm } from './location-form';
 import { EquipmentForm } from './equipment-form';
@@ -33,6 +34,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     ContactsForm,
     LoadFormComponent,
     LoadInfoFormComponent,
+    LoadCompanyFormComponent,
     DropoffpCommodityComponent,
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
@@ -60,6 +62,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     ContactForm,
     LoadFormComponent,
     LoadInfoFormComponent,
+    LoadCompanyFormComponent,
     DriverForm,
     LoadDocumentFormComponent,
     CommoditiesHeaderComponent,

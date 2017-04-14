@@ -82,7 +82,7 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this.value = value;
+    this.value = value ? value[this.optionField] : ''; 
     this.changeDetectionRef.markForCheck();
   }
 

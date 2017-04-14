@@ -3,7 +3,8 @@ import {
   LoadEditComponent,
   LoadDetailComponent,
   LoadEditStopComponent,
-  LoadEditInfoComponent
+  LoadEditInfoComponent,
+  LoadEditCustomerComponent
 } from './components';
 
 import { LoadsComponent } from './loads.component';
@@ -52,6 +53,11 @@ const routes: Routes = [{
       {
         path: 'edit-info',
         component: LoadEditInfoComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+      {
+        path: 'edit-customer',
+        component: LoadEditCustomerComponent,
         canDeactivate: [CanDeactivateGuard]
       },
        {

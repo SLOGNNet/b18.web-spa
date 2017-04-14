@@ -18,6 +18,7 @@ import {
   CustomerDetailComponent,
   RequirementsDetailComponent,
   LoadEditInfoComponent,
+  LoadEditCustomerComponent,
   LoadViewComponent
 } from './components';
 
@@ -36,6 +37,7 @@ import { BdFormsModule } from '../forms/forms.module';
     LoadsComponent,
     LoadEditComponent,
     LoadEditInfoComponent,
+    LoadEditCustomerComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
     TripPopoverComponent,
