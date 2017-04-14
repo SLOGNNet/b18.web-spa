@@ -2,6 +2,7 @@
 @import '../../../../assets/styles/mixins';
 
 .bd-dropdown-container {
+  position: relative;
   background-color: inherit;
   box-shadow: inherit;
 
@@ -62,66 +63,59 @@
   }
 
   .bd-dropdown-list {
+    position: absolute;
+    z-index: 1000;
+    display: none;
     width: 100%;
     padding: 0;
-    border: 0;
-    margin: -1px 0 0;
-    font-size: inherit;
-    border-radius: 0;
+    margin: -1px 0 0; 
+    overflow-y: auto;
+    border-top: $active-border;
+    max-height: $form-control-height * 5;
 
-    div {
+    li {
       display: flex;
+      background: $white;
+      font-size: inherit;
+      padding-left: $default-margin;
       min-height: $form-control-height;
+      border-bottom: $border;
       align-items: center;
-    }
 
-    ul {
-      padding: 0;
-      margin: 0;
-      overflow-y: auto;
-      border-top: $active-border;
-      max-height: $form-control-height * 5;
+      &.template-item {
+        padding-left: 0;
+        border-bottom: 0;
+      }
 
-      li {
+      &.dropdown-header {
+        background: $white;
+        color: $label-default-color;
+        font-size: inherit;
+        border-bottom: $border;
+      }
+
+      &.dropdown-footer {
         display: flex;
         background: $white;
-        font-size: inherit;
-        padding-left: $default-margin;
-        min-height: $form-control-height;
-        border-bottom: $border;
-        align-items: center;
+        justify-content: center;
+      }
 
-        &.template-item {
-          padding-left: 0;
-          border-bottom: 0;
-        }
+      &:hover {
+        background: $light-blue;
+        cursor: pointer;
+      }
 
-        &.dropdown-header {
-          background: $white;
-          color: $label-default-color;
-          font-size: inherit;
-          border-bottom: $border;
-        }
-
-        &.dropdown-footer {
-          display: flex;
-          background: $white;
-          justify-content: center;
-        }
-
-        &:hover {
-          background: $light-blue;
-          cursor: pointer;
-        }
-
-        a {
-          color: $black;
-        }
+      a {
+        color: $black;
       }
     }
   }
 
   &.open {
+    .bd-dropdown-list {
+      display: block;
+    }
+
     .bd-dropdown-wrapper {
       border-bottom: $active-border;
 
