@@ -52,7 +52,8 @@ import { BdFormDateTimePicker } from './components/bd-form-datetimepicker';
 import { BdFormDatePicker, BdDatePicker } from './components/bd-form-datepicker';
 import { BdFormTimePicker } from './components/bd-form-timepicker';
 import { TimePickerComponent } from './components/timepicker';
-import { PerfectScrollbarModule } from 'angular2-perfect-scrollbar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { StickyDirective, BlurForwarderDirective, ClickOutsideDirective } from './directives';
 import { BdPopoverModule } from './directives/bd-popover/index';
 import { FormStickyBottomContainerComponent } from './components/form-sticky-bottom-container';
@@ -69,7 +70,7 @@ import { BdCircleComponent,
 import { BdPipesModule } from './pipes';
 import { BdPerfectScrollbarComponent } from './components/bd-perfect-scrollbar';
 import { FilterContainer, AutocompleteFilter, FilterItem } from './components/filter-container';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BdInfiniteScrollComponent } from './components/bd-infinite-scroll';
 import { ComplexityPasswordMessengerComponent } from './components/bd-complexity-password-messenger';
 import { EmailValidator, PhoneValidator } from './validators';
@@ -82,6 +83,9 @@ import { ComponentActionPanelComponent,
   DefaultEditRemoveButtonComponent,
   DefaultDragNDropButtonComponent } from './components/component-action-panel';
 import { DefaultComponentActionPanelComponent } from './components/default-component-action-panel';
+
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+};
 
 @NgModule({
   schemas: [NO_ERRORS_SCHEMA],
