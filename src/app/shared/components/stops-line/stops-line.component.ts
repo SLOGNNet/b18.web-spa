@@ -16,9 +16,12 @@ export class StopsLineComponent {
     this.select.emit(selected);
   }
 
-  // todo refactore to support pickup dropodd at same time
+  isPickupAndDropOff(stop: Stop) {
+    return stop.stopActions.length && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length && stop.stopActions.filter(a => a.type === StopActionTypes.PICKUP).length;
+  }
+
   isDropOff(stop: Stop) {
-    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF);
+    return stop.stopActions.length && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length;
   }
 
   getColor(stopStatus: StopStatuses) {
