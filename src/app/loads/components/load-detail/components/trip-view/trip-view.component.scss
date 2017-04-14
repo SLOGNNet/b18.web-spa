@@ -163,37 +163,6 @@ $text-margin: 5px;
       }
     }
   }
-
-  .commodities-section {
-    margin: 10px;
-
-    .commodities-container {
-      overflow: hidden;
-      border: $border;
-      border-left: 4px solid $grey;
-      margin-bottom: 10px;
-
-      &.pickup-border {
-        border-left-color: $pickup-view-mode-color;
-      }
-
-      &.dropoff-border {
-        border-left-color: $dropoff-view-mode-color;
-      }
-
-      .commodities-notes {
-        height: 35px;
-        background: $white;
-        line-height: 35px;
-        padding-left: $text-margin;
-      }
-
-      &:last-of-type {
-        border-bottom-right-radius: $default-border-radius;
-        border-bottom-left-radius: $default-border-radius;
-      }
-    }
-  }
 }
 @include interactive-text;
 

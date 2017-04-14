@@ -1,1 +1,1 @@
-export * from 'stop-view.component';
+export * from './stop-view.component';

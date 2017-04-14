@@ -8,6 +8,7 @@ import {
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
+  StopActionsComponent,
   CompanyPopoverComponent,
   DriverPopoverComponent,
   LoadDetailComponent,
@@ -48,7 +49,8 @@ import { BdFormsModule } from '../forms/forms.module';
     LoadEditStopComponent,
     CustomerDetailComponent,
     RequirementsDetailComponent,
-    LoadViewComponent
+    LoadViewComponent,
+    StopActionsComponent
   ]
 })
 export class LoadsModule { }

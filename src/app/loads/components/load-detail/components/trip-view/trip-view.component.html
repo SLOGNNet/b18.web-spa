@@ -52,41 +52,5 @@
       </div>
     </div>
   </div>
-  <div class="commodities-section" *ngIf="isExpanded">
-    <div
-        *ngIf="hasDropoffCommodities"
-        class="commodities-container dropoff-border">
-        <commodities-header
-          size='small'
-          [titles]="commodityHeaders">
-        </commodities-header>
-          <commodity-details
-              *ngFor="let data of dropoffCommodities; let i = index;"
-              [commodity]="data.commodity"
-              [index]="i">
-          </commodity-details>
-          <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
-            {{tripData.notes}}
-          </div>
-    </div>
-    <div
-      *ngIf="hasPickupCommodities"
-      class="commodities-container pickup-border">
-      <commodities-header
-        *ngIf="!hasDropoffCommodities"
-         size='small'
-        [titles]="commodityHeaders">
-      </commodities-header>
-        <commodity-details
-          *ngFor="let data of pickupCommodities; let i = index;"
-          [commodity]="data.commodity"
-          [index]="i">
-        </commodity-details>
-        <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
-            {{tripData.notes}}
-        </div>
-    </div>
-
-  </div>
-
+  <stop-actions [stopActions]="tripData.stopActions" *ngIf="isExpanded"></stop-actions>
 </div>
