@@ -17,6 +17,10 @@ $element-height: 35px;
     border-right: $border;
     align-items: center;
 
+    &.customer-load-no {
+      width: 100%;
+    }
+
     &:last-of-type {
       border-right: 0;
     }

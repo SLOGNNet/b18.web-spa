@@ -1,15 +1,24 @@
 <form [formGroup]="loadForm" class="edit">
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="LOAD">
-    <bd-textarea
+    <bd-input
       class="bd-form-control"
       formControlName="customerLoadNo"
       [labelText]="'Customer Load Number'">
-    </bd-textarea>
+    </bd-input>
     <bd-form-switch class="bd-form-control" [labelText]="'Load Type'" [enableButtonSwitch]="isEditMode" formControlName="type" [items]="loadTypesNames">
     </bd-form-switch>
     <bd-form-switch class="bd-form-control" [labelText]="'Freight'" [enableButtonSwitch]="isEditMode" formControlName="freightType" [items]="freightTypesNames">
     </bd-form-switch>
+    <bd-form-switch *ngIf="isReefer" class="bd-form-control" [labelText]="'Reefer Setting'" [enableButtonSwitch]="isEditMode" formControlName="reeferType" [items]="reeferTypesNames">
+    </bd-form-switch>
+    <bd-input
+      *ngIf="isReefer"
+      class="bd-form-control"
+      formControlName="temperature"
+      [labelText]="'Temperature'">
+      <span bd-suffix>°F</span>
+    </bd-input>
   </bd-form-section>
   <navigation-anchor id="requirements"></navigation-anchor>
   <bd-form-section labelText="REQUIREMENTS">
