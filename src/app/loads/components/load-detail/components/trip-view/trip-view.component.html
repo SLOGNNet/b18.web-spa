@@ -34,22 +34,8 @@
         </div>
     </div>
     <div class="right-panel">
-      <div class="appointment-type">
-        <div class="type-container">
-          <span class="circle"></span>
-          <span class="type interactive-text">{{appointmentType}}</span>
-        </div>
-      </div>
-      <div class="date-range-container">
-        <div class="date first-date">
-          <span class="date-value interactive-text">{{tripData.appointment.from | date:'MM/dd/yy'}}</span>
-          <span class="time-value interactive-text">{{tripData.appointment.from | date:'HH:mm'}}</span>
-        </div>
-        <div class="date last-date">
-          <span class="date-value interactive-text">{{tripData.appointment.to | date:'MM/dd/yy'}}</span>
-          <span class="time-value interactive-text">{{tripData.appointment.to | date:'HH:mm'}}</span>
-        </div>
-      </div>
+      <appointment-type [appointment]="tripData.appointment"></appointment-type>
+      <appointment-range [appointment]="tripData.appointment"></appointment-range>
     </div>
   </div>
   <stop-actions [stopActions]="tripData.stopActions" *ngIf="isExpanded"></stop-actions>

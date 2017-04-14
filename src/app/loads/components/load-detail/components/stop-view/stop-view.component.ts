@@ -13,6 +13,7 @@ import { map } from 'lodash';
 })
 export class StopViewComponent {
   @Input() stop: Stop;
+  @Input() mode: 'stop' | 'trip' = 'stop';
   @Output() remove = new EventEmitter();
   @Output() edit = new EventEmitter();
   public isExpanded: boolean = false;

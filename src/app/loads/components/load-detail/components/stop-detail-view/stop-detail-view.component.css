@@ -1,0 +1,8 @@
+.left-panel {
+  display: flex;
+  width: 50%;
+}
+.right-panel {
+  display: flex;
+  width: 50%;
+}

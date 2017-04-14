@@ -1113,6 +1113,11 @@ class MockData {
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
     stopActions: [],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      type: AppointmentTypes.FCFS
+    },
     tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
   },
   {
@@ -1125,6 +1130,11 @@ class MockData {
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
     stopActions: [],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      type: AppointmentTypes.FCFS
+    },
     tripStops: [this.tripStopCollection[0]]
   }
  ];

@@ -11,18 +11,11 @@ import { find, filter } from 'lodash';
 export class TripViewComponent {
   @Input() tripData: TripStop;
   @Input() isExpanded: boolean;
-
-  public appointmentType: string = '';
   public phoneNumber: string = '';
 
 
   ngOnInit() {
-    this.appointmentType = this.getAppointmentType(this.tripData.appointment.type);
     this.phoneNumber = find(this.tripData.facility.contactInfo, item => item.label === 'Primary Phone').value;
-  }
-
-  getAppointmentType(type: AppointmentTypes) {
-    return AppointmentTypes.displayText(type);
   }
 
   driverInitials(driver) {

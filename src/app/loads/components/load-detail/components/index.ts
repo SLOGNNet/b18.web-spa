@@ -5,3 +5,6 @@ export * from './customer-detail';
 export * from './requirements-detail';
 export * from './load-view';
 export * from './stop-actions';
+export * from './appointment-range';
+export * from './appointment-type';
+export * from './stop-detail-view';

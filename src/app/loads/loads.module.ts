@@ -19,7 +19,10 @@ import {
   CustomerDetailComponent,
   RequirementsDetailComponent,
   LoadEditInfoComponent,
-  LoadViewComponent
+  LoadViewComponent,
+  AppointmentRangeComponent,
+  AppointmentTypeComponent,
+  StopDetailViewComponent
 } from './components';
 
 import { LoadsComponent } from './loads.component';
@@ -50,7 +53,10 @@ import { BdFormsModule } from '../forms/forms.module';
     CustomerDetailComponent,
     RequirementsDetailComponent,
     LoadViewComponent,
-    StopActionsComponent
+    StopActionsComponent,
+    AppointmentRangeComponent,
+    AppointmentTypeComponent,
+    StopDetailViewComponent
   ]
 })
 export class LoadsModule { }

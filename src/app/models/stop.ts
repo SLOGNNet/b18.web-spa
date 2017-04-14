@@ -3,6 +3,7 @@ import { TripStop } from './tripStop';
 import { generateNewId } from './utils';
 import { StopTypes, StopStatuses } from './enums';
 import { StopAction, stopActionSchema } from './stopAction';
+import { Appointment } from './appointment';
 import { Type } from 'class-transformer';
 import { schema } from 'normalizr';
 import { Commodity, commoditySchema } from './commodity';
@@ -25,6 +26,8 @@ export class Stop {
   tripStops: Array<TripStop>;
   @Type(() => StopAction)
   stopActions: Array<StopAction>;
+  @Type(() => Appointment)
+  appointment: Appointment;
 
   static create(): Stop{
     const result = new Stop();

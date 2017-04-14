@@ -1,0 +1,11 @@
+<div class="stop-detail-container" [class.expanded]="isExpanded">
+  <div class="stop-detail-info-container interactive-background">
+    <div class="left-panel">
+      <appointment-type [appointment]="stop.appointment"></appointment-type>
+    </div>
+     <div class="right-panel">
+       <appointment-range [appointment]="stop.appointment"></appointment-range>
+    </div>
+  </div>
+  <stop-actions [stopActions]="tripData.stopActions" *ngIf="isExpanded"></stop-actions>
+</div>

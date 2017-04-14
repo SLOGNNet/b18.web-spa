@@ -1,0 +1,19 @@
+@import '../../../../../../assets/styles/variables';
+
+.date-range-container {
+  display: flex;
+  padding-left: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .date {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .last-date {
+    span {
+      text-align: right;
+    }
+  }
+}

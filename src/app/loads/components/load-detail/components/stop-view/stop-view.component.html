@@ -38,12 +38,20 @@
           </div>
       </div>
     </default-component-action-panel>
-    <div class="trip-view-container">
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'stop'" class="stop-detail-view-container">
+        <stop-detail-view
+            [stop]="stop"
+            [isExpanded]="isExpanded">
+        </stop-detail-view>
+      </div>
+      <div *ngSwitchCase="'trip'" class="trip-view-container">
         <trip-view
             *ngFor="let tripStop of tripStops"
             class="trip-view-item"
             [tripData]="tripStop"
             [isExpanded]="isExpanded">
         </trip-view>
+      </div>
     </div>
 </div>

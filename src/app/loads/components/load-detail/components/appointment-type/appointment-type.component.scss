@@ -1,0 +1,29 @@
+@import '../../../../../../assets/styles/variables';
+$element-height: 18px;
+$text-margin: 5px;
+
+.appointment-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .type-container {
+    display: flex;
+    align-items: center;
+
+    span {
+      line-height: $element-height;
+
+      &.circle {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: $blue;
+        opacity: $status-opacity;
+        border-radius: 50%;
+        margin-right: $text-margin;
+        transition: all $interactive-animation-time;
+      }
+    }
+  }
+}
