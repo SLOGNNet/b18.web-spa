@@ -17,12 +17,11 @@ export class StopsLineComponent {
   }
 
   isPickupAndDropOff(stop: Stop) {
-    return stop.stopActions.length && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length
-    && stop.stopActions.filter(a => a.type === StopActionTypes.PICKUP).length;
+    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length && stop.stopActions.filter(a => a.type === StopActionTypes.PICKUP).length;
   }
 
   isDropOff(stop: Stop) {
-    return stop.stopActions.length && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length;
+    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length;
   }
 
   getColor(stopStatus: StopStatuses) {
