@@ -6,7 +6,7 @@ import { Contact } from './contact';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
-import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
+import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes, ReeferType } from './enums';
 import { Type, Transform, Expose } from 'class-transformer';
 import { schema } from 'normalizr';
 
@@ -23,6 +23,8 @@ export class Load {
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
+  reeferType: ReeferType;
+  temperature: string;
   customerLocationId: string;
   customerBillingLocationId: string;
   @Type(() => Location)
