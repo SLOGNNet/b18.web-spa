@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Stop, Load, StopAction } from '../../models';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -8,7 +8,8 @@ import { StopActionActions } from '../../actions';
 @Component(Object.assign({
   selector: 'stop-form',
   templateUrl: './stop-form.component.html',
-  styleUrls: ['./stop-form.component.scss']
+  styleUrls: ['./stop-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseForm.metaData))
 export class StopFormComponent extends BaseForm {
   @Input() disabled: boolean = false;

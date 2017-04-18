@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stop, Load } from '../../../../../models';
@@ -13,7 +13,8 @@ import { cloneDeep } from 'lodash';
 @Component({
   selector: 'load-edit-stop',
   templateUrl: './load-edit-stop.component.html',
-  styleUrls: ['./load-edit-stop.component.scss']
+  styleUrls: ['./load-edit-stop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   protected segment = 'edit-stop';

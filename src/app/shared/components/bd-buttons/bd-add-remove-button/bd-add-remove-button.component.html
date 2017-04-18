@@ -1,11 +1,11 @@
 <div
   [class.bd-disabled]="disabled"
-  class="button-container">
-  <span *ngIf="prefixLabel.length" class="prefix-label text">{{prefixLabel}}</span>
+  class="button-container interactive-background">
+  <span *ngIf="prefixLabel.length" class="prefix-label text interactive-text">{{prefixLabel}}</span>
   <button
     [disabled]="disabled"
     [type]="type"
-    class="btn-icon {{iconClass}}">
+    class="btn-icon interactive-text {{iconClass}}">
   </button>
-  <span *ngIf="suffixLabel.length" class="suffix-label text">{{suffixLabel}}</span>
+  <span *ngIf="suffixLabel.length" class="suffix-label interactive-text text">{{suffixLabel}}</span>
 </div>
