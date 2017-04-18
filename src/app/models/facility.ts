@@ -2,7 +2,7 @@ import { Address } from './address';
 import { ContactInfo } from './contact-info';
 import { generateNewId } from './utils';
 import { Type } from 'class-transformer';
-
+import { ScheduleTypes } from './enums';
 export class Facility {
   id: string;
   @Type(() => Address)
@@ -12,6 +12,7 @@ export class Facility {
   businessHours: string = '';
   @Type(() => ContactInfo)
   contactInfo: Array<ContactInfo>;
+  scheduleType: ScheduleTypes;
 
   static create(): Facility{
     const result = new Facility();
