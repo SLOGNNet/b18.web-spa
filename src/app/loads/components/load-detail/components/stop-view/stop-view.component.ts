@@ -13,7 +13,7 @@ import { map } from 'lodash';
 })
 export class StopViewComponent {
   @Input() stop: Stop;
-  @Input() mode: 'stop' | 'trip' = 'stop';
+  @Input() mode: 'load' | 'trip' = 'load';
   @Output() remove = new EventEmitter();
   @Output() edit = new EventEmitter();
   public isExpanded: boolean = false;
@@ -38,7 +38,7 @@ export class StopViewComponent {
     });
   }
 
-  onClick() {
+  onExpand() {
     this.isExpanded = !this.isExpanded;
   }
 

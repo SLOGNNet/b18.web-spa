@@ -35,11 +35,14 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(selectDetailLoad), router, route, cdr);
   }
-
   get selectedContact(): Contact {
     return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
   };
 
+  private stopMode: string = 'load';
+  onStopModeChange(mode: string) {
+    this.stopMode = mode;
+  }
   onStopRemove(stop: Stop) {
 
   }
