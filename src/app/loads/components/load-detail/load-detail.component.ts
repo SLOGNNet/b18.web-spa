@@ -26,6 +26,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     id: 'itinerary-view',
     title: 'Itinerary'
   }];
+  private stopMode: string = 'load';
 
   constructor(
     cdr: ChangeDetectorRef,
@@ -35,14 +36,11 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     ngRedux: NgRedux<IAppState>) {
       super(loadActions, ngRedux.select(selectDetailLoad), router, route, cdr);
   }
+
   get selectedContact(): Contact {
     return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
   };
 
-  private stopMode: string = 'load';
-  onStopModeChange(mode: string) {
-    this.stopMode = mode;
-  }
   onStopRemove(stop: Stop) {
 
   }
@@ -52,11 +50,15 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     this.router.navigate(['edit-stop', id], { preserveQueryParams: true, relativeTo: this.route });
   }
 
-  private trackBy(index: number, stop: Stop) {
-    return stop.id;
-  }
-
   onLoadEditClick() {
     this.router.navigate(['edit-info'], { preserveQueryParams: true, relativeTo: this.route });
+  }
+
+  onStopModeChange(mode: string) {
+    this.stopMode = mode;
+  }
+
+  private trackBy(index: number, stop: Stop) {
+    return stop.id;
   }
 }
