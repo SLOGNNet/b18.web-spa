@@ -6,7 +6,7 @@ import { Contact } from './contact';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
-import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes, ReeferType } from './enums';
+import { LoadStatuses, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes, ReeferType } from './enums';
 import { Type, Transform, Expose } from 'class-transformer';
 import { schema } from 'normalizr';
 

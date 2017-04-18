@@ -1,7 +1,7 @@
 import { Facility } from './facility';
 import { TripStop } from './tripStop';
 import { generateNewId } from './utils';
-import { StopTypes, StopStatuses } from './enums';
+import { StopStatuses } from './enums';
 import { StopAction, stopActionSchema } from './stopAction';
 import { Appointment } from './appointment';
 import { Type } from 'class-transformer';

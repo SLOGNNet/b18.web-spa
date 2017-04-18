@@ -17,7 +17,7 @@ export class StopViewComponent {
   @Input() mode: 'load' | 'trip' = 'load';
   @Output() remove = new EventEmitter();
   @Output() edit = new EventEmitter();
-  public isExpanded: boolean = false;
+  public isExpanded: boolean = true;
   public pickups: Array<any> = [];
   public dropoffs: Array<any> = [];
 

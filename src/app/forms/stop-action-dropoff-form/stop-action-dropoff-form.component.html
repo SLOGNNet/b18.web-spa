@@ -1,9 +1,7 @@
 <form [formGroup]="formGroup">
-  <bd-form-datepicker
-    class="bd-form-control"
-    formControlName="date"
-  >
-  </bd-form-datepicker>
+  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" formControlName="type"
+    [items]="stopActionTypes">
+  </bd-form-switch>
   <drop-off-commodity-form
     [formArray]="formGroup.controls.commodities"
     [items]="stopAction.commodities"

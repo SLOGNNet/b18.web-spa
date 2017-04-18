@@ -2,10 +2,12 @@ import { Component, Input, OnChanges, ElementRef } from '@angular/core';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Load, StopAction, Commodity } from '../../models';
+import { Load, StopAction, Commodity, StopActionTypes } from '../../models';
 import { select } from '@angular-redux/store';
 import { CommodityActions } from '../../actions';
 import { Observable } from 'rxjs/Observable';
+import { EnumHelperService } from '../../shared/helpers';
+
 @Component(Object.assign({
   inputs: ['viewMode', 'isNestedForm', 'group', 'load', 'stopAction'],
 }, BaseForm.metaData))
@@ -14,10 +16,11 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   @Input('group') formGroup: FormGroup;
   @Input() public load: Load;
   @Input() public stopAction: StopAction;
-
+  protected stopActionTypes: Array<string>;
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
-    protected commodityActions: CommodityActions, protected datePipe: DatePipe) {
+    protected commodityActions: CommodityActions, protected datePipe: DatePipe, protected enumHelperService: EnumHelperService) {
     super(elementRef);
+        this.stopActionTypes = enumHelperService.getDropdownKeyValues(StopActionTypes);
   }
 
   ngOnChanges(changes: any) {
