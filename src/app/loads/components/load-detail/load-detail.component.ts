@@ -51,4 +51,8 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   onLoadEditClick() {
     this.router.navigate(['edit-info'], { preserveQueryParams: true, relativeTo: this.route });
   }
+
+  onCustomerEditClick() {
+    this.router.navigate(['edit-customer'], { preserveQueryParams: true, relativeTo: this.route });
+  }
 }
