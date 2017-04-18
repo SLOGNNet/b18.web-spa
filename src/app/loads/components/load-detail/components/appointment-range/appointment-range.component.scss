@@ -1,4 +1,5 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 .date-range-container {
   display: flex;
@@ -16,4 +17,10 @@
       text-align: right;
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }
