@@ -2,12 +2,12 @@
   <navigation-anchor id="customer-view"></navigation-anchor>
   <bd-form-section labelText="CUSTOMER">
     <bd-typeahead
-      formControlName="customer"
       [labelText]="'Name or MC#'"
       [footerButtonText]="'Add New Customer'"
       [source]="customerSource"
       (onRemove)="onCustomerRemove()"
-      [(value)]="customerQuery"
+      [(ngModel)]="customerQuery"
+      [ngModelOptions]="{standalone: true}"
       [itemTemplate]="customItemTemplate"
       (onSelect)="onCustomerSelect($event)"
       (onFooterButtonClick)="onAddCustomer()"
