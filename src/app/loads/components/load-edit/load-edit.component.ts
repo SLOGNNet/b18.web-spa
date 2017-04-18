@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../models';
 import { LoadActions } from '../../../actions';
 import { BaseRootEditComponent } from '../../../base';
@@ -10,7 +10,8 @@ import { LoadFormComponent } from '../../../forms';
 
 @Component({
   selector: 'load-edit',
-  templateUrl: './load-edit.component.html'
+  templateUrl: './load-edit.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadEditComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;

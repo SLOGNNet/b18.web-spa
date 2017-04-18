@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Appointment, AppointmentTypes } from '../../../../../models';
 
 @Component({
   selector: 'appointment-type',
   templateUrl: './appointment-type.component.html',
-  styleUrls: ['./appointment-type.component.scss']
+  styleUrls: ['./appointment-type.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppointmentTypeComponent implements OnInit {
 

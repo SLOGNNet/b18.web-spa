@@ -1,9 +1,10 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'default-edit-remove-button',
   templateUrl: './default-edit-remove-button.component.html',
-  styleUrls: ['./default-edit-remove-button.component.scss']
+  styleUrls: ['./default-edit-remove-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DefaultEditRemoveButtonComponent {
   @Output() edit: EventEmitter<any> = new EventEmitter();

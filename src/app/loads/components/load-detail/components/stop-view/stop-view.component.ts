@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import {
   TripStop,
   StopActionTypes,
@@ -9,7 +9,8 @@ import { map } from 'lodash';
 @Component({
   selector: 'stop-view',
   templateUrl: './stop-view.component.html',
-  styleUrls: ['./stop-view.component.scss']
+  styleUrls: ['./stop-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StopViewComponent {
   @Input() stop: Stop;
