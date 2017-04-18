@@ -39,6 +39,7 @@ export class Stop {
     result.facility = Facility.create();
     result.tripStops = [];
     result.stopActions = [];
+    result.appointment = Appointment.create();
     return result;
   }
 

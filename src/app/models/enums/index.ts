@@ -1,4 +1,4 @@
-export * from './appointment-types';
+export * from './schedule-types';
 export * from './company-statuses';
 export * from './company-types';
 export * from './contact-info-type';

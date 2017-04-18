@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Appointment, AppointmentTypes } from '../../../../../models';
+import { Appointment, ScheduleTypes } from '../../../../../models';
 
 @Component({
   selector: 'appointment-type',
@@ -15,8 +15,8 @@ export class AppointmentTypeComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAppointmentType(type: AppointmentTypes) {
-    return AppointmentTypes.displayText(type);
+  getAppointmentType(type: ScheduleTypes) {
+    return ScheduleTypes.displayText(type);
   }
 
 }

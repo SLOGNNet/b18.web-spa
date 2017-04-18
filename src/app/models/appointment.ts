@@ -1,9 +1,10 @@
-import { AppointmentTypes } from './enums';
+import { ScheduleTypes } from './enums';
 
 export class Appointment {
+  number: string;
   from: Date;
   to: Date;
-  type: AppointmentTypes;
+  scheduleType: ScheduleTypes;
 
   static create(): Appointment{
     const result = new Appointment();

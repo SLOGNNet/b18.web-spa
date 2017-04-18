@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { AppointmentTypes, Appointment, TripStop, StopActionTypes, StopAction } from '../../../../../models';
+import { TripStop, StopActionTypes, StopAction } from '../../../../../models';
 import { find, filter } from 'lodash';
 
 @Component({
