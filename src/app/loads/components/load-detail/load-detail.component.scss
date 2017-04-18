@@ -1,2 +1,31 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/font-icons';
+
+.itenerary-navigation {
+  display: flex;
+  margin: $default-margin 0;
+
+  a {
+    color: $black;
+    cursor: pointer;
+    text-decoration: none;
+
+    &.active {
+      color: $blue;
+      font-weight: bold;
+    }
+  }
+
+  .left,
+  .right {
+    width: 50%;
+    padding: 0 $default-margin;
+    font-size: $tiny-font-size;
+  }
+
+  .left {
+    display: flex;
+    justify-content: flex-end;
+    border-right: $border;
+  }
+}
