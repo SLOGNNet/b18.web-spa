@@ -40,6 +40,13 @@ export class StopFormComponent extends BaseForm {
       );
     });
     this.stopForm.setControl('stopActions', this.formBuilder.array([]));
+    const appointmentGroup: FormGroup = this.formBuilder.group({
+      number: [this.stop.appointment.number],
+      from: [this.stop.appointment.from],
+      to: [this.stop.appointment.to],
+      scheduleType: [this.stop.appointment.scheduleType]
+    });
+    this.stopForm.setControl('appointment', appointmentGroup);
   }
 
   onStopActionUpdate(stopAction: StopAction) {
