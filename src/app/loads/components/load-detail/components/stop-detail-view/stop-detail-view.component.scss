@@ -1,8 +1,32 @@
-.left-panel {
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+
+.stop-detail-info-container {
   display: flex;
-  width: 50%;
+  border: $border;
+  margin: 10px;
+  background: $default-background;
+  border-radius: 3px;
+  transition: background-color $interactive-animation-time;
+
+  .left-panel {
+    display: flex;
+    width: 50%;
+    margin: $default-margin;
+  }
+
+  .right-panel {
+    display: flex;
+    width: 50%;
+    margin: $default-margin;
+
+    appointment-range {
+      width: 100%;
+      font-weight: bold;
+    }
+  }
 }
-.right-panel {
-  display: flex;
-  width: 50%;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

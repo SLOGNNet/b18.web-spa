@@ -14,7 +14,4 @@ export class StopDetailViewComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  ngOnChanges() {
-  }
 }

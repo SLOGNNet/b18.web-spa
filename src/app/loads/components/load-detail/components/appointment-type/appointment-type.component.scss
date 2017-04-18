@@ -1,4 +1,5 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 $element-height: 18px;
 $text-margin: 5px;
 
@@ -13,6 +14,7 @@ $text-margin: 5px;
 
     span {
       line-height: $element-height;
+      font-weight: bold;
 
       &.circle {
         display: inline-block;
@@ -22,6 +24,21 @@ $text-margin: 5px;
         opacity: $status-opacity;
         border-radius: 50%;
         margin-right: $text-margin;
+        transition: all $interactive-animation-time;
+      }
+    }
+  }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+
+  .appointment-type {
+    .type-container {
+      span {
+        opacity: 1;
         transition: all $interactive-animation-time;
       }
     }
