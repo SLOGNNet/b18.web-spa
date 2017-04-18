@@ -4,7 +4,7 @@ import { Stop } from '../../../../../models';
 @Component({
   selector: 'stop-detail-view',
   templateUrl: './stop-detail-view.component.html',
-  styleUrls: ['./stop-detail-view.component.css']
+  styleUrls: ['./stop-detail-view.component.scss']
 })
 export class StopDetailViewComponent implements OnInit {
   @Input() isExpanded: boolean;
