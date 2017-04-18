@@ -1,16 +1,23 @@
 import { Component, Optional, TemplateRef,
-  ViewEncapsulation, HostBinding, Input, Output, EventEmitter,
+  ViewEncapsulation, HostBinding, Input, Output, EventEmitter, forwardRef,
   ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, NG_VALUE_ACCESSOR  } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { BdInputComponent } from '../bd-input';
 const noop = () => { };
+
+export const BD_FORM_TYPEAHED_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => BdFormTypeaheadComponent),
+  multi: true
+};
 
 @Component({
   selector: 'bd-typeahead',
   templateUrl: './bd-form-typeahead.component.html',
   styleUrls: ['./bd-form-typeahead.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  providers: [BD_FORM_TYPEAHED_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BdFormTypeaheadComponent implements ControlValueAccessor {
@@ -22,9 +29,10 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   @Input() public footerButtonText: string = '';
   @Input() public source: Observable<any>;
   @Input() public optionField: string;
-  @Input() value: string;
+  @Input() query: string;
+  @Input() selected: any;
   @Output() public onSelect: EventEmitter<any> = new EventEmitter<any>(false);
-  @Output() public valueChange = new EventEmitter();
+  @Output() public queryChange = new EventEmitter();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter();
   @Output() public onFooterButtonClick: EventEmitter<any> = new EventEmitter();
   @ViewChild('input') inputElement: BdInputComponent;
@@ -35,18 +43,14 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   private _onTouchedCallback: () => void = noop;
   private _onChangeCallback: (_: any) => void = noop;
 
-  constructor(@Optional() ngControl: NgControl, private changeDetectionRef: ChangeDetectorRef) {
-    if (ngControl) {
-      ngControl.valueAccessor = this;
-    }
+  constructor(private changeDetectionRef: ChangeDetectorRef) {
   }
 
-  changeValue(v: any) {
-    this.value = v;
+  changeQuery(v: any) {
+    this.query = v;
     // fire change callback only for selected from list items
     // if user change input value - consider it as empty result
-
-    this.valueChange.emit(v);
+    this.queryChange.emit(v);
   }
 
   public changeTypeaheadLoading(isLoading: boolean): void {
@@ -58,22 +62,23 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   public typeaheadOnSelect(match): void {
+    this.writeValue(match.item);
     this.onSelect.emit(match.item);
-    this._onChangeCallback(this.value);
+    this._onChangeCallback(match.item);
   }
 
   remove(event): void {
     if (this.disabled) return;
 
     event.stopPropagation();
-    this.changeValue('');
-    this._onChangeCallback('');
+    this.changeQuery('');
+    this._onChangeCallback(null);
     this.onRemove.emit(event);
   }
 
   public onFooterClick(): void {
-    this.changeValue('');
-    this._onChangeCallback('');
+    this.changeQuery('');
+    this._onChangeCallback(null);
     this.onFooterButtonClick.emit();
   }
 
@@ -82,7 +87,8 @@ export class BdFormTypeaheadComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    this.value = value ? value[this.optionField] : ''; 
+    this.query = value && this.optionField ? value[this.optionField] : value;
+    this.selected = value;
     this.changeDetectionRef.markForCheck();
   }
 
