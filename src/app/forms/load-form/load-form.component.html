@@ -26,21 +26,6 @@
   </bd-form-section>
   <navigation-anchor id="company"></navigation-anchor>
   <bd-form-section labelText="Customer">
-    <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
-      <bd-typeahead
-        class="bd-form-control"
-        formControlName="customer"
-        [labelText]="'Name or MC#'"
-        [footerButtonText]="'Add New Company'"
-        [source]="companySource"
-        (onRemove)="onCompanyRemove()"
-        [(value)]="companyQuery"
-        [itemTemplate]="customItemTemplate"
-        (onSelect)="onCompanySelect($event)"
-        (onFooterButtonClick)="onAddNewCompany()"
-        [optionField]="'name'">
-      </bd-typeahead>
-    </bd-validator>
     <bd-form-section>
       <bd-dropdown
         *ngIf='load.customer'
