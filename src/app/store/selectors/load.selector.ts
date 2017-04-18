@@ -14,5 +14,6 @@ export const selectLoad = (state: IAppState, id: string): Load => denormalize(id
   state.entities);
 
 export const selectDetailLoad = (state: IAppState): Load => {
-  return selectLoad(state, state.ui.loads.selected);
+  const res =  selectLoad(state, state.ui.loads.selected);
+  return res;
 };

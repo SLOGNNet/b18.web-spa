@@ -20,7 +20,6 @@ export * from './notification-type';
 export * from './power-unit-types';
 export * from './stop-action-types';
 export * from './stop-statuses';
-export * from './stop-types';
 export * from './task-type';
 export * from './trailer-types';
 export * from './reefer-types';

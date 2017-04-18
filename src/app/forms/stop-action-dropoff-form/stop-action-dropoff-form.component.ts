@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnChanges, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Commodity } from '../../models';
+import { EnumHelperService } from '../../shared/helpers';
 import { BaseForm } from '../base-form';
 import { BaseStopActionForm } from '../base-stop-action-form';
 import { CommodityActions } from '../../actions';
@@ -15,8 +16,9 @@ import { Observable } from 'rxjs/Observable';
 export class StopActonDropoffFormComponent extends BaseStopActionForm implements OnChanges {
   private availableCommodities$ = Observable.of([]);
   constructor(formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions, datePipe: DatePipe) {
-    super(elementRef, formBuilder, commodityActions, datePipe);
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
+    datePipe: DatePipe, enumHelperService: EnumHelperService) {
+    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService);
   }
 
   ngOnChanges(changes: any) {
