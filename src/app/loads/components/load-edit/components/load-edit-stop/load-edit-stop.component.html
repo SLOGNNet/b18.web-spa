@@ -7,6 +7,7 @@
     [anchors]="anchors">
   </form-navigation>
   <bd-form-section [disabled]="disabled" [labelText]="'Itinerary'">
+    <div class="facility-schedule-type-date-container">
     <bd-input class="bd-form-control" [labelText]="'Facility'">
     </bd-input>
     <bd-form-switch class="bd-form-control" [labelText]="'Schedule type'" [enableButtonSwitch]="true" [items]="[{key:1, value:'FCFS'}, {key:2, value:'Appt'}]">
@@ -15,6 +16,7 @@
       class="bd-form-control"
       [labelText]="'Date'">
     </bd-form-datepicker>
+  </div>
     <stop-form
       [stop]="selectedItem"
       [load]="parentItem"
