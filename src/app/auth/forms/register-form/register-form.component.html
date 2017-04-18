@@ -1,6 +1,6 @@
 <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit(registerForm)" class="auth-form">
   <bd-auth-general-form-error *ngIf="isRegisterFailed && registerForm.pristine"
-    [headerText]="'Unable to registering.'">
+    [headerText]="'Unable to register'">
     {{ errorDescription }}
   </bd-auth-general-form-error>
 <bd-validator-summary>
