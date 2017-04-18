@@ -11,15 +11,6 @@ import { filter } from 'lodash';
 export class StopActionsComponent {
   @Input() stopActions: Array<StopAction>;
 
-  public pickupCommodities: Array<StopAction> = [];
-  public dropoffCommodities: Array<StopAction> = [];
-  public appointmentType: string = '';
-  public phoneNumber: string = '';
-
-  get hasPickupCommodities() { return this.pickupCommodities.length > 0; }
-
-  get hasDropoffCommodities() { return this.dropoffCommodities.length > 0; }
-
   public commodityHeaders = [
       { name: 'NUMBER' },
       { name: 'P.O.' },
@@ -30,8 +21,8 @@ export class StopActionsComponent {
       { name: 'WEIGHT<br />(IBS)' }
     ];
 
-  ngOnInit() {
-    this.pickupCommodities = filter(this.stopActions, item => item.type === StopActionTypes.PICKUP);
-    this.dropoffCommodities = filter(this.stopActions, item => item.type === StopActionTypes.DROPOFF);
+  getStopActionClass(stopAction: StopAction) {
+    const classes = { [StopActionTypes.PICKUP]: 'pickup-border', [StopActionTypes.DROPOFF]: 'dropoff-border'};
+    return classes[stopAction.type] || '';
   }
 }

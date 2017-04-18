@@ -7,11 +7,8 @@ import { Stop } from '../../../../../models';
   styleUrls: ['./stop-detail-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StopDetailViewComponent implements OnInit {
+export class StopDetailViewComponent {
   @Input() isExpanded: boolean;
   @Input() stop: Stop;
   constructor() { }
-
-  ngOnInit() {
-  }
 }

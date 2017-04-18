@@ -21,7 +21,6 @@ export abstract class BaseNestedEditComponent<T, Y> extends BaseEditComponent<T>
     cdr: ChangeDetectorRef) {
     super(selected$, isLoading$, route, router, location, cdr);
     parent$.subscribe(item => {
-      debugger;
       this.parentItem = cloneDeep(item);
       this.cdr.markForCheck();
     });
