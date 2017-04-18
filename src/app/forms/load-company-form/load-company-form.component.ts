@@ -53,7 +53,7 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.load) {
-      this.selectedCustomer = changes.load.currentValue.customer;
+      this.selectedCustomer = changes.load.currentValue.customer || Company.create();
       this.initForm();
       this.initCustomerForm(this.selectedCustomer);
       this.initCustomerTypeahead(changes.load.currentValue);
