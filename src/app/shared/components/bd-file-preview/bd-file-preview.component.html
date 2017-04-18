@@ -1,16 +1,16 @@
-<div class="loaded-file-container">
+<div class="loaded-file-container interactive-background">
   <div
     class="upload-progress"
     [style.width.%]="uploadProgress">
   </div>
   <div class="file-info-container">
     <div class="file-type-container">
-        <span class="file-name">
+        <span class="file-name interactive-text">
           {{titleText}}
         </span>
         <button class="btn-delete"
                 (click)="onRemoveClick($event)">
-          <i class="icon-minus"></i>
+          <i class="icon-minus interactive-text"></i>
         </button>
     </div>
       <bd-input
