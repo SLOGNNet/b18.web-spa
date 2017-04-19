@@ -7,12 +7,12 @@ export function addItem(byId: any, added: any) {
   return {...byId, [added.id]: { added }};
 }
 
-export function addChild(entityState: any, entityId: string, childName: string, childId: string) {
+export function addChild(entityState: any, entityId: string, childName: string, childId: string, toEnd: boolean = false) {
    const result = {
       ...entityState,
       [entityId]: {
         ...entityState[entityId],
-        [childName]: [childId, ...entityState[entityId][childName]]
+        [childName]: toEnd ? [...entityState[entityId][childName], childId] : [childId, ...entityState[entityId][childName]]
       }
     };
     return result;

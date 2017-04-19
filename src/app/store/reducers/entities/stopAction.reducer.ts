@@ -9,7 +9,7 @@ export const stopActionReducer = createReducer(INITIAL_STATE, {
   [CommodityActions.ADD_COMMODITY](state, action) {
     const commodityId = action.data.result;
     const stopActionId = action.stopActionId;
-    const result = addChild(state, stopActionId, 'commodities', commodityId);
+    const result = addChild(state, stopActionId, 'commodities', commodityId, true);
     return result;
   },
   [CommodityActions.REMOVE_COMMODITY](state, action) {
@@ -21,13 +21,13 @@ export const stopActionReducer = createReducer(INITIAL_STATE, {
   [CommodityActions.SELECT_COMMODITY](state, action) {
     const commodityId = action.commodity;
     const stopActionId = action.data.result;
-    const result =  addChild(state, stopActionId, 'commodities', commodityId);
+    const result =  addChild(state, stopActionId, 'commodities', commodityId, true);
     return result;
   },
   [CommodityActions.DESELECT_COMMODITY](state, action) {
     const commodityId = action.commodity;
     const stopActionId = action.data.result;
-    const result = addChild(state, stopActionId, 'commodities', commodityId);
+    const result = addChild(state, stopActionId, 'commodities', commodityId, true);
     return result;
   },
 
