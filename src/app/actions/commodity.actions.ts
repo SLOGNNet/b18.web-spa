@@ -9,7 +9,7 @@ import { createPeristEnity } from './utils';
 export class CommodityActions {
   static ADD_COMMODITY: string = 'ADD_COMMODITY';
   static REMOVE_COMMODITY: string = 'REMOVE_COMMODITY';
-  static UPDATE_COMMODITY: string = 'UPDATE_COUNTER';
+  static UPDATE_COMMODITY: string = 'UPDATE_COMMODITY';
   static SELECT_COMMODITY: string = 'SELECT_COMMODITY';
   static DESELECT_COMMODITY: string = 'DESELECT_COMMODITY';
 
