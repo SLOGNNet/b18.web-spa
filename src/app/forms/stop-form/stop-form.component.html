@@ -1,2 +1,34 @@
- <stop-actions-form [formArray]="stopForm.controls.stopActions" [items]="stop.stopActions" [load]="load" 
-   [viewMode]="viewMode" (update)="onStopActionUpdate($event)" (remove)="onStopActionRemove($event)" (add)="onStopActionAdd($event)"></stop-actions-form>
+<form [formGroup]="stopForm" class="edit">
+  <div class="facility-schedule-type-date-container">
+    <bd-typeahead
+      formControlName="facility"
+      [labelText]="'Facility'"
+      [source]="facilitySource"
+      (onRemove)="onFacilityRemove()"
+      [(query)]="facilityQuery"
+      [itemTemplate]="facilityItemTemplate"
+      [optionField]="'name'">
+    </bd-typeahead>
+    <form [formGroup]="stopForm.controls.appointment" class="edit">
+      <bd-form-switch class="bd-form-control" formControlName="scheduleType" [labelText]="'Schedule type'" [enableButtonSwitch]="true" [items]="scheduleTypes">
+      </bd-form-switch>
+      <bd-form-datepicker class="bd-form-control" formControlName="from" [labelText]="'Date From'">
+      </bd-form-datepicker>
+      <bd-form-datepicker class="bd-form-control" formControlName="to" [labelText]="'Date To'">
+      </bd-form-datepicker>
+    </form>
+  </div>
+  <stop-actions-form [formArray]="stopForm.controls.stopActions" [items]="stop.stopActions" [load]="load" [viewMode]="viewMode"
+    (update)="onStopActionUpdate($event)" (remove)="onStopActionRemove($event)" (add)="onStopActionAdd($event)">
+  </stop-actions-form>
+</form>
+
+<template #facilityItemTemplate let-model="item" let-index="index">
+    <div class="dropdown-item-wrapper">
+      <div class="full-properties-wrapper">
+        <div class="name-title">
+          {{model.name}}
+        </div>
+      </div>
+    </div>
+</template>
