@@ -1,0 +1,11 @@
+@import '../../../assets/styles/form-control';
+@import '../../../assets/styles/variables';
+
+.add-new-item-button {
+  position: relative;
+  display: block;
+  margin: 10px 10px 0;
+  color: $blue;
+  cursor: pointer;
+  text-decoration: none;
+}

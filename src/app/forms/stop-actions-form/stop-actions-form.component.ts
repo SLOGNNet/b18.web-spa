@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
 @Component(Object.assign({
   selector: 'stop-actions-form',
   templateUrl: './stop-actions-form.component.html',
-  styleUrls: ['../../../assets/styles/form-control.scss']
+  styleUrls: ['./stop-actions-form.component.scss']
 }, BaseListForm.metaData))
 export class StopActionsFormComponent extends BaseListForm<StopAction>  {
   @Input() public load: Load;

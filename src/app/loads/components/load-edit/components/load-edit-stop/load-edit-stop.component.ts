@@ -43,10 +43,18 @@ export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
     return this.form && this.form.dirty;
   }
 
-  onFormSave() {
+  onFormSave(): boolean {
     if (this.form.valid) {
       this.form.markAsPristine();
       super.onItemSave(this.form.value);
+    }
+
+    return this.form.valid;
+  }
+
+  onStopAdd() {
+    if (this.onFormSave()) {
+
     }
   }
 

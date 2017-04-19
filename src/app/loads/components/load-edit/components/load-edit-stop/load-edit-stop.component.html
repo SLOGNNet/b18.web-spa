@@ -19,7 +19,9 @@
       <div class="button-group">
         <bd-button [disabled]="disabled" (click)="onItemCancel()" [text]="'Cancel'" class="button">
         </bd-button>
-        <bd-button [disabled]="disabled" (click)="onFormSave()" color="primary" class="button" [text]="'Save'">
+        <bd-button [disabled]="disabled" (click)="onFormSave()" color="primary" class="button" [text]="'Done'">
+        </bd-button>
+        <bd-button [disabled]="disabled" (click)="onStopAdd()" color="primary" class="button" [text]="'+ Stop >'">
         </bd-button>
       </div>
     </form-sticky-bottom-container>
