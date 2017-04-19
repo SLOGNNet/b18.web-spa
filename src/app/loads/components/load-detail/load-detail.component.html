@@ -13,7 +13,7 @@
         <navigation-anchor id="customer-view"></navigation-anchor>
         <bd-view-detail-section [labelText]="'Customer'" [editButton]="selectedItem.customer" [addButton]="false" (editClick)="onCustomerEditClick()">
             <customer-detail *ngIf="selectedItem.customer" [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
-            <bd-button *ngIf="!selectedItem.customer" (click)="onCustomerEditClick()">Add Customer</bd-button>
+            <bd-button *ngIf="!selectedItem.customer" (click)="onCustomerEditClick()" color="white" [text]="'Add Customer'"></bd-button>
         </bd-view-detail-section>
         <navigation-anchor id="itinerary-view"></navigation-anchor>
         <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">

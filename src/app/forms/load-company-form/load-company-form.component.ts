@@ -1,8 +1,7 @@
-import { Component, Input, Output, OnChanges, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnChanges, EventEmitter, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { CompanyService, ContactService, LocationService } from '../../shared';
-import { EnumHelperService } from '../../shared/helpers';
 import { Load, Company, CompanyStatuses, CompanyTypes } from '../../models';
 import { BaseForm } from '../base-form';
 import { ViewMode } from '../../shared/enums';
@@ -11,17 +10,13 @@ import { ViewMode } from '../../shared/enums';
   selector: 'load-company-form',
   styleUrls: ['load-company-form.component.scss'],
   templateUrl: './load-company-form.component.html',
-  changeDetectionStrategy: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseForm.metaData))
 export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
   customerLocations: Array<any>;
   contacts: Array<any>;
   customerSource: any[];
   customerQuery: string = '';
-  selectedCustomer: Company = null;
-  customerFormViewMode: ViewMode = ViewMode.ViewCollapsed;
-  customerTypes: Array<string>;
-  customerStatuses: Array<string>;
   @Input() public isLoading: boolean = false;
   @Input() load: Load;
   @Output() cancel: EventEmitter<any> = new EventEmitter();
@@ -40,49 +35,38 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
   ];
 
   public constructor(
+    private cdr: ChangeDetectorRef,
     private companyService: CompanyService,
     private formBuilder: FormBuilder,
     private contactService: ContactService,
-    private enumHelperService: EnumHelperService,
     elementRef: ElementRef) {
     super(elementRef);
-
-    this.customerTypes = this.enumHelperService.getDropdownKeyValues(CompanyTypes);
-    this.customerStatuses = this.enumHelperService.getDropdownKeyValues(CompanyStatuses);
   }
 
   ngOnChanges(changes: any) {
     if (changes.load) {
-      this.selectedCustomer = changes.load.currentValue.customer || Company.create();
-      this.initForm();
-      this.initCustomerForm(this.selectedCustomer);
-      this.initCustomerTypeahead(changes.load.currentValue);
-      this.initDropdowns(this.selectedCustomer);
+      const load = changes.load.currentValue;
+
+      if (!load.customer) {
+        load.customer = { };
+      }
+      this.initForm(load);
+      this.initCustomerTypeahead(load.customer);
+      this.initDropdowns(load.customer);
     }
   }
 
-  public initForm() {
+  public initForm(load) {
     this.fields.forEach(field => {
       this.loadForm.setControl(
         field.name,
-        this.formBuilder.control({ value: this.load[field.name], disabled: false }, field.validators)
+        this.formBuilder.control({ value: load[field.name], disabled: false }, field.validators)
       );
     });
   }
 
-  private initCustomerForm(customer) {
-    this.loadForm.setControl(
-      'customerForm',
-      this.formBuilder.group({
-        type: [{ value: customer.type, disabled: true }],
-        status: [{ value: customer.status, disabled: false }],
-        mc: [{ value: customer.mc, disabled: true }]
-      })
-    );
-  }
-
-  private initCustomerTypeahead(load) {
-    this.customerQuery = load.customer && load.customer.name;
+  private initCustomerTypeahead(customer) {
+    this.customerQuery = customer ? customer.name : '';
     this.customerSource = Observable.create((observer: any) => {
       observer.next(this.customerQuery);
     }).mergeMap((token: string) => this.companyService.search(token));
@@ -102,12 +86,10 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
   }
 
   private onCustomerSelect(customer: Company) {
-    this.selectedCustomer = customer;
-    this.loadForm.setControl('customer', this.formBuilder.control({ value: customer || {}, disabled: false }));
+    this.loadForm.setControl('customer', this.formBuilder.control({ value: customer || {} , disabled: false }));
     this.onLocationSelect({});
     this.onBillingLocationSelect({});
     this.initDropdowns(customer);
-    this.initCustomerForm(customer || {});
   }
 
   private onCustomerRemove() {
@@ -124,22 +106,11 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
 
   private onLoadSave() {
     if (this.loadForm.valid) {
-      let result = this.loadForm.value;
-      result.customer = Object.assign({}, result.customer, result.customerForm);
-      delete result.customerForm;
       this.save.emit(this.loadForm.value);
     }
   }
 
   private onAddStop() {
     this.addStop.emit();
-  }
-
-  private onExpandChanged(isExpanded) {
-    this.customerFormViewMode = isExpanded;
-  }
-
-  private get isCustomerFormExpanded(): boolean {
-    return this.customerFormViewMode !== ViewMode.ViewCollapsed;
   }
 }

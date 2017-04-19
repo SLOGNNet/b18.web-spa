@@ -17,7 +17,7 @@ import { select } from '@angular-redux/store';
   selector: 'load-info-form',
   styleUrls: ['load-info-form.component.scss'],
   templateUrl: './load-info-form.component.html',
-  changeDetectionStrategy: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 }, BaseForm.metaData))
 export class LoadInfoFormComponent extends BaseForm implements OnChanges {
   driverRequirementsNames: Array<any>;

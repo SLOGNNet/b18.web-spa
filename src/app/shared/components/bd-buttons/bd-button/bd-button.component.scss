@@ -34,6 +34,15 @@
   }
 }
 
+.white {
+  background: $white;
+  color: $black;
+
+  // &:hover {
+  //   background: $btn-default-hover;
+  // }
+}
+
 .common {
   border: 0;
   border-bottom: $border;

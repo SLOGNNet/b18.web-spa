@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../../../models';
 import { LoadActions } from '../../../../../actions';
 import { BaseRootEditComponent } from '../../../../../base';
@@ -10,7 +10,8 @@ import { LoadFormComponent } from '../../../../../forms';
 
 @Component({
   selector: 'load-edit-info',
-  templateUrl: './load-edit-info.component.html'
+  templateUrl: './load-edit-info.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
@@ -42,6 +43,6 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   }
 
   onAddCustomer() {
-
+    this.router.navigate(['edit-customer'], { preserveQueryParams: true, relativeTo: this.route.parent });
   }
 }
