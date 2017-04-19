@@ -86,7 +86,6 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
       contactId: [this.load.contactId],
       driverRequirement: [this.load.driverRequirment],
       requiredPowerUnitType: [this.load.requiredPowerUnitType],
-      
       requiredTrailerType: [this.load.requiredTrailerType],
       specialRequirments: [this.load.specialRequirments],
       systemLoadNo: [this.load.systemLoadNo],

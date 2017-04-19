@@ -14,7 +14,6 @@
 	<bd-form-spinner *ngIf="isLoading"></bd-form-spinner>
   <navigation-anchor id="info"></navigation-anchor>
   <bd-form-section labelText="Info">
-    
     <bd-input class="bd-form-control" [labelText]="'System Load Number'" [disabled]="disabled" formControlName="systemLoadNo">
     </bd-input>
     <bd-input class="bd-form-control" [labelText]="'Customer Load Number'" formControlName="customerLoadNo">
@@ -26,6 +25,21 @@
   </bd-form-section>
   <navigation-anchor id="company"></navigation-anchor>
   <bd-form-section labelText="Customer">
+    <bd-validator [component]="loadForm.controls.customer" [errorDefs]="{required: 'Customer is required'}">
+      <bd-typeahead
+        class="bd-form-control"
+        formControlName="customer"
+        [labelText]="'Name or MC#'"
+        [footerButtonText]="'Add New Company'"
+        [source]="companySource"
+        (onRemove)="onCompanyRemove()"
+        [(query)]="companyQuery"
+        [itemTemplate]="customItemTemplate"
+        (onSelect)="onCompanySelect($event)"
+        (onFooterButtonClick)="onAddNewCompany()"
+        [optionField]="'name'">
+      </bd-typeahead>
+    </bd-validator>
     <bd-form-section>
       <bd-dropdown
         *ngIf='load.customer'
