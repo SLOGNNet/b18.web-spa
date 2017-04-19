@@ -3,7 +3,7 @@
     [items]="stopActionTypes">
   </bd-form-switch>
   <pick-up-commodity-form
-    [formArray]="formGroup.controls.commodities"
+    [formArray]="commoditiesFormArray"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
     (add)="onCommodityAdd($event)"

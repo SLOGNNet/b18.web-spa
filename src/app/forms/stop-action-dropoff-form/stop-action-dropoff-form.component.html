@@ -3,7 +3,7 @@
     [items]="stopActionTypes">
   </bd-form-switch>
   <drop-off-commodity-form
-    [formArray]="formGroup.controls.commodities"
+    [formArray]="commoditiesFormArray"
     [items]="stopAction.commodities"
     [availablePickups]="availableCommodities$ | async"
     (update)="onCommodityUpdate($event)"
