@@ -9,18 +9,15 @@ import { Location } from '@angular/common';
 import { LoadFormComponent } from '../../../../../forms';
 
 @Component({
-  selector: 'load-edit-info',
-  templateUrl: './load-edit-info.component.html',
+  selector: 'load-edit-customer',
+  templateUrl: './load-edit-customer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
+export class LoadEditCustomerComponent extends BaseRootEditComponent<Load> {
   @ViewChild(LoadFormComponent) loadFormComponent: LoadFormComponent;
   private anchors = [{
-    id: 'info',
-    title: 'Load'
-  },  {
-    id: 'requirements',
-    title: 'Requirements'
+    id: 'customer-view',
+    title: 'Customer'
   }];
 
   constructor(
@@ -39,10 +36,10 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   }
 
   getItemName() {
-    return 'Load';
+    return 'Customer';
   }
 
-  onAddCustomer() {
+  onAddStop() {
 
   }
 }

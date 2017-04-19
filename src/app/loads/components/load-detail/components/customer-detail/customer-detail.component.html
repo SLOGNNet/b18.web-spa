@@ -10,7 +10,7 @@
             <span class="company-mc ellipsis interactive-text">MC# {{company.mc}}</span>
         </div>
     </section>
-    <section class="contact-info">
+    <section class="contact-info" *ngIf="selectedContact">
         <bd-user-circle
             [fullName]="fullName"
             class="circle"

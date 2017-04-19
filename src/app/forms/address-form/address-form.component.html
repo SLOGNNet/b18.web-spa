@@ -11,7 +11,7 @@
 	formControlName="streetAddress1"
 	placeholder="Street address"
   [source]="_placeSource"
-  [(value)]="_placeQuery"
+  [(query)]="_placeQuery"
   [itemTemplate]="customItemTemplate"
 	[removeButtonHidden]="false"
   (onRemove)="onAddressRemove()"

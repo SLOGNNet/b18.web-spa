@@ -4,7 +4,6 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import {
-  LoadEditComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
@@ -18,6 +17,7 @@ import {
   CustomerDetailComponent,
   RequirementsDetailComponent,
   LoadEditInfoComponent,
+  LoadEditCustomerComponent,
   LoadViewComponent
 } from './components';
 
@@ -34,8 +34,8 @@ import { BdFormsModule } from '../forms/forms.module';
   ],
   declarations: [
     LoadsComponent,
-    LoadEditComponent,
     LoadEditInfoComponent,
+    LoadEditCustomerComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
     TripPopoverComponent,
