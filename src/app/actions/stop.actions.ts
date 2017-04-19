@@ -50,8 +50,8 @@ export class StopActions implements IDetailDataActions<Stop>, INestedEditDataAct
   }
 
   select(stopId: string): void {
-    this.stopService.getDetails(stopId).subscribe(contact => {
-      const normalizedData = normalize(contact, stopSchema);
+    this.stopService.getDetails(stopId).subscribe(stop => {
+      const normalizedData = normalize(stop, stopSchema);
       this.ngRedux.dispatch({ type: StopActions.SELECT_STOP_LOAD, data: normalizedData  });
     }, (error) => {});
   }
