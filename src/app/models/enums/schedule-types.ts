@@ -1,11 +1,9 @@
 export enum ScheduleTypes {
-  NONE = 0,
   FCFS = 1,
   APPT = 2
 }
 
 let displayTexts =  {
-  [ScheduleTypes.NONE]: 'None',
   [ScheduleTypes.FCFS]: 'FCFS',
   [ScheduleTypes.APPT]: 'Appt'
 };

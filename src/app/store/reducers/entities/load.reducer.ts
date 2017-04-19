@@ -12,7 +12,7 @@ export const loadReducer = createReducer(INITIAL_STATE, {
     return result;
   },
   [CommodityActions.REMOVE_COMMODITY](state, action) {
-    const commodityId = action.data.result;
+    const commodityId = action.commodity;
     const loadId = action.loadId;
     const result = removeChild(state, loadId, 'commodities', commodityId);
     return result;

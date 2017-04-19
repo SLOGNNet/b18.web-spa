@@ -22,8 +22,7 @@ export class CommodityActions {
   }
 
   remove(commodity: Commodity, stopAction: StopAction, load: Load): void {
-    const normalizedData = normalize(commodity, commoditySchema);
-    this.ngRedux.dispatch({ type: CommodityActions.REMOVE_COMMODITY, data: normalizedData, loadId: load.id, stopActionId: stopAction.id });
+    this.ngRedux.dispatch({ type: CommodityActions.REMOVE_COMMODITY, commodity, loadId: load.id, stopActionId: stopAction.id });
   }
 
   update(commodity: Commodity): void {
