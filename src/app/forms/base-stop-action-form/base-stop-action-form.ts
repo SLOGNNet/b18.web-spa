@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ElementRef } from '@angular/core';
+import { Component, Input, Output, OnChanges, ElementRef, EventEmitter } from '@angular/core';
 import { BaseForm } from '../base-form';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
@@ -16,6 +16,7 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   @Input('group') formGroup: FormGroup;
   @Input() public load: Load;
   @Input() public stopAction: StopAction;
+  @Output() update = new EventEmitter();
   protected stopActionTypes: Array<string>;
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
     protected commodityActions: CommodityActions, protected datePipe: DatePipe, protected enumHelperService: EnumHelperService) {
@@ -59,5 +60,10 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
       'notes',
       this.formBuilder.control(this.stopAction['notes'])
     );
+     this.formGroup.valueChanges.subscribe(value => {
+      if (this.formGroup) {
+        this.update.emit(Object.assign(this.stopAction, value));
+      }
+    });
   }
 }
