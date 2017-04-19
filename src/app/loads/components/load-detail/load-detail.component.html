@@ -17,7 +17,7 @@
         </bd-view-detail-section>
         <navigation-anchor id="itinerary-view"></navigation-anchor>
         <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addContent]="'add itinerary'" (addClick)="onStopEdit()">
-          <div class="itenerary-navigation">
+          <div class="itenerary-navigation" *ngIf="selectedItem.stops && selectedItem.stops.length">
             <div class="left">
               <a [class.active]="stopMode == 'load'" (click)="onStopModeChange('load')">
               Load Stops
@@ -34,6 +34,7 @@
               [mode]="stopMode"
               [stop]="stop">
             </stop-view>
+            <bd-button *ngIf="!selectedItem.stops || !selectedItem.stops.length" (click)="onStopEdit()" color="white" [text]="'Add Stop'"></bd-button>
         </bd-view-detail-section>
     </form>
 </div>
