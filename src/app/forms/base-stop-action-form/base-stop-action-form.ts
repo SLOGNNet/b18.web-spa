@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnChanges, ElementRef, EventEmitter } from '@angular/core';
 import { BaseForm } from '../base-form';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Load, StopAction, Commodity, StopActionTypes, Stop } from '../../models';
 import { select } from '@angular-redux/store';
@@ -18,6 +18,7 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   @Input() public stop: Stop;
   @Input() public stopAction: StopAction;
   @Output() update = new EventEmitter();
+  protected commoditiesFormArray: FormArray;
   protected stopActionTypes: Array<string>;
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
     protected commodityActions: CommodityActions, protected datePipe: DatePipe, protected enumHelperService: EnumHelperService) {
@@ -26,7 +27,9 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   }
 
   ngOnChanges(changes: any) {
-    this.initForm();
+    if (changes.load || changes.stopAction || changes.formGroup) {
+      this.initForm();
+    }
   }
 
   onCommodityUpdate(commodity: Commodity) {
@@ -41,6 +44,8 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   }
 
   private initForm() {
+    this.commoditiesFormArray = this.formBuilder.array([]);
+
     this.formGroup.setControl(
       'id',
       this.formBuilder.control(this.stopAction['id'])
@@ -54,16 +59,17 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
       this.formBuilder.control(this.stopAction['date'])
     );
     this.formGroup.setControl(
-      'commodities',
-      this.formBuilder.array([])
-    );
-    this.formGroup.setControl(
       'notes',
       this.formBuilder.control(this.stopAction['notes'])
     );
+    this.formGroup.setControl(
+      'commodities',
+      this.formBuilder.control(this.stopAction['commodities'])
+    );
      this.formGroup.valueChanges.subscribe(value => {
       if (this.formGroup) {
-        this.update.emit(Object.assign(this.stopAction, value));
+        const result = Object.assign(this.stopAction, value);
+        this.update.emit(result);
       }
     });
   }
