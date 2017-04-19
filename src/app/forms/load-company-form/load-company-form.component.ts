@@ -77,6 +77,10 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
     this.contacts = customer ? customer.contacts : [];
   }
 
+  private get isCustomerSelected() {
+    return this.loadForm.controls['customer'].value.name;
+  }
+
   private onLocationSelect(data) {
     this.loadForm.setControl('customerLocation', this.formBuilder.control({ value: data.item, disabled: false }));
   }
@@ -104,13 +108,17 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
     this.cancel.emit();
   }
 
-  private onLoadSave() {
+  private onLoadSave(): boolean {
     if (this.loadForm.valid) {
       this.save.emit(this.loadForm.value);
     }
+
+    return this.loadForm.valid;
   }
 
   private onAddStop() {
-    this.addStop.emit();
+    if (this.onLoadSave()) {
+      this.addStop.emit();
+    }
   }
 }

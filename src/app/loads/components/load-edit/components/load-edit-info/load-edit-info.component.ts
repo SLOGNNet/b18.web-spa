@@ -43,6 +43,6 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   }
 
   onAddCustomer() {
-    this.router.navigate(['edit-customer'], { preserveQueryParams: true, relativeTo: this.route.parent });
+
   }
 }

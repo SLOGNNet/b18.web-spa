@@ -91,14 +91,18 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
     this.cancel.emit();
   }
 
-  private onLoadSave() {
+  private onLoadSave(): boolean {
     if (this.loadForm.valid) {
       let result = this.loadForm.value;
       this.save.emit(this.loadForm.value);
     }
+
+    return this.loadForm.valid;
   }
 
   private onAddCustomer() {
-    this.addCustomer.emit();
+    if(this.onLoadSave()) {
+      this.addCustomer.emit();
+    }
   }
 }

@@ -14,40 +14,42 @@
       [optionField]="'name'">
     </bd-typeahead>
   </bd-form-section>
-  <bd-form-section *ngIf="loadForm.controls.customer.value.name" labelText=" ">
-    <bd-dropdown
-      class="bd-form-control"
-      [labelText]="'Location'"
-      formControlName="customerLocationId"
-      [items]="customerLocations"
-      [dropdownItemTemplate]="locationDropdown"
-      keyField="id"
-      valueField="name"
-      (onItemClick)="onLocationSelect($event)">
-    </bd-dropdown>
-  </bd-form-section>
-  <bd-form-section *ngIf="loadForm.controls.customer.value.name" labelText=" ">
-    <bd-dropdown
-      class="bd-form-control"
-      [labelText]="'Billing Location'"
-      formControlName="customerBillingLocationId"
-      [items]="customerLocations"
-      [dropdownItemTemplate]="locationDropdown"
-      keyField="id"
-      valueField="name"
-      (onItemClick)="onBillingLocationSelect($event)">
-    </bd-dropdown>
-  </bd-form-section>
-  <bd-form-section *ngIf="loadForm.controls.customer.value.name" labelText=" ">
-    <bd-dropdown
-      class="bd-form-control"
-      [labelText]="'Contact'"
-      formControlName="contactId"
-      [items]="contacts"
-      keyField="id"
-      valueField="firstName">
-    </bd-dropdown>
-  </bd-form-section>
+  <div *ngIf="isCustomerSelected">
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Location'"
+        formControlName="customerLocationId"
+        [items]="customerLocations"
+        [dropdownItemTemplate]="locationDropdown"
+        keyField="id"
+        valueField="name"
+        (onItemClick)="onLocationSelect($event)">
+      </bd-dropdown>
+    </bd-form-section>
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Billing Location'"
+        formControlName="customerBillingLocationId"
+        [items]="customerLocations"
+        [dropdownItemTemplate]="locationDropdown"
+        keyField="id"
+        valueField="name"
+        (onItemClick)="onBillingLocationSelect($event)">
+      </bd-dropdown>
+    </bd-form-section>
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Contact'"
+        formControlName="contactId"
+        [items]="contacts"
+        keyField="id"
+        valueField="firstName">
+      </bd-dropdown>
+    </bd-form-section>
+  </div>  
   <form-sticky-bottom-container>
     <div class="button-group">
       <bd-button
@@ -56,13 +58,14 @@
         (click)="onLoadCancel()">
       </bd-button>
       <bd-button
-        [disabled]="!loadForm.controls.customer.value.name"
+        [disabled]="!isCustomerSelected"
         color="primary"
         class="bd-button button"
         [text]="'Done'"
         (click)="onLoadSave()">
       </bd-button>
       <bd-button
+        [disabled]="!isCustomerSelected"
         color="primary"
         class="bd-button button"
         [text]="'+ Stop >'"
