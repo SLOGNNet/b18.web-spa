@@ -33,7 +33,7 @@
         [footerButtonText]="'Add New Company'"
         [source]="companySource"
         (onRemove)="onCompanyRemove()"
-        [(value)]="companyQuery"
+        [(query)]="companyQuery"
         [itemTemplate]="customItemTemplate"
         (onSelect)="onCompanySelect($event)"
         (onFooterButtonClick)="onAddNewCompany()"

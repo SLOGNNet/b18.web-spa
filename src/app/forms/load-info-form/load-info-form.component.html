@@ -48,6 +48,7 @@
         (click)="onLoadSave()">
       </bd-button>
       <bd-button
+        *ngIf="!load.customer"
         color="primary"
         class="bd-button button"
         [text]="'+ Customer >'"
