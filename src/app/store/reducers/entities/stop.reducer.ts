@@ -8,7 +8,7 @@ export const stopReducer = createReducer(INITIAL_STATE, {
   [StopActionActions.ADD_STOP_ACTION](state, action) {
     const stopId = action.stopId;
     const stopActionId = action.data.result;
-    const result = addChild(state, stopId, 'stopActions', stopActionId);
+    const result = addChild(state, stopId, 'stopActions', stopActionId, true);
     return result;
   },
   [StopActionActions.REMOVE_STOP_ACTION](state, action) {
