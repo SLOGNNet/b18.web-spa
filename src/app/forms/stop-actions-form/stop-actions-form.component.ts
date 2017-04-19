@@ -26,7 +26,7 @@ export class StopActionsFormComponent extends BaseListForm<StopAction>  {
     return `Action #${index + 1}`;
   }
 
-  trackBy(index: number, stopAction: StopAction) {
-    return stopAction.id;
+  trackBy(index: number, data: any) {
+    return data.item.id;
   }
 }
