@@ -101,7 +101,7 @@ export class LoadInfoFormComponent extends BaseForm implements OnChanges {
   }
 
   private onAddCustomer() {
-    if(this.onLoadSave()) {
+    if (this.onLoadSave()) {
       this.addCustomer.emit();
     }
   }
