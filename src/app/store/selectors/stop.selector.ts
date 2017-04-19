@@ -7,5 +7,6 @@ export const selectStop = (state: IAppState, id: string): Stop => denormalize(id
   state.entities);
 
 export const selectDetailStop = (state: IAppState): Stop => {
-  return selectStop(state, state.ui.stops.selected);
+  const res = selectStop(state, state.ui.stops.selected);
+  return res;
 };

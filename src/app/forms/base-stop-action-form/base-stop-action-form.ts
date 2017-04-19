@@ -2,7 +2,7 @@ import { Component, Input, Output, OnChanges, ElementRef, EventEmitter } from '@
 import { BaseForm } from '../base-form';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Load, StopAction, Commodity, StopActionTypes } from '../../models';
+import { Load, StopAction, Commodity, StopActionTypes, Stop } from '../../models';
 import { select } from '@angular-redux/store';
 import { CommodityActions } from '../../actions';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,7 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   public static metaData: Object = BaseForm.metaData;
   @Input('group') formGroup: FormGroup;
   @Input() public load: Load;
+  @Input() public stop: Stop;
   @Input() public stopAction: StopAction;
   @Output() update = new EventEmitter();
   protected stopActionTypes: Array<string>;
