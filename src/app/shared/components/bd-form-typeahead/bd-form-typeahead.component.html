@@ -7,8 +7,8 @@
   <template #loaderTemplate>
     <bd-spinner></bd-spinner>
   </template>
-  <bd-input [value]="value"
-      (valueChange)="changeValue($event)"
+  <bd-input [value]="query"
+      (valueChange)="changeQuery($event)"
       #input
       [disabled]="disabled"
       (focusChange)="onFocusChanged($event)"

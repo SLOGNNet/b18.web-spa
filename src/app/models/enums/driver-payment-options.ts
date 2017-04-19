@@ -6,7 +6,7 @@ export enum DriverPaymentOptions {
 }
 
 let displayTexts = {
-  [DriverPaymentOptions.PER_MILE]: 'Per Miles',
+  [DriverPaymentOptions.PER_MILE]: 'Per Mile',
   [DriverPaymentOptions.PERCENTAGE]: 'Percentage',
   [DriverPaymentOptions.HOURLY]: 'Hourly',
   [DriverPaymentOptions.FLAT]: 'Flat'

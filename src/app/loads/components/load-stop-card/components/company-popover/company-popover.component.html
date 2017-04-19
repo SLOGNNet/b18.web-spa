@@ -15,7 +15,7 @@
     <span>{{companyBillingLocation.address.city}}, {{companyBillingLocation.address.state}}</span>
     <span>{{companyBillingLocation.address.zip}}</span>
   </div>
-  <div class="section">
+  <div class="section" *ngIf="companyLocation && companyLocation.contactInfo">
     <span>{{phone}}</span>
   </div>
 </div>
