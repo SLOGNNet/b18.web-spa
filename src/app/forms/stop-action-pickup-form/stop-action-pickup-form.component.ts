@@ -24,6 +24,6 @@ export class StopActionPickupFormComponent extends BaseStopActionForm implements
   }
 
   onCommodityRemove(commodity: Commodity) {
-    this.commodityActions.remove(commodity);
+    this.commodityActions.remove(commodity, this.stopAction, this.load);
   }
 }
