@@ -6,7 +6,7 @@ import { EnumHelperService } from '../../shared/helpers';
 import {
   Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
-  Stop, StopTypes, LoadType, FreightType, ReeferType
+  Stop, LoadType, FreightType, ReeferType
 } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';

@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, ContactInfo, StopStatuses, StopTypes } from '../../../../../models';
+import { Stop, ContactInfo, StopStatuses } from '../../../../../models';
 
 @Component({
   selector: 'stop-popover',

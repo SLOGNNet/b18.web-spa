@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stop, Load } from '../../../../../models';
@@ -13,14 +13,15 @@ import { cloneDeep } from 'lodash';
 @Component({
   selector: 'load-edit-stop',
   templateUrl: './load-edit-stop.component.html',
-  styleUrls: ['./load-edit-stop.component.scss']
+  styleUrls: ['./load-edit-stop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   protected segment = 'edit-stop';
   private locations$;
-  private selectedLoad: Load;
   private form: FormGroup = this.formBuilder.group({});
   private locations: Array<any>;
+  private parentLoad: Load;
   private anchors = [{
     id: '',
     title: 'Itinerary'
@@ -42,10 +43,18 @@ export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
     return this.form && this.form.dirty;
   }
 
-  onFormSave() {
+  onFormSave(): boolean {
     if (this.form.valid) {
       this.form.markAsPristine();
       super.onItemSave(this.form.value);
+    }
+
+    return this.form.valid;
+  }
+
+  onStopAdd() {
+    if (this.onFormSave()) {
+
     }
   }
 

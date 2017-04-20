@@ -1,15 +1,13 @@
 <form [formGroup]="formGroup">
-  <bd-form-datepicker
-    class="bd-form-control"
-    formControlName="date"
-  >
-  </bd-form-datepicker>
+  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" formControlName="type"
+    [items]="stopActionTypes">
+  </bd-form-switch>
   <pick-up-commodity-form
-    [formArray]="formGroup.controls.commodities"
+    [formArray]="commoditiesFormArray"
     (update)="onCommodityUpdate($event)"
     (remove)="onCommodityRemove($event)"
-    (add)="onCommodityAdd()"
-    [items]="stopAction.commodities"
+    (add)="onCommodityAdd($event)"
+    [items]="stopAction?.commodities"
     [viewMode]="viewMode">
   </pick-up-commodity-form>
   <bd-textarea

@@ -1,0 +1,26 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+
+.date-range-container {
+  display: flex;
+  padding-left: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .date {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .last-date {
+    span {
+      text-align: right;
+    }
+  }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+}

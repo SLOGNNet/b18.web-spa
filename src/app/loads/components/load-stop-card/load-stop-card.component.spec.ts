@@ -18,7 +18,6 @@ import { Load,
   Address,
   Equipment,
   Stop,
-  StopTypes,
   StopStatuses,
   Facility } from '../../../models';
 

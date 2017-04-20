@@ -26,6 +26,7 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     id: 'itinerary-view',
     title: 'Itinerary'
   }];
+  private stopMode: string = 'load';
 
   constructor(
     cdr: ChangeDetectorRef,
@@ -45,7 +46,8 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
   }
 
   onStopEdit(stop: Stop) {
-    this.router.navigate(['edit-stop', stop.id], { preserveQueryParams: true, relativeTo: this.route });
+    const id = stop ? stop.id : 0;
+    this.router.navigate(['edit-stop', id], { preserveQueryParams: true, relativeTo: this.route });
   }
 
   onLoadEditClick() {
@@ -54,5 +56,13 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
 
   onCustomerEditClick() {
     this.router.navigate(['edit-customer'], { preserveQueryParams: true, relativeTo: this.route });
+  }
+
+  onStopModeChange(mode: string) {
+    this.stopMode = mode;
+  }
+
+  private trackBy(index: number, stop: Stop) {
+    return stop.id;
   }
 }

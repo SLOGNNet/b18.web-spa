@@ -2,9 +2,9 @@
   <div class='bd-form-list-item'>
     <bd-remove-button class='bd-form-control' (onClick)='removeItem(data)' [prefixLabel]="label(i)"> </bd-remove-button>
     <div [ngSwitch]="data.item.type">
-      <stop-action-pickup-form  *ngSwitchCase="stopActionTypes.PICKUP" [group]="data.group" [stopAction]="data.item" [viewMode]="viewMode"></stop-action-pickup-form>
-      <stop-action-dropoff-form  *ngSwitchCase="stopActionTypes.DROPOFF" [group]="data.group" [stopAction]="data.item" [viewMode]="viewMode"></stop-action-dropoff-form>
+      <stop-action-pickup-form  *ngSwitchCase="stopActionTypes.PICKUP" [group]="data.group" (update)="updateItem($event)" [stopAction]="data.item" [load]="load" [stop]="stop" [viewMode]="viewMode"></stop-action-pickup-form>
+      <stop-action-dropoff-form  *ngSwitchCase="stopActionTypes.DROPOFF" [group]="data.group" (update)="updateItem($event)" [stopAction]="data.item" [load]="load" [stop]="stop" [viewMode]="viewMode"></stop-action-dropoff-form>
     </div>
   </div>
 </template>
-<bd-add-button class='bd-form-control' (onClick)='addNewItem()' suffixLabel="Action1"></bd-add-button>
+<a class="add-new-item-button" (click)="addNewItem()">Add Action</a>

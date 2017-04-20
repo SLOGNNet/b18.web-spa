@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Commodity } from '../../models';
 import { BaseStopActionForm } from '../base-stop-action-form';
 import { CommodityActions } from '../../actions';
+import { EnumHelperService } from '../../shared/helpers';
 
 @Component(Object.assign({
   selector: 'stop-action-pickup-form',
@@ -13,8 +14,9 @@ import { CommodityActions } from '../../actions';
 export class StopActionPickupFormComponent extends BaseStopActionForm implements OnChanges {
 
   constructor(formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions, datePipe: DatePipe) {
-    super(elementRef, formBuilder, commodityActions, datePipe);
+    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
+    datePipe: DatePipe, enumHelperService: EnumHelperService) {
+    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService);
   }
 
   ngOnChanges(changes: any) {
@@ -22,6 +24,6 @@ export class StopActionPickupFormComponent extends BaseStopActionForm implements
   }
 
   onCommodityRemove(commodity: Commodity) {
-    this.commodityActions.remove(commodity);
+    this.commodityActions.remove(commodity, this.stopAction, this.load);
   }
 }

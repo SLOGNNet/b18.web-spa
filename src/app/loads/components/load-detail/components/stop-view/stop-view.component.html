@@ -1,6 +1,17 @@
 <div class="stop-view-mode-section"
     [class.expanded-view]="isExpanded">
-    <default-component-action-panel (edit)="onEdit()" (remove)="onRemove()">
+    <component-action-panel>
+      <buttons>
+        <div class="expand-collapse-button">
+          <button
+              [class.icon-down-arrow-bold]="!isExpanded"
+              [class.icon-up-arrow-bold]="isExpanded"
+              (click)="onExpand()">
+          </button>
+         </div>
+        <default-list-buttons (edit)="onEdit()" (remove)="onRemove()">
+        </default-list-buttons>
+      </buttons>
       <div class="stop-info-container interactive-background"
       [class.pickup]="isPickup"
       [class.dropoff]="isDropoff"
@@ -12,16 +23,9 @@
                   <span class="item-icon icon-location"></span>
                   <span class="item-text facility-address">{{stop.facility.address.streetAddress1}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
               </div>
-              <bd-contact-info [contactCollection]="getContactInfoCollection(stop.facility.contactInfo)"></bd-contact-info>
+              <bd-contact-info [contactCollection]="getContactInfoCollection(stop.facility?.contactInfo)"></bd-contact-info>
           </div>
           <div class="business-hours-container">
-              <div class="btn-container">
-                  <button
-                      [class.icon-down-arrow-bold]="!isExpanded"
-                      [class.icon-up-arrow-bold]="isExpanded"
-                      (click)="onClick()">
-                  </button>
-              </div>
               <div class="hours-string">
                   <span class="days">Mo-Fr:</span>
                   <span class="hours">08:00-17:00</span>
@@ -37,13 +41,21 @@
               <div class="notes">{{stop.facility.notes}}</div>
           </div>
       </div>
-    </default-component-action-panel>
-    <div class="trip-view-container">
+    </component-action-panel>
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'trip'" class="trip-view-container">
         <trip-view
             *ngFor="let tripStop of tripStops"
             class="trip-view-item"
             [tripData]="tripStop"
             [isExpanded]="isExpanded">
         </trip-view>
+      </div>
+      <div *ngSwitchCase="'load'" class="stop-detail-view-container">
+        <stop-detail-view
+            [stop]="stop"
+            [isExpanded]="isExpanded">
+        </stop-detail-view>
+      </div>
     </div>
 </div>

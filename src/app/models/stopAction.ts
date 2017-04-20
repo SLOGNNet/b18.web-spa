@@ -17,6 +17,7 @@ export class StopAction {
     const result = new StopAction();
     result.id = generateNewId();
     result.commodities = [];
+    result.type = type;
     return result;
   }
 }

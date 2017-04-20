@@ -29,6 +29,20 @@ $text-margin: 5px;
     margin-bottom: 0;
   }
 
+  .expand-collapse-button {
+    display: flex;
+    justify-content: center;
+
+    button {
+      padding: 3px;
+      color: $white;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+
   button {
     padding: 0;
     border: 0;

@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Commodity } from '../../../../../models';
 
 @Component({
   selector: 'commodity-details',
   templateUrl: './commodity-details.component.html',
-  styleUrls: ['./commodity-details.component.scss']
+  styleUrls: ['./commodity-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommodityDetailsComponent {
   @Input() index: number;

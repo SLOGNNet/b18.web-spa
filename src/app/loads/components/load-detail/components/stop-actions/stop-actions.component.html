@@ -1,0 +1,17 @@
+<div class="commodities-section">
+  <template ngFor let-stopAction [ngForOf]="stopActions" let-stopActionIndex="index">
+    <div
+     [ngClass]="['commodities-container', getStopActionClass(stopAction)]">
+      <commodities-header
+        size='small'
+        *ngIf="stopActionIndex == 0"
+        [titles]="commodityHeaders">
+      </commodities-header>
+      <commodity-details
+        *ngFor="let commodity of stopAction.commodities; let i = index;"
+        [commodity]="commodity"
+        [index]="i">
+      </commodity-details>
+    </div>
+  </template>
+</div>
