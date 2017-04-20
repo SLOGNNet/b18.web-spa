@@ -1125,7 +1125,8 @@ class MockData {
       number: '33',
       scheduleType: ScheduleTypes.FCFS
     },
-    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]],
+    scheduleType: ScheduleTypes.APPT
   },
   {
     id: '13',
@@ -1143,7 +1144,8 @@ class MockData {
       number: '44',
       scheduleType: ScheduleTypes.FCFS
     },
-    tripStops: [this.tripStopCollection[0]]
+    tripStops: [this.tripStopCollection[0]],
+    scheduleType: ScheduleTypes.APPT
   }
  ];
   public loads: Array<Load> = [

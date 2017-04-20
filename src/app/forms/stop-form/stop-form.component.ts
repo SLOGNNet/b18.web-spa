@@ -26,7 +26,8 @@ export class StopFormComponent extends BaseForm {
   private facilityQuery: string = '';
   private fields = [
     { name: 'id', validators: [] },
-    { name: 'facility', validators: [] }
+    { name: 'facility', validators: [] },
+    { name: 'scheduleType', validators: [] }
   ];
 
   constructor(
@@ -83,5 +84,9 @@ export class StopFormComponent extends BaseForm {
 
   private onFacilityRemove() {
     this.stopForm.setControl('facility', this.formBuilder.control({ value: {}, disabled: this.disabled }));
+  }
+
+  private onFacilitySelect(facility) {
+    this.stopForm.setControl('scheduleType', this.formBuilder.control({ value: facility.scheduleType, disabled: this.disabled }));
   }
 }
