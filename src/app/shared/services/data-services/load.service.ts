@@ -25,6 +25,8 @@ export class LoadService {
   getDetails(loadId: string): Observable<Load> {
     return Observable.of(MockData.loads.find((load) => load.id === loadId))
       .flatMap((load) => {
+        if (!load) return Observable.of(null);
+
         if (load.companyId) {
           return this.companyService
             .getDetails(load.companyId)
