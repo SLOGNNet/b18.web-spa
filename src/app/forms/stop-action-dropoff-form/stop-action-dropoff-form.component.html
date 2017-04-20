@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup">
-  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" [formControl]="formGroup.controls.type"
+  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" [disabled]="this.disabled || this.hasCommodities" [formControl]="formGroup.controls.type"
     [items]="stopActionTypes">
   </bd-form-switch>
   <div class="dropoff-border">

@@ -54,7 +54,7 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
     );
     this.formGroup.setControl(
       'type',
-      new FormControl({value: this.stopAction['type'], disabled: this.hasCommodities})
+      this.formBuilder.control(this.stopAction['type'])
     );
     this.formGroup.setControl(
       'date',
