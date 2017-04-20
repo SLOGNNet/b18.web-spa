@@ -20,7 +20,7 @@
     </form>
   </div>
   <stop-actions-form [formArray]="stopForm.controls.stopActions" [items]="stop.stopActions" [load]="load" [viewMode]="viewMode"
-    (update)="onStopActionUpdate($event)" (remove)="onStopActionRemove($event)" (add)="onStopActionAdd($event)">
+    (update)="onStopActionUpdate($event)" (remove)="onStopActionRemove($event)" (add)="onStopActionAdd($event)" [disabled]="disabled">
   </stop-actions-form>
 </form>
 

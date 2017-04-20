@@ -1,5 +1,6 @@
 <commodities-header [titles]='titles' [focusedColumnIndex]='focusedCol'></commodities-header>
 <pickup-commodity
+  [disabled]="disabled"
   class='commodity-item'
   *ngFor="let data of renderFormData; let i = index; trackBy:commodityTrackBy"
   [viewMode]="viewMode"
@@ -10,4 +11,4 @@
   (update)="updateItem($event)"
   (remove)="removeItem(data)">
 </pickup-commodity>
-<bd-add-button class="bd-form-control" (onClick)="addNewItem()"></bd-add-button>
+<bd-add-button class="bd-form-control" [disabled]="disabled" (onClick)="addNewItem()"></bd-add-button>

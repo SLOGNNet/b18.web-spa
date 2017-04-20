@@ -6,6 +6,7 @@
         [attr.index]="i"
         [formControlName]="field.name"
         [type]="field.type"
+        [readonly]="disabled"
         (blur)="onBlur($event)"
         (focus)="onFocus($event)">
     </div>
@@ -14,6 +15,7 @@
     class="bd-form-control"
     *ngIf="_isActive && !isRemoveButtonHidden"
     index=""
+    [disabled]="disabled"
     (mousedown)="onRemove()"
     (blur)="onBlur($event)"
     (focus)="onFocus($event)">

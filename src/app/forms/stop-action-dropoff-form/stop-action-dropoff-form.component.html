@@ -4,6 +4,7 @@
   </bd-form-switch>
   <div class="dropoff-border">
     <drop-off-commodity-form
+      [disabled]="disabled"
       [formArray]="commoditiesFormArray"
       [items]="stopAction.commodities"
       [availablePickups]="availableCommodities$ | async"
