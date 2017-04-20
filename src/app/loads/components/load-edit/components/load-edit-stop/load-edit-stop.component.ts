@@ -36,7 +36,7 @@ export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
     router: Router,
     private ngRedux: NgRedux<IAppState>) {
     super(stopActions, ngRedux.select(selectDetailLoad), ngRedux.select(selectDetailStop),
-      ngRedux.select(state => state.ui.contacts.isLoading), route, router, location, cdr);
+      ngRedux.select(state => state.ui.stops.isLoading), route, router, location, cdr);
   }
 
   isDetailsChanged() {

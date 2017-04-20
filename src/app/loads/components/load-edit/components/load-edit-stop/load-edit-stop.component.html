@@ -1,27 +1,27 @@
 <div class="load-edit-stop" *ngIf="selectedItem">
-  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
+  <!--<bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>-->
 	<form-navigation
     sticky
     [stickyPositionInsideScroll]="true"
-    [disabled]="isLoading"
+    [disabled]="isLoading$ | async"
     [anchors]="anchors">
   </form-navigation>
-  <bd-form-section [disabled]="disabled" [labelText]="'Itinerary'">
+  <bd-form-section [disabled]="isLoading$ | async" [labelText]="'Itinerary'">
     <stop-form
       [stop]="selectedItem"
       [load]="parentItem"
       [group]="form"
-      [disabled]="isLoading"
+      [disabled]="isLoading$ | async"
       [scrollable]="true"
       [viewMode]="viewMode">
     </stop-form>
     <form-sticky-bottom-container [sticky]="true" [stickyPositionInsideScroll]="true">
       <div class="button-group">
-        <bd-button [disabled]="disabled" (click)="onItemCancel()" [text]="'Cancel'" class="button">
+        <bd-button [disabled]="isLoading$ | async" (click)="onItemCancel()" [text]="'Cancel'" class="button">
         </bd-button>
-        <bd-button [disabled]="disabled" (click)="onFormSave()" color="primary" class="button" [text]="'Done'">
+        <bd-button [disabled]="isLoading$ | async" (click)="onFormSave()" color="primary" class="button" [text]="'Done'">
         </bd-button>
-        <bd-button [disabled]="disabled" (click)="onStopAdd()" color="primary" class="button" [text]="'+ Stop >'">
+        <bd-button [disabled]="isLoading$ | async" (click)="onStopAdd()" color="primary" class="button" [text]="'+ Stop >'">
         </bd-button>
       </div>
     </form-sticky-bottom-container>

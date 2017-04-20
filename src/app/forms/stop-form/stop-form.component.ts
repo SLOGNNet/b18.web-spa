@@ -41,8 +41,24 @@ export class StopFormComponent extends BaseForm {
   }
 
   ngOnChanges(changes: any) {
-    this.initForm();
-    this.initFacilityTypeahead(this.stop.facility);
+    if (changes.disabled) {
+      this.setFormDisabled(this.disabled);
+    }
+
+    if (changes.load || changes.stop) {
+      this.initForm();
+      this.initFacilityTypeahead(this.stop.facility);
+    }
+  }
+
+  setFormDisabled(isDisabled) {
+    if (this.stopForm) {
+      if (isDisabled) {
+        this.stopForm.disable();
+      } else {
+        this.stopForm.enable();
+      }
+    }
   }
 
   initForm() {
