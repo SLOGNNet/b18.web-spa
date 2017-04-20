@@ -37,7 +37,7 @@ export class Stop {
     result.departedAt = new Date();
     result.plannedArrivalAt = new Date();
     result.plannedDepartureAt = new Date();
-    result.facility = Facility.create();
+    result.facility = null;
     result.tripStops = [];
     result.stopActions = [];
     result.appointment = Appointment.create();
