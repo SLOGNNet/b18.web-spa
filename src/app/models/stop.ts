@@ -1,7 +1,7 @@
 import { Facility } from './facility';
 import { TripStop } from './tripStop';
 import { generateNewId } from './utils';
-import { StopStatuses } from './enums';
+import { StopStatuses, ScheduleTypes } from './enums';
 import { StopAction, stopActionSchema } from './stopAction';
 import { Appointment } from './appointment';
 import { Type } from 'class-transformer';
@@ -28,6 +28,7 @@ export class Stop {
   stopActions: Array<StopAction>;
   @Type(() => Appointment)
   appointment: Appointment;
+  scheduleType: ScheduleTypes;
 
   static create(): Stop{
     const result = new Stop();
