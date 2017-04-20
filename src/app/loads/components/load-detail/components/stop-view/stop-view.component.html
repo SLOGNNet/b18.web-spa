@@ -17,9 +17,9 @@
       [class.dropoff]="isDropoff"
       [class.combined]="isCombined">
           <div class="stripped-border"></div>
-          <div class="facility-info">
+          <div class="facility-info" *ngIf="stop.facility">
               <div class="title interactive-text">{{stop.facility.name}}</div>
-              <div class="info-item" *ngIf="stop.facility">
+              <div class="info-item">
                   <span class="item-icon icon-location"></span>
                   <span class="item-text facility-address">{{stop.facility.address.streetAddress1}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
               </div>
@@ -38,7 +38,7 @@
                   <span class="days">Su:</span>
                   <span class="hours">13:00-14:00</span>
               </div>
-              <div class="notes">{{stop.facility.notes}}</div>
+              <div class="notes">{{stop.facility?.notes}}</div>
           </div>
       </div>
     </component-action-panel>
