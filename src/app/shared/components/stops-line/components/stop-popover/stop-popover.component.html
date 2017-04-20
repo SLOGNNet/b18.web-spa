@@ -3,13 +3,13 @@
     <span class="blue">{{typeText}}#{{stop.id}}</span>
     <span>{{stop.plannedArrivalAt | date:'MM/dd/yy'}} | Appt: {{stop.plannedArrivalAt | date:'HH:mm'}} | {{statusText}}</span>
   </div>
-  <div class="section">
+  <div class="section" *ngIf="stop.facility">
     <span class="blue">{{stop.facility.name}}</span>
     <span>{{stop.facility.address.streetAddress1}}</span>
     <span>{{stop.facility.address.city}}, {{stop.facility.address.state}}</span>
     <span>{{stop.facility.address.zip}}</span>
   </div>
-  <div class="section">
-    <span>{{phone}}</span>
+  <div class="section" *ngIf="stop.facility">
+    <span>{{facilityPhone}}</span>
   </div>
 </div>
