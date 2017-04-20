@@ -1,6 +1,6 @@
-import { Component, Input, Output, OnChanges, ElementRef, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnChanges, ElementRef, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { BaseForm } from '../base-form';
-import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Load, StopAction, Commodity, StopActionTypes, Stop } from '../../models';
 import { select } from '@angular-redux/store';
@@ -20,8 +20,12 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
   @Output() update = new EventEmitter();
   protected commoditiesFormArray: FormArray;
   protected stopActionTypes: Array<string>;
+  protected get hasCommodities(): boolean {
+    return this.stopAction && this.stopAction.commodities &&  this.stopAction.commodities.length > 0;
+  }
   constructor(elementRef: ElementRef, protected formBuilder: FormBuilder,
-    protected commodityActions: CommodityActions, protected datePipe: DatePipe, protected enumHelperService: EnumHelperService) {
+    protected commodityActions: CommodityActions, protected datePipe: DatePipe,
+    protected enumHelperService: EnumHelperService, protected cdr: ChangeDetectorRef) {
     super(elementRef);
         this.stopActionTypes = enumHelperService.getDropdownKeyValues(StopActionTypes);
   }
@@ -42,17 +46,15 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
     const newCommodity = Commodity.create();
     this.commodityActions.add(newCommodity, this.stopAction, this.load);
   }
-
   private initForm() {
     this.commoditiesFormArray = this.formBuilder.array([]);
-
     this.formGroup.setControl(
       'id',
       this.formBuilder.control(this.stopAction['id'])
     );
     this.formGroup.setControl(
       'type',
-      this.formBuilder.control(this.stopAction['type'])
+      new FormControl({value: this.stopAction['type'], disabled: this.hasCommodities})
     );
     this.formGroup.setControl(
       'date',
@@ -66,7 +68,7 @@ export abstract class BaseStopActionForm extends BaseForm implements OnChanges{
       'commodities',
       this.formBuilder.control(this.stopAction['commodities'])
     );
-     this.formGroup.valueChanges.subscribe(value => {
+    this.formGroup.valueChanges.subscribe(value => {
       if (this.formGroup) {
         const result = Object.assign(this.stopAction, value);
         this.update.emit(result);

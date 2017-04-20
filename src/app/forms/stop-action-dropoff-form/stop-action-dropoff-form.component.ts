@@ -19,9 +19,9 @@ export class StopActonDropoffFormComponent extends BaseStopActionForm implements
    @select(selectAvailableCommodities) availableCommodities$: Observable<Commodity>;
 
   constructor(formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
+    cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
     datePipe: DatePipe, enumHelperService: EnumHelperService) {
-    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService);
+    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService, cdr);
   }
 
   ngOnChanges(changes: any) {

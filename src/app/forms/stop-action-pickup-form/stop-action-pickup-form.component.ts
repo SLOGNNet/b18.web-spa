@@ -14,9 +14,9 @@ import { EnumHelperService } from '../../shared/helpers';
 export class StopActionPickupFormComponent extends BaseStopActionForm implements OnChanges {
 
   constructor(formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
+    cdr: ChangeDetectorRef, elementRef: ElementRef, commodityActions: CommodityActions,
     datePipe: DatePipe, enumHelperService: EnumHelperService) {
-    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService);
+    super(elementRef, formBuilder, commodityActions, datePipe, enumHelperService, cdr);
   }
 
   ngOnChanges(changes: any) {
