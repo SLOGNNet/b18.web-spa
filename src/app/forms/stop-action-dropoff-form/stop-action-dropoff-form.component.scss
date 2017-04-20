@@ -1,1 +1,8 @@
 @import '../../../assets/styles/form-control';
+@import '../../../assets/styles/variables';
+
+.dropoff-border {
+  border-left: 4px solid $dropoff-view-mode-color;
+  border-bottom-left-radius: $default-border-radius;
+}
+
