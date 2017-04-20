@@ -19,7 +19,7 @@
           <div class="stripped-border"></div>
           <div class="facility-info">
               <div class="title interactive-text">{{stop.facility.name}}</div>
-              <div class="info-item">
+              <div class="info-item" *ngIf="stop.facility">
                   <span class="item-icon icon-location"></span>
                   <span class="item-text facility-address">{{stop.facility.address.streetAddress1}}, {{stop.facility.address.city}}, {{stop.facility.address.state}}, {{stop.facility.address.zip}}</span>
               </div>
