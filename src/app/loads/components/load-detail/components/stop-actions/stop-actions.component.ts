@@ -21,6 +21,10 @@ export class StopActionsComponent {
       { name: 'WEIGHT<br />(IBS)' }
     ];
 
+  protected hasCommodities(stopAction: StopAction) {
+    return stopAction.commodities && stopAction.commodities.length > 0;
+  }
+
   getStopActionClass(stopAction: StopAction) {
     const classes = { [StopActionTypes.PICKUP]: 'pickup-border', [StopActionTypes.DROPOFF]: 'dropoff-border'};
     return classes[stopAction.type] || '';

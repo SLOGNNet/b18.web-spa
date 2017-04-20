@@ -4,7 +4,7 @@
      [ngClass]="['commodities-container', getStopActionClass(stopAction)]">
       <commodities-header
         size='small'
-        *ngIf="stopActionIndex == 0"
+        *ngIf="stopActionIndex == 0 && hasCommodities(stopAction)"
         [titles]="commodityHeaders">
       </commodities-header>
       <commodity-details
