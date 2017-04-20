@@ -13,7 +13,7 @@ export const stopActionReducer = createReducer(INITIAL_STATE, {
     return result;
   },
   [CommodityActions.REMOVE_COMMODITY](state, action) {
-    const commodityId = action.commodity;
+    const commodityId = action.commodityId;
     const stopActionId = action.stopActionId;
     const result = removeChild(state, stopActionId, 'commodities', commodityId);
     return result;
