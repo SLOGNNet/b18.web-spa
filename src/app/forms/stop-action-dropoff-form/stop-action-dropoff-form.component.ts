@@ -29,7 +29,7 @@ export class StopActonDropoffFormComponent extends BaseStopActionForm implements
   }
 
   onCommodityRemove(commodity: Commodity) {
-    this.commodityActions.deselect(commodity);
+    this.commodityActions.deselect(commodity, this.stopAction);
   }
 
   onCommoditySelect(commodity: Commodity) {
