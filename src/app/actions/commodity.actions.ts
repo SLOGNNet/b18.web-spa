@@ -22,7 +22,7 @@ export class CommodityActions {
   }
 
   remove(commodity: Commodity, stopAction: StopAction, load: Load): void {
-    this.ngRedux.dispatch({ type: CommodityActions.REMOVE_COMMODITY, commodity, loadId: load.id, stopActionId: stopAction.id });
+    this.ngRedux.dispatch({ type: CommodityActions.REMOVE_COMMODITY, commodityId: commodity.id, loadId: load.id, stopActionId: stopAction.id });
   }
 
   update(commodity: Commodity): void {
@@ -32,11 +32,11 @@ export class CommodityActions {
 
   select(commodity: Commodity, stopAction: StopAction): void {
     const normalizedCommodity = normalize(commodity, commoditySchema);
-    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity});
+    this.ngRedux.dispatch({ type: CommodityActions.SELECT_COMMODITY, data: normalizedCommodity, stopActionId: stopAction.id});
   }
 
-  deselect(commodity: Commodity): void {
+  deselect(commodity: Commodity, stopAction: StopAction): void {
     const normalizedData = normalize(commodity, commoditySchema);
-    this.ngRedux.dispatch({ type: CommodityActions.DESELECT_COMMODITY, data: normalizedData });
+    this.ngRedux.dispatch({ type: CommodityActions.DESELECT_COMMODITY, data: normalizedData, stopActionId: stopAction.id });
   }
 }

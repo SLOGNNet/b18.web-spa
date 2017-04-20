@@ -53,16 +53,18 @@
       }
     }
   }
-}
 
-.bd-disabled {
+  &.bd-disabled {
 
-  .bd-buttons-container {
-    button {
-      color: $label-default-color;
+    .bd-buttons-container {
+      button {
+        color: $label-default-color;
+      }
     }
   }
 }
+
+
 
 @include interactive-text;
 

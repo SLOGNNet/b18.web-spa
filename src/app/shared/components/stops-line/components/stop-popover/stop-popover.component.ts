@@ -19,7 +19,7 @@ export class StopPopoverComponent {
     return 'some type'; // StopTypes.displayText(this.stop.type);
   }
 
-  get phone() {
+  get facilityPhone() {
     const phoneInfo = ContactInfo.getPrimaryPhone(this.stop.facility.contactInfo);
     return phoneInfo ? phoneInfo.value : '';
   }

@@ -13,21 +13,21 @@ export const stopActionReducer = createReducer(INITIAL_STATE, {
     return result;
   },
   [CommodityActions.REMOVE_COMMODITY](state, action) {
-    const commodityId = action.commodity;
+    const commodityId = action.commodityId;
     const stopActionId = action.stopActionId;
     const result = removeChild(state, stopActionId, 'commodities', commodityId);
     return result;
   },
   [CommodityActions.SELECT_COMMODITY](state, action) {
-    const commodityId = action.commodity;
-    const stopActionId = action.data.result;
+    const commodityId = action.data.result;
+    const stopActionId = action.stopActionId;
     const result =  addChild(state, stopActionId, 'commodities', commodityId, true);
     return result;
   },
   [CommodityActions.DESELECT_COMMODITY](state, action) {
-    const commodityId = action.commodity;
-    const stopActionId = action.data.result;
-    const result = addChild(state, stopActionId, 'commodities', commodityId, true);
+    const commodityId = action.data.result;
+    const stopActionId = action.stopActionId;
+    const result = removeChild(state, stopActionId, 'commodities', commodityId);
     return result;
   },
 

@@ -1,5 +1,6 @@
 import { IAppState } from '../root-reducer';
 import { denormalize } from 'normalizr';
+import { selectDetailStop } from './stop.selector';
 import { loadSchema, loadListSchema, Load, Commodity, Stop, StopActionTypes, StopAction } from '../../models';
 import { differenceWith } from 'lodash';
 export const selectLoads = (state: IAppState): Load[] => {
@@ -20,8 +21,9 @@ export const selectDetailLoad = (state: IAppState): Load => {
 
 export const selectAvailableCommodities = (state: IAppState): Array<Commodity> => {
   const selectedLoad = selectDetailLoad(state);
+  const seletedStop = selectDetailStop(state);
   const allCommodities: Array<any> = selectedLoad.commodities;
-  const selectedCommodities = selectedLoad.stops
+  const selectedCommodities = [...selectedLoad.stops, seletedStop]
     .map(s => s.stopActions)
     .reduce((pre, cur) => pre.concat(cur), [])
     .filter((sa: StopAction) => sa.type === StopActionTypes.DROPOFF)

@@ -21,8 +21,8 @@
   </div>
   <div class="right stops-container" *ngIf="this.load.stops && this.load.stops.length > 1">
     <div class="distance-wrapper">
-      <span class="firstStopAddress">{{firstStop.facility.address.city}}, {{firstStop.facility.address.state}}</span>
-      <span class="lastStopAddress">{{lastStop.facility.address.city}}, {{lastStop.facility.address.state}}</span>
+      <span class="firstStopAddress">{{firstStop.facility?.address.city}}, {{firstStop.facility?.address.state}}</span>
+      <span class="lastStopAddress">{{lastStop.facility?.address.city}}, {{lastStop.facility?.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">

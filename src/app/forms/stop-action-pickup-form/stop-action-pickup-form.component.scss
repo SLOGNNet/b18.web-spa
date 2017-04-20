@@ -1,1 +1,7 @@
 @import '../../../assets/styles/form-control';
+@import '../../../assets/styles/variables';
+
+.pickup-border {
+  border-left: 4px solid $pickup-view-mode-color;
+  border-bottom-left-radius: $default-border-radius;
+}

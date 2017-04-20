@@ -1,18 +1,21 @@
 <form [formGroup]="formGroup">
-  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" formControlName="type"
+  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" [formControl]="formGroup.controls.type"
     [items]="stopActionTypes">
   </bd-form-switch>
-  <pick-up-commodity-form
-    [formArray]="commoditiesFormArray"
-    (update)="onCommodityUpdate($event)"
-    (remove)="onCommodityRemove($event)"
-    (add)="onCommodityAdd($event)"
-    [items]="stopAction?.commodities"
-    [viewMode]="viewMode">
-  </pick-up-commodity-form>
-  <bd-textarea
-    class="bd-form-control"
-    formControlName="notes"
-    [labelText]="'Notes'">
-  </bd-textarea>
+  <div class="pickup-border">
+    <pick-up-commodity-form
+      [disabled]="disabled"
+      [formArray]="commoditiesFormArray"
+      (update)="onCommodityUpdate($event)"
+      (remove)="onCommodityRemove($event)"
+      (add)="onCommodityAdd($event)"
+      [items]="stopAction?.commodities"
+      [viewMode]="viewMode">
+    </pick-up-commodity-form>
+    <bd-textarea
+      class="bd-form-control"
+      formControlName="notes"
+      [labelText]="'Notes'">
+    </bd-textarea>
+  </div>
 </form>
