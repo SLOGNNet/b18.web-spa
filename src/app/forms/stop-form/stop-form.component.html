@@ -10,9 +10,9 @@
       [itemTemplate]="facilityItemTemplate"
       [optionField]="'name'">
     </bd-typeahead>
-    <bd-form-switch class="bd-form-control" formControlName="scheduleType" [labelText]="'Schedule type'" [enableButtonSwitch]="true" [items]="scheduleTypes">
-    </bd-form-switch>
     <form [formGroup]="stopForm.controls.appointment" class="edit">
+      <bd-form-switch class="bd-form-control" formControlName="scheduleType" [labelText]="'Schedule type'" [enableButtonSwitch]="true" [items]="scheduleTypes">
+      </bd-form-switch>
       <bd-form-datepicker class="bd-form-control" formControlName="from" [labelText]="'Date From'">
       </bd-form-datepicker>
       <bd-form-datepicker class="bd-form-control" formControlName="to" [labelText]="'Date To'">
