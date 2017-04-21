@@ -84,7 +84,10 @@ export class FormNavigationComponent implements OnChanges {
   }
 
   private _scrollToActiveLinkButton() {
-    this._anchorsButton[this._activeAnchor].scrollIntoView();
+    const activeAnchorButton = this._anchorsButton[this._activeAnchor];
+    if (activeAnchorButton) {
+      activeAnchorButton.scrollIntoView();
+    }
   }
 
   private _getScrollableParent(node) {
