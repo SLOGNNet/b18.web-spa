@@ -20,7 +20,7 @@ export class LoadService {
         if (load.companyId) {
           return this.companyService
             .getDetails(load.companyId)
-            .map(customer => Object.assign(load, { customer }))
+            .map(customer => Object.assign(load, { customer }));
         } else {
           return Observable.of(load);
         }
