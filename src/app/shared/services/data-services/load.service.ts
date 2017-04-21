@@ -16,9 +16,15 @@ export class LoadService {
   getAll(): Observable<Load[]> {
     return Observable.from(cloneDeep(MockData.loads))
       .flatMap(
-      (load) => this.companyService
-        .getDetails(load.companyId)
-        .map(customer => Object.assign(load, { customer }))
+      (load) => {
+        if (load.companyId) {
+          return this.companyService
+            .getDetails(load.companyId)
+            .map(customer => Object.assign(load, { customer }))
+        } else {
+          return Observable.of(load);
+        }
+      }
       ).toArray();
   };
 
