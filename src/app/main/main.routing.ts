@@ -1,6 +1,6 @@
 import { MainComponent } from './main.component';
 import { HomeComponent } from '../home';
-import { LoadsComponent, LoadDetailComponent, LoadEditComponent } from '../loads';
+import { LoadsComponent, LoadDetailComponent } from '../loads';
 import { EquipmentModule } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
