@@ -26,7 +26,8 @@ export class StopFormComponent extends BaseForm {
   private facilityQuery: string = '';
   private fields = [
     { name: 'id', validators: [] },
-    { name: 'scheduleType', validators: [] }
+    { name: 'scheduleType', validators: [] },
+    { name: 'facility', validators: []}
   ];
 
   constructor(
@@ -67,11 +68,6 @@ export class StopFormComponent extends BaseForm {
         this.formBuilder.control({ value: this.stop[field.name], disabled: this.disabled }, field.validators)
       );
     });
-
-    this.stopForm.setControl(
-      'facility',
-      this.formBuilder.control({ value: this.stop['facility'] || {}, disabled: this.disabled })
-    );
 
     this.stopForm.setControl('stopActions', this.formBuilder.array([]));
     const appointmentGroup: FormGroup = this.formBuilder.group({
