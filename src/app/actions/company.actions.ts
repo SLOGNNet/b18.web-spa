@@ -19,19 +19,21 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
   static SELECT_COMPANY: string = 'SELECT_COMPANY';
   static CREATE_NEW_COMPANY: string = 'CREATE_NEW_COMPANY';
   static GET_ALL_COMPANIES: string = 'GET_ALL_COMPANIES';
-  constructor (
+  constructor(
     private companyService: CompanyService,
     private notificatonService: NotificationService,
-    private ngRedux: NgRedux<IAppState>) {}
+    private ngRedux: NgRedux<IAppState>) { }
 
   add(company: Company): void {
-    this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST });
-      this.companyService.create(company).subscribe(newId => {
-        const prevId = company.id;
-        const normalizedCompany = normalize(createPeristEnity(company, newId), companySchema);
-        this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, data: normalizedCompany, prevId });
-        this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
-      });
+    const normalizedPhantomCompany = normalize(company, companySchema);
+    this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_REQUEST, data: normalizedPhantomCompany });
+
+    this.companyService.create(company).subscribe(newId => {
+      const prevId = company.id;
+      const normalizedCompany = normalize(createPeristEnity(company, newId), companySchema);
+      this.ngRedux.dispatch({ type: CompanyActions.ADD_COMPANY_SUCCESS, data: normalizedCompany, prevId });
+      this.notificatonService.sendNotification('Company created.', `${company.name} was created.`);
+    });
   }
 
   remove(company: Company): void {
@@ -40,7 +42,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
 
   update(company: Company): void {
     const normalizedCompany = normalize(company, companySchema);
-    this.ngRedux.dispatch({ type: CompanyActions.UPDATE_COMPANY_REQUEST });
+    this.ngRedux.dispatch({ type: CompanyActions.UPDATE_COMPANY_REQUEST, data: normalizedCompany });
 
     setTimeout(() => {
       this.companyService.update(company);
@@ -53,7 +55,7 @@ export class CompanyActions implements IListDataActions<Company>, IDetailDataAct
     this.companyService.getDetails(companyId).subscribe(company => {
       const normalizedData = normalize(company, companySchema);
       this.ngRedux.dispatch({ type: CompanyActions.SELECT_COMPANY, data: normalizedData });
-    }, (error) => {});
+    }, (error) => { });
   }
 
   createNew(): void {

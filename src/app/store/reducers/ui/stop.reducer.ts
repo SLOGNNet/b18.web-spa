@@ -12,6 +12,7 @@ const INITIAL_STATE: ILoadStopState = { selected: null, isLoading: false };
 export const loadStopReducer = createReducer(INITIAL_STATE, {
   [StopActions.ADD_STOP_LOAD_REQUEST](state, action) {
     return Object.assign({}, state, {
+      selected: action.data.result,
       isLoading: true
     });
   },
@@ -36,6 +37,7 @@ export const loadStopReducer = createReducer(INITIAL_STATE, {
   [StopActions.UPDATE_STOP_LOAD_REQUEST](state, action) {
     return Object.assign({}, state,
       {
+        selected: action.data.result,
         isLoading: true
       });
   },

@@ -12,6 +12,7 @@ const INITIAL_STATE: ILoadState = { list: [], selected: null, isLoading: false};
 export const loadReducer = createReducer(INITIAL_STATE, {
   [LoadActions.ADD_LOAD_REQUEST](state, action) {
     return Object.assign({}, state, {
+      selected: action.data.result,
       isLoading: true
     });
   },
@@ -25,6 +26,7 @@ export const loadReducer = createReducer(INITIAL_STATE, {
   [LoadActions.UPDATE_LOAD_REQUEST](state, action) {
     return Object.assign({}, state,
       {
+        selected: action.data.result,
         isLoading: true
       });
   },

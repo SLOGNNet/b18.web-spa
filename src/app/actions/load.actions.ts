@@ -27,7 +27,8 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
     private loadService: LoadService) {}
 
   add(load: Load): void {
-    this.ngRedux.dispatch({ type: LoadActions.ADD_LOAD_REQUEST, load });
+    const normalizedPhantomData = normalize(load, loadSchema);
+    this.ngRedux.dispatch({ type: LoadActions.ADD_LOAD_REQUEST, data: normalizedPhantomData });
     this.loadService.create(load).delay(2000).subscribe((newId) => {
       const prevId = load.id;
       const normalizedData = normalize(createPeristEnity(load, newId), loadSchema);
@@ -41,9 +42,9 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
   }
 
   update(load: Load): void {
-    this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD_REQUEST});
+    const normalizedData = normalize(load, loadSchema);
+    this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD_REQUEST, data: normalizedData});
       this.loadService.update(load).delay(2000).subscribe(() => {
-        const normalizedData = normalize(load, loadSchema);
         this.ngRedux.dispatch({ type: LoadActions.UPDATE_LOAD_SUCCESS, data: normalizedData });
         this.notificatonService.sendNotification('Load updated.', `${load.systemLoadNo} was updated.`);
       });

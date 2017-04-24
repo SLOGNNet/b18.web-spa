@@ -12,6 +12,7 @@ const INITIAL_STATE: ICompanyLocationState = { selected: null, isLoading: false 
 export const companyLocationReducer = createReducer(INITIAL_STATE, {
   [CompanyLocationActions.ADD_LOCATION_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {
+      selected: action.data.result,
       isLoading: true
     });
   },
@@ -36,6 +37,7 @@ export const companyLocationReducer = createReducer(INITIAL_STATE, {
   [CompanyLocationActions.UPDATE_LOCATION_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state,
       {
+        selected: action.data.result,
         isLoading: true
       });
   },

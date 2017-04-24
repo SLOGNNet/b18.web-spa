@@ -28,11 +28,13 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
 
   add(driver: Driver): void {
     driver = plainToClass(Driver, driver);
-    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
+    const normalizedPhantomData = normalize(driver, driverSchema);
+    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST, data: normalizedPhantomData });
+
     this.driverService.create(driver).delay(3000).subscribe((newId) => {
       const prevId = driver.id;
-      const normalizedCompany = normalize(createPeristEnity(driver, newId), driverSchema);
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, data: normalizedCompany, prevId });
+      const normalizedData = normalize(createPeristEnity(driver, newId), driverSchema);
+      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, data: normalizedData, prevId });
       this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
     });
   }
@@ -40,12 +42,13 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
   remove(driver: Driver): void {
     this.ngRedux.dispatch({ type: DriverActions.REMOVE_DRIVER, driver });
   }
+
   update(driver: Driver): void {
     driver = plainToClass(Driver, driver);
-    this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST});
+    const normalizedData = normalize(driver, driverSchema);
+    this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST, data: normalizedData});
 
     this.driverService.update(driver).subscribe(() => {
-      const normalizedData = normalize(driver, driverSchema);
       this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Driver updated.', `${driver.firstName} ${driver.lastName} was updated.`);
     });

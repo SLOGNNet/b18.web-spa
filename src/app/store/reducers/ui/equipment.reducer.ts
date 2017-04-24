@@ -12,6 +12,7 @@ const INITIAL_STATE: IEquipmentState = { list: [], selected: null, isLoading: fa
 export const equipmentReducer = createReducer(INITIAL_STATE, {
   [EquipmentActions.ADD_EQUIPMENT_REQUEST](state, action) {
     return Object.assign({}, state, {
+      selected: action.data.result,
       isLoading: true
     });
   },
@@ -25,6 +26,7 @@ export const equipmentReducer = createReducer(INITIAL_STATE, {
   [EquipmentActions.UPDATE_EQUIPMENT_REQUEST](state, action) {
     return Object.assign({}, state,
       {
+        selected: action.data.result,
         isLoading: true
       });
   },

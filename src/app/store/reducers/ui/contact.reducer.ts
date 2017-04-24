@@ -12,6 +12,7 @@ const INITIAL_STATE: ICompanyContactState = { selected: null, isLoading: false }
 export const companyContactReducer = createReducer(INITIAL_STATE, {
   [CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state, {
+      selected: action.data.result,
       isLoading: true
     });
   },
@@ -28,6 +29,7 @@ export const companyContactReducer = createReducer(INITIAL_STATE, {
   [CompanyContactActions.UPDATE_COMPANY_CONTACT_REQUEST](state, action) {
     return Object.assign({}, state,
       {
+        selected: action.data.result,
         isLoading: true
       });
   },
