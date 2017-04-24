@@ -32,6 +32,6 @@ export class StopsLineComponent {
   }
 
   hasStatus(stopActions, stopActionType) {
-   return stopActions.filter(stopAction => stopAction.type === stopActionType).length > 0;
+    if(stopActions) return stopActions.filter(stopAction => stopAction.type === stopActionType).length > 0;
   }
 }
