@@ -22,7 +22,8 @@ export class StopsLineComponent {
   }
 
   isPickupAndDropOff(stop: Stop) {
-    let iconNames = [StopActionTypes.PICKUP, StopActionTypes.DROPOFF].filter(stopActionType => this.hasStatus(stop.stopActions, stopActionType)).map(stopActionType => ICON_NAMES_MAP[stopActionType]);
+    let iconNames = [StopActionTypes.PICKUP, StopActionTypes.DROPOFF].filter(stopActionType => this.hasStatus(stop.stopActions, stopActionType))
+    .map(stopActionType => ICON_NAMES_MAP[stopActionType]);
     return iconNames ? ['icon', ...iconNames].join('-') : '';
   }
 
