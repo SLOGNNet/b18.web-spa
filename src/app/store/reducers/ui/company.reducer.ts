@@ -14,7 +14,6 @@ const INITIAL_STATE: ICompanyState = { selected: null, list: [], isLoading: fals
 export const companyReducer = createReducer(INITIAL_STATE, {
   [CompanyActions.ADD_COMPANY_REQUEST](state, action) {
     return Object.assign({}, state, {
-      selected: action.data.result,
       isLoading: true
     });
   },
@@ -29,7 +28,6 @@ export const companyReducer = createReducer(INITIAL_STATE, {
   [CompanyActions.UPDATE_COMPANY_REQUEST](state, action) {
     return Object.assign({}, state,
       {
-        selected: action.data.result,
         isLoading: true
       });
   },

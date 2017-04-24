@@ -12,7 +12,6 @@ const INITIAL_STATE: IDriverState = { list: [], selected: null, isLoading: false
 export const driverReducer = createReducer(INITIAL_STATE, {
   [DriverActions.ADD_DRIVER_REQUEST](state, action) {
     return Object.assign({}, state, {
-      selected: action.data.result,
       isLoading: true
     });
   },
@@ -26,7 +25,6 @@ export const driverReducer = createReducer(INITIAL_STATE, {
   [DriverActions.UPDATE_DRIVER_REQUEST](state, action) {
     return Object.assign({}, state,
       {
-        selected: action.data.result,
         isLoading: true
       });
   },
