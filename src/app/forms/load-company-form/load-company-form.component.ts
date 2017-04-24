@@ -91,8 +91,7 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
 
   private onCustomerSelect(customer: Company) {
     this.loadForm.setControl('customer', this.formBuilder.control({ value: customer || {} , disabled: false }));
-    this.onLocationSelect({});
-    this.onBillingLocationSelect({});
+    this.resetDropdowns();
     this.initDropdowns(customer);
   }
 
@@ -120,5 +119,12 @@ export class LoadCompanyFormComponent extends BaseForm implements OnChanges {
     if (this.onLoadSave()) {
       this.addStop.emit();
     }
+  }
+
+  private resetDropdowns() {
+    this.onLocationSelect({});
+    this.onBillingLocationSelect({});
+    this.loadForm.setControl('customerLocationId', this.formBuilder.control({ value: undefined, disabled: false }));
+    this.loadForm.setControl('customerBillingLocationId', this.formBuilder.control({ value: undefined, disabled: false }));
   }
 }
