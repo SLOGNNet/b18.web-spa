@@ -32,6 +32,7 @@ $element-height: 35px;
 
     .special-requirements {
       padding: $default-margin;
+      white-space: pre-wrap;
       flex: 1;
     }
 
