@@ -8,9 +8,7 @@
       [style.color]="getColor(stop.status)"
       [style.left.px]="stop.left"
       [style.position]="stop.left ? 'absolute' : ''"
-      [class.icon-pickup-dropoff]="isPickupAndDropOff(stop)"
-      [class.icon-dropoff]="isDropOff(stop) && !isPickupAndDropOff(stop)"
-      [class.icon-pickup]="!isDropOff(stop) && !isPickupAndDropOff(stop)"
+      [ngClass]="isPickupAndDropOff(stop)"
       (click)="onStopSelect(stop)">
       <bd-popover-content
         #stopPopover

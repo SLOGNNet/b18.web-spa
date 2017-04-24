@@ -1,6 +1,11 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Stop, StopStatuses, StopActionTypes } from '../../../models';
 
+const ICON_NAMES_MAP = {
+  [StopActionTypes.PICKUP]: 'pickup',
+  [StopActionTypes.DROPOFF]: 'dropoff'
+};
+
 @Component({
   selector: 'stops-line',
   templateUrl: './stops-line.component.html',
@@ -17,15 +22,15 @@ export class StopsLineComponent {
   }
 
   isPickupAndDropOff(stop: Stop) {
-    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length &&
-    stop.stopActions.filter(a => a.type === StopActionTypes.PICKUP).length;
-  }
-
-  isDropOff(stop: Stop) {
-    return stop.stopActions && stop.stopActions.filter(a => a.type === StopActionTypes.DROPOFF).length;
+    let iconNames = [StopActionTypes.PICKUP, StopActionTypes.DROPOFF].filter(stopActionType => this.hasStatus(stop.stopActions, stopActionType)).map(stopActionType => ICON_NAMES_MAP[stopActionType]);
+    return iconNames ? ['icon', ...iconNames].join('-') : '';
   }
 
   getColor(stopStatus: StopStatuses) {
     return StopStatuses.color(stopStatus);
+  }
+
+  hasStatus(stopActions, stopActionType) {
+   return stopActions.filter(stopAction => stopAction.type === stopActionType).length > 0;
   }
 }
