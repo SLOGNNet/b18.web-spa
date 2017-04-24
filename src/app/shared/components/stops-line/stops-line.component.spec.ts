@@ -4,7 +4,7 @@ import { StopsLineComponent } from '.';
 import { SharedModule } from '../../../shared/shared.module';
 import { hexToRgb, getRGBString } from '../../../shared/helpers';
 import { StopPopoverComponent } from './components';
-import { Address, Stop, StopTypes, StopAction, StopActionTypes, StopStatuses, Facility } from '../../../models';
+import { Address, Stop, StopAction, StopActionTypes, StopStatuses, Facility } from '../../../models';
 
 
 function createStopWithPickup(): Stop {

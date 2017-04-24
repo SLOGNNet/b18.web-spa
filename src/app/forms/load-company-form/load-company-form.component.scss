@@ -1,0 +1,29 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/form-control';
+@import '../../../assets/styles/styles';
+
+:host {
+  display: block;
+}
+
+.dropdown-company-item-wrapper {
+  display: flex;
+  height: 50px;
+  padding: 0 $default-margin;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .full-properties-wrapper {
+    .name-title {
+      color: $black;
+      font-size: $small-font-size;
+    }
+
+    .properties {
+      color: $label-default-color;
+      font-size: $tiny-font-size;
+      margin-top: 5px;
+    }
+  }
+}

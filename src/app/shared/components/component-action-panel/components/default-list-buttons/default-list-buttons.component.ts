@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'default-list-buttons',
-  templateUrl: './default-list-buttons.component.html'
+  templateUrl: './default-list-buttons.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DefaultListButtonsComponent {
   @Output() edit: EventEmitter<any> = new EventEmitter();

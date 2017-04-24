@@ -16,7 +16,8 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
   static UPDATE_LOAD_REQUEST: string = 'UPDATE_LOAD_REQUEST';
   static UPDATE_LOAD_SUCCESS: string = 'UPDATE_LOAD_SUCCESS';
   static UPDATE_LOAD_FAILURE: string = 'UPDATE_LOAD_FAILURE';
-  static SELECT_LOAD: string = 'SELECT_LOAD';
+  static SELECT_LOAD_SUCCESS: string = 'SELECT_LOAD_SUCCESS';
+  static SELECT_LOAD_FAILURE: string = 'SELECT_LOAD_FAILURE';
   static CREATE_NEW_LOAD: string = 'CRETE_NEW_LOAD';
   static GET_ALL_LOADS: string = 'GET_ALL_LOADS';
 
@@ -50,14 +51,18 @@ export class LoadActions implements IListDataActions<Load>, IDetailDataActions<L
 
   select(loadId: string): void {
     this.loadService.getDetails(loadId).subscribe(load => {
-      const normalizedData = normalize(load, loadSchema);
-      this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD, data: normalizedData });
+      if (load) {
+        const normalizedData = normalize(load, loadSchema);
+        this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD_SUCCESS, data: normalizedData });
+      } else {
+        this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD_FAILURE });
+      }
     });
   }
 
   createNew(): void {
     const normalizedData = normalize(Load.create(), loadSchema);
-    this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD, data: normalizedData });
+    this.ngRedux.dispatch({ type: LoadActions.SELECT_LOAD_SUCCESS, data: normalizedData });
   }
 
   getAll(): void {

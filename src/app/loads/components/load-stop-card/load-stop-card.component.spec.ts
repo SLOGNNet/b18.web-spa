@@ -18,7 +18,6 @@ import { Load,
   Address,
   Equipment,
   Stop,
-  StopTypes,
   StopStatuses,
   Facility } from '../../../models';
 
@@ -301,8 +300,9 @@ describe('LoadStopCardComponent', () => {
   });
 
   it('should send load stops collection to stops-line component', () => {
-    let stopData = Stop.create(),
-      stopsCollection = [stopData, stopData];
+    const stopData = Stop.create();
+    stopData.facility = Facility.create();
+    const stopsCollection = [stopData, stopData];
     component.load = testLoad;
     component.load.stops = stopsCollection;
     fixture.detectChanges();

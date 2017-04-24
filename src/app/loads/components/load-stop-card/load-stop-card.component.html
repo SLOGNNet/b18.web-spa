@@ -4,9 +4,9 @@
 (click)="onClick()">
   <div class="left">
     <span class="load-number">LD{{load.systemLoadNo}}</span>
-    <span class="company-name">
-      <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover">
-        {{load.customer?.name}}
+    <span class="company-name" *ngIf="load.customer">
+      <span [bd-popover]="companyPopover" [popoverOnHover]="popoverOnHover" [popoverDisabled]="!load.customerBillingLocation || !load.customerLocation">
+        {{load.customer.name}}
         <bd-popover-content
           #companyPopover
           placement="auto"
@@ -19,10 +19,10 @@
     </span>
     <span class="customer-load-number">{{load.customerLoadNo}}</span>
   </div>
-  <div class="right stops-container" *ngIf="this.load.stops.length > 1">
+  <div class="right stops-container" *ngIf="this.load.stops && this.load.stops.length > 1">
     <div class="distance-wrapper">
-      <span class="firstStopAddress">{{firstStop.facility.address.city}}, {{firstStop.facility.address.state}}</span>
-      <span class="lastStopAddress">{{lastStop.facility.address.city}}, {{lastStop.facility.address.state}}</span>
+      <span class="firstStopAddress">{{firstStop.facility?.address.city}}, {{firstStop.facility?.address.state}}</span>
+      <span class="lastStopAddress">{{lastStop.facility?.address.city}}, {{lastStop.facility?.address.state}}</span>
     </div>
     <div class="schedule-date-wrapper">
       <div class="start-date">

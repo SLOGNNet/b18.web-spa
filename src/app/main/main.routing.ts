@@ -1,6 +1,6 @@
 import { MainComponent } from './main.component';
 import { HomeComponent } from '../home';
-import { LoadsComponent, LoadDetailComponent, LoadEditComponent } from '../loads';
+import { LoadsComponent, LoadDetailComponent } from '../loads';
 import { EquipmentModule } from '../equipment';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { EmptyComponent } from '../shared/components/empty';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent, canActivate: [AuthGuard],
+  component: MainComponent,
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },

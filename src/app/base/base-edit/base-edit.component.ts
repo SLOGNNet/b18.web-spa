@@ -61,7 +61,6 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
 
   protected onItemSave(item) {
     const changedItem = Object.assign({}, this.selectedItem, item);
-
     if (this.isNew) {
       this.isNew = false;
       this.onAdd(changedItem);
@@ -80,11 +79,15 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     // }
   }
 
-  redirectIfNewCreated(prevSelected, newSelected) {
-    if (newSelected && prevSelected
+  protected isNewCreated(prevSelected, newSelected) {
+    const isNewCreated = newSelected && prevSelected
      && !prevSelected['prevId']
      && newSelected['prevId']
-     && prevSelected['id'] === newSelected['prevId']) {
+     && prevSelected['id'] === newSelected['prevId'];
+     return isNewCreated;
+  }
+  protected redirectIfNewCreated(prevSelected, newSelected) {
+    if (this.isNewCreated(prevSelected, newSelected)) {
       const newId = newSelected['id'];
       super.redirectToId(newId, this.segment);
     }

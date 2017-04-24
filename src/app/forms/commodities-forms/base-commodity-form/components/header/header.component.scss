@@ -1,11 +1,13 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 $default-size: 40px;
 $small-size: 35px;
 
 .header {
   display: flex;
-  background: $white;
+  background: $default-background;
+  transition: all $interactive-animation-time;
 
   div {
     display: flex;
@@ -42,4 +44,8 @@ $small-size: 35px;
       cursor: default;
     }
   }
+}
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

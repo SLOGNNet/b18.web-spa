@@ -18,6 +18,7 @@ export class StopAction {
     result.id = generateNewId();
     result.type = type;
     result.commodities = [];
+    result.type = type;
     return result;
   }
 }

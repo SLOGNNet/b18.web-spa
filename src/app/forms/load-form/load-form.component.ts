@@ -6,7 +6,7 @@ import { EnumHelperService } from '../../shared/helpers';
 import {
   Load, Document, Company,
   DriverRequirements, PowerUnitTypes, TrailerTypes,
-  Stop, StopTypes, LoadType, FreightType } from '../../models';
+  Stop, LoadType, FreightType } from '../../models';
 import { ViewMode } from '../../shared/enums';
 import { BaseForm } from '../base-form';
 import { StopActions } from '../../actions';
@@ -33,7 +33,6 @@ export class LoadFormComponent extends BaseForm implements OnChanges {
   private companySource: any[];
   private companyQuery: string = '';
   private companyViewMode: ViewMode = ViewMode.None;
-  private stopTypes = StopTypes;
   private documents: Array<Document>;
 
   public constructor(

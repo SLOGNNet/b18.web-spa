@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stop, Load } from '../../../../../models';
@@ -13,14 +13,15 @@ import { cloneDeep } from 'lodash';
 @Component({
   selector: 'load-edit-stop',
   templateUrl: './load-edit-stop.component.html',
-  styleUrls: ['./load-edit-stop.component.scss']
+  styleUrls: ['./load-edit-stop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
   protected segment = 'edit-stop';
   private locations$;
-  private selectedLoad: Load;
   private form: FormGroup = this.formBuilder.group({});
   private locations: Array<any>;
+  private parentLoad: Load;
   private anchors = [{
     id: '',
     title: 'Itinerary'
@@ -35,17 +36,28 @@ export class LoadEditStopComponent extends BaseNestedEditComponent<Stop, Load>{
     router: Router,
     private ngRedux: NgRedux<IAppState>) {
     super(stopActions, ngRedux.select(selectDetailLoad), ngRedux.select(selectDetailStop),
-      ngRedux.select(state => state.ui.contacts.isLoading), route, router, location, cdr);
-  }
+      ngRedux.select(state => state.ui.stops.isLoading), route, router, location, cdr);
+      this.selected$.subscribe(item => {
+        this.form = this.formBuilder.group({});
+      });
+ }
 
   isDetailsChanged() {
     return this.form && this.form.dirty;
   }
 
-  onFormSave() {
+  onFormSave(): boolean {
     if (this.form.valid) {
       this.form.markAsPristine();
       super.onItemSave(this.form.value);
+    }
+
+    return this.form.valid;
+  }
+
+  onStopAdd() {
+    if (this.onFormSave()) {
+
     }
   }
 

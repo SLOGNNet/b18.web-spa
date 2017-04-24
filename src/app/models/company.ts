@@ -16,17 +16,17 @@ export const companyListSchema = [companySchema];
 
 export class Company {
   id: string;
-  name: string = '';
+  name: string = ' ';
   @Type(() => Contact)
   contacts: Contact[];
-  status: CompanyStatuses;
-  type: CompanyTypes;
+  status: CompanyStatuses = null;
+  type: CompanyTypes = null;
   mc: string = '';
   taxId: string = '';
   @Type(() => Location)
-  locations: Array<Location>;
+  locations: Array<Location> ;
   email: string = '';
-  loads: Array<Load>;
+  loads: Array<Load> = [];
 
   static create(): Company{
     const result = new Company();

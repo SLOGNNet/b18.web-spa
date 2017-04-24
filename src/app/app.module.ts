@@ -28,6 +28,7 @@ import {
   CompanyContactActions,
   EquipmentActions,
   DriverActions,
+  StopActionActions,
   StopActions
 } from './actions';
 
@@ -73,6 +74,7 @@ type StoreType = {
     CompanyActions,
     CompanyContactActions,
     EquipmentActions,
+    StopActionActions,
     DriverActions,
     StopActions,
     CanDeactivateGuard

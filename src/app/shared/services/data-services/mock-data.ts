@@ -1,11 +1,11 @@
 import {
   Load, Document, Company, Address, CompanyStatuses, CompanyTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
+  TrailerTypes, Stop, Commodity, Contact, LoadType,
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
   EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, Notification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location, Mileage, ReeferType
+  ScheduleTypes, StopAction, TripStop, Location, Mileage, ReeferType
 } from './models';
 class MockData {
 
@@ -825,28 +825,32 @@ class MockData {
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
     name: 'San Francisco, CA',
     address: this.addresses[1],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '1',
     name: 'Los Angeles, CA',
     address: this.addresses[2],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
     name: 'Los Altos, CA',
     address: this.addresses[3],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }];
 
   mileages: Array<Mileage> = [{
@@ -1079,7 +1083,8 @@ class MockData {
       appointment: {
         from: new Date(2017, 2, 1, 8),
         to: new Date(2017, 2, 1, 10),
-        type: AppointmentTypes.FCFS
+        number: '11',
+        scheduleType: ScheduleTypes.FCFS
       },
       notes: 'test',
       facility: this.facilities[0],
@@ -1091,7 +1096,8 @@ class MockData {
       appointment: {
         from: new Date(2017, 2, 2, 8),
         to: new Date(2017, 2, 2, 10),
-        type: AppointmentTypes.FCFS
+        number: '22',
+        scheduleType: ScheduleTypes.FCFS
       },
       notes: 'test',
       trip: this.trips[0],
@@ -1113,7 +1119,14 @@ class MockData {
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
     stopActions: [this.stopActionCollection[1], this.stopActionCollection[2]],
-    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '33',
+      scheduleType: ScheduleTypes.FCFS
+    },
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]],
+    scheduleType: ScheduleTypes.APPT
   },
   {
     id: '13',
@@ -1123,9 +1136,16 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '33',
+      scheduleType: ScheduleTypes.FCFS
+    },
     status: StopStatuses.IN_PROGRESS,
     stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
-    tripStops: [this.tripStopCollection[0]]
+    tripStops: [this.tripStopCollection[0]],
+    scheduleType: ScheduleTypes.APPT
   },
   {
     id: '2',
@@ -1137,7 +1157,14 @@ class MockData {
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
     stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
-    tripStops: [this.tripStopCollection[0]]
+    tripStops: [this.tripStopCollection[0]],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '44',
+      scheduleType: ScheduleTypes.FCFS
+    },
+    scheduleType: ScheduleTypes.APPT
   }
  ];
   public loads: Array<Load> = [

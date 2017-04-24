@@ -4,10 +4,10 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import {
-  LoadEditComponent,
   LoadStopCardComponent,
   LoadStopCardsComponent,
   TripPopoverComponent,
+  StopActionsComponent,
   CompanyPopoverComponent,
   DriverPopoverComponent,
   LoadDetailComponent,
@@ -18,7 +18,11 @@ import {
   CustomerDetailComponent,
   RequirementsDetailComponent,
   LoadEditInfoComponent,
-  LoadViewComponent
+  LoadEditCustomerComponent,
+  LoadViewComponent,
+  AppointmentRangeComponent,
+  AppointmentTypeComponent,
+  StopDetailViewComponent
 } from './components';
 
 import { LoadsComponent } from './loads.component';
@@ -34,8 +38,8 @@ import { BdFormsModule } from '../forms/forms.module';
   ],
   declarations: [
     LoadsComponent,
-    LoadEditComponent,
     LoadEditInfoComponent,
+    LoadEditCustomerComponent,
     LoadStopCardComponent,
     LoadStopCardsComponent,
     TripPopoverComponent,
@@ -48,7 +52,11 @@ import { BdFormsModule } from '../forms/forms.module';
     LoadEditStopComponent,
     CustomerDetailComponent,
     RequirementsDetailComponent,
-    LoadViewComponent
+    LoadViewComponent,
+    StopActionsComponent,
+    AppointmentRangeComponent,
+    AppointmentTypeComponent,
+    StopDetailViewComponent
   ]
 })
 export class LoadsModule { }

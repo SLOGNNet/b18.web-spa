@@ -16,7 +16,8 @@ import { NotificationService,
   StateService,
   LicenseService,
   LocationService,
-  StopService
+  StopService,
+  FacilityService
 } from './services';
 import { EnumHelperService } from './helpers';
 import { CommonModule } from '@angular/common';
@@ -109,7 +110,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LicenseService,
     LocationService,
     StopService,
-    Constants
+    Constants,
+    FacilityService
   ],
   declarations: [
     BdFormButtonComponent,

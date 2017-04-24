@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class BdButtonComponent {
   @Input() type: string = 'button';
-  @Input() color: 'primary' | 'default' = 'default';
+  @Input() color: 'primary' | 'white' | 'default' = 'default';
   @Input() disabled: boolean = false;
   @Input() text: any;
   @Input() size: 'default-size' | 'small' = 'default-size';

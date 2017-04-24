@@ -1,12 +1,14 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 @import '../../../../assets/styles/font-icons';
 
 .loaded-file-container {
   position: relative;
   display: flex;
-  background: $white;
+  background: $default-background;
   margin-bottom: 30px;
   flex-direction: row;
+  transition: all $interactive-animation-time;
 
   .upload-progress {
     position: absolute;
@@ -31,20 +33,12 @@
       align-items: center;
       justify-content: space-between;
 
-      .file-name {
-        color: $black;
-      }
-
       button {
         border: 0;
         background: none;
 
         &:focus {
           outline: 0;
-        }
-
-        i {
-          color: $black;
         }
       }
     }
@@ -86,4 +80,10 @@
       background-color: $label-warning-color;
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }
