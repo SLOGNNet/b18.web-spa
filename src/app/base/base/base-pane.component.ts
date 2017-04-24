@@ -1,9 +1,15 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 export abstract class BasePane {
+  protected subscribers = [];
 
   constructor(protected router: Router, protected route: ActivatedRoute) {
   };
+
+  ngOnDestroy() {
+    this.subscribers.forEach(s => s.unsubscribe());
+    this.subscribers = [];
+  }
 
   redirectToId(id: string, segment?: string) {
     const urlTree = this.router.parseUrl(this.router.url);

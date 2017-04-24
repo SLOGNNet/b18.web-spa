@@ -15,7 +15,6 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected viewMode: ViewMode = ViewMode.Edit;
   protected segment;
   protected defaultNavigationTitle;
-  protected subscribers = [];
   @HostBinding('class.interactive-panel') v: boolean = true;
 
   constructor(protected selected$: Observable<T>,
@@ -40,11 +39,6 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
         this.checkNewItem();
       }));
     });
-  }
-
-  ngOnDestroy() {
-    this.subscribers.forEach(s => s.unsubscribe());
-    this.subscribers = [];
   }
 
   // CanComponentDeactivate inteface
