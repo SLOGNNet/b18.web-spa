@@ -15,7 +15,8 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
   static UPDATE_EQUIPMENT_REQUEST: string = 'UPDATE_EQUIPMENT_REQUEST';
   static UPDATE_EQUIPMENT_SUCCESS: string = 'UPDATE_EQUIPMENT_SUCCESS';
   static UPDATE_EQUIPMENT_FAILURE: string = 'UPDATE_EQUIPMENT_FAILURE';
-  static SELECT_EQUIPMENT: string = 'SELECT_EQUIPMENT';
+  static SELECT_EQUIPMENT_SUCCESS: string = 'SELECT_EQUIPMENT_SUCCESS';
+  static SELECT_EQUIPMENT_FAILURE: string = 'SELECT_EQUIPMENT_FAILURE';
   static CREATE_NEW_EQUIPMENT: string = 'CREATE_NEW_EQUIPMENT';
   static GET_ALL_EQUIPMENTS: string = 'GET_ALL_EQUIPMENTS';
   constructor(
@@ -51,15 +52,18 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
 
   select(equipmentId: string): void {
     this.equipmentService.getDetails(equipmentId).subscribe(equipment => {
-      const normalizedData = normalize(equipment, equipmentSchema);
-      this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, data: normalizedData });
+      if (equipment) {
+        const normalizedData = normalize(equipment, equipmentSchema);
+        this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT_SUCCESS, data: normalizedData });
+      } else {
+        this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT_FAILURE });
+      }
     });
-
   }
 
   createNew(): void {
     const normalizedData = normalize(Equipment.create(), equipmentSchema);
-    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT, data: normalizedData });
+    this.ngRedux.dispatch({ type: EquipmentActions.SELECT_EQUIPMENT_SUCCESS, data: normalizedData });
   }
 
   getAll(): void {
