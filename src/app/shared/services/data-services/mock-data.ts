@@ -1088,7 +1088,7 @@ class MockData {
       },
       notes: 'test',
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
+      stopActions: [this.stopActionCollection[1]],
        trip: this.trips[0]
     },
     {
@@ -1118,7 +1118,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
-    stopActions: [],
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
     appointment: {
       from: new Date(2017, 2, 1, 8),
       to: new Date(2017, 2, 1, 10),
@@ -1136,15 +1136,34 @@ class MockData {
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '33',
+      scheduleType: ScheduleTypes.FCFS
+    },
     status: StopStatuses.IN_PROGRESS,
-    stopActions: [],
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    tripStops: [this.tripStopCollection[0]],
+    scheduleType: ScheduleTypes.APPT
+  },
+  {
+    id: '2',
+    notes: 'notes',
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
+    facility: this.facilities[0],
+    status: StopStatuses.IN_PROGRESS,
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    tripStops: [this.tripStopCollection[0]],
     appointment: {
       from: new Date(2017, 2, 1, 8),
       to: new Date(2017, 2, 1, 10),
       number: '44',
       scheduleType: ScheduleTypes.FCFS
     },
-    tripStops: [this.tripStopCollection[0]],
     scheduleType: ScheduleTypes.APPT
   }
  ];
@@ -1171,7 +1190,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.stops[0], this.stops[1]],
+      stops: [this.stops[0], this.stops[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },
@@ -1223,7 +1242,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[2], this.trips[3]],
-      stops: [this.stops[0], this.stops[0], this.stops[0]],
+      stops: [this.stops[0], this.stops[1], this.stops[2]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
