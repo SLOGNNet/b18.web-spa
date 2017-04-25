@@ -22,4 +22,12 @@ export class CommodityDetailsComponent {
     this.index++;
     this.columns = this.getCommodityColumns(this.commodity);
   }
+
+  isDisabled(e) {
+    const element = document.getElementById(e);
+
+    if (!element) return false;
+
+    return element.scrollWidth === element.clientWidth;
+  }
 }
