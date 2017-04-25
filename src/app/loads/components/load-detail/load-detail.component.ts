@@ -41,6 +41,10 @@ export class LoadDetailComponent extends BaseDetailComponent<Load> {
     return Load.getSelectedContact(this.selectedItem.customer.contacts, this.selectedItem.contactId);
   };
 
+  get title(): string {
+    return `LD ${this.selectedItem.systemLoadNo}`;
+  }
+
   onStopRemove(stop: Stop) {
 
   }

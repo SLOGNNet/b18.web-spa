@@ -39,7 +39,7 @@ export class LoadEditInfoComponent extends BaseRootEditComponent<Load> {
   }
 
   getItemName() {
-    return 'Load';
+    return this.isNew ? 'Load' : `LD ${this.selectedItem.systemLoadNo}`;
   }
 
   onAddCustomer() {

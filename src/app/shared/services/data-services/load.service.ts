@@ -47,6 +47,7 @@ export class LoadService {
   create(load: Load): Observable<string> {
     const persistLoad = cloneDeep(load);
     persistLoad.id = generatePersistId();
+    persistLoad.systemLoadNo = this.generateSystemLoadNumber();
     MockData.loads.push(persistLoad);
     return Observable.of(persistLoad.id);
   }
@@ -63,5 +64,10 @@ export class LoadService {
     });
 
     return Observable.of(id);
+  }
+
+  private generateSystemLoadNumber(): string {
+    const systemNumber = new Date().getTime().toString();
+    return systemNumber.slice(0, 7);
   }
 }
