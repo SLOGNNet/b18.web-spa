@@ -1,8 +1,15 @@
 <form [formGroup]="contactForm">
-  <bd-input class="bd-form-control" formControlName="firstName" [labelText]="'First Name'">
-  </bd-input>
-  <bd-input class="bd-form-control" formControlName="lastName" [labelText]="'Last Name'">
-  </bd-input>
+  <bd-validator-summary>
+    <div class="name-section">
+      <bd-validator [component]="contactForm.controls.firstName" [errorDefs]="{required: 'First name is required'}">
+        <bd-input class="bd-form-control left-control" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
+      </bd-validator>
+      <bd-input class="bd-form-control middle-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
+      <bd-validator [component]="contactForm.controls.lastName" [errorDefs]="{required: 'Last name is required'}">
+        <bd-input class="bd-form-control right-control" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
+      </bd-validator>
+    </div>
+  </bd-validator-summary>
   <bd-input class="bd-form-control" formControlName="email" [labelText]="'Personal Email'">
   </bd-input>
   <bd-input class="bd-form-control" formControlName="position" [labelText]="'Position'">

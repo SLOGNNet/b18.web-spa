@@ -38,7 +38,4 @@ export abstract class BaseRootEditComponent<T> extends BaseEditComponent<T> {
     this.actions.select(id);
   }
 
-  get actionName() {
-    return this.isNew ? 'New ' + this.getItemName() : this.getItemName();
-  }
 }

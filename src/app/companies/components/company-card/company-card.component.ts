@@ -30,4 +30,8 @@ export class CompanyCardComponent extends BaseCardComponent {
     const phoneInfo = firstContact && ContactInfo.getPrimaryPhone(firstContact.contactInfo);
     return phoneInfo ? phoneInfo.value : '';
   }
+
+  get fullName() {
+    return [this.item.contacts[0].firstName, this.item.contacts[0].middleName, this.item.contacts[0].lastName].filter(v => v).join(' ');
+  }
 }
