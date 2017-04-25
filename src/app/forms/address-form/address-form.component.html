@@ -9,7 +9,7 @@
 <bd-typeahead
 	class="bd-form-control"
 	formControlName="streetAddress1"
-	placeholder="Street address"
+	placeholder="Street Address"
   [source]="_placeSource"
   [(query)]="_placeQuery"
   [itemTemplate]="customItemTemplate"
@@ -22,7 +22,7 @@
 		<div class="left-side">
 			<bd-input
 				class="bd-form-control left-control"
-				placeholder="Street address 2"
+				placeholder="Street Address 2"
 				formControlName="streetAddress2">
 			</bd-input>
 			<bd-input class="bd-form-control left-control" formControlName="city" placeholder="City" (valueChange)="onRemoveMap($event)">
