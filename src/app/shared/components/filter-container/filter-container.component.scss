@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 $filter-header-max-width: 85px;
 
 .filter-container {
@@ -6,6 +7,7 @@ $filter-header-max-width: 85px;
   padding-top: 70px;
 
   .filter-header {
+    @include default-view-container;
     position: absolute;
     z-index: $sticked-z-index;
     top: 0;
@@ -13,9 +15,7 @@ $filter-header-max-width: 85px;
     width: 100%;
     height: 58px;
     padding: 0 $default-margin;
-    background: $white;
     align-items: center;
-    border-bottom: $border;
     border-radius: $default-border-radius;
 
     /deep/ .filter-scrollbar {
@@ -117,5 +117,12 @@ $filter-header-max-width: 85px;
   .selected-item {
     color: $black;
     font-size: $tiny-font-size;
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+  .filter-header {
+    background: $white;
+    transition: all $interactive-animation-time;
   }
 }

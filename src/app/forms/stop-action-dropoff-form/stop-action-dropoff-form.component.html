@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup">
+  <bd-form-switch class="bd-form-control" [labelText]="'Action Type'" [enableButtonSwitch]="true" [disabled]="this.disabled || this.hasCommodities" [formControl]="formGroup.controls.type"
+    [items]="stopActionTypes">
+  </bd-form-switch>
+  <div class="dropoff-border">
+    <drop-off-commodity-form
+      [disabled]="disabled"
+      [formArray]="commoditiesFormArray"
+      [items]="stopAction.commodities"
+      [availablePickups]="availableCommodities$ | async"
+      (update)="onCommodityUpdate($event)"
+      (remove)="onCommodityRemove($event)"
+      (select)="onCommoditySelect($event)"
+      [viewMode]="viewMode">
+    </drop-off-commodity-form>
+    <bd-textarea
+      class="bd-form-control"
+      formControlName="notes"
+      [labelText]="'Notes'">
+    </bd-textarea>
+  </div>
+</form>

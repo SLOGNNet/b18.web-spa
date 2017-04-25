@@ -1,23 +1,32 @@
-import { Location } from './location';
-import { Contact } from './contact';
+import { Location, locationSchema } from './location';
+import { Contact, contactSchema } from './contact';
 import { Load } from './load';
 import { generateNewId } from './utils';
 import { CompanyTypes, CompanyStatuses } from './enums';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+
+export const companySchema = new schema.Entity('companies', {
+  contacts: [ contactSchema ],
+  locations: [ locationSchema ]
+});
+export const companyListSchema = [companySchema];
+
+
 
 export class Company {
   id: string;
-  name: string = '';
+  name: string = ' ';
   @Type(() => Contact)
   contacts: Contact[];
-  status: CompanyStatuses;
-  type: CompanyTypes;
+  status: CompanyStatuses = null;
+  type: CompanyTypes = null;
   mc: string = '';
   taxId: string = '';
   @Type(() => Location)
-  locations: Array<Location>;
+  locations: Array<Location> ;
   email: string = '';
-  loads: Array<Load>;
+  loads: Array<Load> = [];
 
   static create(): Company{
     const result = new Company();

@@ -1,0 +1,10 @@
+<template let-data ngFor [ngForOf]="renderFormData" let-i="index" let-last="last" let-first="first" [ngForTrackBy]="trackBy">
+  <div class='bd-form-list-item'>
+    <bd-remove-button class='bd-form-control' (onClick)='removeItem(data)' *ngIf="!first || (first && !last)" [prefixLabel]="label(i)"> </bd-remove-button>
+    <div [ngSwitch]="data.item.type">
+      <stop-action-pickup-form  *ngSwitchCase="stopActionTypes.PICKUP" [group]="data.group" (update)="updateItem($event)" [stopAction]="data.item" [load]="load" [stop]="stop" [viewMode]="viewMode" [disabled]="disabled"></stop-action-pickup-form>
+      <stop-action-dropoff-form  *ngSwitchCase="stopActionTypes.DROPOFF" [group]="data.group" (update)="updateItem($event)" [stopAction]="data.item" [load]="load" [stop]="stop" [viewMode]="viewMode" [disabled]="disabled"></stop-action-dropoff-form>
+    </div>
+  </div>
+</template>
+<a class="add-new-item-button" (click)="addNewItem()">Add Action</a>

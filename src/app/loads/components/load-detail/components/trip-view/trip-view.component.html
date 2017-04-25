@@ -1,20 +1,19 @@
 <div class="trip-container" [class.expanded]="isExpanded">
-  <div class="trip-info-container">
+  <div class="trip-info-container interactive-background">
     <div class="left-panel">
       <div class="info-panel">
         <div class="trip-info-header">
-        <span class="trip-number">TR{{tripData.trip.number}}</span>
+        <span class="trip-number interactive-text">TR{{tripData.trip.number}}</span>
       </div>
       <div class="driver-container">
-        <div 
+        <div
           *ngFor="let driver of tripData.trip.driverTeams[0].drivers"
           class="driver-info">
           <span class="initials-circle">
-                  <bd-initials-circle
-                      [firstName]="driver.firstName"
-                      [lastName]="driver.lastName"
+                  <bd-circle
+                      [initials]="driverInitials(driver)"
                       size='small'>
-                  </bd-initials-circle>
+                  </bd-circle>
             </span>
           <span class="driver-name">{{driver.firstName}} {{driver.lastName}}</span>
           <span class="driver-count" *ngIf="tripData.trip.driverTeams[0].drivers.length > 1">
@@ -35,59 +34,9 @@
         </div>
     </div>
     <div class="right-panel">
-      <div class="appointment-type">
-        <div class="type-container">
-          <span class="circle"></span>
-          <span class="type">{{appointmentType}}</span>
-        </div>
-      </div>
-      <div class="date-range-container">
-        <div class="date first-date">
-          <span class="date-value">{{tripData.appointment.from | date:'MM/dd/yy'}}</span>
-          <span class="time-value">{{tripData.appointment.from | date:'HH:mm'}}</span>
-        </div>
-        <div class="date last-date">
-          <span class="date-value">{{tripData.appointment.to | date:'MM/dd/yy'}}</span>
-          <span class="time-value">{{tripData.appointment.to | date:'HH:mm'}}</span>
-        </div>
-      </div>
+      <appointment-type [appointment]="tripData.appointment"></appointment-type>
+      <appointment-range [appointment]="tripData.appointment"></appointment-range>
     </div>
   </div>
-  <div class="commodities-section" *ngIf="isExpanded">
-    <div 
-        *ngIf="hasDropoffCommodities"
-        class="commodities-container dropoff-border">
-        <commodities-header 
-          size='small'
-          [titles]="commodityHeaders">
-        </commodities-header>
-          <commodity-details
-              *ngFor="let data of dropoffCommodities; let i = index;" 
-              [commodity]="data.commodity" 
-              [index]="i">
-          </commodity-details>
-          <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
-            {{tripData.notes}}
-          </div>
-    </div>
-    <div 
-      *ngIf="hasPickupCommodities"
-      class="commodities-container pickup-border">
-      <commodities-header 
-        *ngIf="!hasDropoffCommodities"
-         size='small'
-        [titles]="commodityHeaders">
-      </commodities-header>
-        <commodity-details
-          *ngFor="let data of pickupCommodities; let i = index;" 
-          [commodity]="data.commodity"
-          [index]="i">
-        </commodity-details>
-        <div class="commodities-notes" *ngIf="tripData.notes.length > 1">
-            {{tripData.notes}}
-        </div>
-    </div>
-
-  </div>
-
+  <stop-actions [stopActions]="tripData.stopActions" *ngIf="isExpanded"></stop-actions>
 </div>

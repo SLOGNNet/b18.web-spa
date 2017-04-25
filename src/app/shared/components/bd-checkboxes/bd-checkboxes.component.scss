@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 
 .bd-checkboxes {
   position: relative;
@@ -6,13 +7,14 @@
   overflow: hidden;
   width: 100%;
   padding: 0 $default-margin;
+  background-color: $default-background;
   align-items: center;
   flex-direction: row;
   min-height: $form-control-height;
   border-bottom: 1px solid $grey;
   margin-bottom: 0;
-  background-color: inherit;
   box-shadow: inherit;
+  transition: background-color $interactive-animation-time;
 
   .bd-label {
     display: flex;
@@ -23,8 +25,8 @@
     font-weight: 300;
     text-transform: uppercase;
     align-self: flex-start;
-    margin-left: -17px;
-    margin-right: 32px;
+    margin-left: -$default-margin;
+    margin-right: $default-margin * 2;
     align-items: center;
     justify-content: flex-end;
   }
@@ -40,8 +42,8 @@
       align-items: center;
       margin-top: 3px;
       margin-bottom: 3px;
-      margin-left: 5px;
-      margin-right: 7px;
+      margin-left: 2px;
+      margin-right: 10px;
       font-weight: normal;
 
       bd-checkbox {
@@ -56,4 +58,10 @@
   .checkboxes {
     color: $label-default-color;
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

@@ -1,12 +1,11 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 $element-height: 35px;
 
 .requirements-container {
-  background: $white;
-  font-size: $tiny-font-size;
+  @include default-view-container;
   line-height: $tiny-font-size;
-  border-bottom: $border;
   border-radius: $default-border-radius;
 
   .main-requirements {
@@ -33,6 +32,7 @@ $element-height: 35px;
 
     .special-requirements {
       padding: $default-margin;
+      white-space: pre-wrap;
       flex: 1;
     }
 
@@ -60,4 +60,10 @@ $element-height: 35px;
       }
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

@@ -1,0 +1,34 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
+
+$element-height: 35px;
+
+.load-container {
+  @include default-view-container;
+  display: flex;
+  height: $element-height;
+  line-height: $tiny-font-size;
+  border-radius: $default-border-radius;
+
+  section {
+    display: flex;
+    width: calc(100% / 2);
+    padding: 0 $default-margin;
+    border-right: $border;
+    align-items: center;
+
+    &.customer-load-no {
+      width: 100%;
+    }
+
+    &:last-of-type {
+      border-right: 0;
+    }
+  }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+}

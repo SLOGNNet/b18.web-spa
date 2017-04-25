@@ -1,4 +1,4 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, HostBinding } from '@angular/core';
 import { IDetailDataActions } from '../../actions';
 import { cloneDeep } from 'lodash';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { BasePane } from '../base';
 
 export abstract class BaseDetailComponent<T> extends BasePane {
+  @HostBinding('class.interactive-panel') v: boolean = true;
   protected selectedItem: T = null;
 
   constructor(
@@ -15,16 +16,16 @@ export abstract class BaseDetailComponent<T> extends BasePane {
     route: ActivatedRoute,
     protected cdr: ChangeDetectorRef) {
     super(router, route);
-    selected$.subscribe(item => {
+    this.subscribers.push(selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
-    });
-    this.route.params.subscribe(params => {
+    }));
+    this.subscribers.push(this.route.params.subscribe(params => {
       this.onQueryParams(params);
-    });
+    }));
   }
 
-  private onEdit() {
+  protected onEdit() {
     this.navigateToEdit();
   }
 

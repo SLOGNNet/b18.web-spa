@@ -8,7 +8,8 @@ config = {
     port: '',
     baseUrl: '/spa/',
     hmr: false,
-    socketIoHost: ''
+    socketIoHost: '',
+    environmentCredentials: null
   },
   development: {
     host: 'localhost',
@@ -17,12 +18,14 @@ config = {
     hmr: helpers.hasProcessFlag('hot'),
     socketIoHost: 'http://localhost:5000',
     apiUrl: 'https://dev.bridge18.com/v1/api/expedition/',
-    authUrl: 'https://dev.bridge18.com/api/'
+    authUrl: 'https://dev.bridge18.com/api/',
+    environmentCredentials: { username: 'b18developer', password: 'b18password' }
   },
   publicdev: {
     socketIoHost: 'https://dev.bridge18.com',
     apiUrl: 'https://dev.bridge18.com/v1/api/expedition/',
-    authUrl: 'https://dev.bridge18.com/api/'
+    authUrl: 'https://dev.bridge18.com/api/',
+    environmentCredentials: { username: 'b18developer', password: 'b18password' }
   },
   test: {
 
@@ -31,7 +34,9 @@ config = {
     socketIoHost: 'https://qa.bridge18.com'
   },
   stage: {
-    socketIoHost: 'https://stage.bridge18.com'
+    socketIoHost: 'https://stage.bridge18.com',
+    apiUrl: 'https://stage.bridge18.com/v1/api/expedition/',
+    authUrl: 'https://stage.bridge18.com/api/'
   },
   production: {
   }

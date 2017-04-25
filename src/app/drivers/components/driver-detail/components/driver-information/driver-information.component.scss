@@ -58,3 +58,9 @@ $text-margin: 5px;
 
   }
 }
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+}

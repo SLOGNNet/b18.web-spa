@@ -20,9 +20,8 @@ export class ContactService {
   }
 
   getDetails(id: string): Observable<Contact> {
-    return Observable.of(
-      MockData.contacts.find((contact) => id === contact.id)
-    );
+    const details = cloneDeep(MockData.contacts.find((contact) => id === contact.id));
+    return details ?  Observable.of(details) : Observable.throw('error');
   }
 
   update(contact: Contact) {
@@ -39,6 +38,7 @@ export class ContactService {
     const persistContact: Contact = cloneDeep(contact);
     persistContact.id = generatePersistId();
     if (company) {
+      MockData.contacts.push(contact);
       MockData.companies.forEach(c => {
         if (c.id === company.id) {
           c.contacts.push(persistContact);
@@ -47,5 +47,18 @@ export class ContactService {
     }
 
     return Observable.of(persistContact.id);
+  }
+
+  remove(company: Company, contact: Contact): Observable<string> {
+    if (company && contact) {
+      MockData.contacts = MockData.contacts.filter(l => l.id !== contact.id);
+      MockData.companies.forEach(c => {
+        if (c.id === company.id) {
+          c.contacts = c.contacts.filter(l => l.id !== contact.id);
+        }
+      });
+    }
+
+    return Observable.of(contact.id);
   }
 }

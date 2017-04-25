@@ -1,0 +1,11 @@
+<div class="load-container interactive-background">
+    <section class="interactive-text customer-load-no">{{load.customerLoadNo}}</section>
+</div>
+<div class="load-container interactive-background">
+    <section class="interactive-text">{{type}}</section>
+    <section class="interactive-text">{{freightType}}</section>
+</div>
+<div *ngIf="isRreefer" class="load-container interactive-background">
+    <section class="interactive-text">{{reeferType}}</section>
+    <section class="interactive-text">{{load.temperature}}°F</section>
+</div>

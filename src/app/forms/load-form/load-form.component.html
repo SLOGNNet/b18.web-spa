@@ -33,7 +33,7 @@
         [footerButtonText]="'Add New Company'"
         [source]="companySource"
         (onRemove)="onCompanyRemove()"
-        [(value)]="companyQuery"
+        [(query)]="companyQuery"
         [itemTemplate]="customItemTemplate"
         (onSelect)="onCompanySelect($event)"
         (onFooterButtonClick)="onAddNewCompany()"
@@ -44,12 +44,12 @@
       <bd-dropdown
         *ngIf='load.customer'
         class="bd-form-control"
-        labelText='Address'
+        labelText='Location'
         clearLabel='Leave Empty'
-        formControlName="addressId"
-        defaultTitleText="Select address"
+        formControlName="customerLocationId"
+        defaultTitleText="Select location"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.customer.addresses"
+        [items]="load.customer.locations"
         keyField="id"
         valueField="name">
       </bd-dropdown>
@@ -59,11 +59,11 @@
         *ngIf='load.customer'
         clearLabel='Leave Empty'
         class="bd-form-control"
-        labelText='Billing Address'
-        formControlName="customerBillingAddressId"
-        defaultTitleText="Select Billing Address"
+        labelText='Billing Location'
+        formControlName="customerBillingLocationId"
+        defaultTitleText="Select Billing Location"
         [dropdownItemTemplate]="addressDropdown"
-        [items]="load.customer.addresses"
+        [items]="load.customer.locations"
         keyField="id"
         valueField="name">
       </bd-dropdown>
@@ -80,14 +80,6 @@
         keyField="id"
         valueField="firstName">
       </bd-dropdown>
-    </bd-form-section>
-    <navigation-anchor id="pickups"></navigation-anchor>
-    <bd-form-section labelText="PICKUPS">
-      <pickups-form [formArray]="loadForm.controls.pickups" (update)="onStopUpdate($event)" (remove)="onStopRemove($event)" (add)="onStopAdd($event)" [items]="pickups$ | async" [viewMode]="viewMode" [type]="stopTypes.Pickup"></pickups-form>
-    </bd-form-section>
-    <navigation-anchor id="dropoffs"></navigation-anchor>
-    <bd-form-section labelText="DROPOFFS">
-      <dropoffs-form [formArray]="loadForm.controls.dropoffs" (update)="onStopUpdate($event)" (remove)="onStopRemove($event)" (add)="onStopAdd($event)" [items]="dropoffs$ | async" [viewMode]="viewMode" [type]="stopTypes.Dropoff"></dropoffs-form>
     </bd-form-section>
     <navigation-anchor id="requirements"></navigation-anchor>
     <bd-form-section labelText="REQUIREMENTS">

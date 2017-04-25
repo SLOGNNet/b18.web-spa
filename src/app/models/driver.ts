@@ -5,12 +5,16 @@ import { License } from './license';
 import { ContactInfo } from './contact-info';
 import { DriverTypes, DriverStatuses, DriverPaymentOptions } from './enums';
 import { Type, Transform, Expose } from 'class-transformer';
+import { schema } from 'normalizr';
 import { generateNewId,
   toEnumTransformer,
   fromEnumTransformer,
   fromMiliSecondsToDate,
   fromDateToMiliSeconds
 } from './utils';
+
+export const driverSchema = new schema.Entity('drivers');
+export const driverListSchema = [driverSchema];
 
 export class Driver extends Member {
   @Transform(fromMiliSecondsToDate(), { toClassOnly: true })

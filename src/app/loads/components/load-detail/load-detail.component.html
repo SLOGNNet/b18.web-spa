@@ -1,20 +1,40 @@
 <div *ngIf="selectedItem">
-<form-navigation sticky [stickyPositionInsideScroll]="true" [title]="'Load'" [anchors]="anchors"></form-navigation>
-<form>
-    <navigation-anchor id="customer"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Customer'" [editButton]="false" [addButton]="false">
-        <customer-detail [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
-    </bd-view-detail-section>
-    <navigation-anchor id="requirements"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Requirements'" [editButton]="false" [addButton]="false">
-        <requirements-detail [load]="selectedItem"></requirements-detail>
-    </bd-view-detail-section>
-    <navigation-anchor id="itinerary"></navigation-anchor>
-    <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addButton]="false">
-        <stop-view 
-            *ngFor="let stop of selectedItem.stops"
-            [stop]="stop">
-        </stop-view>
-    </bd-view-detail-section>
-</form>
+    <form-navigation sticky [stickyPositionInsideScroll]="true" [title]="'Load'" [anchors]="anchors">
+    </form-navigation>
+    <form>
+        <navigation-anchor id="load-view"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Load'" [editButton]="true" [addButton]="false" (editClick)="onLoadEditClick()">
+            <load-view [load]="selectedItem"></load-view>
+        </bd-view-detail-section>
+        <navigation-anchor id="requirements-view"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Requirements'" [editButton]="true" [addButton]="false" (editClick)="onLoadEditClick()">
+            <requirements-detail [load]="selectedItem"></requirements-detail>
+        </bd-view-detail-section>
+        <navigation-anchor id="customer-view"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Customer'" [editButton]="selectedItem.customer" [addButton]="false" (editClick)="onCustomerEditClick()">
+            <customer-detail *ngIf="selectedItem.customer" [company]="selectedItem.customer" [selectedContact]="selectedContact"></customer-detail>
+            <bd-button *ngIf="!selectedItem.customer" (click)="onCustomerEditClick()" color="white" [text]="'Add Customer'"></bd-button>
+        </bd-view-detail-section>
+        <navigation-anchor id="itinerary-view"></navigation-anchor>
+        <bd-view-detail-section [labelText]="'Itinerary'" [editButton]="false" [addContent]="'add stop'" (addClick)="onStopEdit()">
+          <div class="itenerary-navigation" *ngIf="selectedItem.stops && selectedItem.stops.length">
+            <div class="left">
+              <a [class.active]="stopMode == 'load'" (click)="onStopModeChange('load')">
+              Load Stops
+            </a>
+            </div>
+            <div class="right">
+            <a [class.active]="stopMode == 'trip'" (click)="onStopModeChange('trip')">
+              Trip Stops
+            </a>
+            </div>
+          </div>
+            <stop-view (remove)="onStopRemove($event)" (edit)="onStopEdit($event)"
+              *ngFor="let stop of selectedItem.stops; trackBy: trackBy;"
+              [mode]="stopMode"
+              [stop]="stop">
+            </stop-view>
+            <bd-button *ngIf="!selectedItem.stops || !selectedItem.stops.length" (click)="onStopEdit()" color="white" [text]="'Add Stop'"></bd-button>
+        </bd-view-detail-section>
+    </form>
 </div>

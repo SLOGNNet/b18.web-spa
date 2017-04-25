@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Driver } from '../../../models';
+import { BaseCardListComponent } from '../../../base';
 
 @Component({
     selector: 'driver-cards',
     templateUrl: './driver-cards.component.html',
-    styleUrls: ['./driver-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DriverCardsComponent {
+export class DriverCardsComponent extends BaseCardListComponent {
   @Input() drivers: Array<Driver>;
   @Input() selected: Array<Driver> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();

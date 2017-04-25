@@ -35,12 +35,14 @@ export class CommodityComponent extends BaseForm {
   }
 
   ngOnChanges(changes: any) {
-    this.initCommodity(this.commodity);
-    this.commodityForm.valueChanges.subscribe(value => {
-      if (this.commodityForm) {
-        this.update.emit(Object.assign(this.commodity, value));
-      }
-    });
+    if (changes.commodity && changes.commodity.currentValue) {
+      this.initCommodity(this.commodity);
+      this.commodityForm.valueChanges.subscribe(value => {
+        if (this.commodityForm) {
+          this.update.emit(Object.assign(this.commodity, value));
+        }
+      });
+    }
   }
 
   protected getFields(): Array<CommodityField> {

@@ -18,7 +18,6 @@ import { Load,
   Address,
   Equipment,
   Stop,
-  StopTypes,
   StopStatuses,
   Facility } from '../../../models';
 
@@ -81,13 +80,11 @@ function createTestData() {
   testTrip.driverTeams = [testDriverTeam];
   // test stops
   testStop1.id = '1';
-  testStop1.type = StopTypes.PICKUP;
   testStop1.plannedArrivalAt = null;
   testStop1.facility = Facility.create();
   testStop1.facility.address = testAddress;
   testStop1.status = StopStatuses.IN_PROGRESS;
   testStop2.id = '2';
-  testStop2.type = StopTypes.PICKUP;
   testStop2.plannedArrivalAt = null;
   testStop2.facility = Facility.create();
   testStop2.facility.address = testAddress;
@@ -303,8 +300,9 @@ describe('LoadStopCardComponent', () => {
   });
 
   it('should send load stops collection to stops-line component', () => {
-    let stopData = Stop.create(StopTypes.PICKUP),
-      stopsCollection = [stopData, stopData];
+    const stopData = Stop.create();
+    stopData.facility = Facility.create();
+    const stopsCollection = [stopData, stopData];
     component.load = testLoad;
     component.load.stops = stopsCollection;
     fixture.detectChanges();

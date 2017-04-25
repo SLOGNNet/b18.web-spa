@@ -1,20 +1,59 @@
 @import '../../../../assets/styles/variables';
 
 :host {
-  background: $white;
+  background: $default-background;
+  color: $dark-grey;
+  transition: all $interactive-animation-time;
 
-  &.active,
-  &:hover {
-    background: $light-blue;
+  .status-text {
+    background: $default-background;
+    transition: inherit;
+  }
+
+  &.active {
+    background: $white;
+    color: $black;
+    transition: inherit;
+
+    .card-section {
+      border-bottom-color: $blue;
+
+      .status-text {
+        background: $white;
+        transition: inherit;
+      }
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+
+  &.card {
+    background: $white;
+    color: $black;
+    transition: all $interactive-animation-time;
 
     .status-text {
+      background: $white;
+    }
+
+    &:hover {
       background: $light-blue;
+
+      .status-text {
+        background: $light-blue;
+      }
     }
   }
 
   &.active {
-    .card-section {
-      border-bottom-color: $blue;
+    &.card {
+      background: $light-blue;
+      transition: all $interactive-animation-time;
+
+      .status-text {
+        background: $light-blue;
+      }
     }
   }
 }
@@ -64,7 +103,7 @@
       margin-top: 5px;
 
       .start-date {
-        color: $grey;
+        color: $dark-grey;
       }
 
       .schedule {
@@ -73,7 +112,7 @@
       }
 
       .end-date {
-        color: $grey;
+        color: $dark-grey;
       }
     }
   }
@@ -109,6 +148,7 @@
     position: absolute;
     right: 35px;
     padding: 5px 0 5px 13px;
+    background: $default-background;
     line-height: 1em;
     bottom: 8px;
     justify-content: center;

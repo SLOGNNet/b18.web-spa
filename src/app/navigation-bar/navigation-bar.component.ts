@@ -52,7 +52,7 @@ export class NavigationBarComponent {
             link: '/loads'
           }, {
           label: 'New Load',
-          link: '/loads/0'
+          link: '/loads/0/edit-info'
         }]
     }, {
         label: 'Companies',

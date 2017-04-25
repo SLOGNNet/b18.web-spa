@@ -1,1 +1,1 @@
-export * from 'trip-view.component';
+export * from './trip-view.component';

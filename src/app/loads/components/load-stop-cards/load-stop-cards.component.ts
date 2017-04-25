@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Load } from '../../../models';
+import { BaseCardListComponent } from '../../../base';
 
 @Component({
     selector: 'load-stop-cards',
@@ -7,7 +8,7 @@ import { Load } from '../../../models';
     styleUrls: ['./load-stop-cards.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoadStopCardsComponent {
+export class LoadStopCardsComponent extends BaseCardListComponent {
   @Input()loads: Array<Load>;
   @Input()selected: Array<Load> = [];
   @Output() select: EventEmitter<any> = new EventEmitter();

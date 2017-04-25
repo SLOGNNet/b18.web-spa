@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Company, Contact } from '../models';
+import { Company, Contact, contactSchema } from '../models';
 import { ContactService, CompanyService, NotificationService } from '../shared';
 import { IDetailDataActions, INestedEditDataActions } from './intefaces';
 import { CompanyActions } from './company.actions';
+import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class CompanyContactActions implements IDetailDataActions<Contact>, INestedEditDataActions<Contact, Company> {
@@ -14,6 +16,8 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
   static UPDATE_COMPANY_CONTACT_SUCCESS: string = 'UPDATE_COMPANY_CONTACT_SUCCESS';
   static UPDATE_COMPANY_CONTACT_FAILURE: string = 'UPDATE_COMPANY_CONTACT_FAILURE';
   static SELECT_COMPANY_CONTACT: string = 'SELECT_COMPANY_CONTACT';
+  static REMOVE_COMPANY_CONTACT_SUCCESS: string = 'REMOVE_COMPANY_CONTACT_SUCCESS';
+
   constructor(
     private contactService: ContactService,
     private companyActions: CompanyActions,
@@ -21,30 +25,44 @@ export class CompanyContactActions implements IDetailDataActions<Contact>, INest
     private ngRedux: NgRedux<IAppState>) { }
 
   addAssociation(contact: Contact, company: Company): void {
-    this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST });
+    const normalizedPhantomData = normalize(contact, contactSchema);
+    this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_REQUEST, data: normalizedPhantomData });
+
     this.contactService.create(company, contact).subscribe(newId => {
-      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, contact, newId});
+      const prevId = contact.id;
+      const normalizedData = normalize(createPeristEnity(contact, newId), contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.ADD_COMPANY_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id });
       this.notificatonService.sendNotification('Contact created.', `${contact.firstName} was created.`);
     });
   }
 
   updateAssociation(contact: Contact, company: Company): void {
-    this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_REQUEST, contact });
+    const normalizedData = normalize(contact, contactSchema);
+    this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_REQUEST, data: normalizedData });
 
     setTimeout(() => {
       this.contactService.update(contact);
-      this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, contact });
+      this.ngRedux.dispatch({ type: CompanyContactActions.UPDATE_COMPANY_CONTACT_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Contact updated.', `${contact.id} was updated.`);
     }, 3000);
   }
 
-  select(contactId: string): void {
-    this.contactService.getDetails(contactId).subscribe(contact => {
-      this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, contact });
+  removeAssociation(contact: Contact, company: Company): void {
+    this.contactService.remove(company, contact).subscribe(_ => {
+      const normalizedData = normalize(contact, contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.REMOVE_COMPANY_CONTACT_SUCCESS, data: normalizedData, companyId: company.id });
     });
   }
 
+  select(contactId: string): void {
+    this.contactService.getDetails(contactId).subscribe(contact => {
+      const normalizedData = normalize(contact, contactSchema);
+      this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData });
+    }, (error) => { });
+  }
+
   createNew(): void {
-    this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, contact: Contact.create() });
+    const normalizedData = normalize(Contact.create(), contactSchema);
+    this.ngRedux.dispatch({ type: CompanyContactActions.SELECT_COMPANY_CONTACT, data: normalizedData });
   }
 }

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { CanComponentDeactivate } from '../../guards';
 import { Location } from '@angular/common';
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, HostBinding } from '@angular/core';
 import { BasePane } from '../base';
 
 export abstract class BaseEditComponent<T> extends BasePane implements CanComponentDeactivate {
@@ -15,6 +15,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
   protected viewMode: ViewMode = ViewMode.Edit;
   protected segment;
   protected defaultNavigationTitle;
+  @HostBinding('class.interactive-panel') v: boolean = true;
 
   constructor(protected selected$: Observable<T>,
     protected isLoading$: Observable<boolean>,
@@ -23,20 +24,20 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     private location: Location,
     protected cdr: ChangeDetectorRef) {
     super(router, route);
-    isLoading$.subscribe(isLoading => {
+    this.subscribers.push(isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;
-    });
-    selected$.subscribe(item => {
+    }));
+    this.subscribers.push(selected$.subscribe(item => {
       this.redirectIfNewCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
-    });
+    }));
 
     // http://weblogs.foxite.com/joel_leach/2016/11/18/setting-subclass-properties-in-typescript/
     setTimeout( () => {
-      this.route.params.subscribe(params => {
+      this.subscribers.push(this.route.params.subscribe(params => {
         this.checkNewItem();
-      });
+      }));
     });
   }
 
@@ -59,12 +60,12 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
 
 
   protected onItemSave(item) {
-    const changedItem = cloneDeep(item);
+    const changedItem = Object.assign({}, this.selectedItem, item);
     if (this.isNew) {
       this.isNew = false;
-      this.onAdd(item);
+      this.onAdd(changedItem);
     } else {
-      this.onUpdate(item);
+      this.onUpdate(changedItem);
     }
   }
 
@@ -78,11 +79,15 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     // }
   }
 
-  redirectIfNewCreated(prevSelected, newSelected) {
-    if (newSelected && prevSelected
+  protected isNewCreated(prevSelected, newSelected) {
+    const isNewCreated = newSelected && prevSelected
      && !prevSelected['prevId']
      && newSelected['prevId']
-     && prevSelected['id'] === newSelected['prevId']) {
+     && prevSelected['id'] === newSelected['prevId'];
+     return isNewCreated;
+  }
+  protected redirectIfNewCreated(prevSelected, newSelected) {
+    if (this.isNewCreated(prevSelected, newSelected)) {
       const newId = newSelected['id'];
       super.redirectToId(newId, this.segment);
     }

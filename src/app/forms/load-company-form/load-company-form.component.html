@@ -1,0 +1,93 @@
+<form [formGroup]="loadForm" class="edit">
+  <navigation-anchor id="customer-view"></navigation-anchor>
+  <bd-form-section labelText="CUSTOMER">
+    <bd-typeahead
+      formControlName="customer"
+      [labelText]="'Name or MC#'"
+      [footerButtonText]="''"
+      [source]="customerSource"
+      (onRemove)="onCustomerRemove()"
+      [(query)]="customerQuery"
+      [itemTemplate]="customItemTemplate"
+      (onSelect)="onCustomerSelect($event)"
+      (onFooterButtonClick)="onAddCustomer()"
+      [optionField]="'name'">
+    </bd-typeahead>
+  </bd-form-section>
+  <div *ngIf="isCustomerSelected">
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Location'"
+        formControlName="customerLocationId"
+        [items]="customerLocations"
+        [dropdownItemTemplate]="locationDropdown"
+        keyField="id"
+        valueField="name"
+        (onItemClick)="onLocationSelect($event)">
+      </bd-dropdown>
+    </bd-form-section>
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Billing Location'"
+        formControlName="customerBillingLocationId"
+        [items]="customerLocations"
+        [dropdownItemTemplate]="locationDropdown"
+        keyField="id"
+        valueField="name"
+        (onItemClick)="onBillingLocationSelect($event)">
+      </bd-dropdown>
+    </bd-form-section>
+    <bd-form-section labelText=" ">
+      <bd-dropdown
+        class="bd-form-control"
+        [labelText]="'Contact'"
+        formControlName="contactId"
+        [items]="contacts"
+        keyField="id"
+        valueField="firstName">
+      </bd-dropdown>
+    </bd-form-section>
+  </div>  
+  <form-sticky-bottom-container>
+    <div class="button-group">
+      <bd-button
+        [text]="'Cancel'"
+        class="bd-button button"
+        (click)="onLoadCancel()">
+      </bd-button>
+      <bd-button
+        [disabled]="!isCustomerSelected"
+        color="primary"
+        class="bd-button button"
+        [text]="'Done'"
+        (click)="onLoadSave()">
+      </bd-button>
+      <!--<bd-button
+        [disabled]="!isCustomerSelected"
+        color="primary"
+        class="bd-button button"
+        [text]="'+ Stop >'"
+        (click)="onAddStop()">
+      </bd-button>-->
+    </div>
+  </form-sticky-bottom-container>
+</form>
+
+<template #customItemTemplate let-model="item" let-index="index">
+    <div class="dropdown-company-item-wrapper">
+      <div class="full-properties-wrapper">
+        <div class="name-title">
+          {{model.name}}
+        </div>
+        <div class="properties">
+          MC#: {{model.mc}}
+        </div>
+      </div>
+    </div>
+</template>
+
+<template #locationDropdown let-item="item">
+  <address-item-template [item]='item'></address-item-template>
+</template>

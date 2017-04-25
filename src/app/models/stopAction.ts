@@ -1,14 +1,24 @@
-import { Commodity } from './commodity';
+import { Commodity, commoditySchema } from './commodity';
 import { StopActionTypes } from './enums';
 import { Type } from 'class-transformer';
+import { schema } from 'normalizr';
+import { generateNewId } from './utils';
+
+export const stopActionSchema = new schema.Entity('stopActions', {
+  commodities: [commoditySchema]
+});
 
 export class StopAction {
+  id: string;
   @Type(() => Commodity)
-  commodity: Commodity;
+  commodities: Array<Commodity>;
   type: StopActionTypes;
-  static create(): StopAction{
+  static create(type: StopActionTypes): StopAction{
     const result = new StopAction();
-    result.commodity = Commodity.create();
+    result.id = generateNewId();
+    result.type = type;
+    result.commodities = [];
+    result.type = type;
     return result;
   }
 }

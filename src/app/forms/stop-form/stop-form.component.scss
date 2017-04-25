@@ -1,0 +1,21 @@
+@import '../../../assets/styles/form-control';
+
+.facility-schedule-type-date-container {
+  margin-bottom: 20px;
+}
+
+.dropdown-item-wrapper {
+  display: flex;
+  height: 50px;
+  padding: 0 $default-margin;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .full-properties-wrapper {
+    .name-title {
+      color: $black;
+      font-size: $small-font-size;
+    }
+  }
+}

@@ -16,3 +16,9 @@ let pesistId = 1000;
 export function generatePersistId() {
   return (pesistId++).toString();
 }
+
+export function createPeristEnity(item: any, newId: string) {
+  const prevId = item.id;
+  const newObj = Object.assign(item, { id: newId, prevId: prevId});
+  return newObj;
+}

@@ -15,13 +15,13 @@ export class EquipmentService {
 
   getAll(): Observable<Equipment[]> {
     return Observable.of(
-      MockData.equipments
+      cloneDeep(MockData.equipments)
     );
   }
 
   getDetails(id: string): Observable<Equipment> {
     return Observable.of(
-      MockData.equipments.find((equipment) => id === equipment.id)
+      cloneDeep(MockData.equipments.find((equipment) => id === equipment.id))
     );
   }
 
@@ -32,14 +32,16 @@ export class EquipmentService {
     return Observable.of(persistEquipment.id);
   }
 
-  update(equipment: Equipment) {
+  update(equipment: Equipment): Observable<string> {
     const id = equipment.id;
 
     MockData.equipments.forEach(e => {
       if (id === e.id) {
         Object.assign(e, equipment);
-        return;
+        return ;
       }
     });
+
+    return Observable.of(id);
   }
 }

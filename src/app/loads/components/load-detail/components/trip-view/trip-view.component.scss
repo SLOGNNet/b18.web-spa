@@ -1,12 +1,11 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
-
 $element-height: 18px;
 $element-width: 16px;
 $text-margin: 5px;
 
 .trip-container {
-
   &.expanded {
     .trip-info-container {
       border-bottom-right-radius: 0;
@@ -23,13 +22,12 @@ $text-margin: 5px;
               }
             }
           }
-      }
+        }
       }
     }
   }
 
   .trip-info-container {
-
     button {
       padding: 0;
       border: 0;
@@ -43,19 +41,20 @@ $text-margin: 5px;
     span {
       line-height: $element-height;
     }
-
     display: flex;
     border: $border;
     margin: 10px;
-    background: $white;
+    background: $default-background;
     border-radius: $default-border-radius;
     flex-direction: row;
+    transition: background-color $interactive-animation-time;
 
     .left-panel {
       display: flex;
       width: 50%;
       padding: $default-margin;
       flex-direction: row;
+      border-right: $border;
 
       .info-panel {
         flex: 1;
@@ -66,13 +65,11 @@ $text-margin: 5px;
           justify-content: space-between;
 
           .trip-number {
-            color: $black;
             margin-left: $element-width;
           }
         }
 
         .driver-container {
-
           .driver-info {
             display: none;
             color: $dark-grey;
@@ -106,7 +103,7 @@ $text-margin: 5px;
         display: flex;
         color: $dark-grey;
         flex-direction: column;
-        
+
         button {
           padding: 3px 0;
 
@@ -120,79 +117,26 @@ $text-margin: 5px;
     .right-panel {
       width: 50%;
       padding: $default-margin;
-      border-left: $border;
+    }
+  }
+}
+@include interactive-text;
 
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+
+  .trip-info-container {
+
+    .right-panel {
       .appointment-type {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
         .type-container {
-          display: flex;
-          align-items: center;
-
           span {
-            line-height: $element-height;
-
             &.circle {
-              display: inline-block;
-              width: 10px;
-              height: 10px;
-              background: $blue;
-              border-radius: 50%;
-              margin-right: $text-margin;
+              opacity: 1;
+              transition: all $interactive-animation-time;
             }
           }
         }
-      }
-
-      .date-range-container {
-        display: flex;
-        padding-left: $element-width;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .date {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .last-date {
-          span {
-            text-align: right;
-          }
-        }
-      }
-    }
-  }
-  
-  .commodities-section {
-    margin: 10px;
-
-    .commodities-container {
-      overflow: hidden;
-      border: $border;
-      border-left: 4px solid $grey;
-      margin-bottom: 10px;
-
-      &.pickup-border {
-        border-left-color: $pickup-view-mode-color;
-      }
-
-      &.dropoff-border {
-        border-left-color: $dropoff-view-mode-color;
-      }
-
-      .commodities-notes {
-        height: 35px;
-        background: $white;
-        line-height: 35px;
-        padding-left: $text-margin;
-      }
-
-      &:last-of-type {
-        border-bottom-right-radius: $default-border-radius;
-        border-bottom-left-radius: $default-border-radius;
       }
     }
   }

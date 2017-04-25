@@ -23,12 +23,12 @@ import { AppState, InternalStateType } from './app.service';
 import {
   CommodityActions,
   LoadActions,
-  AddressActions,
-  LocationActions,
+  CompanyLocationActions,
   CompanyActions,
   CompanyContactActions,
   EquipmentActions,
   DriverActions,
+  StopActionActions,
   StopActions
 } from './actions';
 
@@ -70,11 +70,11 @@ type StoreType = {
     APP_PROVIDERS,
     CommodityActions,
     LoadActions,
-    AddressActions,
-    LocationActions,
+    CompanyLocationActions,
     CompanyActions,
     CompanyContactActions,
     EquipmentActions,
+    StopActionActions,
     DriverActions,
     StopActions,
     CanDeactivateGuard

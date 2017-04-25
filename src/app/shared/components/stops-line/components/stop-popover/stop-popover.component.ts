@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Stop, ContactInfo, StopStatuses, StopTypes } from '../../../../../models';
+import { Stop, ContactInfo, StopStatuses } from '../../../../../models';
 
 @Component({
   selector: 'stop-popover',
@@ -15,10 +15,11 @@ export class StopPopoverComponent {
   }
 
   get typeText() {
-    return StopTypes.displayText(this.stop.type);
+    // todo get type info from stop types
+    return 'some type'; // StopTypes.displayText(this.stop.type);
   }
 
-  get phone() {
+  get facilityPhone() {
     const phoneInfo = ContactInfo.getPrimaryPhone(this.stop.facility.contactInfo);
     return phoneInfo ? phoneInfo.value : '';
   }

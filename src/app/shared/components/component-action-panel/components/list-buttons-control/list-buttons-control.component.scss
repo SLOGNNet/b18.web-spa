@@ -1,0 +1,35 @@
+@import '../../../../../../assets/styles/variables';
+
+:host {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: block;
+}
+
+:host-context(.component-action-panel:hover) {
+  .list-buttons-control {
+    opacity: .5;
+  }
+}
+
+:host-context(.component-action-panel) {
+  .list-buttons-control {
+    display: flex;
+    width: 35px;
+    padding: 5px 0;
+    background: $grey;
+    border-top-right-radius: $default-border-radius;
+    border-bottom-left-radius: $default-border-radius;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: all $interactive-animation-time;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

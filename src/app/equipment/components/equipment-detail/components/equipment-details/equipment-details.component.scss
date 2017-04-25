@@ -1,12 +1,11 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
 @import '../../../../../../assets/styles/styles';
 
 .details-container {
-  background: $white;
+  @include default-view-container;
   color: $dark-grey;
-  font-size: $tiny-font-size;
-  border-bottom: $border;
   border-radius: $default-border-radius;
 
   .info-container {
@@ -34,7 +33,6 @@
           overflow: hidden;
 
           .name {
-            color: $black;
             font-weight: bold;
           }
         }
@@ -47,17 +45,19 @@
 
       span {
         line-height: 18px;
-
-        &.value {
-          color: $black;
-        }
       }
     }
   }
 
   .notes {
     padding: $default-margin;
-    color: $black;
     min-height: $view-mode-element-height;
+    white-space: pre-line;
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

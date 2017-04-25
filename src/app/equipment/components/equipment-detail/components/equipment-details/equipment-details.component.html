@@ -1,36 +1,35 @@
-<div class="details-container">
-    <div class="info-container">
+<div class="details-container interactive-background">
+    <div class="info-container interactive-background">
         <section class="equipment-info">
             <div class="name-info">
                 <div class="circle">
-                    <bd-initials-circle
-                        [firstName]="shortTypeText.charAt(0)"
-                        [lastName]="shortTypeText.charAt(1)">
-                    </bd-initials-circle>
+                    <bd-circle
+                        [initials]="shortTypeText">
+                    </bd-circle>
                 </div>
                 <div class="text">
-                    <div class="name ellipsis">{{equipment.make}} {{equipment.model}}</div>
+                    <div class="name ellipsis interactive-text">{{equipment.make}} {{equipment.model}}</div>
                     <div class="number">{{equipment.number}}</div>
                 </div>
             </div>
             <div class="info-item">
                 <span class="title">Berth Available</span>
-                <span class="value">{{isSleeperBerthAvailable}}</span>
+                <span class="value interactive-text">{{isSleeperBerthAvailable}}</span>
             </div>
 
         </section>
         <section class="license-info">
             <div class="info-item">
                 <span class="title">License Plate</span>
-                <span class="value">{{equipment.licensePlateState}}</span>
+                <span class="value interactive-text">{{equipment.licensePlateState}}</span>
             </div>
             <div class="info-item">
                 <span class="title">Expiration</span>
 
-                <span class="value">{{equipment.licensePlateExpiration | bdDate: constants.DATE_FORMAT}}</span>
+                <span class="value interactive-text">{{equipment.licensePlateExpiration | bdDate: constants.DATE_FORMAT}}</span>
             </div>
         </section>
     </div>
 
-    <div class="notes">{{equipment.notes}}</div>
+    <div class="notes interactive-text">{{equipment.notes}}</div>
 </div>

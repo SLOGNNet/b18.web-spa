@@ -1,9 +1,11 @@
 import { generateNewId } from './utils';
+import { schema } from 'normalizr';
+
+export const commoditySchema = new schema.Entity('commodities');
+export const commodityListSchema = [commoditySchema];
 
 export class Commodity {
   id: string = '';
-  pickupId: string;
-  dropoffId?: string;
   pickupNumber: number;
   dropoffNumber: number;
   po: string = '';

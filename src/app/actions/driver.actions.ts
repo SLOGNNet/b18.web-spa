@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
-import { Driver } from '../models';
+import { Driver, driverSchema, driverListSchema } from '../models';
 import { DriverService, NotificationService, GoogleService } from '../shared';
 import { IListDataActions, IDetailDataActions, IRootEditDataActions } from './intefaces';
 import { plainToClass } from 'class-transformer';
+import { normalize } from 'normalizr';
+import { createPeristEnity } from './utils';
 
 @Injectable()
 export class DriverActions implements IListDataActions<Driver>, IDetailDataActions<Driver>, IRootEditDataActions<Driver> {
@@ -26,9 +28,13 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
 
   add(driver: Driver): void {
     driver = plainToClass(Driver, driver);
-    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST });
+    const normalizedPhantomData = normalize(driver, driverSchema);
+    this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_REQUEST, data: normalizedPhantomData });
+
     this.driverService.create(driver).delay(3000).subscribe((newId) => {
-      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, driver, newId });
+      const prevId = driver.id;
+      const normalizedData = normalize(createPeristEnity(driver, newId), driverSchema);
+      this.ngRedux.dispatch({ type: DriverActions.ADD_DRIVER_SUCCESS, data: normalizedData, prevId });
       this.notificatonService.sendNotification('Driver created.', `${driver.firstName} ${driver.lastName} was created.`);
     });
   }
@@ -39,27 +45,31 @@ export class DriverActions implements IListDataActions<Driver>, IDetailDataActio
 
   update(driver: Driver): void {
     driver = plainToClass(Driver, driver);
-    this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST, driver });
+    const normalizedData = normalize(driver, driverSchema);
+    this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_REQUEST, data: normalizedData});
 
     this.driverService.update(driver).subscribe(() => {
-      this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_SUCCESS, driver });
+      this.ngRedux.dispatch({ type: DriverActions.UPDATE_DRIVER_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Driver updated.', `${driver.firstName} ${driver.lastName} was updated.`);
     });
   }
 
   select(driverId: string): void {
     this.driverService.getDetails(driverId).subscribe(driver => {
-      this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, driver });
+      const normalizedData = normalize(driver, driverSchema);
+      this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, data: normalizedData });
     });
   }
 
   createNew(): void {
-    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, driver: Driver.create() });
+    const normalizedData = normalize(Driver.create(), driverSchema);
+    this.ngRedux.dispatch({ type: DriverActions.SELECT_DRIVER, data: normalizedData });
   }
 
   getAll(): void {
     this.driverService.getAll().subscribe(drivers => {
-      this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, items: drivers });
+      const normalizedData = normalize(drivers, driverListSchema);
+      this.ngRedux.dispatch({ type: DriverActions.GET_ALL_DRIVERS, data: normalizedData });
     });
   }
 }

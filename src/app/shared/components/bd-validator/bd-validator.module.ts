@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BdValidatorComponent, BdValidatiorMessageComponent, BdValidatorSummaryComponent } from './components';
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

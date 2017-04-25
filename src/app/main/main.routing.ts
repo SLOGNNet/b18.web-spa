@@ -7,13 +7,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuard } from '../guards';
 import { NoContentComponent } from '../no-content';
 import { DriversModule } from '../drivers';
+import { LoadsModule } from '../loads';
 import { CompaniesModule } from '../companies';
 import { AuthGuard } from '../auth';
 import { EmptyComponent } from '../shared/components/empty';
 
 const routes: Routes = [{
   path: '',
-  component: MainComponent, canActivate: [AuthGuard],
+  component: MainComponent,
   children: [
     { path: '', redirectTo: 'loads', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -21,29 +22,7 @@ const routes: Routes = [{
       path: 'drivers', loadChildren: () => DriversModule
     },
     {
-      path: 'loads', component: LoadsComponent,
-      children:   [
-    {
-      path: ':id',
-      children: [
-      {
-          path: '',
-          component: LoadDetailComponent,
-          outlet: 'detailOutlet',
-      },
-      {
-        path: '',
-        component: EmptyComponent,
-        canDeactivate: [CanDeactivateGuard]
-      },
-      {
-          path: 'edit',
-          component: EmptyComponent,
-          canDeactivate: [CanDeactivateGuard]
-      }
-      ]
-    }
-  ]
+      path: 'loads', loadChildren: () => LoadsModule
     },
     {
       path: 'companies', loadChildren: () => CompaniesModule

@@ -1,13 +1,20 @@
-import { Stop } from './stop';
-import { Company } from './company';
-import { Commodity } from './commodity';
+import { Stop, stopSchema } from './stop';
+import { Company, companySchema } from './company';
+import { Commodity, commoditySchema } from './commodity';
 import { Location } from './location';
 import { Contact } from './contact';
 import { Trip } from './trip';
 import { Document } from './document';
 import { generateNewId } from './utils';
-import { LoadStatuses, StopTypes, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes } from './enums';
-import { Type } from 'class-transformer';
+import { LoadStatuses, DriverRequirements, LoadType, FreightType, PowerUnitTypes, TrailerTypes, ReeferType } from './enums';
+import { Type, Transform, Expose } from 'class-transformer';
+import { schema } from 'normalizr';
+
+export const loadSchema = new schema.Entity('loads', {
+  stops: [stopSchema],
+  commodities: [commoditySchema]
+});
+export const loadListSchema = [loadSchema];
 
 export class Load {
   id: string;
@@ -16,9 +23,12 @@ export class Load {
   customerLoadNo: string;
   type: LoadType;
   freightType: FreightType;
+  reeferType: ReeferType;
+  temperature: string;
+  customerLocationId: string;
   customerBillingLocationId: string;
   @Type(() => Location)
-  customerLocation: Location = new Location();
+  customerLocation: Location;
   @Type(() => Location)
   customerBillingLocation: Location;
   @Type(() => Commodity)
@@ -43,16 +53,11 @@ export class Load {
   static create(): Load {
     const result = new Load();
     result.id = generateNewId();
-    result.status = LoadStatuses.BOOKED;
-    result.customer = Company.create();
-    result.driverRequirment = DriverRequirements.SOLO;
-    result.requiredPowerUnitType = PowerUnitTypes.TRACTOR;
-    result.requiredTrailerType = TrailerTypes.DRY_VAN_53;
-    result.trips = [Trip.create()];
-    result.currentTrips = [Trip.create()];
-    result.stops = [Stop.create(StopTypes.DROPOFF)];
+    result.trips = [];
+    result.currentTrips = [];
+    result.stops = [];
     result.documents = [];
-    result.commodities = new Array<Commodity>();
+    result.commodities = [];
 
     return result;
   }

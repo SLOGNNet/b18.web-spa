@@ -1,11 +1,13 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 
 .bd-switch-container {
   display: flex;
   height: $form-control-height;
   padding: 0 $default-margin;
-  background: $white;
+  background: $default-background;
   border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 
   .bd-switch-label {
     display: flex;
@@ -22,7 +24,7 @@
   }
 
   .bd-buttons-container {
-    display: flex;    
+    display: flex;
     flex: 1;
     margin-right: -$default-margin;
 
@@ -32,7 +34,6 @@
       border: 0;
       margin: 1px 1px 1px 0;
       background: transparent;
-      color: $black;
       font-size: $form-control-font-size;
       letter-spacing: 1px;
       border-radius: $default-border-radius;
@@ -52,13 +53,21 @@
       }
     }
   }
-}
 
-.bd-disabled {
+  &.bd-disabled {
 
-  .bd-buttons-container {
-    button {
-      color: $label-default-color;
+    .bd-buttons-container {
+      button {
+        color: $label-default-color;
+      }
     }
   }
+}
+
+
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

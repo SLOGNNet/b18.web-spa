@@ -2,22 +2,28 @@
 @import '../../../assets/styles/styles';
 @import '../../../assets/styles/mixins';
 
-
 :host {
-  background: $white;
+  background: $default-background;
+  color: $dark-grey;
+  transition: all $interactive-animation-time;
 
-  &.active,
-  &:hover {
-    background: $light-blue;
-
-    .status-text {
-      background: $light-blue;
-    }
+  .status-text {
+    background: $default-background;
+    transition: inherit;
   }
 
   &.active {
+    background: $white;
+    color: $black;
+    transition: inherit;
+
     .card-section {
       border-bottom-color: $blue;
+
+      .status-text {
+        background: $white;
+        transition: inherit;
+      }
     }
   }
 }
@@ -86,5 +92,29 @@
     background: $black;
     bottom: 13px;
     border-radius: $form-control-height;
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+
+  &.card {
+    background: $white;
+    color: $black;
+    transition: all $interactive-animation-time;
+
+    &:hover {
+      background: $light-blue;
+
+      .status-text {
+        background: $light-blue;
+      }
+    }
+  }
+
+  &.active {
+    &.card {
+      background: $light-blue;
+      transition: all $interactive-animation-time;
+    }
   }
 }

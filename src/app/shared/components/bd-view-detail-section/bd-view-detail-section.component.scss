@@ -9,6 +9,7 @@
       justify-content: space-between;
 
       label {
+        color: $nevada;
         font-size: $tiny-font-size;
         text-transform: uppercase;
         font-weight: bold;
@@ -26,8 +27,10 @@
 
         .add-button,
         .edit-button {
-          display: flex;
+          visibility: hidden;
           margin-left: 5px;
+          opacity: 0;
+          transition: all $interactive-animation-time;
         }
       }
     }
@@ -36,6 +39,26 @@
   &:first-of-type {
     .detail-container {
       padding-top: 10px;
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+  .detail-container {
+    .title {
+      label {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+
+      .buttons-panel {
+        bd-form-button {
+          display: flex;
+          opacity: 1;
+          visibility: visible;
+          transition: all $interactive-animation-time;
+        }
+      }
     }
   }
 }

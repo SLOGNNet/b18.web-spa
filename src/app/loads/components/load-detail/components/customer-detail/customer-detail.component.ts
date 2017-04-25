@@ -10,9 +10,7 @@ export class CustomerDetailComponent {
   @Input() company: Company;
   @Input() selectedContact: Contact;
 
-  private companyNameSplitted: Array<string> = [];
-
-  ngOnInit() {
-   this.companyNameSplitted = this.company.name.split('');
+  get fullName() {
+    return `${this.selectedContact.firstName} ${this.selectedContact.lastName}`;
   }
 }

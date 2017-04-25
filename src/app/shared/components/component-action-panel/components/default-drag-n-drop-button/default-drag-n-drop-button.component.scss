@@ -1,0 +1,9 @@
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/font-icons';
+
+.control {
+  padding: 5px;
+  color: $dark-grey;
+  font-size: 12px;
+  cursor: move;
+}

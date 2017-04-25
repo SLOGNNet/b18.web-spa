@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, ElementRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { ViewMode } from '../../shared/enums';
 
 export class BaseForm {
   public static metaData: Object = {
-    inputs: ['viewMode', 'isNestedForm'],
+    inputs: ['viewMode', 'isNestedForm', 'disabled'],
     host: {
       '[class.bd-view-mode]': '!isEditMode',
       '[class.bd-edit-mode]': 'isEditMode',
@@ -13,9 +12,15 @@ export class BaseForm {
     },
     changeDetection: ChangeDetectionStrategy.OnPush
   };
+  protected subscribers = [];
   private _viewMode: ViewMode = ViewMode.View;
   constructor(protected elementRef: ElementRef) {
 
+  }
+
+  ngOnDestroy() {
+    this.subscribers.forEach(s => s.unsubscribe());
+    this.subscribers = [];
   }
 
   get viewMode(): ViewMode {

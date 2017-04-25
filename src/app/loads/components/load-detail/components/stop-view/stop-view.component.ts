@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import {
   TripStop,
   StopActionTypes,
@@ -9,11 +9,15 @@ import { map } from 'lodash';
 @Component({
   selector: 'stop-view',
   templateUrl: './stop-view.component.html',
-  styleUrls: ['./stop-view.component.scss']
+  styleUrls: ['./stop-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StopViewComponent {
   @Input() stop: Stop;
-  public isExpanded: boolean = false;
+  @Input() mode: 'load' | 'trip' = 'load';
+  @Output() remove = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  public isExpanded: boolean = true;
   public pickups: Array<any> = [];
   public dropoffs: Array<any> = [];
 
@@ -26,7 +30,7 @@ export class StopViewComponent {
   get isCombined() { return this.pickups.length && this.dropoffs.length; }
 
   ngOnInit() {
-    this.tripStops = this.stop.tripStops;
+    this.tripStops = this.stop.tripStops || [];
     this.tripStops.map(item => {
       map(item.stopActions, stopAction => {
           this.pickups = item.stopActions.filter(obj => obj.type === StopActionTypes.PICKUP);
@@ -35,13 +39,21 @@ export class StopViewComponent {
     });
   }
 
-  onClick() {
+  onExpand() {
     this.isExpanded = !this.isExpanded;
   }
 
   getContactInfoCollection(contactItems: Array<ContactInfo>) {
-    let result: Array<ContactInfo> = [];
-    this.isExpanded ? result = contactItems : result.push(ContactInfo.getPrimaryPhone(contactItems));
+    contactItems = contactItems || [];
+    const result: Array<ContactInfo> = this.isExpanded ?  contactItems : [ContactInfo.getPrimaryPhone(contactItems)];
     return result;
+  }
+
+  onEdit() {
+    this.edit.emit(this.stop);
+  }
+
+  onRemove() {
+    this.remove.emit(this.stop);
   }
 }

@@ -1,13 +1,12 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 $element-height: 18px;
 
 .license-container {
+  @include default-view-container;
   width: 100%;
-  background: $white;
-  font-size: $tiny-font-size;
   line-height: $element-height;
-  border-bottom: $border;
 
   .top {
     display: flex;
@@ -54,4 +53,10 @@ $element-height: 18px;
       margin-left: 5px;
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

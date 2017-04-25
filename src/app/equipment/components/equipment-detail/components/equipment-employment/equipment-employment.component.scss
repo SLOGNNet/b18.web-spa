@@ -1,12 +1,11 @@
 @import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 .employment-container {
+  @include default-view-container;
   display: flex;
-  background: $white;
   color: $dark-grey;
-  font-size: $tiny-font-size;
   border-radius: $default-border-radius;
-  border-bottom: $border;
 
   section {
     width: 50%;
@@ -16,4 +15,8 @@
       border-right: $border;
     }
   }
+}
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

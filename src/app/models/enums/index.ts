@@ -1,4 +1,4 @@
-export * from './appointment-types';
+export * from './schedule-types';
 export * from './company-statuses';
 export * from './company-types';
 export * from './contact-info-type';
@@ -20,6 +20,6 @@ export * from './notification-type';
 export * from './power-unit-types';
 export * from './stop-action-types';
 export * from './stop-statuses';
-export * from './stop-types';
 export * from './task-type';
 export * from './trailer-types';
+export * from './reefer-types';

@@ -1,13 +1,570 @@
 import {
   Load, Document, Company, Address, CompanyStatuses, CompanyTypes,
   LoadStatuses, DriverRequirements, PowerUnitTypes,
-  TrailerTypes, Stop, StopTypes, Commodity, Contact, LoadType,
+  TrailerTypes, Stop, Commodity, Contact, LoadType,
   FreightType, Facility, Trip, ContactInfoType, ContactInfo,
   StopStatuses, Driver, Equipment, DriverPaymentOptions, DriverStatuses, EquipmentStatuses, EquipmentTypes, StopActionTypes,
-  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, License, LicenseClassTypes,
-  AppointmentTypes, StopAction, TripStop, Location, Mileage
+  EquipmentModes, EquipmentVehicleOperatings, DriverTypes, EquipmentNotification, Notification, License, LicenseClassTypes,
+  ScheduleTypes, StopAction, TripStop, Location, Mileage, ReeferType
 } from './models';
 class MockData {
+
+  public notifications: Array<Notification> = [{
+    id: '1',
+    title: 'CH Robinson: Invoices paid',
+    type: 1,
+    date: new Date(),
+    message: 'Invoice #01857/11 to CH Robinson paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+    sender: null,
+    taskType: 1,
+    priority: null,
+    notificationStatus: 1,
+    isViewed: false
+  },
+    {
+      id: '2',
+      title: 'Trip #0900117: Drop-off #2 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver George Clan has checked out from Wal Mart San Jose, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '3',
+      title: 'REED Transportation: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/12 to REED Transportation paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '4',
+      title: 'Trip #0900118: Drop-off #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Sanjit Singh has checked out from Wal Mart San Jose, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '5',
+      title: 'Trip #0900129: Pickup #3 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Viktor Medov has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '6',
+      title: 'REED Transportation: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/13 to REED Transportation paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '7',
+      title: 'Trip #0900121: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: '',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '8',
+      title: 'Trip #0900125: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Dale Karson has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '9',
+      title: 'CH Robinson: Invoices paid',
+      type: 1,
+      date: new Date(),
+      message: 'Invoice #01857/14 to CH Robinson paid, Details: Loads LD09007223, LD09007224, LD09007236, LD09007221, LD09007285',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '10',
+      title: 'Trip #0900131: Pickup #1 successful',
+      type: 1,
+      date: new Date(),
+      message: 'Driver Vim Yang has checked out from Driscolls Salinas, 100% completion',
+      sender: null,
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '11',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Hey Govind, hurray payment from CH Robinson went through instantly',
+      sender: {
+        id: '1',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '1',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '12',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Hey Govind did you actually receive that letter from Jason? I never saw it if you ask.',
+      sender: {
+        id: '2',
+        firstName: 'Dan',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Driver Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    },
+    {
+      id: '13',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I am pretty sure it went smooth.',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '14',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Text him',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '15',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Are we open to get more loads?',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '16',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'They did it through Bridge18 this time :)',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '17',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I am booking more loads',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '18',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Inderjit is fine, he always reports on time',
+      sender: {
+        id: '2',
+        firstName: 'Dan',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Driver Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '19',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Rescheduled appointment, all ok',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '20',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'JFYI, I\'ll send TK202 on maintenance.',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '21',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Reed paid too right away',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '22',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'You\'ll receive a notification when the last one is done :)',
+      sender: {
+        id: '2',
+        firstName: 'Jannet',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Customer Settlement',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '23',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'I stepped out I\'m on B18 mobile app now',
+      sender: {
+        id: '2',
+        firstName: 'Bob',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Dispatch',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '24',
+      title: '',
+      type: 2,
+      date: new Date(),
+      message: 'Those guys confirmed weekly loads, you\'ll see them shortly',
+      sender: {
+        id: '2',
+        firstName: 'Ali',
+        middleName: '',
+        lastName: 'Lorem',
+        contactInfo: null,
+        position: 'Sales',
+        locationId: '2',
+        location: null
+      },
+      taskType: 1,
+      priority: null,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '25',
+      title: 'Confirm Pick-up',
+      type: 3,
+      date: new Date(),
+      message: 'Driver George Clan is reaching facility in 12 hours. Confirm pick-up #3209 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '26',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Jim Boyle from CH Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '27',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK202 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '28',
+      title: 'Confirm Pick-up',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Sanjit Singh is reaching facility in 12 hours. Confirm pick-up #3223 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '29',
+      title: 'Reschedule Trip Stops',
+      type: 3,
+      date: new Date(),
+      message: 'Driver John Randall is running 5 hours late. Reschedule pick-up #3209.',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '30',
+      title: 'Renew Driver License',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Gale Johnson\'s CDL is expired in 3 months. Apply with DMV.',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '31',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Jim Boyle from Ch Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '32',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK190 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '33',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Dan Falk from CH Robinson hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '34',
+      title: 'Call up a Customer',
+      type: 3,
+      date: new Date(),
+      message: 'Rodrigo Fuentes from REED Transportation hasn\'t heard from you for a while. Give him a call!',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '35',
+      title: 'Confirm Load',
+      type: 3,
+      date: new Date(),
+      message: 'Load #7826 needs your confirmation before it is scheduled.',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '36',
+      title: 'Scheduled Maintenance',
+      type: 3,
+      date: new Date(),
+      message: 'Truck TK218 is scheduled for maintenance event oil change',
+      sender: null,
+      taskType: 1,
+      priority: 2,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '37',
+      title: 'Confirm Drop-off',
+      type: 3,
+      date: new Date(),
+      message: 'Driver Viktor Medov is reaching facility in 12 hours. Confirm pick-up #3257 with Facility contact',
+      sender: null,
+      taskType: 1,
+      priority: 1,
+      notificationStatus: 1,
+      isViewed: false
+    }, {
+      id: '38',
+      title: 'Confirm Load',
+      type: 3,
+      date: new Date(),
+      message: 'Load #7827 needs your confirmation before it is scheduled.',
+      sender: null,
+      taskType: 1,
+      priority: 3,
+      notificationStatus: 1,
+      isViewed: false
+    }];
+
 
   public addresses: Array<Address> = [{
     id: '1',
@@ -218,8 +775,6 @@ class MockData {
 
   public commodities: Array<Commodity> = [{
     id: '1',
-    pickupId: '1',
-    dropoffId: '13',
     pickupNumber: null,
     dropoffNumber: null,
     po: '8055',
@@ -231,8 +786,6 @@ class MockData {
   },
   {
     id: '2',
-    pickupId: '2',
-    dropoffId: '13',
     pickupNumber: 5009,
     dropoffNumber: null,
     po: '',
@@ -244,8 +797,6 @@ class MockData {
   },
   {
     id: '3',
-    pickupId: '3',
-    dropoffId: '13',
     pickupNumber: null,
     dropoffNumber: null,
     po: '',
@@ -257,8 +808,6 @@ class MockData {
   },
   {
     id: '4',
-    pickupId: '4',
-    dropoffId: '8',
     pickupNumber: null,
     dropoffNumber: null,
     po: '',
@@ -276,28 +825,32 @@ class MockData {
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
     name: 'San Francisco, CA',
     address: this.addresses[1],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '1',
     name: 'Los Angeles, CA',
     address: this.addresses[2],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
     name: 'Los Altos, CA',
     address: this.addresses[3],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: ''
+    notes: '',
+    scheduleType: ScheduleTypes.FCFS
   }];
 
   mileages: Array<Mileage> = [{
@@ -509,16 +1062,19 @@ class MockData {
   }];
 
   public stopActionCollection: Array<StopAction> = [{
+        id: '1',
         type: StopActionTypes.PICKUP,
-        commodity: this.commodities[0]
+        commodities: [this.commodities[0]]
        },
        {
+        id: '2',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[1]
+        commodities: [this.commodities[1]]
        },
        {
+        id: '3',
         type: StopActionTypes.DROPOFF,
-        commodity: this.commodities[2]
+        commodities: [this.commodities[2]]
        }
   ];
 
@@ -527,11 +1083,12 @@ class MockData {
       appointment: {
         from: new Date(2017, 2, 1, 8),
         to: new Date(2017, 2, 1, 10),
-        type: AppointmentTypes.FCFS
+        number: '11',
+        scheduleType: ScheduleTypes.FCFS
       },
       notes: 'test',
       facility: this.facilities[0],
-      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
+      stopActions: [this.stopActionCollection[1]],
        trip: this.trips[0]
     },
     {
@@ -539,7 +1096,8 @@ class MockData {
       appointment: {
         from: new Date(2017, 2, 2, 8),
         to: new Date(2017, 2, 2, 10),
-        type: AppointmentTypes.FCFS
+        number: '22',
+        scheduleType: ScheduleTypes.FCFS
       },
       notes: 'test',
       trip: this.trips[0],
@@ -551,285 +1109,78 @@ class MockData {
   public startDate = new Date(2017, 0, 9);
   public endDate = new Date(2017, 0, 22);
 
-  public pickups: Array<Stop> = [{
+  public stops: Array<Stop> = [{
     id: '1',
     notes: 'notes',
-    type: StopTypes.PICKUP,
     departedAt: this.startDate,
     arrivedAt: this.endDate,
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
-    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]]
-  }
-  // {
-  //   id: 2,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[1],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 3,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 4,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 5,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 6,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // }, {
-  //   id: 7,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[0],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 8,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[1],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 9,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 10,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 11,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 12,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 13,
-  //   notes: 'notes',
-  //   type: StopTypes.Pickup,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // }
- ];
-
-  public dropoffs: Array<Stop> = [{
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '33',
+      scheduleType: ScheduleTypes.FCFS
+    },
+    tripStops: [this.tripStopCollection[0], this.tripStopCollection[1]],
+    scheduleType: ScheduleTypes.APPT
+  },
+  {
     id: '13',
     notes: 'notes',
-    type: StopTypes.DROPOFF,
+    departedAt: this.startDate,
+    arrivedAt: this.endDate,
+    plannedArrivalAt: this.endDate,
+    plannedDepartureAt: this.startDate,
+    facility: this.facilities[0],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '33',
+      scheduleType: ScheduleTypes.FCFS
+    },
+    status: StopStatuses.IN_PROGRESS,
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    tripStops: [this.tripStopCollection[0]],
+    scheduleType: ScheduleTypes.APPT
+  },
+  {
+    id: '2',
+    notes: 'notes',
     departedAt: this.startDate,
     arrivedAt: this.endDate,
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
-    tripStops: [this.tripStopCollection[0]]
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    tripStops: [this.tripStopCollection[0]],
+    appointment: {
+      from: new Date(2017, 2, 1, 8),
+      to: new Date(2017, 2, 1, 10),
+      number: '44',
+      scheduleType: ScheduleTypes.FCFS
+    },
+    scheduleType: ScheduleTypes.APPT
   }
-  // {
-  //   id: 14,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[1],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 15,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 16,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 17,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 18,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // }, {
-  //   id: 19,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[0],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 20,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[1],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 21,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 22,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[3],
-  //   status: StopStatuses.InProgress
-  // },
-  // {
-  //   id: 23,
-  //   notes: 'notes',
-  //   type: StopTypes.Dropoff,
-  //   departedAt: this.startDate,
-  //   arrivedAt: this.endDate,
-  //   plannedArrivalAt: this.endDate,
-  //   plannedDepartureAt: this.startDate,
-  //   facility: this.facilities[2],
-  //   status: StopStatuses.InProgress
-  // }
-  ];
-
+ ];
   public loads: Array<Load> = [
     {
       id: '1',
       companyId: '1',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '726457361',
       systemLoadNo: '209282402',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       contactId: '1',
       customerBillingLocationId: '3',
       status: LoadStatuses.COMPLETED,
@@ -839,7 +1190,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[0]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },
@@ -847,12 +1198,15 @@ class MockData {
       id: '2',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '234457361',
       systemLoadNo: '7367707',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '4',
       contactId: '2',
       status: LoadStatuses.IN_TRANSIT,
@@ -862,7 +1216,7 @@ class MockData {
       specialRequirments: '#141',
       trips: this.trips,
       currentTrips: [this.trips[1], this.trips[2]],
-      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -870,12 +1224,15 @@ class MockData {
       id: '3',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '111557361',
       systemLoadNo: '104579538',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '5',
       contactId: '3',
       status: LoadStatuses.IN_TRANSIT,
@@ -885,7 +1242,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[2], this.trips[3]],
-      stops: [this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1], this.stops[2]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -893,12 +1250,15 @@ class MockData {
       id: '4',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '6',
       contactId: '4',
       status: LoadStatuses.PENDING,
@@ -908,7 +1268,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[3], this.trips[0]],
-      stops: [this.pickups[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
     },
@@ -916,12 +1276,15 @@ class MockData {
       id: '5',
       companyId: '4',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '6',
       contactId: '4',
       status: LoadStatuses.IN_TRANSIT,
@@ -931,7 +1294,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
@@ -939,12 +1302,15 @@ class MockData {
       id: '6',
       companyId: '2',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '6',
       contactId: '2',
       status: LoadStatuses.COMPLETED,
@@ -954,7 +1320,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[3]]
     },
@@ -962,12 +1328,15 @@ class MockData {
       id: '7',
       companyId: '3',
       customer: null,
+      customerLocationId: '1',
       customerLocation: this.locations[0],
       customerBillingLocation: this.locations[2],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '6',
       contactId: '3',
       status: LoadStatuses.PENDING,
@@ -977,7 +1346,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0]]
     },
@@ -985,12 +1354,15 @@ class MockData {
       id: '8',
       companyId: '4',
       customer: null,
+      customerLocationId: '2',
       customerLocation: this.locations[1],
       customerBillingLocation: this.locations[3],
       customerLoadNo: '827461356',
       systemLoadNo: '104605109',
       type: LoadType.FTL,
       freightType: FreightType.DRY,
+      reeferType: ReeferType.CYCLE,
+      temperature: '43',
       customerBillingLocationId: '6',
       contactId: '4',
       status: LoadStatuses.COMPLETED,
@@ -1000,7 +1372,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.pickups[0], this.pickups[0], this.dropoffs[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[1]]
     },
@@ -1022,7 +1394,7 @@ class MockData {
     {
       id: '2',
       name: 'M W LOGISTICS LLC',
-      locations: [this.locations[1], this.locations[1]],
+      locations: [this.locations[1]],
       contacts: [this.contacts[1]],
       email: 'HAVETO ADD@mwlogistics.com',
       status: CompanyStatuses.ACTIVE,

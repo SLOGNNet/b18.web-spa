@@ -1,11 +1,11 @@
-<div class="information-container">
+<div class="information-container interactive-background">
   <div class="left">
     <div class="top">
-      <bd-initials-circle class="initials-circle" [firstName]="driver.firstName" [lastName]="driver.lastName">
-      </bd-initials-circle>
+      <bd-user-circle class="initials-circle" [fullName]="fullName">
+      </bd-user-circle>
       <div class="top-right">
-        <div class="full-name">
-          {{driver.firstName}} {{driver.lastName}}
+        <div class="full-name interactive-text">
+          {{fullName}}
         </div>
         <div class="top-icons">
           <span class="icon-mail"></span>
@@ -24,7 +24,7 @@
         <span class="bottom-label">SSN:</span>
         <span class="ssn">{{driver.ssn}}</span>
       </div>
-      <div class="driver-type">
+      <div class="driver-type interactive-text">
         {{driverType}}
       </div>
     </div>

@@ -1,5 +1,6 @@
 /* colors */
 $white: #fff;
+$nevada: #646a71;
 $black: #30353b;
 $shark: #23282d;
 $dark-grey: #a7a7a7;
@@ -7,6 +8,7 @@ $grey: #d7d8db;
 $light-grey: #f0f0f0;
 $dirty-grey: #b7bcc1;
 $iron: #cccecf;
+$silver: #ccc;
 $gray-chateau: #9fa3a6;
 $blue: #75b3e2;
 $closable-card-bg: rgba($shark, .9);
@@ -15,6 +17,7 @@ $horizon: #597c97;
 $mako: #485158;
 $light-blue: #f5fefe;
 $serenity: #f5f9fc;
+$default-background: #fafcfd;
 $red: #fc3b3b;
 $light-red: #ffebeb;
 $dark-blue: #3d454d;
@@ -54,6 +57,7 @@ $placeholder-color: $dark-grey;
 /* form border */
 $default-border-size: 1px;
 $border: $default-border-size solid $grey;
+$default-border: $default-border-size solid transparent;
 $active-border: $default-border-size solid $blue;
 $error-border: $default-border-size solid $red;
 
@@ -74,9 +78,13 @@ $extra-large-font-size: 2rem;
 
 $input-label-font-size: $micro-font-size;
 $form-control-font-size: $low-font-size;
+$status-opacity: .5;
 
 
 $top-panel-icon-size: 19px;
+
+// animation duration
+$interactive-animation-time: 250ms;
 
 @font-face {
   font-family: 'SFUIText-Regular';

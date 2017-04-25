@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 @keyframes labelFlight {
   from {
     margin-right: -50px;
@@ -47,8 +48,9 @@
   border-bottom: $border;
   margin-bottom: 0;
   flex-flow: row wrap;
-  background-color: inherit;
+  background-color: $default-background;
   box-shadow: inherit;
+  transition: background-color $interactive-animation-time;
 
   .bd-label {
     display: flex;
@@ -185,4 +187,10 @@
       color: $label-warning-color;
     }
   }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
 }

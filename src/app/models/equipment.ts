@@ -1,5 +1,4 @@
 import { Driver } from './driver';
-import { Type } from 'class-transformer';
 import {
   PowerUnitTypes,
   TrailerTypes,
@@ -9,7 +8,12 @@ import {
   DriverTypes,
   EquipmentVehicleOperatings
 } from './enums';
+import { Type, Transform, Expose } from 'class-transformer';
+import { schema } from 'normalizr';
 import { generateNewId } from './utils';
+
+export const equipmentSchema = new schema.Entity('equipments');
+export const equipmentListSchema = [equipmentSchema];
 
 // Power Unit types
 function createPowerUnitTypes() {
@@ -48,8 +52,8 @@ export class Mileage {
   date: Date;
   constructor(){
     this.id = generateNewId().toString();
-    this.value = '1234';
-    this.date = new Date();
+    this.value = '';
+    this.date = null;
   }
 }
 

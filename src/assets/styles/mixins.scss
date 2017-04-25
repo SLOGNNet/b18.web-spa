@@ -3,18 +3,18 @@
   display: -webkit-box;
   overflow: hidden;
   line-height: $line-height;
-  max-height: $line-height * $line-count; /* Fallback for non-webkit */
+  max-height: $line-height * $line-count;
+  /* Fallback for non-webkit */
   -webkit-line-clamp: $line-count;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   //sass-lint:enable no-vendor-prefixes
 }
-
 @mixin driver-view-form-container {
   display: flex;
   width: 100%;
   padding: 0 $default-margin;
-  background: $white;
+  background: $default-background;
   font-size: $tiny-font-size;
   line-height: $element-height;
   border-bottom: $border;
@@ -30,4 +30,27 @@
     padding: $default-margin;
     color: $dark-grey;
   }
+}
+@mixin interactive-text {
+  .interactive-text {
+    color: $dark-grey;
+    transition: all $interactive-animation-time;
+  }
+}
+@mixin interactive-background {
+  .interactive-text {
+    color: $black;
+    transition: all $interactive-animation-time;
+  }
+
+  .interactive-background {
+    background: $white;
+    transition: all $interactive-animation-time;
+  }
+}
+@mixin default-view-container {
+  background: $default-background;
+  font-size: $tiny-font-size;
+  border-bottom: $border;
+  transition: background-color $interactive-animation-time;
 }

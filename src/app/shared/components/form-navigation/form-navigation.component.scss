@@ -1,7 +1,8 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 $container-height: $horizontal-scroll-container-height;
 
-form-navigation {
+:host {
   position: absolute;
   z-index: $sticked-z-index;
   top: 0;
@@ -12,9 +13,10 @@ form-navigation {
 
   .form-navigation {
     padding: $default-margin $default-margin 0;
+    background: $default-background;
     border-radius: $default-border-radius;
-    background-color: $white;
     border-bottom: $border;
+    transition: background $interactive-animation-time;
 
     .top-panel {
       display: flex;
@@ -22,9 +24,17 @@ form-navigation {
 
       .title {
         display: inline-block;
+        color: $nevada;
         font-size: $default-font-size;
         line-height: $default-font-size;
         font-weight: bold;
+        transition: all $interactive-animation-time;
+      }
+
+      .top-panel-content {
+        visibility: hidden;
+        opacity: 0;
+        transition: all $interactive-animation-time;
       }
     }
 
@@ -49,8 +59,9 @@ form-navigation {
         }
 
         &.active {
-          color: $black;
+          color: $nevada;
           font-weight: bold;
+          transition: all $interactive-animation-time;
         }
 
         &:first-child {
@@ -82,6 +93,39 @@ form-navigation {
         &:hover {
           color: $label-default-color;
         }
+      }
+    }
+  }
+}
+
+:host-context(.interactive-panel:hover) {
+
+  .form-navigation {
+    background: $white;
+    transition: all $interactive-animation-time;
+
+    .top-panel {
+
+      .title {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+
+      .top-panel-content {
+        opacity: 1;
+        visibility: visible;
+        transition: all $interactive-animation-time;
+      }
+    }
+  }
+
+  .content {
+
+    span {
+
+      &.active {
+        color: $black;
+        transition: all $interactive-animation-time;
       }
     }
   }

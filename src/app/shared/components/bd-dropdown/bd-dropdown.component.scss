@@ -1,6 +1,8 @@
 @import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
 
 .bd-dropdown-container {
+  position: relative;
   background-color: inherit;
   box-shadow: inherit;
 
@@ -9,12 +11,13 @@
     width: 100%;
     height: $form-control-height;
     padding: 0 $default-margin;
-    background-color: inherit;
+    background-color: $default-background;
     box-shadow: inherit;
     border-bottom: $border;
     outline: 0;
     align-items: center;
     justify-content: space-between;
+    transition: background-color $interactive-animation-time;
 
     .bd-dropdown-label {
       width: 24%;
@@ -42,10 +45,7 @@
 
       span {
         color: $label-default-color;
-      }
-
-      .item-selected {
-        color: $black;
+        transition: all $interactive-animation-time;
       }
     }
 
@@ -63,67 +63,59 @@
   }
 
   .bd-dropdown-list {
+    position: absolute;
+    z-index: 1000;
+    display: none;
     width: 100%;
     padding: 0;
-    border: 0;
-    margin: -1px 0 0;
-    font-size: inherit;
-    border-radius: 0;
+    margin: -1px 0 0; 
+    overflow-y: auto;
+    border-top: $active-border;
+    max-height: $form-control-height * 5;
 
-    div {
+    li {
       display: flex;
+      background: $white;
+      font-size: inherit;
+      padding-left: $default-margin;
       min-height: $form-control-height;
+      border-bottom: $border;
       align-items: center;
-    }
 
-    ul {
-      padding: 0;
-      margin: 0;
-      overflow-y: auto;
-      border-top: $active-border;
-      max-height: $form-control-height * 5;
+      &.template-item {
+        padding-left: 0;
+        border-bottom: 0;
+      }
 
-      li {
+      &.dropdown-header {
+        background: $white;
+        color: $label-default-color;
+        font-size: inherit;
+        border-bottom: $border;
+      }
+
+      &.dropdown-footer {
         display: flex;
         background: $white;
+        justify-content: center;
+      }
+
+      &:hover {
+        background: $light-blue;
+        cursor: pointer;
+      }
+
+      a {
         color: $black;
-        font-size: inherit;
-        padding-left: $default-margin;
-        min-height: $form-control-height;
-        border-bottom: $border;
-        align-items: center;
-
-        &.template-item {
-          padding-left: 0;
-          border-bottom: 0;
-        }
-
-        &.dropdown-header {
-          background: $white;
-          color: $label-default-color;
-          font-size: inherit;
-          border-bottom: $border;
-        }
-
-        &.dropdown-footer {
-          display: flex;
-          background: $white;
-          justify-content: center;
-        }
-
-        &:hover {
-          background: $light-blue;
-          cursor: pointer;
-        }
-
-        a {
-          color: $black;
-        }
       }
     }
   }
 
   &.open {
+    .bd-dropdown-list {
+      display: block;
+    }
+
     .bd-dropdown-wrapper {
       border-bottom: $active-border;
 
@@ -168,6 +160,28 @@
   &:hover {
     .bd-dropdown-icon {
       display: block;
+    }
+  }
+}
+
+@include interactive-text;
+
+:host-context(.interactive-panel:hover) {
+  @include interactive-background;
+
+  .bd-dropdown-wrapper {
+
+    .bd-dropdown-value {
+
+      .item-selected {
+        color: $black;
+        transition: all $interactive-animation-time;
+      }
+    }
+
+    .bd-dropdown-icon {
+      color: $black;
+      transition: all $interactive-animation-time;
     }
   }
 }

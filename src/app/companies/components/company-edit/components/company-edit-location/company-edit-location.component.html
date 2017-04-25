@@ -1,0 +1,28 @@
+<div class="company-edit-location" *ngIf="selectedItem">
+  <bd-form-spinner *ngIf="isLoading$ | async"></bd-form-spinner>
+	<form-navigation
+    sticky
+    [stickyPositionInsideScroll]="true"
+    [disabled]="isLoading"
+    [title]=""
+    [anchors]="anchors">
+  </form-navigation>
+  <bd-form-section [disabled]="disabled" labelText="Location">
+    <location-form
+      [location]="selectedItem"
+      [disabled]="isLoading"
+      [scrollable]="true"
+      [group]="form"
+      [viewMode]="viewMode"
+   >
+    </location-form>
+    <form-sticky-bottom-container [sticky]="true" [stickyPositionInsideScroll]="true">
+      <div class="button-group">
+        <bd-button [disabled]="disabled" (click)="onItemCancel()" [text]="'Cancel'" class="button">
+        </bd-button>
+        <bd-button [disabled]="disabled" (click)="onFormSave()" color="primary" class="button" [text]="'Save'">
+        </bd-button>
+      </div>
+    </form-sticky-bottom-container>
+  </bd-form-section>
+</div>
