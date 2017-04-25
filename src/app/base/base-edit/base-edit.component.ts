@@ -104,4 +104,7 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     }
   }
 
+  get actionName() {
+    return this.isNew ? 'New ' + this.getItemName() : this.getItemName();
+  }
 }

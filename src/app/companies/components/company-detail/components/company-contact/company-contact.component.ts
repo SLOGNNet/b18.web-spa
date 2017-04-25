@@ -14,7 +14,7 @@ export class CompanyContact {
   };
 
   get fullName() {
-    return `${this.contact.firstName} ${this.contact.lastName}`;
+    return [this.contact.firstName, this.contact.middleName, this.contact.lastName].filter(v => v).join(' ');
   }
 
   onEdit() {

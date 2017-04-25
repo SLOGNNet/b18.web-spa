@@ -1,0 +1,11 @@
+@import '../../../assets/styles/form-control';
+@import '../../../assets/styles/styles';
+
+.name-section {
+  display: flex;
+
+  bd-validator,
+  bd-input {
+    flex: 1;
+  }
+}

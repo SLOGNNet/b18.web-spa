@@ -44,6 +44,10 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
       ngRedux.select(state => state.ui.contacts.isLoading), route, router, location, cdr);
   }
 
+  get fullName() {
+    return [this.selectedItem.firstName, this.selectedItem.middleName, this.selectedItem.lastName].filter(v => v).join(' ');
+  }
+
   isDetailsChanged() {
     return this.companyContactFormComponent && this.companyContactFormComponent.contactForm.dirty;
   }
@@ -52,10 +56,12 @@ export class CompanyEditContactComponent extends BaseNestedEditComponent<Contact
     if (this.companyContactFormComponent.contactForm.valid) {
       this.companyContactFormComponent.contactForm.markAsPristine();
       super.onItemSave(this.companyContactFormComponent.contactForm.value);
+    } else {
+      this.companyContactFormComponent.validate();
     }
   }
 
   getItemName() {
-    return 'Company';
+    return this.isNew ? 'Company' : this.fullName;
   }
 }
