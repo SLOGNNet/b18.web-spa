@@ -821,7 +821,7 @@ class MockData {
 
   public facilities: Array<Facility> = [{
     id: '1',
-    name: 'Larede, TX',
+    name: 'Bolthouse Farms',
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
@@ -829,23 +829,23 @@ class MockData {
     scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
-    name: 'San Francisco, CA',
+    name: 'Specto Alloys',
     address: this.addresses[1],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
     notes: '',
     scheduleType: ScheduleTypes.FCFS
   }, {
-    id: '1',
-    name: 'Los Angeles, CA',
+    id: '3',
+    name: 'Printpack Metallizing',
     address: this.addresses[2],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
     notes: '',
     scheduleType: ScheduleTypes.FCFS
   }, {
-    id: '2',
-    name: 'Los Altos, CA',
+    id: '4',
+    name: 'Suarez Brokerage Co',
     address: this.addresses[3],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
