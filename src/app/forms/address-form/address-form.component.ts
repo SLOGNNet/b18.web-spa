@@ -48,11 +48,11 @@ export class AddressForm extends BaseForm {
         this._formBuilder.control({value: this.address[field.name], disabled: this.disabled}, field.validators)
       );
     });
-    this.addressForm.valueChanges.subscribe((value) => {
+    this.subscribers.push(this.addressForm.valueChanges.subscribe((value) => {
       if (this.addressForm.valid) {
         this.update.emit(value);
       }
-    });
+    }));
   }
 
   onRemoveMap() {

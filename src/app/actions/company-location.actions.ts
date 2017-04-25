@@ -24,21 +24,23 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
     private ngRedux: NgRedux<IAppState>) { }
 
   addAssociation(location: Location, company: Company): void {
-    this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_REQUEST });
+    const normalizedPhantomData = normalize(location, locationSchema);
+    this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_REQUEST, data: normalizedPhantomData });
+
     this.locationService.create(company, location).subscribe(newId => {
       const prevId = location.id;
       const normalizedData = normalize(createPeristEnity(location, newId), locationSchema);
-      this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id});
+      this.ngRedux.dispatch({ type: CompanyLocationActions.ADD_LOCATION_CONTACT_SUCCESS, data: normalizedData, prevId, companyId: company.id });
       this.notificatonService.sendNotification('Location created.', `Location was created.`);
     });
   }
 
   updateAssociation(location: Location, company: Company): void {
-    this.ngRedux.dispatch({ type: CompanyLocationActions.UPDATE_LOCATION_CONTACT_REQUEST, location });
+    const normalizedData = normalize(location, locationSchema);
+    this.ngRedux.dispatch({ type: CompanyLocationActions.UPDATE_LOCATION_CONTACT_REQUEST, data: normalizedData });
 
     setTimeout(() => {
       this.locationService.update(location);
-      const normalizedData = normalize(location, locationSchema);
       this.ngRedux.dispatch({ type: CompanyLocationActions.UPDATE_LOCATION_CONTACT_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Location updated.', `Location was updated.`);
     }, 3000);
@@ -54,12 +56,12 @@ export class CompanyLocationActions implements IDetailDataActions<Location>, INe
   select(locationId: string): void {
     this.locationService.getDetails(locationId).subscribe(contact => {
       const normalizedData = normalize(contact, locationSchema);
-      this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData  });
-    }, (error) => {});
+      this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData });
+    }, (error) => { });
   }
 
   createNew(): void {
     const normalizedData = normalize(Location.create(), locationSchema);
-    this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData  });
+    this.ngRedux.dispatch({ type: CompanyLocationActions.SELECT_LOCATION_CONTACT, data: normalizedData });
   }
 }

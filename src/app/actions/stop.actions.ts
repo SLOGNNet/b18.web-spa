@@ -24,7 +24,9 @@ export class StopActions implements IDetailDataActions<Stop>, INestedEditDataAct
     private ngRedux: NgRedux<IAppState>) { }
 
   addAssociation(stop: Stop, load: Load): void {
-    this.ngRedux.dispatch({ type: StopActions.ADD_STOP_LOAD_REQUEST });
+    const normalizedPhantomData = normalize(stop, stopSchema);
+    this.ngRedux.dispatch({ type: StopActions.ADD_STOP_LOAD_REQUEST, data: normalizedPhantomData });
+
     this.stopService.create(stop, load).subscribe(newId => {
       const prevId = stop.id;
       const normalizedData = normalize(createPeristEnity(stop, newId), stopSchema);
@@ -34,11 +36,11 @@ export class StopActions implements IDetailDataActions<Stop>, INestedEditDataAct
   }
 
   updateAssociation(stop: Stop, load: Load): void {
-    this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP_LOAD_REQUEST, stop });
+    const normalizedData = normalize(stop, stopSchema);
+    this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP_LOAD_REQUEST, data: normalizedData });
 
     setTimeout(() => {
       this.stopService.update(stop);
-      const normalizedData = normalize(stop, stopSchema);
       this.ngRedux.dispatch({ type: StopActions.UPDATE_STOP_LOAD_SUCCESS, data: normalizedData });
       this.notificatonService.sendNotification('Stop updated.', `Stop was updated.`);
     }, 3000);

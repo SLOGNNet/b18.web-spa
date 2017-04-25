@@ -17,10 +17,10 @@ export abstract class BaseListComponent<T> extends BasePane {
   }
 
   ngAfterViewInit() {
-    this.items$.subscribe((items) => {
+    this.subscribers.push(this.items$.subscribe((items) => {
       this.items = items;
       this.subscribeToDetailsChildRoute();
-    });
+    }));
   }
 
   protected onAdd() {
@@ -49,7 +49,7 @@ export abstract class BaseListComponent<T> extends BasePane {
 
   private subscribeToDetailsChildRoute() {
     // child route subscribtion approach taken from https://github.com/angular/angular/issues/11692
-    this.router.events.subscribe(e => {
+    this.subscribers.push(this.router.events.subscribe(e => {
       const route = this.route.firstChild;
       if (e instanceof NavigationEnd && this.childRoute !== this.route.firstChild) {
         if (this.childRouteSubscription) {
@@ -65,7 +65,7 @@ export abstract class BaseListComponent<T> extends BasePane {
           this.onDetailRouteChange({});
         }
       }
-    });
+    }));
   }
 
   private onDetailRouteChange(params: any) {

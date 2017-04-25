@@ -16,13 +16,13 @@ export abstract class BaseDetailComponent<T> extends BasePane {
     route: ActivatedRoute,
     protected cdr: ChangeDetectorRef) {
     super(router, route);
-    selected$.subscribe(item => {
+    this.subscribers.push(selected$.subscribe(item => {
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
-    });
-    this.route.params.subscribe(params => {
+    }));
+    this.subscribers.push(this.route.params.subscribe(params => {
       this.onQueryParams(params);
-    });
+    }));
   }
 
   protected onEdit() {

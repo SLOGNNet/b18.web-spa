@@ -12,9 +12,15 @@ export class BaseForm {
     },
     changeDetection: ChangeDetectionStrategy.OnPush
   };
+  protected subscribers = [];
   private _viewMode: ViewMode = ViewMode.View;
   constructor(protected elementRef: ElementRef) {
 
+  }
+
+  ngOnDestroy() {
+    this.subscribers.forEach(s => s.unsubscribe());
+    this.subscribers = [];
   }
 
   get viewMode(): ViewMode {

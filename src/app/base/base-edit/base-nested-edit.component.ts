@@ -20,12 +20,12 @@ export abstract class BaseNestedEditComponent<T, Y> extends BaseEditComponent<T>
     location: Location,
     cdr: ChangeDetectorRef) {
     super(selected$, isLoading$, route, router, location, cdr);
-    parent$.subscribe(item => {
+    this.subscribers.push(parent$.subscribe(item => {
       const prev = this.parentItem;
       this.parentItem = cloneDeep(item);
       this.checkParentChanged(prev, this.parentItem);
       this.cdr.markForCheck();
-    });
+    }));
   }
 
   protected abstract getItemName();

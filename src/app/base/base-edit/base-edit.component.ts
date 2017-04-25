@@ -24,20 +24,20 @@ export abstract class BaseEditComponent<T> extends BasePane implements CanCompon
     private location: Location,
     protected cdr: ChangeDetectorRef) {
     super(router, route);
-    isLoading$.subscribe(isLoading => {
+    this.subscribers.push(isLoading$.subscribe(isLoading => {
       this.isLoading = isLoading;
-    });
-    selected$.subscribe(item => {
+    }));
+    this.subscribers.push(selected$.subscribe(item => {
       this.redirectIfNewCreated(this.selectedItem, item);
       this.selectedItem = cloneDeep(item);
       this.cdr.markForCheck();
-    });
+    }));
 
     // http://weblogs.foxite.com/joel_leach/2016/11/18/setting-subclass-properties-in-typescript/
     setTimeout( () => {
-      this.route.params.subscribe(params => {
+      this.subscribers.push(this.route.params.subscribe(params => {
         this.checkNewItem();
-      });
+      }));
     });
   }
 

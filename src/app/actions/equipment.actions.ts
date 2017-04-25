@@ -18,13 +18,15 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
   static SELECT_EQUIPMENT: string = 'SELECT_EQUIPMENT';
   static CREATE_NEW_EQUIPMENT: string = 'CREATE_NEW_EQUIPMENT';
   static GET_ALL_EQUIPMENTS: string = 'GET_ALL_EQUIPMENTS';
-  constructor (
+  constructor(
     private equipmentService: EquipmentService,
     private notificatonService: NotificationService,
-    private ngRedux: NgRedux<IAppState>) {}
+    private ngRedux: NgRedux<IAppState>) { }
 
   add(equipment: Equipment): void {
-    this.ngRedux.dispatch({ type: EquipmentActions.ADD_EQUIPMENT_REQUEST, equipment });
+    const normalizedPhantomData = normalize(equipment, equipmentSchema);
+    this.ngRedux.dispatch({ type: EquipmentActions.ADD_EQUIPMENT_REQUEST, data: normalizedPhantomData });
+
     this.equipmentService.create(equipment).delay(2000).subscribe((newId) => {
       const prevId = equipment.id;
       const normalizedData = normalize(createPeristEnity(equipment, newId), equipmentSchema);
@@ -38,12 +40,13 @@ export class EquipmentActions implements IListDataActions<Equipment>, IDetailDat
   }
 
   update(equipment: Equipment): void {
-    this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_REQUEST});
-      this.equipmentService.update(equipment).delay(2000).subscribe(() => {
-        const normalizedData = normalize(equipment, equipmentSchema);
-        this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_SUCCESS, data: normalizedData });
-        this.notificatonService.sendNotification('Driver updated.', `${equipment.make} was updated.`);
-      });
+    const normalizedData = normalize(equipment, equipmentSchema);
+    this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_REQUEST, data: normalizedData });
+
+    this.equipmentService.update(equipment).delay(2000).subscribe(() => {
+      this.ngRedux.dispatch({ type: EquipmentActions.UPDATE_EQUIPMENT_SUCCESS, data: normalizedData });
+      this.notificatonService.sendNotification('Driver updated.', `${equipment.make} was updated.`);
+    });
   }
 
   select(equipmentId: string): void {
