@@ -3,8 +3,21 @@
         <span>{{index}}</span>
     </div>
     <div
-        *ngFor="let column of columns" 
+        *ngFor="let column of columns; let ind = index" 
         class="commodity-detail-column">
-        <span>{{column}}</span>
+        <span
+            [attr.id]="'commodity-detail-' + index + ind"
+            [bd-popover]="detailsPopover"
+            [popoverDisabled]="isDisabled('commodity-detail-'+ index + ind)"
+            [popoverCloseOnMouseOutside]="true"
+            [popoverOnHover]="true">
+            <bd-popover-content
+                #detailsPopover
+                placement="auto"
+                [closeOnClickOutside]="true">
+                {{column}}
+            </bd-popover-content>
+            {{column}}
+        </span>
     </div>
 </div>
