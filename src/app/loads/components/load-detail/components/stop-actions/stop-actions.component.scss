@@ -1,7 +1,7 @@
 @import '../../../../../../assets/styles/variables';
 @import '../../../../../../assets/styles/mixins';
 @import '../../../../../../assets/styles/font-icons';
-$text-margin: 5px;
+$text-margin: 9px;
 
 .commodities-section {
   margin: 10px;
@@ -21,10 +21,12 @@ $text-margin: 5px;
     }
 
     .commodities-notes {
+      overflow: hidden;
       height: 35px;
+      padding: 0 $default-margin 0 $text-margin;
       background: $white;
       line-height: 35px;
-      padding-left: $text-margin;
+      text-overflow: ellipsis;
     }
 
     &:last-of-type {
