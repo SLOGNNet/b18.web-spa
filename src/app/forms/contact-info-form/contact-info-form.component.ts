@@ -33,4 +33,9 @@ export class ContactInfoForm extends BaseForm {
       );
     });
   }
+
+  get generateClass() {
+    return this.contactInfo.label.toLowerCase().replace(' ', '-');
+  }
+  
 }
