@@ -4,30 +4,30 @@
     <bd-validator-summary>
       <div class="name-section">
         <bd-validator [component]="driverForm.controls.firstName" [errorDefs]="{required: 'First name is required'}">
-          <bd-input class="bd-form-control left-control" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
+          <bd-input class="bd-form-control left-control first-name" formControlName="firstName" [required]="true" [placeholder]="'First Name'"></bd-input>
         </bd-validator>
-        <bd-input class="bd-form-control middle-control" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
+        <bd-input class="bd-form-control middle-control middle-name" formControlName="middleName" [placeholder]="'Middle Name'"></bd-input>
         <bd-validator [component]="driverForm.controls.lastName" [errorDefs]="{required: 'Last name is required'}">
-          <bd-input class="bd-form-control right-control" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
+          <bd-input class="bd-form-control right-control last-name" formControlName="lastName" [required]="true" [placeholder]="'Last Name'"></bd-input>
         </bd-validator>
       </div>
     </bd-validator-summary>
 		<bd-form-datepicker
-			class="bd-form-control"
+			class="bd-form-control birth-date"
 			formControlName="birthDate"
 			[labelText]="'Date Of Birth'"
 			[minDate]="minBirthDate"
 			[maxDate]="maxBirthDate">
 		</bd-form-datepicker>
-		<bd-input class="bd-form-control" formControlName="ssn" [labelText]="'SSN'"></bd-input>
-		<bd-dropdown class="bd-form-control" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
+		<bd-input class="bd-form-control ssn" formControlName="ssn" [labelText]="'SSN'"></bd-input>
+		<bd-dropdown class="bd-form-control type" formControlName="type" [labelText]="'Driver type'" [items]="driverTypes">
 		</bd-dropdown>
 	</bd-form-section>
 	<navigation-anchor id="driver-payment" [isNestedForm]="isNestedForm"></navigation-anchor>
 	<bd-form-section [disabled]="disabled" [labelText]="'PAYMENT'">
-		<bd-dropdown class="bd-form-control" formControlName="paymentOption" [labelText]="'Payment option'" [items]="paymentsTypes">
+		<bd-dropdown class="bd-form-control payment-option" formControlName="paymentOption" [labelText]="'Payment option'" [items]="paymentsTypes">
 		</bd-dropdown>
-		<bd-input class="bd-form-control" formControlName="rate" [labelText]="'Rate'">
+		<bd-input class="bd-form-control rate" formControlName="rate" [labelText]="'Rate'">
 		</bd-input>
 	</bd-form-section>
 	<navigation-anchor id="driver-contact" [isNestedForm]="isNestedForm"></navigation-anchor>
