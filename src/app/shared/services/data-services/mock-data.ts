@@ -825,7 +825,7 @@ class MockData {
     address: this.addresses[0],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: '',
+    notes: 'Call after 12:00 PM',
     scheduleType: ScheduleTypes.FCFS
   }, {
     id: '2',
@@ -833,7 +833,7 @@ class MockData {
     address: this.addresses[1],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: '',
+    notes: 'Call at 4:30 PM',
     scheduleType: ScheduleTypes.FCFS
   }, {
     id: '3',
@@ -841,7 +841,7 @@ class MockData {
     address: this.addresses[2],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: '',
+    notes: 'Call after 11:00 AM',
     scheduleType: ScheduleTypes.FCFS
   }, {
     id: '4',
@@ -849,7 +849,7 @@ class MockData {
     address: this.addresses[3],
     contactInfo: this.contactInfo.slice(),
     businessHours: '',
-    notes: '',
+    notes: 'Call after 12:00 PM',
     scheduleType: ScheduleTypes.FCFS
   }];
 
@@ -1092,7 +1092,7 @@ class MockData {
        trip: this.trips[0]
     },
     {
-      id: '13',
+      id: '2',
       appointment: {
         from: new Date(2017, 2, 2, 8),
         to: new Date(2017, 2, 2, 10),
@@ -1101,7 +1101,20 @@ class MockData {
       },
       notes: 'test',
       trip: this.trips[0],
-      facility: this.facilities[0],
+      facility: this.facilities[1],
+      stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]]
+    },
+    {
+      id: '3',
+      appointment: {
+        from: new Date(2017, 2, 2, 8),
+        to: new Date(2017, 2, 2, 10),
+        number: '22',
+        scheduleType: ScheduleTypes.FCFS
+      },
+      notes: 'test',
+      trip: this.trips[0],
+      facility: this.facilities[2],
       stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]]
     }
     ];
@@ -1135,7 +1148,7 @@ class MockData {
     arrivedAt: this.endDate,
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
+    facility: this.facilities[1],
     appointment: {
       from: new Date(2017, 2, 1, 8),
       to: new Date(2017, 2, 1, 10),
@@ -1154,9 +1167,9 @@ class MockData {
     arrivedAt: this.endDate,
     plannedArrivalAt: this.endDate,
     plannedDepartureAt: this.startDate,
-    facility: this.facilities[0],
+    facility: this.facilities[2],
     status: StopStatuses.IN_PROGRESS,
-    stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
+    stopActions: [this.stopActionCollection[0]],
     tripStops: [this.tripStopCollection[0]],
     appointment: {
       from: new Date(2017, 2, 1, 8),
@@ -1216,7 +1229,7 @@ class MockData {
       specialRequirments: '#141',
       trips: this.trips,
       currentTrips: [this.trips[1], this.trips[2]],
-      stops: [this.stops[0], this.stops[1]],
+      stops: [this.stops[0], this.stops[2], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
