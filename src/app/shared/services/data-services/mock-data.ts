@@ -1143,7 +1143,7 @@ class MockData {
       scheduleType: ScheduleTypes.FCFS
     },
     status: StopStatuses.IN_PROGRESS,
-    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    stopActions: [this.stopActionCollection[1], this.stopActionCollection[1]],
     tripStops: [this.tripStopCollection[0]],
     scheduleType: ScheduleTypes.APPT
   },
@@ -1156,7 +1156,7 @@ class MockData {
     plannedDepartureAt: this.startDate,
     facility: this.facilities[0],
     status: StopStatuses.IN_PROGRESS,
-    stopActions: [this.stopActionCollection[0], this.stopActionCollection[0]],
+    stopActions: [this.stopActionCollection[0], this.stopActionCollection[1]],
     tripStops: [this.tripStopCollection[0]],
     appointment: {
       from: new Date(2017, 2, 1, 8),
@@ -1190,7 +1190,7 @@ class MockData {
       specialRequirments: '#143',
       trips: this.trips,
       currentTrips: [this.trips[0], this.trips[1]],
-      stops: [this.stops[0], this.stops[0]],
+      stops: [this.stops[0], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[0], this.commodities[1]]
     },
@@ -1242,7 +1242,7 @@ class MockData {
       specialRequirments: '#128',
       trips: this.trips,
       currentTrips: [this.trips[2], this.trips[3]],
-      stops: [this.stops[0], this.stops[1], this.stops[2]],
+      stops: [this.stops[0], this.stops[2], this.stops[1]],
       documents: [this.documents[0]],
       commodities: [this.commodities[2]]
     },
