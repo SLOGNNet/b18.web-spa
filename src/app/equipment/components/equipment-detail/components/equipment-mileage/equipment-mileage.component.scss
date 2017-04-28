@@ -11,6 +11,14 @@
 
   .info-container {
     color: $black;
+
+    .value-container {
+      display: flex;
+
+      .value {
+        width: 82px;
+      }
+    }
   }
 
   .date-container {
