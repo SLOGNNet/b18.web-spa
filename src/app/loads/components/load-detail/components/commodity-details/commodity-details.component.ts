@@ -15,7 +15,7 @@ export class CommodityDetailsComponent {
 
   getCommodityColumns(commodity: Commodity) {
     let result = [];
-        result.push(commodity.po, commodity.commodity, commodity.unitType, commodity.unitCount, commodity.palletCount, commodity.weight);
+        result.push(commodity.pickupNumber, commodity.po, commodity.commodity, commodity.unitType, commodity.unitCount, commodity.palletCount, commodity.weight);
     return result;
   }
   ngOnInit() {
