@@ -27,6 +27,7 @@ $text-margin: 9px;
       background: $white;
       line-height: 35px;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &:last-of-type {
