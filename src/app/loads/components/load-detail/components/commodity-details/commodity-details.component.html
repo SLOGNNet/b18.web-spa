@@ -1,9 +1,6 @@
 <div class="commodity-detail-container">
-    <div class="commodity-detail-column">
-        <span>{{index}}</span>
-    </div>
     <div
-        *ngFor="let column of columns; let ind = index" 
+        *ngFor="let column of columns; let ind = index"
         class="commodity-detail-column">
         <span
             [attr.id]="'commodity-detail-' + index + ind"

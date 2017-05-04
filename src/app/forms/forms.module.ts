@@ -22,7 +22,7 @@ import { StopActionsFormComponent } from './stop-actions-form';
 import { StopActionPickupFormComponent } from './stop-action-pickup-form';
 import { StopActonDropoffFormComponent } from './stop-action-dropoff-form';
 
-import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeaderComponent,
+import { PickupCommodityComponent, DropoffCommodityComponent, CommoditiesHeaderComponent,
   PickUpCommodityFormComponent, DropOffCommodityFormComponent } from './commodities-forms';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     LoadFormComponent,
     LoadInfoFormComponent,
     LoadCompanyFormComponent,
-    DropoffpCommodityComponent,
+    DropoffCommodityComponent,
     PickupCommodityComponent,
     CommoditiesHeaderComponent,
     DriverForm,
@@ -66,7 +66,7 @@ import { PickupCommodityComponent, DropoffpCommodityComponent, CommoditiesHeader
     DriverForm,
     LoadDocumentFormComponent,
     CommoditiesHeaderComponent,
-    DropoffpCommodityComponent,
+    DropoffCommodityComponent,
     PickupCommodityComponent,
     LicenseForm,
     LocationForm,

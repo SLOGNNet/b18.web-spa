@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Commodity } from '../../../../../models';
+import { Commodity, StopActionTypes } from '../../../../../models';
 
 @Component({
   selector: 'commodity-details',
@@ -10,12 +10,21 @@ import { Commodity } from '../../../../../models';
 export class CommodityDetailsComponent {
   @Input() index: number;
   @Input() commodity: Commodity;
+  @Input() type: StopActionTypes;
 
   public columns: Array<any> = [];
 
   getCommodityColumns(commodity: Commodity) {
     let result = [];
-        result.push(commodity.po, commodity.commodity, commodity.unitType, commodity.unitCount, commodity.palletCount, commodity.weight);
+    const commodityNumber = this.type === StopActionTypes.PICKUP ? this.commodity.pickupNumber : this.commodity.dropoffNumber;
+    result.push(commodityNumber);
+        result.push(
+          commodity.po,
+          commodity.commodity,
+          commodity.unitType,
+          commodity.unitCount,
+          commodity.palletCount,
+          commodity.weight);
     return result;
   }
   ngOnInit() {
