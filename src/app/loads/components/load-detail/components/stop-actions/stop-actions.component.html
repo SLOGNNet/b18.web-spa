@@ -10,6 +10,7 @@
       <commodity-details
         *ngFor="let commodity of stopAction.commodities; let i = index;"
         [commodity]="commodity"
+        [type]="stopAction.type"
         [index]="i">
       </commodity-details>
       <div class="commodities-notes">
