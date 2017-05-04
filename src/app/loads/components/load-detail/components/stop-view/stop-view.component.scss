@@ -129,7 +129,6 @@ $text-margin: 5px;
 
       .info-item {
         display: flex;
-        margin-bottom: 15px;
 
         .item-icon {
           color: $dark-grey;
@@ -175,7 +174,6 @@ $text-margin: 5px;
         overflow: hidden;
         color: $black;
         line-height: $element-height;
-        margin-top: 15px;
         text-overflow: ellipsis;
       }
     }
