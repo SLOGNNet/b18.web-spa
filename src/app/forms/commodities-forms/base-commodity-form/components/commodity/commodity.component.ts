@@ -18,6 +18,7 @@ export class CommodityComponent extends BaseForm {
   @Input() isRemoveButtonHidden = false;
   @Input() commodity: Commodity;
   @Input() disabled: boolean = false;
+  @Input() hideNumber: boolean = false;
   @Output() blur = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() remove = new EventEmitter();

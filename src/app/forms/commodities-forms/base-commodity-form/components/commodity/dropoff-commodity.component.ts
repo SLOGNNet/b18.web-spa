@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './commodity.component.html',
   styleUrls: ['./commodity.component.scss']
 }, CommodityComponent.metaData))
-export class DropoffpCommodityComponent extends CommodityComponent {
+export class DropoffCommodityComponent extends CommodityComponent {
     protected getFields(): Array<CommodityField> {
       const fields: Array<CommodityField> = super.getFields();
       const pickupNumber = fields.find(f => f.name === 'dropoffNumber');

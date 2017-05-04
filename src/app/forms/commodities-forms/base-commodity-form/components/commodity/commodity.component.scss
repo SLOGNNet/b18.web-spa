@@ -41,3 +41,11 @@
     }
   }
 }
+
+.hide-number {
+  .c-col {
+    &:first-child {
+      color: transparent;
+    }
+  }
+}

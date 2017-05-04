@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Commodity } from '../../../../../models';
+import { Commodity, StopActionTypes } from '../../../../../models';
 
 @Component({
   selector: 'commodity-details',
@@ -10,13 +10,14 @@ import { Commodity } from '../../../../../models';
 export class CommodityDetailsComponent {
   @Input() index: number;
   @Input() commodity: Commodity;
+  @Input() type: StopActionTypes;
 
   public columns: Array<any> = [];
 
   getCommodityColumns(commodity: Commodity) {
     let result = [];
+    this.type === StopActionTypes.PICKUP ? result.push(this.commodity.pickupNumber) : result.push(this.commodity.dropoffNumber);
         result.push(
-          commodity.pickupNumber,
           commodity.po,
           commodity.commodity,
           commodity.unitType,
