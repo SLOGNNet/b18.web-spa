@@ -16,8 +16,8 @@ export class CommodityDetailsComponent {
 
   getCommodityColumns(commodity: Commodity) {
     let result = [];
-    const number = this.type === StopActionTypes.PICKUP ? this.commodity.pickupNumber : this.commodity.dropoffNumber;
-    result.push(number);
+    const commodityNumber = this.type === StopActionTypes.PICKUP ? this.commodity.pickupNumber : this.commodity.dropoffNumber;
+    result.push(commodityNumber);
         result.push(
           commodity.po,
           commodity.commodity,
