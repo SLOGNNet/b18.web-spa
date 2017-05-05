@@ -27,7 +27,6 @@ export class BdContactInfoComponent {
   }
 
   generateClass(item) {
-    return item.label.toLowerCase().replace(' ', '-');;
+    return item.label.toLowerCase().replace(' ', '-');
   }
-
 }
