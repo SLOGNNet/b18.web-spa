@@ -1,4 +1,4 @@
-import { QueryEncoder } from "@angular/http";
+import { QueryEncoder } from '@angular/http';
 
 export class CustomQueryEncoderHelper extends QueryEncoder {
     encodeKey(k: string): string {

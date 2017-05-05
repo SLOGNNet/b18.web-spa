@@ -22,7 +22,7 @@ export class AuthenticationService {
   }
 
   login(formModel) {
-    let data = new URLSearchParams('', new CustomQueryEncoderHelper());
+    let data: URLSearchParams = new URLSearchParams('', new CustomQueryEncoderHelper());
     data.append('grant_type', 'password');
     data.append('username', formModel.username);
     data.append('password', formModel.password);
