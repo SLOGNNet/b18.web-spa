@@ -12,6 +12,10 @@
   }
 }
 
+:host {
+  z-index: $bd-toast-manager-z-index;
+}
+
 .bd-toast-manager-wrapper {
   overflow: hidden;
 
