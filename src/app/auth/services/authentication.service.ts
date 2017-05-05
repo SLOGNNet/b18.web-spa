@@ -3,6 +3,7 @@ import { URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../../shared';
+import { CustomQueryEncoderHelper } from '../../shared/helpers';
 
 @Injectable()
 export class AuthenticationService {
@@ -21,12 +22,12 @@ export class AuthenticationService {
   }
 
   login(formModel) {
-    let data = new URLSearchParams();
-    data.set('grant_type', 'password');
-    data.set('username', formModel.username);
-    data.set('password', formModel.password);
-    data.set('client_id', 'client');
-    data.set('client_secret', 'secret');
+    let data: URLSearchParams = new URLSearchParams('', new CustomQueryEncoderHelper());
+    data.append('grant_type', 'password');
+    data.append('username', formModel.username);
+    data.append('password', formModel.password);
+    data.append('client_id', 'client');
+    data.append('client_secret', 'secret');
     return Observable.create((observer) => {
       this.http.post(`${this.config.authUrl}oauth/token`, data).subscribe(
         response => {
