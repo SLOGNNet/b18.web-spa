@@ -7,6 +7,7 @@ $text-margin: 9px;
   margin: 10px;
 
   .commodities-container {
+    display: grid;
     overflow: hidden;
     border: $border;
     border-left: 4px solid $grey;
