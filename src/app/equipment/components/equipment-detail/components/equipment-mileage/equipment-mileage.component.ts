@@ -8,7 +8,16 @@ import { Constants } from '../../../../../shared';
   styleUrls: ['./equipment-mileage.component.scss'],
 })
 export class EquipmentMileageComponent {
-  @Input() mileage: Mileage;
+  @Input() mileages: Array<Mileage>;
+  @Input() showAll: Boolean;
+
+  shownMileages: Array<Mileage>;
 
   constructor(private constants: Constants) {}
+
+  ngOnChanges(showAll: Boolean) {
+    if (this.showAll) this.shownMileages = this.mileages.slice();
+    else this.shownMileages = this.mileages.slice(0, 3);
+  }
+
 }

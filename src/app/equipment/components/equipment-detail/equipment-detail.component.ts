@@ -24,6 +24,8 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
     title: 'Mileage'
   }];
 
+  private showAll: Boolean = false;
+
   constructor(
     equipmentActions: EquipmentActions,
     route: ActivatedRoute,
@@ -35,6 +37,10 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
 
   get equipmentInfo(): string {
     return [this.selectedItem.make, this.selectedItem.model].filter(v => v).join(' ');
+  }
+
+  public toggleView() {
+    this.showAll = !this.showAll;
   }
 
 }

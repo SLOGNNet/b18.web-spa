@@ -1,12 +1,14 @@
-<div class="mileage-container interactive-background">
-    <div class="info-container">
-        <div class="value-container">
-          <span class="value interactive-text">{{mileage.value}}</span>
-          <span class="measurement interactive-text">miles</span>
+<div *ngFor="let mileage of shownMileages"> 
+    <div class="mileage-container interactive-background">
+        <div class="info-container">
+            <div class="value-container">
+            <span class="value interactive-text">{{mileage.value}}</span>
+            <span class="measurement interactive-text">miles</span>
+            </div>
+            <span class="type">{{mileage.type}}</span>
         </div>
-        <span class="type">{{mileage.type}}</span>
-    </div>
-    <div class="date-container">
-        <span class="date">{{mileage.date | bdDate: constants.DATE_FORMAT}}</span>
+        <div class="date-container">
+            <span class="date">{{mileage.date | bdDate: constants.DATE_FORMAT}}</span>
+        </div>
     </div>
 </div>

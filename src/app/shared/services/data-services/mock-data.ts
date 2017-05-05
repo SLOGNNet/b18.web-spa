@@ -872,6 +872,11 @@ class MockData {
     id: '4',
     value: '4515',
     date: new Date()
+  },
+    {
+    id: '5',
+    value: '1515',
+    date: new Date()
   }];
   equipmentNotification: Array<EquipmentNotification> = [];
 
@@ -894,7 +899,7 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
-    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2], this.mileages[3], this.mileages[4]],
     driverId: '5',
     driver: {
       id: '5',
@@ -939,7 +944,7 @@ class MockData {
     licensePlateNumber: '123123',
     licensePlateExpiration: new Date(),
     isSleeperBerthAvailable: true,
-    mileages: [this.mileages[0], this.mileages[1], this.mileages[2]],
+    mileages: [this.mileages[0], this.mileages[1], this.mileages[2], this.mileages[3], this.mileages[4]],
     driverId: '2',
     driver: {
       id: '2',
