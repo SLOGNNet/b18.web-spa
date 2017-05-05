@@ -1,13 +1,13 @@
 <div class="contact-info-container">
-    <div 
+    <div
         *ngFor="let item of contactCollection"
         class="contact-info-item">
-        <span 
+        <span
             class="item-icon"
             [class.icon-phone]="isPhone(item.type)"
             [class.icon-fax]="isFax(item.type)"
             [class.icon-at-sign]="isEmail(item.type)">
         </span>
-        <span class="item-text facility-phone-number">{{item.value}}</span>
+        <span [ngClass]="generateClass(item)" class="item-text facility-phone-number">{{item.value}}</span>
     </div>
 </div>
