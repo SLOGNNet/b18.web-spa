@@ -26,4 +26,7 @@ export class BdContactInfoComponent {
     return isEqual(item, ContactInfoType.EMAIL);
   }
 
+  generateClass(item) {
+    return item.label.toLowerCase().replace(' ', '-');
+  }
 }
