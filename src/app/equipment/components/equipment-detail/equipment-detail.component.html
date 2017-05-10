@@ -18,9 +18,7 @@
         [showAll]="showAll"
         [mileages]="selectedItem.mileages">
       </equipment-mileage>
-      <bd-form-button *ngIf="!showAll" [buttonText]="'see all >'" buttonType="small centered" (click)="toggleView()">
-      </bd-form-button>
-      <bd-form-button *ngIf="showAll" [buttonText]="'< see less'" buttonType="small centered" (click)="toggleView()">
+      <bd-form-button [buttonText]="showAll ? '< see less' : 'see all >'" buttonType="small centered" (click)="toggleView()">
       </bd-form-button>
     </bd-view-detail-section>
   </div>
