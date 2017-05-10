@@ -15,9 +15,11 @@
     <navigation-anchor id="equipment-detail-mileage"></navigation-anchor>
     <bd-view-detail-section [labelText]="'MILEAGE'" [addButton]="false" [editButton]="false">
       <equipment-mileage 
-        *ngFor="let record of selectedItem.mileages"
-        [mileage]="record">
+        [showAll]="showAll"
+        [mileages]="selectedItem.mileages">
       </equipment-mileage>
+      <bd-form-button [buttonText]="buttonToggleText()" buttonType="small centered" (click)="toggleView()">
+      </bd-form-button>
     </bd-view-detail-section>
   </div>
 </div>

@@ -18,6 +18,10 @@
     color: $dark-grey;
     font-size: $tiny-font-size;
 
+    &.centered {
+      margin: $default-margin auto;
+    }
+
     &:hover {
       color: $blue;
     }
