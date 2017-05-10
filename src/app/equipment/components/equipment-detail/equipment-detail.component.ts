@@ -39,8 +39,12 @@ export class EquipmentDetailComponent extends BaseDetailComponent<Equipment> {
     return [this.selectedItem.make, this.selectedItem.model].filter(v => v).join(' ');
   }
 
-  public toggleView() {
+  toggleView() {
     this.showAll = !this.showAll;
+  }
+
+  buttonToggleText() {
+    return this.showAll ? '< see less' : 'see all >';
   }
 
 }
